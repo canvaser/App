@@ -1,0 +1,132 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    useLibrary 'org.apache.http.legacy'
+
+
+    lintOptions{
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+
+    defaultConfig {
+        applicationId "com.siweisoft.app"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags "-frtti -fexceptions"
+            }
+        }
+    }
+
+
+    dexOptions {
+        javaMaxHeapSize "8g"
+    }
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+
+    sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res/layouts',
+                    'src/main/res/layouts/baseui',
+                    'src/main/res/layouts/image',
+                    'src/main/res/layouts/bottom',
+                    'src/main/res/layouts/menu',
+                    'src/main/res/layouts/time',
+                    'src/main/res/layouts/home',
+                    'src/main/res/layouts/setting',
+                    'src/main/res/layouts/user',
+                    'src/main/res/layouts/dialog',
+                    'src/main/res/layouts/chart',
+                    'src/main/res/layouts/zxing',
+                    'src/main/res/layouts/voip',
+
+                    'src/main/res/layouts/nurse',
+                    'src/main/res/layouts/nurse/bed',
+                    'src/main/res/layouts/nurse/mission',
+                    'src/main/res/layouts/nurse/check',
+                    'src/main/res/layouts/nurse/info',
+
+                    'src/main/res',
+                    'src/main/res/values/base',
+                    'src/main/res/values/home',
+                    'src/main/res/values/animstyle',
+                    'src/main/res/values/view',
+                    'src/main/res/values/nurse',
+                    'src/main/res/values/user',
+                    'src/main/res/values/avi',
+                    'src/main/res/values/chart',
+                    'src/main/res/values/zxing',
+                    'src/main/res/values/voip',
+
+                    'src/main/res/drawables/base',
+                    'src/main/res/drawables/dialog',
+                    'src/main/res/drawables/image',
+                    'src/main/res/drawables/home',
+                    'src/main/res/drawables/setting',
+                    'src/main/res/drawables/user',
+                    'src/main/res/drawables/chart',
+                    'src/main/res/drawables/nurse',
+                    'src/main/res/drawables/nurse/bed',
+                    'src/main/res/drawables/nurse/mission',
+                    'src/main/res/drawables/nurse/check',
+                    'src/main/res/drawables/nurse/info',
+                    'src/main/res/drawables/voip',
+
+                    'src/main/res/anims/bottommenu',
+                    'src/main/res/anims/in',
+                    'src/main/res/anims/scale',
+                    'src/main/res/anims/trans',
+                    'src/main/res/anims/base',
+
+            ]
+            jniLibs.srcDirs=[
+                    'libs',
+            ]
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    testCompile 'junit:junit:4.12'
+    compile files('libs/gson-2.2.1.jar')
+    compile files('libs/ormlite-android-4.48.jar')
+    compile files('libs/ormlite-core-4.48.jar')
+    compile files('libs/zxing.jar')
+
+
+    compile 'com.android.support:recyclerview-v7:25.1.0'
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.mcxiaoke.volley:library:1.0.19'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.github.chrisbanes:PhotoView:1.2.6'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
+}

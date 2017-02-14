@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/root"
+   android:background="@color/color_base_graybg">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_margin="1dp"
+        android:padding="2dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_centerInParent="true"
+            android:id="@+id/tv_empty"
+            android:layout_centerVertical="true"
+            android:textSize="14sp"
+            android:textColor="@color/color_base_txt_gray"
+            android:text="01.王小二"
+            android:maxLines="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    <LinearLayout
+        android:id="@+id/ll_r"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+        <ImageView
+            android:visibility="invisible"
+            android:src="@drawable/icon_shu"
+            android:id="@+id/iv_shu"
+            android:scaleType="fitCenter"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="16dp" />
+
+    <ImageView
+        android:visibility="invisible"
+        android:src="@drawable/icon_ming"
+        android:id="@+id/iv_ming"
+        android:scaleType="fitCenter"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="16dp" />
+
+    <ImageView
+        android:visibility="invisible"
+        android:src="@drawable/icon_ru"
+        android:id="@+id/iv_ru"
+        android:scaleType="fitCenter"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="16dp" />
+
+    <ImageView
+        android:visibility="invisible"
+        android:src="@drawable/icon_chu"
+        android:id="@+id/iv_chu"
+        android:scaleType="fitCenter"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="16dp" />
+
+</LinearLayout>
+<ImageView
+    android:layout_gravity="center_horizontal"
+    android:id="@+id/iv_level"
+    android:layout_centerInParent="true"
+    android:src="@drawable/icon_old_man"
+    android:layout_width="0dp"
+    android:layout_height="0dp" />
+
+    <RelativeLayout
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+<TextView
+    android:id="@+id/tv_numname"
+    android:layout_centerVertical="true"
+    android:textSize="11sp"
+    android:textColor="@color/color_base_txt_gray"
+    android:text="01.王小二"
+    android:maxLines="1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/iv_sex"
+            android:scaleType="fitXY"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/icon_sex_man"
+            android:layout_width="15dp"
+            android:layout_height="15dp" />
+    </RelativeLayout>
+    </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

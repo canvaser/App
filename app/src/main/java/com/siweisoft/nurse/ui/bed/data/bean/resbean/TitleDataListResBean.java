@@ -1,0 +1,21 @@
+package com.siweisoft.nurse.ui.bed.data.bean.resbean;
+
+import com.siweisoft.base.ui.bean.BaseBean;
+
+import java.util.ArrayList;
+
+/**
+ * Created by ${viwmox} on 2016-11-23.
+ */
+public class TitleDataListResBean extends BaseBean{
+
+    private ArrayList<TitleDataResBean> data;
+
+    public ArrayList<TitleDataResBean> getData() {
+        return data;
+    }
+
+    public void setData(ArrayList<TitleDataResBean> data) {
+        this.data = data;
+    }
+}

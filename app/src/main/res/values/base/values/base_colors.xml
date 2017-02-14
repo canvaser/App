@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_base">@color/white</color>
+    <color name="color_base_dark">#4CAF50</color>
+    <color name="color_base_statusbar">#76BC55</color>
+    <color name="color_base_bottommenu">#76BC55</color>
+    <color name="color_base_graybg">#EEEEEE</color>
+    <color name="color_base_txt_gray">#404040</color>
+
+    <color name="color_bg_refresh">#333333</color>
+
+    <color name="common_main_color">#ffffff</color>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</resources>

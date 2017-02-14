@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#34C6D6"
+    android:id="@+id/head"
+>
+
+
+    <TextView
+        android:id="@+id/tv_head_tem"
+        android:background="#2FC2D1"
+        android:gravity="center"
+        android:text="体温单"
+        android:padding="10dp"
+        android:textSize="13sp"
+        android:textColor="@color/black"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content" />
+
+    <android.support.v7.widget.RecyclerView
+        android:focusableInTouchMode="true"
+        android:id="@+id/rv_head_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+</LinearLayout>

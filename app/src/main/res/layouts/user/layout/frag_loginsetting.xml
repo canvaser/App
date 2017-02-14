@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<TextView
+
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:textColor="@color/black"
+    android:textSize="15sp"
+    android:id="@+id/tv_before"
+    android:layout_width="match_parent"
+    android:layout_height="40dp" />
+
+    <View
+        android:background="@color/color_base_graybg"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+    <EditText
+        android:hint="新服务器地址"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@null"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:id="@+id/et_new"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <View
+        android:background="@color/color_base_graybg"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
+
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:text="提交"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>

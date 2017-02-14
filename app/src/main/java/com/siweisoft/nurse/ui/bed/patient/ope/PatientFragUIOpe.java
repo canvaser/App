@@ -1,0 +1,254 @@
+package com.siweisoft.nurse.ui.bed.patient.ope;
+
+import android.content.Context;
+import android.media.Image;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.siweisoft.app.R;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
+import com.siweisoft.nurse.ui.bed.patient.adapter.CareListAdapter;
+import com.siweisoft.nurse.ui.bed.patient.bean.resbean.PatientAdditionListResBean;
+import com.siweisoft.nurse.ui.bed.patient.bean.resbean.PatientAdditionResBean;
+import com.siweisoft.util.BitmapUtil;
+import com.siweisoft.util.NullUtil;
+import com.siweisoft.util.StringUtil;
+
+import java.util.ArrayList;
+
+import butterknife.BindView;
+
+/**
+ * Created by ${viwmox} on 2016-11-10.
+ */
+public class PatientFragUIOpe extends BaseNurseUIOpe {
+
+
+
+    @BindView(R.id.ll_baseinfo)
+    View baseInfoView;
+
+
+    @BindView(R.id.ll_some)
+    View someView;
+
+
+    @BindView(R.id.ll_infodetail)
+    View infoDetailView;
+
+    @BindView(R.id.recycle)
+    RecyclerView recyclerView;
+
+    CareListAdapter careListAdapter;
+
+    ArrayList<PatientAdditionResBean> resBeen;
+
+    @BindView(R.id.tv_name)
+    TextView nameTV;
+
+
+    @BindView(R.id.tv_sex_age)
+    TextView sexAndAgeTV;
+
+    @BindView(R.id.tv_eat)
+    TextView eatTV;
+
+    @BindView(R.id.tv_zyh)
+    TextView zyhTV;
+
+
+    @BindView(R.id.tv_brithday)
+    TextView brithTV;
+
+
+    @BindView(R.id.tv_type)
+    TextView typeTV;
+
+
+    @BindView(R.id.tv_what)
+    TextView whatTV;
+
+    @BindView(R.id.tv_starttime)
+    TextView startTimeTV;
+
+    @BindView(R.id.tv_sstime)
+    TextView ssTimeTV;
+
+    @BindView(R.id.tv_outtime)
+    TextView outTimeTV;
+
+    @BindView(R.id.tv_tel)
+    TextView telTV;
+
+    @BindView(R.id.tv_guoming)
+    TextView guoMingTV;
+
+    @BindView(R.id.iv_head)
+    ImageView headIV;
+
+
+    @BindView(R.id.iv_arrow)
+    ImageView arrowIV;
+
+
+    public PatientFragUIOpe(Context context, View containerView) {
+        super(context, containerView);
+        init();
+    }
+
+    private void init(){
+        getBackTV().setSelected(true);
+        getBackTV().setText("病区");
+
+
+
+
+        getRightTV().setSelected(true);
+        getRightTV().setText("设置");
+
+
+
+    }
+
+    public void initTitle(String title){
+        getMidTV().setSelected(true);
+        getMidTV().setText(title);
+    }
+
+    public void initInfo(PatientBedResBean resBean){
+
+
+
+
+        getNameTV().setText(StringUtil.getStr(resBean.get姓名()));
+        getSexAndAgeTV().setText("性别:  "+StringUtil.getStr(resBean.get性别())+"  年龄:  "+StringUtil.getStr(resBean.getPatAge())+"岁");
+        getEatTV().setText("膳食信息:  "+StringUtil.getStr(resBean.getLS31()));
+
+
+        getTelTV().setText("电话号码:  "+resBean.get联系电话());
+        getZyhTV().setText("住院号  :  "+resBean.get住院号());
+        getBrithTV().setText("出生日期:  "+ resBean.get出生日期());
+        getTypeTV().setText("就诊类型:  "+resBean.get就诊类型名称());
+        getStartTimeTV().setText("入院时间:  "+resBean.get入院时间());
+        getWhatTV().setText("入院诊断:  "+StringUtil.getStr(resBean.get诊断名称()));
+        String srt  ="";
+        for(int i=0;i<resBean.getLA54().size();i++){
+            srt+=resBean.getLA54().get(i)+"\n\t";
+        }
+        if(srt.endsWith("\n\t")){
+            srt.substring(0,srt.length()-"\n\t".length());
+        }
+
+        getSsTimeTV().setText("手术记录:  "+(srt.equals("")?"无":srt));
+        getOutTimeTV().setText("预出院日:  "+(NullUtil.isStrEmpty(resBean.get出院时间())?"暂无":resBean.get出院时间()));
+
+        BitmapUtil.getInstance().setBg(context,getHeadIV(),resBean.getResId());
+
+
+
+    }
+    public void initAddionList(ArrayList<PatientAdditionResBean> resBeen){
+        this.resBeen = resBeen;
+        recyclerView.setLayoutManager(new GridLayoutManager(context,6));
+        careListAdapter = new CareListAdapter(context,resBeen);
+        recyclerView.setAdapter(careListAdapter);
+    }
+
+    public ArrayList<PatientAdditionResBean> getSelectAddition(){
+        ArrayList<PatientAdditionResBean> list = new ArrayList<>();
+        for(int i=0;i<this.resBeen.size();i++){
+            if(this.resBeen.get(i).isSelect()){
+                list.add(resBeen.get(i));
+            }
+        }
+        return list;
+    }
+
+
+    public View getBaseInfoView() {
+        return baseInfoView;
+    }
+
+    public CareListAdapter getCareListAdapter() {
+        return careListAdapter;
+    }
+
+    public RecyclerView getRecyclerView() {
+        return recyclerView;
+    }
+
+    public View getSomeView() {
+        return someView;
+    }
+
+    public View getInfoDetailView() {
+        return infoDetailView;
+    }
+
+    public TextView getEatTV() {
+        return eatTV;
+    }
+
+    public TextView getGuoMingTV() {
+        return guoMingTV;
+    }
+
+    public TextView getNameTV() {
+        return nameTV;
+    }
+
+    public ArrayList<PatientAdditionResBean> getResBeen() {
+        return resBeen;
+    }
+
+    public TextView getSexAndAgeTV() {
+        return sexAndAgeTV;
+    }
+
+    public TextView getBrithTV() {
+        return brithTV;
+    }
+
+    public TextView getOutTimeTV() {
+        return outTimeTV;
+    }
+
+    public TextView getSsTimeTV() {
+        return ssTimeTV;
+    }
+
+    public TextView getStartTimeTV() {
+        return startTimeTV;
+    }
+
+    public TextView getTypeTV() {
+        return typeTV;
+    }
+
+    public TextView getWhatTV() {
+        return whatTV;
+    }
+
+    public TextView getZyhTV() {
+        return zyhTV;
+    }
+
+    public TextView getTelTV() {
+        return telTV;
+    }
+
+    public ImageView getHeadIV() {
+        return headIV;
+    }
+
+    public ImageView getArrowIV() {
+        return arrowIV;
+    }
+
+
+}

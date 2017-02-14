@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.siweisoft.view.refreshlayout.MaterialRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:isLoadMore="false"
+        app:overlay="false"
+        app:progress_colors="@array/material_colors"
+        app:wave_color="@color/color_base"
+        app:wave_height_type="normal"
+        app:progress_size_type="normal"
+        app:wave_show="false"
+        android:background="@color/color_bg_refresh"
+        >
+        <android.support.v7.widget.RecyclerView
+            android:background="@color/white"
+            android:id="@+id/rcv_rcv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </com.siweisoft.view.refreshlayout.MaterialRefreshLayout>
+</LinearLayout>

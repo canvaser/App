@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="102dp"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:background="@drawable/pop_bg">
+<android.support.v7.widget.RecyclerView
+    android:elevation="1dp"
+    android:layout_gravity="center_horizontal"
+    android:id="@+id/rcv_pop"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"/>
+</LinearLayout>
