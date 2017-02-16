@@ -1,4 +1,4 @@
-package com.siweisoft.lib.view.gridrecyclerview;
+package com.siweisoft.lib.view.recyclerview;
 
 import android.content.Context;
 import android.os.Handler;
@@ -74,6 +74,8 @@ public class GridRecyclerView extends RecyclerView {
         } else {
             super.attachLayoutAnimationParameters(child, params, index, count);
         }
+
+
     }
 
     public boolean isMove() {

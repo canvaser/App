@@ -6,7 +6,7 @@
    android:background="@color/color_base_graybg">
 
     <RelativeLayout
-        android:background="@color/white"
+        android:background="@drawable/drawable_press_black_while"
         android:layout_margin="1dp"
         android:padding="2dp"
         android:orientation="vertical"
@@ -71,6 +71,8 @@
 
 </LinearLayout>
 <ImageView
+    android:scaleType="fitXY"
+    android:padding="5dp"
     android:layout_gravity="center_horizontal"
     android:id="@+id/iv_level"
     android:layout_centerInParent="true"

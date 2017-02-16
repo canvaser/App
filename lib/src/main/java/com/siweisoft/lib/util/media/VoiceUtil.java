@@ -51,7 +51,7 @@ public class VoiceUtil {
         if (recordFile.exists()) {
             recordFile.delete();
         }
-        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
         mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
         mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
         mediaRecorder.setOutputFile(recordFile.getAbsolutePath());
@@ -74,8 +74,12 @@ public class VoiceUtil {
 
     public void stopRecording(MediaRecorder mediaRecorder,File recordFile) {
         if (recordFile != null) {
-            mediaRecorder.stop();
-            mediaRecorder.release();
+            try {
+                mediaRecorder.stop();
+                mediaRecorder.release();
+            } catch (IllegalStateException e) {
+                e.printStackTrace();
+            }
         }
     }
 

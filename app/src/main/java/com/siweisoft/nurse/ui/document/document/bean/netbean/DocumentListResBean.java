@@ -2,6 +2,7 @@ package com.siweisoft.nurse.ui.document.document.bean.netbean;
 
 import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public class DocumentListResBean extends ResultResBean {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable{
         /**
          * id : 47
          * pid : 0
@@ -33,6 +34,20 @@ public class DocumentListResBean extends ResultResBean {
         private String pid;
         private String type;
         private String title;
+        private boolean enter;
+
+        public static final String PID_START = "0";
+
+        public static final String TYPE_NO_CHILD = "1";
+
+        public static final String TYPE_HAVE_CHILD = "0";
+
+        public DataBean(String id) {
+            this.id = id;
+        }
+
+        public DataBean() {
+        }
 
         public String getId() {
             return id;
@@ -64,6 +79,14 @@ public class DocumentListResBean extends ResultResBean {
 
         public void setTitle(String title) {
             this.title = title;
+        }
+
+        public boolean isEnter() {
+            return enter;
+        }
+
+        public void setEnter(boolean enter) {
+            this.enter = enter;
         }
     }
 }

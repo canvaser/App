@@ -7,6 +7,7 @@ import com.siweisoft.lib.network.NetWork;
 import com.siweisoft.lib.network.bean.req.BaseReqBean;
 import com.siweisoft.lib.network.interf.OnNetWorkReqInterf;
 import com.siweisoft.nurse.nursevalue.DataValue;
+import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentDetailReqBean;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentListReqBean;
 
 /**
@@ -24,5 +25,11 @@ public class NurseNetOpe extends BaseNetOpe{
         DocumentListReqBean baseReqBean = new DocumentListReqBean();
         baseReqBean.setPid(id);
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_DOCUMENT_FORM, baseReqBean, reqInterf);
+    }
+
+    public void document_documemtdetail(String id,OnNetWorkReqInterf reqInterf) {
+        DocumentDetailReqBean baseReqBean = new DocumentDetailReqBean();
+        baseReqBean.setFid(id);
+        NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_DOCUMENT_DETAIL, baseReqBean, reqInterf);
     }
 }

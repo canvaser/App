@@ -4,23 +4,26 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LayoutAnimationController;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.nurse.ui.document.document.adapter.DocumentDetailListAdapter;
 import com.siweisoft.nurse.ui.document.document.adapter.DocumentListAdapter;
+import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentDetailResBean;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentListResBean;
 
 import butterknife.BindView;
 
 /**
- * Created by ${viwmox} on 2017-02-15.
+ * Created by ${viwmox} on 2017-02-16.
  */
-public class DocumentListUIOpe extends BaseNurseUIOpe{
+
+public class DocumentDetailListUIOpe extends BaseNurseUIOpe{
+
+
+
 
     @BindView(R.id.refresh)
     MaterialRefreshLayout refreshLayout;
@@ -28,9 +31,8 @@ public class DocumentListUIOpe extends BaseNurseUIOpe{
     @BindView(R.id.recycle)
     RecyclerView recyclerView;
 
-    public DocumentListUIOpe(Context context, View containerView) {
+    public DocumentDetailListUIOpe(Context context, View containerView) {
         super(context, containerView);
-        init();
     }
 
     private void init(){
@@ -45,21 +47,10 @@ public class DocumentListUIOpe extends BaseNurseUIOpe{
         }
     }
 
-    public void initUpdate(DocumentListResBean documentListResBean){
-        if(documentListResBean!=null &&documentListResBean.getData()!=null&&documentListResBean.getData().size()>0
-                &&documentListResBean.getData().get(0).getType()!=null
-                && documentListResBean.getData().get(0).getType().equals(DocumentListResBean.DataBean.TYPE_NO_CHILD)){
-            getRightTV().setVisibility(View.VISIBLE);
-            getRightTV().setText("修改");
-            getRightTV().setSelected(true);
-        }
-    }
-
-
-    public void initList(DocumentListResBean documentListResBean){
+    public void initList(DocumentDetailResBean documentDetailResBean){
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.addItemDecoration(new MyItemDecoration(context,2));
-        recyclerView.setAdapter(new DocumentListAdapter(context,documentListResBean));
+        recyclerView.setAdapter(new DocumentDetailListAdapter(context,documentDetailResBean));
     }
 
     public RecyclerView getRecyclerView() {

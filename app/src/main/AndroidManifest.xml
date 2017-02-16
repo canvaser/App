@@ -26,6 +26,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+
     -------------------------------------------------------------------------------------------------
     <uses-permission android:name="android.permission.USE_SIP" />
     <uses-feature android:name="android.hardware.sip.voip" android:required="true" />

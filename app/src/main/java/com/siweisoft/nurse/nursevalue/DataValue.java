@@ -41,6 +41,9 @@ public class DataValue {
     /**得到文书模板类别*/
     public static final String URL_GET_DOCUMENT_FORM= "getFormList2";
 
+    /**获取文书模板*/
+    public static final String URL_GET_DOCUMENT_DETAIL= "getFileTemplate";
+
     /***/
     public static final String URL_GETADDITION_LIST= "getAdditionList";
 

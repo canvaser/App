@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/refresh"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:isLoadMore="false"
+    app:wave_color="@color/color_base"
+    app:progress_size_type="normal"
+    android:background="@color/color_bg_refresh"
+    app:overlay="false"
+    app:wave_show="false"
+    app:wave_height_type="normal"
+    app:progress_show_circle_backgroud="false"
+    >
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -31,7 +46,7 @@
         android:layout_height="wrap_content">
         <ImageView
             android:id="@+id/iv_head"
-            android:scaleType="centerInside"
+            android:scaleType="fitXY"
             android:layout_marginLeft="5dp"
             android:layout_width="60dp"
             android:layout_height="60dp" />
@@ -301,40 +316,6 @@
         android:background="@color/color_base_graybg"
         android:layout_width="match_parent"
         android:layout_height="1px"/>
-
-    <RelativeLayout
-        android:id="@+id/rl_data"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/twhite"
-        android:elevation="1dp">
-
-        <TextView
-            android:text="个人体征"
-            android:gravity="center_vertical"
-            android:layout_toRightOf="@+id/iv_icon2"
-            android:layout_marginLeft="10dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textColor="@color/black"
-            />
-
-        <ImageView
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/icon_arraw"
-            />
-    </RelativeLayout>
-    <View
-        android:background="@color/color_base_graybg"
-        android:layout_width="match_parent"
-        android:layout_height="1px"/>
     <RelativeLayout
         android:id="@+id/rl_nurse_document"
         android:layout_width="match_parent"
@@ -368,6 +349,40 @@
         android:background="@color/color_base_graybg"
         android:layout_width="match_parent"
         android:layout_height="1px"/>
+    <RelativeLayout
+        android:id="@+id/rl_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/twhite"
+        android:elevation="1dp">
+
+        <TextView
+            android:text="个人体征"
+            android:gravity="center_vertical"
+            android:layout_toRightOf="@+id/iv_icon2"
+            android:layout_marginLeft="10dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            />
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/icon_arraw"
+            />
+    </RelativeLayout>
+    <View
+        android:background="@color/color_base_graybg"
+        android:layout_width="match_parent"
+        android:layout_height="1px"/>
+
     <RelativeLayout
         android:id="@+id/rl_assay"
         android:layout_width="match_parent"
@@ -475,3 +490,4 @@
 
 </LinearLayout>
     </ScrollView>
+    </com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout>

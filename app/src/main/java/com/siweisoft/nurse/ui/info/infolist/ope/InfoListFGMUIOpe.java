@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.info.infolist.adapter.InfoListAdapter;
@@ -33,7 +34,7 @@ public class InfoListFGMUIOpe extends BaseNurseUIOpe {
         getMidTV().setText("信息");
 
         recyclerView.setLayoutManager(new GridLayoutManager(context,3));
-        recyclerView.addItemDecoration(new MyItemDecoration(context,1));
+        recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1*2));
         infoListAdapter = new InfoListAdapter(context);
         recyclerView.setAdapter(infoListAdapter);
     }

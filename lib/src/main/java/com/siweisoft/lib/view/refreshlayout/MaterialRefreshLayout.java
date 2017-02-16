@@ -244,7 +244,7 @@ public class MaterialRefreshLayout extends FrameLayout {
                 dy = Math.max(0, dy);
                 if (mChildView != null) {
                     float offsetY = decelerateInterpolator.getInterpolation(dy / mWaveHeight / 2) * dy / 2;
-                    float fraction = offsetY / mHeadHeight;
+                    float fraction = offsetY / (mHeadHeight/2);
                     if (mMaterialHeaderView != null) {
                         mMaterialHeaderView.getLayoutParams().height = (int) offsetY;
                         mMaterialHeaderView.requestLayout();

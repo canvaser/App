@@ -86,5 +86,6 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.github.chrisbanes:PhotoView:1.2.6'
     compile 'com.jakewharton:butterknife:8.5.1'
+    compile 'com.github.florent37:viewanimator:1.0.5'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }

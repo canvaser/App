@@ -13,6 +13,7 @@ import com.siweisoft.app.R;
 import com.siweisoft.lib.util.BitmapUtil;
 import com.siweisoft.lib.util.NullUtil;
 import com.siweisoft.lib.util.StringUtil;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 import com.siweisoft.nurse.ui.bed.patient.adapter.CareListAdapter;
@@ -94,6 +95,9 @@ public class PatientFragUIOpe extends BaseNurseUIOpe {
 
     @BindView(R.id.iv_arrow)
     ImageView arrowIV;
+
+    @BindView(R.id.refresh)
+    MaterialRefreshLayout refreshLayout;
 
 
     public PatientFragUIOpe(Context context, View containerView) {
@@ -250,5 +254,7 @@ public class PatientFragUIOpe extends BaseNurseUIOpe {
         return arrowIV;
     }
 
-
+    public MaterialRefreshLayout getRefreshLayout() {
+        return refreshLayout;
+    }
 }

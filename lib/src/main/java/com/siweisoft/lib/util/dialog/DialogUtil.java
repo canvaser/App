@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.ProgressBar;
 
 import com.siweisoft.lib.R;
+import com.siweisoft.lib.util.AnimUtil;
 import com.siweisoft.lib.view.loading.avi.AVLoadingIndicatorView;
 
 /**
@@ -32,9 +33,11 @@ public class DialogUtil {
         alertDialog = builder.create();
         alertDialog.setCancelable(true);
 //        alertDialog.setView(view);
+        alertDialog.getWindow().setWindowAnimations(R.style.fadein);
+        alertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
         alertDialog.show();
         alertDialog.getWindow().setContentView(view);
-        alertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+
       for(int i=0;i<id.length;i++){
           view.findViewById(id[i]).setOnClickListener(listener);
       }

@@ -1,10 +1,12 @@
 package com.siweisoft.nurse.ui.bed.inputhandoverreport.fragment;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.util.system.PermissionUtil;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.constant.ValueConstant;
@@ -61,6 +63,7 @@ public class InputHandOverReportFrag extends BaseNurseFrag implements RecordView
         if(getArguments()==null ){
             return;
         }
+        PermissionUtil.getInstance().addPermission(this,"android.permission.RECORD_AUDIO");
 
         inputHORDAOpe = new InputHORDAOpe(activity);
         inputHORDAOpe.setShiftDuteResBean((ShiftDuteResBean) getArguments().getSerializable(ValueConstant.DATA_DATA2));

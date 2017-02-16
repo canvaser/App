@@ -14,6 +14,8 @@ import com.siweisoft.lib.util.AnimUtil;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.menu.popup.PopupUtil;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
@@ -32,7 +34,9 @@ import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionOpe;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientFragUIOpe;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientNetOpe;
+import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentListResBean;
 import com.siweisoft.nurse.ui.document.document.fragment.DocumentListFrag;
+import com.siweisoft.nurse.ui.document.document.ope.daope.DocumentListDAOpe;
 import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
 import com.siweisoft.nurse.util.fragment.FragManager;
 
@@ -74,12 +78,19 @@ public class PatientFrag extends BaseNurseFrag {
         patientNetOpe= new PatientNetOpe(activity);
         patientFragUIOpe.initInfo(patientAdditionDAOpe.getPatientBedResBean());
         patientFragUIOpe.initAddionList(new PatientAdditionOpe().getThispatientAdditionList(null));
-        getData(new OnFinishListener() {
+        patientFragUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListener() {
             @Override
-            public void onFinish(Object o) {
-                onCmd(getArguments());
+            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
+                getData(new OnFinishListener() {
+                    @Override
+                    public void onFinish(Object o) {
+                        patientFragUIOpe.getRefreshLayout().finishRefresh();
+                        onCmd(getArguments());
+                    }
+                });
             }
         });
+        patientFragUIOpe.getRefreshLayout().autoRefresh((int) getResources().getInteger(R.integer.integer_time_short));
     }
 
     private void getData(final OnFinishListener onFinishListener){
@@ -196,6 +207,7 @@ public class PatientFrag extends BaseNurseFrag {
             case R.id.rl_nurse_document:
                 Bundle bundle5 = new Bundle();
                 bundle5.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
+                bundle5.putSerializable(ValueConstant.DATA_DATA2, new DocumentListResBean.DataBean(DocumentListResBean.DataBean.PID_START));
                 FragManager.getInstance().startFragmentForResult(getFragmentManager(),index, new DocumentListFrag(),bundle5,ValueConstant.CODE_REQUSET1);
                 break;
         }
