@@ -7,15 +7,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.id.BaseID;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.nurse.nursevalue.BaseID;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.menu.popup.PopupUtil;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.nurse.nursevalue.MethodValue;
 import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 import com.siweisoft.nurse.ui.bed.bedlist.ope.BedListDAOpe;
 import com.siweisoft.nurse.ui.bed.handoverreport.ope.HandOverNetOpe;
@@ -25,9 +28,6 @@ import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
 import com.siweisoft.nurse.ui.bed.shiftdute.bean.resbean.ShiftDuteListResBean;
 import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.util.menu.popup.PopupUtil;
-import com.siweisoft.view.ItemDecoration.MyItemDecoration;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -35,13 +35,18 @@ import butterknife.OnClick;
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class HandOverReportFrag extends BaseNurseFrag implements OnAppItemClickListener{
+public class HandOverReportFrag extends BaseNurseFrag implements OnAppItemClickListener {
 
     HandOverReportUIOpe handOverReportUIOpe;
 
     HandOverNetOpe handOverNetOpe;
 
     PatientAdditionDAOpe patientAdditionDAOpe;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

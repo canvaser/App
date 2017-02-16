@@ -3,16 +3,15 @@ package com.siweisoft.nurse.ui.user.login.activity;
 import android.os.Bundle;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.activity.BaseUIActivity;
-import com.siweisoft.base.ui.activity.BaseUIWithOutTitleActivity;
+import com.siweisoft.lib.base.ui.activity.BaseUIWithOutTitleActivity;
+import com.siweisoft.lib.util.FragmentUtil;
+import com.siweisoft.lib.util.LogUtil;
 import com.siweisoft.nurse.ui.user.login.fragment.LoginFrag;
-import com.siweisoft.util.FragmentUtil;
-import com.siweisoft.util.LogUtil;
 
 /**
  * Created by ${viwmox} on 2016-10-21.
  */
-public class LoginActivity extends BaseUIWithOutTitleActivity{
+public class LoginActivity extends BaseUIWithOutTitleActivity {
 
 
 

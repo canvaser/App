@@ -2,15 +2,15 @@ package com.siweisoft.nurse.ui.base.netadapter;
 
 import android.content.Context;
 
-import com.siweisoft.network.bean.res.BaseResBean;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
-import com.siweisoft.network.netadapter.OnNetWorkReqCacheAdapter;
-import com.siweisoft.util.LoadUtil;
+import com.siweisoft.lib.network.bean.res.BaseResBean;
+import com.siweisoft.lib.network.netadapter.OnNetWorkReqCacheAdapter;
+import com.siweisoft.lib.util.LoadUtil;
+
 
 /**
  * Created by ${viwmox} on 2016-12-01.
  */
-public abstract class UINetChacheAdapter extends OnNetWorkReqCacheAdapter{
+public abstract class UINetChacheAdapter extends OnNetWorkReqCacheAdapter {
 
 
 

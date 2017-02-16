@@ -6,10 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.ui.info.bedreport.bean.resbean.BedReportResBean;
 import com.siweisoft.nurse.ui.info.bedreport.bean.uibean.BedReportUIBean;
-import com.siweisoft.util.StringUtil;
 
 import java.util.ArrayList;
 

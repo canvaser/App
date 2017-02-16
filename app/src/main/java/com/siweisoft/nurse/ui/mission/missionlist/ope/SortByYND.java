@@ -1,7 +1,6 @@
 package com.siweisoft.nurse.ui.mission.missionlist.ope;
 
 import com.siweisoft.nurse.ui.mission.missionlist.bean.adaapterbean.AreaMissionListAdapterBean;
-import com.siweisoft.util.LogUtil;
 
 import java.util.Comparator;
 

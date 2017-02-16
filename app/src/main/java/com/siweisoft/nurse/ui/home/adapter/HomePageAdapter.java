@@ -5,7 +5,8 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.siweisoft.base.ui.interf.OnFinishListener;
+
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 
 import java.util.ArrayList;
 

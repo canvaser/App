@@ -5,14 +5,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.bean.uibean.BaseUIBean;
+import com.siweisoft.lib.base.ui.bean.uibean.BaseUIBean;
 
 import butterknife.BindView;
 
 /**
  * Created by ${viwmox} on 2016-11-29.
  */
-public class CheckBookDetailHeadUIBean extends BaseUIBean{
+public class CheckBookDetailHeadUIBean extends BaseUIBean {
 
 
     @BindView(R.id.tv_time)

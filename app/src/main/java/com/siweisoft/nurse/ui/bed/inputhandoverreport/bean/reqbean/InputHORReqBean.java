@@ -1,12 +1,12 @@
 package com.siweisoft.nurse.ui.bed.inputhandoverreport.bean.reqbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
-import com.siweisoft.network.bean.req.BaseReqBean;
+
+import com.siweisoft.lib.network.bean.req.BaseReqBean;
 
 /**
  * Created by ${viwmox} on 2016-12-05.
  */
-public class InputHORReqBean extends BaseReqBean{
+public class InputHORReqBean extends BaseReqBean {
 
     private String zyh;
 

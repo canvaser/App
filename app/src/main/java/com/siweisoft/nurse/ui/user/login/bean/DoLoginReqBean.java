@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.user.login.bean;
 
-import com.siweisoft.network.bean.req.BaseReqBean;
+
+import com.siweisoft.lib.network.bean.req.BaseReqBean;
 
 /**
  * Created by ${viwmox} on 2016-11-15.
  */
-public class DoLoginReqBean extends BaseReqBean{
+public class DoLoginReqBean extends BaseReqBean {
 
     /**用户名*/
     private String username;

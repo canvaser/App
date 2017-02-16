@@ -1,6 +1,6 @@
 package com.siweisoft.nurse.ui.info.workdetail.bean.adpterbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 import com.siweisoft.nurse.ui.info.workdetail.bean.resbean.WorkDetailResBean;
 
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-12-08.
  */
-public class WorkDetailAdapterBean extends BaseBean{
+public class WorkDetailAdapterBean extends ResultResBean {
     private String date;
 
     private String num;

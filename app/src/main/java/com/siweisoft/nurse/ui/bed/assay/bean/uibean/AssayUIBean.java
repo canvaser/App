@@ -6,14 +6,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.bean.uibean.BaseUIBean;
+import com.siweisoft.lib.base.ui.bean.uibean.BaseUIBean;
 
 import butterknife.BindView;
 
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class AssayUIBean extends BaseUIBean{
+public class AssayUIBean extends BaseUIBean {
 
     @BindView(R.id.tv_time)
     TextView timeTV;

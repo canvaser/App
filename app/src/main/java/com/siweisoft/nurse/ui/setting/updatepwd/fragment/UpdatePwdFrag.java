@@ -5,9 +5,10 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.id.BaseID;
+import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.setting.updatepwd.bean.reqbean.UpdatePwdReqBean;
 import com.siweisoft.nurse.ui.setting.updatepwd.ope.UpdatePwdNetOpe;
 import com.siweisoft.nurse.ui.setting.updatepwd.ope.UpdatePwdUIOpe;
@@ -24,6 +25,11 @@ public class UpdatePwdFrag extends BaseNurseFrag{
     UpdatePwdUIOpe updatePwdUIOpe;
 
     UpdatePwdNetOpe updatePwdNetOpe;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
 
     @Override

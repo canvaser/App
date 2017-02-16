@@ -5,12 +5,12 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.id.BaseID;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.nurse.nursevalue.BaseID;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.additionlist.bean.reqbean.UpdateAdditionReqBean;
 import com.siweisoft.nurse.ui.bed.additionlist.ope.AdditionListDAOpe;
 import com.siweisoft.nurse.ui.bed.additionlist.ope.AdditionListNetOpe;
@@ -18,7 +18,6 @@ import com.siweisoft.nurse.ui.bed.additionlist.ope.AdditionListUIOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 import com.siweisoft.nurse.ui.bed.patient.bean.resbean.PatientAdditionResBean;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.LogUtil;
 
 import java.util.ArrayList;
 
@@ -28,7 +27,7 @@ import butterknife.Optional;
 /**
  * Created by ${viwmox} on 2016-11-22.
  */
-public class AdditionListFrag extends BaseNurseFrag implements OnAppItemClickListener{
+public class AdditionListFrag extends BaseNurseFrag implements OnAppItemClickListener {
 
 
     AdditionListNetOpe additionListNetOpe;
@@ -36,6 +35,11 @@ public class AdditionListFrag extends BaseNurseFrag implements OnAppItemClickLis
     AdditionListUIOpe additionListUIOpe;
 
     PatientBedResBean data;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

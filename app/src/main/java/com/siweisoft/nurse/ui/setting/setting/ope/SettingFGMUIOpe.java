@@ -5,14 +5,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.constant.MethodConstant;
-import com.siweisoft.constant.UrlConstant;
-import com.siweisoft.constant.ValueConstant;
+import com.siweisoft.lib.constant.MethodConstant;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.SPUtil;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.user.login.bean.DoLoginResBean;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.util.SPUtil;
 
 import butterknife.BindView;
 

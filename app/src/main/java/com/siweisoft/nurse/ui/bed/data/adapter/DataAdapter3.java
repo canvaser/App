@@ -9,16 +9,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.adapter.AppRecycleAdapter;
-import com.siweisoft.constant.ValueConstant;
+import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.ui.bed.data.bean.adatperbean.DataAdapterBean;
 import com.siweisoft.nurse.ui.bed.data.bean.uibean.DataBodyUIBean3;
-import com.siweisoft.util.StringUtil;
 
 /**
  * Created by ${viwmox} on 2016-11-24.
  */
-public class DataAdapter3 extends AppRecycleAdapter{
+public class DataAdapter3 extends AppRecycleAdapter {
 
     DataAdapterBean data;
 

@@ -1,13 +1,14 @@
 package com.siweisoft.nurse.ui.info.urgencyreport.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class UrgencyReportListResBean extends BaseBean{
+public class UrgencyReportListResBean extends ResultResBean {
 
     ArrayList<UrgencyReportResBean> data;
 

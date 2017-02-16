@@ -8,12 +8,15 @@ import android.util.Size;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.id.BaseID;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.nurse.nursevalue.BaseID;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.menu.popup.PopupUtil;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 import com.siweisoft.nurse.ui.bed.data.bean.resbean.DataTemplateListResBean;
 import com.siweisoft.nurse.ui.bed.data.ope.DataNetOpe;
@@ -21,9 +24,6 @@ import com.siweisoft.nurse.ui.bed.inputdata.ope.InputDataNetOpe;
 import com.siweisoft.nurse.ui.bed.inputdata.ope.InputDataUIOpe;
 import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.util.menu.popup.PopupUtil;
-import com.siweisoft.view.ItemDecoration.MyItemDecoration;
 
 import java.util.ArrayList;
 
@@ -42,6 +42,11 @@ public class InputDataFrag extends BaseNurseFrag{
     InputDataNetOpe inputDataNetOpe ;
 
     PatientBedResBean resBean;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

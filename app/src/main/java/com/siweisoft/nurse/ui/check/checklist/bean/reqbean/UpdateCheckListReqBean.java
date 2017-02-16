@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.check.checklist.bean.reqbean;
 
-import com.siweisoft.network.bean.req.BaseReqBean;
+
+import com.siweisoft.lib.network.bean.req.BaseReqBean;
 
 /**
  * Created by ${viwmox} on 2016-12-08.
  */
-public class UpdateCheckListReqBean extends BaseReqBean{
+public class UpdateCheckListReqBean extends BaseReqBean {
     private String taskids;
 
     private String id;

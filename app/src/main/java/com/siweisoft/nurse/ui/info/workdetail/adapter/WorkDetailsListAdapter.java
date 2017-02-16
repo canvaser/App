@@ -6,15 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.ui.info.workdetail.bean.adpterbean.WorkDetailAdapterBean;
 import com.siweisoft.nurse.ui.info.workdetail.bean.uibean.WorkDetailUIBean;
-import com.siweisoft.util.StringUtil;
 
 /**
  * Created by ${viwmox} on 2016-12-08.
  */
-public class WorkDetailsListAdapter extends AppRecycleAdapter{
+public class WorkDetailsListAdapter extends AppRecycleAdapter {
 
 
     WorkDetailAdapterBean data;

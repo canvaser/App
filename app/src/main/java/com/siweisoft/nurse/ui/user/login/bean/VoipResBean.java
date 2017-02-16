@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.user.login.bean;
 
-import com.siweisoft.network.bean.res.BaseResBean;
+
+import com.siweisoft.lib.network.bean.res.BaseResBean;
 
 /**
  * Created by ${viwmox} on 2016-11-15.
  */
-public class VoipResBean extends BaseResBean{
+public class VoipResBean extends BaseResBean {
 
     private String server;
 

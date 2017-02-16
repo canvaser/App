@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
 import com.siweisoft.nurse.ui.bed.nurserecord.bean.resbean.NurseRecordResBean;
 import com.siweisoft.nurse.ui.bed.nurserecorddetail.bean.uibean.NurseRecordDetailUIBean;
 
@@ -15,7 +15,7 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-11-22.
  */
-public class NurseRecordDetailListAdapter extends AppRecycleAdapter{
+public class NurseRecordDetailListAdapter extends AppRecycleAdapter {
 
 
 

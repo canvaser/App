@@ -1,12 +1,12 @@
 package com.siweisoft.nurse.ui.info.checkbookdetail.bean.reqbean;
 
-import com.siweisoft.network.bean.req.BaseReqBean;
+import com.siweisoft.lib.network.bean.req.BaseReqBean;
 import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
 
 /**
  * Created by ${viwmox} on 2016-11-28.
  */
-public class CheckBookDetailReqBean extends BaseReqBean{
+public class CheckBookDetailReqBean extends BaseReqBean {
 
     private String fileid;
 

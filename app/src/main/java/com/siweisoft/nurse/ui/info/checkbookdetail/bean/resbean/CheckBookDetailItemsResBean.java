@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.info.checkbookdetail.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-11-28.
  */
-public class CheckBookDetailItemsResBean extends BaseBean{
+public class CheckBookDetailItemsResBean extends ResultResBean {
 
     private String itemname;
 

@@ -6,11 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.util.StringUtil;
+import com.siweisoft.lib.util.data.DateFormatUtil;
 import com.siweisoft.nurse.ui.info.bedcheck.bean.resbean.BedCheckResBean;
 import com.siweisoft.nurse.ui.info.bedcheck.bean.uibean.BedCheckUIBean;
-import com.siweisoft.util.StringUtil;
-import com.siweisoft.util.data.DateFormatUtil;
 
 import java.util.ArrayList;
 

@@ -7,15 +7,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.id.BaseID;
-import com.siweisoft.base.ui.interf.OnFinishListener;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
-import com.siweisoft.nurse.nursevalue.MethodValue;
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.AnimUtil;
+import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.menu.popup.PopupUtil;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
+import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.MyMission.fragment.MyMissonFrag;
 import com.siweisoft.nurse.ui.bed.addaddition.fragment.AddAdditionFrag;
 import com.siweisoft.nurse.ui.bed.advice.fragment.AdviceFrag;
@@ -30,12 +32,9 @@ import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionOpe;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientFragUIOpe;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientNetOpe;
+import com.siweisoft.nurse.ui.document.document.fragment.DocumentListFrag;
 import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.AnimUtil;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.util.menu.popup.PopupUtil;
-import com.siweisoft.view.ItemDecoration.MyItemDecoration;
 
 import java.util.ArrayList;
 
@@ -54,6 +53,11 @@ public class PatientFrag extends BaseNurseFrag {
 
 
     PatientAdditionDAOpe patientAdditionDAOpe;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
 
     @Override
@@ -104,7 +108,7 @@ public class PatientFrag extends BaseNurseFrag {
 
     int i=0;
     @Optional
-    @OnClick({R.id.iv_arrow,BaseID.ID_MID,BaseID.ID_RIGHT,R.id.ll_baseinfo,R.id.rl_mymission,R.id.rl_advice,R.id.rl_data,R.id.rl_assay,R.id.rl_nurserecord,R.id.rl_handoverreport})
+    @OnClick({R.id.rl_nurse_document,R.id.iv_arrow, BaseID.ID_MID,BaseID.ID_RIGHT,R.id.ll_baseinfo,R.id.rl_mymission,R.id.rl_advice,R.id.rl_data,R.id.rl_assay,R.id.rl_nurserecord,R.id.rl_handoverreport})
     public void onClick(final View view){
         switch (view.getId()){
             case R.id.ll_baseinfo:
@@ -188,6 +192,11 @@ public class PatientFrag extends BaseNurseFrag {
                 Bundle bundle4 = new Bundle();
                 bundle4.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
                 FragManager.getInstance().startFragmentForResult(getFragmentManager(),index, new HandOverReportFrag(),bundle4,ValueConstant.CODE_REQUSET);
+                break;
+            case R.id.rl_nurse_document:
+                Bundle bundle5 = new Bundle();
+                bundle5.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(),index, new DocumentListFrag(),bundle5,ValueConstant.CODE_REQUSET1);
                 break;
         }
 

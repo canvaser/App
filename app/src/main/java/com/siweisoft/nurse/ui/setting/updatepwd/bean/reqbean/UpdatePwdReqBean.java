@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.setting.updatepwd.bean.reqbean;
 
-import com.siweisoft.network.bean.req.BaseReqBean;
+
+import com.siweisoft.lib.network.bean.req.BaseReqBean;
 
 /**
  * Created by ${viwmox} on 2016-12-07.
  */
-public class UpdatePwdReqBean extends BaseReqBean{
+public class UpdatePwdReqBean extends BaseReqBean {
 
     private String new_password;
 

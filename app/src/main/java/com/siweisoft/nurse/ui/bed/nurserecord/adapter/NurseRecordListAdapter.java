@@ -6,20 +6,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.adapter.AppRecycleAdapter;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.nurse.ui.bed.assay.bean.adapterbean.AssayAdapterBean;
-import com.siweisoft.nurse.ui.bed.assay.bean.uibean.AssayUIBean;
+import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.ui.bed.nurserecord.bean.resbean.NurseRecordResBean;
 import com.siweisoft.nurse.ui.bed.nurserecord.bean.uibean.NurseRecordUIBean;
-import com.siweisoft.util.StringUtil;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class NurseRecordListAdapter extends AppRecycleAdapter{
+public class NurseRecordListAdapter extends AppRecycleAdapter {
 
     ArrayList<NurseRecordResBean> data;
 

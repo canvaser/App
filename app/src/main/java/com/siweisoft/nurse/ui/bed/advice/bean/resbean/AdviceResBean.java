@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.bed.advice.bean.resbean;
 
-import com.siweisoft.network.bean.res.BaseResBean;
+
+import com.siweisoft.lib.network.bean.res.BaseResBean;
 
 /**
  * Created by ${viwmox} on 2016-11-17.
  */
-public class AdviceResBean extends BaseResBean{
+public class AdviceResBean extends BaseResBean {
 
     private String 医嘱详情s;
 

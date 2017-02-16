@@ -1,15 +1,12 @@
 package com.siweisoft.nurse.ui.bed.assay.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
-import com.siweisoft.util.data.DateFormatUtil;
 
-import java.text.ParseException;
-import java.util.Comparator;
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class AssayResBean extends BaseBean{
+public class AssayResBean extends ResultResBean {
 
     private String applyno;
 

@@ -7,21 +7,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.interf.OnFinishListener;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.StringUtil;
+import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.info.checkbook.bean.resbean.CheckBookResBean;
 import com.siweisoft.nurse.ui.info.checkbookdetail.bean.reqbean.CheckBookDetailReqBean;
 import com.siweisoft.nurse.ui.info.checkbookdetail.bean.resbean.CheckBookResbean;
 import com.siweisoft.nurse.ui.info.checkbookdetail.bean.uibean.CheckBookDetailHeadUIBean;
 import com.siweisoft.nurse.ui.info.checkbookdetail.ope.CheckBookDetailNetOpe;
 import com.siweisoft.nurse.ui.info.checkbookdetail.ope.CheckBookDetailUIOpe;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.util.StringUtil;
-import com.siweisoft.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
-import com.siweisoft.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.view.refreshlayout.MaterialRefreshListener;
 
 /**
  * Created by ${viwmox} on 2016-11-28.
@@ -34,6 +35,12 @@ public class CheckBookDetailFrag extends BaseNurseFrag implements PinnedHeaderEx
     CheckBookDetailNetOpe checkBookDetailNetOpe;
 
     CheckBookResBean checkBookResBean;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

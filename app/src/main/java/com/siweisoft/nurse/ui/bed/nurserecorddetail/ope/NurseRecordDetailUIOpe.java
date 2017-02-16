@@ -6,12 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.constant.ValueConstant;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.nurserecord.adapter.NurseRecordListAdapter;
 import com.siweisoft.nurse.ui.bed.nurserecord.bean.resbean.NurseRecordListResBean;
 import com.siweisoft.nurse.ui.bed.nurserecorddetail.adapter.NurseRecordDetailListAdapter;
-import com.siweisoft.view.ItemDecoration.MyItemDecoration;
 
 import butterknife.BindView;
 

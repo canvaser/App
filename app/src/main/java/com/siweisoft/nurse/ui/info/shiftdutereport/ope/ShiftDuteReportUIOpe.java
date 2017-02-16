@@ -5,9 +5,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.info.shiftdutereport.bean.resbean.ShiftDuteReportResBean;
-import com.siweisoft.util.StringUtil;
 
 import butterknife.BindView;
 

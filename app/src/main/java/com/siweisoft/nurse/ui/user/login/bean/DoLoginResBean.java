@@ -1,15 +1,13 @@
 package com.siweisoft.nurse.ui.user.login.bean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
-import com.siweisoft.network.bean.req.BaseReqBean;
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-11-15.
  */
-public class DoLoginResBean extends BaseBean{
+public class DoLoginResBean extends ResultResBean {
 
     Data data;
 
@@ -21,7 +19,7 @@ public class DoLoginResBean extends BaseBean{
         this.data = data;
     }
 
-    public class Data extends BaseBean{
+    public class Data extends ResultResBean {
 
         private UserResBean user;
 

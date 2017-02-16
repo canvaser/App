@@ -7,9 +7,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.siweisoft.app.R;
-import com.siweisoft.constant.ValueConstant;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.LogUtil;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;

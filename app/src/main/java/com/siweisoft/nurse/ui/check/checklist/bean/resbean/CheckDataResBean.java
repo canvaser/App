@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.check.checklist.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class CheckDataResBean extends BaseBean{
+public class CheckDataResBean extends ResultResBean {
 
     private String zyh;
 

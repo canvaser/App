@@ -1,13 +1,14 @@
 package com.siweisoft.nurse.ui.info.duteschedule.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-12-07.
  */
-public class DuteScheDuleListResBean extends BaseBean{
+public class DuteScheDuleListResBean extends ResultResBean {
 
     ArrayList<DuteScheDuleResBean> data;
 

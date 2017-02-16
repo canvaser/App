@@ -6,8 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.base.ui.ope.BaseUIOpe;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 
 import java.util.ArrayList;

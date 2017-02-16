@@ -8,15 +8,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.ope.BaseUIOpe;
-import com.siweisoft.base.ui.ope.BaseUIWithTitleOpe;
+import com.siweisoft.lib.base.ui.ope.BaseUIWithTitleOpe;
 
 import butterknife.BindView;
 
 /**
  * Created by ${viwmox} on 2016-10-21.
  */
-public class LoginUIOpe extends BaseUIWithTitleOpe{
+public class LoginUIOpe extends BaseUIWithTitleOpe {
 
     @BindView(R.id.et_account)
     EditText accountEt;

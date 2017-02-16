@@ -1,12 +1,12 @@
 package com.siweisoft.nurse.ui.bed.patient.bean.reqbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
-import com.siweisoft.network.bean.req.BaseReqBean;
+
+import com.siweisoft.lib.network.bean.req.BaseReqBean;
 
 /**
  * Created by ${viwmox} on 2016-11-17.
  */
-public class PatientAdditionReqBean extends BaseReqBean{
+public class PatientAdditionReqBean extends BaseReqBean {
 
     private String zyh;
 

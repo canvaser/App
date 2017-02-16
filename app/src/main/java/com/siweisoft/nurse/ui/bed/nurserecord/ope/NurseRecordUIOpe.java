@@ -6,10 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.nurserecord.adapter.NurseRecordListAdapter;
 import com.siweisoft.nurse.ui.bed.nurserecord.bean.resbean.NurseRecordResBean;
-import com.siweisoft.view.ItemDecoration.MyItemDecoration;
 
 import java.util.ArrayList;
 

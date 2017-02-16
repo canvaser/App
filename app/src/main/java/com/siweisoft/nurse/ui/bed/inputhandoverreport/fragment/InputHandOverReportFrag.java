@@ -5,12 +5,15 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.id.BaseID;
-import com.siweisoft.base.ui.interf.OnFinishListener;
-import com.siweisoft.constant.ValueConstant;
+import com.siweisoft.nurse.nursevalue.BaseID;
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.file.TestBase64;
+import com.siweisoft.lib.util.media.VoiceUtil;
 import com.siweisoft.nurse.nursevalue.MethodValue;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.handoverreport.ope.HandOverReportUIOpe;
 import com.siweisoft.nurse.ui.bed.inputhandoverreport.bean.reqbean.InputHORReqBean;
 import com.siweisoft.nurse.ui.bed.inputhandoverreport.ope.InputHORDAOpe;
@@ -20,8 +23,6 @@ import com.siweisoft.nurse.ui.bed.inputhandoverreport.view.RecordView;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
 import com.siweisoft.nurse.ui.bed.shiftdute.bean.resbean.ShiftDuteResBean;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.file.TestBase64;
-import com.siweisoft.util.media.VoiceUtil;
 
 import java.io.File;
 
@@ -47,6 +48,11 @@ public class InputHandOverReportFrag extends BaseNurseFrag implements RecordView
     public static final String TYPE_PLAY ="TYPE_PLAY";
 
 
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
 
     @Override

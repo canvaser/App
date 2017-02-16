@@ -2,16 +2,16 @@ package com.siweisoft.nurse.ui.bed.handoverreport.ope;
 
 import android.content.Context;
 
-import com.siweisoft.base.ui.ope.BaseNetOpe;
-import com.siweisoft.network.NetWork;
-import com.siweisoft.network.interf.OnNetWorkReqInterf;
+import com.siweisoft.lib.base.ui.ope.BaseNetOpe;
+import com.siweisoft.lib.network.NetWork;
+import com.siweisoft.lib.network.interf.OnNetWorkReqInterf;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
 
 /**
  * Created by ${viwmox} on 2016-11-15.
  */
-public class HandOverNetOpe extends BaseNetOpe{
+public class HandOverNetOpe extends BaseNetOpe {
 
 
     public HandOverNetOpe(Context context) {

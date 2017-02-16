@@ -13,14 +13,23 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.id.BaseID;
-import com.siweisoft.base.ui.interf.OnFinishListener;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.base.ui.interf.view.OnAppItemsClickListener;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.nurse.nursevalue.BaseID;
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemsClickListener;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.SPUtil;
+import com.siweisoft.lib.util.StringUtil;
+import com.siweisoft.lib.util.menu.popup.PopupUtil;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
+import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
 import com.siweisoft.nurse.nursevalue.MethodValue;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.MyMission.bean.reqbean.GetPatientTaskOfTodayReqBean;
 import com.siweisoft.nurse.ui.bed.MyMission.bean.reqbean.GetPatientTaskReqBean;
 import com.siweisoft.nurse.ui.bed.MyMission.ope.GetMyMissionNetOpe;
@@ -37,14 +46,6 @@ import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionResBean;
 import com.siweisoft.nurse.ui.mission.missionlist.ope.AreaMessionDAOpe;
 import com.siweisoft.nurse.ui.user.login.bean.GetallregionbyuserResBean;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.util.SPUtil;
-import com.siweisoft.util.StringUtil;
-import com.siweisoft.util.menu.popup.PopupUtil;
-import com.siweisoft.view.ItemDecoration.MyItemDecoration;
-import com.siweisoft.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
-import com.siweisoft.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.view.refreshlayout.MaterialRefreshListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -57,7 +58,7 @@ import butterknife.OnClick;
 public class MyMissonFrag extends BaseNurseFrag implements
         ExpandableListView.OnChildClickListener,
         PinnedHeaderExpandableListView.OnHeaderUpdateListener,
-        OnAppItemsClickListener{
+        OnAppItemsClickListener {
 
 
     MyMissonUIOpe myMissonUIOpe;
@@ -67,6 +68,11 @@ public class MyMissonFrag extends BaseNurseFrag implements
     PatientAdditionDAOpe patientAdditionDAOpe;
 
     MyMissionDAOpe myMissionDAOpe;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -203,7 +209,7 @@ public class MyMissonFrag extends BaseNurseFrag implements
 
 
     @Override
-    @OnClick({BaseID.ID_RIGHT,BaseID.ID_MID})
+    @OnClick({BaseID.ID_RIGHT, BaseID.ID_MID})
     public void onBackClick(View v){
         super.onBackClick(v);
         switch (v.getId()){

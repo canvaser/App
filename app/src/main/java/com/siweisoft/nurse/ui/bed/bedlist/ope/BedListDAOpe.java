@@ -7,7 +7,6 @@ import android.view.animation.Animation;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.bed.bedlist.adapter.BedListAdapter;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
-import com.siweisoft.util.LogUtil;
 
 import java.util.ArrayList;
 

@@ -2,9 +2,9 @@ package com.siweisoft.nurse.ui.bed.patient.ope;
 
 import android.content.Context;
 
-import com.siweisoft.base.ui.ope.BaseNetOpe;
-import com.siweisoft.network.NetWork;
-import com.siweisoft.network.interf.OnNetWorkReqInterf;
+import com.siweisoft.lib.base.ui.ope.BaseNetOpe;
+import com.siweisoft.lib.network.NetWork;
+import com.siweisoft.lib.network.interf.OnNetWorkReqInterf;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 import com.siweisoft.nurse.ui.bed.patient.bean.reqbean.PatientAdditionReqBean;
@@ -12,7 +12,7 @@ import com.siweisoft.nurse.ui.bed.patient.bean.reqbean.PatientAdditionReqBean;
 /**
  * Created by ${viwmox} on 2016-11-15.
  */
-public class PatientNetOpe extends BaseNetOpe{
+public class PatientNetOpe extends BaseNetOpe {
 
 
     public PatientNetOpe(Context context) {

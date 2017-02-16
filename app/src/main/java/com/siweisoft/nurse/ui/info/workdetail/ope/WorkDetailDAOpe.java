@@ -2,7 +2,7 @@ package com.siweisoft.nurse.ui.info.workdetail.ope;
 
 import android.content.Context;
 
-import com.siweisoft.base.ui.ope.BaseOpe;
+import com.siweisoft.lib.base.ui.ope.BaseOpe;
 import com.siweisoft.nurse.ui.info.workdetail.bean.adpterbean.WorkDetailAdapterBean;
 import com.siweisoft.nurse.ui.info.workdetail.bean.resbean.WorkDetailResBean;
 
@@ -12,7 +12,7 @@ import java.util.HashMap;
 /**
  * Created by ${viwmox} on 2016-12-08.
  */
-public class WorkDetailDAOpe extends BaseOpe{
+public class WorkDetailDAOpe extends BaseOpe {
 
 
 

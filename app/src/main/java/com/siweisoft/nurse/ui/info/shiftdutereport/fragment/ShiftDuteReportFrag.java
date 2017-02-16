@@ -6,11 +6,14 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.id.BaseID;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.nurse.nursevalue.BaseID;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.SPUtil;
 import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.info.adddutereport.fragment.AddDuteReportFrag;
 import com.siweisoft.nurse.ui.info.shiftdutereport.bean.resbean.ShiftDuteReportDataResBean;
 import com.siweisoft.nurse.ui.info.shiftdutereport.bean.resbean.ShiftDuteReportResBean;
@@ -18,8 +21,6 @@ import com.siweisoft.nurse.ui.info.shiftdutereport.ope.ShiftDuteReportNetOpe;
 import com.siweisoft.nurse.ui.info.shiftdutereport.ope.ShiftDuteReportUIOpe;
 import com.siweisoft.nurse.ui.user.login.bean.DoLoginResBean;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.util.SPUtil;
 
 import butterknife.OnClick;
 import butterknife.Optional;
@@ -33,6 +34,11 @@ public class ShiftDuteReportFrag extends BaseNurseFrag{
     ShiftDuteReportUIOpe shiftDuteReportUIOpe;
 
     ShiftDuteReportNetOpe shiftDuteReportNetOpe;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -59,7 +65,7 @@ public class ShiftDuteReportFrag extends BaseNurseFrag{
     }
 
     @Optional
-    @OnClick({BaseID.ID_BACK,BaseID.ID_RIGHT})
+    @OnClick({BaseID.ID_BACK, BaseID.ID_RIGHT})
     public void onBackClick(View v){
         switch (v.getId()){
             case R.id.ftv_back:

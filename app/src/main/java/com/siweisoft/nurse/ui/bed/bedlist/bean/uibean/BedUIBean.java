@@ -7,15 +7,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.bean.uibean.BaseUIBean;
-import com.siweisoft.util.ScreenUtil;
+import com.siweisoft.lib.base.ui.bean.uibean.BaseUIBean;
+import com.siweisoft.lib.util.ScreenUtil;
 
 import butterknife.BindView;
 
 /**
  * Created by ${viwmox} on 2016-11-08.
  */
-public class BedUIBean extends BaseUIBean{
+public class BedUIBean extends BaseUIBean {
 
     @BindView(R.id.tv_numname)
     TextView numAndNameTV;

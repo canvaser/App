@@ -1,12 +1,12 @@
 package com.siweisoft.nurse.ui.bed.shiftdute.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
-import com.siweisoft.network.bean.res.BaseResBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-12-06.
  */
-public class ShiftDuteResBean extends BaseBean{
+public class ShiftDuteResBean extends ResultResBean {
 
     private String id;
 

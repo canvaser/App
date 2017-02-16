@@ -2,19 +2,19 @@ package com.siweisoft.nurse.ui.info.addcheckbook.ope;
 
 import android.content.Context;
 
-import com.siweisoft.base.ui.ope.BaseOpe;
+import com.siweisoft.lib.base.ui.ope.BaseOpe;
+import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.nurse.nursevalue.MethodValue;
 import com.siweisoft.nurse.ui.info.addcheckbook.bean.reqbean.AddCheckBookReqBean;
 import com.siweisoft.nurse.ui.info.checkbook.bean.resbean.CheckBookResBean;
 import com.siweisoft.nurse.ui.info.checkbook.bean.resbean.CheckItemResBean;
-import com.siweisoft.util.GsonUtil;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-12-07.
  */
-public class AddCheckBookDAOpe extends BaseOpe{
+public class AddCheckBookDAOpe extends BaseOpe {
 
     ArrayList<CheckBookResBean> data;
 

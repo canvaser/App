@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.info.bedcheck.bean.reqbean;
 
-import com.siweisoft.network.bean.req.BaseReqBean;
+
+import com.siweisoft.lib.network.bean.req.BaseReqBean;
 
 /**
  * Created by ${viwmox} on 2016-12-13.
  */
-public class WriteBedCheckReqBean extends BaseReqBean{
+public class WriteBedCheckReqBean extends BaseReqBean {
 
     private String zyh;
 

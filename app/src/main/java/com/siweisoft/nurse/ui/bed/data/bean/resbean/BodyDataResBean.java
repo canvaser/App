@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.bed.data.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-11-24.
  */
-public class BodyDataResBean extends BaseBean{
+public class BodyDataResBean extends ResultResBean {
 
     private String _id;
 

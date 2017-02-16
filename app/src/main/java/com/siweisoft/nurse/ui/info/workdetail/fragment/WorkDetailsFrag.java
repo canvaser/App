@@ -5,8 +5,9 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.constant.ValueConstant;
+import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.info.workdetail.bean.adpterbean.WorkDetailAdapterBean;
 import com.siweisoft.nurse.ui.info.workdetail.ope.WorkDetailsDAOpe;
 import com.siweisoft.nurse.ui.info.workdetail.ope.WorkDetailsUIOpe;
@@ -19,6 +20,11 @@ public class WorkDetailsFrag extends BaseNurseFrag{
     WorkDetailsUIOpe workDetailsUIOpe;
 
     WorkDetailsDAOpe workDetailsDAOpe;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

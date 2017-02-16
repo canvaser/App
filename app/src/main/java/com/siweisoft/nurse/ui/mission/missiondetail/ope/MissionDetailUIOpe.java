@@ -9,12 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.ope.BaseUIWithTitleOpe;
+import com.siweisoft.lib.util.BitmapUtil;
+import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.mission.missiondetail.adapter.MissionDetailListAdapter;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionResBean;
-import com.siweisoft.util.BitmapUtil;
-import com.siweisoft.util.StringUtil;
 
 import butterknife.BindView;
 
@@ -85,7 +84,7 @@ public class MissionDetailUIOpe extends BaseNurseUIOpe{
                 break;
         }
 
-        getYzIdTV().setText("医嘱ID:  "+StringUtil.getStr(resBean.getTitles().get(0)==null?"":resBean.getTitles().get(0).get医嘱ID()));
+        getYzIdTV().setText("医嘱ID:  "+ StringUtil.getStr(resBean.getTitles().get(0)==null?"":resBean.getTitles().get(0).get医嘱ID()));
         getDateTV().setText("任务时间:"+StringUtil.getStr(resBean.getStart()));
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         missionDetailListAdapter = new MissionDetailListAdapter(context,resBean.getTitles());

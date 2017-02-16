@@ -5,11 +5,13 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.assay.bean.resbean.AssayListResBean;
 import com.siweisoft.nurse.ui.bed.assay.ope.AssayListNetOpe;
 import com.siweisoft.nurse.ui.bed.assay.ope.AssaySortOpe;
@@ -17,12 +19,11 @@ import com.siweisoft.nurse.ui.bed.assay.ope.AssayUIOpe;
 import com.siweisoft.nurse.ui.bed.assaydetail.fragment.AssayDetailFrag;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.GsonUtil;
 
 /**
  * Created by ${viwmox} on 2016-11-17.
  */
-public class AssayFrag extends BaseNurseFrag implements OnAppItemClickListener{
+public class AssayFrag extends BaseNurseFrag implements OnAppItemClickListener {
 
 
     AssayUIOpe assayUIOpe;
@@ -30,6 +31,13 @@ public class AssayFrag extends BaseNurseFrag implements OnAppItemClickListener{
     AssayListNetOpe assayListNetOpe;
 
     PatientBedResBean resBean;
+
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
+
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

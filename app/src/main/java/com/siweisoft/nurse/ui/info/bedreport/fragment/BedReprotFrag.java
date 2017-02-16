@@ -6,22 +6,22 @@ import android.view.View;
 
 import com.google.gson.JsonArray;
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.bean.BaseResultResBean;
-import com.siweisoft.base.ui.interf.OnFinishListener;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.SPUtil;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
 import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.info.bedreport.bean.resbean.BedReportListResBean;
 import com.siweisoft.nurse.ui.info.bedreport.bean.resbean.BedReportResBean;
 import com.siweisoft.nurse.ui.info.bedreport.ope.BedReportNetOpe;
 import com.siweisoft.nurse.ui.info.bedreport.ope.BedReportUIOpe;
 import com.siweisoft.nurse.ui.user.login.bean.DoLoginResBean;
 import com.siweisoft.nurse.ui.user.login.bean.GetallregionbyuserResBean;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.util.SPUtil;
-import com.siweisoft.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.view.refreshlayout.MaterialRefreshListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,6 +36,11 @@ public class BedReprotFrag extends BaseNurseFrag{
     BedReportNetOpe bedReportNetOpe;
 
     BedReportUIOpe bedReportUIOpe;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

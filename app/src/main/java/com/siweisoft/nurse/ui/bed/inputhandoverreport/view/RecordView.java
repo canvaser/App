@@ -5,7 +5,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.siweisoft.util.LogUtil;
+import com.siweisoft.lib.util.LogUtil;
+
 
 /**
  * Created by ${viwmox} on 2016-12-06.

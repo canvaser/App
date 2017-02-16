@@ -5,14 +5,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.bean.uibean.BaseUIBean;
+import com.siweisoft.lib.base.ui.bean.uibean.BaseUIBean;
 
 import butterknife.BindView;
 
 /**
  * Created by ${viwmox} on 2016-12-07.
  */
-public class DuteScheDuleUIBean extends BaseUIBean{
+public class DuteScheDuleUIBean extends BaseUIBean {
 
     @BindView(R.id.tv_time)
     TextView timeTV;

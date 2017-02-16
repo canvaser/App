@@ -9,7 +9,7 @@ import com.siweisoft.app.R;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 
 import butterknife.BindView;
-import lecho.lib.hellocharts.view.LineChartView;
+import com.siweisoft.lib.lecho.lib.hellocharts.view.LineChartView;
 
 /**
  * Created by ${viwmox} on 2016-12-08.

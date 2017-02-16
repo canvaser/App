@@ -6,17 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.adapter.AppRecycleAdapter;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.ui.home.bean.PupListUIBean;
-import com.siweisoft.util.StringUtil;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-11-14.
  */
-public class PupListAdapter extends AppRecycleAdapter{
+public class PupListAdapter extends AppRecycleAdapter {
 
     String[] strings;
 

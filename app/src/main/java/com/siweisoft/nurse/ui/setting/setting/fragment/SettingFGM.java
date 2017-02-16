@@ -7,17 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.fragment.BaseUIFragment;
-import com.siweisoft.base.ui.id.BaseID;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
+
+import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.lib.util.dialog.DialogUtil;
+import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.setting.scanlist.fragment.ScanListFrag;
 import com.siweisoft.nurse.ui.setting.setting.ope.SettingFGMUIOpe;
 import com.siweisoft.nurse.ui.setting.updatepwd.fragment.UpdatePwdFrag;
 import com.siweisoft.nurse.ui.user.login.activity.LoginActivity;
 import com.siweisoft.nurse.ui.user.login.ope.LoginNetOpe;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.dialog.DialogUtil;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -29,6 +30,12 @@ public class SettingFGM extends BaseNurseFrag {
 
 
     SettingFGMUIOpe settingFGMUIOpe;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -42,7 +49,7 @@ public class SettingFGM extends BaseNurseFrag {
         return R.layout.frag_setting;
     }
 
-    @OnClick({BaseID.ID_RIGHT,R.id.rl_updatepwd,BaseID.ID_BACK})
+    @OnClick({BaseID.ID_RIGHT,R.id.rl_updatepwd, BaseID.ID_BACK})
     public void onClickEvent(View v){
         switch (v.getId()){
             case BaseID.ID_RIGHT:

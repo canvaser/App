@@ -3,7 +3,7 @@ package com.siweisoft.nurse.ui.bed.inputhandoverreport.ope;
 import android.content.Context;
 import android.media.MediaRecorder;
 
-import com.siweisoft.base.ui.ope.BaseOpe;
+import com.siweisoft.lib.base.ui.ope.BaseOpe;
 import com.siweisoft.nurse.ui.bed.shiftdute.bean.resbean.ShiftDuteResBean;
 
 import java.io.File;
@@ -11,7 +11,7 @@ import java.io.File;
 /**
  * Created by ${viwmox} on 2016-12-06.
  */
-public class InputHORDAOpe extends BaseOpe{
+public class InputHORDAOpe extends BaseOpe {
 
     MediaRecorder mediaRecorder;
 

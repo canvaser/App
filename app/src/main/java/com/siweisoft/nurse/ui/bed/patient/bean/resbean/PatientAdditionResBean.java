@@ -1,12 +1,12 @@
 package com.siweisoft.nurse.ui.bed.patient.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
-import com.siweisoft.network.bean.res.BaseResBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-11-17.
  */
-public class PatientAdditionResBean extends BaseBean{
+public class PatientAdditionResBean extends ResultResBean {
 
     private String syxh;
 

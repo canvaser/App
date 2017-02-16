@@ -1,6 +1,5 @@
 package com.siweisoft.nurse.ui.bed.addmypatient.bean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 
 /**

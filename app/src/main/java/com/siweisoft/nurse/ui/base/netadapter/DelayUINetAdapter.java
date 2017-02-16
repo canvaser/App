@@ -3,10 +3,10 @@ package com.siweisoft.nurse.ui.base.netadapter;
 import android.content.Context;
 import android.os.Handler;
 
-import com.siweisoft.constant.MethodConstant;
-import com.siweisoft.network.bean.res.BaseResBean;
-import com.siweisoft.util.LoadUtil;
-import com.siweisoft.util.LogUtil;
+import com.siweisoft.lib.constant.MethodConstant;
+import com.siweisoft.lib.network.bean.res.BaseResBean;
+import com.siweisoft.lib.util.LoadUtil;
+
 
 /**
  * Created by ${viwmox} on 2016-12-02.

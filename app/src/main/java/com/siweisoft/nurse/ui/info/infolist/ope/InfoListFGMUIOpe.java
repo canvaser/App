@@ -6,10 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.ope.BaseUIWithTitleOpe;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.info.infolist.adapter.InfoListAdapter;
-import com.siweisoft.view.ItemDecoration.MyItemDecoration;
 
 import butterknife.BindView;
 

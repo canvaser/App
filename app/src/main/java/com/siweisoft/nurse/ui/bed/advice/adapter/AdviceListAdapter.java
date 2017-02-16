@@ -7,13 +7,12 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.interf.view.OnAppItemsClickListener;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemsClickListener;
+import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.bed.MyMission.bean.uibean.MyMissionHeadUIBean;
 import com.siweisoft.nurse.ui.bed.advice.bean.resbean.AdviceResBean;
 import com.siweisoft.nurse.ui.bed.advice.bean.uibean.AdviceUIBean;
-import com.siweisoft.nurse.ui.mission.missionlist.bean.uibean.MissionUIBean;
-import com.siweisoft.util.StringUtil;
 
 import java.util.ArrayList;
 import java.util.HashMap;

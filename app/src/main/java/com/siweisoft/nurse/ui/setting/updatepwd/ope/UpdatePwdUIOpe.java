@@ -5,9 +5,9 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.util.NullUtil;
+import com.siweisoft.lib.util.ToastUtil;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
-import com.siweisoft.util.NullUtil;
-import com.siweisoft.util.ToastUtil;
 
 import butterknife.BindView;
 

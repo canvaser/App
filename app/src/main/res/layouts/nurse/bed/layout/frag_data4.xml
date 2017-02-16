@@ -32,7 +32,7 @@
 
 
 </LinearLayout>
-    <com.siweisoft.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView
+    <com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView
         android:id="@+id/elv_data"
         android:divider="@null"
         android:dividerHeight="0dp"

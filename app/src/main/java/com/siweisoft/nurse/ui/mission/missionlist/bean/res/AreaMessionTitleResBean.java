@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.mission.missionlist.bean.res;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-11-16.
  */
-public class AreaMessionTitleResBean extends BaseBean{
+public class AreaMessionTitleResBean extends ResultResBean {
 
     private String id;
 

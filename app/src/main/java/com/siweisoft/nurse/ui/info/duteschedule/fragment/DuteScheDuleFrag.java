@@ -5,16 +5,15 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.network.bean.req.BaseReqBean;
+import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.data.DateFormatUtil;
 import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.info.duteschedule.bean.resbean.DuteScheDuleListResBean;
 import com.siweisoft.nurse.ui.info.duteschedule.ope.DuteScheDuleUIOpe;
 import com.siweisoft.nurse.ui.info.duteschedule.ope.DuteScheduleNetOpe;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.util.LogUtil;
-import com.siweisoft.util.data.DateFormatUtil;
 
 /**
  * Created by ${viwmox} on 2016-12-07.
@@ -26,6 +25,11 @@ public class DuteScheDuleFrag extends BaseNurseFrag{
 
 
     DuteScheDuleUIOpe duteScheDuleUIOpe;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
 
     @Override

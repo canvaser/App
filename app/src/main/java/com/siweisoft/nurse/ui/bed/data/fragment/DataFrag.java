@@ -13,12 +13,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.id.BaseID;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.nurse.nursevalue.BaseID;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.DatePickUitl;
+import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.LogUtil;
+import com.siweisoft.lib.util.ScreenUtil;
+import com.siweisoft.lib.util.data.DateFormatUtil;
+import com.siweisoft.lib.util.dialog.DialogUtil;
+import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 import com.siweisoft.nurse.ui.bed.data.adapter.DataAdapter3;
 import com.siweisoft.nurse.ui.bed.data.bean.reqbean.JsonDataListReqBean;
@@ -35,13 +42,6 @@ import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
 import com.siweisoft.nurse.ui.user.login.activity.LoginActivity;
 import com.siweisoft.nurse.ui.user.login.ope.LoginNetOpe;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.DatePickUitl;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.util.LogUtil;
-import com.siweisoft.util.ScreenUtil;
-import com.siweisoft.util.data.DateFormatUtil;
-import com.siweisoft.util.dialog.DialogUtil;
-import com.siweisoft.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -61,6 +61,11 @@ public class DataFrag extends BaseNurseFrag implements PinnedHeaderExpandableLis
     PatientAdditionDAOpe patientAdditionDAOpe;
 
     @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA)==null){
@@ -71,7 +76,7 @@ public class DataFrag extends BaseNurseFrag implements PinnedHeaderExpandableLis
         dataNetOpe= new DataNetOpe(activity);
         dataUIOpe = new DataUIOpe(activity,getView());
         ScreenUtil.getInstance().getStatusBarHeight(activity);
-        getMultipleRecordData(DateFormatUtil.getnowTimeYYYYMMdd(),DateFormatUtil.getTomorromTimeYYYYMMdd());
+        getMultipleRecordData(DateFormatUtil.getnowTimeYYYYMMdd(), DateFormatUtil.getTomorromTimeYYYYMMdd());
 
     }
 

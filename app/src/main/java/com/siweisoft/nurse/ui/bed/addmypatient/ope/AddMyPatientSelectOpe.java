@@ -2,7 +2,7 @@ package com.siweisoft.nurse.ui.bed.addmypatient.ope;
 
 import android.content.Context;
 
-import com.siweisoft.base.ui.ope.BaseOpe;
+import com.siweisoft.lib.base.ui.ope.BaseOpe;
 import com.siweisoft.nurse.ui.bed.addmypatient.bean.AddMyPatientAdapterBean;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-12-01.
  */
-public class AddMyPatientSelectOpe extends BaseOpe{
+public class AddMyPatientSelectOpe extends BaseOpe {
 
 
     public AddMyPatientSelectOpe(Context context) {

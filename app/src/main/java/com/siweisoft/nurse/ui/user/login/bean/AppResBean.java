@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.user.login.bean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-11-15.
  */
-public class AppResBean extends BaseBean{
+public class AppResBean extends ResultResBean {
 
     private String max_ver;
 

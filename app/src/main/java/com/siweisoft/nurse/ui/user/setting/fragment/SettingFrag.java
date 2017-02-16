@@ -5,13 +5,13 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.fragment.BaseUIFragment;
-import com.siweisoft.base.ui.id.BaseID;
-import com.siweisoft.constant.UrlConstant;
+import com.siweisoft.lib.base.ui.fragment.BaseUIFragment;
+import com.siweisoft.nurse.nursevalue.BaseID;
+import com.siweisoft.lib.constant.UrlConstant;
+import com.siweisoft.lib.util.FragmentUtil;
+import com.siweisoft.lib.util.NullUtil;
 import com.siweisoft.nurse.ui.user.login.fragment.LoginFrag;
 import com.siweisoft.nurse.ui.user.setting.ope.SettingUIOpe;
-import com.siweisoft.util.FragmentUtil;
-import com.siweisoft.util.NullUtil;
 
 import butterknife.OnClick;
 

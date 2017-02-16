@@ -2,13 +2,13 @@ package com.siweisoft.nurse.ui.user.login.ope;
 
 import android.content.Context;
 
-import com.siweisoft.base.ui.bean.BaseBean;
-import com.siweisoft.base.ui.ope.BaseOpe;
+import com.siweisoft.lib.base.ui.ope.BaseOpe;
+
 
 /**
  * Created by ${viwmox} on 2016-11-28.
  */
-public class LoginDAOpe extends BaseOpe{
+public class LoginDAOpe extends BaseOpe {
 
 
     private String suffix;

@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.info.bedcheck.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-11-30.
  */
-public class BedCheckResBean extends BaseBean{
+public class BedCheckResBean extends ResultResBean {
 
     private String nid;
 

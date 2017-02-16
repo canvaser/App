@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.bed.addmypatient.bean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-11-16.
  */
-public class MyPaitentUpdateReqBean extends BaseBean{
+public class MyPaitentUpdateReqBean extends ResultResBean {
 
     private String patientname;
 

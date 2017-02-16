@@ -1,26 +1,25 @@
 package com.siweisoft.nurse.ui.home.activity;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.activity.BaseUIWithOutTitleActivity;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.base.ui.interf.view.OnAppItemLongClickListener;
-import com.siweisoft.base.ui.interf.view.OnAppItemSelectListener;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.lib.base.ui.activity.BaseUIWithOutTitleActivity;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemLongClickListener;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemSelectListener;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.LogUtil;
+import com.siweisoft.lib.util.SPUtil;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
 import com.siweisoft.nurse.ui.home.bean.resbean.KeepAliveResBean;
-import com.siweisoft.nurse.ui.home.ope.DrawerLayoutUIOpe;
 import com.siweisoft.nurse.ui.home.ope.HomeDataOpe;
 import com.siweisoft.nurse.ui.home.ope.HomeNetOpe;
 import com.siweisoft.nurse.ui.home.ope.HomeUIOpe;
@@ -29,19 +28,15 @@ import com.siweisoft.nurse.ui.info.bedcheck.fragment.BedCheckFrag;
 import com.siweisoft.nurse.ui.info.bedcheck.ope.BedCheckNetOpe;
 import com.siweisoft.nurse.ui.user.login.activity.LoginActivity;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.util.LogUtil;
-import com.siweisoft.util.SPUtil;
-import com.uuzuche.lib_zxing.activity.CaptureActivity;
-import com.uuzuche.lib_zxing.activity.CodeUtils;
+import com.siweisoft.lib.uuzuche.lib_zxing.activity.CaptureActivity;
+import com.siweisoft.lib.uuzuche.lib_zxing.activity.CodeUtils;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
  * Created by ${viwmox} on 2016-11-08.
  */
-public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppItemSelectListener,OnAppItemLongClickListener{
+public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppItemSelectListener,OnAppItemLongClickListener {
 
 
     HomeUIOpe homeUIOpe;

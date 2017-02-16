@@ -7,19 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.adapter.AppRecycleAdapter;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.nurse.ui.info.infolist.bean.InfoListUIBean;
 import com.siweisoft.nurse.ui.info.urgencyreport.bean.resbean.UrgencyReportResBean;
 import com.siweisoft.nurse.ui.info.urgencyreport.bean.uibean.UngencyReportUIBean;
-import com.siweisoft.util.BitmapUtil;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-11-08.
  */
-public class UngencyReportListAdapter extends AppRecycleAdapter{
+public class UngencyReportListAdapter extends AppRecycleAdapter {
 
 
     OnAppItemClickListener onAppItemClickListener;

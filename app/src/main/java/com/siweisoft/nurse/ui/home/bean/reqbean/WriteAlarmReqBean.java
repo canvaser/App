@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.home.bean.reqbean;
 
-import com.siweisoft.network.bean.req.BaseReqBean;
+
+import com.siweisoft.lib.network.bean.req.BaseReqBean;
 
 /**
  * Created by ${viwmox} on 2016-11-29.
  */
-public class WriteAlarmReqBean extends BaseReqBean{
+public class WriteAlarmReqBean extends BaseReqBean {
 
     private String zyh;
 

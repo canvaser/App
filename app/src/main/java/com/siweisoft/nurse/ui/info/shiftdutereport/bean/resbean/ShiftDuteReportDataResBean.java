@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.info.shiftdutereport.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-11-17.
  */
-public class ShiftDuteReportDataResBean extends BaseBean{
+public class ShiftDuteReportDataResBean extends ResultResBean {
     ShiftDuteReportResBean data;
 
     public ShiftDuteReportResBean getData() {

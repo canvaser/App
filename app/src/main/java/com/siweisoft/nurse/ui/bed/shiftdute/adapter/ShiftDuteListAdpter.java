@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.adapter.AppRecycleAdapter;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.nurse.ui.bed.shiftdute.bean.resbean.ShiftDuteResBean;
 import com.siweisoft.nurse.ui.bed.shiftdute.bean.uibean.ShiftDuteUIBean;
 
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-12-06.
  */
-public class ShiftDuteListAdpter extends AppRecycleAdapter{
+public class ShiftDuteListAdpter extends AppRecycleAdapter {
 
     private ArrayList<ShiftDuteResBean> data;
 

@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ScrollView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.util.LogUtil;
 
 /**
  * Created by ${viwmox} on 2016-11-11.

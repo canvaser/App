@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.home.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-11-22.
  */
-public class AdditionResbean extends BaseBean{
+public class AdditionResbean extends ResultResBean {
 
     private String type;
 

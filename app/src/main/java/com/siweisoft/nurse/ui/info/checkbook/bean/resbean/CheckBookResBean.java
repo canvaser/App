@@ -1,13 +1,14 @@
 package com.siweisoft.nurse.ui.info.checkbook.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-11-28.
  */
-public class CheckBookResBean extends BaseBean{
+public class CheckBookResBean extends ResultResBean {
 
     private ArrayList<CheckItemResBean> items;
 

@@ -1,13 +1,14 @@
 package com.siweisoft.nurse.ui.info.bedcheck.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-11-30.
  */
-public class BedCheckListResBean extends BaseBean{
+public class BedCheckListResBean extends ResultResBean {
 
 
     ArrayList<BedCheckResBean> data;

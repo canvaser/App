@@ -6,12 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.constant.ValueConstant;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.info.addcheckbook.adapter.AddCheckBookListAdapter;
 import com.siweisoft.nurse.ui.info.checkbook.bean.resbean.CheckBookResBean;
-import com.siweisoft.view.ItemDecoration.MyItemDecoration;
-import com.siweisoft.view.chart.linearchat.bean.databean.Value;
 
 import butterknife.BindView;
 
@@ -47,7 +46,7 @@ public class AddCheckBookUIOpe extends BaseNurseUIOpe{
     public void initList(CheckBookResBean checkBookResBean){
         addCheckBookListAdapter = new AddCheckBookListAdapter(context,checkBookResBean.getItems());
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new MyItemDecoration(context,ValueConstant.DIMEN_1));
+        recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1));
         recyclerView.setAdapter(addCheckBookListAdapter);
     }
 

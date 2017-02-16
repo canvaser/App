@@ -8,23 +8,21 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.adapter.AppRecycleAdapter;
-import com.siweisoft.base.ui.bean.uibean.BaseUIBean;
-import com.siweisoft.base.ui.listener.BaseTextWather;
+import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.base.ui.bean.uibean.BaseUIBean;
+import com.siweisoft.lib.base.ui.listener.BaseTextWather;
+import com.siweisoft.lib.util.SheetDialogUtil;
+import com.siweisoft.lib.view.bottomdialogmenuview.BottomDialogMenuView;
 import com.siweisoft.nurse.ui.info.addcheckbook.bean.uibean.AddCheckBookHeadUIBean;
 import com.siweisoft.nurse.ui.info.addcheckbook.bean.uibean.AddCheckBookUIBean;
 import com.siweisoft.nurse.ui.info.checkbook.bean.resbean.CheckItemResBean;
-import com.siweisoft.util.SheetDialogUtil;
-import com.siweisoft.util.StringUtil;
-import com.siweisoft.util.data.DateFormatUtil;
-import com.siweisoft.view.bottomdialogmenuview.BottomDialogMenuView;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-12-07.
  */
-public class AddCheckBookListAdapter extends AppRecycleAdapter{
+public class AddCheckBookListAdapter extends AppRecycleAdapter {
 
 
     ArrayList<CheckItemResBean> data;

@@ -7,15 +7,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.bean.uibean.BaseUIBean;
-import com.siweisoft.view.swipeview.view.SwipeView;
+import com.siweisoft.lib.base.ui.bean.uibean.BaseUIBean;
+import com.siweisoft.lib.view.swipeview.view.SwipeView;
 
 import butterknife.BindView;
 
 /**
  * Created by ${viwmox} on 2016-11-09.
  */
-public class MissionUIBean extends BaseUIBean{
+public class MissionUIBean extends BaseUIBean {
 
 
     @BindView(R.id.tv_title)

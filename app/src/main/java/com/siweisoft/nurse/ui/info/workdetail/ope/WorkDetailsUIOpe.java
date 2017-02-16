@@ -6,14 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.constant.ValueConstant;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.home.bean.reqbean.WriteAlarmReqBean;
 import com.siweisoft.nurse.ui.info.workdetail.adapter.WorkDetailListAdapter;
 import com.siweisoft.nurse.ui.info.workdetail.adapter.WorkDetailsListAdapter;
 import com.siweisoft.nurse.ui.info.workdetail.bean.adpterbean.WorkDetailAdapterBean;
 import com.siweisoft.nurse.ui.info.workdetail.bean.resbean.WorkDetailResBean;
-import com.siweisoft.view.ItemDecoration.MyItemDecoration;
 
 import java.util.ArrayList;
 
@@ -52,7 +52,7 @@ public class WorkDetailsUIOpe extends BaseNurseUIOpe{
     public void initList(WorkDetailAdapterBean data){
         workDetailsListAdapter = new WorkDetailsListAdapter(context,data);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new MyItemDecoration(context,ValueConstant.DIMEN_1));
+        recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1));
         recyclerView.setAdapter(workDetailsListAdapter);
     }
 

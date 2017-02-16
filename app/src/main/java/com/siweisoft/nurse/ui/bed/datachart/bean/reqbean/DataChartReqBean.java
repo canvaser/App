@@ -1,12 +1,12 @@
 package com.siweisoft.nurse.ui.bed.datachart.bean.reqbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
-import com.siweisoft.network.bean.req.BaseReqBean;
+
+import com.siweisoft.lib.network.bean.req.BaseReqBean;
 
 /**
  * Created by ${viwmox} on 2016-12-08.
  */
-public class DataChartReqBean extends BaseReqBean{
+public class DataChartReqBean extends BaseReqBean {
 
     private String groupid;
 

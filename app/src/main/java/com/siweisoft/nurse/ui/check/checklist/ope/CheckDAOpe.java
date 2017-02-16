@@ -1,13 +1,9 @@
 package com.siweisoft.nurse.ui.check.checklist.ope;
 
-import com.siweisoft.constant.MethodConstant;
-import com.siweisoft.constant.ValueConstant;
 import com.siweisoft.nurse.nursevalue.MethodValue;
 import com.siweisoft.nurse.ui.check.checklist.bean.bean.TitleBean;
 import com.siweisoft.nurse.ui.check.checklist.bean.resbean.CheckResBean;
 import com.siweisoft.nurse.ui.user.login.bean.GetallregionbyuserResBean;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.util.SPUtil;
 
 import java.util.ArrayList;
 

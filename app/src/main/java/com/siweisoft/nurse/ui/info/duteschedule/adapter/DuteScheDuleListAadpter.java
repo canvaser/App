@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
 import com.siweisoft.nurse.ui.info.duteschedule.bean.resbean.DuteScheDuleResBean;
 import com.siweisoft.nurse.ui.info.duteschedule.bean.uibean.DuteScheDuleUIBean;
 

@@ -1,6 +1,7 @@
 package com.siweisoft.nurse.nursevalue;
 
-import com.siweisoft.constant.UrlConstant;
+
+import com.siweisoft.lib.constant.UrlConstant;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -10,14 +11,12 @@ import java.util.HashMap;
  */
 public class DataValue {
 
-
-
-
     public static final String ACITON_NURSE_GLOB_CAST="action_nurse_glob_cast";
-
 
     /**请求网址*/
     public static final String URL_NURSE= "http://192.168.1.204";
+
+    public static final String URL_NURSE_OUTSIDE= "http://180.168.218.122:4080";
 
     public static final String URL_OTHER= "/api.cshtml?key=";
 
@@ -25,14 +24,11 @@ public class DataValue {
     /**登录*/
     public static final String URL_DOLOGIN= "dologin";
 
-
     /**修改密码*/
     public static final String URL_CHANGE_PWD= "changePassword";
 
     /**用户注销*/
     public static final String URL_DOLOGIN_OUT= "dologout";
-
-
 
     //-------------------------------------------------------------------------------------------------------
 
@@ -42,7 +38,8 @@ public class DataValue {
     /**获取我的病人列表*/
     public static final String URL_GET_MYPATIENT_LIST2= "getMyPatientList2";
 
-
+    /**得到文书模板类别*/
+    public static final String URL_GET_DOCUMENT_FORM= "getFormList2";
 
     /***/
     public static final String URL_GETADDITION_LIST= "getAdditionList";
@@ -71,9 +68,6 @@ public class DataValue {
 
     /**更新任务状态*/
     public static final String URL_UPDATE_TASK= "updateTask";
-
-
-
 
     //-------------------------------------------------------------------------------------------------------
     /**获取我的病人*/
@@ -110,8 +104,6 @@ public class DataValue {
     /**获取病区病床交接数据*/
     public static final String URL_GET_WORK_LOAD_BY_USER= "getWorkloadByUser";
 
-
-
     /**获取病区病床交接数据*/
     public static final String URL_GET_REPORT_DATA= "getReportData";
 
@@ -121,10 +113,8 @@ public class DataValue {
     /**根据医嘱类别获取任务详情*/
     public static final String URL_GET_TASK_DETAIL_BY_CONDITION= "getTaskDetailByCondition";
 
-
     /**获取病人交接记录*/
     public static final String URL_GET_PATIENT_REPORT= "getPatientReportData";
-
 
     /**录入点物本数据*/
     public static final String URL_WRITE_INVENTORY_COUNT= "writeInventoryCountData";
@@ -132,7 +122,6 @@ public class DataValue {
 
     /**录入病人交接记录*/
     public static final String URL_WRITE_PATIENT_REPORT= "writePatientReportData";
-
 
     /**获取我的排班表*/
     public static final String URL_GET_WORK_SHIFTS= "getWorkShifts";
@@ -148,20 +137,14 @@ public class DataValue {
     public static final String URL_UPDATE_CHECK_TASK= "updateCheckStatus";
 
 
-
     /**获取病区任务*/
     public static final String URL_GET_MY_AREA_TASK_HISTORY= "getMyTaskList2";
-
-
-
 
     /**获取病人附加项目*/
     public static final String URL_GET_PATIENT_ADDITION= "getPatientAdditionData";
 
     /**获取病人附加项目*/
     public static final String URL_UPDATE_PATIENT_ADDITION= "writePatientAdditionData";
-
-
 
     //----------------------------------------------------------------------------------------------
     /**获取病人体征数据*/
@@ -279,7 +262,7 @@ public class DataValue {
 
 
     public static void init(){
-        UrlConstant.URI= URL_NURSE+URL_OTHER;
+        UrlConstant.URI= URL_NURSE_OUTSIDE+URL_OTHER;
         STATUS_TYPE_TIME.add(STATUS_LONG_TIME);
         STATUS_TYPE_TIME.add(STATUS_SHORT_TIME);
         STATUS_TYPE_TIME.add(STATUS_CARE_TIME);

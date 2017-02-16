@@ -7,18 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
 import com.siweisoft.nurse.ui.bed.patient.bean.CareUIBean;
 import com.siweisoft.nurse.ui.bed.patient.bean.resbean.PatientAdditionListResBean;
 import com.siweisoft.nurse.ui.bed.patient.bean.resbean.PatientAdditionResBean;
-import com.siweisoft.util.BitmapUtil;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-11-10.
  */
-public class CareListAdapter extends AppRecycleAdapter{
+public class CareListAdapter extends AppRecycleAdapter {
 
 
 

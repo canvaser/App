@@ -6,32 +6,28 @@ import android.support.annotation.Nullable;
 import android.text.Editable;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.fragment.BaseUIFragment;
-import com.siweisoft.base.ui.id.BaseID;
-import com.siweisoft.base.ui.interf.OnFinishListener;
-import com.siweisoft.base.ui.listener.BaseTextWather;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.network.bean.res.BaseResBean;
+import com.siweisoft.lib.base.ui.fragment.BaseUIFragment;
+import com.siweisoft.nurse.nursevalue.BaseID;
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
+import com.siweisoft.lib.base.ui.listener.BaseTextWather;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.network.bean.res.BaseResBean;
+import com.siweisoft.lib.util.FragmentUtil;
+import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.SPUtil;
+import com.siweisoft.lib.util.SheetDialogUtil;
+import com.siweisoft.lib.util.ToastUtil;
+import com.siweisoft.lib.view.bottomdialogmenuview.BottomDialogMenuView;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
 import com.siweisoft.nurse.ui.home.activity.IndexActivity;
-import com.siweisoft.nurse.ui.user.login.activity.LoginActivity;
 import com.siweisoft.nurse.ui.user.login.bean.DoLoginResBean;
 import com.siweisoft.nurse.ui.user.login.bean.GetallregionbyuserResBean;
 import com.siweisoft.nurse.ui.user.login.ope.LoginDAOpe;
 import com.siweisoft.nurse.ui.user.login.ope.LoginNetOpe;
 import com.siweisoft.nurse.ui.user.login.ope.LoginUIOpe;
 import com.siweisoft.nurse.ui.user.setting.fragment.SettingFrag;
-import com.siweisoft.util.FragmentUtil;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.util.NullUtil;
-import com.siweisoft.util.SPUtil;
-import com.siweisoft.util.SheetDialogUtil;
-import com.siweisoft.util.ToastUtil;
-import com.siweisoft.view.bottomdialogmenuview.BottomDialogMenuView;
-import com.uuzuche.lib_zxing.activity.CodeUtils;
 
 import java.util.ArrayList;
 
@@ -41,7 +37,7 @@ import butterknife.Optional;
 /**
  * Created by ${viwmox} on 2016-12-07.
  */
-public class LoginFrag extends BaseUIFragment{
+public class LoginFrag extends BaseUIFragment {
 
     LoginUIOpe loginUIOpe;
 

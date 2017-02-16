@@ -1,12 +1,13 @@
 package com.siweisoft.nurse.ui.info.announcement.ope;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
-import com.siweisoft.view.refreshlayout.MaterialRefreshLayout;
 
 import butterknife.BindView;
 
@@ -20,6 +21,7 @@ public class AnnounceUIOpe extends BaseNurseUIOpe{
     MaterialRefreshLayout refreshLayout;
 
 
+    @Nullable
     @BindView(R.id.rcv_rcv)
     RecyclerView recyclerView;
 

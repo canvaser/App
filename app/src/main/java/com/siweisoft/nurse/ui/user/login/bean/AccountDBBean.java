@@ -2,14 +2,14 @@ package com.siweisoft.nurse.ui.user.login.bean;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.siweisoft.base.ui.bean.dbbean.BaseDbBean;
+import com.siweisoft.lib.base.ui.bean.dbbean.BaseDbBean;
 
 /**
  * Created by ${viwmox} on 2016-10-24.
  */
 
 @DatabaseTable(tableName = "table_account")
-public class AccountDBBean extends BaseDbBean{
+public class AccountDBBean extends BaseDbBean {
 
 
     public static final int TYPE_NURSE= 0;

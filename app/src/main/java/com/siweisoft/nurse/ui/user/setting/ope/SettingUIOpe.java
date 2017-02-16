@@ -7,7 +7,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.ope.BaseUIWithTitleOpe;
+import com.siweisoft.lib.base.ui.ope.BaseUIWithTitleOpe;
 import com.siweisoft.nurse.nursevalue.DataValue;
 
 import butterknife.BindView;
@@ -15,7 +15,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-12-07.
  */
-public class SettingUIOpe extends BaseUIWithTitleOpe{
+public class SettingUIOpe extends BaseUIWithTitleOpe {
 
     @BindView(R.id.tv_before)
     TextView beforeTV;

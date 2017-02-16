@@ -7,13 +7,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.id.BaseID;
-import com.siweisoft.base.ui.interf.OnFinishListener;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.constant.ValueConstant;
+import com.siweisoft.nurse.nursevalue.BaseID;
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.menu.popup.PopupUtil;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
 import com.siweisoft.nurse.nursevalue.MethodValue;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.addmypatient.fragment.AddMyPatientFrag;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedListResBean;
 import com.siweisoft.nurse.ui.bed.bedlist.ope.BedListDAOpe;
@@ -22,11 +28,6 @@ import com.siweisoft.nurse.ui.bed.bedlist.ope.GetMyPatientListNetOpe;
 import com.siweisoft.nurse.ui.bed.patient.fragment.PatientFrag;
 import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.util.menu.popup.PopupUtil;
-import com.siweisoft.view.ItemDecoration.MyItemDecoration;
-import com.siweisoft.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.view.refreshlayout.MaterialRefreshListener;
 
 import butterknife.OnClick;
 import butterknife.Optional;
@@ -34,7 +35,7 @@ import butterknife.Optional;
 /**
  * Created by ${viwmox} on 2016-11-08.
  */
-public class BedListFGM extends BaseNurseFrag implements OnAppItemClickListener{
+public class BedListFGM extends BaseNurseFrag implements OnAppItemClickListener {
 
 
     BedListFGMUIOpe bedListFGMUIOpe;
@@ -252,5 +253,10 @@ public class BedListFGM extends BaseNurseFrag implements OnAppItemClickListener{
             }
         }
 
+    }
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
     }
 }

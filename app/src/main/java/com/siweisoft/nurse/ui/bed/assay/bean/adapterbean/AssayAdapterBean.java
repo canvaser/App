@@ -1,6 +1,6 @@
 package com.siweisoft.nurse.ui.bed.assay.bean.adapterbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 import com.siweisoft.nurse.ui.bed.assay.bean.resbean.AssayResBean;
 
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class AssayAdapterBean extends BaseBean{
+public class AssayAdapterBean extends ResultResBean {
 
     private String applyno;
 

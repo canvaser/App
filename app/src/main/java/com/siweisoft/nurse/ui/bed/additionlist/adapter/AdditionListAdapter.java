@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.adapter.AppRecycleAdapter;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.nurse.ui.bed.additionlist.bean.uibean.AdditonUIBean;
 import com.siweisoft.nurse.ui.home.bean.resbean.AdditionResbean;
 
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-11-22.
  */
-public class AdditionListAdapter extends AppRecycleAdapter{
+public class AdditionListAdapter extends AppRecycleAdapter {
 
     ArrayList<AdditionResbean> data;
 

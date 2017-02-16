@@ -7,12 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.check.checklist.bean.resbean.CheckResBean;
 import com.siweisoft.nurse.ui.info.checkbook.adapter.CheckBookAdapter;
 import com.siweisoft.nurse.ui.info.checkbook.bean.resbean.CheckBookResBean;
-import com.siweisoft.view.ItemDecoration.MyItemDecoration;
-import com.siweisoft.view.refreshlayout.MaterialRefreshLayout;
 
 import java.util.ArrayList;
 

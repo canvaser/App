@@ -7,34 +7,38 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.id.BaseID;
-import com.siweisoft.base.ui.interf.OnFinishListener;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.nurse.nursevalue.BaseID;
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.info.addcheckbook.fragment.AddCheckBookFrag;
 import com.siweisoft.nurse.ui.info.checkbook.bean.resbean.CheckBookListResBean;
 import com.siweisoft.nurse.ui.info.checkbook.ope.CheckBookNetOpe;
 import com.siweisoft.nurse.ui.info.checkbook.ope.CheckBookUIOpe;
 import com.siweisoft.nurse.ui.info.checkbookdetail.fragment.CheckBookDetailFrag;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.view.chart.linearchat.bean.databean.Value;
-import com.siweisoft.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.view.refreshlayout.MaterialRefreshListener;
 
 import butterknife.OnClick;
 
 /**
  * Created by ${viwmox} on 2016-11-28.
  */
-public class CheckBookFrag extends BaseNurseFrag implements OnAppItemClickListener{
+public class CheckBookFrag extends BaseNurseFrag implements OnAppItemClickListener {
 
     CheckBookNetOpe checkBookNetOpe;
 
     CheckBookUIOpe checkBookUIOpe;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -82,7 +86,7 @@ public class CheckBookFrag extends BaseNurseFrag implements OnAppItemClickListen
             case BaseID.ID_RIGHT:
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(ValueConstant.DATA_DATA,checkBookUIOpe.getData());
-                FragManager.getInstance().startFragmentForResult(getFragmentManager(),index,new AddCheckBookFrag(),bundle,ValueConstant.CODE_REQUSET);
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(),index,new AddCheckBookFrag(),bundle, ValueConstant.CODE_REQUSET);
                 break;
         }
     }

@@ -6,20 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.adapter.AppRecycleAdapter;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.util.BitmapUtil;
+import com.siweisoft.lib.util.NullUtil;
+import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.uibean.BedUIBean;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
-import com.siweisoft.util.BitmapUtil;
-import com.siweisoft.util.NullUtil;
-import com.siweisoft.util.StringUtil;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-11-08.
  */
-public class BedListAdapter extends AppRecycleAdapter{
+public class BedListAdapter extends AppRecycleAdapter {
 
     OnAppItemClickListener onAppItemClickListener;
 

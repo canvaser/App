@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.adapter.AppRecycleAdapter;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.nurse.ui.info.workdetail.bean.adpterbean.WorkDetailAdapterBean;
 import com.siweisoft.nurse.ui.info.workdetail.bean.resbean.WorkDetailResBean;
 import com.siweisoft.nurse.ui.info.workdetail.bean.uibean.WorkDetailUIBean;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-12-08.
  */
-public class WorkDetailListAdapter extends AppRecycleAdapter{
+public class WorkDetailListAdapter extends AppRecycleAdapter {
 
 
     private ArrayList<WorkDetailAdapterBean> data;

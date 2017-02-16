@@ -7,11 +7,10 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.addmypatient.adapter.AddMyPatientListAdapter;
 import com.siweisoft.nurse.ui.bed.addmypatient.bean.AddMyPatientAdapterBean;
-import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
-import com.siweisoft.view.ItemDecoration.MyItemDecoration;
 
 import java.util.ArrayList;
 

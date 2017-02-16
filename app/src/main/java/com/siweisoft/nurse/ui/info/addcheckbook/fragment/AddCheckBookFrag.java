@@ -7,11 +7,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.id.BaseID;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.constant.ValueConstant;
+import com.siweisoft.nurse.nursevalue.BaseID;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.menu.popup.PopupUtil;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
 import com.siweisoft.nurse.ui.info.addcheckbook.bean.reqbean.AddCheckBookListReqBean;
 import com.siweisoft.nurse.ui.info.addcheckbook.bean.reqbean.AddCheckBookReqBean;
@@ -20,7 +22,6 @@ import com.siweisoft.nurse.ui.info.addcheckbook.ope.AddCheckBookNetOpe;
 import com.siweisoft.nurse.ui.info.addcheckbook.ope.AddCheckBookUIOpe;
 import com.siweisoft.nurse.ui.info.checkbook.bean.resbean.CheckBookResBean;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.menu.popup.PopupUtil;
 
 import java.util.ArrayList;
 
@@ -39,6 +40,12 @@ public class AddCheckBookFrag extends BaseNurseFrag{
     AddCheckBookNetOpe addCheckBookNetOpe;
 
     @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
+
+
+    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA)==null){
@@ -53,7 +60,7 @@ public class AddCheckBookFrag extends BaseNurseFrag{
         addCheckBookUIOpe.initList(addCheckBookDAOpe.getCheckBookResBean());
     }
 
-    @OnClick({BaseID.ID_MID,BaseID.ID_RIGHT})
+    @OnClick({BaseID.ID_MID, BaseID.ID_RIGHT})
     public void onClickEvent(View v){
         switch (v.getId()){
             case BaseID.ID_MID:

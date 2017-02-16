@@ -10,10 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.interf.OnFinishListener;
-import com.siweisoft.base.ui.listener.BaseOnPagerChangeListener;
-import com.siweisoft.base.ui.ope.BaseOpe;
-import com.siweisoft.base.ui.ope.BaseUIOpe;
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
+import com.siweisoft.lib.base.ui.listener.BaseOnPagerChangeListener;
+import com.siweisoft.lib.base.ui.ope.BaseUIOpe;
+import com.siweisoft.lib.util.FragmentUtil;
 import com.siweisoft.nurse.ui.bed.bedlist.fragment.BedListFGM;
 import com.siweisoft.nurse.ui.check.checklist.fragment.CheckListFGM;
 import com.siweisoft.nurse.ui.home.adapter.HomePageAdapter;
@@ -23,7 +23,6 @@ import com.siweisoft.nurse.ui.info.infolist.fragment.InfoListFGM;
 import com.siweisoft.nurse.ui.mission.missionlist.fragment.MissionListFGM;
 import com.siweisoft.nurse.ui.setting.setting.fragment.SettingFGM;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.FragmentUtil;
 
 import java.util.ArrayList;
 
@@ -32,7 +31,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-08.
  */
-public class HomeUIOpe extends BaseUIOpe{
+public class HomeUIOpe extends BaseUIOpe {
 
 
     @Nullable

@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.bed.datachart.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-12-09.
  */
-public class DataChartResBean extends BaseBean{
+public class DataChartResBean extends ResultResBean {
 
     private String _id;
 

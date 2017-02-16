@@ -1,14 +1,14 @@
 package com.siweisoft.nurse.ui.bed.patient.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
-import com.siweisoft.network.bean.res.BaseResBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-11-17.
  */
-public class PatientAdditionListResBean extends BaseBean{
+public class PatientAdditionListResBean extends ResultResBean {
 
     private ArrayList<PatientAdditionResBean> data;
 

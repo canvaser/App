@@ -1,13 +1,14 @@
 package com.siweisoft.nurse.ui.bed.data.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-11-23.
  */
-public class DataTemplateResBean extends BaseBean{
+public class DataTemplateResBean extends ResultResBean {
 
     private ArrayList<DataTemplateDataResBean> data;
 

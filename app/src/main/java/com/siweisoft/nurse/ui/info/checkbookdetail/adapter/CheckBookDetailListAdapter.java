@@ -7,11 +7,11 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.ui.check.checklist.bean.CheckHeadUIBean;
 import com.siweisoft.nurse.ui.info.checkbookdetail.bean.resbean.CheckBookDetailItemsListResBean;
 import com.siweisoft.nurse.ui.info.checkbookdetail.bean.uibean.CheckBookDetailHeadUIBean;
 import com.siweisoft.nurse.ui.info.checkbookdetail.bean.uibean.CheckBookDetailUIBean;
-import com.siweisoft.util.StringUtil;
 
 import java.util.ArrayList;
 

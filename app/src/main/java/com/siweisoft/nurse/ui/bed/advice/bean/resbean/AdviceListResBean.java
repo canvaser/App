@@ -1,13 +1,14 @@
 package com.siweisoft.nurse.ui.bed.advice.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-11-17.
  */
-public class AdviceListResBean extends BaseBean{
+public class AdviceListResBean extends ResultResBean {
     ArrayList<AdviceResBean> data;
 
     public ArrayList<AdviceResBean> getData() {

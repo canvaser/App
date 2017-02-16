@@ -3,16 +3,16 @@ package com.siweisoft.nurse.ui.bed.datachart.activity;
 import android.os.Bundle;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.activity.BaseUIWithOutTitleActivity;
-import com.siweisoft.constant.ValueConstant;
+import com.siweisoft.lib.base.ui.activity.BaseUIWithOutTitleActivity;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.FragmentUtil;
 import com.siweisoft.nurse.ui.bed.datachart.fragment.DataChartFrag;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
-import com.siweisoft.util.FragmentUtil;
 
 /**
  * Created by ${viwmox} on 2016-12-08.
  */
-public class DataChartActivity extends BaseUIWithOutTitleActivity{
+public class DataChartActivity extends BaseUIWithOutTitleActivity {
 
 
     @Override

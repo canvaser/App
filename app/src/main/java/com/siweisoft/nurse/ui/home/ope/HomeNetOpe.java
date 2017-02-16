@@ -2,10 +2,10 @@ package com.siweisoft.nurse.ui.home.ope;
 
 import android.content.Context;
 
-import com.siweisoft.base.ui.ope.BaseNetOpe;
-import com.siweisoft.network.NetWork;
-import com.siweisoft.network.bean.req.BaseReqBean;
-import com.siweisoft.network.interf.OnNetWorkReqInterf;
+import com.siweisoft.lib.base.ui.ope.BaseNetOpe;
+import com.siweisoft.lib.network.NetWork;
+import com.siweisoft.lib.network.bean.req.BaseReqBean;
+import com.siweisoft.lib.network.interf.OnNetWorkReqInterf;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
 import com.siweisoft.nurse.ui.home.bean.reqbean.WriteAlarmReqBean;
@@ -13,7 +13,7 @@ import com.siweisoft.nurse.ui.home.bean.reqbean.WriteAlarmReqBean;
 /**
  * Created by ${viwmox} on 2016-11-15.
  */
-public class HomeNetOpe extends BaseNetOpe{
+public class HomeNetOpe extends BaseNetOpe {
 
 
     public HomeNetOpe(Context context) {

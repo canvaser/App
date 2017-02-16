@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.bed.nurserecord.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class NurseRecordResBean extends BaseBean{
+public class NurseRecordResBean extends ResultResBean {
 
     private String taskname;
 

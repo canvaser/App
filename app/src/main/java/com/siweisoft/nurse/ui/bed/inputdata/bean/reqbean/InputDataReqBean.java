@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.bed.inputdata.bean.reqbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-11-25.
  */
-public class InputDataReqBean extends BaseBean{
+public class InputDataReqBean extends ResultResBean {
 
     private String wardid;
 

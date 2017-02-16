@@ -5,8 +5,9 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.info.announcement.fragment.AnnounceMentFrag;
 import com.siweisoft.nurse.ui.info.bedcheck.fragment.BedCheckFrag;
 import com.siweisoft.nurse.ui.info.bedreport.fragment.BedReprotFrag;
@@ -21,10 +22,15 @@ import com.siweisoft.nurse.util.fragment.FragManager;
 /**
  * Created by ${viwmox} on 2016-11-08.
  */
-public class InfoListFGM extends BaseNurseFrag implements OnAppItemClickListener{
+public class InfoListFGM extends BaseNurseFrag implements OnAppItemClickListener {
 
 
     InfoListFGMUIOpe infoListFGMUIOpe;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

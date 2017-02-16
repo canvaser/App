@@ -5,18 +5,18 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.fragment.BaseUIFragment;
-import com.siweisoft.base.ui.id.BaseID;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.lib.base.ui.fragment.BaseUIFragment;
+import com.siweisoft.nurse.nursevalue.BaseID;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.lib.util.FragmentUtil;
+import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.nurse.ui.bed.addmypatient.bean.AddMyPatientListAdapterBean;
 import com.siweisoft.nurse.ui.bed.addmypatient.ope.AddMyPatientDrawUIOpe;
 import com.siweisoft.nurse.ui.bed.addmypatient.ope.AddMyPatientNetOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.ope.GetMyPatientListNetOpe;
 import com.siweisoft.nurse.ui.home.fragment.DrawerLayoutFrag;
-import com.siweisoft.util.FragmentUtil;
-import com.siweisoft.util.GsonUtil;
 
 import butterknife.OnClick;
 import butterknife.Optional;
@@ -24,7 +24,7 @@ import butterknife.Optional;
 /**
  * Created by ${viwmox} on 2016-11-16.
  */
-public class AddMyPatientDrawFrag extends BaseUIFragment implements OnAppItemClickListener{
+public class AddMyPatientDrawFrag extends BaseUIFragment implements OnAppItemClickListener {
 
 
     AddMyPatientDrawUIOpe addMyPatientUIOpe;

@@ -2,7 +2,7 @@ package com.siweisoft.nurse.ui.bed.additionlist.ope;
 
 import android.content.Context;
 
-import com.siweisoft.base.ui.ope.BaseOpe;
+import com.siweisoft.lib.base.ui.ope.BaseOpe;
 import com.siweisoft.nurse.ui.home.bean.resbean.AdditionResbean;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-11-22.
  */
-public class AdditionListDAOpe extends BaseOpe{
+public class AdditionListDAOpe extends BaseOpe {
 
 
 

@@ -6,8 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.fragment.BaseUIFragment;
-import com.siweisoft.constant.ValueConstant;
+import com.siweisoft.lib.base.ui.fragment.BaseUIFragment;
+import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.nurse.util.fragment.FragManager;
 
 import butterknife.OnClick;
@@ -16,7 +16,7 @@ import butterknife.Optional;
 /**
  * Created by ${viwmox} on 2016-11-10.
  */
-public abstract class BaseNurseTestFrag extends BaseUIFragment{
+public abstract class BaseNurseTestFrag extends BaseUIFragment {
 
     protected  int index;
 

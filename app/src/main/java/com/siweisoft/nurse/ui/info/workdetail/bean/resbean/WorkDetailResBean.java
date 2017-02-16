@@ -1,11 +1,11 @@
 package com.siweisoft.nurse.ui.info.workdetail.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-12-08.
  */
-public class WorkDetailResBean extends BaseBean{
+public class WorkDetailResBean extends ResultResBean {
 
     private String user_id;
 

@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.info.duteschedule.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-12-07.
  */
-public class DuteScheDuleResBean extends BaseBean{
+public class DuteScheDuleResBean extends ResultResBean {
 
 
     private String Name;

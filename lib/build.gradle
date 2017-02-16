@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 25
@@ -19,6 +20,51 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+
+    sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res',
+
+                    'src/main/res/layouts',
+                    'src/main/res/layouts/baseui',
+                    'src/main/res/layouts/bottom',
+                    'src/main/res/layouts/chart',
+                    'src/main/res/layouts/dialog',
+                    'src/main/res/layouts/image',
+                    'src/main/res/layouts/menu',
+                    'src/main/res/layouts/zxing',
+                    'src/main/res/layouts/time',
+                    'src/main/res/layouts/voip',
+
+                    'src/main/res/values/animstyle',
+                    'src/main/res/values/avi',
+                    'src/main/res/values/base',
+                    'src/main/res/values/chart',
+                    'src/main/res/values/zxing',
+                    'src/main/res/values/view',
+                    'src/main/res/values/home',
+
+                    'src/main/res/drawables/base',
+                    'src/main/res/drawables/chart',
+                    'src/main/res/drawables/dialog',
+                    'src/main/res/drawables/image',
+                    'src/main/res/drawables/voip',
+
+                    'src/main/res/anims/bottommenu',
+                    'src/main/res/anims/in',
+                    'src/main/res/anims/scale',
+                    'src/main/res/anims/trans',
+                    'src/main/res/anims/base',
+
+                    'src/main/res/menus/chart',
+            ]
+            jniLibs.srcDirs=[
+                    'libs',
+            ]
+        }
+    }
 }
 
 dependencies {
@@ -33,10 +79,12 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:support-v4:25.1.0'
+
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.github.chrisbanes:PhotoView:1.2.6'
-    compile 'com.jakewharton:butterknife:8.4.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }

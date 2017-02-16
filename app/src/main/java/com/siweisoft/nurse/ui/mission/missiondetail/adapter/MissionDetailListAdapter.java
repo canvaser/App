@@ -6,20 +6,20 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.adapter.AppRecycleAdapter;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.mission.missiondetail.bean.MissionDetailListUIBean;
 import com.siweisoft.nurse.ui.mission.missiondetail.bean.uibean.MissionDetailListUIBean2;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionTitleResBean;
-import com.siweisoft.util.StringUtil;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-11-11.
  */
-public class MissionDetailListAdapter extends AppRecycleAdapter{
+public class MissionDetailListAdapter extends AppRecycleAdapter {
 
     OnAppItemClickListener onAppItemClickListener;
 

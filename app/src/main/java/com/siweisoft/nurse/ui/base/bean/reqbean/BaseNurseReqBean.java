@@ -1,13 +1,12 @@
 package com.siweisoft.nurse.ui.base.bean.reqbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
-import com.siweisoft.network.bean.req.BaseReqBean;
-import com.siweisoft.network.bean.res.BaseResBean;
+
+import com.siweisoft.lib.network.bean.req.BaseReqBean;
 
 /**
  * Created by ${viwmox} on 2016-11-16.
  */
-public class BaseNurseReqBean extends BaseReqBean{
+public class BaseNurseReqBean extends BaseReqBean {
 
     /**获取该指定病区的任务；可忽略，忽略时默认为当前用户所在的病区*/
     private String rid;

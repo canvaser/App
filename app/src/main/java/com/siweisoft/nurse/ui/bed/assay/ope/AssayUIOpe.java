@@ -6,11 +6,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.assay.adapter.AssayListAdapter;
 import com.siweisoft.nurse.ui.bed.assay.bean.adapterbean.AssayAdapterBean;
 import com.siweisoft.nurse.ui.bed.assay.bean.resbean.AssayResBean;
-import com.siweisoft.view.ItemDecoration.MyItemDecoration;
 
 import java.util.ArrayList;
 import java.util.HashMap;

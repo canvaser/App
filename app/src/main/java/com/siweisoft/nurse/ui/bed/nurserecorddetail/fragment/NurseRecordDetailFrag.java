@@ -5,16 +5,17 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 import com.siweisoft.nurse.ui.bed.nurserecord.bean.resbean.NurseRecordListResBean;
 import com.siweisoft.nurse.ui.bed.nurserecord.bean.resbean.NurseRecordResBean;
 import com.siweisoft.nurse.ui.bed.nurserecorddetail.bean.reqbean.NurseRecordReqBean;
 import com.siweisoft.nurse.ui.bed.nurserecorddetail.ope.NurseRecordDetailNetOpe;
 import com.siweisoft.nurse.ui.bed.nurserecorddetail.ope.NurseRecordDetailUIOpe;
-import com.siweisoft.util.GsonUtil;
 
 /**
  * Created by ${viwmox} on 2016-11-18.
@@ -29,6 +30,11 @@ public class NurseRecordDetailFrag extends BaseNurseFrag{
     NurseRecordResBean nurseRecordResBean;
 
     PatientBedResBean patientBedResBean;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

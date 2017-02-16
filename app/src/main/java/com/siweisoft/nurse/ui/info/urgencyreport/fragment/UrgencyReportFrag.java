@@ -7,13 +7,18 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.interf.OnFinishListener;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.SheetDialogUtil;
+import com.siweisoft.lib.view.bottomdialogmenuview.BottomDialogMenuView;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
 import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.bedlist.fragment.BedListFGM;
 import com.siweisoft.nurse.ui.home.activity.IndexActivity;
 import com.siweisoft.nurse.ui.home.bean.reqbean.WriteAlarmReqBean;
@@ -22,24 +27,23 @@ import com.siweisoft.nurse.ui.info.urgencyreport.bean.resbean.UrgencyReportListR
 import com.siweisoft.nurse.ui.info.urgencyreport.ope.UrgencyReportNetOpe;
 import com.siweisoft.nurse.ui.info.urgencyreport.ope.UrgencyReportUIOpe;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.util.SPUtil;
-import com.siweisoft.util.SheetDialogUtil;
-import com.siweisoft.view.bottomdialogmenuview.BottomDialogMenuView;
-import com.siweisoft.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.view.refreshlayout.MaterialRefreshListener;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class UrgencyReportFrag extends BaseNurseFrag implements OnAppItemClickListener{
+public class UrgencyReportFrag extends BaseNurseFrag implements OnAppItemClickListener {
 
     UrgencyReportUIOpe urgencyReportUIOpe;
 
     UrgencyReportNetOpe urgencyReportNetOpe;
 
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -132,7 +136,7 @@ public class UrgencyReportFrag extends BaseNurseFrag implements OnAppItemClickLi
                             indexActivity.getHomeUIOpe().getViewPager().setCurrentItem(0);
                             Bundle bundle = new Bundle();
                             bundle.putString(ValueConstant.DATA_POSITION,urgencyReportUIOpe.getData().get(position).getZyh());
-                            bundle.putString(ValueConstant.FARG_TYPE,ValueConstant.FARG_TYPE_CMD);
+                            bundle.putString(ValueConstant.FARG_TYPE, ValueConstant.FARG_TYPE_CMD);
                             FragManager.getInstance().startFragment(getFragmentManager(),0,new BedListFGM(),bundle);
                         }
                         break;

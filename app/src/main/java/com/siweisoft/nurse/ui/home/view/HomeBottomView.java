@@ -10,9 +10,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.interf.view.OnAppItemLongClickListener;
-import com.siweisoft.base.ui.interf.view.OnAppItemSelectListener;
-import com.siweisoft.util.LogUtil;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemLongClickListener;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemSelectListener;
+import com.siweisoft.lib.util.LogUtil;
 
 import java.util.ArrayList;
 

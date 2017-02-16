@@ -5,24 +5,25 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.constant.ValueConstant;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.SPUtil;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.mission.missiondetail.bean.reqbean.MissisonDetailReqBean;
 import com.siweisoft.nurse.ui.mission.missiondetail.ope.MissionDetailNetOpe;
 import com.siweisoft.nurse.ui.mission.missiondetail.ope.MissionDetailUIOpe;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionResBean;
 import com.siweisoft.nurse.ui.user.login.bean.GetallregionbyuserResBean;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.util.SPUtil;
 
 /**
  * Created by ${viwmox} on 2016-11-11.
  */
-public class MissionDetailFrag extends BaseNurseFrag implements OnAppItemClickListener{
+public class MissionDetailFrag extends BaseNurseFrag implements OnAppItemClickListener {
 
 
     MissionDetailUIOpe missionDetailUIOpe;
@@ -30,6 +31,11 @@ public class MissionDetailFrag extends BaseNurseFrag implements OnAppItemClickLi
     AreaMessionResBean resBean;
 
     MissionDetailNetOpe missionDetailNetOpe;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

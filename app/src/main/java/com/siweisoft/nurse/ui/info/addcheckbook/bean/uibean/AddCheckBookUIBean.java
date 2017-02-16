@@ -6,14 +6,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.bean.uibean.BaseUIBean;
+import com.siweisoft.lib.base.ui.bean.uibean.BaseUIBean;
 
 import butterknife.BindView;
 
 /**
  * Created by ${viwmox} on 2016-12-07.
  */
-public class AddCheckBookUIBean extends BaseUIBean{
+public class AddCheckBookUIBean extends BaseUIBean {
 
     @BindView(R.id.tv_name)
     TextView nameTV;

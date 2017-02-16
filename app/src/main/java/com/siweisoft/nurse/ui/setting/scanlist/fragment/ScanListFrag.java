@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.siweisoft.app.R;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.setting.scanlist.ope.ScanListUIOpe;
 
 /**
@@ -15,6 +16,11 @@ public class ScanListFrag extends BaseNurseFrag{
 
 
     ScanListUIOpe scanListUIOpe;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

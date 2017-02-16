@@ -2,7 +2,6 @@ package com.siweisoft.nurse.ui.mission.missionlist.bean.adaapterbean;
 
 import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionListResBean;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionResBean;
-import com.siweisoft.util.data.DateFormatUtil;
 
 import java.util.ArrayList;
 

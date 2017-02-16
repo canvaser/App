@@ -7,14 +7,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.bean.uibean.BaseUIBean;
+import com.siweisoft.lib.base.ui.bean.uibean.BaseUIBean;
 
 import butterknife.BindView;
 
 /**
  * Created by ${viwmox} on 2016-11-25.
  */
-public class InputDataUIBean extends BaseUIBean{
+public class InputDataUIBean extends BaseUIBean {
 
     @BindView(R.id.tv_name)
     TextView nameTV;

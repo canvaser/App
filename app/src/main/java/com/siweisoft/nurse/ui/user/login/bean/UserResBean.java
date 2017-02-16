@@ -1,13 +1,14 @@
 package com.siweisoft.nurse.ui.user.login.bean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-11-15.
  */
-public class UserResBean extends BaseBean{
+public class UserResBean extends ResultResBean {
 
     private String id;
 

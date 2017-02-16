@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.siweisoft.app.R;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.info.adddutereport.ope.AddDuteReportUIOpe;
 
 /**
@@ -14,6 +15,11 @@ import com.siweisoft.nurse.ui.info.adddutereport.ope.AddDuteReportUIOpe;
 public class AddDuteReportFrag extends BaseNurseFrag{
 
     AddDuteReportUIOpe addDuteReportUIOpe;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

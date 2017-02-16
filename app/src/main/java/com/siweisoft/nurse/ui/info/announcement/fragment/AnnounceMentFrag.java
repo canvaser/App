@@ -5,14 +5,15 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.interf.OnFinishListener;
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.info.announcement.ope.AnnounceNetOpe;
 import com.siweisoft.nurse.ui.info.announcement.ope.AnnounceUIOpe;
-import com.siweisoft.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.view.refreshlayout.MaterialRefreshListener;
 
 /**
  * Created by ${viwmox} on 2016-12-13.
@@ -24,6 +25,12 @@ public class AnnounceMentFrag extends BaseNurseFrag{
 
 
     AnnounceNetOpe announceNetOpe;
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);

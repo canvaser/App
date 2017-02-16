@@ -10,14 +10,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.util.BitmapUtil;
+import com.siweisoft.lib.util.NullUtil;
+import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 import com.siweisoft.nurse.ui.bed.patient.adapter.CareListAdapter;
 import com.siweisoft.nurse.ui.bed.patient.bean.resbean.PatientAdditionListResBean;
 import com.siweisoft.nurse.ui.bed.patient.bean.resbean.PatientAdditionResBean;
-import com.siweisoft.util.BitmapUtil;
-import com.siweisoft.util.NullUtil;
-import com.siweisoft.util.StringUtil;
 
 import java.util.ArrayList;
 

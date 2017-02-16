@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.id.BaseID;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.network.netadapter.OnNetWorkReqAdapter;
+import com.siweisoft.nurse.nursevalue.BaseID;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.dialog.DialogUtil;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.addmypatient.bean.AddMyPatientListAdapterBean;
 import com.siweisoft.nurse.ui.bed.addmypatient.bean.MyPaitentUpdateListReqBean;
 import com.siweisoft.nurse.ui.bed.addmypatient.bean.MyPaitentUpdateReqBean;
@@ -25,9 +27,6 @@ import com.siweisoft.nurse.ui.bed.bedlist.ope.GetMyPatientListNetOpe;
 import com.siweisoft.nurse.ui.user.login.activity.LoginActivity;
 import com.siweisoft.nurse.ui.user.login.ope.LoginNetOpe;
 import com.siweisoft.nurse.util.fragment.FragManager;
-import com.siweisoft.util.GsonUtil;
-import com.siweisoft.util.LogUtil;
-import com.siweisoft.util.dialog.DialogUtil;
 
 import java.util.ArrayList;
 
@@ -37,7 +36,7 @@ import butterknife.Optional;
 /**
  * Created by ${viwmox} on 2016-11-16.
  */
-public class AddMyPatientFrag extends BaseNurseFrag implements OnAppItemClickListener{
+public class AddMyPatientFrag extends BaseNurseFrag implements OnAppItemClickListener {
 
 
     AddMyPatientUIOpe addMyPatientUIOpe;
@@ -45,6 +44,13 @@ public class AddMyPatientFrag extends BaseNurseFrag implements OnAppItemClickLis
     AddMyPatientNetOpe addMyPatientNetOpe;
 
     ArrayList<PatientBedResBean> res;
+
+
+    @Override
+    public BaseNurseOpes getOpe() {
+        return null;
+    }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -72,7 +78,7 @@ public class AddMyPatientFrag extends BaseNurseFrag implements OnAppItemClickLis
     }
 
     @Optional
-    @OnClick({BaseID.ID_RIGHT,R.id.iv_select,BaseID.ID_BACK})
+    @OnClick({BaseID.ID_RIGHT,R.id.iv_select, BaseID.ID_BACK})
     public void onClick(View v){
         switch (v.getId()){
             case BaseID.ID_BACK:

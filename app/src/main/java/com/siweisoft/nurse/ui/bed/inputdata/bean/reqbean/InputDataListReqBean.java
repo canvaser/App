@@ -1,6 +1,5 @@
 package com.siweisoft.nurse.ui.bed.inputdata.bean.reqbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
 import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
 
 /**

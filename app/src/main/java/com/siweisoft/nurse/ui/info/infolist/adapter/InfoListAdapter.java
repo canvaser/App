@@ -6,15 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.adapter.AppRecycleAdapter;
-import com.siweisoft.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.util.BitmapUtil;
 import com.siweisoft.nurse.ui.info.infolist.bean.InfoListUIBean;
-import com.siweisoft.util.BitmapUtil;
 
 /**
  * Created by ${viwmox} on 2016-11-08.
  */
-public class InfoListAdapter extends AppRecycleAdapter{
+public class InfoListAdapter extends AppRecycleAdapter {
 
 
     OnAppItemClickListener onAppItemClickListener;

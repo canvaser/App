@@ -1,38 +1,27 @@
 package com.siweisoft.aplication;
 
-import android.app.Activity;
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.telephony.TelephonyManager;
 
-import com.siweisoft.network.NetWork;
+import com.siweisoft.app.R;
+import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.network.NetWork;
+import com.siweisoft.lib.service.main.AppService;
+import com.siweisoft.lib.util.AppUtil;
+import com.siweisoft.lib.util.LogUtil;
+import com.siweisoft.lib.util.ScreenUtil;
+import com.siweisoft.lib.uuzuche.lib_zxing.activity.ZXingLibrary;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.home.activity.IndexActivity;
-import com.siweisoft.app.R;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.service.main.AppService;
-import com.siweisoft.util.AppUtil;
-import com.siweisoft.util.LogUtil;
-import com.siweisoft.util.ScreenUtil;
-import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.UUID;
 
 
 /**
  * 用于一些跟应用程序生命周期一致的处理
  */
-public class AppAplication extends Application{
-
-
-    HashMap<String,Activity> activityHashMap =new HashMap<>();
-
-    ArrayList<Activity> activities = new ArrayList<>();
+public class AppAplication extends com.siweisoft.lib.aplication.LibAplication {
 
     @Override
     public void onCreate() {
@@ -43,14 +32,12 @@ public class AppAplication extends Application{
         initUUUId();
         initZxing();
 
-
     }
 
     private void initBase(){
         ScreenUtil.getInstance().getScreenSize(this);
         ValueConstant.DIMEN_1 = (int) getResources().getDimension(R.dimen.dimen_1);
         NetWork.getInstance(this).init(DataValue.URL_NURSE);
-
         DataValue.init();
     }
 
@@ -101,27 +88,8 @@ public class AppAplication extends Application{
         return true;
     }
 
-    /**
-     * 退出结束所有界面
-     */
-    public void exit(){
-        Iterator  iterator = activityHashMap.keySet().iterator();
-        while (iterator.hasNext()){
-            activityHashMap.get(iterator.next()).finish();
-        }
-        activityHashMap.clear();
-    }
-
     public void reStart(){
         exit();
         startActivity(new Intent(this, IndexActivity.class));
-    }
-
-    public HashMap<String, Activity> getActivityHashMap() {
-        return activityHashMap;
-    }
-
-    public ArrayList<Activity> getActivities() {
-        return activities;
     }
 }

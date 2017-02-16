@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.info.bedreport.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 /**
  * Created by ${viwmox} on 2016-11-29.
  */
-public class BedReportResBean extends BaseBean{
+public class BedReportResBean extends ResultResBean {
 
     private String date;
 

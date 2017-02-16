@@ -1,11 +1,12 @@
 package com.siweisoft.nurse.ui.bed.MyMission.bean.reqbean;
 
-import com.siweisoft.network.bean.req.BaseReqBean;
+
+import com.siweisoft.lib.network.bean.req.BaseReqBean;
 
 /**
  * Created by ${viwmox} on 2016-11-17.
  */
-public class GetPatientTaskOfTodayReqBean extends BaseReqBean{
+public class GetPatientTaskOfTodayReqBean extends BaseReqBean {
 
     private String zyh;
 

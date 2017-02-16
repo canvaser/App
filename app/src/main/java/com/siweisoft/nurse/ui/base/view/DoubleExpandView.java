@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.util.AttributeSet;
 import android.widget.ExpandableListView;
 
-import com.siweisoft.util.LogUtil;
 
 /**
  * Created by ${viwmox} on 2016-11-09.

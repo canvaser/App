@@ -1,13 +1,14 @@
 package com.siweisoft.nurse.ui.bed.shiftdute.bean.resbean;
 
-import com.siweisoft.base.ui.bean.BaseBean;
+
+import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-12-06.
  */
-public class ShiftDuteListResBean extends BaseBean{
+public class ShiftDuteListResBean extends ResultResBean {
 
     private ArrayList<ShiftDuteResBean> data;
 

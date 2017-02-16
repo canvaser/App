@@ -2,7 +2,7 @@ package com.siweisoft.nurse.ui.info.bedcheck.ope;
 
 import android.content.Context;
 
-import com.siweisoft.base.ui.ope.BaseOpe;
+import com.siweisoft.lib.base.ui.ope.BaseOpe;
 import com.siweisoft.nurse.nursevalue.MethodValue;
 import com.siweisoft.nurse.ui.info.bedcheck.bean.resbean.BedCheckResBean;
 import com.siweisoft.nurse.ui.user.login.bean.DoLoginResBean;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-12-13.
  */
-public class BedCheckDAOpe extends BaseOpe{
+public class BedCheckDAOpe extends BaseOpe {
 
     ArrayList<BedCheckResBean> data;
 

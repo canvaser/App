@@ -5,15 +5,15 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.base.ui.bean.uibean.BaseUIBean;
-import com.siweisoft.util.ToastUtil;
+import com.siweisoft.lib.base.ui.bean.uibean.BaseUIBean;
+import com.siweisoft.lib.util.ToastUtil;
 
 import butterknife.BindView;
 
 /**
  * Created by ${viwmox} on 2016-11-23.
  */
-public class MissionItenHeadUIBean extends BaseUIBean{
+public class MissionItenHeadUIBean extends BaseUIBean {
 
 
     @BindView(R.id.tv_all)
