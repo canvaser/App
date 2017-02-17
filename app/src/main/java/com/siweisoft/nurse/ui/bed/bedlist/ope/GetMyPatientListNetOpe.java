@@ -7,6 +7,7 @@ import com.siweisoft.lib.network.NetWork;
 import com.siweisoft.lib.network.bean.req.BaseReqBean;
 import com.siweisoft.lib.network.interf.OnNetWorkReqInterf;
 import com.siweisoft.nurse.nursevalue.DataValue;
+import com.siweisoft.nurse.nursevalue.MethodValue;
 import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
 
 /**
@@ -37,7 +38,7 @@ public class GetMyPatientListNetOpe extends BaseNetOpe {
     public void getRegion(OnNetWorkReqInterf reqInterf) {
 
         BaseNurseReqBean baseReqBean = new BaseNurseReqBean();
-        baseReqBean.setRid("0250040");
+        baseReqBean.setRid(MethodValue.getUserInfo(context).getData().getUser().getRegions().get(0));
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_PATIENT_LIST_IN_AREA, baseReqBean, reqInterf);
     }
 }

@@ -1,17 +1,13 @@
 package com.siweisoft.nurse.ui.check.checklist.fragment;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
-import android.widget.ExpandableListView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemsClickListener;
@@ -25,7 +21,6 @@ import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.check.checklist.bean.CheckDABean;
-import com.siweisoft.nurse.ui.check.checklist.bean.CheckHeadUIBean;
 import com.siweisoft.nurse.ui.check.checklist.bean.bean.TitleBean;
 import com.siweisoft.nurse.ui.check.checklist.bean.reqbean.UpdateCheckListReqBean;
 import com.siweisoft.nurse.ui.check.checklist.bean.resbean.CheckListResBean;
@@ -129,13 +124,13 @@ public class CheckListFGM extends BaseNurseFrag implements
     }
 
     @Override
-    public void onAppItemClick(int index, View view, int position) {
+    public void onAppItemClick(final int index, View view, final int position) {
         switch (view.getId()){
             case R.id.ll_left:
 
                 break;
             case R.id.tv_finish:
-                UpdateCheckListReqBean reqBean = new UpdateCheckListReqBean();
+                final UpdateCheckListReqBean reqBean = new UpdateCheckListReqBean();
                 if(checkListFGMUIOpe.getCheckListAdapter().getData().get(index).getData().get(position).getCheckStatus().equals("T")){
                     reqBean.setStatus("F");
                 }else{
@@ -146,7 +141,8 @@ public class CheckListFGM extends BaseNurseFrag implements
                     @Override
                     public void onNetWorkResult(boolean success, Object o) {
                         if(success){
-                            checkListFGMUIOpe.getRefreshLayout().autoRefresh();
+                            checkListFGMUIOpe.getCheckListAdapter().getData().get(index).getData().get(position).setCheckStatus(reqBean.getStatus());
+                            checkListFGMUIOpe.getCheckListAdapter().notifyDataSetChanged();
                         }
                     }
                 });

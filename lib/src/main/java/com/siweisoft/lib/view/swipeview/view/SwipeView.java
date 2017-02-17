@@ -214,6 +214,8 @@ public class SwipeView extends LinearLayout{
 
     public static int touchtatus = STATUS_DOWN;
 
+    public static double agree = Math.tan(Math.toRadians(60));
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -232,7 +234,7 @@ public class SwipeView extends LinearLayout{
                 if(childView==null){
                     break;
                 }
-                if(Math.abs(values[1].getY()-values[0].getY())/Math.abs(values[1].getX()-values[0].getX())<1){
+                if(Math.abs(values[1].getY()-values[0].getY())/Math.abs(values[1].getX()-values[0].getX())<agree){
                     requestDisallowInterceptTouchEvent(true);
                     if(getParent() instanceof PinnedHeaderExpandableListView ){
                         PinnedHeaderExpandableListView p = (PinnedHeaderExpandableListView) getParent();

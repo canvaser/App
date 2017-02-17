@@ -34,10 +34,15 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
+import com.siweisoft.lib.R;
 import com.siweisoft.lib.util.LogUtil;
 import com.siweisoft.lib.view.chart.linearchat.bean.databean.Value;
 import com.siweisoft.lib.view.swipeview.view.SwipeView;
@@ -70,23 +75,26 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
     private boolean mActionDownHappened = false;
     protected boolean mIsHeaderGroupClickable = true;
 
+    Context context;
+
 
     public PinnedHeaderExpandableListView(Context context) {
         super(context);
-        initView();
+        initView(context);
     }
 
     public PinnedHeaderExpandableListView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initView();
+        initView(context);
     }
 
     public PinnedHeaderExpandableListView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        initView();
+        initView(context);
     }
 
-    private void initView() {
+    private void initView(Context context) {
+        this.context = context;
         setFadingEdgeLength(0);
         setOnScrollListener(this);
     }
@@ -434,6 +442,4 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
     public void setOnHeadViewClick(OnItemClickListener onHeadViewClick) {
         this.onHeadViewClick = onHeadViewClick;
     }
-
-
 }

@@ -44,6 +44,9 @@ public class DataValue {
     /**获取文书模板*/
     public static final String URL_GET_DOCUMENT_DETAIL= "getFileTemplate";
 
+    /**获取病人的文书数据*/
+    public static final String URL_GET_FILE_DATA_BY_PATIENT= "getFileDataByPatient02";
+
     /***/
     public static final String URL_GETADDITION_LIST= "getAdditionList";
 

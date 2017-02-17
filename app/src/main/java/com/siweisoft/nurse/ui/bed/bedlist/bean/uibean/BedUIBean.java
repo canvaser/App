@@ -33,6 +33,15 @@ public class BedUIBean extends BaseUIBean {
     @BindView(R.id.iv_ming)
     ImageView mingIV;
 
+    @BindView(R.id.iv_shu)
+    ImageView shuIV;
+
+    @BindView(R.id.iv_ru)
+    ImageView ruIV;
+
+    @BindView(R.id.iv_chu)
+    ImageView chuIV;
+
     @BindView(R.id.ll_r)
     View  rV;
 
@@ -45,40 +54,39 @@ public class BedUIBean extends BaseUIBean {
         getLevelIV().setLayoutParams(params);
     }
 
-
-    public TextView getNumAndNameTV() {
-        return numAndNameTV;
-    }
-
-    public void setNumAndNameTV(TextView numAndNameTV) {
-        this.numAndNameTV = numAndNameTV;
-    }
-
-    public ImageView getSexIV() {
-        return sexIV;
-    }
-
-    public void setSexIV(ImageView sexIV) {
-        this.sexIV = sexIV;
-    }
-
-    public ImageView getLevelIV() {
-        return levelIV;
-    }
-
-    public void setLevelIV(ImageView levelIV) {
-        this.levelIV = levelIV;
-    }
-
-    public View getrV() {
-        return rV;
+    public ImageView getChuIV() {
+        return chuIV;
     }
 
     public TextView getEmptyTV() {
         return emptyTV;
     }
 
+    public ImageView getLevelIV() {
+        return levelIV;
+    }
+
     public ImageView getMingIV() {
         return mingIV;
+    }
+
+    public TextView getNumAndNameTV() {
+        return numAndNameTV;
+    }
+
+    public ImageView getRuIV() {
+        return ruIV;
+    }
+
+    public View getrV() {
+        return rV;
+    }
+
+    public ImageView getSexIV() {
+        return sexIV;
+    }
+
+    public ImageView getShuIV() {
+        return shuIV;
     }
 }

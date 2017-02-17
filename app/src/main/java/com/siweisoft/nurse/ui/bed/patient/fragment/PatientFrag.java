@@ -17,6 +17,7 @@ import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
 import com.siweisoft.nurse.nursevalue.BaseID;
+import com.siweisoft.nurse.ui.addwater.addwater.fragment.AddWaterListFrag;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
@@ -119,7 +120,7 @@ public class PatientFrag extends BaseNurseFrag {
 
     int i=0;
     @Optional
-    @OnClick({R.id.rl_nurse_document,R.id.iv_arrow, BaseID.ID_MID,BaseID.ID_RIGHT,R.id.ll_baseinfo,R.id.rl_mymission,R.id.rl_advice,R.id.rl_data,R.id.rl_assay,R.id.rl_nurserecord,R.id.rl_handoverreport})
+    @OnClick({R.id.rl_fluid_card,R.id.rl_nurse_document,R.id.iv_arrow, BaseID.ID_MID,BaseID.ID_RIGHT,R.id.ll_baseinfo,R.id.rl_mymission,R.id.rl_advice,R.id.rl_data,R.id.rl_assay,R.id.rl_nurserecord,R.id.rl_handoverreport})
     public void onClick(final View view){
         switch (view.getId()){
             case R.id.ll_baseinfo:
@@ -209,6 +210,11 @@ public class PatientFrag extends BaseNurseFrag {
                 bundle5.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
                 bundle5.putSerializable(ValueConstant.DATA_DATA2, new DocumentListResBean.DataBean(DocumentListResBean.DataBean.PID_START));
                 FragManager.getInstance().startFragmentForResult(getFragmentManager(),index, new DocumentListFrag(),bundle5,ValueConstant.CODE_REQUSET1);
+                break;
+            case R.id.rl_fluid_card:
+                Bundle bundle6 = new Bundle();
+                bundle6.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(),index, new AddWaterListFrag(),bundle6,ValueConstant.CODE_REQUSET1);
                 break;
         }
 

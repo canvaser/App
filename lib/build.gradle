@@ -59,6 +59,7 @@ android {
                     'src/main/res/anims/base',
 
                     'src/main/res/menus/chart',
+                    'src/main/res/timepick',
             ]
             jniLibs.srcDirs=[
                     'libs',

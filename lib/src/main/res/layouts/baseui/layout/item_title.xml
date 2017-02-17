@@ -15,12 +15,16 @@
             android:gravity="center"
             android:layout_centerVertical="true"
             android:id="@+id/ftv_back"
-            android:padding="4dp"
             android:background="@drawable/drawable_back"
             android:textSize="17sp"
-            android:textColor="@color/white"
+            android:textColor="@color/color_title_select"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="4dp"
+            android:paddingRight="4dp"
+            android:paddingBottom="4dp"
+            />
 
 
         <TextView
@@ -30,7 +34,7 @@
             android:paddingRight="6dp"
             android:background="@drawable/drawable_title"
             android:textSize="17sp"
-            android:textColor="@color/white"
+            android:textColor="@color/color_title_select"
             android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -45,9 +49,9 @@
             android:layout_alignParentRight="true"
             android:id="@+id/ftv_right"
             android:padding="4dp"
-            android:background="@drawable/drawable_back"
+            android:background="@drawable/drawable_right"
             android:textSize="17sp"
-            android:textColor="@color/white"
+            android:textColor="@color/color_title_select"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.google.gson.Gson;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.base.ui.ope.BaseDBOpe;
@@ -18,11 +17,9 @@ import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
-import com.siweisoft.nurse.ui.document.document.adapter.DocumentListAdapter;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentDetailResBean;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentListResBean;
 import com.siweisoft.nurse.ui.document.document.ope.daope.DocumentDetailListDAOpe;
-import com.siweisoft.nurse.ui.document.document.ope.daope.DocumentListDAOpe;
 import com.siweisoft.nurse.ui.document.document.ope.uiope.DocumentDetailListUIOpe;
 
 /**

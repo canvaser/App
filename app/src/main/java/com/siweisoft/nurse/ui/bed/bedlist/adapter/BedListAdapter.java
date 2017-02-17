@@ -55,11 +55,16 @@ public class BedListAdapter extends AppRecycleAdapter {
                 if(data.get(position).getAdditionCodes()!=null && data.get(position).getAdditionCodes().size()>0){
                     switch (data.get(position).getAdditionCodes().get(0).getType()){
                         case "过敏":
-                            //BitmapUtil.getInstance().setBg(context,bedUIBean.getMingIV(),R.drawable.icon_ming);
+                            bedUIBean.getMingIV().setVisibility(View.VISIBLE);
                             break;
                         case "手术":
-                            //BitmapUtil.getInstance().setBg(context,bedUIBean.getMingIV(),R.drawable.icon_shu);
+                            bedUIBean.getShuIV().setVisibility(View.VISIBLE);
                             break;
+                        default:
+                            bedUIBean.getShuIV().setVisibility(View.INVISIBLE);
+                            bedUIBean.getMingIV().setVisibility(View.INVISIBLE);
+                            bedUIBean.getRuIV().setVisibility(View.INVISIBLE);
+                            bedUIBean.getChuIV().setVisibility(View.INVISIBLE);
                     }
                 }
 

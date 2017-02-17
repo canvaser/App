@@ -4,9 +4,9 @@ import android.content.Context;
 
 import com.siweisoft.lib.base.ui.ope.BaseNetOpe;
 import com.siweisoft.lib.network.NetWork;
-import com.siweisoft.lib.network.bean.req.BaseReqBean;
 import com.siweisoft.lib.network.interf.OnNetWorkReqInterf;
 import com.siweisoft.nurse.nursevalue.DataValue;
+import com.siweisoft.nurse.ui.addwater.addwater.bean.netbean.AddWaterReqBean;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentDetailReqBean;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentListReqBean;
 
@@ -31,5 +31,15 @@ public class NurseNetOpe extends BaseNetOpe{
         DocumentDetailReqBean baseReqBean = new DocumentDetailReqBean();
         baseReqBean.setFid(id);
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_DOCUMENT_DETAIL, baseReqBean, reqInterf);
+    }
+
+    //补液卡列表
+    public void addwater_list(String zyh,String fileid,String begin,String end,OnNetWorkReqInterf reqInterf){
+        AddWaterReqBean baseReqBean = new AddWaterReqBean();
+        baseReqBean.setZyh(zyh);
+        baseReqBean.setFileid(fileid);
+        baseReqBean.setBegin(begin);
+        baseReqBean.setEnd(end);
+        NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_FILE_DATA_BY_PATIENT, baseReqBean, reqInterf);
     }
 }

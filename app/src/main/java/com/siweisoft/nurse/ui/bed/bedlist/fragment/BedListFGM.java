@@ -92,10 +92,11 @@ public class BedListFGM extends BaseNurseFrag implements OnAppItemClickListener 
 
                 if(success){
                     PatientBedListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(),PatientBedListResBean.class);
+                    bedListDAOpe.setAllList(resBean.getData());
+                    bedListDAOpe.initAllBedList(activity);
                     bedListFGMUIOpe.initBedList(resBean.getData());
                     bedListFGMUIOpe.getBedListAdapter().setOnAppItemClickListener(BedListFGM.this);
                     bedListFGMUIOpe.setTitle(bedListDAOpe.getIndex(),resBean.getData().size());
-                    bedListDAOpe.setAllList(resBean.getData());
                 }else{
                     bedListFGMUIOpe.initBedList(null);
                 }

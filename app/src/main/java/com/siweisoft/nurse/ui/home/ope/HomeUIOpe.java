@@ -56,9 +56,6 @@ public class HomeUIOpe extends BaseUIOpe {
 
     private void init(){
 
-        int[] ints = new int[]{R.layout.item_bed,R.layout.item_mission,R.layout.item_check,R.layout.item_info,R.layout.item_setting};
-
-
         final ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new BedListFGM());
         fragments.add(new MissionListFGM());
@@ -68,7 +65,7 @@ public class HomeUIOpe extends BaseUIOpe {
 
         final ArrayList<View> views = new ArrayList<>();
         final FragmentActivity fragmentActivity = (FragmentActivity) context;
-
+        int[] ints = new int[]{R.layout.item_bed,R.layout.item_mission,R.layout.item_check,R.layout.item_info,R.layout.item_setting};
         for(int i=0;i<ints.length;i++){
             View view = LayoutInflater.from(context).inflate(ints[i],null);
             views.add(view);
@@ -79,7 +76,6 @@ public class HomeUIOpe extends BaseUIOpe {
         for(int i=0;i<views.size();i++){
             integers.add(views.get(i).getId());
         }
-
         FragManager.getInstance().init(integers);
 
 
