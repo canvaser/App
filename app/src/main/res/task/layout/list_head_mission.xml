@@ -5,13 +5,12 @@
     android:id="@+id/head"
 >
     <LinearLayout
+        android:gravity="center_vertical"
         android:background="@drawable/icon_bg_exp_head"
         android:layout_width="match_parent"
         android:layout_height="40dp">
 <LinearLayout
     android:id="@+id/ll_title"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp"
     android:orientation="horizontal"
     android:gravity="center_vertical"
     android:layout_width="match_parent"
@@ -48,7 +47,7 @@
         android:textSize="13sp"
         android:textColor="@color/white"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="25dp" />
 
 
     <TextView
@@ -61,7 +60,7 @@
         android:textSize="13sp"
         android:textColor="@color/white"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="25dp" />
 </LinearLayout>
 
 </LinearLayout>

@@ -72,7 +72,7 @@
 </LinearLayout>
 <ImageView
     android:scaleType="fitXY"
-    android:padding="5dp"
+    android:padding="2dp"
     android:layout_gravity="center_horizontal"
     android:id="@+id/iv_level"
     android:layout_centerInParent="true"

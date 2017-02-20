@@ -10,20 +10,17 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
 import com.siweisoft.lib.base.ui.ope.BaseDBOpe;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
-import com.siweisoft.lib.util.LogUtil;
 import com.siweisoft.lib.util.menu.popup.PopupUtil;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
 import com.siweisoft.nurse.ui.document.document.adapter.DocumentListAdapter;
@@ -33,7 +30,6 @@ import com.siweisoft.nurse.ui.document.document.ope.uiope.DocumentListUIOpe;
 import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
 import com.siweisoft.nurse.util.fragment.FragManager;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -55,7 +51,7 @@ public class DocumentListFrag extends BaseNurseFrag<DocumentListUIOpe,NurseNetOp
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
         getOpe().getBaseDAOpe().setDataBean((DocumentListResBean.DataBean) getArguments().get(ValueConstant.DATA_DATA2));
         getOpe().getBaseNurseUIOpe().init(getOpe().getBaseDAOpe().getDataBean().getTitle()==null?patientAdditionDAOpe.getPatientBedResBean().get姓名():getOpe().getBaseDAOpe().getDataBean().getTitle());
-        getOpe().getBaseNurseUIOpe().getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListener() {
+        getOpe().getBaseNurseUIOpe().getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
                 getData(new OnFinishListener() {

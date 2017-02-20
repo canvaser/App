@@ -1,5 +1,9 @@
 package com.siweisoft.nurse.ui.mission.missionlist.ope;
 
+import android.os.AsyncTask;
+
+import com.siweisoft.lib.base.ui.interf.OnNetFinishInterf;
+import com.siweisoft.lib.base.ui.interf.OnNetFinishWithObjInter;
 import com.siweisoft.lib.util.LogUtil;
 import com.siweisoft.lib.util.data.DateFormatUtil;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.adaapterbean.AreaMissionListAdapterBean;
@@ -23,54 +27,67 @@ public class AreaMessionTimeOpe {
     HashMap<Integer,HashMap<Integer,HashMap<Integer,HashMap<Integer,ArrayList<AreaMessionResBean>>>>> sorthashMap=new HashMap<>();
 
 
-    public ArrayList<AreaMissionListAdapterBean> sort(AreaMessionListResBean resBean,String type,String sort,String count){
 
-        LogUtil.E(System.currentTimeMillis());
-        for(int i=0;i<resBean.getData().size();i++){
-            try {
-                if(type.equals("全部")&&sort.equals("全部")||
-                        type.equals("全部")&&sort.equals(resBean.getData().get(i).getTitles().get(0).getNurse_type())||
-                        type.equals(resBean.getData().get(i).getTitles().get(0).getStatus()) &&sort.equals("全部")||
-                        type.equals(resBean.getData().get(i).getTitles().get(0).getStatus()) &&sort.equals(resBean.getData().get(i).getTitles().get(0).getNurse_type())
-                        ){
-                    String l;
-                    if("st".equals(resBean.getData().get(i).getTitles().get(0).getKey().toLowerCase())|| resBean.getData().get(i).getCodename().equals("出院带药")){
-                        l= "临时";
-                    }else{
-                        l = "长期";
-                    }
-                    if(count.equals("全部")||
-                            count.equals(l)){
-                        Calendar calendar = DateFormatUtil.convent_yyyyMMddHHmmssCalendar(resBean.getData().get(i).getStart());
-                        int y =calendar.get(Calendar.YEAR);
-                        int m = calendar.get(Calendar.MONTH);
-                        int d= calendar.get(Calendar.DAY_OF_MONTH);
-                        int h = calendar.get(Calendar.HOUR_OF_DAY);
-                        if(sorthashMap.get(y)==null){
-                            sorthashMap.put(y,new HashMap<Integer, HashMap<Integer, HashMap<Integer, ArrayList<AreaMessionResBean>>>>());
-                        }
-                        if(sorthashMap.get(y).get(m)==null){
-                            sorthashMap.get(y).put(m,new HashMap<Integer, HashMap<Integer, ArrayList<AreaMessionResBean>>>());
-                        }
-                        if(sorthashMap.get(y).get(m).get(d)==null){
-                            sorthashMap.get(y).get(m).put(d,new HashMap<Integer, ArrayList<AreaMessionResBean>>());
-                        }
-                        int hourarea = (h/2)*2;
-                        if(sorthashMap.get(y).get(m).get(d).get(hourarea)==null){
-                            sorthashMap.get(y).get(m).get(d).put(hourarea,new ArrayList<AreaMessionResBean>());
-                        }
-//                ArrayList<AreaMessionResBean> list =sorthashMap.get(calendar.get(Calendar.YEAR)).get(calendar.get(Calendar.MONTH)).get(calendar.get(Calendar.DAY_OF_MONTH)).get(hourarea);
-                        sorthashMap.get(y).get(m).get(d).get(hourarea).add(resBean.getData().get(i));
-                    }
-
+    public void sort(final AreaMessionListResBean resBean, final String type, final String sort, final String count, final OnNetFinishWithObjInter instener){
+        new AsyncTask<String, String, ArrayList<AreaMissionListAdapterBean>>() {
+            @Override
+            protected ArrayList<AreaMissionListAdapterBean> doInBackground(String... params) {
+                if(resBean==null || resBean.getData()==null){
+                    return sortList();
                 }
+                for(int i=0;i<resBean.getData().size();i++){
+                    try {
+                        if(type.equals("全部")&&sort.equals("全部")||
+                                type.equals("全部")&&sort.equals(resBean.getData().get(i).getTitles().get(0).getNurse_type())||
+                                type.equals(resBean.getData().get(i).getTitles().get(0).getStatus()) &&sort.equals("全部")||
+                                type.equals(resBean.getData().get(i).getTitles().get(0).getStatus()) &&sort.equals(resBean.getData().get(i).getTitles().get(0).getNurse_type())
+                                ){
+                            String l;
+                            if("st".equals(resBean.getData().get(i).getTitles().get(0).getKey().toLowerCase())|| resBean.getData().get(i).getCodename().equals("出院带药")){
+                                l= "临时";
+                            }else{
+                                l = "长期";
+                            }
+                            if(count.equals("全部")||
+                                    count.equals(l)){
+                                Calendar calendar = DateFormatUtil.convent_yyyyMMddHHmmssCalendar(resBean.getData().get(i).getStart());
+                                int y =calendar.get(Calendar.YEAR);
+                                int m = calendar.get(Calendar.MONTH);
+                                int d= calendar.get(Calendar.DAY_OF_MONTH);
+                                int h = calendar.get(Calendar.HOUR_OF_DAY);
+                                if(sorthashMap.get(y)==null){
+                                    sorthashMap.put(y,new HashMap<Integer, HashMap<Integer, HashMap<Integer, ArrayList<AreaMessionResBean>>>>());
+                                }
+                                if(sorthashMap.get(y).get(m)==null){
+                                    sorthashMap.get(y).put(m,new HashMap<Integer, HashMap<Integer, ArrayList<AreaMessionResBean>>>());
+                                }
+                                if(sorthashMap.get(y).get(m).get(d)==null){
+                                    sorthashMap.get(y).get(m).put(d,new HashMap<Integer, ArrayList<AreaMessionResBean>>());
+                                }
+                                int hourarea = (h/2)*2;
+                                if(sorthashMap.get(y).get(m).get(d).get(hourarea)==null){
+                                    sorthashMap.get(y).get(m).get(d).put(hourarea,new ArrayList<AreaMessionResBean>());
+                                }
+//                ArrayList<AreaMessionResBean> list =sorthashMap.get(calendar.get(Calendar.YEAR)).get(calendar.get(Calendar.MONTH)).get(calendar.get(Calendar.DAY_OF_MONTH)).get(hourarea);
+                                sorthashMap.get(y).get(m).get(d).get(hourarea).add(resBean.getData().get(i));
+                            }
 
-
-            } catch (ParseException e) {
-                e.printStackTrace();
+                        }
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                }
+                return sortList();
             }
-        }
-        return sortList();
+
+            @Override
+            protected void onPostExecute(ArrayList<AreaMissionListAdapterBean> areaMissionListAdapterBeen) {
+                super.onPostExecute(areaMissionListAdapterBeen);
+                if(instener!=null){
+                    instener.onNetFinish(areaMissionListAdapterBeen);
+                }
+            }
+        }.execute();
     }
 
 

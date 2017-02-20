@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.google.gson.JsonArray;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.constant.ValueConstant;
@@ -12,15 +11,13 @@ import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.SPUtil;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.info.bedreport.bean.resbean.BedReportListResBean;
-import com.siweisoft.nurse.ui.info.bedreport.bean.resbean.BedReportResBean;
 import com.siweisoft.nurse.ui.info.bedreport.ope.BedReportNetOpe;
 import com.siweisoft.nurse.ui.info.bedreport.ope.BedReportUIOpe;
-import com.siweisoft.nurse.ui.user.login.bean.DoLoginResBean;
 import com.siweisoft.nurse.ui.user.login.bean.GetallregionbyuserResBean;
 
 import org.json.JSONArray;
@@ -47,7 +44,7 @@ public class BedReprotFrag extends BaseNurseFrag{
         super.onViewCreated(view, savedInstanceState);
         bedReportNetOpe = new BedReportNetOpe(activity);
         bedReportUIOpe= new BedReportUIOpe(activity,getView());
-        bedReportUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListener() {
+        bedReportUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
                 getData(new OnFinishListener() {

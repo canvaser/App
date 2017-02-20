@@ -27,6 +27,8 @@ public class NurseRecordUIOpe extends BaseNurseUIOpe{
     NurseRecordListAdapter nurseRecordListAdapter;
 
 
+
+
     public NurseRecordUIOpe(Context context, View containerView) {
         super(context, containerView);
         init();
@@ -34,6 +36,12 @@ public class NurseRecordUIOpe extends BaseNurseUIOpe{
     private void init(){
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
+        getMidTV().setVisibility(View.VISIBLE);
+    }
+
+    public void initTile(String str){
+        getMidTV().setSelected(true);
+        getMidTV().setText(str);
     }
 
     public void initList(ArrayList<NurseRecordResBean> data){

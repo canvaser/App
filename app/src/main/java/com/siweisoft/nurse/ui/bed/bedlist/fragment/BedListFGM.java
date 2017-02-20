@@ -15,7 +15,7 @@ import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.menu.popup.PopupUtil;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.nurse.nursevalue.MethodValue;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
@@ -50,7 +50,7 @@ public class BedListFGM extends BaseNurseFrag implements OnAppItemClickListener 
         bedListFGMUIOpe = new BedListFGMUIOpe(activity,getView());
         getMyPatientListNetOpe = new GetMyPatientListNetOpe(activity);
         bedListDAOpe= new BedListDAOpe();
-        bedListFGMUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListener() {
+        bedListFGMUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
                 getData(new OnFinishListener() {
@@ -91,12 +91,17 @@ public class BedListFGM extends BaseNurseFrag implements OnAppItemClickListener 
             public void onNetWorkResult(boolean success, Object o) {
 
                 if(success){
-                    PatientBedListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(),PatientBedListResBean.class);
+                    final PatientBedListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(),PatientBedListResBean.class);
                     bedListDAOpe.setAllList(resBean.getData());
-                    bedListDAOpe.initAllBedList(activity);
-                    bedListFGMUIOpe.initBedList(resBean.getData());
-                    bedListFGMUIOpe.getBedListAdapter().setOnAppItemClickListener(BedListFGM.this);
-                    bedListFGMUIOpe.setTitle(bedListDAOpe.getIndex(),resBean.getData().size());
+                    bedListDAOpe.initAllBedList(activity, new OnFinishListener() {
+                        @Override
+                        public void onFinish(Object o) {
+                            bedListFGMUIOpe.initBedList(resBean.getData());
+                            bedListFGMUIOpe.getBedListAdapter().setOnAppItemClickListener(BedListFGM.this);
+                            bedListFGMUIOpe.setTitle(bedListDAOpe.getIndex(),resBean.getData().size());
+                        }
+                    });
+
                 }else{
                     bedListFGMUIOpe.initBedList(null);
                 }
@@ -113,13 +118,19 @@ public class BedListFGM extends BaseNurseFrag implements OnAppItemClickListener 
             public void onNetWorkResult(boolean success, Object o) {
 
                 if(success){
-                    PatientBedListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(),PatientBedListResBean.class);
+                    final PatientBedListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(),PatientBedListResBean.class);
                     bedListDAOpe.setAllList(resBean.getData());
-                    bedListDAOpe.initAllBedList(context);
+                    bedListDAOpe.initAllBedList(context, new OnFinishListener() {
+                        @Override
+                        public void onFinish(Object o) {
+                            bedListFGMUIOpe.initBedList(resBean.getData());
+                            bedListFGMUIOpe.getBedListAdapter().setOnAppItemClickListener(BedListFGM.this);
+                            bedListFGMUIOpe.setTitle(bedListDAOpe.getIndex(),resBean.getData().size());
+                            onFinishListener.onFinish(o);
+                        }
+                    });
                 }else{
                     bedListFGMUIOpe.initBedList(null);
-                }
-                if(onFinishListener!=null){
                     onFinishListener.onFinish(o);
                 }
             }
@@ -212,7 +223,7 @@ public class BedListFGM extends BaseNurseFrag implements OnAppItemClickListener 
 
     @Override
     public void onResult(int req, Bundle bundle) {
-       bedListFGMUIOpe.getRefreshLayout().autoRefresh();
+       bedListFGMUIOpe.getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
     }
 
     @Override

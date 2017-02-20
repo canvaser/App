@@ -2,9 +2,7 @@ package com.siweisoft.nurse.ui.info.checkbook.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
 import com.siweisoft.nurse.nursevalue.BaseID;
@@ -13,7 +11,7 @@ import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
@@ -45,7 +43,7 @@ public class CheckBookFrag extends BaseNurseFrag implements OnAppItemClickListen
         super.onViewCreated(view, savedInstanceState);
         checkBookUIOpe = new CheckBookUIOpe(activity,getView());
         checkBookNetOpe = new CheckBookNetOpe(activity);
-        checkBookUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListener() {
+        checkBookUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
                 getData(new OnFinishListener() {

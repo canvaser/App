@@ -53,6 +53,12 @@ public class MissionUIBean extends BaseUIBean {
     @BindView(R.id.tv_finish)
     View finishV;
 
+    @BindView(R.id.tv_titlenum)
+    TextView numTV;
+
+    @BindView(R.id.tv_key)
+    TextView keyTV;
+
 
     public MissionUIBean(Context context, View convertView) {
         super(context, convertView);
@@ -97,5 +103,13 @@ public class MissionUIBean extends BaseUIBean {
 
     public View getLeftV() {
         return leftV;
+    }
+
+    public TextView getNumTV() {
+        return numTV;
+    }
+
+    public TextView getKeyTV() {
+        return keyTV;
     }
 }

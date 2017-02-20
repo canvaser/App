@@ -13,6 +13,8 @@ import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
 import com.siweisoft.lib.base.ui.ope.BaseDBOpe;
 import com.siweisoft.lib.base.ui.ope.BaseNetOpe;
 import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.util.fragment.FragManager;
@@ -23,7 +25,7 @@ import butterknife.Optional;
 /**
  * Created by ${viwmox} on 2016-11-10.
  */
-public abstract class BaseNurseFrag<A extends BaseNurseUIOpe,B extends BaseNetOpe,C extends BaseDBOpe,D extends BaseDAOpe> extends BaseUIFragment {
+public abstract class BaseNurseFrag<A extends BaseNurseUIOpe,B extends BaseNetOpe,C extends BaseDBOpe,D extends BaseDAOpe> extends BaseUIFragment implements MaterialRefreshListener {
 
     protected  int index;
 
@@ -67,4 +69,18 @@ public abstract class BaseNurseFrag<A extends BaseNurseUIOpe,B extends BaseNetOp
         return R.layout.layout_baseui;
     }
 
+    @Override
+    public void onfinish() {
+
+    }
+
+    @Override
+    public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
+
+    }
+
+    @Override
+    public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
+
+    }
 }

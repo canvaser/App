@@ -1,6 +1,7 @@
 package com.siweisoft.nurse.ui.bed.MyMission.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.BaseExpandableListAdapter;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemsClickListener;
+import com.siweisoft.lib.util.BitmapUtil;
 import com.siweisoft.lib.util.LogUtil;
 import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.lib.util.data.DateFormatUtil;
@@ -127,17 +129,60 @@ public class MyMissionListAdapter extends BaseExpandableListAdapter implements V
                         myMissionUIBean.getTitleView().setText(StringUtil.getStr(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getTitle()));
                         myMissionUIBean.getTimeTV().setText(DateFormatUtil.getMMDDHHMM(StringUtil.getStr(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getStart())));
                         myMissionUIBean.getTaskNameTV().setText(StringUtil.getStr(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getTaskname()));
-                        if("st".equals(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getKey().toLowerCase())||list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getCodename().equals("出院带药")){
-                            myMissionUIBean.getLinTV().setText("临");
+
+
+
+
+                    String timetype1 = "";
+                    if(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).get医嘱ID().toLowerCase().startsWith("cq")){
+                        timetype1 = "长期";
+                    }
+                    if(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).get医嘱ID().toLowerCase().startsWith("ls")){
+                        timetype1 = "临时";
+                    }
+
+                    if(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).get医嘱ID().toLowerCase().startsWith("hz")){
+                        if("st".equals(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getKey().toLowerCase())){
+                            timetype1 = "临时";
                         }else{
-                            myMissionUIBean.getLinTV().setText("长");
+                            timetype1 = "长期";
                         }
+                    }
+
+                    if(timetype1.equals("临时")){
+                        myMissionUIBean.getLinTV().setText("临");
+                        myMissionUIBean.getLinTV().setTextColor(Color.parseColor("#7FFFD4"));
+                    }
+
+                    if(timetype1.equals("长期")) {
+                        myMissionUIBean.getLinTV().setText("长");
+                        myMissionUIBean.getLinTV().setTextColor(Color.parseColor("#A52A2A"));
+                    }
+
+                    switch (list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getCodename()){
+                        case "出院带药":
+                        case "药品":
+                        case "输液":
+                            myMissionUIBean.getTitleView().setTextColor(R.color.light_blue);
+                            BitmapUtil.getInstance().setBg(context,myMissionUIBean.getCodenameIV(),R.drawable.icon_injecting);
+                            break;
+                        case "检查":
+                        case "化验":
+                            myMissionUIBean.getTitleView().setTextColor(R.color.light_blue);
+                            BitmapUtil.getInstance().setBg(context,myMissionUIBean.getCodenameIV(),R.drawable.icon_injecting);
+                            break;
+                        default:
+                            myMissionUIBean.getTitleView().setTextColor(R.color.black);
+                            BitmapUtil.getInstance().setBg(context,myMissionUIBean.getCodenameIV(),R.drawable.icon_medicine);
+                            break;
+                    }
+
+
                         myMissionUIBean.getRootV().setTag(R.id.position,childPosition);
                         myMissionUIBean.getRootV().setTag(R.id.groupposition,groupPosition);
                         myMissionUIBean.getRootV().setOnClickListener(this);
                 break;
                 default:
-                    LogUtil.E("111111111");
                     MissionUIBean missionUIBean = null;
                     if(convertView!=null && convertView.getTag() instanceof MissionUIBean){
                         missionUIBean = (MissionUIBean) convertView.getTag();
@@ -149,11 +194,56 @@ public class MyMissionListAdapter extends BaseExpandableListAdapter implements V
                         missionUIBean.getTitleView().setText(StringUtil.getStr(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getTitle()));
                         missionUIBean.getTimeTV().setText(DateFormatUtil.getMMDDHHMM(StringUtil.getStr(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getStart())));
                         missionUIBean.getTaskNameTV().setText(StringUtil.getStr(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getTaskname()));
-                        if("st".equals(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getKey().toLowerCase())||list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getCodename().equals("出院带药")){
-                            missionUIBean.getLinTV().setText("临");
+
+                    String timetype = "";
+                    if(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).get医嘱ID().toLowerCase().startsWith("cq")){
+                        timetype = "长期";
+                    }
+                    if(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).get医嘱ID().toLowerCase().startsWith("ls")){
+                        timetype = "临时";
+                    }
+
+                    if(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).get医嘱ID().toLowerCase().startsWith("hz")){
+                        if("st".equals(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getKey().toLowerCase())){
+                            timetype = "临时";
                         }else{
-                            missionUIBean.getLinTV().setText("长");
+                            timetype = "长期";
                         }
+                    }
+
+                    if(timetype.equals("临时")){
+                        missionUIBean.getLinTV().setText("临");
+                        missionUIBean.getLinTV().setTextColor(Color.parseColor("#7FFFD4"));
+                    }
+
+                    if(timetype.equals("长期")) {
+                        missionUIBean.getLinTV().setText("长");
+                        missionUIBean.getLinTV().setTextColor(Color.parseColor("#A52A2A"));
+                    }
+
+                    switch (list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getCodename()){
+                        case "出院带药":
+                        case "药品":
+                        case "输液":
+                            missionUIBean.getTitleView().setTextColor(R.color.light_blue);
+                            BitmapUtil.getInstance().setBg(context,missionUIBean.getCodenameIV(),R.drawable.icon_injecting);
+                            break;
+                        case "检查":
+                        case "化验":
+                            missionUIBean.getTitleView().setTextColor(R.color.light_blue);
+                            BitmapUtil.getInstance().setBg(context,missionUIBean.getCodenameIV(),R.drawable.icon_injecting);
+                            break;
+                        default:
+                            missionUIBean.getTitleView().setTextColor(R.color.black);
+                            BitmapUtil.getInstance().setBg(context,missionUIBean.getCodenameIV(),R.drawable.icon_medicine);
+                            break;
+                    }
+
+
+
+
+
+
                         missionUIBean.getRootV().setTag(R.id.position,childPosition);
                         missionUIBean.getRootV().setTag(R.id.groupposition,groupPosition);
                         missionUIBean.getRootV().setOnClickListener(this);

@@ -26,12 +26,10 @@ import com.siweisoft.lib.util.menu.popup.PopupUtil;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.nurse.nursevalue.MethodValue;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
-import com.siweisoft.nurse.ui.bed.MyMission.bean.reqbean.GetPatientTaskOfTodayReqBean;
-import com.siweisoft.nurse.ui.bed.MyMission.bean.reqbean.GetPatientTaskReqBean;
 import com.siweisoft.nurse.ui.bed.MyMission.ope.GetMyMissionNetOpe;
 import com.siweisoft.nurse.ui.bed.MyMission.ope.MyMissionDAOpe;
 import com.siweisoft.nurse.ui.bed.MyMission.ope.MyMissionStatusOpe;
@@ -46,9 +44,6 @@ import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionResBean;
 import com.siweisoft.nurse.ui.mission.missionlist.ope.AreaMessionDAOpe;
 import com.siweisoft.nurse.ui.user.login.bean.GetallregionbyuserResBean;
 import com.siweisoft.nurse.util.fragment.FragManager;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import butterknife.OnClick;
 
@@ -85,7 +80,7 @@ public class MyMissonFrag extends BaseNurseFrag implements
         getMyMissionNetOpe= new GetMyMissionNetOpe(activity);
         myMissionDAOpe= new MyMissionDAOpe(activity);
         myMissonUIOpe.init(patientAdditionDAOpe);
-        myMissonUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListener() {
+        myMissonUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
                 getPatientTask(new OnFinishListener() {
@@ -190,7 +185,7 @@ public class MyMissonFrag extends BaseNurseFrag implements
                 if(myMissonUIOpe.getMyMissionListAdapter().getChild(index,position).getTitles().size()<=1){
                     reqBean.setId(myMissonUIOpe.getMyMissionListAdapter().getChild(index,position).getTitles().get(0).getId());
                 }else{
-                    reqBean.setTaskids(new AreaMessionDAOpe().getIDs(myMissonUIOpe.getMyMissionListAdapter().getChild(index,position).getTitles()));
+                    reqBean.setTaskids(new AreaMessionDAOpe(activity).getIDs(myMissonUIOpe.getMyMissionListAdapter().getChild(index,position).getTitles()));
                 }
                 reqBean.setStatus("T");
                 MissionDetailNetOpe missionDetailNetOpe = new MissionDetailNetOpe(activity);

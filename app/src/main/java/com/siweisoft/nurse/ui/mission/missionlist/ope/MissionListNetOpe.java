@@ -44,6 +44,24 @@ public class MissionListNetOpe extends BaseNetOpe {
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_MY_PATIENT_TASK_HISTORY, baseReqBean, reqInterf);
     }
 
+    public void getMissionData(String type ,OnNetWorkReqInterf reqInterf){
+        switch (type){
+            case AreaMessionDAOpe.TIME_TODAY+AreaMessionDAOpe.AREA_TYPE_AREA:
+                getMyWardTaskOfToday(reqInterf);
+                break;
+            case AreaMessionDAOpe.TIME_TODAY+AreaMessionDAOpe.AREA_TYPE_MY_PATIENT:
+                getMyPatientTaskOfToday(reqInterf);
+                break;
+            case AreaMessionDAOpe.TIME_HISTORY+AreaMessionDAOpe.AREA_TYPE_AREA:
+                getMyWardTaskOfHistory(reqInterf);
+                break;
+            case AreaMessionDAOpe.TIME_HISTORY+AreaMessionDAOpe.AREA_TYPE_MY_PATIENT:
+                getMyPatientTaskOfHistory(reqInterf);
+                break;
+        }
+    }
+
+
 
 
 }

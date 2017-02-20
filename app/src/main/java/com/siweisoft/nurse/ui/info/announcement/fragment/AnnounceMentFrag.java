@@ -7,10 +7,9 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.info.announcement.ope.AnnounceNetOpe;
 import com.siweisoft.nurse.ui.info.announcement.ope.AnnounceUIOpe;
@@ -36,7 +35,7 @@ public class AnnounceMentFrag extends BaseNurseFrag{
         super.onViewCreated(view, savedInstanceState);
         announceUIOpe= new AnnounceUIOpe(activity,getView());
         announceNetOpe= new AnnounceNetOpe(activity);
-        announceUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListener() {
+        announceUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
                 getData(new OnFinishListener() {

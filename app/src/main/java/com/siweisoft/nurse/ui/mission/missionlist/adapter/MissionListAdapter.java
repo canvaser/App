@@ -108,7 +108,8 @@ public class MissionListAdapter extends BaseExpandableListAdapter{
         missionUIBean.getNameTV().setText(StringUtil.getStr(data.get(groupPosition).getData().get(childPosition).getName()));
         missionUIBean.getTimeTV().setText(StringUtil.getStr(DateFormatUtil.getMMDDHHMM(data.get(groupPosition).getData().get(childPosition).getStart())));
         missionUIBean.getTaskNameTV().setText(StringUtil.getStr(data.get(groupPosition).getData().get(childPosition).getTitles().get(0).getTaskname()));
-
+        missionUIBean.getNumTV().setText(StringUtil.getStr(data.get(groupPosition).getData().get(childPosition).getTitles().size()==1?"":data.get(groupPosition).getData().get(childPosition).getTitles().size()));
+        missionUIBean.getKeyTV().setText(StringUtil.getStr(data.get(groupPosition).getData().get(childPosition).getTitles().get(0).getKey()));
         String timetype = "";
         if(data.get(groupPosition).getData().get(childPosition).getTitles().get(0).get医嘱ID().toLowerCase().startsWith("cq")){
             timetype = "长期";
@@ -127,12 +128,12 @@ public class MissionListAdapter extends BaseExpandableListAdapter{
 
         if(timetype.equals("临时")){
             missionUIBean.getLinTV().setText("临");
-            missionUIBean.getLinTV().setTextColor(Color.parseColor("#A52A2A"));
+            missionUIBean.getLinTV().setTextColor(Color.parseColor("#7FFFD4"));
         }
 
         if(timetype.equals("长期")) {
             missionUIBean.getLinTV().setText("长");
-            missionUIBean.getLinTV().setTextColor(Color.parseColor("#7FFFD4"));
+            missionUIBean.getLinTV().setTextColor(Color.parseColor("#A52A2A"));
         }
 
         switch (data.get(groupPosition).getData().get(childPosition).getCodename()){

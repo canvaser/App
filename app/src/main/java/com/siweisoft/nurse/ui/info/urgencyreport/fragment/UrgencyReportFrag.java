@@ -2,7 +2,6 @@ package com.siweisoft.nurse.ui.info.urgencyreport.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,7 +13,7 @@ import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.SheetDialogUtil;
 import com.siweisoft.lib.view.bottomdialogmenuview.BottomDialogMenuView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
@@ -27,8 +26,6 @@ import com.siweisoft.nurse.ui.info.urgencyreport.bean.resbean.UrgencyReportListR
 import com.siweisoft.nurse.ui.info.urgencyreport.ope.UrgencyReportNetOpe;
 import com.siweisoft.nurse.ui.info.urgencyreport.ope.UrgencyReportUIOpe;
 import com.siweisoft.nurse.util.fragment.FragManager;
-
-import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-11-18.
@@ -50,7 +47,7 @@ public class UrgencyReportFrag extends BaseNurseFrag implements OnAppItemClickLi
         super.onViewCreated(view, savedInstanceState);
         urgencyReportUIOpe = new UrgencyReportUIOpe(activity,getView());
         urgencyReportNetOpe = new UrgencyReportNetOpe(activity);
-        urgencyReportUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListener() {
+        urgencyReportUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
                 getData(new OnFinishListener() {

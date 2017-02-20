@@ -15,7 +15,7 @@ import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
@@ -56,7 +56,7 @@ public class CheckListFGM extends BaseNurseFrag implements
         checkListNetOpe = new CheckListNetOpe(activity);
         checkDAOpe= new CheckDAOpe();
         checkDABean = new CheckDABean();
-        checkListFGMUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListener() {
+        checkListFGMUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
                 getData(new OnFinishListener() {
@@ -74,8 +74,8 @@ public class CheckListFGM extends BaseNurseFrag implements
 
     public void getData(final OnFinishListener onFinishListener){
         BaseNurseReqBean baseNurseReqBean = new BaseNurseReqBean();
-        baseNurseReqBean.setBegin("2016-10-01");
-        baseNurseReqBean.setEnd("2016-12-01");
+//        baseNurseReqBean.setBegin("2016-10-01");
+//        baseNurseReqBean.setEnd("2016-12-01");
         checkListNetOpe.getCheckTasks(baseNurseReqBean, new OnNetWorkReqAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {

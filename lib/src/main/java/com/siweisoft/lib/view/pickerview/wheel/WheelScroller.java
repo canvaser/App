@@ -120,7 +120,7 @@ public class WheelScroller {
 
             case MotionEvent.ACTION_MOVE:
                 // perform scrolling
-                int distanceY = (int) (event.getY() - lastTouchedY);
+                int distanceY = (int) (event.getY() - lastTouchedY)/2;
                 if (distanceY != 0) {
                     startScrolling();
                     listener.onScroll(distanceY);

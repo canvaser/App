@@ -1,4 +1,4 @@
-package com.siweisoft.nurse.ui.home.adapter;
+package com.siweisoft.nurse.ui.dialog.dialog.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -14,22 +14,23 @@ import com.siweisoft.nurse.ui.home.bean.PupListUIBean;
 import java.util.ArrayList;
 
 /**
- * Created by ${viwmox} on 2016-11-14.
+ * Created by ${viwmox} on 2017-02-20.
  */
-public class PupListAdapter extends AppRecycleAdapter {
+
+public class DialogAdapter extends AppRecycleAdapter{
 
     String[] strings;
 
     OnAppItemClickListener onAppItemClickListener;
 
-    public PupListAdapter(Context context,String[] strings) {
+    public DialogAdapter(Context context, String[] strings) {
         super(context);
         this.strings =strings;
     }
 
 
     ArrayList<String> ss = new ArrayList<>();
-    public PupListAdapter(Context context,ArrayList<String> ss) {
+    public DialogAdapter(Context context,ArrayList<String> ss) {
         super(context);
         strings = new String[ss.size()];
         strings  =ss.toArray(strings);

@@ -33,6 +33,8 @@ public class NurseRecordDetailUIOpe extends BaseNurseUIOpe{
     private void init(){
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
+        getMidTV().setText("护理明细");
+        getMidTV().setVisibility(View.VISIBLE);
     }
 
     public void initList(NurseRecordListResBean listResBean){

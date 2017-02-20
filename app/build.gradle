@@ -84,6 +84,8 @@ android {
                     'src/main/res/document',
                     'src/main/res/addwater',
                     'src/main/res/task',
+                    'src/main/res/dialog',
+
 
             ]
             jniLibs.srcDirs=[

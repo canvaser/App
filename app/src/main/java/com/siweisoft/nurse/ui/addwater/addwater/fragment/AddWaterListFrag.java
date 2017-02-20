@@ -14,7 +14,6 @@ import com.siweisoft.lib.base.ui.ope.BaseDBOpe;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.StringUtil;
-import com.siweisoft.lib.util.ToastUtil;
 import com.siweisoft.lib.util.data.DateFormatUtil;
 import com.siweisoft.lib.util.dialog.DialogUtil;
 import com.siweisoft.lib.view.pickerview.TimePickerDialog;
@@ -22,7 +21,7 @@ import com.siweisoft.lib.view.pickerview.data.Type;
 import com.siweisoft.lib.view.pickerview.listener.OnDateSetListener;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.nurse.ui.addwater.addwater.bean.netbean.AddWaterListResBean;
@@ -57,7 +56,7 @@ public class AddWaterListFrag extends BaseNurseFrag<AddWaterListUIOpe,NurseNetOp
             return;
         }
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
-        getOpe().getBaseNurseUIOpe().getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListener() {
+        getOpe().getBaseNurseUIOpe().getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
                 getData(new OnFinishListener() {

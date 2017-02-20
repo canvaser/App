@@ -12,7 +12,7 @@ import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.LogUtil;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
@@ -36,7 +36,7 @@ public class DocumentDetailListFrag extends BaseNurseFrag<DocumentDetailListUIOp
             return;
         }
         getOpe().getBaseDAOpe().setDataBean((DocumentListResBean.DataBean) getArguments().get(ValueConstant.DATA_DATA2));
-        getOpe().getBaseNurseUIOpe().getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListener() {
+        getOpe().getBaseNurseUIOpe().getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
                 getData(new OnFinishListener() {

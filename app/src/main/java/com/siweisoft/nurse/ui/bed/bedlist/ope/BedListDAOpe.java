@@ -1,9 +1,11 @@
 package com.siweisoft.nurse.ui.bed.bedlist.ope;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.animation.Animation;
 
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.bed.bedlist.adapter.BedListAdapter;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
@@ -98,37 +100,45 @@ public class BedListDAOpe {
             }
     }
 
-    public void initAllBedList(Context context){
-        for(int i=0;i<allList.size();i++){
-            String sex = "";
-            String age ="";
-            String level = "";
-            if(allList.get(i).get性别().equals("女")){
-                sex = "woman";
-            }else{
-                sex = "man";
-            }
-            if(allList.get(i).getPatAge()>=60){
-                age="old";
-            }else if(allList.get(i).getPatAge()>=14){
-                age="middle";
-            }else{
-                age="young";
-            }
-            switch (allList.get(i).get护理级别名称()){
-                case DataValue.LEVEL_NURSE_1:
-                    level="l1";
-                    break;
-                case DataValue.LEVEL_NURSE_2:
-                    level="l2";
-                    break;
-                case DataValue.LEVEL_NURSE_3:
-                    level="l3";
-                    break;
-            }
+    public void initAllBedList(final Context context, OnFinishListener onFinishListener){
+        new AsyncTask<String, String, String>() {
+            @Override
+            protected String doInBackground(String... params) {
+                for(int i=0;i<allList.size();i++){
+                    String sex = "";
+                    String age ="";
+                    String level = "";
+                    if(allList.get(i).get性别().equals("女")){
+                        sex = "woman";
+                    }else{
+                        sex = "man";
+                    }
+                    if(allList.get(i).getPatAge()>=60){
+                        age="old";
+                    }else if(allList.get(i).getPatAge()>=14){
+                        age="middle";
+                    }else{
+                        age="young";
+                    }
+                    switch (allList.get(i).get护理级别名称()){
+                        case DataValue.LEVEL_NURSE_1:
+                            level="l1";
+                            break;
+                        case DataValue.LEVEL_NURSE_2:
+                            level="l2";
+                            break;
+                        case DataValue.LEVEL_NURSE_3:
+                            level="l3";
+                            break;
+                    }
 
-            int id = context.getResources().getIdentifier(age+"_"+sex+"_"+level,"drawable",context.getPackageName());
-            allList.get(i).setResId(id);
-        }
+                    int id = context.getResources().getIdentifier(age+"_"+sex+"_"+level,"drawable",context.getPackageName());
+                    allList.get(i).setResId(id);
+                }
+                return null;
+            }
+        }.execute();
     }
+
+
 }

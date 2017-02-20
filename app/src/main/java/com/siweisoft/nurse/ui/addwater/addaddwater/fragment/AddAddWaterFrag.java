@@ -15,9 +15,14 @@ import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 public class AddAddWaterFrag extends BaseNurseFrag<BaseNurseUIOpe,NurseNetOpe,BaseDBOpe,BaseDAOpe>{
 
 
+
+
     @Override
     public BaseNurseOpes<BaseNurseUIOpe, NurseNetOpe, BaseDBOpe, BaseDAOpe> getOpe() {
-        return null;
+        if(baseNurseOpes ==null){
+            baseNurseOpes = new BaseNurseOpes(new BaseNurseUIOpe(activity,getView()),new NurseNetOpe(activity),null,null);
+        }
+        return baseNurseOpes;
     }
 
     @Override

@@ -23,7 +23,7 @@
             <TextView
                 android:id="@+id/lin"
                 android:layout_marginLeft="5dp"
-                android:layout_marginTop="20dp"
+                android:layout_centerVertical="true"
                 android:textSize="17sp"
                 android:textColor="@color/black"
                 android:text="临"
@@ -31,6 +31,8 @@
                 android:layout_height="wrap_content" />
 
             <ImageView
+                android:layout_marginRight="5dp"
+                android:layout_centerVertical="true"
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@id/lin"
                 android:layout_marginLeft="3dp"

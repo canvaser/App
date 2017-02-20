@@ -66,7 +66,7 @@ public class MissionDetailUIOpe extends BaseNurseUIOpe{
         getMidTV().setText(resBean.getName());
 
 
-        getTypeTV().setText(resBean.getCodename());
+        getTypeTV().setText(resBean.getBedId()+" "+resBean.getCodename());
         if("st".equals(resBean.getTitles().get(0).getKey().toLowerCase())|| resBean.getCodename().equals("出院带药")){
             getLinTv().setText("临");
             getLinTv().setTextColor(Color.parseColor("#A52A2A"));

@@ -1,5 +1,9 @@
 package com.siweisoft.nurse.ui.mission.missionlist.ope;
 
+import android.content.Context;
+
+import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
+import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.nursevalue.MethodValue;
 import com.siweisoft.nurse.ui.check.checklist.bean.resbean.CheckResBean;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.adaapterbean.AreaMissionListAdapterBean;
@@ -7,20 +11,21 @@ import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionTitleResBe
 import com.siweisoft.nurse.ui.user.login.bean.GetallregionbyuserResBean;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by ${viwmox} on 2016-11-23.
  */
-public class AreaMessionDAOpe {
+public class AreaMessionDAOpe extends BaseDAOpe{
 
 
-    public String myPatientTodayData ="";
+    public String myPatientTodayData =null;
 
-    public String myAreaTodayData="";
+    public String myAreaTodayData=null;
 
-    public String myPatientHistoryData ="";
+    public String myPatientHistoryData =null;
 
-    public String myAreaHistoryData ="";
+    public String myAreaHistoryData =null;
 
     public String leftType =ALL;
 
@@ -49,6 +54,14 @@ public class AreaMessionDAOpe {
 
     public static final String  AREA_TYPE_MY_PATIENT ="我的病人";
 
+    public static HashMap<String,String> hashMap = new HashMap<>();
+
+    private ArrayList<AreaMissionListAdapterBean> missionData;
+
+    public AreaMessionDAOpe(Context context) {
+        super(context);
+    }
+
     public ArrayList<AreaMissionListAdapterBean> initData(ArrayList<AreaMissionListAdapterBean> res){
         if(res==null){
             return res;
@@ -73,5 +86,64 @@ public class AreaMessionDAOpe {
             s.substring(0,s.length()-1);
         }
         return s;
+    }
+
+    public void setCacheData(String type,String data){
+        switch (type){
+            case AreaMessionDAOpe.TIME_TODAY+AreaMessionDAOpe.AREA_TYPE_AREA:
+                myAreaTodayData= data;
+                break;
+            case AreaMessionDAOpe.TIME_TODAY+AreaMessionDAOpe.AREA_TYPE_MY_PATIENT:
+                myPatientTodayData= data;
+                break;
+            case AreaMessionDAOpe.TIME_HISTORY+AreaMessionDAOpe.AREA_TYPE_AREA:
+                myAreaHistoryData= data;
+                break;
+            case AreaMessionDAOpe.TIME_HISTORY+AreaMessionDAOpe.AREA_TYPE_MY_PATIENT:
+                myPatientHistoryData= data;
+                break;
+        }
+    }
+
+    public String getCahceData(String type){
+        String s = null;
+        switch (type){
+            case AreaMessionDAOpe.TIME_TODAY+AreaMessionDAOpe.AREA_TYPE_AREA:
+                s= myAreaTodayData;
+                break;
+            case AreaMessionDAOpe.TIME_TODAY+AreaMessionDAOpe.AREA_TYPE_MY_PATIENT:
+                s=myPatientTodayData;
+                break;
+            case AreaMessionDAOpe.TIME_HISTORY+AreaMessionDAOpe.AREA_TYPE_AREA:
+                s=myAreaHistoryData;
+                break;
+            case AreaMessionDAOpe.TIME_HISTORY+AreaMessionDAOpe.AREA_TYPE_MY_PATIENT:
+                s=myPatientHistoryData;
+                break;
+        }
+        return s;
+    }
+
+    public static HashMap<String, String> getHashMap() {
+        return hashMap;
+    }
+
+    static {
+        hashMap.put("全部",AreaMessionDAOpe.ALL);
+        hashMap.put("完成", DataValue.STATUS_YI_WAN_CHENG);
+        hashMap.put("未完",AreaMessionDAOpe.ALL);
+        hashMap.put("删除",DataValue.SSTATUS_SHAN_CHU);
+        hashMap.put("拒绝",DataValue.STATUS_BING_REN_JU_JUE);
+        hashMap.put("不在",DataValue.STATUS_BING_REN_BU_ZAI);
+        hashMap.put("历史",AreaMessionDAOpe.ALL);
+
+    }
+
+    public ArrayList<AreaMissionListAdapterBean> getMissionData() {
+        return missionData;
+    }
+
+    public void setMissionData(ArrayList<AreaMissionListAdapterBean> missionData) {
+        this.missionData = missionData;
     }
 }

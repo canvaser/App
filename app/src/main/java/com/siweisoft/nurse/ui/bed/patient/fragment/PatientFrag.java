@@ -15,7 +15,7 @@ import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.menu.popup.PopupUtil;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.nurse.ui.addwater.addwater.fragment.AddWaterListFrag;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
@@ -37,7 +37,6 @@ import com.siweisoft.nurse.ui.bed.patient.ope.PatientFragUIOpe;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientNetOpe;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentListResBean;
 import com.siweisoft.nurse.ui.document.document.fragment.DocumentListFrag;
-import com.siweisoft.nurse.ui.document.document.ope.daope.DocumentListDAOpe;
 import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
 import com.siweisoft.nurse.util.fragment.FragManager;
 
@@ -79,7 +78,7 @@ public class PatientFrag extends BaseNurseFrag {
         patientNetOpe= new PatientNetOpe(activity);
         patientFragUIOpe.initInfo(patientAdditionDAOpe.getPatientBedResBean());
         patientFragUIOpe.initAddionList(new PatientAdditionOpe().getThispatientAdditionList(null));
-        patientFragUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListener() {
+        patientFragUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
                 getData(new OnFinishListener() {
@@ -195,9 +194,10 @@ public class PatientFrag extends BaseNurseFrag {
                 bundle2.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe.getPatientBedResBean());
                 FragManager.getInstance().startFragmentForResult(getFragmentManager(),index, new AssayFrag(),bundle2,ValueConstant.CODE_REQUSET);
                 break;
+            //护理记录单
             case R.id.rl_nurserecord:
                 Bundle bundle3 = new Bundle();
-                bundle3.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe.getPatientBedResBean());
+                bundle3.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
                 FragManager.getInstance().startFragmentForResult(getFragmentManager(),index, new NurseRecordFrag(),bundle3,ValueConstant.CODE_REQUSET);
                 break;
             case R.id.rl_handoverreport:

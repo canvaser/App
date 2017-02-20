@@ -15,8 +15,7 @@ import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.menu.popup.PopupUtil;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
-import com.siweisoft.nurse.nursevalue.MethodValue;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
@@ -24,7 +23,6 @@ import com.siweisoft.nurse.ui.info.bedcheck.bean.resbean.BedCheckListResBean;
 import com.siweisoft.nurse.ui.info.bedcheck.ope.BedCheckDAOpe;
 import com.siweisoft.nurse.ui.info.bedcheck.ope.BedCheckNetOpe;
 import com.siweisoft.nurse.ui.info.bedcheck.ope.BedCheckUIOpe;
-import com.siweisoft.nurse.ui.mission.missionlist.ope.AreaMessionDAOpe;
 
 import butterknife.OnClick;
 
@@ -53,7 +51,7 @@ public class BedCheckFrag extends BaseNurseFrag{
         bedCheckNetOpe = new BedCheckNetOpe(activity);
         bedCheckUIOpe = new BedCheckUIOpe(activity,getView());
         bedCheckDAOpe= new BedCheckDAOpe(activity);
-        bedCheckUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListener() {
+        bedCheckUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
                 getData(new OnFinishListener() {

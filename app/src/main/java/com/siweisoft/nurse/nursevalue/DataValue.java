@@ -149,7 +149,7 @@ public class DataValue {
     /**获取病人附加项目*/
     public static final String URL_GET_PATIENT_ADDITION= "getPatientAdditionData";
 
-    /**获取病人附加项目*/
+    /**获取病区病人*/
     public static final String URL_UPDATE_PATIENT_ADDITION= "writePatientAdditionData";
 
     //----------------------------------------------------------------------------------------------

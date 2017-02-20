@@ -39,6 +39,7 @@ public class SettingFGMUIOpe extends BaseNurseUIOpe {
     }
 
     private void init(){
+        getBackTV().setBackgroundResource(R.drawable.drawable_right);
         getMidTV().setText("设置");
         getRightTV().setText("注销");
         getBackTV().setSelected(true);

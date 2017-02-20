@@ -10,6 +10,7 @@ import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.SPUtil;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
+import com.siweisoft.nurse.nursevalue.MethodValue;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.mission.missionlist.adapter.MissionListAdapter;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.adaapterbean.AreaMissionListAdapterBean;
@@ -59,7 +60,7 @@ public class MissionListFGMUIOpe extends BaseNurseUIOpe {
     }
 
     private void init(){
-
+        getBackTV().setBackgroundResource(R.drawable.drawable_right);
         getBackTV().setSelected(true);
         getBackTV().setText("全部");
 
@@ -71,10 +72,22 @@ public class MissionListFGMUIOpe extends BaseNurseUIOpe {
 
     }
 
-    public void initMissionList(ArrayList<AreaMissionListAdapterBean> adapterBeen){
+    public void initMid(String area,int count){
+        switch (area){
+            case AreaMessionDAOpe.AREA_TYPE_AREA:
+                getMidTV().setText(MethodValue.getArea().getWardname()+(count==0?"":count));
+                break;
+            case AreaMessionDAOpe.AREA_TYPE_MY_PATIENT:
+                getMidTV().setText("我的任务");
+                break;
+        }
+    }
 
+    public void initMissionList(ArrayList<AreaMissionListAdapterBean> adapterBeen){
         adapterList.clear();
-        adapterList.addAll(new AreaMessionDAOpe().initData(adapterBeen));
+        if(adapterBeen!=null){
+            adapterList.addAll(new AreaMessionDAOpe(context).initData(adapterBeen));
+        }
         if(missionListAdapter==null){
             View view = LayoutInflater.from(context).inflate(R.layout.item_head_mission,null);
             missionItenHeadUIBean = new MissionItenHeadUIBean(context,view);
@@ -83,14 +96,12 @@ public class MissionListFGMUIOpe extends BaseNurseUIOpe {
             missionListAdapter = new MissionListAdapter(context,adapterList);
             missionExpandView.setGroupIndicator(null);
             missionExpandView.setAdapter(missionListAdapter);
+            for(int i=0;i<missionListAdapter.getGroupCount();i++){
+                missionExpandView.expandGroup(i);
+            }
         }else{
-//            missionListAdapter=null;
-//            System.gc();
-//            missionListAdapter = new MissionListAdapter(context,adapterList);
-//            missionExpandView.setAdapter(missionListAdapter);
             missionListAdapter.notifyDataSetChanged();
         }
-
 
         DoLoginResBean loginResBean = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(ValueConstant.LOGIN_INFO),DoLoginResBean.class);
         loginResBean.getData().getNurseType().add(0,"全部");
