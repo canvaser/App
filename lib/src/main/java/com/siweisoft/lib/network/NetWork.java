@@ -3,6 +3,8 @@ package com.siweisoft.lib.network;
 import android.content.Context;
 import android.os.Handler;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -23,10 +25,16 @@ import com.siweisoft.lib.network.requst.MyObjectRequest;
 import com.siweisoft.lib.network.requst.MyStringRequest;
 import com.siweisoft.lib.util.LogUtil;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static android.R.attr.x;
+
 
 /**
  * Created by ${viwmox} on 2016-04-26.
@@ -169,8 +177,11 @@ public class NetWork {
         }){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> map = new HashMap<String,String>();
-                map = (Map<String,String>) gson.fromJson(jsonstr, map.getClass());
+//                Map<String,String> map = new HashMap<String,String>();
+//                map = (Map<String,String>) gson.fromJson(jsonstr, map.getClass());
+
+                Map<String, String> map = JSON.parseObject(jsonstr,new TypeReference<Map<String, String>>(){} );
+
                 return map;
             }
         };
@@ -182,6 +193,67 @@ public class NetWork {
         mQueue.add(stringRequest);
     }
 
+
+    /**
+     *
+     * @param context
+     * @param model
+     * @param reqBean
+     * @param reqInterf
+     */
+    public void xuttil(final Context context, final String model, final BaseReqBean reqBean,final OnNetWorkReqInterf reqInterf)  {
+        JsonObjectRequest jsonObjectRequest= null;
+        LogUtil.E(UrlConstant.URI + model);
+        final String jsonstr = gson.toJson(reqBean);
+        LogUtil.E(jsonstr);
+        if(!reqInterf.onNetWorkReqStart(UrlConstant.URI + model,jsonstr)){
+            BaseResBean res =new BaseResBean();
+            res.setErrorCode(ValueConstant.ERROR_CODE_NET_NO_CONNETCT);
+            res.setErrorMessage(ValueConstant.ERROR_STR_NET_NO_CONNETCT);
+            res.setData(jsonstr);
+            reqInterf.onNetWorkReqFinish(false,UrlConstant.URI + model,res);
+            return;
+        }
+
+        RequestParams requestParams = new RequestParams();
+        Map<String, String> map = JSON.parseObject(jsonstr,new TypeReference<Map<String, String>>(){} );
+        for (Map.Entry<String,String> entry : map.entrySet()){
+            requestParams.addBodyParameter(entry.getKey(),entry.getValue());
+        }
+        org.xutils.x.http().post(requestParams,  new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String response) {
+                if(response==null){
+                    BaseResBean res =new BaseResBean();
+                    res.setErrorCode(ValueConstant.ERROR_CODE_RES_NULL);
+                    res.setErrorMessage(ValueConstant.ERROR_STR_RES_NULL);
+                    reqInterf.onNetWorkReqFinish(false,UrlConstant.URI + model,res);
+                }else{
+                    BaseResBean baseResBean = gson.fromJson(response.toString(),BaseResBean.class);
+                    reqInterf.onNetWorkReqFinish(true,UrlConstant.URI + model,baseResBean);
+                }
+                LogUtil.E(response);
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                BaseResBean baseResBean = new BaseResBean();
+                baseResBean.setErrorCode(ValueConstant.ERROR_CODE_VOLLEY_FAIL);
+                baseResBean.setErrorMessage(ex.getMessage()==null? "":ex.getMessage());
+                reqInterf.onNetWorkReqFinish(false,UrlConstant.URI + model,baseResBean);
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+                LogUtil.E(cex);
+            }
+
+            @Override
+            public void onFinished() {
+                LogUtil.E("");
+            }
+        });
+    }
 
     public void doHttpRequsetWithSession(final Context context, final String url,final String req, final OnNetWorkReqInterf reqInterf)  {
         LogUtil.E(req);
@@ -235,7 +307,7 @@ public class NetWork {
      * @param reqInterf
      */
     public void doObjectHttpRequsetWithSession(final Context context, final String model, final BaseReqBean reqBean,final OnNetWorkReqInterf reqInterf)  {
-        JsonObjectRequest jsonObjectRequest= null;
+        MyObjectRequest jsonObjectRequest= null;
         LogUtil.E(UrlConstant.URI + model);
         final String jsonstr = gson.toJson(reqBean);
         LogUtil.E(jsonstr);
@@ -243,57 +315,39 @@ public class NetWork {
             BaseResBean res =new BaseResBean();
             res.setErrorCode(ValueConstant.ERROR_CODE_NET_NO_CONNETCT);
             res.setErrorMessage(ValueConstant.ERROR_STR_NET_NO_CONNETCT);
+            res.setData(jsonstr);
             reqInterf.onNetWorkReqFinish(false,UrlConstant.URI + model,res);
             return;
         }
-        Request stringRequest = null;
+        jsonObjectRequest = new MyObjectRequest(Request.Method.POST, UrlConstant.URI + model, jsonstr, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                if(response==null){
+                    BaseResBean res =new BaseResBean();
+                    res.setErrorCode(ValueConstant.ERROR_CODE_RES_NULL);
+                    res.setErrorMessage(ValueConstant.ERROR_STR_RES_NULL);
+                    reqInterf.onNetWorkReqFinish(false,UrlConstant.URI + model,res);
+                }else{
+                    BaseResBean baseResBean = gson.fromJson(response.toString(),BaseResBean.class);
+                    reqInterf.onNetWorkReqFinish(true,UrlConstant.URI + model,baseResBean);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                BaseResBean baseResBean = new BaseResBean();
+                baseResBean.setErrorCode(ValueConstant.ERROR_CODE_VOLLEY_FAIL);
+                baseResBean.setErrorMessage(error.getMessage()==null? "":error.getMessage());
+                reqInterf.onNetWorkReqFinish(false,UrlConstant.URI + model,baseResBean);
+            }
+        });
 
-
-
-                try {
-                    stringRequest= new MyObjectRequest(Request.Method.POST, UrlConstant.URI+model, new JSONObject(jsonstr),
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            if(response==null){
-                                BaseResBean res =new BaseResBean();
-                                res.setErrorCode(ValueConstant.ERROR_CODE_RES_NULL);
-                                res.setErrorMessage(ValueConstant.ERROR_STR_RES_NULL);
-                                reqInterf.onNetWorkReqFinish(false,UrlConstant.URI + model,res);
-                            }else{
-                                BaseResBean baseResBean = gson.fromJson(response.toString(),BaseResBean.class);
-                                reqInterf.onNetWorkReqFinish(true,UrlConstant.URI + model,baseResBean);
-                            }
-                        }
-                    },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            BaseResBean baseResBean = new BaseResBean();
-                            baseResBean.setErrorCode(ValueConstant.ERROR_CODE_VOLLEY_FAIL);
-                            baseResBean.setErrorMessage(error.getMessage()==null? "":error.getMessage());
-                            reqInterf.onNetWorkReqFinish(false,UrlConstant.URI + model,baseResBean);
-                        }
-                    })
-            {
-//                @Override
-//                public Map<String, String> getHeaders()throws AuthFailureError{
-//                    Map<String, String> headers = new HashMap<String, String>();
-//                    headers.put("Charset", "UTF-8");
-//                    headers.put("Content-Type", "application/json");
-//                    return headers;
-//                }
-            };
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        stringRequest.setTag(context.getClass().getName());
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(15000,
+        jsonObjectRequest.setTag(context.getClass().getName());
+        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(15000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-        stringRequest.setShouldCache(true);
-        mQueue.add(stringRequest);
+        jsonObjectRequest.setShouldCache(true);
+        mQueue.add(jsonObjectRequest);
     }
 
 

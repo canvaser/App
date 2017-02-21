@@ -34,6 +34,23 @@ public class MyObjectRequest extends JsonObjectRequest{
         super(method, url, jsonRequest, listener, errorListener);
     }
 
+    public MyObjectRequest(int method, String url, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
+        super(method, url, listener, errorListener);
+    }
+
+    public MyObjectRequest(int method, String url, String requestBody, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
+        super(method, url, requestBody, listener, errorListener);
+    }
+
+    public MyObjectRequest(String url, JSONObject jsonRequest, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
+        super(url, jsonRequest, listener, errorListener);
+    }
+
+    public MyObjectRequest(String url, Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
+        super(url, listener, errorListener);
+    }
+
+
     @Override
     protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
         try {

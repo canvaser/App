@@ -47,6 +47,13 @@ public class DataValue {
     /**获取病人的文书数据*/
     public static final String URL_GET_FILE_DATA_BY_PATIENT= "getFileDataByPatient02";
 
+    /**获取指定医嘱的用药量*/
+    public static final String URL_GET_BYL_BY_ADVID= "getBYLbyAdvID";
+
+    /**提交补液卡数据*/
+    public static final String URL_WIITE_ADDWATER_DATA= "writeFileData";
+
+
     /***/
     public static final String URL_GETADDITION_LIST= "getAdditionList";
 

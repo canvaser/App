@@ -57,13 +57,6 @@ public class BedListFGM extends BaseNurseFrag implements OnAppItemClickListener 
                     @Override
                     public void onFinish(Object o) {
                         materialRefreshLayout.finishRefreshing();
-                        getRegion2(new OnFinishListener() {
-                            @Override
-                            public void onFinish(Object o) {
-
-                            }
-                        });
-                        onCmd(getArguments());
                     }
                 });
             }

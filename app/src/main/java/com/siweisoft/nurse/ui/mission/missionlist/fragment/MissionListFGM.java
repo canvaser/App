@@ -248,12 +248,14 @@ public class MissionListFGM extends BaseNurseFrag<MissionListFGMUIOpe,MissionLis
                 FragManager.getInstance().startFragmentForResult(getFragmentManager(),index,new MissionDetailFrag(),bundle, ValueConstant.CODE_REQUSET);
                 break;
             case R.id.tv_finish:
-//                if(1==1){
-//                    Bundle bundle1 = new Bundle();
-//                    bundle1.putSerializable(ValueConstant.DATA_DATA,getOpe().getBaseNurseUIOpe().getAdapterList().get(groupPosition).getData().get(childPosition));
-//                    FragManager.getInstance().startFragmentForResult(getFragmentManager(),index,new AddAddWaterFrag(),bundle1, ValueConstant.CODE_REQUSET);
-//                    return;
-//                }
+                if(getOpe().getBaseNurseUIOpe().getAdapterList().get(groupPosition).getData().get(childPosition).getCodename().equals("补液卡")||
+                        getOpe().getBaseNurseUIOpe().getAdapterList().get(groupPosition).getData().get(childPosition).getTitles().get(0).getNurse_type().equals("静滴")||
+                        getOpe().getBaseNurseUIOpe().getAdapterList().get(groupPosition).getData().get(childPosition).getTitles().get(0).getNurse_type().equals("术前治疗")){
+                    Bundle bundle1 = new Bundle();
+                    bundle1.putSerializable(ValueConstant.DATA_DATA,getOpe().getBaseNurseUIOpe().getAdapterList().get(groupPosition).getData().get(childPosition));
+                    FragManager.getInstance().startFragmentForResult(getFragmentManager(),index,new AddAddWaterFrag(),bundle1, ValueConstant.CODE_REQUSET);
+                    return;
+                }
                 MissisonDetailReqBean reqBean = new MissisonDetailReqBean();
                 GetallregionbyuserResBean.Data data = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(ValueConstant.AREA_INFO), GetallregionbyuserResBean.Data.class);
                 reqBean.setRegion(data.getWardcode());

@@ -15,6 +15,8 @@ import com.siweisoft.lib.uuzuche.lib_zxing.activity.ZXingLibrary;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.home.activity.IndexActivity;
 
+import org.xutils.x;
+
 import java.util.UUID;
 
 
@@ -27,6 +29,7 @@ public class AppAplication extends com.siweisoft.lib.aplication.LibAplication {
     public void onCreate() {
         super.onCreate();
         initBase();
+        initXUtil();
         initServer();
         initCrash();
         initUUUId();
@@ -39,6 +42,10 @@ public class AppAplication extends com.siweisoft.lib.aplication.LibAplication {
         ValueConstant.DIMEN_1 = (int) getResources().getDimension(R.dimen.dimen_1);
         NetWork.getInstance(this).init(DataValue.URL_NURSE);
         DataValue.init();
+    }
+
+    private void initXUtil(){
+        //x.Ext.init(this);
     }
 
 

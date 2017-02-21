@@ -100,7 +100,7 @@ public class BedListDAOpe {
             }
     }
 
-    public void initAllBedList(final Context context, OnFinishListener onFinishListener){
+    public void initAllBedList(final Context context, final OnFinishListener onFinishListener){
         new AsyncTask<String, String, String>() {
             @Override
             protected String doInBackground(String... params) {
@@ -136,6 +136,12 @@ public class BedListDAOpe {
                     allList.get(i).setResId(id);
                 }
                 return null;
+            }
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                onFinishListener.onFinish(s);
             }
         }.execute();
     }
