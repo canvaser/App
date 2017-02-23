@@ -3,6 +3,7 @@ package com.siweisoft.nurse.ui.addwater.addaddwater.bean.netbean;
 import com.siweisoft.lib.base.ui.bean.ResultResBean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -98,7 +99,7 @@ public class AddAddWaterResBean extends ResultResBean{
             private String itemvalues;
             private String validrange;
             private String coeff;
-            private List<List<String>> items;
+            private ArrayList<ArrayList<String>> items;
 
             public String getNid() {
                 return nid;
@@ -244,11 +245,11 @@ public class AddAddWaterResBean extends ResultResBean{
                 this.coeff = coeff;
             }
 
-            public List<List<String>> getItems() {
+            public ArrayList<ArrayList<String>> getItems() {
                 return items;
             }
 
-            public void setItems(List<List<String>> items) {
+            public void setItems(ArrayList<ArrayList<String>> items) {
                 this.items = items;
             }
         }

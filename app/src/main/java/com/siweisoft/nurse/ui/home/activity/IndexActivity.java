@@ -132,19 +132,19 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
                             Toast.makeText(activity, "解析结果:" + result, Toast.LENGTH_LONG).show();
 
 
-                            WriteBedCheckReqBean reqBean = GsonUtil.getInstance().fromJson(result,WriteBedCheckReqBean.class);
+   //                         WriteBedCheckReqBean reqBean = GsonUtil.getInstance().fromJson(result,WriteBedCheckReqBean.class);
 
 
-                            new BedCheckNetOpe(activity).writeWardInspectionInfo(reqBean, new UINetAdapter(activity) {
-                                @Override
-                                public void onNetWorkResult(boolean success, Object o) {
-                                    if(success){
-                                        FragManager.getInstance().clearTop(getSupportFragmentManager(),3);
-                                        homeUIOpe.getViewPager().setCurrentItem(3);
-                                        FragManager.getInstance().startFragment(getSupportFragmentManager(),3,new BedCheckFrag());
-                                    }
-                                }
-                            });
+//                            new BedCheckNetOpe(activity).writeWardInspectionInfo(reqBean, new UINetAdapter(activity) {
+//                                @Override
+//                                public void onNetWorkResult(boolean success, Object o) {
+//                                    if(success){
+//                                        FragManager.getInstance().clearTop(getSupportFragmentManager(),3);
+//                                        homeUIOpe.getViewPager().setCurrentItem(3);
+//                                        FragManager.getInstance().startFragment(getSupportFragmentManager(),3,new BedCheckFrag());
+//                                    }
+//                                }
+//                            });
 
 
                             break;

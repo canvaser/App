@@ -45,7 +45,6 @@ public class AddAddWaterFrag extends BaseNurseFrag<AddAddWaterUIOpe,NurseNetOpe,
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getOpe().getBaseDAOpe().setAreaMessionResBean((AreaMessionResBean) getArguments().getSerializable(ValueConstant.DATA_DATA));
-        getOpe().getBaseNurseUIOpe().getTitleTV().setText(getOpe().getBaseDAOpe().getAreaMessionResBean().getTitles().get(0).getTitle());
         getOpe().getBaseNurseUIOpe().getRefreshLayout().setMaterialRefreshListener(this);
         getOpe().getBaseNurseUIOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
     }
@@ -55,6 +54,7 @@ public class AddAddWaterFrag extends BaseNurseFrag<AddAddWaterUIOpe,NurseNetOpe,
             @Override
             public void onNetWorkResult(boolean success, Object o) {
                 getOpe().getBaseDAOpe().setAddAddWaterResBean(GsonUtil.getInstance().fromJson(o.toString(), AddAddWaterResBean.class));
+                getOpe().getBaseDAOpe().fillcontent(getOpe().getBaseDAOpe().getAreaMessionResBean().getTitles().get(0).getTitle());
                 getOpe().getBaseNurseUIOpe().initList(getOpe().getBaseDAOpe().getAddAddWaterResBean());
                 getBYLbyId(onFinishListener);
             }
@@ -109,9 +109,15 @@ public class AddAddWaterFrag extends BaseNurseFrag<AddAddWaterUIOpe,NurseNetOpe,
         switch (v.getId()){
             case R.id.tv_start:
                 getOpe().getBaseDAOpe().numPlus();
-                getOpe().getBaseNurseUIOpe().getStartTV().setText("第"+StringUtil.getStr(getOpe().getBaseDAOpe().getNum())+"滴");
+                if(getOpe().getBaseDAOpe().getNum()==0){
+                    getOpe().getBaseNurseUIOpe().getStartTV().setText("已开始");
+                }else{
+                    getOpe().getBaseNurseUIOpe().getStartTV().setText("第"+StringUtil.getStr(getOpe().getBaseDAOpe().getNum())+"滴");
+                }
+
                 if(getOpe().getBaseDAOpe().getNum()==10){
                     getOpe().getBaseNurseUIOpe().setDishu(StringUtil.getStr(getOpe().getBaseDAOpe().getDisu()));
+                    getOpe().getBaseNurseUIOpe().getStartTV().setText(StringUtil.getStr(getOpe().getBaseDAOpe().getTime()[1]-getOpe().getBaseDAOpe().getTime()[0]));
                 }
                 break;
             case BaseID.ID_RIGHT:

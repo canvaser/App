@@ -4,15 +4,17 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.constant.ValueConstant;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.util.AnimUtil;
+import com.siweisoft.lib.util.system.HandleUtil;
 import com.siweisoft.nurse.ui.dialog.dialog.ope.uiope.NurseDialogUIOpe;
 
 /**
@@ -27,9 +29,16 @@ public class NurseDialogFrag extends Fragment implements View.OnClickListener{
 
     private OnAppItemClickListener onAppItemClickListener;
 
-    public static void show(FragmentManager fragmentManagers , int id, String[]strings, OnAppItemClickListener onAppItemClickListener){
+    public static final int LEFT = 0;
+
+    public static final int MID = 1;
+
+    public static final int RIGHT = 2;
+
+    public static void show(FragmentManager fragmentManagers , int id, String[]strings,int position, OnAppItemClickListener onAppItemClickListener){
         Bundle bundle = new Bundle();
         bundle.putStringArray(ValueConstant.DATA_DATA,strings);
+        bundle.putInt(ValueConstant.DATA_POSITION,position);
         NurseDialogFrag nurseDialogFrag = new NurseDialogFrag();
         nurseDialogFrag.setArguments(bundle);
         nurseDialogFrag.onAppItemClickListener = onAppItemClickListener;
@@ -48,17 +57,75 @@ public class NurseDialogFrag extends Fragment implements View.OnClickListener{
         nurseDialogUIOpe= new NurseDialogUIOpe(getActivity(),getView());
         strings = getArguments().getStringArray(ValueConstant.DATA_DATA);
         getView().findViewById(R.id.root).setOnClickListener(this);
-        nurseDialogUIOpe.showList(strings, new OnAppItemClickListener() {
-            @Override
-            public void onAppItemClick(View view, int position) {
-                getFragmentManager().beginTransaction().remove(NurseDialogFrag.this).commit();
-                onAppItemClickListener.onAppItemClick(view,position);
-            }
-        });
+        switch (getArguments().getInt(ValueConstant.DATA_POSITION)){
+            case LEFT:
+                nurseDialogUIOpe.showLeft(strings, new OnAppItemClickListener() {
+                    @Override
+                    public void onAppItemClick(View view, int position) {
+                        AnimUtil.getInstance().startAnim(getActivity(), nurseDialogUIOpe.getLeftRecycle(), R.anim.anim_out_fast, new OnFinishListener() {
+                            @Override
+                            public void onFinish(Object o) {
+                                getFragmentManager().beginTransaction().remove(NurseDialogFrag.this).commit();
+                            }
+                        });
+                        onAppItemClickListener.onAppItemClick(view,position);
+                    }
+                });
+                break;
+            case RIGHT:
+                nurseDialogUIOpe.showRight(strings, new OnAppItemClickListener() {
+                    @Override
+                    public void onAppItemClick(View view, int position) {
+                        AnimUtil.getInstance().startAnim(getActivity(),nurseDialogUIOpe.getRightRecycle(),R.anim.anim_out_fast_right,new OnFinishListener() {
+                            @Override
+                            public void onFinish(Object o) {
+                                getFragmentManager().beginTransaction().remove(NurseDialogFrag.this).commit();
+                            }
+                        });
+                        onAppItemClickListener.onAppItemClick(view,position);
+                    }
+                });
+                break;
+            default:
+                nurseDialogUIOpe.showList(strings, new OnAppItemClickListener() {
+                    @Override
+                    public void onAppItemClick(View view, int position) {
+                        AnimUtil.getInstance().startAnim(getActivity(),nurseDialogUIOpe.getRecyclerView(),R.anim.anim_out_fast_mid,new OnFinishListener() {
+                            @Override
+                            public void onFinish(Object o) {
+                                getFragmentManager().beginTransaction().remove(NurseDialogFrag.this).commit();
+                            }
+                        });
+                        onAppItemClickListener.onAppItemClick(view,position);
+                    }
+                });
+                break;
+        }
+
     }
 
     @Override
     public void onClick(View v) {
-        getFragmentManager().beginTransaction().remove(NurseDialogFrag.this).commit();
+        int anim = R.anim.anim_out_fast_mid;
+
+        RecyclerView recyclerView = nurseDialogUIOpe.getRecyclerView();
+
+        if(nurseDialogUIOpe.getLeftRecycle().getVisibility()==View.VISIBLE){
+            anim = R.anim.anim_out_fast;
+            recyclerView = nurseDialogUIOpe.getLeftRecycle();
+        }else if(nurseDialogUIOpe.getRightRecycle().getVisibility()==View.VISIBLE){
+            anim = R.anim.anim_out_fast_right;
+            recyclerView = nurseDialogUIOpe.getRightRecycle();
+        }else{
+            anim = R.anim.anim_out_fast_mid;
+            recyclerView = nurseDialogUIOpe.getRecyclerView();
+        }
+
+        AnimUtil.getInstance().startAnim(getActivity(),recyclerView,anim,new OnFinishListener() {
+            @Override
+            public void onFinish(Object o) {
+                getFragmentManager().beginTransaction().remove(NurseDialogFrag.this).commit();
+            }
+        });
     }
 }

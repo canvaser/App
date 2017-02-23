@@ -19,7 +19,7 @@ public class AddAddWaterDAOpe extends BaseDAOpe{
 
     GetBylResBean getBylResBean;
 
-    int num = 0;
+    int num = -1;
 
     int click = 0;
 
@@ -69,11 +69,19 @@ public class AddAddWaterDAOpe extends BaseDAOpe{
         this.getBylResBean = getBylResBean;
     }
 
+    public void fillcontent(String value){
+        for(int i=0;i<addAddWaterResBean.getData().get(0).getData().size();i++){
+            if(addAddWaterResBean.getData().get(0).getData().get(i).getTermname().equals("补液内容")){
+                addAddWaterResBean.getData().get(0).getData().get(i).setValue(value);
+            }
+        }
+    }
+
     public void numPlus(){
         click++;
-        if(click<=10){
+        if(click<=11){
             num++;
-            if(num==1){
+            if(num==0){
                 time[0]=System.currentTimeMillis();
             }
             if(num==10){
@@ -85,5 +93,9 @@ public class AddAddWaterDAOpe extends BaseDAOpe{
     public int getDisu(){
         float f = 600000l/(time[1]-time[0]);
         return Math.round(f);
+    }
+
+    public long[] getTime() {
+        return time;
     }
 }

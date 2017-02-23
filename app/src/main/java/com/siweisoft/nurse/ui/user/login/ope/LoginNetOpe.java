@@ -34,7 +34,7 @@ public class LoginNetOpe extends BaseNetOpe {
         doLoginReqBean.setDeviceid(ValueConstant.UUUID);
         doLoginReqBean.setPassword(pwd);
         doLoginReqBean.setUsername(account);
-        NetWork.getInstance(context).xuttil(context, DataValue.URL_DOLOGIN, doLoginReqBean, reqInterf);
+        NetWork.getInstance(context).dologin(context, DataValue.URL_DOLOGIN, doLoginReqBean, reqInterf);
     }
 
     public void onDologout(OnNetWorkReqInterf reqInterf) {

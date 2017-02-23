@@ -26,6 +26,7 @@ import com.siweisoft.nurse.ui.bed.bedlist.ope.BedListDAOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.ope.BedListFGMUIOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.ope.GetMyPatientListNetOpe;
 import com.siweisoft.nurse.ui.bed.patient.fragment.PatientFrag;
+import com.siweisoft.nurse.ui.dialog.dialog.fragment.NurseDialogFrag;
 import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
 import com.siweisoft.nurse.util.fragment.FragManager;
 
@@ -161,30 +162,22 @@ public class BedListFGM extends BaseNurseFrag implements OnAppItemClickListener 
     public void onClick(View view){
         switch (view.getId()){
             case BaseID.ID_MID:
-                View view1 = layoutInflater.inflate(R.layout.pup_list,null);
-                RecyclerView recyclerView = (RecyclerView) view1.findViewById(R.id.rcv_pop);
-                recyclerView.setLayoutManager(new LinearLayoutManager(activity));
-                recyclerView.addItemDecoration(new MyItemDecoration(activity,2));
-                String[] strings = new String[]{"我的病人",MethodValue.getArea().getWardname()};
-                PupListAdapter p = new PupListAdapter(activity,strings);
-                p.setOnAppItemClickListener(new OnAppItemClickListener() {
-                    @Override
-                    public void onAppItemClick(View view, int position) {
-                        switch (position){
-                            case 0:
-                                bedListDAOpe.setIndex(0);
-                                bedListFGMUIOpe.getRefreshLayout().autoRefresh();
-                                break;
-                            case 1:
-                                bedListDAOpe.setIndex(1);
-                                bedListFGMUIOpe.getRefreshLayout().autoRefresh();
-                                break;
-                        }
-                        PopupUtil.getInstance().dimess();
-                    }
-                });
-                recyclerView.setAdapter(p);
-                PopupUtil.getInstance().show(activity,view1,view);
+                NurseDialogFrag.show(getFragmentManager(),BaseID.ID_ROOT,new String[]{"我的病人",MethodValue.getArea().getWardname()}, NurseDialogFrag.MID,new OnAppItemClickListener() {
+
+                            @Override
+                            public void onAppItemClick(View view, int position) {
+                                switch (position){
+                                    case 0:
+                                        bedListDAOpe.setIndex(0);
+                                        bedListFGMUIOpe.getRefreshLayout().autoRefresh();
+                                        break;
+                                    case 1:
+                                        bedListDAOpe.setIndex(1);
+                                        bedListFGMUIOpe.getRefreshLayout().autoRefresh();
+                                        break;
+                                }
+                            }
+                        });
                 break;
             case BaseID.ID_RIGHT:
                 Bundle bundle = new Bundle();

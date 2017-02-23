@@ -10,6 +10,7 @@ import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.SPUtil;
 import com.siweisoft.nurse.nursevalue.DataValue;
+import com.siweisoft.nurse.ui.addwater.addaddwater.fragment.AddAddWaterFrag;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
@@ -77,7 +78,10 @@ public class MissionDetailFrag extends BaseNurseFrag implements OnAppItemClickLi
                 return;
             case R.id.rl_done:
                 status = DataValue.STATUS_YI_WAN_CHENG;
-                break;
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(ValueConstant.DATA_DATA,resBean);
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(),index,new AddAddWaterFrag(),bundle,ValueConstant.CODE_REQUSET1);
+                return;
             case R.id.rl_absent:
                 status = DataValue.STATUS_BING_REN_BU_ZAI;
                 break;

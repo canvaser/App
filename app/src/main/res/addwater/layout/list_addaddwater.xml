@@ -12,7 +12,6 @@
             android:layout_height="match_parent" />
         <com.siweisoft.lib.view.textview.AppEditText
             android:textSize="16sp"
-            android:maxLength="10"
             android:paddingLeft="8dp"
             android:gravity="center_vertical"
             android:id="@+id/et_txt"

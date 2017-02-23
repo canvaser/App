@@ -10,7 +10,7 @@ import android.widget.FrameLayout;
 public class MaterialHeaderView extends FrameLayout implements MaterialHeadListener {
 
     private final static String Tag = MaterialHeaderView.class.getSimpleName();
-    private MaterialWaveView materialWaveView;
+    private MyRefreshHeadView materialWaveView;
     private CircleProgressBar circleProgressBar;
     private int waveColor;
     private int progressTextColor;
@@ -121,7 +121,7 @@ public class MaterialHeaderView extends FrameLayout implements MaterialHeadListe
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
         density = getContext().getResources().getDisplayMetrics().density;
-        materialWaveView = new MaterialWaveView(getContext());
+        materialWaveView = new MyRefreshHeadView(getContext());
         materialWaveView.setColor(waveColor);
         addView(materialWaveView);
 
@@ -138,7 +138,7 @@ public class MaterialHeaderView extends FrameLayout implements MaterialHeadListe
         circleProgressBar.setMax(progressValueMax);
         circleProgressBar.setCircleBackgroundEnabled(isShowProgressBg);
         circleProgressBar.setProgressBackGroundColor(progressBg);
-        addView(circleProgressBar);
+       // addView(circleProgressBar);
     }
 
     @Override

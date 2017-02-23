@@ -3,6 +3,7 @@ package com.siweisoft.nurse.nursenet;
 import android.content.Context;
 
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.siweisoft.lib.base.ui.ope.BaseNetOpe;
 import com.siweisoft.lib.network.NetWork;
 import com.siweisoft.lib.network.bean.req.BaseReqBean;
@@ -19,6 +20,7 @@ import com.siweisoft.nurse.ui.bed.addmypatient.bean.MyPaitentUpdateListReqBean;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentDetailReqBean;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentListReqBean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -77,8 +79,9 @@ public class NurseNetOpe extends BaseNetOpe{
                 data.remove(i);
             }
             data.get(i).setValue(data.get(i).getValue().replace(data.get(i).getSuffix(),""));
+            data.get(i).setItems(null);
         }
-        reqBean.setJson_data(JSONArray.toJSONString(data));
+        reqBean.setJson_data(JSONObject.toJSONString(data));
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_WIITE_ADDWATER_DATA, reqBean, reqInterf);
     }
 

@@ -45,7 +45,7 @@ public class AppAplication extends com.siweisoft.lib.aplication.LibAplication {
     }
 
     private void initXUtil(){
-        //x.Ext.init(this);
+        x.Ext.init(this);
     }
 
 

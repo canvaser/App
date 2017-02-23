@@ -20,49 +20,12 @@ android:background="@color/white">
         app:progress_show_circle_backgroud="false"
         >
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-            <LinearLayout
-                android:gravity="center_vertical"
-                android:background="@drawable/icon_bg_exp_head"
-                android:layout_width="match_parent"
-                android:layout_height="40dp">
-                <LinearLayout
-                    android:id="@+id/ll_title"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-
-                    <TextView
-                        android:id="@+id/tv_title"
-                        android:gravity="center"
-                        android:layout_marginLeft="10dp"
-                        android:text="2016-11-02"
-                        android:textSize="14sp"
-                        android:textColor="@color/black"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
         <android.support.v7.widget.RecyclerView
             android:background="@color/white"
             android:overScrollMode="never"
             android:id="@+id/recycle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-</LinearLayout>
-        </ScrollView>
     </com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout>
 
     <TextView

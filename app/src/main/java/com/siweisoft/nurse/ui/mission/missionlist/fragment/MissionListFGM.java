@@ -178,7 +178,7 @@ public class MissionListFGM extends BaseNurseFrag<MissionListFGMUIOpe,MissionLis
     public void onClickEvent(View view){
         switch (view.getId()){
             case BaseID.ID_MID:
-                NurseDialogFrag.show(getFragmentManager(),BaseID.ID_ROOT,new String[]{"我的任务", MethodValue.getArea().getWardname()}, new OnAppItemClickListener() {
+                NurseDialogFrag.show(getFragmentManager(),BaseID.ID_ROOT,new String[]{"我的任务", MethodValue.getArea().getWardname()}, NurseDialogFrag.MID,new OnAppItemClickListener() {
                     @Override
                     public void onAppItemClick(View view, int position) {
                         switch (position){
@@ -193,26 +193,9 @@ public class MissionListFGM extends BaseNurseFrag<MissionListFGMUIOpe,MissionLis
                         }
                     }
                 });
-
-//                getOpe().getBaseNurseUIOpe().showMidList(activity,new String[]{"我的任务", MethodValue.getArea().getWardname()},view,PopupUtil.MID,new OnAppItemClickListener() {
-//                    @Override
-//                    public void onAppItemClick(View view, int position) {
-//                        switch (position){
-//                            case 0:
-//                                getOpe().getBaseDAOpe().areaType = AreaMessionDAOpe.AREA_TYPE_MY_PATIENT;
-//                                getMyTask(true,null);
-//                                break;
-//                            case 1:
-//                                getOpe().getBaseDAOpe().areaType = AreaMessionDAOpe.AREA_TYPE_AREA;
-//                                getMyTask(true,null);
-//                                break;
-//                        }
-//                        PopupUtil.getInstance().dimess();
-//                    }
-//                });
                 break;
             case BaseID.ID_BACK:
-                getOpe().getBaseNurseUIOpe().showMidList(activity,getOpe().getBaseNurseUIOpe().getMissionTypeStr(),view,PopupUtil.LEFT,new OnAppItemClickListener() {
+                NurseDialogFrag.show(getFragmentManager(),BaseID.ID_ROOT,getOpe().getBaseNurseUIOpe().getMissionTypeStr(), NurseDialogFrag.LEFT,new OnAppItemClickListener() {
                     @Override
                     public void onAppItemClick(View view, int position) {
                         TextView textView = (TextView) view;
@@ -220,13 +203,12 @@ public class MissionListFGM extends BaseNurseFrag<MissionListFGMUIOpe,MissionLis
                         getOpe().getBaseDAOpe().timeArea = AreaMessionDAOpe.TIME_TODAY;
 
                         getMyTask(true,null);
-                        PopupUtil.getInstance().dimess();
                     }
                 });
                 break;
 
             case BaseID.ID_RIGHT:
-                getOpe().getBaseNurseUIOpe().showMidList(activity,getOpe().getBaseNurseUIOpe().getMissionSortStr(),view,PopupUtil.RIGHT,new OnAppItemClickListener() {
+                NurseDialogFrag.show(getFragmentManager(),BaseID.ID_ROOT,getOpe().getBaseNurseUIOpe().getMissionSortStr(), NurseDialogFrag.RIGHT,new OnAppItemClickListener() {
                     @Override
                     public void onAppItemClick(View view, int position) {
                         TextView textView = (TextView) view;

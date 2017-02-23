@@ -60,6 +60,8 @@ android {
 
                     'src/main/res/menus/chart',
                     'src/main/res/timepick',
+                    'src/main/res/refreshlayout',
+
             ]
             jniLibs.srcDirs=[
                     'libs',

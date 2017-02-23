@@ -33,9 +33,6 @@ public class AddAddWaterUIOpe extends BaseNurseUIOpe{
     TextView startTV;
 
 
-    @BindView(R.id.tv_title)
-    TextView titleTV;
-
     public AddAddWaterUIOpe(Context context, View containerView) {
         super(context, containerView);
         init();
@@ -102,7 +99,4 @@ public class AddAddWaterUIOpe extends BaseNurseUIOpe{
         return startTV;
     }
 
-    public TextView getTitleTV() {
-        return titleTV;
-    }
 }

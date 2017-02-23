@@ -105,7 +105,7 @@ public class AVLoadingIndicatorView extends View {
         mIndicatorColor=a.getColor(R.styleable.AVLoadingIndicatorView_indicatorColor, Color.WHITE);
         setIndicator(indicatorName);
         if (mIndicator==null){
-            setIndicator(DEFAULT_INDICATOR);
+            setIndicator("LineScaleIndicator");
         }
         a.recycle();
     }

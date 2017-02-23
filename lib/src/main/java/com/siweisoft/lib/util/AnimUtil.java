@@ -8,6 +8,7 @@ import android.animation.ValueAnimator;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
 
@@ -182,5 +183,28 @@ public class AnimUtil {
 
     public void startAnim(Context context,View view, int aimres){
         view.startAnimation(AnimationUtils.loadAnimation(context,aimres));
+    }
+
+    public void startAnim(Context context, View view, int aimres, final OnFinishListener onFinishListener){
+        Animation animation = AnimationUtils.loadAnimation(context,aimres);
+        view.startAnimation(animation);
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                if(onFinishListener!=null){
+                    onFinishListener.onFinish(animation);
+                }
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 }
