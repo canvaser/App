@@ -17,6 +17,8 @@ import com.siweisoft.lib.util.AnimUtil;
 import com.siweisoft.lib.util.system.HandleUtil;
 import com.siweisoft.nurse.ui.dialog.dialog.ope.uiope.NurseDialogUIOpe;
 
+import java.util.ArrayList;
+
 /**
  * Created by ${viwmox} on 2017-02-20.
  */
@@ -38,6 +40,16 @@ public class NurseDialogFrag extends Fragment implements View.OnClickListener{
     public static void show(FragmentManager fragmentManagers , int id, String[]strings,int position, OnAppItemClickListener onAppItemClickListener){
         Bundle bundle = new Bundle();
         bundle.putStringArray(ValueConstant.DATA_DATA,strings);
+        bundle.putInt(ValueConstant.DATA_POSITION, position);
+        NurseDialogFrag nurseDialogFrag = new NurseDialogFrag();
+        nurseDialogFrag.setArguments(bundle);
+        nurseDialogFrag.onAppItemClickListener = onAppItemClickListener;
+        fragmentManagers.beginTransaction().add(id, nurseDialogFrag).commit();
+    }
+
+    public static void show(FragmentManager fragmentManagers, int id, ArrayList<String> strings, int position, OnAppItemClickListener onAppItemClickListener) {
+        Bundle bundle = new Bundle();
+        bundle.putStringArray(ValueConstant.DATA_DATA, strings.toArray(new String[strings.size()]));
         bundle.putInt(ValueConstant.DATA_POSITION,position);
         NurseDialogFrag nurseDialogFrag = new NurseDialogFrag();
         nurseDialogFrag.setArguments(bundle);

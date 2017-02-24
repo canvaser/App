@@ -35,6 +35,7 @@ import com.siweisoft.nurse.ui.bed.MyMission.ope.MyMissionDAOpe;
 import com.siweisoft.nurse.ui.bed.MyMission.ope.MyMissionStatusOpe;
 import com.siweisoft.nurse.ui.bed.MyMission.ope.MyMissonUIOpe;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
+import com.siweisoft.nurse.ui.dialog.dialog.fragment.NurseDialogFrag;
 import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
 import com.siweisoft.nurse.ui.mission.missiondetail.bean.reqbean.MissisonDetailReqBean;
 import com.siweisoft.nurse.ui.mission.missiondetail.fragment.MissionDetailFrag;
@@ -51,7 +52,6 @@ import butterknife.OnClick;
  * Created by ${viwmox} on 2016-11-11.
  */
 public class MyMissonFrag extends BaseNurseFrag implements
-        ExpandableListView.OnChildClickListener,
         PinnedHeaderExpandableListView.OnHeaderUpdateListener,
         OnAppItemsClickListener {
 
@@ -106,14 +106,13 @@ public class MyMissonFrag extends BaseNurseFrag implements
                                 myMissonUIOpe.initList(myMissionDAOpe.sort());
                             }
                         });
-                        materialRefreshLayout.finishRefresh();
+                        materialRefreshLayout.finishRefresh(getResources().getInteger(R.integer.integer_time_short_300));
                     }
                 });
             }
         });
         myMissonUIOpe.getMissionExpandView().setOnHeaderUpdateListener(this);
-        myMissonUIOpe.getMissionExpandView().setOnChildClickListener(this);
-        myMissonUIOpe.getRefreshLayout().autoRefresh(500);
+        myMissonUIOpe.getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
 
     }
 
@@ -125,7 +124,6 @@ public class MyMissonFrag extends BaseNurseFrag implements
                     AreaMessionListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(),AreaMessionListResBean.class);
                     myMissionDAOpe.setList(new MyMissionStatusOpe().sortStatus(resBean.getData()));
                     myMissonUIOpe.initList(myMissionDAOpe.getList());
-                    myMissonUIOpe.getMyMissionListAdapter().setOnAppItemClickListener(MyMissonFrag.this);
                     myMissonUIOpe.getMyMissionListAdapter().setOnAppItemsClickListener(MyMissonFrag.this);
                 }
                 if(onFinishListener!=null){
@@ -143,11 +141,6 @@ public class MyMissonFrag extends BaseNurseFrag implements
     }
 
 
-    @Override
-    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-        FragManager.getInstance().startFragment(getFragmentManager(),1,new MissionDetailFrag());
-        return false;
-    }
 
     @Override
     public View getPinnedHeader() {
@@ -173,6 +166,7 @@ public class MyMissonFrag extends BaseNurseFrag implements
     @Override
     public void onAppItemClick(int index, View view, int position) {
         switch (view.getId()){
+            case R.id.root:
             case R.id.ll_xyz:
                 Bundle bundle =new Bundle();
                 bundle.putSerializable(ValueConstant.DATA_DATA,(AreaMessionResBean)myMissonUIOpe.getMyMissionListAdapter().getChild(index,position));
@@ -209,37 +203,21 @@ public class MyMissonFrag extends BaseNurseFrag implements
         super.onBackClick(v);
         switch (v.getId()){
             case BaseID.ID_RIGHT:
-                View view3 = layoutInflater.inflate(R.layout.pup_list,null);
-                RecyclerView recyclerView3 = (RecyclerView) view3.findViewById(R.id.rcv_pop);
-                recyclerView3.setLayoutManager(new LinearLayoutManager(activity));
-                recyclerView3.addItemDecoration(new MyItemDecoration(activity,2));
                 String[] missionSortStr = (String[]) MethodValue.getUserInfo(activity).getData().getNurseType().toArray(new String[MethodValue.getUserInfo(activity).getData().getNurseType().size()]);
                 myMissionDAOpe.setMissionSortStr(missionSortStr);
                 MyMissionDAOpe.WAY_TYPE = missionSortStr;
-                PupListAdapter pupListAdapter3 = new PupListAdapter(activity, myMissionDAOpe.addString(missionSortStr));
-                recyclerView3.setAdapter(pupListAdapter3);
-                pupListAdapter3.setOnAppItemClickListener(new OnAppItemClickListener() {
+                NurseDialogFrag.show(getFragmentManager(), BaseID.ID_ROOT, myMissionDAOpe.addString(missionSortStr), NurseDialogFrag.RIGHT, new OnAppItemClickListener() {
                     @Override
                     public void onAppItemClick(View view, int position) {
                         TextView textView = (TextView) view;
                         myMissionDAOpe.setWayType(textView.getText().toString());
                         myMissonUIOpe.getRightTV().setText(myMissionDAOpe.getWayType());
-                        PopupUtil.getInstance().dimess();
                         myMissonUIOpe.initList(myMissionDAOpe.sort());
                     }
                 });
-                PopupUtil.getInstance().show(activity,view3,v);
                 break;
             case BaseID.ID_MID:
-                View view1 = layoutInflater.inflate(R.layout.pup_list,null);
-                RecyclerView recyclerView = (RecyclerView) view1.findViewById(R.id.rcv_pop);
-                recyclerView.getLayoutParams().height = ValueConstant.DIMEN_1*200;
-                recyclerView.requestLayout();
-                recyclerView.setLayoutManager(new LinearLayoutManager(activity));
-                recyclerView.addItemDecoration(new MyItemDecoration(activity,2));
-
-                PupListAdapter p = new PupListAdapter(activity,patientAdditionDAOpe.getNames());
-                p.setOnAppItemClickListener(new OnAppItemClickListener() {
+                NurseDialogFrag.show(getFragmentManager(), BaseID.ID_ROOT, patientAdditionDAOpe.getNames(), NurseDialogFrag.MID, new OnAppItemClickListener() {
                     @Override
                     public void onAppItemClick(View view, int position) {
                         patientAdditionDAOpe.setPosition(position);
@@ -248,8 +226,6 @@ public class MyMissonFrag extends BaseNurseFrag implements
                         getPatientTask(null);
                     }
                 });
-                recyclerView.setAdapter(p);
-                PopupUtil.getInstance().show(activity,view1,v);
                 break;
         }
     }

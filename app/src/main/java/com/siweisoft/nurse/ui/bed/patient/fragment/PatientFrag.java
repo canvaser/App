@@ -17,6 +17,7 @@ import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.nurse.nursevalue.BaseID;
+import com.siweisoft.nurse.nursevalue.MethodValue;
 import com.siweisoft.nurse.ui.addwater.addwater.fragment.AddWaterListFrag;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
@@ -35,6 +36,7 @@ import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionOpe;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientFragUIOpe;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientNetOpe;
+import com.siweisoft.nurse.ui.dialog.dialog.fragment.NurseDialogFrag;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentListResBean;
 import com.siweisoft.nurse.ui.document.document.fragment.DocumentListFrag;
 import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
@@ -148,15 +150,8 @@ public class PatientFrag extends BaseNurseFrag {
                 patientFragUIOpe.getArrowIV().setEnabled(false);
                 break;
             case BaseID.ID_MID:
-                View view1 = layoutInflater.inflate(R.layout.pup_list,null);
-                RecyclerView recyclerView = (RecyclerView) view1.findViewById(R.id.rcv_pop);
-                recyclerView.getLayoutParams().height = ValueConstant.DIMEN_1*200;
-                recyclerView.requestLayout();
-                recyclerView.setLayoutManager(new LinearLayoutManager(activity));
-                recyclerView.addItemDecoration(new MyItemDecoration(activity,2));
+                NurseDialogFrag.show(getFragmentManager(), BaseID.ID_ROOT, patientAdditionDAOpe.getNames(), NurseDialogFrag.MID, new OnAppItemClickListener() {
 
-                PupListAdapter p = new PupListAdapter(activity,patientAdditionDAOpe.getNames());
-                p.setOnAppItemClickListener(new OnAppItemClickListener() {
                     @Override
                     public void onAppItemClick(View view, int position) {
                         patientAdditionDAOpe.setPosition(position);
@@ -165,8 +160,6 @@ public class PatientFrag extends BaseNurseFrag {
                         getData(null);
                     }
                 });
-                recyclerView.setAdapter(p);
-                PopupUtil.getInstance().show(activity,view1,view);
                 break;
             case BaseID.ID_RIGHT:
                 Bundle bundle0 = new Bundle();
@@ -181,29 +174,29 @@ public class PatientFrag extends BaseNurseFrag {
                 break;
             case R.id.rl_advice:
                 Bundle bundle1 = new Bundle();
-                bundle1.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe.getPatientBedResBean());
-                FragManager.getInstance().startFragmentForResult(getFragmentManager(),this.index, new AdviceFrag(),bundle1,ValueConstant.CODE_REQUSET);
+                bundle1.putSerializable(ValueConstant.DATA_DATA, patientAdditionDAOpe);
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(), this.index, new AdviceFrag(), bundle1, ValueConstant.CODE_REQUSET1);
                 break;
             case R.id.rl_data:
                 Bundle bundlea = new Bundle();
                 bundlea.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
-                FragManager.getInstance().startFragmentForResult(getFragmentManager(),index, new DataFrag(),bundlea,ValueConstant.CODE_REQUSET);
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new DataFrag(), bundlea, ValueConstant.CODE_REQUSET1);
                 break;
             case R.id.rl_assay:
                 Bundle bundle2 = new Bundle();
-                bundle2.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe.getPatientBedResBean());
-                FragManager.getInstance().startFragmentForResult(getFragmentManager(),index, new AssayFrag(),bundle2,ValueConstant.CODE_REQUSET);
+                bundle2.putSerializable(ValueConstant.DATA_DATA, patientAdditionDAOpe);
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new AssayFrag(), bundle2, ValueConstant.CODE_REQUSET1);
                 break;
             //护理记录单
             case R.id.rl_nurserecord:
                 Bundle bundle3 = new Bundle();
                 bundle3.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
-                FragManager.getInstance().startFragmentForResult(getFragmentManager(),index, new NurseRecordFrag(),bundle3,ValueConstant.CODE_REQUSET);
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new NurseRecordFrag(), bundle3, ValueConstant.CODE_REQUSET1);
                 break;
             case R.id.rl_handoverreport:
                 Bundle bundle4 = new Bundle();
                 bundle4.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
-                FragManager.getInstance().startFragmentForResult(getFragmentManager(),index, new HandOverReportFrag(),bundle4,ValueConstant.CODE_REQUSET);
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new HandOverReportFrag(), bundle4, ValueConstant.CODE_REQUSET1);
                 break;
             case R.id.rl_nurse_document:
                 Bundle bundle5 = new Bundle();

@@ -8,9 +8,14 @@ import com.siweisoft.lib.base.ui.ope.BaseNetOpe;
 import com.siweisoft.lib.network.NetWork;
 import com.siweisoft.lib.network.bean.req.BaseReqBean;
 import com.siweisoft.lib.network.interf.OnNetWorkReqInterf;
+import com.siweisoft.lib.util.CalendarUtil;
 import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.StringUtil;
+import com.siweisoft.lib.util.data.DateFormatUtil;
 import com.siweisoft.nurse.nursevalue.DataValue;
+import com.siweisoft.nurse.nursevalue.MethodValue;
 import com.siweisoft.nurse.ui.addwater.addaddwater.bean.netbean.AddAddWaterDataReqBean;
+import com.siweisoft.nurse.ui.addwater.addaddwater.bean.netbean.AddAddWaterReqBean;
 import com.siweisoft.nurse.ui.addwater.addaddwater.bean.netbean.AddAddWaterResBean;
 import com.siweisoft.nurse.ui.addwater.addaddwater.bean.netbean.GetBylReqBean;
 import com.siweisoft.nurse.ui.addwater.addwater.bean.netbean.AddWaterReqBean;
@@ -20,7 +25,10 @@ import com.siweisoft.nurse.ui.bed.addmypatient.bean.MyPaitentUpdateListReqBean;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentDetailReqBean;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentListReqBean;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -64,7 +72,7 @@ public class NurseNetOpe extends BaseNetOpe{
     }
 
     /**提交补液卡数据*/
-    public void write_addwater_data(String id, String yizhuid, String regionId, List<AddAddWaterResBean.DataBeanX.DataBean> data, OnNetWorkReqInterf reqInterf) {
+    public void write_addwater_data(String id, String yizhuid, String regionId, String zyh, List<AddAddWaterResBean.DataBeanX.DataBean> data, OnNetWorkReqInterf reqInterf) {
         AddAddWaterDataReqBean reqBean = new AddAddWaterDataReqBean();
         reqBean.setPid("0");
         reqBean.setPname("");
@@ -74,14 +82,43 @@ public class NurseNetOpe extends BaseNetOpe{
         reqBean.setAdvid(yizhuid);
         reqBean.setType("byk");
         reqBean.setWardid(regionId);
+
+        List<AddAddWaterReqBean> d = new ArrayList<>();
         for(int i=0;i<data.size();i++){
-            if(data.get(i).getTermname().equals("时间")){
+            AddAddWaterReqBean a = new AddAddWaterReqBean();
+            a.setCoeff(data.get(i).getCoeff());
+            a.setFileid(data.get(i).getFileid());
+            a.setFilename(data.get(i).getFilename());
+            a.setInitstring(data.get(i).getInitstring());
+            a.setItems("");
+            a.setItemvalues(data.get(i).getItemvalues());
+            a.setLower(data.get(i).getLower());
+            a.setNid(data.get(i).getNid());
+            a.setParenttermid(data.get(i).getParenttermid());
+            a.setPrefix(data.get(i).getPrefix());
+            a.setSuffix(data.get(i).getSuffix());
+            a.setTermid(data.get(i).getTermid());
+            a.setTermname(data.get(i).getTermname());
+            a.setTextalign(data.get(i).getTextalign());
+            a.setType(data.get(i).getType());
+            a.setUpper(data.get(i).getUpper());
+            a.setValidrange(data.get(i).getValidrange());
+            a.setValue(data.get(i).getValue());
+            a.setValuetype(data.get(i).getValuetype());
+            a.setZyh(zyh);
+            a.setWardid(regionId);
+            a.setTimestamp(StringUtil.getStr(System.currentTimeMillis() / 1000l));
+            d.add(a);
+        }
+
+        for (int i = 0; i < d.size(); i++) {
+            if (d.get(i).getTermname().equals("时间")) {
                 data.remove(i);
             }
-            data.get(i).setValue(data.get(i).getValue().replace(data.get(i).getSuffix(),""));
-            data.get(i).setItems(null);
+            d.get(i).setValue(d.get(i).getValue().replace(d.get(i).getSuffix(), ""));
+            //data.get(i).setItems(null);
         }
-        reqBean.setJson_data(JSONObject.toJSONString(data));
+        reqBean.setJson_data(JSONArray.toJSONString(d));
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_WIITE_ADDWATER_DATA, reqBean, reqInterf);
     }
 
@@ -105,8 +142,37 @@ public class NurseNetOpe extends BaseNetOpe{
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_SUMMARY_BY_PAITENT, baseNurseReqBean, reqInterf);
     }
 
+    /**
+     * 获取病人医嘱数据
+     */
+    public void getPatientAdviceData(String zyh, OnNetWorkReqInterf reqInterf) {
+        BaseNurseReqBean reqBean = new BaseNurseReqBean();
+        reqBean.setZyh(zyh);
+        NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_PATIENT_ADVICE, reqBean, reqInterf);
+    }
 
-
-
+    /**
+     * 获取化验报告数据
+     */
+    public void getAssayDataList(String zyh, String begin, OnNetWorkReqInterf reqInterf) {
+        Date date = null;
+        Calendar beginCalendar = Calendar.getInstance();
+        Calendar endCalendar = Calendar.getInstance();
+        String end = null;
+        try {
+            date = DateFormatUtil.convent_yyyyMMdd(begin);
+            beginCalendar.setTime(date);
+            endCalendar.setTime(date);
+            endCalendar.set(Calendar.DAY_OF_MONTH, beginCalendar.get(Calendar.DAY_OF_MONTH) + 1);
+            end = DateFormatUtil.convent_yyyyMMdd(endCalendar.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        BaseNurseReqBean baseNurseReqBean = new BaseNurseReqBean();
+        baseNurseReqBean.setPatientid(zyh);
+        baseNurseReqBean.setBegin(begin);
+        baseNurseReqBean.setEnd(end);
+        NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_LIST_RESULT_PATIENT, baseNurseReqBean, reqInterf);
+    }
 
 }

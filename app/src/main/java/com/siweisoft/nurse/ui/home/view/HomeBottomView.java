@@ -13,17 +13,19 @@ import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemLongClickListener;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemSelectListener;
 import com.siweisoft.lib.util.LogUtil;
+import com.siweisoft.lib.util.ToastUtil;
 
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnLongClick;
 import butterknife.Optional;
 
 /**
  * Created by ${viwmox} on 2016-11-08.
  */
-public class HomeBottomView extends LinearLayout{
+public class HomeBottomView extends LinearLayout implements View.OnLongClickListener {
 
     private Context context;
 
@@ -36,6 +38,8 @@ public class HomeBottomView extends LinearLayout{
     OnAppItemSelectListener onAppItemSelectListener;
 
     OnAppItemLongClickListener onAppItemLongClickListener;
+
+    OnLongClickListener onLongClickListener;
 
 
 
@@ -66,6 +70,7 @@ public class HomeBottomView extends LinearLayout{
         addView(view,new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         ButterKnife.bind(this,this);
         onClick(tabViews.get(0));
+        findViewById(R.id.ll_check).setOnLongClickListener(this);
     }
 
 
@@ -124,5 +129,15 @@ public class HomeBottomView extends LinearLayout{
 
     public void setOnAppItemLongClickListener(OnAppItemLongClickListener onAppItemLongClickListener) {
         this.onAppItemLongClickListener = onAppItemLongClickListener;
+    }
+
+    public void setOnLongClick(OnLongClickListener onLongClickListener) {
+        this.onLongClickListener = onLongClickListener;
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        onLongClickListener.onLongClick(v);
+        return true;
     }
 }

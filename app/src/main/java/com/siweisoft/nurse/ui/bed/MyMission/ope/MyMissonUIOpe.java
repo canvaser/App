@@ -49,7 +49,7 @@ public class MyMissonUIOpe extends BaseNurseUIOpe{
 
         getMidTV().setSelected(true);
         getRightTV().setSelected(true);
-        getRightTV().setText("日历");
+        getRightTV().setText("全部");
         View view = LayoutInflater.from(context).inflate(R.layout.item_head_mission,null);
         missionItenHeadUIBean = new MissionItenHeadUIBean(context,view);
         missionExpandView.addHeaderView(view,null,true);

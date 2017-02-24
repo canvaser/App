@@ -81,7 +81,7 @@ public class MyMissionDAOpe extends BaseOpe {
             ArrayList<AreaMessionResBean> ll = list.get(strings[i]);
             for(int j = 0;j<ll.size();j++){
                 if(ll.get(j).getTitles()!=null && ll.get(j).getTitles().size()>0){
-                    if(ll.get(j).getTitles().get(0).getTaskname().equals(wayType) ||wayType.equals(TIME_TYPE[0])){
+                    if (wayType.contains(ll.get(j).getTitles().get(0).getTaskname()) || wayType.equals(TIME_TYPE[0])) {
                         String  s ="";
                         if("st".equals(ll.get(j).getTitles().get(0).getKey().toLowerCase())||ll.get(j).getCodename().equals("出院带药")){
                             s ="临时";
@@ -112,7 +112,7 @@ public class MyMissionDAOpe extends BaseOpe {
     }
 
     public  String[] addString(String[] s){
-        String[] ss = new String[s.length+2];
+        String[] ss = new String[s.length + 1];
         ss[0]="全部";
         for(int i=0;i<s.length;i++){
             ss[i+1]=s[i];

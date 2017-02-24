@@ -35,7 +35,6 @@ public class MyMissionListAdapter extends BaseExpandableListAdapter implements V
 
     HashMap<String,ArrayList<AreaMessionResBean>> list;
 
-    OnAppItemsClickListener onAppItemClickListener;
 
     OnAppItemsClickListener onAppItemsClickListener;
 
@@ -238,15 +237,6 @@ public class MyMissionListAdapter extends BaseExpandableListAdapter implements V
                             BitmapUtil.getInstance().setBg(context,missionUIBean.getCodenameIV(),R.drawable.icon_medicine);
                             break;
                     }
-
-
-
-
-
-
-                        missionUIBean.getRootV().setTag(R.id.position,childPosition);
-                        missionUIBean.getRootV().setTag(R.id.groupposition,groupPosition);
-                        missionUIBean.getRootV().setOnClickListener(this);
                         missionUIBean.getSwipeView().setOnAppClickListener(new OnAppItemClickListener() {
                             @Override
                             public void onAppItemClick(View view, int position) {
@@ -270,14 +260,11 @@ public class MyMissionListAdapter extends BaseExpandableListAdapter implements V
     public void onClick(View v) {
         int g= (int) v.getTag(R.id.groupposition);
         int p = (int) v.getTag(R.id.position);
-        if(onAppItemClickListener!=null){
-            onAppItemClickListener.onAppItemClick(g,v,p);
+        if (onAppItemsClickListener != null) {
+            onAppItemsClickListener.onAppItemClick(g, v, p);
         }
     }
 
-    public void setOnAppItemClickListener(OnAppItemsClickListener onAppItemClickListener) {
-        this.onAppItemClickListener = onAppItemClickListener;
-    }
 
     public void setOnAppItemsClickListener(OnAppItemsClickListener onAppItemsClickListener) {
         this.onAppItemsClickListener = onAppItemsClickListener;

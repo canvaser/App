@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
 import com.siweisoft.lib.base.ui.ope.BaseDBOpe;
@@ -12,9 +13,11 @@ import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.menu.popup.PopupUtil;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
+import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.nurserecord.bean.resbean.NurseRecordListResBean;
 import com.siweisoft.nurse.ui.bed.nurserecord.ope.NurseRecordUIOpe;
@@ -48,18 +51,32 @@ public class NurseRecordFrag extends BaseNurseFrag<NurseRecordUIOpe,NurseNetOpe,
         }
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
         getOpe().getBaseNurseUIOpe().initTile(patientAdditionDAOpe.getPatientBedResBean().get病人住院号()+" "+patientAdditionDAOpe.getPatientBedResBean().get姓名());
-        getData();
-
+        getOpe().getBaseNurseUIOpe().getRefreshLayout().setMaterialRefreshListener(this);
+        getOpe().getBaseNurseUIOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
     }
 
-    public void getData(){
-        getOpe().getBaseNetOpe().getTaskSummaryByPatient(patientAdditionDAOpe.getPatientBedResBean().get住院号(), new OnNetWorkReqAdapter(activity) {
+    @Override
+    public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
+        super.onRefresh(materialRefreshLayout);
+        getData(new OnFinishListener() {
+            @Override
+            public void onFinish(Object o) {
+                materialRefreshLayout.finishRefresh();
+            }
+        });
+    }
+
+    public void getData(final OnFinishListener onFinishListener) {
+        getOpe().getBaseNetOpe().getTaskSummaryByPatient(patientAdditionDAOpe.getPatientBedResBean().get住院号(), new DelayUINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
                 if(success){
                     NurseRecordListResBean nurseRecordListResBean = GsonUtil.getInstance().fromJson(o.toString(),NurseRecordListResBean.class);
                     getOpe().getBaseNurseUIOpe().initList(nurseRecordListResBean.getData());
                     getOpe().getBaseNurseUIOpe().getNurseRecordListAdapter().setOnAppItemClickListener(NurseRecordFrag.this);
+                }
+                if (onFinishListener != null) {
+                    onFinishListener.onFinish(o);
                 }
             }
         });
@@ -75,7 +92,7 @@ public class NurseRecordFrag extends BaseNurseFrag<NurseRecordUIOpe,NurseNetOpe,
                         patientAdditionDAOpe.setPosition(position);
                         PopupUtil.getInstance().dimess();
                         getOpe().getBaseNurseUIOpe().initTile(patientAdditionDAOpe.getPatientBedResBean().get病人住院号()+" "+patientAdditionDAOpe.getPatientBedResBean().get姓名());
-                        getData();
+                        getOpe().getBaseNurseUIOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
                     }
                 });
                 break;

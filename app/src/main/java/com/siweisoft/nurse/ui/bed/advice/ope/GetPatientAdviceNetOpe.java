@@ -19,8 +19,4 @@ public class GetPatientAdviceNetOpe extends BaseNetOpe {
     }
 
 
-    public void getPatientTask(BaseNurseReqBean reqBean, OnNetWorkReqInterf reqInterf) {
-        NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_PATIENT_ADVICE, reqBean, reqInterf);
-    }
-
 }

@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.nurserecord.adapter.NurseRecordListAdapter;
 import com.siweisoft.nurse.ui.bed.nurserecord.bean.resbean.NurseRecordResBean;
@@ -25,6 +26,9 @@ public class NurseRecordUIOpe extends BaseNurseUIOpe{
     RecyclerView recyclerView;
 
     NurseRecordListAdapter nurseRecordListAdapter;
+
+    @BindView(R.id.refresh)
+    MaterialRefreshLayout refreshLayout;
 
 
 
@@ -57,5 +61,9 @@ public class NurseRecordUIOpe extends BaseNurseUIOpe{
 
     public NurseRecordListAdapter getNurseRecordListAdapter() {
         return nurseRecordListAdapter;
+    }
+
+    public MaterialRefreshLayout getRefreshLayout() {
+        return refreshLayout;
     }
 }

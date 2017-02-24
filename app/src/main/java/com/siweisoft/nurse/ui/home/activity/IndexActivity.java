@@ -36,7 +36,7 @@ import butterknife.OnClick;
 /**
  * Created by ${viwmox} on 2016-11-08.
  */
-public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppItemSelectListener,OnAppItemLongClickListener {
+public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppItemSelectListener, OnAppItemLongClickListener, View.OnLongClickListener {
 
 
     HomeUIOpe homeUIOpe;
@@ -58,6 +58,7 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
 
         homeUIOpe.getHomeBottomView().setOnAppItemSelectListener(this);
         homeUIOpe.getHomeBottomView().setOnAppItemLongClickListener(this);
+        homeUIOpe.getHomeBottomView().setOnLongClick(this);
         homeNetOpe.getAdditionList(new OnNetWorkReqAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
@@ -108,15 +109,6 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
         FragManager.getInstance().clearTop(getSupportFragmentManager(),position);
     }
 
-    @OnClick({R.id.iv_scan})
-    public void onClick(View v){
-        switch (v.getId()){
-            case R.id.iv_scan:
-                startActivityForResult(new Intent(activity, CaptureActivity.class),ValueConstant.CODE_REQUSET);
-                break;
-        }
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode){
@@ -155,6 +147,12 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
                 }
                 break;
         }
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        startActivityForResult(new Intent(activity, CaptureActivity.class), ValueConstant.CODE_REQUSET);
+        return true;
     }
 
     class KeepLive extends BroadcastReceiver{

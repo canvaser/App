@@ -43,6 +43,7 @@ public class AdditionListUIOpe extends BaseNurseUIOpe{
     private void init(){
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
+        getRightTV().setSelected(true);
         getRightTV().setText("提交");
 
     }

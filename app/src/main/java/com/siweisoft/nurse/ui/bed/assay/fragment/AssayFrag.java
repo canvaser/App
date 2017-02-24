@@ -5,66 +5,87 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.base.ui.ope.BaseDBOpe;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
 import com.siweisoft.lib.util.GsonUtil;
-import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
+import com.siweisoft.lib.util.data.DateFormatUtil;
+import com.siweisoft.lib.util.dialog.DialogUtil;
+import com.siweisoft.lib.view.pickerview.TimePickerDialog;
+import com.siweisoft.lib.view.pickerview.data.Type;
+import com.siweisoft.lib.view.pickerview.listener.OnDateSetListener;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
+import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.assay.bean.resbean.AssayListResBean;
-import com.siweisoft.nurse.ui.bed.assay.ope.AssayListNetOpe;
+import com.siweisoft.nurse.ui.bed.assay.ope.AssayDAOpe;
 import com.siweisoft.nurse.ui.bed.assay.ope.AssaySortOpe;
 import com.siweisoft.nurse.ui.bed.assay.ope.AssayUIOpe;
 import com.siweisoft.nurse.ui.bed.assaydetail.fragment.AssayDetailFrag;
-import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
+import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
+import com.siweisoft.nurse.ui.dialog.dialog.fragment.NurseDialogFrag;
 import com.siweisoft.nurse.util.fragment.FragManager;
+
+import java.util.Date;
+
+import butterknife.OnClick;
 
 /**
  * Created by ${viwmox} on 2016-11-17.
  */
-public class AssayFrag extends BaseNurseFrag implements OnAppItemClickListener {
+public class AssayFrag extends BaseNurseFrag<AssayUIOpe, NurseNetOpe, BaseDBOpe, AssayDAOpe> implements OnAppItemClickListener {
 
-
-    AssayUIOpe assayUIOpe;
-
-    AssayListNetOpe assayListNetOpe;
-
-    PatientBedResBean resBean;
-
-
-    @Override
-    public BaseNurseOpes getOpe() {
-        return null;
-    }
-
+    PatientAdditionDAOpe patientAdditionDAOpe;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        assayUIOpe = new AssayUIOpe(activity,getView());
         if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA)==null){
             return;
         }
-        resBean = (PatientBedResBean) getArguments().getSerializable(ValueConstant.DATA_DATA);
+        patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
+        getOpe().getBaseNurseUIOpe().initTitle(patientAdditionDAOpe.getPatientBedResBean().get住院号() + patientAdditionDAOpe.getPatientBedResBean().get姓名());
+        getOpe().getBaseNurseUIOpe().getRefreshLayout().setMaterialRefreshListener(this);
+        getOpe().getBaseNurseUIOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+    }
 
-        assayListNetOpe=new AssayListNetOpe(activity);
-        BaseNurseReqBean baseNurseReqBean = new BaseNurseReqBean();
-        baseNurseReqBean.setPatientid(resBean.get住院号());
-        baseNurseReqBean.setBegin("2016-10-18");
-        baseNurseReqBean.setEnd("2016-11-19");
-        assayListNetOpe.getMyPatientList(baseNurseReqBean, new OnNetWorkReqAdapter(activity) {
+    @Override
+    public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
+        super.onRefresh(materialRefreshLayout);
+        getData(new OnFinishListener() {
+            @Override
+            public void onFinish(Object o) {
+                materialRefreshLayout.finishRefresh();
+            }
+        });
+    }
+
+    public void getData(final OnFinishListener onFinishListener) {
+        getOpe().getBaseNetOpe().getAssayDataList(patientAdditionDAOpe.getPatientBedResBean().get住院号(), getOpe().getBaseDAOpe().getBeginTime(), new OnNetWorkReqAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
                 if(success){
                     AssayListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(),AssayListResBean.class);
-                    assayUIOpe.initList(new AssaySortOpe().sortAssay(resBean.getData()));
-                    assayUIOpe.getAssayListAdapter().setOnAppItemClickListener(AssayFrag.this);
+                    getOpe().getBaseNurseUIOpe().initList(new AssaySortOpe().sortAssay(resBean.getData()));
+                    getOpe().getBaseNurseUIOpe().getAssayListAdapter().setOnAppItemClickListener(AssayFrag.this);
+                }
+                if (onFinishListener != null) {
+                    onFinishListener.onFinish(o);
                 }
             }
         });
+    }
 
-
+    @Override
+    public BaseNurseOpes<AssayUIOpe, NurseNetOpe, BaseDBOpe, AssayDAOpe> getOpe() {
+        if (baseNurseOpes == null) {
+            baseNurseOpes = new BaseNurseOpes(new AssayUIOpe(activity, getView()), new NurseNetOpe(activity), null, new AssayDAOpe(activity));
+        }
+        return baseNurseOpes;
     }
 
     @Override
@@ -72,11 +93,35 @@ public class AssayFrag extends BaseNurseFrag implements OnAppItemClickListener {
         return R.layout.frag_assay;
     }
 
+    @OnClick({BaseID.ID_RIGHT, BaseID.ID_MID})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case BaseID.ID_RIGHT:
+                DialogUtil.showTimePick(activity, getFragmentManager(), "date", Type.ALL, new OnDateSetListener() {
+                    @Override
+                    public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
+                        getOpe().getBaseDAOpe().setBeginTime(DateFormatUtil.convent_YYYYMMDD(new Date(millseconds)));
+                        getOpe().getBaseNurseUIOpe().getRefreshLayout().autoRefresh();
+                    }
+                });
+                break;
+            case BaseID.ID_MID:
+                NurseDialogFrag.show(getFragmentManager(), BaseID.ID_ROOT, patientAdditionDAOpe.getNames(), NurseDialogFrag.MID, new OnAppItemClickListener() {
+                    @Override
+                    public void onAppItemClick(View view, int position) {
+                        patientAdditionDAOpe.setPosition(position);
+                        getOpe().getBaseNurseUIOpe().initTitle(patientAdditionDAOpe.getPatientBedResBean().get住院号() + patientAdditionDAOpe.getPatientBedResBean().get姓名());
+                        getOpe().getBaseNurseUIOpe().getRefreshLayout().autoRefresh();
+                    }
+                });
+                break;
+        }
+    }
+
     @Override
     public void onAppItemClick(View view, int position) {
-
         Bundle bundle = new Bundle();
-        bundle.putSerializable(ValueConstant.DATA_DATA,assayUIOpe.getAssayListAdapter().getData().get(position));
+        bundle.putSerializable(ValueConstant.DATA_DATA, getOpe().getBaseNurseUIOpe().getAssayListAdapter().getData().get(position));
         FragManager.getInstance().startFragment(getFragmentManager(),index,new AssayDetailFrag(),bundle);
     }
 }

@@ -6,19 +6,21 @@
 
         <android.support.v7.widget.RecyclerView
             android:visibility="gone"
+            android:layout_marginBottom="60dp"
             android:layout_marginTop="40dp"
             android:layout_marginLeft="10dp"
             android:elevation="10dp"
             android:background="@drawable/pop_bg3"
             android:layout_gravity="center_horizontal"
             android:id="@+id/rcv_pop_left"
-            android:layout_width="110dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
         <android.support.v7.widget.RecyclerView
+            android:layout_marginBottom="60dp"
             android:visibility="gone"
             android:layout_marginTop="40dp"
            android:layout_centerHorizontal="true"
@@ -26,12 +28,13 @@
             android:background="@drawable/pop_bg3"
             android:layout_gravity="center_horizontal"
             android:id="@+id/rcv_pop"
-            android:layout_width="110dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true" />
 
 
         <android.support.v7.widget.RecyclerView
+            android:layout_marginBottom="60dp"
             android:layout_marginRight="10dp"
             android:visibility="gone"
             android:layout_marginTop="40dp"
@@ -40,7 +43,7 @@
             android:background="@drawable/pop_bg3"
             android:layout_gravity="center_horizontal"
             android:id="@+id/rcv_pop_right"
-            android:layout_width="110dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
           />

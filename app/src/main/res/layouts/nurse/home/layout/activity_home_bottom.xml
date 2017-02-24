@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="@drawable/icon_bg_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <LinearLayout
+            android:id="@+id/ll_bed"
+            android:background="@drawable/drawable_tab"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@drawable/drawable_bed"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:id="@+id/tv_bed"
+                android:textSize="11sp"
+                android:textColor="@color/black"
+                android:text="病床"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_mission"
+            android:background="@drawable/drawable_tab"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@drawable/drawable_mission"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:id="@+id/tv_mission"
+                android:textSize="11sp"
+                android:textColor="@color/black"
+                android:text="任务"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_check"
+            android:background="@drawable/drawable_tab"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@drawable/drawable_check"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:id="@+id/tv_check"
+                android:textSize="11sp"
+                android:textColor="@color/black"
+                android:text="核对"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_info"
+            android:background="@drawable/drawable_tab"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@drawable/drawable_info"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:id="@+id/tv_info"
+                android:textSize="11sp"
+                android:textColor="@color/black"
+                android:text="信息"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_setting"
+            android:background="@drawable/drawable_tab"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:src="@drawable/drawable_setting"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:id="@+id/tv_setting"
+                android:textSize="11sp"
+                android:textColor="@color/black"
+                android:text="设置"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

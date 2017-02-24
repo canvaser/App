@@ -77,6 +77,7 @@ public class AddAddWaterFrag extends BaseNurseFrag<AddAddWaterUIOpe,NurseNetOpe,
         getOpe().getBaseNetOpe().write_addwater_data(getOpe().getBaseDAOpe().getAreaMessionResBean().getTitles().get(0).getId(),
                 getOpe().getBaseDAOpe().getAreaMessionResBean().getTitles().get(0).get医嘱ID(),
                 getOpe().getBaseDAOpe().getAreaMessionResBean().getRegionId(),
+                getOpe().getBaseDAOpe().getAreaMessionResBean().getZyh(),
                 getOpe().getBaseDAOpe().getAddAddWaterResBean().getData().get(0).getData(),
                 new DelayUINetAdapter(activity) {
                     @Override

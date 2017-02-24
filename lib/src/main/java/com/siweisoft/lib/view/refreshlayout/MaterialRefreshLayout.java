@@ -556,6 +556,15 @@ public class MaterialRefreshLayout extends FrameLayout {
         });
     }
 
+    public void finishRefresh(int time) {
+        this.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                finishRefreshing();
+            }
+        }, time);
+    }
+
     public void finishRefreshLoadMore() {
         this.post(new Runnable() {
             @Override

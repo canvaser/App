@@ -13,6 +13,18 @@ import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
+import com.siweisoft.lib.base.ui.ope.BaseDBOpe;
+import com.siweisoft.lib.util.data.DateFormatUtil;
+import com.siweisoft.lib.util.dialog.DialogUtil;
+import com.siweisoft.lib.util.menu.popup.PopupUtil;
+import com.siweisoft.lib.view.pickerview.TimePickerDialog;
+import com.siweisoft.lib.view.pickerview.data.Type;
+import com.siweisoft.lib.view.pickerview.listener.OnDateSetListener;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemsClickListener;
 import com.siweisoft.lib.constant.ValueConstant;
@@ -25,35 +37,38 @@ import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
 import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.MyMission.bean.uibean.MyMissionHeadUIBean;
 import com.siweisoft.nurse.ui.bed.advice.bean.resbean.AdviceListResBean;
 import com.siweisoft.nurse.ui.bed.advice.ope.AdviceUIOpe;
 import com.siweisoft.nurse.ui.bed.advice.ope.GetPatientAdviceNetOpe;
 import com.siweisoft.nurse.ui.bed.advice.ope.TimeSortOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
+import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
+import com.siweisoft.nurse.ui.dialog.dialog.fragment.NurseDialogFrag;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import butterknife.OnClick;
 
 /**
  * Created by ${viwmox} on 2016-11-11.
  */
-public class AdviceFrag extends BaseNurseFrag implements
+public class AdviceFrag extends BaseNurseFrag<AdviceUIOpe, NurseNetOpe, BaseDBOpe, BaseDAOpe> implements
         ExpandableListView.OnChildClickListener,
         PinnedHeaderExpandableListView.OnHeaderUpdateListener,
         OnAppItemsClickListener {
 
 
-    AdviceUIOpe adviceUIOpe;
-
-    GetPatientAdviceNetOpe getPatientAdviceNetOpe;
-
-    PatientBedResBean resBean;
+    PatientAdditionDAOpe patientAdditionDAOpe;
 
     @Override
-    public BaseNurseOpes getOpe() {
-        return null;
+    public BaseNurseOpes<AdviceUIOpe, NurseNetOpe, BaseDBOpe, BaseDAOpe> getOpe() {
+        if (baseNurseOpes == null) {
+            baseNurseOpes = new BaseNurseOpes(new AdviceUIOpe(activity, getView()), new NurseNetOpe(activity), null, null);
+        }
+        return baseNurseOpes;
     }
 
     @Override
@@ -62,23 +77,41 @@ public class AdviceFrag extends BaseNurseFrag implements
         if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA)==null){
            return;
         }
-        resBean = (PatientBedResBean) getArguments().getSerializable(ValueConstant.DATA_DATA);
-        adviceUIOpe = new AdviceUIOpe(activity,getView());
-        getPatientAdviceNetOpe = new GetPatientAdviceNetOpe(activity);
-        BaseNurseReqBean reqBean =new BaseNurseReqBean();
-        reqBean.setZyh(resBean.get住院号());
-        getPatientAdviceNetOpe.getPatientTask(reqBean, new OnNetWorkReqAdapter(activity) {
+        patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
+        getOpe().getBaseNurseUIOpe().initTitle(patientAdditionDAOpe.getPatientBedResBean().get住院号() + patientAdditionDAOpe.getPatientBedResBean().get姓名());
+        getOpe().getBaseNurseUIOpe().getDoubleExpandView().setOnHeaderUpdateListener(this);
+        getOpe().getBaseNurseUIOpe().getDoubleExpandView().setOnChildClickListener(this);
+        getOpe().getBaseNurseUIOpe().getMaterialRefreshLayout().setMaterialRefreshListener(this);
+        getOpe().getBaseNurseUIOpe().getMaterialRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+    }
+
+
+    @Override
+    public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
+        super.onRefresh(materialRefreshLayout);
+        getData(new OnFinishListener() {
+            @Override
+            public void onFinish(Object o) {
+                materialRefreshLayout.finishRefresh();
+            }
+        });
+    }
+
+    public void getData(final OnFinishListener onFinishListener) {
+        getOpe().getBaseNetOpe().getPatientAdviceData(patientAdditionDAOpe.getPatientBedResBean().get住院号(), new OnNetWorkReqAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
                 if(success){
                     AdviceListResBean adviceListResBean = GsonUtil.getInstance().fromJson(o.toString(),AdviceListResBean.class);
-                    adviceUIOpe.initAdviceList( new TimeSortOpe().sortTime(adviceListResBean.getData()));
+                    getOpe().getBaseNurseUIOpe().initAdviceList(new TimeSortOpe().sortTime(adviceListResBean.getData()));
+                }
+                if (onFinishListener != null) {
+                    onFinishListener.onFinish(o);
                 }
             }
         });
-        adviceUIOpe.getDoubleExpandView().setOnHeaderUpdateListener(this);
-        adviceUIOpe.getDoubleExpandView().setOnChildClickListener(this);
     }
+
 
     @Override
     public int getContainView() {
@@ -99,14 +132,14 @@ public class AdviceFrag extends BaseNurseFrag implements
 
     @Override
     public void updatePinnedHeader(View headerView, int firstVisibleGroupPos) {
-        if( firstVisibleGroupPos<0 ||adviceUIOpe ==null || adviceUIOpe.getAdviceListAdapter()==null){
+        if (firstVisibleGroupPos < 0 || getOpe().getBaseNurseUIOpe() == null || getOpe().getBaseNurseUIOpe().getAdviceListAdapter() == null) {
             headerView.setVisibility(View.GONE);
             return;
         }
         headerView.setVisibility(View.VISIBLE);
         MyMissionHeadUIBean myMissionHeadUIBean = new MyMissionHeadUIBean(activity,headerView);
         myMissionHeadUIBean.getTitleTV().setText(DataValue.STATUS_TYPE_TIME.get(firstVisibleGroupPos));
-        myMissionHeadUIBean.getNumTV().setText(StringUtil.getStr(adviceUIOpe.getAdviceListAdapter().getChildrenCount(firstVisibleGroupPos)));
+        myMissionHeadUIBean.getNumTV().setText(StringUtil.getStr(getOpe().getBaseNurseUIOpe().getAdviceListAdapter().getChildrenCount(firstVisibleGroupPos)));
     }
 
     @Override
@@ -114,23 +147,24 @@ public class AdviceFrag extends BaseNurseFrag implements
 
     }
 
-    @OnClick({BaseID.ID_RIGHT})
+    @OnClick({BaseID.ID_RIGHT, BaseID.ID_MID})
     public void onClick(View v){
         switch (v.getId()){
-            case BaseID.ID_RIGHT:
-                DatePickUitl.getInstance().showDatePickDialog(activity, new DatePickerDialog.OnDateSetListener() {
+            case BaseID.ID_MID:
+                NurseDialogFrag.show(getFragmentManager(), BaseID.ID_ROOT, patientAdditionDAOpe.getNames(), NurseDialogFrag.MID, new OnAppItemClickListener() {
                     @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        //myMissionDAOpe.setDate(DateFormatUtil.getYYYYMMDD(year,month,dayOfMonth));
-                        Calendar calendar = Calendar.getInstance();
-                        calendar.set(Calendar.YEAR,year);
-                        calendar.set(Calendar.MONTH,month);
-                        calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-                        Calendar calendar1 = Calendar.getInstance();
-                        calendar1.set(Calendar.YEAR,year);
-                        calendar1.set(Calendar.MONTH,month);
-                        calendar1.set(Calendar.DAY_OF_MONTH,dayOfMonth+1);
-                        ///myMissonUIOpe.getRefreshLayout().autoRefresh();
+                    public void onAppItemClick(View view, int position) {
+                        patientAdditionDAOpe.setPosition(position);
+                        getOpe().getBaseNurseUIOpe().initTitle(patientAdditionDAOpe.getPatientBedResBean().get住院号() + patientAdditionDAOpe.getPatientBedResBean().get姓名());
+                        getOpe().getBaseNurseUIOpe().getMaterialRefreshLayout().autoRefresh();
+                    }
+                });
+                break;
+            case BaseID.ID_RIGHT:
+                DialogUtil.showTimePick(activity, getFragmentManager(), "date", Type.ALL, new OnDateSetListener() {
+                    @Override
+                    public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
+
                     }
                 });
                 break;

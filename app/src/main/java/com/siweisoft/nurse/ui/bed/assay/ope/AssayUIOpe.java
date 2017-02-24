@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
+import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.assay.adapter.AssayListAdapter;
 import com.siweisoft.nurse.ui.bed.assay.bean.adapterbean.AssayAdapterBean;
@@ -29,6 +30,10 @@ public class AssayUIOpe extends BaseNurseUIOpe{
     AssayListAdapter assayListAdapter;
 
 
+    @BindView(R.id.refresh)
+    MaterialRefreshLayout refreshLayout;
+
+
     public AssayUIOpe(Context context, View containerView) {
         super(context, containerView);
         init();
@@ -37,6 +42,15 @@ public class AssayUIOpe extends BaseNurseUIOpe{
     private void init(){
         getBackTV().setText("返回");
         getBackTV().setSelected(true);
+        getRightTV().setText("日历");
+        getRightTV().setVisibility(View.VISIBLE);
+        getRightTV().setSelected(true);
+    }
+
+    public void initTitle(String title) {
+        getMidTV().setVisibility(View.VISIBLE);
+        getMidTV().setText(title);
+        getMidTV().setSelected(true);
     }
 
     public void initList(ArrayList<AssayAdapterBean> data){
@@ -52,5 +66,9 @@ public class AssayUIOpe extends BaseNurseUIOpe{
 
     public AssayListAdapter getAssayListAdapter() {
         return assayListAdapter;
+    }
+
+    public MaterialRefreshLayout getRefreshLayout() {
+        return refreshLayout;
     }
 }

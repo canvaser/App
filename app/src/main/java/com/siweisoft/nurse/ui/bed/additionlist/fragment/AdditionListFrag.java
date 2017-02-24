@@ -39,7 +39,7 @@ public class AdditionListFrag extends BaseNurseFrag<AdditionListUIOpe,NurseNetOp
     @Override
     public BaseNurseOpes<AdditionListUIOpe, NurseNetOpe, BaseDBOpe, BaseDAOpe> getOpe() {
         if(baseNurseOpes==null){
-            baseNurseOpes = new BaseNurseOpes(new BaseNurseUIOpe(activity,getView()),new BaseNetOpe(activity),null,null);
+            baseNurseOpes = new BaseNurseOpes(new AdditionListUIOpe(activity, getView()), new NurseNetOpe(activity), null, null);
         }
         return baseNurseOpes;
     }

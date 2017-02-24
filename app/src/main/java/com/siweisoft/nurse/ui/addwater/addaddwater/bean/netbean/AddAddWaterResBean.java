@@ -100,6 +100,9 @@ public class AddAddWaterResBean extends ResultResBean{
             private String validrange;
             private String coeff;
             private ArrayList<ArrayList<String>> items;
+            private String wardid;
+            private String timestamp;
+            private String zyh;
 
             public String getNid() {
                 return nid;
@@ -251,6 +254,30 @@ public class AddAddWaterResBean extends ResultResBean{
 
             public void setItems(ArrayList<ArrayList<String>> items) {
                 this.items = items;
+            }
+
+            public String getTimestamp() {
+                return timestamp;
+            }
+
+            public void setTimestamp(String timestamp) {
+                this.timestamp = timestamp;
+            }
+
+            public String getWardid() {
+                return wardid;
+            }
+
+            public void setWardid(String wardid) {
+                this.wardid = wardid;
+            }
+
+            public String getZyh() {
+                return zyh;
+            }
+
+            public void setZyh(String zyh) {
+                this.zyh = zyh;
             }
         }
     }
