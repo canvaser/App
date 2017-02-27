@@ -14,18 +14,17 @@ import com.siweisoft.lib.util.SheetDialogUtil;
 import com.siweisoft.lib.view.bottomdialogmenuview.BottomDialogMenuView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
-import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.bean.reqbean.BaseNurseReqBean;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.fragment.BedListFGM;
 import com.siweisoft.nurse.ui.home.activity.IndexActivity;
 import com.siweisoft.nurse.ui.home.bean.reqbean.WriteAlarmReqBean;
-import com.siweisoft.nurse.ui.home.ope.HomeNetOpe;
 import com.siweisoft.nurse.ui.info.urgencyreport.bean.resbean.UrgencyReportListResBean;
-import com.siweisoft.nurse.ui.info.urgencyreport.ope.UrgencyReportNetOpe;
 import com.siweisoft.nurse.ui.info.urgencyreport.ope.UrgencyReportUIOpe;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.util.fragment.FragManager;
 
 /**
  * Created by ${viwmox} on 2016-11-18.
@@ -34,7 +33,7 @@ public class UrgencyReportFrag extends BaseNurseFrag implements OnAppItemClickLi
 
     UrgencyReportUIOpe urgencyReportUIOpe;
 
-    UrgencyReportNetOpe urgencyReportNetOpe;
+    NurseNetOpe urgencyReportNetOpe;
 
 
     @Override
@@ -46,7 +45,7 @@ public class UrgencyReportFrag extends BaseNurseFrag implements OnAppItemClickLi
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         urgencyReportUIOpe = new UrgencyReportUIOpe(activity,getView());
-        urgencyReportNetOpe = new UrgencyReportNetOpe(activity);
+        urgencyReportNetOpe = new NurseNetOpe(activity);
         urgencyReportUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
@@ -117,7 +116,7 @@ public class UrgencyReportFrag extends BaseNurseFrag implements OnAppItemClickLi
                         reqBean.setMode("update");
                         reqBean.setLogid(urgencyReportUIOpe.getData().get(position).getId());
                         reqBean.setPatname(urgencyReportUIOpe.getData().get(position).getPatname());
-                        new HomeNetOpe(activity).writeAlarmLogs(reqBean, new UINetAdapter(activity) {
+                        new NurseNetOpe(activity).writeAlarmLogs(reqBean, new UINetAdapter(activity) {
                             @Override
                             public void onNetWorkResult(boolean success, Object o) {
                                 if(success){

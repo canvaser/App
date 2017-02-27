@@ -46,6 +46,7 @@ public class MyMissionStatusOpe {
     private HashMap<String,ArrayList<AreaMessionResBean>> list=new HashMap<>();
 
     public HashMap<String,ArrayList<AreaMessionResBean>> sortStatus(ArrayList<AreaMessionResBean> data){
+        list.clear();
             for(int i=0;i<data.size();i++){
                 if(list.get(data.get(i).getTitles().get(0).getStatus())==null){
                     list.put(data.get(i).getTitles().get(0).getStatus(),new ArrayList<AreaMessionResBean>());

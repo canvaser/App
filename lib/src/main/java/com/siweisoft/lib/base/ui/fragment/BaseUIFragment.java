@@ -14,10 +14,10 @@ import butterknife.Unbinder;
 /**
  * Created by summer on 2016/4/16 0016 16:03.
  */
-public abstract class BaseUIFragment extends BaseFrg {
+public abstract class BaseUIFragment extends BaseFrg implements View.OnClickListener {
 
 
-    private Unbinder unbinder;
+    Unbinder unbinder;
 
 
     public BaseUIFragment(){
@@ -50,5 +50,8 @@ public abstract class BaseUIFragment extends BaseFrg {
     }
 
 
+    @Override
+    public void onClick(View v) {
 
+    }
 }

@@ -2,25 +2,23 @@ package com.siweisoft.nurse.ui.info.shiftdutereport.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.siweisoft.app.R;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.SPUtil;
-import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.bean.reqbean.BaseNurseReqBean;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.info.adddutereport.fragment.AddDuteReportFrag;
 import com.siweisoft.nurse.ui.info.shiftdutereport.bean.resbean.ShiftDuteReportDataResBean;
-import com.siweisoft.nurse.ui.info.shiftdutereport.bean.resbean.ShiftDuteReportResBean;
-import com.siweisoft.nurse.ui.info.shiftdutereport.ope.ShiftDuteReportNetOpe;
 import com.siweisoft.nurse.ui.info.shiftdutereport.ope.ShiftDuteReportUIOpe;
 import com.siweisoft.nurse.ui.user.login.bean.DoLoginResBean;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.util.fragment.FragManager;
 
 import butterknife.OnClick;
 import butterknife.Optional;
@@ -33,7 +31,7 @@ public class ShiftDuteReportFrag extends BaseNurseFrag{
 
     ShiftDuteReportUIOpe shiftDuteReportUIOpe;
 
-    ShiftDuteReportNetOpe shiftDuteReportNetOpe;
+    NurseNetOpe shiftDuteReportNetOpe;
 
     @Override
     public BaseNurseOpes getOpe() {
@@ -44,7 +42,7 @@ public class ShiftDuteReportFrag extends BaseNurseFrag{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         shiftDuteReportUIOpe = new ShiftDuteReportUIOpe(activity,getView());
-        shiftDuteReportNetOpe = new ShiftDuteReportNetOpe(activity);
+        shiftDuteReportNetOpe = new NurseNetOpe(activity);
         BaseNurseReqBean baseNurseReqBean = new BaseNurseReqBean();
         DoLoginResBean doLoginResBean = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(ValueConstant.LOGIN_INFO),DoLoginResBean.class);
         //baseNurseReqBean.setRegionid(doLoginResBean.getData().getUser().getRegions().get(0));
@@ -65,12 +63,9 @@ public class ShiftDuteReportFrag extends BaseNurseFrag{
     }
 
     @Optional
-    @OnClick({BaseID.ID_BACK, BaseID.ID_RIGHT})
-    public void onBackClick(View v){
+    @OnClick({BaseID.ID_RIGHT})
+    public void onClickEvent(View v) {
         switch (v.getId()){
-            case R.id.ftv_back:
-                FragManager.getInstance().finish(getFragmentManager(), index);
-                break;
             case BaseID.ID_RIGHT:
                 FragManager.getInstance().startFragment(getFragmentManager(),index,new AddDuteReportFrag());
                 break;

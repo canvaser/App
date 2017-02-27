@@ -9,7 +9,7 @@ import com.siweisoft.app.R;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.info.urgencyreport.adapter.UngencyReportListAdapter;
 import com.siweisoft.nurse.ui.info.urgencyreport.bean.resbean.UrgencyReportResBean;
 
@@ -41,8 +41,9 @@ public class UrgencyReportUIOpe extends BaseNurseUIOpe{
     private void init(){
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
-
         getMidTV().setText("紧急报告");
+        getBackTV().setVisibility(View.VISIBLE);
+        getMidTV().setVisibility(View.VISIBLE);
     }
 
     public void initList(ArrayList<UrgencyReportResBean> data){

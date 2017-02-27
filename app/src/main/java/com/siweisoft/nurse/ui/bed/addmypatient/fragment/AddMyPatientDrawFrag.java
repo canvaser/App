@@ -6,16 +6,15 @@ import android.view.View;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.fragment.BaseUIFragment;
-import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
 import com.siweisoft.lib.util.FragmentUtil;
 import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
+import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.nurse.ui.bed.addmypatient.bean.AddMyPatientListAdapterBean;
 import com.siweisoft.nurse.ui.bed.addmypatient.ope.AddMyPatientDrawUIOpe;
-import com.siweisoft.nurse.ui.bed.addmypatient.ope.AddMyPatientNetOpe;
-import com.siweisoft.nurse.ui.bed.bedlist.ope.GetMyPatientListNetOpe;
 import com.siweisoft.nurse.ui.home.fragment.DrawerLayoutFrag;
 
 import butterknife.OnClick;
@@ -28,15 +27,15 @@ public class AddMyPatientDrawFrag extends BaseUIFragment implements OnAppItemCli
 
 
     AddMyPatientDrawUIOpe addMyPatientUIOpe;
-    GetMyPatientListNetOpe getMyPatientListNetOpe;
-    AddMyPatientNetOpe addMyPatientNetOpe;
+    NurseNetOpe getMyPatientListNetOpe;
+    NurseNetOpe addMyPatientNetOpe;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         addMyPatientUIOpe = new AddMyPatientDrawUIOpe(activity,getView());
-        getMyPatientListNetOpe = new GetMyPatientListNetOpe(activity);
-        addMyPatientNetOpe=new AddMyPatientNetOpe(activity);
+        getMyPatientListNetOpe = new NurseNetOpe(activity);
+        addMyPatientNetOpe = new NurseNetOpe(activity);
         getMyPatientListNetOpe.getRegion(new OnNetWorkReqAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {

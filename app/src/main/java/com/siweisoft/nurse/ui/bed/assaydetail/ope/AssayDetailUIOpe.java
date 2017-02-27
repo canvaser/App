@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.assay.bean.resbean.AssayResBean;
 import com.siweisoft.nurse.ui.bed.assaydetail.adapter.AssayDetailAdapter;
 
@@ -33,6 +33,7 @@ public class AssayDetailUIOpe extends BaseNurseUIOpe{
     private void init(){
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
+        getBackTV().setVisibility(View.VISIBLE);
     }
 
     public void initList(ArrayList<AssayResBean> list){

@@ -8,10 +8,10 @@ import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
-import com.siweisoft.nurse.ui.info.announcement.ope.AnnounceNetOpe;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.netadapter.DelayUINetAdapter;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.ui.info.announcement.ope.AnnounceUIOpe;
 
 /**
@@ -23,7 +23,7 @@ public class AnnounceMentFrag extends BaseNurseFrag{
     AnnounceUIOpe announceUIOpe;
 
 
-    AnnounceNetOpe announceNetOpe;
+    NurseNetOpe announceNetOpe;
 
     @Override
     public BaseNurseOpes getOpe() {
@@ -34,7 +34,7 @@ public class AnnounceMentFrag extends BaseNurseFrag{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         announceUIOpe= new AnnounceUIOpe(activity,getView());
-        announceNetOpe= new AnnounceNetOpe(activity);
+        announceNetOpe = new NurseNetOpe(activity);
         announceUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
@@ -50,7 +50,7 @@ public class AnnounceMentFrag extends BaseNurseFrag{
     }
 
     private void getData(final OnFinishListener onFinishListener){
-        announceNetOpe.getWardInspectionList(new DelayUINetAdapter(activity) {
+        announceNetOpe.getHospitalAnnounceMent(new DelayUINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
                 if(success){

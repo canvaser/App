@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.fragment.BaseUIFragment;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.base.ui.listener.BaseTextWather;
@@ -20,12 +21,11 @@ import com.siweisoft.lib.util.SPUtil;
 import com.siweisoft.lib.util.SheetDialogUtil;
 import com.siweisoft.lib.util.ToastUtil;
 import com.siweisoft.lib.view.bottomdialogmenuview.BottomDialogMenuView;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
 import com.siweisoft.nurse.ui.home.activity.IndexActivity;
 import com.siweisoft.nurse.ui.user.login.bean.DoLoginResBean;
 import com.siweisoft.nurse.ui.user.login.bean.GetallregionbyuserResBean;
 import com.siweisoft.nurse.ui.user.login.ope.LoginDAOpe;
-import com.siweisoft.nurse.ui.user.login.ope.LoginNetOpe;
 import com.siweisoft.nurse.ui.user.login.ope.LoginUIOpe;
 import com.siweisoft.nurse.ui.user.setting.fragment.SettingFrag;
 
@@ -41,7 +41,7 @@ public class LoginFrag extends BaseUIFragment {
 
     LoginUIOpe loginUIOpe;
 
-    LoginNetOpe loginNetOpe;
+    NurseNetOpe loginNetOpe;
 
     LoginDAOpe loginDAOpe;
 
@@ -51,7 +51,7 @@ public class LoginFrag extends BaseUIFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         loginUIOpe = new LoginUIOpe(activity,getView());
-        loginNetOpe = new LoginNetOpe(activity);
+        loginNetOpe = new NurseNetOpe(activity);
         loginDAOpe= new LoginDAOpe(activity);
         loginUIOpe.getAccountEt().addTextChangedListener(new BaseTextWather(){
             @Override

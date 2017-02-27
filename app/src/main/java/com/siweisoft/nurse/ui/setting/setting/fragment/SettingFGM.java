@@ -10,17 +10,16 @@ import com.siweisoft.app.R;
 
 import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
 import com.siweisoft.lib.util.dialog.DialogUtil;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.setting.scanlist.fragment.ScanListFrag;
 import com.siweisoft.nurse.ui.setting.setting.ope.SettingFGMUIOpe;
 import com.siweisoft.nurse.ui.setting.updatepwd.fragment.UpdatePwdFrag;
 import com.siweisoft.nurse.ui.user.login.activity.LoginActivity;
-import com.siweisoft.nurse.ui.user.login.ope.LoginNetOpe;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.util.fragment.FragManager;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -60,7 +59,7 @@ public class SettingFGM extends BaseNurseFrag {
                         switch (v.getId()){
                             case R.id.ok:
                                 DialogUtil.getInstance().dismiss();
-                                new LoginNetOpe(activity).onDologout(new OnNetWorkReqAdapter(activity) {
+                                new NurseNetOpe(activity).onDologout(new OnNetWorkReqAdapter(activity) {
                                     @Override
                                     public void onNetWorkResult(boolean success, Object o) {
                                         FragManager.getInstance().clear();

@@ -7,21 +7,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.menu.popup.PopupUtil;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
-import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.adapter.PupListAdapter;
 import com.siweisoft.nurse.ui.info.addcheckbook.bean.reqbean.AddCheckBookListReqBean;
-import com.siweisoft.nurse.ui.info.addcheckbook.bean.reqbean.AddCheckBookReqBean;
 import com.siweisoft.nurse.ui.info.addcheckbook.ope.AddCheckBookDAOpe;
-import com.siweisoft.nurse.ui.info.addcheckbook.ope.AddCheckBookNetOpe;
 import com.siweisoft.nurse.ui.info.addcheckbook.ope.AddCheckBookUIOpe;
 import com.siweisoft.nurse.ui.info.checkbook.bean.resbean.CheckBookResBean;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.util.fragment.FragManager;
 
 import java.util.ArrayList;
 
@@ -37,7 +36,7 @@ public class AddCheckBookFrag extends BaseNurseFrag{
 
     AddCheckBookUIOpe addCheckBookUIOpe;
 
-    AddCheckBookNetOpe addCheckBookNetOpe;
+    NurseNetOpe addCheckBookNetOpe;
 
     @Override
     public BaseNurseOpes getOpe() {
@@ -53,7 +52,7 @@ public class AddCheckBookFrag extends BaseNurseFrag{
         }
         addCheckBookUIOpe = new AddCheckBookUIOpe(activity,getView());
         addCheckBookDAOpe= new AddCheckBookDAOpe(activity);
-        addCheckBookNetOpe= new AddCheckBookNetOpe(activity);
+        addCheckBookNetOpe = new NurseNetOpe(activity);
         addCheckBookDAOpe.setData((ArrayList<CheckBookResBean>) getArguments().getSerializable(ValueConstant.DATA_DATA));
         addCheckBookDAOpe.addHead();
         addCheckBookUIOpe.initMid(addCheckBookDAOpe.getData().get(0).getFilename());

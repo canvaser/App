@@ -13,7 +13,7 @@ import com.siweisoft.lib.util.LogUtil;
 import com.siweisoft.lib.util.SPUtil;
 import com.siweisoft.lib.view.recyclerview.GridRecyclerView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.adapter.BedListAdapter;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 import com.siweisoft.nurse.ui.user.login.bean.GetallregionbyuserResBean;
@@ -46,8 +46,8 @@ public class BedListFGMUIOpe extends BaseNurseUIOpe{
 
         getMidTV().setSelected(true);
         setTitle(1,0);
-
-
+        getMidTV().setVisibility(View.VISIBLE);
+        getRightTV().setVisibility(View.VISIBLE);
         getRightTV().setSelected(true);
         getRightTV().setText("增加");
 

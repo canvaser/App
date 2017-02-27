@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 
 import butterknife.BindView;
 import com.siweisoft.lib.lecho.lib.hellocharts.view.LineChartView;

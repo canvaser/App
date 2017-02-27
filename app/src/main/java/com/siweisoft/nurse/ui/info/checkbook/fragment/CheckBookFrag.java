@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.app.R;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
@@ -12,15 +13,14 @@ import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.info.addcheckbook.fragment.AddCheckBookFrag;
 import com.siweisoft.nurse.ui.info.checkbook.bean.resbean.CheckBookListResBean;
-import com.siweisoft.nurse.ui.info.checkbook.ope.CheckBookNetOpe;
 import com.siweisoft.nurse.ui.info.checkbook.ope.CheckBookUIOpe;
 import com.siweisoft.nurse.ui.info.checkbookdetail.fragment.CheckBookDetailFrag;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.util.fragment.FragManager;
 
 import butterknife.OnClick;
 
@@ -29,7 +29,7 @@ import butterknife.OnClick;
  */
 public class CheckBookFrag extends BaseNurseFrag implements OnAppItemClickListener {
 
-    CheckBookNetOpe checkBookNetOpe;
+    NurseNetOpe checkBookNetOpe;
 
     CheckBookUIOpe checkBookUIOpe;
 
@@ -42,7 +42,7 @@ public class CheckBookFrag extends BaseNurseFrag implements OnAppItemClickListen
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         checkBookUIOpe = new CheckBookUIOpe(activity,getView());
-        checkBookNetOpe = new CheckBookNetOpe(activity);
+        checkBookNetOpe = new NurseNetOpe(activity);
         checkBookUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {

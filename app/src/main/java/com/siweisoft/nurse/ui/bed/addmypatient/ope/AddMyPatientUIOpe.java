@@ -8,7 +8,7 @@ import android.widget.ImageView;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.addmypatient.adapter.AddMyPatientListAdapter;
 import com.siweisoft.nurse.ui.bed.addmypatient.bean.AddMyPatientAdapterBean;
 
@@ -46,6 +46,8 @@ public class AddMyPatientUIOpe extends BaseNurseUIOpe{
         getMidTV().setText("选择病人数");
         getRightTV().setText("完成");
         getRightTV().setSelected(true);
+        getBackTV().setVisibility(View.VISIBLE);
+        getRightTV().setVisibility(View.VISIBLE);
     }
 
     public void initList(ArrayList<AddMyPatientAdapterBean> resBeen){

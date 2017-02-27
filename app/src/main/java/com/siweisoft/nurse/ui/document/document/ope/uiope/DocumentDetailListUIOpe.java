@@ -8,11 +8,9 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.document.document.adapter.DocumentDetailListAdapter;
-import com.siweisoft.nurse.ui.document.document.adapter.DocumentListAdapter;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentDetailResBean;
-import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentListResBean;
 
 import butterknife.BindView;
 

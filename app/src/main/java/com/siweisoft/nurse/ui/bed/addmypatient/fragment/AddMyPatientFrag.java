@@ -1,32 +1,27 @@
 package com.siweisoft.nurse.ui.bed.addmypatient.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.nurse.nursevalue.BaseID;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.dialog.DialogUtil;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.util.fragment.FragManager;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
+import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.nurse.ui.bed.addmypatient.bean.AddMyPatientListAdapterBean;
 import com.siweisoft.nurse.ui.bed.addmypatient.bean.MyPaitentUpdateListReqBean;
 import com.siweisoft.nurse.ui.bed.addmypatient.bean.MyPaitentUpdateReqBean;
-import com.siweisoft.nurse.ui.bed.addmypatient.ope.AddMyPatientNetOpe;
 import com.siweisoft.nurse.ui.bed.addmypatient.ope.AddMyPatientSelectOpe;
 import com.siweisoft.nurse.ui.bed.addmypatient.ope.AddMyPatientUIOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
-import com.siweisoft.nurse.ui.bed.bedlist.ope.GetMyPatientListNetOpe;
-import com.siweisoft.nurse.ui.user.login.activity.LoginActivity;
-import com.siweisoft.nurse.ui.user.login.ope.LoginNetOpe;
-import com.siweisoft.nurse.util.fragment.FragManager;
 
 import java.util.ArrayList;
 
@@ -40,8 +35,8 @@ public class AddMyPatientFrag extends BaseNurseFrag implements OnAppItemClickLis
 
 
     AddMyPatientUIOpe addMyPatientUIOpe;
-    GetMyPatientListNetOpe getMyPatientListNetOpe;
-    AddMyPatientNetOpe addMyPatientNetOpe;
+    NurseNetOpe getMyPatientListNetOpe;
+    NurseNetOpe addMyPatientNetOpe;
 
     ArrayList<PatientBedResBean> res;
 
@@ -58,8 +53,8 @@ public class AddMyPatientFrag extends BaseNurseFrag implements OnAppItemClickLis
             res = (ArrayList<PatientBedResBean>) getArguments().getSerializable(ValueConstant.DATA_DATA);
         }
         addMyPatientUIOpe = new AddMyPatientUIOpe(activity,getView());
-        getMyPatientListNetOpe = new GetMyPatientListNetOpe(activity);
-        addMyPatientNetOpe=new AddMyPatientNetOpe(activity);
+        getMyPatientListNetOpe = new NurseNetOpe(activity);
+        addMyPatientNetOpe = new NurseNetOpe(activity);
         getMyPatientListNetOpe.getRegion(new UINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {

@@ -10,7 +10,7 @@ import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.SPUtil;
 import com.siweisoft.nurse.nursevalue.DataValue;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.user.login.bean.DoLoginResBean;
 
 import butterknife.BindView;
@@ -45,6 +45,9 @@ public class SettingFGMUIOpe extends BaseNurseUIOpe {
         getBackTV().setSelected(true);
         getBackTV().setText("高级");
         getRightTV().setSelected(true);
+        getBackTV().setVisibility(View.VISIBLE);
+        getMidTV().setVisibility(View.VISIBLE);
+        getRightTV().setVisibility(View.VISIBLE);
         String str = SPUtil.getInstance().init(context).getStr(ValueConstant.LOGIN_INFO);
         if(str!=null){
             DoLoginResBean doLoginResBean = GsonUtil.getInstance().fromJson(str,DoLoginResBean.class);

@@ -8,11 +8,10 @@ import com.siweisoft.app.R;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
 import com.siweisoft.lib.util.GsonUtil;
-import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
-import com.siweisoft.nurse.ui.bed.assay.ope.AssayListNetOpe;
-import com.siweisoft.nurse.ui.bed.assay.ope.AssayUIOpe;
+import com.siweisoft.lib.base.ui.bean.reqbean.BaseNurseReqBean;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 import com.siweisoft.nurse.ui.bed.shiftdute.bean.resbean.ShiftDuteListResBean;
 import com.siweisoft.nurse.ui.bed.shiftdute.ope.ShiftDuteUIOpe;
@@ -25,7 +24,7 @@ public class ShiftDuteFrag extends BaseNurseFrag{
 
     ShiftDuteUIOpe shiftDuteUIOpe;
 
-    AssayListNetOpe assayListNetOpe;
+    NurseNetOpe assayListNetOpe;
 
     PatientBedResBean resBean;
 
@@ -44,10 +43,10 @@ public class ShiftDuteFrag extends BaseNurseFrag{
         shiftDuteUIOpe = new ShiftDuteUIOpe(activity,getView());
         resBean = (PatientBedResBean) getArguments().getSerializable(ValueConstant.DATA_DATA);
 
-        assayListNetOpe=new AssayListNetOpe(activity);
+        assayListNetOpe = new NurseNetOpe(activity);
         BaseNurseReqBean baseNurseReqBean = new BaseNurseReqBean();
         baseNurseReqBean.setPatientid(resBean.get住院号());
-        assayListNetOpe.getMyPatientList(baseNurseReqBean, new OnNetWorkReqAdapter(activity) {
+        assayListNetOpe.getlistResultPatient(baseNurseReqBean, new OnNetWorkReqAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
                 if(success){

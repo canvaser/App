@@ -9,7 +9,7 @@ import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.util.StringUtil;
-import com.siweisoft.nurse.ui.home.bean.PupListUIBean;
+import com.siweisoft.lib.base.ui.bean.uibean.PupListUIBean;
 
 import java.util.ArrayList;
 

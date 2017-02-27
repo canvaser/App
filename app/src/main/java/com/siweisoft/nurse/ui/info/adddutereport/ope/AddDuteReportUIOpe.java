@@ -3,10 +3,9 @@ package com.siweisoft.nurse.ui.info.adddutereport.ope;
 import android.content.Context;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 
 import butterknife.BindView;
 
@@ -57,6 +56,8 @@ public class AddDuteReportUIOpe extends BaseNurseUIOpe{
         getBackTV().setText("返回");
         getBackTV().setSelected(true);
         getMidTV().setText("交班本");
+        getBackTV().setVisibility(View.VISIBLE);
+        getMidTV().setVisibility(View.VISIBLE);
     }
 
     public EditText getBwTV() {

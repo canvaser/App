@@ -5,14 +5,14 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.siweisoft.app.R;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.setting.updatepwd.bean.reqbean.UpdatePwdReqBean;
-import com.siweisoft.nurse.ui.setting.updatepwd.ope.UpdatePwdNetOpe;
 import com.siweisoft.nurse.ui.setting.updatepwd.ope.UpdatePwdUIOpe;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.util.fragment.FragManager;
 
 import butterknife.OnClick;
 
@@ -24,7 +24,7 @@ public class UpdatePwdFrag extends BaseNurseFrag{
 
     UpdatePwdUIOpe updatePwdUIOpe;
 
-    UpdatePwdNetOpe updatePwdNetOpe;
+    NurseNetOpe updatePwdNetOpe;
 
     @Override
     public BaseNurseOpes getOpe() {
@@ -36,7 +36,7 @@ public class UpdatePwdFrag extends BaseNurseFrag{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         updatePwdUIOpe = new UpdatePwdUIOpe(activity,getView());
-        updatePwdNetOpe= new UpdatePwdNetOpe(activity);
+        updatePwdNetOpe = new NurseNetOpe(activity);
     }
 
     @Override

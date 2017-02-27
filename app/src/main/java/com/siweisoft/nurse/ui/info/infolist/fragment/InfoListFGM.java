@@ -6,8 +6,8 @@ import android.view.View;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.info.announcement.fragment.AnnounceMentFrag;
 import com.siweisoft.nurse.ui.info.bedcheck.fragment.BedCheckFrag;
 import com.siweisoft.nurse.ui.info.bedreport.fragment.BedReprotFrag;
@@ -17,7 +17,7 @@ import com.siweisoft.nurse.ui.info.infolist.ope.InfoListFGMUIOpe;
 import com.siweisoft.nurse.ui.info.shiftdutereport.fragment.ShiftDuteReportFrag;
 import com.siweisoft.nurse.ui.info.urgencyreport.fragment.UrgencyReportFrag;
 import com.siweisoft.nurse.ui.info.workdetail.fragment.WorkDetailFrag;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.util.fragment.FragManager;
 
 /**
  * Created by ${viwmox} on 2016-11-08.

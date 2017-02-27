@@ -8,13 +8,11 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.assay.adapter.AssayListAdapter;
 import com.siweisoft.nurse.ui.bed.assay.bean.adapterbean.AssayAdapterBean;
-import com.siweisoft.nurse.ui.bed.assay.bean.resbean.AssayResBean;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import butterknife.BindView;
 
@@ -40,6 +38,7 @@ public class AssayUIOpe extends BaseNurseUIOpe{
     }
 
     private void init(){
+        getBackTV().setVisibility(View.VISIBLE);
         getBackTV().setText("返回");
         getBackTV().setSelected(true);
         getRightTV().setText("日历");

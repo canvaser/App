@@ -1,10 +1,7 @@
 package com.siweisoft.nurse.ui.bed.patient.ope;
 
-import com.siweisoft.nurse.nursevalue.MethodValue;
-import com.siweisoft.nurse.ui.base.bean.databean.BaseDABean;
+import com.siweisoft.lib.base.ui.bean.databean.BaseDABean;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
-import com.siweisoft.nurse.ui.check.checklist.bean.resbean.CheckResBean;
-import com.siweisoft.nurse.ui.user.login.bean.GetallregionbyuserResBean;
 
 import java.util.ArrayList;
 

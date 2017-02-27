@@ -6,11 +6,9 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
-import com.siweisoft.nurse.ui.base.view.DoubleExpandView;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.advice.adapter.AdviceListAdapter;
 import com.siweisoft.nurse.ui.bed.advice.bean.resbean.AdviceResBean;
-import com.siweisoft.nurse.ui.mission.missionlist.adapter.MissionListAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,6 +49,7 @@ public class AdviceUIOpe extends BaseNurseUIOpe{
         getRightTV().setSelected(true);
         getRightTV().setVisibility(View.VISIBLE);
         getRightTV().setText("日历");
+        getBackTV().setVisibility(View.VISIBLE);
     }
 
     public void initTitle(String title) {

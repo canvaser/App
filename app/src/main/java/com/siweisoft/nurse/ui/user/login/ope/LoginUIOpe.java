@@ -38,6 +38,8 @@ public class LoginUIOpe extends BaseUIWithTitleOpe {
         getMidTV().setText("护士工作站");
         getRightTV().setSelected(true);
         getRightTV().setText("设置");
+        getBackTV().setVisibility(View.VISIBLE);
+        getRightTV().setVisibility(View.VISIBLE);
     }
     public EditText getAccountEt() {
         return accountEt;

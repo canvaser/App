@@ -1,7 +1,13 @@
 package com.siweisoft.lib.util.media;
 
+import android.content.Context;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
+import android.widget.Toast;
+
+import com.siweisoft.lib.base.ui.interf.OnLoadingInterf;
+import com.siweisoft.lib.base.ui.interf.OnNetFinishInterf;
+import com.siweisoft.lib.util.ToastUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +28,8 @@ public class VoiceUtil {
 
 
     MediaPlayer mp;
-    public void play(String path){
+
+    public void play(String path, final OnLoadingInterf linstener) {
         if(mp!=null){
             if(mp.isPlaying()){
                 mp.pause();
@@ -34,6 +41,13 @@ public class VoiceUtil {
             mp.setDataSource(path);
             mp.prepare();
             mp.start();
+            linstener.onStarLoading(mp);
+            mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    linstener.onStopLoading(mp);
+                }
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -45,13 +59,19 @@ public class VoiceUtil {
         }
     }
 
-    public MediaRecorder startRecording(File recordFile) {
+    public MediaRecorder startRecording(Context context, File recordFile) {
         MediaRecorder mediaRecorder = new MediaRecorder();
         // 判断，若当前文件已存在，则删除
         if (recordFile.exists()) {
             recordFile.delete();
         }
-        mediaRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
+        try {
+            mediaRecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+            ToastUtil.getInstance().show(context, "请打开录音权限");
+            return null;
+        }
         mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.DEFAULT);
         mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.DEFAULT);
         mediaRecorder.setOutputFile(recordFile.getAbsolutePath());

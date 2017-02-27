@@ -1,11 +1,9 @@
 package com.siweisoft.nurse.ui.bed.patient.ope;
 
 import android.content.Context;
-import android.media.Image;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,10 +12,9 @@ import com.siweisoft.lib.util.BitmapUtil;
 import com.siweisoft.lib.util.NullUtil;
 import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 import com.siweisoft.nurse.ui.bed.patient.adapter.CareListAdapter;
-import com.siweisoft.nurse.ui.bed.patient.bean.resbean.PatientAdditionListResBean;
 import com.siweisoft.nurse.ui.bed.patient.bean.resbean.PatientAdditionResBean;
 
 import java.util.ArrayList;
@@ -108,18 +105,19 @@ public class PatientFragUIOpe extends BaseNurseUIOpe {
     private void init(){
         getBackTV().setSelected(true);
         getBackTV().setText("病区");
-
+        getBackTV().setVisibility(View.VISIBLE);
 
 
 
         getRightTV().setSelected(true);
         getRightTV().setText("设置");
-
+        getRightTV().setVisibility(View.VISIBLE);
 
 
     }
 
     public void initTitle(String title){
+        getMidTV().setVisibility(View.VISIBLE);
         getMidTV().setSelected(true);
         getMidTV().setText(title);
     }

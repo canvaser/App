@@ -7,22 +7,19 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
 import com.siweisoft.lib.base.ui.ope.BaseDBOpe;
-import com.siweisoft.lib.base.ui.ope.BaseNetOpe;
 import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.constant.ValueConstant;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.additionlist.bean.reqbean.UpdateAdditionReqBean;
 import com.siweisoft.nurse.ui.bed.additionlist.ope.AdditionListDAOpe;
-import com.siweisoft.nurse.ui.bed.additionlist.ope.AdditionListNetOpe;
 import com.siweisoft.nurse.ui.bed.additionlist.ope.AdditionListUIOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 import com.siweisoft.nurse.ui.bed.patient.bean.resbean.PatientAdditionResBean;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.util.fragment.FragManager;
 
 import java.util.ArrayList;
 
@@ -52,8 +49,8 @@ public class AdditionListFrag extends BaseNurseFrag<AdditionListUIOpe,NurseNetOp
         }
         data = (PatientBedResBean) getArguments().getSerializable(ValueConstant.DATA_DATA);
         ArrayList<PatientAdditionResBean> list = (ArrayList<PatientAdditionResBean>) getArguments().getSerializable(ValueConstant.DATA_DATA2);
-        getOpe().getBaseNurseUIOpe().initList(list,getArguments().getString(ValueConstant.DATA_POSITION));
-        getOpe().getBaseNurseUIOpe().getAdditionListAdapter().setOnAppItemClickListener(this);
+        getOpe().getUiOpe().initList(list, getArguments().getString(ValueConstant.DATA_POSITION));
+        getOpe().getUiOpe().getAdditionListAdapter().setOnAppItemClickListener(this);
 
     }
 
@@ -67,23 +64,24 @@ public class AdditionListFrag extends BaseNurseFrag<AdditionListUIOpe,NurseNetOp
     @Optional
     @OnClick({BaseID.ID_RIGHT})
     public void onClick(View view){
+        super.onClick(view);
         switch (view.getId()){
             case BaseID.ID_RIGHT:
                 UpdateAdditionReqBean reqBean=null;
                 switch (getArguments().getString(ValueConstant.DATA_POSITION)){
                     case "0":
-                        reqBean = new UpdateAdditionReqBean(data.get住院号(),"导管",new AdditionListDAOpe(activity).getData(getOpe().getBaseNurseUIOpe().getData()));
+                        reqBean = new UpdateAdditionReqBean(data.get住院号(), "导管", new AdditionListDAOpe(activity).getData(getOpe().getUiOpe().getData()));
                         break;
                     case "1":
-                        reqBean = new UpdateAdditionReqBean(data.get住院号(),"关怀",new AdditionListDAOpe(activity).getData(getOpe().getBaseNurseUIOpe().getData()));
+                        reqBean = new UpdateAdditionReqBean(data.get住院号(), "关怀", new AdditionListDAOpe(activity).getData(getOpe().getUiOpe().getData()));
                         break;
                 }
-                getOpe().getBaseNetOpe().writePatientAdditionData(reqBean, new UINetAdapter(activity) {
+                getOpe().getNetOpe().writePatientAdditionData(reqBean, new UINetAdapter(activity) {
                     @Override
                     public void onNetWorkResult(boolean success, Object o) {
                         if(success){
                             Bundle bundle = new Bundle();
-                            bundle.putSerializable(ValueConstant.DATA_DATA,new AdditionListDAOpe(activity).getData(getOpe().getBaseNurseUIOpe().getData()));
+                            bundle.putSerializable(ValueConstant.DATA_DATA, new AdditionListDAOpe(activity).getData(getOpe().getUiOpe().getData()));
                             FragManager.getInstance().finish(getFragmentManager(),index,bundle);
                         }
                     }
@@ -94,7 +92,7 @@ public class AdditionListFrag extends BaseNurseFrag<AdditionListUIOpe,NurseNetOp
 
     @Override
     public void onAppItemClick(View view, int position) {
-        getOpe().getBaseNurseUIOpe().getAdditionListAdapter().getData().get(position).setSelect(!getOpe().getBaseNurseUIOpe().getAdditionListAdapter().getData().get(position).isSelect());
-        getOpe().getBaseNurseUIOpe().getAdditionListAdapter().notifyDataSetChanged();
+        getOpe().getUiOpe().getAdditionListAdapter().getData().get(position).setSelect(!getOpe().getUiOpe().getAdditionListAdapter().getData().get(position).isSelect());
+        getOpe().getUiOpe().getAdditionListAdapter().notifyDataSetChanged();
     }
 }

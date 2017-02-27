@@ -7,12 +7,11 @@ import android.view.View;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.constant.ValueConstant;
-import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration2;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.nurse.ui.addwater.addwater.adapter.AddWaterDetailAdapter;
 import com.siweisoft.nurse.ui.addwater.addwater.bean.netbean.AddWaterListResBean;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 
 import java.util.List;
 

@@ -14,9 +14,9 @@ import com.siweisoft.lib.util.LogUtil;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.nurse.nursenet.NurseNetOpe;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.netadapter.DelayUINetAdapter;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentDetailResBean;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentListResBean;
 import com.siweisoft.nurse.ui.document.document.ope.daope.DocumentDetailListDAOpe;
@@ -35,19 +35,19 @@ public class DocumentDetailListFrag extends BaseNurseFrag<DocumentDetailListUIOp
         if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA2)==null){
             return;
         }
-        getOpe().getBaseDAOpe().setDataBean((DocumentListResBean.DataBean) getArguments().get(ValueConstant.DATA_DATA2));
-        getOpe().getBaseNurseUIOpe().getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
+        getOpe().getDaOpe().setDataBean((DocumentListResBean.DataBean) getArguments().get(ValueConstant.DATA_DATA2));
+        getOpe().getUiOpe().getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
                 getData(new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
-                        getOpe().getBaseNurseUIOpe().getRefreshLayout().finishRefresh();
+                        getOpe().getUiOpe().getRefreshLayout().finishRefresh();
                     }
                 });
             }
         });
-        getOpe().getBaseNurseUIOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        getOpe().getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
     }
 
     @Override
@@ -60,14 +60,14 @@ public class DocumentDetailListFrag extends BaseNurseFrag<DocumentDetailListUIOp
 
 
     public void getData(@NonNull final OnFinishListener onFinishListener){
-        getOpe().getBaseNetOpe().document_documemtdetail(getOpe().getBaseDAOpe().getDataBean().getId(), new DelayUINetAdapter(activity) {
+        getOpe().getNetOpe().document_documemtdetail(getOpe().getDaOpe().getDataBean().getId(), new DelayUINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
                 if(success){
                     LogUtil.E(o.toString());
                     DocumentDetailResBean documentDetailResBean = GsonUtil.getInstance().fromJson(o.toString(),DocumentDetailResBean.class);
-                    getOpe().getBaseDAOpe().setDocumentDetailResBean(documentDetailResBean);
-                    getOpe().getBaseNurseUIOpe().initList(getOpe().getBaseDAOpe().getDocumentDetailResBean());
+                    getOpe().getDaOpe().setDocumentDetailResBean(documentDetailResBean);
+                    getOpe().getUiOpe().initList(getOpe().getDaOpe().getDocumentDetailResBean());
                 }
                 onFinishListener.onFinish(o);
             }

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.util.BitmapUtil;
 import com.siweisoft.lib.util.StringUtil;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.mission.missiondetail.adapter.MissionDetailListAdapter;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionResBean;
 
@@ -57,7 +57,8 @@ public class MissionDetailUIOpe extends BaseNurseUIOpe{
 
         getBackTV().setText("返回");
         getBackTV().setSelected(true);
-
+        getBackTV().setVisibility(View.VISIBLE);
+        getMidTV().setVisibility(View.VISIBLE);
     }
 
 

@@ -8,7 +8,7 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.data.bean.resbean.DataTemplateResBean;
 import com.siweisoft.nurse.ui.bed.inputdata.adapter.InputDataListAdapter;
 
@@ -40,12 +40,13 @@ public class InputDataUIOpe extends BaseNurseUIOpe{
 
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
-
+        getBackTV().setVisibility(View.VISIBLE);
         getMidTV().setSelected(true);
         getMidTV().setText("类型");
-
+        getMidTV().setVisibility(View.VISIBLE);
         getRightTV().setSelected(true);
         getRightTV().setText("提交");
+        getRightTV().setVisibility(View.VISIBLE);
     }
 
     public void initList(ArrayList<DataTemplateResBean> list,int p){

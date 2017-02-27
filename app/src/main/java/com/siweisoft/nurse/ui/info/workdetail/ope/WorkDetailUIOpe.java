@@ -8,10 +8,9 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.info.workdetail.adapter.WorkDetailListAdapter;
 import com.siweisoft.nurse.ui.info.workdetail.bean.adpterbean.WorkDetailAdapterBean;
-import com.siweisoft.nurse.ui.info.workdetail.bean.resbean.WorkDetailResBean;
 
 import java.util.ArrayList;
 
@@ -37,7 +36,8 @@ public class WorkDetailUIOpe extends BaseNurseUIOpe{
     private void init(){
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
-
+        getBackTV().setVisibility(View.VISIBLE);
+        getMidTV().setVisibility(View.VISIBLE);
         getMidTV().setText("工作明细");
     }
 

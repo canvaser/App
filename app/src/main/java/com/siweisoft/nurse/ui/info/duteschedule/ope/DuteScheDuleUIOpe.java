@@ -8,7 +8,7 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.info.duteschedule.adapter.DuteScheDuleListAadpter;
 import com.siweisoft.nurse.ui.info.duteschedule.bean.resbean.DuteScheDuleResBean;
 
@@ -39,7 +39,8 @@ public class DuteScheDuleUIOpe extends BaseNurseUIOpe{
         getBackTV().setSelected(true);
         getBackTV().setText("信息");
         getMidTV().setText("排班表");
-
+        getBackTV().setVisibility(View.VISIBLE);
+        getMidTV().setVisibility(View.VISIBLE);
     }
 
 

@@ -2,8 +2,6 @@ package com.siweisoft.nurse.ui.bed.patient.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
@@ -13,15 +11,14 @@ import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.AnimUtil;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.menu.popup.PopupUtil;
-import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
-import com.siweisoft.nurse.nursevalue.MethodValue;
 import com.siweisoft.nurse.ui.addwater.addwater.fragment.AddWaterListFrag;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.netadapter.DelayUINetAdapter;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.MyMission.fragment.MyMissonFrag;
 import com.siweisoft.nurse.ui.bed.addaddition.fragment.AddAdditionFrag;
 import com.siweisoft.nurse.ui.bed.advice.fragment.AdviceFrag;
@@ -35,12 +32,10 @@ import com.siweisoft.nurse.ui.bed.patient.bean.resbean.PatientAdditionResBean;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionOpe;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientFragUIOpe;
-import com.siweisoft.nurse.ui.bed.patient.ope.PatientNetOpe;
 import com.siweisoft.nurse.ui.dialog.dialog.fragment.NurseDialogFrag;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentListResBean;
 import com.siweisoft.nurse.ui.document.document.fragment.DocumentListFrag;
-import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.util.fragment.FragManager;
 
 import java.util.ArrayList;
 
@@ -55,7 +50,7 @@ public class PatientFrag extends BaseNurseFrag {
 
     PatientFragUIOpe patientFragUIOpe;
 
-    PatientNetOpe patientNetOpe;
+    NurseNetOpe patientNetOpe;
 
 
     PatientAdditionDAOpe patientAdditionDAOpe;
@@ -77,7 +72,7 @@ public class PatientFrag extends BaseNurseFrag {
         patientAdditionDAOpe.setPatientBedResBean((PatientBedResBean) getArguments().getSerializable(ValueConstant.DATA_DATA2));
         patientAdditionDAOpe.setPosition(-1);
         patientFragUIOpe = new PatientFragUIOpe(activity,getView());
-        patientNetOpe= new PatientNetOpe(activity);
+        patientNetOpe = new NurseNetOpe(activity);
         patientFragUIOpe.initInfo(patientAdditionDAOpe.getPatientBedResBean());
         patientFragUIOpe.initAddionList(new PatientAdditionOpe().getThispatientAdditionList(null));
         patientFragUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
@@ -123,6 +118,7 @@ public class PatientFrag extends BaseNurseFrag {
     @Optional
     @OnClick({R.id.rl_fluid_card,R.id.rl_nurse_document,R.id.iv_arrow, BaseID.ID_MID,BaseID.ID_RIGHT,R.id.ll_baseinfo,R.id.rl_mymission,R.id.rl_advice,R.id.rl_data,R.id.rl_assay,R.id.rl_nurserecord,R.id.rl_handoverreport})
     public void onClick(final View view){
+        super.onClick(view);
         switch (view.getId()){
             case R.id.ll_baseinfo:
             case R.id.iv_arrow:
@@ -193,6 +189,7 @@ public class PatientFrag extends BaseNurseFrag {
                 bundle3.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
                 FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new NurseRecordFrag(), bundle3, ValueConstant.CODE_REQUSET1);
                 break;
+            //交接班记录
             case R.id.rl_handoverreport:
                 Bundle bundle4 = new Bundle();
                 bundle4.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);

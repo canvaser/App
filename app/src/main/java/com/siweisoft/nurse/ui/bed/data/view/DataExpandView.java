@@ -3,7 +3,7 @@ package com.siweisoft.nurse.ui.bed.data.view;
 import android.content.Context;
 import android.util.AttributeSet;
 
-import com.siweisoft.nurse.ui.base.view.MissionExpandView;
+import com.siweisoft.lib.view.expandlistview.MissionExpandView;
 
 /**
  * Created by ${viwmox} on 2016-11-14.

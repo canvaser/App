@@ -8,7 +8,7 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.info.bedcheck.adapter.BedCheckListAdapter;
 import com.siweisoft.nurse.ui.info.bedcheck.bean.resbean.BedCheckResBean;
 
@@ -43,6 +43,8 @@ public class BedCheckUIOpe extends BaseNurseUIOpe{
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
         getMidTV().setText("我的巡视");
+        getBackTV().setVisibility(View.VISIBLE);
+        getMidTV().setVisibility(View.VISIBLE);
     }
 
     public void initList(ArrayList<BedCheckResBean> data){

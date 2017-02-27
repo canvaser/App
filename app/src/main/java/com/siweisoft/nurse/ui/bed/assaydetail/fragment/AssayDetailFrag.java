@@ -6,8 +6,8 @@ import android.view.View;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.constant.ValueConstant;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.assay.bean.adapterbean.AssayAdapterBean;
 import com.siweisoft.nurse.ui.bed.assaydetail.ope.AssayDetailUIOpe;
 

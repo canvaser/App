@@ -38,6 +38,8 @@ public class SettingUIOpe extends BaseUIWithTitleOpe {
         getBackTV().setSelected(true);
         getMidTV().setText("服务器地址");
         getBeforeTV().setText(DataValue.URL_NURSE);
+        getBackTV().setVisibility(View.VISIBLE);
+        getMidTV().setVisibility(View.VISIBLE);
     }
 
     public TextView getBeforeTV() {

@@ -12,11 +12,11 @@ import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.SPUtil;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
-import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.bean.reqbean.BaseNurseReqBean;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.ui.info.bedreport.bean.resbean.BedReportListResBean;
-import com.siweisoft.nurse.ui.info.bedreport.ope.BedReportNetOpe;
 import com.siweisoft.nurse.ui.info.bedreport.ope.BedReportUIOpe;
 import com.siweisoft.nurse.ui.user.login.bean.GetallregionbyuserResBean;
 
@@ -30,7 +30,7 @@ import org.json.JSONObject;
 public class BedReprotFrag extends BaseNurseFrag{
 
 
-    BedReportNetOpe bedReportNetOpe;
+    NurseNetOpe bedReportNetOpe;
 
     BedReportUIOpe bedReportUIOpe;
 
@@ -42,7 +42,7 @@ public class BedReprotFrag extends BaseNurseFrag{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        bedReportNetOpe = new BedReportNetOpe(activity);
+        bedReportNetOpe = new NurseNetOpe(activity);
         bedReportUIOpe= new BedReportUIOpe(activity,getView());
         bedReportUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override

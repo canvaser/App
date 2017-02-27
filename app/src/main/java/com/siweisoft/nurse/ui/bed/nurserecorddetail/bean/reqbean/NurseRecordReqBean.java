@@ -1,6 +1,6 @@
 package com.siweisoft.nurse.ui.bed.nurserecorddetail.bean.reqbean;
 
-import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
+import com.siweisoft.lib.base.ui.bean.reqbean.BaseNurseReqBean;
 
 /**
  * Created by ${viwmox} on 2016-11-18.

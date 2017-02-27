@@ -1,7 +1,6 @@
 package com.siweisoft.nurse.ui.info.checkbook.ope;
 
 import android.content.Context;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,8 +8,7 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
-import com.siweisoft.nurse.ui.check.checklist.bean.resbean.CheckResBean;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.info.checkbook.adapter.CheckBookAdapter;
 import com.siweisoft.nurse.ui.info.checkbook.bean.resbean.CheckBookResBean;
 
@@ -47,7 +45,9 @@ public class CheckBookUIOpe extends BaseNurseUIOpe {
 
         getRightTV().setText("增加");
         getRightTV().setSelected(true);
-
+        getBackTV().setVisibility(View.VISIBLE);
+        getMidTV().setVisibility(View.VISIBLE);
+        getRightTV().setVisibility(View.VISIBLE);
     }
 
     public void initList(ArrayList<CheckBookResBean> data){

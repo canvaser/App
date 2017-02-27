@@ -7,13 +7,13 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.data.DateFormatUtil;
-import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.bean.reqbean.BaseNurseReqBean;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.ui.info.duteschedule.bean.resbean.DuteScheDuleListResBean;
 import com.siweisoft.nurse.ui.info.duteschedule.ope.DuteScheDuleUIOpe;
-import com.siweisoft.nurse.ui.info.duteschedule.ope.DuteScheduleNetOpe;
 
 /**
  * Created by ${viwmox} on 2016-12-07.
@@ -21,7 +21,7 @@ import com.siweisoft.nurse.ui.info.duteschedule.ope.DuteScheduleNetOpe;
 public class DuteScheDuleFrag extends BaseNurseFrag{
 
 
-    DuteScheduleNetOpe duteScheduleNetOpe;
+    NurseNetOpe duteScheduleNetOpe;
 
 
     DuteScheDuleUIOpe duteScheDuleUIOpe;
@@ -35,7 +35,7 @@ public class DuteScheDuleFrag extends BaseNurseFrag{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        duteScheduleNetOpe= new DuteScheduleNetOpe(activity);
+        duteScheduleNetOpe = new NurseNetOpe(activity);
         duteScheDuleUIOpe= new DuteScheDuleUIOpe(activity,getView());
         getData();
     }

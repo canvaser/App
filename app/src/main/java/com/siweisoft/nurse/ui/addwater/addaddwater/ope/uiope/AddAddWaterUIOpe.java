@@ -4,15 +4,21 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.base.ui.adapter.CommonAdapter;
+import com.siweisoft.lib.base.ui.bean.uibean.CommonUIBean;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration2;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.nurse.ui.addwater.addaddwater.adapter.AddAddWaterAdapter;
 import com.siweisoft.nurse.ui.addwater.addaddwater.bean.netbean.AddAddWaterResBean;
 import com.siweisoft.nurse.ui.addwater.addaddwater.bean.uibean.AddAddWaterUIBean;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.nurse.ui.addwater.addaddwater.ope.daope.AddAddWaterDAOpe;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 
@@ -53,10 +59,11 @@ public class AddAddWaterUIOpe extends BaseNurseUIOpe{
 
     }
 
-    public void initList(AddAddWaterResBean addAddWaterResBean){
+    public void initList(final AddAddWaterResBean aa) {
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.addItemDecoration(new MyItemDecoration2(context,2));
-        recyclerView.setAdapter(new AddAddWaterAdapter(context,addAddWaterResBean));
+        final AddAddWaterDAOpe addAddWaterDAOpe = new AddAddWaterDAOpe(context);
+        recyclerView.setAdapter(new AddAddWaterAdapter(context, aa));
     }
 
     public void setDishu(String dishu){

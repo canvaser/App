@@ -2,17 +2,15 @@ package com.siweisoft.nurse.ui.bed.MyMission.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ExpandableListView;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
@@ -23,28 +21,24 @@ import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.SPUtil;
 import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.lib.util.menu.popup.PopupUtil;
-import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.nurse.nursevalue.MethodValue;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
-import com.siweisoft.nurse.ui.bed.MyMission.ope.GetMyMissionNetOpe;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.MyMission.ope.MyMissionDAOpe;
 import com.siweisoft.nurse.ui.bed.MyMission.ope.MyMissionStatusOpe;
 import com.siweisoft.nurse.ui.bed.MyMission.ope.MyMissonUIOpe;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
 import com.siweisoft.nurse.ui.dialog.dialog.fragment.NurseDialogFrag;
-import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
 import com.siweisoft.nurse.ui.mission.missiondetail.bean.reqbean.MissisonDetailReqBean;
 import com.siweisoft.nurse.ui.mission.missiondetail.fragment.MissionDetailFrag;
-import com.siweisoft.nurse.ui.mission.missiondetail.ope.MissionDetailNetOpe;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionListResBean;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionResBean;
 import com.siweisoft.nurse.ui.mission.missionlist.ope.AreaMessionDAOpe;
 import com.siweisoft.nurse.ui.user.login.bean.GetallregionbyuserResBean;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.util.fragment.FragManager;
 
 import butterknife.OnClick;
 
@@ -58,7 +52,7 @@ public class MyMissonFrag extends BaseNurseFrag implements
 
     MyMissonUIOpe myMissonUIOpe;
 
-    GetMyMissionNetOpe getMyMissionNetOpe;
+    NurseNetOpe getMyMissionNetOpe;
 
     PatientAdditionDAOpe patientAdditionDAOpe;
 
@@ -77,7 +71,7 @@ public class MyMissonFrag extends BaseNurseFrag implements
         }
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
         myMissonUIOpe= new MyMissonUIOpe(activity,getView());
-        getMyMissionNetOpe= new GetMyMissionNetOpe(activity);
+        getMyMissionNetOpe = new NurseNetOpe(activity);
         myMissionDAOpe= new MyMissionDAOpe(activity);
         myMissonUIOpe.init(patientAdditionDAOpe);
         myMissonUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
@@ -103,7 +97,7 @@ public class MyMissonFrag extends BaseNurseFrag implements
                                         myMissionDAOpe.setTimeType(MyMissionDAOpe.TIME_TYPE[2]);
                                         break;
                                 }
-                                myMissonUIOpe.initList(myMissionDAOpe.sort());
+                                //myMissonUIOpe.initList(myMissionDAOpe.sort());
                             }
                         });
                         materialRefreshLayout.finishRefresh(getResources().getInteger(R.integer.integer_time_short_300));
@@ -182,7 +176,7 @@ public class MyMissonFrag extends BaseNurseFrag implements
                     reqBean.setTaskids(new AreaMessionDAOpe(activity).getIDs(myMissonUIOpe.getMyMissionListAdapter().getChild(index,position).getTitles()));
                 }
                 reqBean.setStatus("T");
-                MissionDetailNetOpe missionDetailNetOpe = new MissionDetailNetOpe(activity);
+                NurseNetOpe missionDetailNetOpe = new NurseNetOpe(activity);
                 missionDetailNetOpe.updateTask(reqBean, new OnNetWorkReqAdapter(activity) {
                     @Override
                     public void onNetWorkResult(boolean success, Object o) {
@@ -197,10 +191,8 @@ public class MyMissonFrag extends BaseNurseFrag implements
 
 
 
-    @Override
     @OnClick({BaseID.ID_RIGHT, BaseID.ID_MID})
-    public void onBackClick(View v){
-        super.onBackClick(v);
+    public void onClickEvent(View v) {
         switch (v.getId()){
             case BaseID.ID_RIGHT:
                 String[] missionSortStr = (String[]) MethodValue.getUserInfo(activity).getData().getNurseType().toArray(new String[MethodValue.getUserInfo(activity).getData().getNurseType().size()]);

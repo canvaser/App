@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 
 import butterknife.BindView;
 
@@ -28,6 +28,7 @@ public class AddAdditionUIOpe extends BaseNurseUIOpe{
     }
 
     private void init(){
+        getBackTV().setVisibility(View.VISIBLE);
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
     }

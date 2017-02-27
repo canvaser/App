@@ -9,15 +9,15 @@ import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.data.DateFormatUtil;
-import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.bean.reqbean.BaseNurseReqBean;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.ui.info.workdetail.bean.resbean.WorkDetailListResBean;
 import com.siweisoft.nurse.ui.info.workdetail.ope.WorkDetailDAOpe;
-import com.siweisoft.nurse.ui.info.workdetail.ope.WorkDetailNetOpe;
 import com.siweisoft.nurse.ui.info.workdetail.ope.WorkDetailUIOpe;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.util.fragment.FragManager;
 
 /**
  * Created by ${viwmox} on 2016-12-07.
@@ -25,7 +25,7 @@ import com.siweisoft.nurse.util.fragment.FragManager;
 public class WorkDetailFrag extends BaseNurseFrag implements OnAppItemClickListener {
 
 
-    WorkDetailNetOpe workDetailNetOpe;
+    NurseNetOpe workDetailNetOpe;
 
 
     WorkDetailUIOpe workDetailUIOpe;
@@ -40,7 +40,7 @@ public class WorkDetailFrag extends BaseNurseFrag implements OnAppItemClickListe
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         workDetailUIOpe = new WorkDetailUIOpe(activity,getView());
-        workDetailNetOpe = new WorkDetailNetOpe(activity);
+        workDetailNetOpe = new NurseNetOpe(activity);
         getData();
     }
 

@@ -6,7 +6,7 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.info.checkbookdetail.adapter.CheckBookDetailListAdapter;
 import com.siweisoft.nurse.ui.info.checkbookdetail.bean.resbean.CheckBookDetailItemsListResBean;
 
@@ -40,7 +40,8 @@ public class CheckBookDetailUIOpe extends BaseNurseUIOpe {
         getMidTV().setText("物品清点单");
         getBackTV().setText("返回");
         getBackTV().setSelected(true);
-
+        getBackTV().setVisibility(View.VISIBLE);
+        getMidTV().setVisibility(View.VISIBLE);
     }
 
     public void initList( ArrayList<CheckBookDetailItemsListResBean> data){

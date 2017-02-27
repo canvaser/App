@@ -22,7 +22,7 @@ import com.siweisoft.nurse.ui.home.view.HomeBottomView;
 import com.siweisoft.nurse.ui.info.infolist.fragment.InfoListFGM;
 import com.siweisoft.nurse.ui.mission.missionlist.fragment.MissionListFGM;
 import com.siweisoft.nurse.ui.setting.setting.fragment.SettingFGM;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.util.fragment.FragManager;
 
 import java.util.ArrayList;
 

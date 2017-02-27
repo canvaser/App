@@ -13,8 +13,8 @@ import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.ui.addwater.addwater.bean.netbean.AddWaterListResBean;
 import com.siweisoft.nurse.ui.addwater.addwater.ope.daope.AddWaterDetailDAOpe;
 import com.siweisoft.nurse.ui.addwater.addwater.ope.uiope.AddWaterDetailUIOpe;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 
 import java.util.List;
 
@@ -32,15 +32,15 @@ public class AddWaterDetailFrag extends BaseNurseFrag<AddWaterDetailUIOpe,NurseN
         if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA)==null){
             return;
         }
-        getOpe().getBaseNurseUIOpe().getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
+        getOpe().getUiOpe().getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
-                getOpe().getBaseNurseUIOpe().initList(getOpe().getBaseDAOpe().getFilesBeans());
-                getOpe().getBaseNurseUIOpe().getRefreshLayout().finishRefresh();
+                getOpe().getUiOpe().initList(getOpe().getDaOpe().getFilesBeans());
+                getOpe().getUiOpe().getRefreshLayout().finishRefresh();
             }
         });
-        getOpe().getBaseDAOpe().setFilesBeans((List<AddWaterListResBean.DataBean.FilesBean>) getArguments().getSerializable(ValueConstant.DATA_DATA));
-        getOpe().getBaseNurseUIOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        getOpe().getDaOpe().setFilesBeans((List<AddWaterListResBean.DataBean.FilesBean>) getArguments().getSerializable(ValueConstant.DATA_DATA));
+        getOpe().getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
     }
 
     @Override

@@ -11,13 +11,13 @@ import com.siweisoft.lib.base.ui.fragment.BaseUIWithOutTitleFrag;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.ui.bed.data.bean.resbean.TitleDataResBean;
 import com.siweisoft.nurse.ui.bed.datachart.bean.reqbean.DataChartReqBean;
 import com.siweisoft.nurse.ui.bed.datachart.bean.resbean.DataChartListResBean;
 import com.siweisoft.nurse.ui.bed.datachart.bean.resbean.DataChartResBean;
 import com.siweisoft.nurse.ui.bed.datachart.ope.DataChartDAOpe;
-import com.siweisoft.nurse.ui.bed.datachart.ope.DataChartNetOpe;
 import com.siweisoft.nurse.ui.bed.datachart.ope.DataChartUIOpe;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
 
@@ -65,7 +65,7 @@ public class DataChartFrag extends BaseUIWithOutTitleFrag {
 
     DataChartUIOpe dataChartUIOpe;
 
-    DataChartNetOpe dataChartNetOpe;
+    NurseNetOpe dataChartNetOpe;
 
     DataChartDAOpe dataChartDAOpe;
 
@@ -81,7 +81,7 @@ public class DataChartFrag extends BaseUIWithOutTitleFrag {
         dataChartDAOpe= new DataChartDAOpe(activity);
         dataChartDAOpe.setTitleDataResBean((TitleDataResBean) getArguments().getSerializable(ValueConstant.DATA_DATA));
         dataChartUIOpe= new DataChartUIOpe(activity,getView());
-        dataChartNetOpe =new DataChartNetOpe(activity);
+        dataChartNetOpe = new NurseNetOpe(activity);
         getData(null);
     }
 

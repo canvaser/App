@@ -6,10 +6,8 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.check.checklist.adapter.CheckListAdapter;
-import com.siweisoft.nurse.ui.base.view.MissionExpandView;
-import com.siweisoft.nurse.ui.check.checklist.bean.resbean.CheckListResBean;
 import com.siweisoft.nurse.ui.check.checklist.bean.resbean.CheckResBean;
 
 import java.util.ArrayList;
@@ -38,7 +36,7 @@ public class CheckListFGMUIOpe extends BaseNurseUIOpe {
 
     private void init(){
 
-
+        getMidTV().setVisibility(View.VISIBLE);
         getMidTV().setText("配药核对");
 
     }

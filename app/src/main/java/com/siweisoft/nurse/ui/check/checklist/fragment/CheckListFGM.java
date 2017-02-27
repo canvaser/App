@@ -16,17 +16,17 @@ import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
-import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.bean.reqbean.BaseNurseReqBean;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.ui.check.checklist.bean.CheckDABean;
 import com.siweisoft.nurse.ui.check.checklist.bean.bean.TitleBean;
 import com.siweisoft.nurse.ui.check.checklist.bean.reqbean.UpdateCheckListReqBean;
 import com.siweisoft.nurse.ui.check.checklist.bean.resbean.CheckListResBean;
 import com.siweisoft.nurse.ui.check.checklist.ope.CheckDAOpe;
 import com.siweisoft.nurse.ui.check.checklist.ope.CheckListFGMUIOpe;
-import com.siweisoft.nurse.ui.check.checklist.ope.CheckListNetOpe;
 
 /**
  * Created by ${viwmox} on 2016-11-08.
@@ -38,7 +38,7 @@ public class CheckListFGM extends BaseNurseFrag implements
 
     CheckListFGMUIOpe checkListFGMUIOpe;
 
-    CheckListNetOpe checkListNetOpe;
+    NurseNetOpe checkListNetOpe;
     CheckDAOpe checkDAOpe;
 
 
@@ -53,7 +53,7 @@ public class CheckListFGM extends BaseNurseFrag implements
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         checkListFGMUIOpe = new CheckListFGMUIOpe(activity,getView());
-        checkListNetOpe = new CheckListNetOpe(activity);
+        checkListNetOpe = new NurseNetOpe(activity);
         checkDAOpe= new CheckDAOpe();
         checkDABean = new CheckDABean();
         checkListFGMUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {

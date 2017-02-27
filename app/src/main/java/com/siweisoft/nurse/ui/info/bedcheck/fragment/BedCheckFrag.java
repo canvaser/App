@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
@@ -16,12 +17,11 @@ import com.siweisoft.lib.util.menu.popup.PopupUtil;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
-import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.adapter.PupListAdapter;
 import com.siweisoft.nurse.ui.info.bedcheck.bean.resbean.BedCheckListResBean;
 import com.siweisoft.nurse.ui.info.bedcheck.ope.BedCheckDAOpe;
-import com.siweisoft.nurse.ui.info.bedcheck.ope.BedCheckNetOpe;
 import com.siweisoft.nurse.ui.info.bedcheck.ope.BedCheckUIOpe;
 
 import butterknife.OnClick;
@@ -36,7 +36,7 @@ public class BedCheckFrag extends BaseNurseFrag{
     BedCheckUIOpe bedCheckUIOpe;
 
 
-    BedCheckNetOpe bedCheckNetOpe;
+    NurseNetOpe bedCheckNetOpe;
 
     BedCheckDAOpe bedCheckDAOpe;
 
@@ -48,7 +48,7 @@ public class BedCheckFrag extends BaseNurseFrag{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        bedCheckNetOpe = new BedCheckNetOpe(activity);
+        bedCheckNetOpe = new NurseNetOpe(activity);
         bedCheckUIOpe = new BedCheckUIOpe(activity,getView());
         bedCheckDAOpe= new BedCheckDAOpe(activity);
         bedCheckUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
@@ -88,6 +88,7 @@ public class BedCheckFrag extends BaseNurseFrag{
 
     @OnClick({BaseID.ID_MID})
     public void onClick(View v){
+        super.onClick(v);
         switch (v.getId()){
             case BaseID.ID_MID:
                 View view1 = layoutInflater.inflate(R.layout.pup_list,null);

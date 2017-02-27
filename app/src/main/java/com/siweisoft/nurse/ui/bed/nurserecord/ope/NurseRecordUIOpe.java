@@ -8,7 +8,7 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.nurserecord.adapter.NurseRecordListAdapter;
 import com.siweisoft.nurse.ui.bed.nurserecord.bean.resbean.NurseRecordResBean;
 
@@ -41,9 +41,11 @@ public class NurseRecordUIOpe extends BaseNurseUIOpe{
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
         getMidTV().setVisibility(View.VISIBLE);
+        getBackTV().setVisibility(View.VISIBLE);
     }
 
     public void initTile(String str){
+        getMidTV().setVisibility(View.VISIBLE);
         getMidTV().setSelected(true);
         getMidTV().setText(str);
     }

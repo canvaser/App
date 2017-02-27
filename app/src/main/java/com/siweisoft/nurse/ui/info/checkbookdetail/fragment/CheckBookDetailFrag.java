@@ -15,13 +15,13 @@ import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.ui.info.checkbook.bean.resbean.CheckBookResBean;
 import com.siweisoft.nurse.ui.info.checkbookdetail.bean.reqbean.CheckBookDetailReqBean;
 import com.siweisoft.nurse.ui.info.checkbookdetail.bean.resbean.CheckBookResbean;
 import com.siweisoft.nurse.ui.info.checkbookdetail.bean.uibean.CheckBookDetailHeadUIBean;
-import com.siweisoft.nurse.ui.info.checkbookdetail.ope.CheckBookDetailNetOpe;
 import com.siweisoft.nurse.ui.info.checkbookdetail.ope.CheckBookDetailUIOpe;
 
 /**
@@ -32,7 +32,7 @@ public class CheckBookDetailFrag extends BaseNurseFrag implements PinnedHeaderEx
 
     CheckBookDetailUIOpe checkBookDetailUIOpe;
 
-    CheckBookDetailNetOpe checkBookDetailNetOpe;
+    NurseNetOpe checkBookDetailNetOpe;
 
     CheckBookResBean checkBookResBean;
 
@@ -49,7 +49,7 @@ public class CheckBookDetailFrag extends BaseNurseFrag implements PinnedHeaderEx
         }
         checkBookResBean = (CheckBookResBean) getArguments().getSerializable(ValueConstant.DATA_DATA);
         checkBookDetailUIOpe = new CheckBookDetailUIOpe(activity,getView());
-        checkBookDetailNetOpe = new CheckBookDetailNetOpe(activity);
+        checkBookDetailNetOpe = new NurseNetOpe(activity);
         checkBookDetailUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {

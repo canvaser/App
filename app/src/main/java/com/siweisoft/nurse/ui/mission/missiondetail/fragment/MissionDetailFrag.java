@@ -9,17 +9,17 @@ import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.SPUtil;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.addwater.addaddwater.fragment.AddAddWaterFrag;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.mission.missiondetail.bean.reqbean.MissisonDetailReqBean;
-import com.siweisoft.nurse.ui.mission.missiondetail.ope.MissionDetailNetOpe;
 import com.siweisoft.nurse.ui.mission.missiondetail.ope.MissionDetailUIOpe;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionResBean;
 import com.siweisoft.nurse.ui.user.login.bean.GetallregionbyuserResBean;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.util.fragment.FragManager;
 
 /**
  * Created by ${viwmox} on 2016-11-11.
@@ -31,7 +31,7 @@ public class MissionDetailFrag extends BaseNurseFrag implements OnAppItemClickLi
 
     AreaMessionResBean resBean;
 
-    MissionDetailNetOpe missionDetailNetOpe;
+    NurseNetOpe missionDetailNetOpe;
 
     @Override
     public BaseNurseOpes getOpe() {
@@ -46,7 +46,7 @@ public class MissionDetailFrag extends BaseNurseFrag implements OnAppItemClickLi
         }
         resBean = (AreaMessionResBean) getArguments().getSerializable(ValueConstant.DATA_DATA);
         missionDetailUIOpe = new MissionDetailUIOpe(activity,getView());
-        missionDetailNetOpe= new MissionDetailNetOpe(activity);
+        missionDetailNetOpe = new NurseNetOpe(activity);
         missionDetailUIOpe.initData(resBean);
         missionDetailUIOpe.getMissionDetailListAdapter().setOnAppItemClickListener(this);
     }
@@ -78,10 +78,15 @@ public class MissionDetailFrag extends BaseNurseFrag implements OnAppItemClickLi
                 return;
             case R.id.rl_done:
                 status = DataValue.STATUS_YI_WAN_CHENG;
-                Bundle bundle = new Bundle();
-                bundle.putSerializable(ValueConstant.DATA_DATA,resBean);
-                FragManager.getInstance().startFragmentForResult(getFragmentManager(),index,new AddAddWaterFrag(),bundle,ValueConstant.CODE_REQUSET1);
-                return;
+                if (resBean.getCodename().equals("补液卡") ||
+                        resBean.getTitles().get(0).getNurse_type().equals("静滴") ||
+                        resBean.getTitles().get(0).getNurse_type().equals("术前治疗")) {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(ValueConstant.DATA_DATA, resBean);
+                    FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new AddAddWaterFrag(), bundle, ValueConstant.CODE_REQUSET1);
+                    return;
+                }
+                break;
             case R.id.rl_absent:
                 status = DataValue.STATUS_BING_REN_BU_ZAI;
                 break;

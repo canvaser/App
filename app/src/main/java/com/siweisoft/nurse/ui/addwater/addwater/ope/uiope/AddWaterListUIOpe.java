@@ -4,11 +4,12 @@ import android.content.Context;
 import android.view.View;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.base.ui.fragment.CommonUIFrag;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.nurse.ui.addwater.addwater.adapter.AddWaterListAdpter;
 import com.siweisoft.nurse.ui.addwater.addwater.bean.netbean.AddWaterListResBean;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
 
 import butterknife.BindView;
 
@@ -16,7 +17,7 @@ import butterknife.BindView;
  * Created by ${viwmox} on 2017-02-17.
  */
 
-public class AddWaterListUIOpe extends BaseNurseUIOpe{
+public class AddWaterListUIOpe<B extends CommonUIFrag> extends BaseNurseUIOpe<B> {
 
     @BindView(R.id.elv_elv)
     PinnedHeaderExpandableListView listView;
@@ -24,8 +25,9 @@ public class AddWaterListUIOpe extends BaseNurseUIOpe{
     @BindView(R.id.refresh)
     MaterialRefreshLayout refreshLayout;
 
-    public AddWaterListUIOpe(Context context, View containerView) {
+    public AddWaterListUIOpe(Context context, View containerView, B frag) {
         super(context, containerView);
+        this.frag = frag;
         init();
     }
 
@@ -38,6 +40,7 @@ public class AddWaterListUIOpe extends BaseNurseUIOpe{
         getRightTV().setVisibility(View.VISIBLE);
         getRightTV().setSelected(true);
         getRightTV().setText("日历");
+        getRefreshLayout().setMaterialRefreshListener(getFrag());
     }
 
     public void initList(AddWaterListResBean addWaterListResBean){

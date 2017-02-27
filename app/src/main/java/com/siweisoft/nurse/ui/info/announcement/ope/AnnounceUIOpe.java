@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 
 import butterknife.BindView;
 
@@ -34,7 +34,8 @@ public class AnnounceUIOpe extends BaseNurseUIOpe{
         getMidTV().setText("通知公告");
         getBackTV().setText("返回");
         getBackTV().setSelected(true);
-
+        getBackTV().setVisibility(View.VISIBLE);
+        getMidTV().setVisibility(View.VISIBLE);
     }
 
     public RecyclerView getRecyclerView() {

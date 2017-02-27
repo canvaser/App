@@ -1,6 +1,6 @@
 package com.siweisoft.nurse.ui.bed.advice.ope;
 
-import com.siweisoft.nurse.ui.base.bean.databean.BaseDABean;
+import com.siweisoft.lib.base.ui.bean.databean.BaseDABean;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 
 import java.util.ArrayList;

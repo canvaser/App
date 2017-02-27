@@ -2,14 +2,17 @@ package com.siweisoft.nurse.ui.addwater.addwater.ope.daope;
 
 import android.content.Context;
 
+import com.siweisoft.lib.base.ui.fragment.CommonUIFrag;
 import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
+import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.nurse.ui.addwater.addwater.bean.netbean.AddWaterListResBean;
+import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
 
 /**
  * Created by ${viwmox} on 2017-02-17.
  */
 
-public class AddWaterListDAOpe extends BaseDAOpe{
+public class AddWaterListDAOpe<A extends CommonUIFrag> extends BaseDAOpe<A> {
 
     AddWaterListResBean addWaterListResBean;
 
@@ -17,8 +20,11 @@ public class AddWaterListDAOpe extends BaseDAOpe{
 
     private String endtime;
 
-    public AddWaterListDAOpe(Context context) {
+    PatientAdditionDAOpe patientAdditionDAOpe;
+
+    public AddWaterListDAOpe(Context context, A a) {
         super(context);
+        this.frag = a;
     }
 
     public AddWaterListResBean getAddWaterListResBean() {
@@ -43,5 +49,21 @@ public class AddWaterListDAOpe extends BaseDAOpe{
 
     public void setStartTime(String startTime) {
         this.startTime = startTime;
+    }
+
+
+    public boolean canGoOn() {
+        if (getFrag().getArguments() == null || getFrag().getArguments().getSerializable(ValueConstant.DATA_DATA) == null) {
+            return false;
+        }
+        return true;
+    }
+
+    public PatientAdditionDAOpe getPatientAdditionDAOpe() {
+        return patientAdditionDAOpe;
+    }
+
+    public void setPatientAdditionDAOpe(PatientAdditionDAOpe patientAdditionDAOpe) {
+        this.patientAdditionDAOpe = patientAdditionDAOpe;
     }
 }

@@ -7,7 +7,7 @@ import android.widget.EditText;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.util.NullUtil;
 import com.siweisoft.lib.util.ToastUtil;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 
 import butterknife.BindView;
 
@@ -40,6 +40,9 @@ public class UpdatePwdUIOpe extends BaseNurseUIOpe{
 
         getRightTV().setSelected(true);
         getRightTV().setText("提交");
+
+        getBackTV().setVisibility(View.VISIBLE);
+        getRightTV().setVisibility(View.VISIBLE);
     }
 
     public boolean isReady(){

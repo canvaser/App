@@ -8,13 +8,13 @@ import com.siweisoft.app.R;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
 import com.siweisoft.lib.util.GsonUtil;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 import com.siweisoft.nurse.ui.bed.nurserecord.bean.resbean.NurseRecordListResBean;
 import com.siweisoft.nurse.ui.bed.nurserecord.bean.resbean.NurseRecordResBean;
 import com.siweisoft.nurse.ui.bed.nurserecorddetail.bean.reqbean.NurseRecordReqBean;
-import com.siweisoft.nurse.ui.bed.nurserecorddetail.ope.NurseRecordDetailNetOpe;
 import com.siweisoft.nurse.ui.bed.nurserecorddetail.ope.NurseRecordDetailUIOpe;
 
 /**
@@ -25,7 +25,7 @@ public class NurseRecordDetailFrag extends BaseNurseFrag{
 
     NurseRecordDetailUIOpe nurseRecordDetailUIOpe;
 
-    NurseRecordDetailNetOpe nurseRecordDetailNetOpe;
+    NurseNetOpe nurseRecordDetailNetOpe;
 
     NurseRecordResBean nurseRecordResBean;
 
@@ -45,7 +45,7 @@ public class NurseRecordDetailFrag extends BaseNurseFrag{
         nurseRecordResBean = (NurseRecordResBean) getArguments().getSerializable(ValueConstant.DATA_DATA);
         patientBedResBean = (PatientBedResBean) getArguments().getSerializable(ValueConstant.DATA_DATA2);
         nurseRecordDetailUIOpe= new NurseRecordDetailUIOpe(activity,getView());
-        nurseRecordDetailNetOpe = new NurseRecordDetailNetOpe(activity);
+        nurseRecordDetailNetOpe = new NurseNetOpe(activity);
         NurseRecordReqBean nurseRecordReqBean = new NurseRecordReqBean();
         nurseRecordReqBean.setZyh(patientBedResBean.get住院号());
         nurseRecordReqBean.setType(nurseRecordResBean.get医嘱类别代码());

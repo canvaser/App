@@ -67,7 +67,8 @@ public class MyMissionDAOpe extends BaseOpe {
     }
 
     public void setList(HashMap<String, ArrayList<AreaMessionResBean>> list) {
-        this.list = list;
+        this.list.clear();
+        this.list.putAll(list);
     }
 
     public HashMap<String, ArrayList<AreaMessionResBean>> sort(){

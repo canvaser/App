@@ -7,9 +7,8 @@ import android.view.View;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.addmypatient.adapter.AddMyPatientDrawListAdapter;
-import com.siweisoft.nurse.ui.bed.addmypatient.adapter.AddMyPatientListAdapter;
 import com.siweisoft.nurse.ui.bed.addmypatient.bean.AddMyPatientAdapterBean;
 
 import java.util.ArrayList;

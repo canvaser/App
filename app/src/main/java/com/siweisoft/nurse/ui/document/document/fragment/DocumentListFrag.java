@@ -19,16 +19,16 @@ import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.netadapter.DelayUINetAdapter;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
 import com.siweisoft.nurse.ui.document.document.adapter.DocumentListAdapter;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentListResBean;
 import com.siweisoft.nurse.ui.document.document.ope.daope.DocumentListDAOpe;
 import com.siweisoft.nurse.ui.document.document.ope.uiope.DocumentListUIOpe;
-import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.base.ui.adapter.PupListAdapter;
+import com.siweisoft.lib.util.fragment.FragManager;
 
 import butterknife.OnClick;
 
@@ -49,32 +49,32 @@ public class DocumentListFrag extends BaseNurseFrag<DocumentListUIOpe,NurseNetOp
             return;
         }
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
-        getOpe().getBaseDAOpe().setDataBean((DocumentListResBean.DataBean) getArguments().get(ValueConstant.DATA_DATA2));
-        getOpe().getBaseNurseUIOpe().init(getOpe().getBaseDAOpe().getDataBean().getTitle()==null?patientAdditionDAOpe.getPatientBedResBean().get姓名():getOpe().getBaseDAOpe().getDataBean().getTitle());
-        getOpe().getBaseNurseUIOpe().getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
+        getOpe().getDaOpe().setDataBean((DocumentListResBean.DataBean) getArguments().get(ValueConstant.DATA_DATA2));
+        getOpe().getUiOpe().init(getOpe().getDaOpe().getDataBean().getTitle() == null ? patientAdditionDAOpe.getPatientBedResBean().get姓名() : getOpe().getDaOpe().getDataBean().getTitle());
+        getOpe().getUiOpe().getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
                 getData(new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
-                        getOpe().getBaseNurseUIOpe().getRefreshLayout().finishRefresh();
+                        getOpe().getUiOpe().getRefreshLayout().finishRefresh();
                     }
                 });
             }
         });
-        getOpe().getBaseNurseUIOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        getOpe().getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
     }
 
     public void getData(@NonNull final OnFinishListener onFinishListener){
-        getOpe().getBaseNetOpe().document_documemtList(getOpe().getBaseDAOpe().getDataBean().getId(), new DelayUINetAdapter(activity) {
+        getOpe().getNetOpe().document_documemtList(getOpe().getDaOpe().getDataBean().getId(), new DelayUINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
                 if(success){
                     DocumentListResBean documentListResBean = GsonUtil.getInstance().fromJson(o.toString(),DocumentListResBean.class);
-                    getOpe().getBaseDAOpe().setDocumentListResBean(documentListResBean);
-                    getOpe().getBaseNurseUIOpe().initList(documentListResBean);
-                    getOpe().getBaseNurseUIOpe().initUpdate(documentListResBean);
-                    ((DocumentListAdapter)getOpe().getBaseNurseUIOpe().getRecyclerView().getAdapter()).setOnAppItemClickListener(DocumentListFrag.this);
+                    getOpe().getDaOpe().setDocumentListResBean(documentListResBean);
+                    getOpe().getUiOpe().initList(documentListResBean);
+                    getOpe().getUiOpe().initUpdate(documentListResBean);
+                    ((DocumentListAdapter) getOpe().getUiOpe().getRecyclerView().getAdapter()).setOnAppItemClickListener(DocumentListFrag.this);
                 }
                 onFinishListener.onFinish(o);
             }
@@ -92,9 +92,10 @@ public class DocumentListFrag extends BaseNurseFrag<DocumentListUIOpe,NurseNetOp
 
     @OnClick({BaseID.ID_MID,BaseID.ID_RIGHT})
     public void onClick(View v){
+        super.onClick(v);
         switch (v.getId()){
             case BaseID.ID_MID:
-                if(getOpe().getBaseDAOpe().getDataBean().getTitle()!=null){
+                if (getOpe().getDaOpe().getDataBean().getTitle() != null) {
                     return;
                 }
                 View view1 = layoutInflater.inflate(R.layout.pup_list,null);
@@ -109,7 +110,7 @@ public class DocumentListFrag extends BaseNurseFrag<DocumentListUIOpe,NurseNetOp
                     @Override
                     public void onAppItemClick(View view, int position) {
                         patientAdditionDAOpe.setPosition(position);
-                        getOpe().getBaseNurseUIOpe().init(patientAdditionDAOpe.getNames().get(position));
+                        getOpe().getUiOpe().init(patientAdditionDAOpe.getNames().get(position));
                         PopupUtil.getInstance().dimess();
                     }
                 });
@@ -117,8 +118,8 @@ public class DocumentListFrag extends BaseNurseFrag<DocumentListUIOpe,NurseNetOp
                 PopupUtil.getInstance().show(activity,view1,v);
                 break;
             case BaseID.ID_RIGHT:
-                getOpe().getBaseDAOpe().setEnableEnter();
-                getOpe().getBaseNurseUIOpe().getRecyclerView().getAdapter().notifyDataSetChanged();
+                getOpe().getDaOpe().setEnableEnter();
+                getOpe().getUiOpe().getRecyclerView().getAdapter().notifyDataSetChanged();
                 break;
         }
     }

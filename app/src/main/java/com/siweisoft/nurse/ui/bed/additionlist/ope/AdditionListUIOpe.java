@@ -10,7 +10,7 @@ import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.SPUtil;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.additionlist.adapter.AdditionListAdapter;
 import com.siweisoft.nurse.ui.bed.patient.bean.resbean.PatientAdditionResBean;
 import com.siweisoft.nurse.ui.home.bean.resbean.AdditionListResBean;
@@ -41,6 +41,8 @@ public class AdditionListUIOpe extends BaseNurseUIOpe{
 
 
     private void init(){
+        getBackTV().setVisibility(View.VISIBLE);
+        getRightTV().setVisibility(View.VISIBLE);
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
         getRightTV().setSelected(true);

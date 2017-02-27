@@ -6,13 +6,12 @@ import android.view.View;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.constant.ValueConstant;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.addaddition.ope.AddAdditionUIOpe;
 import com.siweisoft.nurse.ui.bed.additionlist.fragment.AdditionListFrag;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.util.fragment.FragManager;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -44,6 +43,7 @@ public class AddAdditionFrag extends BaseNurseFrag{
 
     @OnClick({R.id.tv_daoguan,R.id.tv_care})
     public void onClick(View view){
+        super.onClick(view);
         switch (view.getId()){
             case R.id.tv_daoguan:
                 Bundle bundle = new Bundle();

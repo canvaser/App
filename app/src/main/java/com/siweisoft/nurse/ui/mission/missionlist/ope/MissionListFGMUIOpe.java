@@ -11,20 +11,16 @@ import com.siweisoft.lib.util.SPUtil;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.nurse.nursevalue.MethodValue;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.mission.missionlist.adapter.MissionListAdapter;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.adaapterbean.AreaMissionListAdapterBean;
-import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionListResBean;
-import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionResBean;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.uibean.MissionItenHeadUIBean;
 import com.siweisoft.nurse.ui.user.login.bean.DoLoginResBean;
 
 import java.util.ArrayList;
 
 import butterknife.BindArray;
-import butterknife.BindString;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by ${viwmox} on 2016-11-08.
@@ -65,8 +61,9 @@ public class MissionListFGMUIOpe extends BaseNurseUIOpe {
         getBackTV().setText("全部");
 
         getMidTV().setSelected(true);
-
-
+        getBackTV().setVisibility(View.VISIBLE);
+        getMidTV().setVisibility(View.VISIBLE);
+        getRightTV().setVisibility(View.VISIBLE);
         getRightTV().setSelected(true);
         getRightTV().setText("全部");
 

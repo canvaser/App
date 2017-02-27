@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.util.StringUtil;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.info.shiftdutereport.bean.resbean.ShiftDuteReportResBean;
 
 import butterknife.BindView;
@@ -66,6 +66,9 @@ public class ShiftDuteReportUIOpe extends BaseNurseUIOpe{
         getMidTV().setText("交班本");
         getRightTV().setSelected(true);
         getRightTV().setText("填写");
+        getBackTV().setVisibility(View.VISIBLE);
+        getMidTV().setVisibility(View.VISIBLE);
+        getRightTV().setVisibility(View.VISIBLE);
     }
 
     public void initData(ShiftDuteReportResBean res){

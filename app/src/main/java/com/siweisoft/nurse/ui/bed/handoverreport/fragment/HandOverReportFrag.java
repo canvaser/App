@@ -7,29 +7,25 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.menu.popup.PopupUtil;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
-import com.siweisoft.nurse.nursevalue.MethodValue;
-import com.siweisoft.nurse.ui.base.bean.reqbean.BaseNurseReqBean;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
-import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
+import com.siweisoft.lib.base.ui.bean.reqbean.BaseNurseReqBean;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.netadapter.DelayUINetAdapter;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.bedlist.ope.BedListDAOpe;
-import com.siweisoft.nurse.ui.bed.handoverreport.ope.HandOverNetOpe;
 import com.siweisoft.nurse.ui.bed.handoverreport.ope.HandOverReportUIOpe;
 import com.siweisoft.nurse.ui.bed.inputhandoverreport.fragment.InputHandOverReportFrag;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
 import com.siweisoft.nurse.ui.bed.shiftdute.bean.resbean.ShiftDuteListResBean;
-import com.siweisoft.nurse.ui.home.adapter.PupListAdapter;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.base.ui.adapter.PupListAdapter;
+import com.siweisoft.lib.util.fragment.FragManager;
 
-import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
@@ -39,7 +35,7 @@ public class HandOverReportFrag extends BaseNurseFrag implements OnAppItemClickL
 
     HandOverReportUIOpe handOverReportUIOpe;
 
-    HandOverNetOpe handOverNetOpe;
+    NurseNetOpe handOverNetOpe;
 
     PatientAdditionDAOpe patientAdditionDAOpe;
 
@@ -57,7 +53,7 @@ public class HandOverReportFrag extends BaseNurseFrag implements OnAppItemClickL
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
         handOverReportUIOpe = new HandOverReportUIOpe(activity,getView());
         handOverReportUIOpe.initMid(patientAdditionDAOpe.getPatientBedResBean().get姓名());
-        handOverNetOpe = new HandOverNetOpe(activity);
+        handOverNetOpe = new NurseNetOpe(activity);
         getData();
 
     }
@@ -90,7 +86,7 @@ public class HandOverReportFrag extends BaseNurseFrag implements OnAppItemClickL
                 RecyclerView recyclerView = (RecyclerView) view1.findViewById(R.id.rcv_pop);
                 recyclerView.setLayoutManager(new LinearLayoutManager(activity));
                 recyclerView.addItemDecoration(new MyItemDecoration(activity,2));
-                PupListAdapter p = new PupListAdapter(activity,new BedListDAOpe().getPatientNames(patientAdditionDAOpe.getPatientBedResBeen()));
+                PupListAdapter p = new PupListAdapter(activity, new BedListDAOpe(activity).getPatientNames(patientAdditionDAOpe.getPatientBedResBeen()));
                 p.setOnAppItemClickListener(new OnAppItemClickListener() {
                     @Override
                     public void onAppItemClick(View view, int position) {

@@ -13,13 +13,17 @@ import android.widget.TextView;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.StringUtil;
+import com.siweisoft.lib.util.data.DateFormatUtil;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.data.adapter.DataAdapter3;
 import com.siweisoft.nurse.ui.bed.data.adapter.DataAdapter4;
 import com.siweisoft.nurse.ui.bed.data.bean.adatperbean.DataAdapterBean;
+import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.BindView;
 
@@ -62,11 +66,19 @@ public class DataUIOpe extends BaseNurseUIOpe{
 
     private void init() {
 
-
+        getBackTV().setVisibility(View.VISIBLE);
+        getBackTV().setSelected(true);
         getBackTV().setText("返回");
         getRightTV().setText("录入");
         getRightTV().setSelected(true);
+        getRightTV().setVisibility(View.VISIBLE);
 
+        getDateTV().setText(StringUtil.getStr(DateFormatUtil.convent_yyyyMMdd(new Date())));
+    }
+
+    public void initTitle(PatientAdditionDAOpe patientAdditionDAOpe) {
+        getMidTV().setVisibility(View.VISIBLE);
+        getMidTV().setText(patientAdditionDAOpe.getPatientBedResBean().get住院号() + "" + patientAdditionDAOpe.getPatientBedResBean().get姓名());
     }
 
     public void init(ArrayList<DataAdapterBean> list){

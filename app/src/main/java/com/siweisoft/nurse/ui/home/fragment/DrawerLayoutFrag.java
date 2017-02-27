@@ -10,14 +10,14 @@ import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
 import com.siweisoft.lib.util.FragmentUtil;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.ui.bed.addmypatient.bean.AddMyPatientAdapterBean;
 import com.siweisoft.nurse.ui.bed.addmypatient.fragment.AddMyPatientDrawFrag;
 import com.siweisoft.nurse.ui.home.activity.IndexActivity;
 import com.siweisoft.nurse.ui.home.bean.reqbean.WriteAlarmReqBean;
 import com.siweisoft.nurse.ui.home.ope.DrawerLayoutUIOpe;
-import com.siweisoft.nurse.ui.home.ope.HomeNetOpe;
 
 import java.io.Serializable;
 
@@ -33,7 +33,7 @@ public class DrawerLayoutFrag extends BaseNurseFrag implements OnAppItemClickLis
 
     AddMyPatientAdapterBean bean;
 
-    HomeNetOpe homeNetOpe;
+    NurseNetOpe homeNetOpe;
 
 
     @Override
@@ -47,7 +47,7 @@ public class DrawerLayoutFrag extends BaseNurseFrag implements OnAppItemClickLis
         super.onViewCreated(view, savedInstanceState);
         drawerLayoutUIOpe = new DrawerLayoutUIOpe(activity,getView());
         drawerLayoutUIOpe.setItemClickListener(this);
-        homeNetOpe= new HomeNetOpe(activity);
+        homeNetOpe = new NurseNetOpe(activity);
     }
 
     @Override

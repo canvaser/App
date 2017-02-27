@@ -7,9 +7,8 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.MyMission.adapter.MyMissionListAdapter;
-import com.siweisoft.nurse.ui.base.view.MissionExpandView;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionResBean;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.uibean.MissionItenHeadUIBean;
@@ -46,7 +45,9 @@ public class MyMissonUIOpe extends BaseNurseUIOpe{
     private void init(){
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
-
+        getBackTV().setVisibility(View.VISIBLE);
+        getMidTV().setVisibility(View.VISIBLE);
+        getRightTV().setVisibility(View.VISIBLE);
         getMidTV().setSelected(true);
         getRightTV().setSelected(true);
         getRightTV().setText("全部");
@@ -64,9 +65,13 @@ public class MyMissonUIOpe extends BaseNurseUIOpe{
 
     public void initList(HashMap<String,ArrayList<AreaMessionResBean>> list){
         this.list = list;
-        myMissionListAdapter = new MyMissionListAdapter(context,this.list);
-        missionExpandView.setGroupIndicator(null);
-        missionExpandView.setAdapter(myMissionListAdapter);
+        if (myMissionListAdapter == null) {
+            myMissionListAdapter = new MyMissionListAdapter(context, list);
+            missionExpandView.setGroupIndicator(null);
+            missionExpandView.setAdapter(myMissionListAdapter);
+        } else {
+            myMissionListAdapter.notifyDataSetChanged();
+        }
 
     }
 

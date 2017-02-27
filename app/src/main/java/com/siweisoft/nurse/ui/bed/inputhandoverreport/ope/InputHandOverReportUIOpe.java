@@ -1,15 +1,14 @@
 package com.siweisoft.nurse.ui.bed.inputhandoverreport.ope;
 
 import android.content.Context;
-import android.graphics.Canvas;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.ui.bed.inputhandoverreport.fragment.InputHandOverReportFrag;
 import com.siweisoft.nurse.ui.bed.inputhandoverreport.view.RecordView;
 
@@ -57,6 +56,12 @@ public class InputHandOverReportUIOpe extends BaseNurseUIOpe{
         getBackTV().setText("返回");
         getRightTV().setSelected(true);
         getRightTV().setText("提交");
+        getBackTV().setVisibility(View.VISIBLE);
+        getRightTV().setVisibility(View.VISIBLE);
+    }
+
+    public void setContent(String str) {
+        inputET.setText(StringUtil.getStr(str));
     }
 
 

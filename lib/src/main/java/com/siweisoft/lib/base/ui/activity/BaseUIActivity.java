@@ -69,14 +69,14 @@ public abstract class BaseUIActivity extends BaseActivity{
     }
 
 
-    @Optional@OnClick(value = {R2.id.ftv_back})
-    public void onBaseUIClickEvent(View view){
-        switch (view.getId()){
-            case R2.id.ftv_back:
-                this.finish();
-                break;
-        }
-    }
+//    @Optional@OnClick(value = {R2.id.ftv_back})
+//    public void onBaseUIClickEvent(View view){
+//        switch (view.getId()){
+//            case R2.id.ftv_back:
+//                this.finish();
+//                break;
+//        }
+//    }
 
 
 

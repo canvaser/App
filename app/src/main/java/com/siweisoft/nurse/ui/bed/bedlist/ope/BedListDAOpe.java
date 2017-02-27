@@ -3,9 +3,16 @@ package com.siweisoft.nurse.ui.bed.bedlist.ope;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.widget.GridLayoutManager;
+import android.view.View;
 import android.view.animation.Animation;
+import android.widget.ImageView;
 
+import com.siweisoft.app.R;
+import com.siweisoft.lib.base.ui.bean.uibean.CommonUIBean;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
+import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
+import com.siweisoft.lib.util.BitmapUtil;
+import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.bed.bedlist.adapter.BedListAdapter;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
@@ -15,7 +22,7 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-11-30.
  */
-public class BedListDAOpe {
+public class BedListDAOpe extends BaseDAOpe {
 
 
     ArrayList<PatientBedResBean> allList;
@@ -24,6 +31,10 @@ public class BedListDAOpe {
 
 
     private int index=0;
+
+    public BedListDAOpe(Context context) {
+        super(context);
+    }
 
     public int getIndex() {
         return index;
@@ -144,6 +155,43 @@ public class BedListDAOpe {
                 onFinishListener.onFinish(s);
             }
         }.execute();
+    }
+
+    public void initBedListDetail(CommonUIBean holder, ArrayList<PatientBedResBean> data, int position) {
+        switch (data.get(position).get状态()) {
+            case "空床":
+                holder.getView(R.id.ll_r).setVisibility(View.INVISIBLE);
+                holder.setText(R.id.tv_empty, StringUtil.getStr(StringUtil.getSpilitStr(data.get(position).get病床号(), 2) + "." + "空床"));
+                break;
+            default:
+                holder.setText(R.id.tv_numname, StringUtil.getStr(StringUtil.getSpilitStr(data.get(position).get病床号(), 2) + "." + data.get(position).get姓名()));
+                holder.getView(R.id.ll_r).setVisibility(View.VISIBLE);
+                holder.setText(R.id.tv_empty, "");
+                if (data.get(position).getAdditionCodes() != null && data.get(position).getAdditionCodes().size() > 0) {
+                    switch (data.get(position).getAdditionCodes().get(0).getType()) {
+                        case "过敏":
+                            holder.getView(R.id.iv_ming).setVisibility(View.VISIBLE);
+                            break;
+                        case "手术":
+                            holder.getView(R.id.iv_shu).setVisibility(View.VISIBLE);
+                            break;
+                        default:
+                            holder.getView(R.id.iv_shu).setVisibility(View.VISIBLE);
+                            holder.getView(R.id.iv_ming).setVisibility(View.VISIBLE);
+                            holder.getView(R.id.iv_ru).setVisibility(View.VISIBLE);
+                            holder.getView(R.id.iv_chu).setVisibility(View.VISIBLE);
+                    }
+                }
+                if (data.get(position).getResId() != 0) {
+                    BitmapUtil.getInstance().setBg(holder.getmContext(), (ImageView) holder.getView(R.id.iv_level), data.get(position).getResId());
+                }
+                if (data.get(position).get性别().equals("男")) {
+                    BitmapUtil.getInstance().setBg(holder.getmContext(), (ImageView) holder.getView(R.id.iv_sex), R.drawable.icon_sex_man);
+                } else {
+                    BitmapUtil.getInstance().setBg(holder.getmContext(), (ImageView) holder.getView(R.id.iv_sex), R.drawable.icon_sex_woman);
+                }
+                break;
+        }
     }
 
 

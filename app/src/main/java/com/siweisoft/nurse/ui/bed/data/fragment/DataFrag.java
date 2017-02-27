@@ -6,13 +6,18 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.util.menu.popup.PopupUtil;
+import com.siweisoft.lib.view.pickerview.TimePickerDialog;
+import com.siweisoft.lib.view.pickerview.data.Type;
+import com.siweisoft.lib.view.pickerview.listener.OnDateSetListener;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.DatePickUitl;
@@ -22,29 +27,26 @@ import com.siweisoft.lib.util.ScreenUtil;
 import com.siweisoft.lib.util.data.DateFormatUtil;
 import com.siweisoft.lib.util.dialog.DialogUtil;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
-import com.siweisoft.nurse.ui.base.fragment.BaseNurseFrag;
-import com.siweisoft.nurse.ui.base.netadapter.DelayUINetAdapter;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseOpes;
-import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.netadapter.DelayUINetAdapter;
+import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
+import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.data.adapter.DataAdapter3;
 import com.siweisoft.nurse.ui.bed.data.bean.reqbean.JsonDataListReqBean;
 import com.siweisoft.nurse.ui.bed.data.bean.reqbean.JsonDataReqBean;
 import com.siweisoft.nurse.ui.bed.data.bean.resbean.BodyDataResBean;
 import com.siweisoft.nurse.ui.bed.data.bean.resbean.TitleDataListResBean;
 import com.siweisoft.nurse.ui.bed.data.ope.DataDAOpe;
-import com.siweisoft.nurse.ui.bed.data.ope.DataNetOpe;
 import com.siweisoft.nurse.ui.bed.data.ope.DataUIOpe;
 import com.siweisoft.nurse.ui.bed.datachart.activity.DataChartActivity;
-import com.siweisoft.nurse.ui.bed.datachart.fragment.DataChartFrag;
 import com.siweisoft.nurse.ui.bed.inputdata.fragment.InputDataFrag;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
-import com.siweisoft.nurse.ui.user.login.activity.LoginActivity;
-import com.siweisoft.nurse.ui.user.login.ope.LoginNetOpe;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.util.fragment.FragManager;
+import com.siweisoft.nurse.ui.dialog.dialog.fragment.NurseDialogFrag;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 import butterknife.OnClick;
 
@@ -56,7 +58,7 @@ public class DataFrag extends BaseNurseFrag implements PinnedHeaderExpandableLis
 
     DataUIOpe dataUIOpe;
 
-    DataNetOpe dataNetOpe;
+    NurseNetOpe dataNetOpe;
 
     PatientAdditionDAOpe patientAdditionDAOpe;
 
@@ -73,8 +75,9 @@ public class DataFrag extends BaseNurseFrag implements PinnedHeaderExpandableLis
         }
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
         //dataUIOpe = new DataUIOpe3(activity,getView());
-        dataNetOpe= new DataNetOpe(activity);
+        dataNetOpe = new NurseNetOpe(activity);
         dataUIOpe = new DataUIOpe(activity,getView());
+        dataUIOpe.initTitle(patientAdditionDAOpe);
         ScreenUtil.getInstance().getStatusBarHeight(activity);
         getMultipleRecordData(DateFormatUtil.getnowTimeYYYYMMdd(), DateFormatUtil.getTomorromTimeYYYYMMdd());
 
@@ -127,22 +130,35 @@ public class DataFrag extends BaseNurseFrag implements PinnedHeaderExpandableLis
         getMultipleRecordData(DateFormatUtil.getnowTimeYYYYMMdd(),DateFormatUtil.getTomorromTimeYYYYMMdd());
     }
 
-    @OnClick({R.id.tv_date, BaseID.ID_RIGHT})
+    @OnClick({R.id.tv_date, BaseID.ID_RIGHT, BaseID.ID_MID})
     public void onClickEvent(View v){
         switch (v.getId()){
-            case R.id.tv_date:
-                DatePickUitl.getInstance().showDatePickDialog(activity, new DatePickerDialog.OnDateSetListener() {
+            case BaseID.ID_MID:
+                NurseDialogFrag.show(getFragmentManager(), BaseID.ID_ROOT, patientAdditionDAOpe.getNames(), NurseDialogFrag.MID, new OnAppItemClickListener() {
+
                     @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        dataUIOpe.getDateTV().setText(DateFormatUtil.getYYYYMMDD(year,month,dayOfMonth));
+                    public void onAppItemClick(View view, int position) {
+                        patientAdditionDAOpe.setPosition(position);
+                        dataUIOpe.initTitle(patientAdditionDAOpe);
+                        getMultipleRecordData(DateFormatUtil.getnowTimeYYYYMMdd(), DateFormatUtil.getTomorromTimeYYYYMMdd());
+                    }
+                });
+                break;
+            case R.id.tv_date:
+                DialogUtil.showTimePick(activity, getFragmentManager(), "date", Type.ALL, new OnDateSetListener() {
+                    @Override
+                    public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
                         Calendar calendar = Calendar.getInstance();
-                        calendar.set(Calendar.YEAR,year);
-                        calendar.set(Calendar.MONTH,month);
-                        calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
+                        calendar.setTime(new Date(millseconds));
+                        calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR));
+                        calendar.set(Calendar.MONTH, calendar.get(Calendar.MONTH));
+                        calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH));
                         Calendar calendar1 = Calendar.getInstance();
-                        calendar1.set(Calendar.YEAR,year);
-                        calendar1.set(Calendar.MONTH,month);
-                        calendar1.set(Calendar.DAY_OF_MONTH,dayOfMonth+1);
+                        calendar1.setTime(new Date(millseconds));
+                        calendar1.set(Calendar.YEAR, calendar.get(Calendar.YEAR));
+                        calendar1.set(Calendar.MONTH, calendar.get(Calendar.MONTH));
+                        calendar1.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1);
+                        dataUIOpe.getDateTV().setText(DateFormatUtil.convent_YYYYMMDD(new Date(millseconds)));
                         getMultipleRecordData(DateFormatUtil.convent_YYYYMMDD(calendar.getTime()),DateFormatUtil.convent_YYYYMMDD(calendar1.getTime()));
                     }
                 });
@@ -157,7 +173,7 @@ public class DataFrag extends BaseNurseFrag implements PinnedHeaderExpandableLis
 
     @Override
     public void onClick(View v) {
-
+        super.onClick(v);
         if(v.getTag(R.id.type)!=null && v.getTag(R.id.type).equals("left")){
             int groupid = (int) v.getTag(R.id.groupposition);
             int childid = (int) v.getTag(R.id.childposition);
@@ -237,8 +253,4 @@ public class DataFrag extends BaseNurseFrag implements PinnedHeaderExpandableLis
 //                break;
 //        }
     }
-
-
-
-
 }

@@ -11,6 +11,7 @@
         android:id="@+id/ftitle_bar"
    >
         <TextView
+            android:visibility="gone"
             android:layout_marginLeft="10dp"
             android:gravity="center"
             android:layout_centerVertical="true"
@@ -28,6 +29,7 @@
 
 
         <TextView
+            android:visibility="gone"
             android:id="@+id/ftv_title"
             android:padding="4dp"
             android:paddingLeft="6dp"
@@ -43,6 +45,7 @@
 
 
         <TextView
+            android:visibility="gone"
             android:gravity="center_vertical"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"

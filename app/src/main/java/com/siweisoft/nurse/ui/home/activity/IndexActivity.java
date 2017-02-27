@@ -13,25 +13,22 @@ import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.activity.BaseUIWithOutTitleActivity;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemLongClickListener;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemSelectListener;
+import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.LogUtil;
 import com.siweisoft.lib.util.SPUtil;
-import com.siweisoft.nurse.ui.base.netadapter.UINetAdapter;
+import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.ui.home.bean.resbean.KeepAliveResBean;
 import com.siweisoft.nurse.ui.home.ope.HomeDataOpe;
-import com.siweisoft.nurse.ui.home.ope.HomeNetOpe;
 import com.siweisoft.nurse.ui.home.ope.HomeUIOpe;
 import com.siweisoft.nurse.ui.info.bedcheck.bean.reqbean.WriteBedCheckReqBean;
 import com.siweisoft.nurse.ui.info.bedcheck.fragment.BedCheckFrag;
-import com.siweisoft.nurse.ui.info.bedcheck.ope.BedCheckNetOpe;
 import com.siweisoft.nurse.ui.user.login.activity.LoginActivity;
-import com.siweisoft.nurse.util.fragment.FragManager;
+import com.siweisoft.lib.util.fragment.FragManager;
 import com.siweisoft.lib.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.siweisoft.lib.uuzuche.lib_zxing.activity.CodeUtils;
-
-import butterknife.OnClick;
 
 /**
  * Created by ${viwmox} on 2016-11-08.
@@ -43,7 +40,7 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
 
     HomeDataOpe homeDataOpe;
 
-    HomeNetOpe homeNetOpe;
+    NurseNetOpe homeNetOpe;
 
     KeepLive keepLive;
 
@@ -54,7 +51,7 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
 
         homeUIOpe = new HomeUIOpe(activity,getRootVG());
         homeDataOpe= new HomeDataOpe(activity);
-        homeNetOpe= new HomeNetOpe(activity);
+        homeNetOpe = new NurseNetOpe(activity);
 
         homeUIOpe.getHomeBottomView().setOnAppItemSelectListener(this);
         homeUIOpe.getHomeBottomView().setOnAppItemLongClickListener(this);
@@ -124,10 +121,10 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
                             Toast.makeText(activity, "解析结果:" + result, Toast.LENGTH_LONG).show();
 
 
-   //                         WriteBedCheckReqBean reqBean = GsonUtil.getInstance().fromJson(result,WriteBedCheckReqBean.class);
-
-
-//                            new BedCheckNetOpe(activity).writeWardInspectionInfo(reqBean, new UINetAdapter(activity) {
+//                            WriteBedCheckReqBean reqBean = GsonUtil.getInstance().fromJson(result,WriteBedCheckReqBean.class);
+//
+//
+//                            new NurseNetOpe(activity).writeWardInspectionInfo(reqBean, new UINetAdapter(activity) {
 //                                @Override
 //                                public void onNetWorkResult(boolean success, Object o) {
 //                                    if(success){

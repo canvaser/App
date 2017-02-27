@@ -8,7 +8,7 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.info.addcheckbook.adapter.AddCheckBookListAdapter;
 import com.siweisoft.nurse.ui.info.checkbook.bean.resbean.CheckBookResBean;
 
@@ -33,7 +33,8 @@ public class AddCheckBookUIOpe extends BaseNurseUIOpe{
     private void init(){
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
-
+        getBackTV().setVisibility(View.VISIBLE);
+        getMidTV().setVisibility(View.VISIBLE);
         getRightTV().setSelected(true);
         getRightTV().setText("提交");
     }

@@ -8,7 +8,7 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
-import com.siweisoft.nurse.ui.base.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.shiftdute.adapter.ShiftDuteListAdpter;
 import com.siweisoft.nurse.ui.bed.shiftdute.bean.resbean.ShiftDuteResBean;
 
@@ -37,9 +37,10 @@ public class HandOverReportUIOpe extends BaseNurseUIOpe{
     private void init(){
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
-
+        getBackTV().setVisibility(View.VISIBLE);
         getRightTV().setSelected(true);
         getRightTV().setText("填写");
+        getRightTV().setVisibility(View.VISIBLE);
     }
 
     public void initMid(String name){

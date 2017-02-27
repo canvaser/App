@@ -54,7 +54,6 @@ public class DataValue {
     public static final String URL_WIITE_ADDWATER_DATA= "writeFileData";
 
 
-    /***/
     public static final String URL_GETADDITION_LIST= "getAdditionList";
 
     //-------------------------------------------------------------------------------------------------------
@@ -204,7 +203,7 @@ public class DataValue {
 
 
     /**获取病房巡视数据*/
-    public static final String URL_GET_WARD_INSPECTION_LIST= "getWardInspectionList";
+    public static final String URL_GET_WARD_INSPECTION_LIST = "getHospitalAnnounceMent";
 
 
     /**录入病房巡视数据*/
