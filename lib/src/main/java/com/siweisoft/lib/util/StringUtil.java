@@ -11,57 +11,57 @@ public class StringUtil {
 
     private static StringUtil stringUtil;
 
-    private StringUtil(){
+    private StringUtil() {
 
     }
 
-    public static StringUtil getInstance(){
-        if(stringUtil == null ){
-            stringUtil=new StringUtil();
+    public static StringUtil getInstance() {
+        if (stringUtil == null) {
+            stringUtil = new StringUtil();
         }
         return stringUtil;
     }
 
-    public  String getStringRes(Context context ,int strId){
+    public String getStringRes(Context context, int strId) {
         String str = context.getResources().getString(strId);
-        str = str==null? "":str;
+        str = str == null ? "" : str;
         return str;
     }
 
-    public static String getStr(String str){
-        if(str==null){
+    public static String getStr(String str) {
+        if (str == null) {
             return "";
         }
         return str;
     }
 
-    public static String getSpilitStr(String str,int start){
-        if(str==null){
+    public static String getSpilitStr(String str, int start) {
+        if (str == null) {
             return "";
         }
-        return str.substring(start,str.length());
+        return str.substring(start, str.length());
     }
 
-    public static String getStr(Object str){
-        if(str==null){
+    public static String getStr(Object str) {
+        if (str == null) {
             return "";
         }
         return str.toString();
     }
 
-    public static String getStr(Integer str){
-        if(str==null){
+    public static String getStr(Integer str) {
+        if (str == null) {
             return "";
         }
-        return str+"";
+        return str + "";
     }
 
-    public static String getNewLineStr(String str){
-        return str.replace(" ","\n\t");
+    public static String getNewLineStr(String str) {
+        return str.replace(" ", "\n\t");
     }
 
-    public static  void strarrToList(String[] strings, ArrayList<String> list){
-        for(int i=0;i<strings.length;i++){
+    public static void strarrToList(String[] strings, ArrayList<String> list) {
+        for (int i = 0; i < strings.length; i++) {
             list.add(strings[i]);
         }
     }

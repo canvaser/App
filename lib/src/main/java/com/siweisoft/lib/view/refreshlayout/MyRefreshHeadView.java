@@ -50,15 +50,14 @@ public class MyRefreshHeadView extends RelativeLayout implements MaterialHeadLis
         init(context);
     }
 
-    private void init(Context context){
+    private void init(Context context) {
         this.context = context;
         RelativeLayout.LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         params.addRule(RelativeLayout.CENTER_IN_PARENT);
-        view=LayoutInflater.from(context).inflate(R.layout.layout_refresh_head,null);
-        addView(view,params);
+        view = LayoutInflater.from(context).inflate(R.layout.layout_refresh_head, null);
+        addView(view, params);
         txtTV = (TextView) findViewById(R.id.tv_txt);
     }
-
 
 
     @Override
@@ -90,7 +89,7 @@ public class MyRefreshHeadView extends RelativeLayout implements MaterialHeadLis
     public void onPull(MaterialRefreshLayout br, float fraction) {
         //txtTV.getLayoutParams().height = (int) (Util.dip2px(getContext(), DefaulHeadHeight) * Util.limitValue(1, fraction));
         //txtTV.requestLayout();
-       // txtTV.setText("下拉刷新");
+        // txtTV.setText("下拉刷新");
     }
 
     @Override
@@ -98,8 +97,9 @@ public class MyRefreshHeadView extends RelativeLayout implements MaterialHeadLis
         txtTV.setText("放开刷新");
     }
 
-    int[] colors = new int[]{Color.RED,Color.BLUE,Color.YELLOW,Color.MAGENTA};
-    ThreadUtil threadUtil=null;
+    int[] colors = new int[]{Color.RED, Color.BLUE, Color.YELLOW, Color.MAGENTA};
+    ThreadUtil threadUtil = null;
+
     @Override
     public void onRefreshing(MaterialRefreshLayout br) {
         final String s = "正在刷新";
@@ -123,7 +123,7 @@ public class MyRefreshHeadView extends RelativeLayout implements MaterialHeadLis
 //            }
 //        });
         txtTV.setText(s);
-       // AnimUtil.getInstance().startAnim(context,txtTV,R.anim.anim_rotate);
+        // AnimUtil.getInstance().startAnim(context,txtTV,R.anim.anim_rotate);
 //        LogUtil.E("onRefreshing");
 //        txtTV.getLayoutParams().height = (int) (Util.dip2px(getContext(), DefaulHeadHeight));
 //        txtTV.requestLayout();

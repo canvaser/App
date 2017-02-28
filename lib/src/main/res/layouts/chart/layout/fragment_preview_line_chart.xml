@@ -7,14 +7,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="lecho.lib.hellocharts.samples.PreviewLineChartActivity$PlaceholderFragment" >
+    tools:context="lecho.lib.hellocharts.samples.PreviewLineChartActivity$PlaceholderFragment">
 
     <com.siweisoft.lib.lecho.libhellocharts.view.LineChartView
         android:id="@+id/chart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" >
-    </com.siweisoft.lib.lecho.libhellocharts.view.LineChartView>
+        android:layout_weight="1"></com.siweisoft.lib.lecho.libhellocharts.view.LineChartView>
 
     <View
         android:layout_width="match_parent"
@@ -27,7 +26,6 @@
         android:id="@+id/chart_preview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" >
-    </com.siweisoft.lib.lecho.libhellocharts.view.PreviewLineChartView>
+        android:layout_weight="1"></com.siweisoft.lib.lecho.libhellocharts.view.PreviewLineChartView>
 
 </LinearLayout>

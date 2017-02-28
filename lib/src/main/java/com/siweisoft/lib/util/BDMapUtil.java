@@ -9,14 +9,14 @@ public class BDMapUtil {
 
     private static BDMapUtil instance;
 
-    public static BDMapUtil getInstance(){
-        if(instance==null){
-            instance=new BDMapUtil();
+    public static BDMapUtil getInstance() {
+        if (instance == null) {
+            instance = new BDMapUtil();
         }
         return instance;
     }
 
-    public void goTo(Context context,String addr){
+    public void goTo(Context context, String addr) {
 
         MapUtil.getInstance().goToMap(context, addr);
 //        try {

@@ -1,4 +1,5 @@
-<set xmlns:android="http://schemas.android.com/apk/res/android" android:shareInterpolator="false">
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shareInterpolator="false">
     <scale
         android:interpolator="@android:anim/accelerate_decelerate_interpolator"
         android:fromXScale="1.0"

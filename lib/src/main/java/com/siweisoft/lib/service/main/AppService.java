@@ -13,8 +13,7 @@ import com.siweisoft.lib.constant.ValueConstant;
 /**
  * Created by ${viwmox} on 2016-07-12.
  */
-public class AppService extends Service{
-
+public class AppService extends Service {
 
 
     @Override
@@ -34,8 +33,8 @@ public class AppService extends Service{
             public void onNetFinish(Object o) {
                 int i = (int) o;
                 //isThisParentHaveChild(NoteBookID.BASE_PARENT_ID, name);
-                Intent intent1 = new Intent(getPackageName()+ValueConstant.ACITON_GLOB_CAST);
-                intent1.putExtra(ValueConstant.DATA_DATA,i);
+                Intent intent1 = new Intent(getPackageName() + ValueConstant.ACITON_GLOB_CAST);
+                intent1.putExtra(ValueConstant.DATA_DATA, i);
                 sendBroadcast(intent1);
             }
         }).init().start();

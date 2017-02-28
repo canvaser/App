@@ -7,7 +7,7 @@ import android.widget.ListView;
 /**
  * Created by SWSD on 2016-04-20.
  */
-public class AppListView extends ListView{
+public class AppListView extends ListView {
 
 
     public AppListView(Context context, AttributeSet attrs) {
@@ -16,7 +16,7 @@ public class AppListView extends ListView{
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2,MeasureSpec.AT_MOST);
+        int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST);
         super.onMeasure(widthMeasureSpec, expandSpec);
     }
 }

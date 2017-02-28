@@ -7,7 +7,7 @@ import android.os.AsyncTask;
  * Created by ${viwmox} on 2017-02-20.
  */
 
-public abstract class AsynecDelayUINetAdapter extends DelayUINetAdapter{
+public abstract class AsynecDelayUINetAdapter extends DelayUINetAdapter {
 
 
     public AsynecDelayUINetAdapter(Context context) {
@@ -23,7 +23,7 @@ public abstract class AsynecDelayUINetAdapter extends DelayUINetAdapter{
         new AsyncTask<String, String, Object>() {
             @Override
             protected Object doInBackground(String... params) {
-                onAsyncStart(success,o);
+                onAsyncStart(success, o);
                 return o;
             }
 
@@ -36,7 +36,7 @@ public abstract class AsynecDelayUINetAdapter extends DelayUINetAdapter{
 
     }
 
-    public  abstract void onAsyncStart(boolean success, Object o);
+    public abstract void onAsyncStart(boolean success, Object o);
 
-    public  abstract void onAsyncStop(Object o);
+    public abstract void onAsyncStop(Object o);
 }

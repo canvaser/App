@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by ${viwmox} on 2016-04-28.
  */
-public class BaseResultResBean implements Serializable{
+public class BaseResultResBean implements Serializable {
 
     private int total;
 

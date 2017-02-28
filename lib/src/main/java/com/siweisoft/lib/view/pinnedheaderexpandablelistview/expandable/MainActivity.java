@@ -39,7 +39,7 @@ public class MainActivity extends Activity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         expandableListView = (PinnedHeaderExpandableListView) findViewById(R.id.expandablelist);
-        stickyLayout = (StickyLayout)findViewById(R.id.sticky_layout);
+        stickyLayout = (StickyLayout) findViewById(R.id.sticky_layout);
         initData();
 
         adapter = new MyexpandableListAdapter(this);
@@ -112,7 +112,6 @@ public class MainActivity extends Activity implements
      * 数据源
      *
      * @author Administrator
-     *
      */
     class MyexpandableListAdapter extends BaseExpandableListAdapter {
         private Context context;

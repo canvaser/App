@@ -19,19 +19,17 @@ public abstract class BaseUIWithRefreshFragment extends BaseFrg {
     private Unbinder unbinder;
 
 
-    public BaseUIWithRefreshFragment(){
+    public BaseUIWithRefreshFragment() {
 
     }
 
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View group = (ViewGroup) inflater.inflate(R.layout.layout_baseui_with_refresh,null);
+        View group = (ViewGroup) inflater.inflate(R.layout.layout_baseui_with_refresh, null);
         ViewGroup parent = (ViewGroup) group.findViewById(R.id.refresh_boot);
         View view = inflater.inflate(getContainView(), container, false);
-        parent.addView(view,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        parent.addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         unbinder = ButterKnife.bind(this, group);
         return group;
     }
@@ -43,7 +41,6 @@ public abstract class BaseUIWithRefreshFragment extends BaseFrg {
     }
 
     public abstract int getContainView();
-
 
 
 }

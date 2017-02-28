@@ -3,7 +3,7 @@ package com.siweisoft.lib.view.chart.linearchat.bean.viewbean;
 /**
  * Created by ${viwmox} on 2016-11-28.
  */
-public class XX extends ChartItemBean{
+public class XX extends ChartItemBean {
 
 
     private float unitVal;

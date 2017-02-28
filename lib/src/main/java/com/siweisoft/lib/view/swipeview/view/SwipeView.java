@@ -21,21 +21,19 @@ import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.Pinne
 /**
  * Created by ${viwmox} on 2016-11-30.
  */
-public class SwipeView extends LinearLayout{
+public class SwipeView extends LinearLayout {
 
 
     Context context;
 
-    Value[] values = new Value[]{new Value(0,0),new Value(0,0),new Value(0,0),new Value(0,0),new Value(0,0),new Value(0,0)};
+    Value[] values = new Value[]{new Value(0, 0), new Value(0, 0), new Value(0, 0), new Value(0, 0), new Value(0, 0), new Value(0, 0)};
 
 
     View childView;
 
     View finishView;
 
-  OnAppItemClickListener onAppClickListener;
-
-
+    OnAppItemClickListener onAppClickListener;
 
 
     public SwipeView(Context context) {
@@ -48,7 +46,7 @@ public class SwipeView extends LinearLayout{
         init(context);
     }
 
-    private void init(Context context){
+    private void init(Context context) {
         this.context = context;
 
     }
@@ -57,7 +55,7 @@ public class SwipeView extends LinearLayout{
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        childView= getChildAt(0);
+        childView = getChildAt(0);
         finishView = getChildAt(1);
 
     }
@@ -65,17 +63,17 @@ public class SwipeView extends LinearLayout{
 
     @Override
     protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
-        if(child == finishView  && finishView.getHeight()!=childView.getHeight() ){
+        if (child == finishView && finishView.getHeight() != childView.getHeight()) {
             finishView.getLayoutParams().height = childView.getHeight();
             finishView.requestLayout();
             values[5].setX(-finishView.getLayoutParams().width);
-            values[5].setY(values[5].getX()/2);
+            values[5].setY(values[5].getX() / 2);
         }
-        if(child ==childView && finishView.getHeight()!=childView.getHeight() ){
+        if (child == childView && finishView.getHeight() != childView.getHeight()) {
             finishView.getLayoutParams().height = childView.getHeight();
             finishView.requestLayout();
             values[5].setX(-finishView.getLayoutParams().width);
-            values[5].setY(values[5].getX()/2);
+            values[5].setY(values[5].getX() / 2);
         }
         return super.drawChild(canvas, child, drawingTime);
     }
@@ -114,7 +112,6 @@ public class SwipeView extends LinearLayout{
 //    }
 
 
-
     public void createAnimatorTranslationX(final View v, final float w, final View fl) {
         LogUtil.E(w);
         ViewPropertyAnimatorCompat viewPropertyAnimatorCompat = ViewCompat.animate(v);
@@ -127,7 +124,7 @@ public class SwipeView extends LinearLayout{
             public void onAnimationUpdate(View view) {
                 status = status_update;
                 float xx = ViewCompat.getTranslationX(v);
-                ViewCompat.setTranslationX(fl,xx);
+                ViewCompat.setTranslationX(fl, xx);
             }
 
 
@@ -168,7 +165,7 @@ public class SwipeView extends LinearLayout{
             public void onAnimationUpdate(View view) {
                 status = status_update;
                 float xx = ViewCompat.getTranslationX(childView);
-                ViewCompat.setTranslationX(getFinishView(),xx);
+                ViewCompat.setTranslationX(getFinishView(), xx);
             }
 
 
@@ -193,9 +190,6 @@ public class SwipeView extends LinearLayout{
     }
 
 
-
-
-
     public static final int status_start = 0;
 
     public static final int status_update = 1;
@@ -203,7 +197,6 @@ public class SwipeView extends LinearLayout{
     public static final int status_end = 2;
 
     public static int status = status_end;
-
 
 
     public static int STATUS_DOWN = 11;
@@ -219,7 +212,7 @@ public class SwipeView extends LinearLayout{
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 touchtatus = STATUS_DOWN;
                 values[0].setX(event.getX());
@@ -229,28 +222,28 @@ public class SwipeView extends LinearLayout{
 
                 values[1].setX(event.getX());
                 values[1].setY(event.getY());
-                values[3].setX(values[4].getX()+(values[1].getX()-values[0].getX())/2);
-                values[3].setY(values[4].getY()+(values[1].getY()-values[0].getY())/2);
-                if(childView==null){
+                values[3].setX(values[4].getX() + (values[1].getX() - values[0].getX()) / 2);
+                values[3].setY(values[4].getY() + (values[1].getY() - values[0].getY()) / 2);
+                if (childView == null) {
                     break;
                 }
-                if(Math.abs(values[1].getY()-values[0].getY())/Math.abs(values[1].getX()-values[0].getX())<agree){
+                if (Math.abs(values[1].getY() - values[0].getY()) / Math.abs(values[1].getX() - values[0].getX()) < agree) {
                     requestDisallowInterceptTouchEvent(true);
-                    if(getParent() instanceof PinnedHeaderExpandableListView ){
+                    if (getParent() instanceof PinnedHeaderExpandableListView) {
                         PinnedHeaderExpandableListView p = (PinnedHeaderExpandableListView) getParent();
-                        for(int i=0;i<p.getChildCount();i++){
-                            p.getChildAt(i).setTag(R.id.position,i);
-                            if(p.getChildAt(i)!=this && p.getChildAt(i) instanceof SwipeView){
-                                SwipeView s  = (SwipeView) p.getChildAt(i);
-                                LogUtil.E(i+"--"+s.status+"---"+ViewCompat.getTranslationX(s));
+                        for (int i = 0; i < p.getChildCount(); i++) {
+                            p.getChildAt(i).setTag(R.id.position, i);
+                            if (p.getChildAt(i) != this && p.getChildAt(i) instanceof SwipeView) {
+                                SwipeView s = (SwipeView) p.getChildAt(i);
+                                LogUtil.E(i + "--" + s.status + "---" + ViewCompat.getTranslationX(s));
                                 s.endAnimatorTranslationX();
                             }
                         }
                     }
-                    ViewCompat.setTranslationX(childView,Math.max(values[5].getX(),values[3].getX()));
-                    ViewCompat.setTranslationX(finishView,Math.max(values[5].getX(),values[3].getX()));
+                    ViewCompat.setTranslationX(childView, Math.max(values[5].getX(), values[3].getX()));
+                    ViewCompat.setTranslationX(finishView, Math.max(values[5].getX(), values[3].getX()));
                     //status = status_update;
-                }else{
+                } else {
                     requestDisallowInterceptTouchEvent(false);
                 }
                 touchtatus = STATUS_MOVE;
@@ -262,16 +255,16 @@ public class SwipeView extends LinearLayout{
                 requestDisallowInterceptTouchEvent(false);
                 values[2].setX(event.getX());
                 values[2].setY(event.getY());
-                if(values[2].getX()== values[0].getX() && values[2].getY()== values[0].getY()){
-                    if(onAppClickListener!=null){
-                        if(values[2].getX()>finishView.getLeft()+ViewCompat.getTranslationX(finishView) && values[2].getX()<finishView.getRight()+ViewCompat.getTranslationX(finishView)){
-                            onAppClickListener.onAppItemClick(finishView,1);
-                        }else{
-                            onAppClickListener.onAppItemClick(childView,0);
+                if (values[2].getX() == values[0].getX() && values[2].getY() == values[0].getY()) {
+                    if (onAppClickListener != null) {
+                        if (values[2].getX() > finishView.getLeft() + ViewCompat.getTranslationX(finishView) && values[2].getX() < finishView.getRight() + ViewCompat.getTranslationX(finishView)) {
+                            onAppClickListener.onAppItemClick(finishView, 1);
+                        } else {
+                            onAppClickListener.onAppItemClick(childView, 0);
                         }
                     }
                 }
-                createAnimatorTranslationX(childView,getValue(values[3].getX()),finishView);
+                createAnimatorTranslationX(childView, getValue(values[3].getX()), finishView);
                 values[4].setX(getValue(values[3].getX()));
                 values[4].setY(0);
                 break;
@@ -279,25 +272,23 @@ public class SwipeView extends LinearLayout{
         return true;
     }
 
-    public void  clear(){
-        for(int i=0;i<values.length-1;i++){
+    public void clear() {
+        for (int i = 0; i < values.length - 1; i++) {
             values[i].setY(0);
             values[i].setX(0);
         }
-        if(childView!=null){
-            ViewCompat.setTranslationX(childView,0);
-            ViewCompat.setTranslationX(finishView,0);
+        if (childView != null) {
+            ViewCompat.setTranslationX(childView, 0);
+            ViewCompat.setTranslationX(finishView, 0);
         }
 
     }
 
 
-
-
-    public float getValue(float v){
-        if(v>values[5].getY()){
+    public float getValue(float v) {
+        if (v > values[5].getY()) {
             return 0;
-        }else{
+        } else {
             return values[5].getX();
         }
     }

@@ -239,12 +239,12 @@ public class MaterialRefreshLayout extends FrameLayout {
         switch (e.getAction()) {
             case MotionEvent.ACTION_MOVE:
                 mCurrentY = e.getY();
-                float dy = (mCurrentY - mTouchY)/2;
+                float dy = (mCurrentY - mTouchY) / 2;
                 dy = Math.min(mWaveHeight * 2, dy);
                 dy = Math.max(0, dy);
                 if (mChildView != null) {
                     float offsetY = decelerateInterpolator.getInterpolation(dy / mWaveHeight / 2) * dy / 2;
-                    float fraction = offsetY / (mHeadHeight/2);
+                    float fraction = offsetY / (mHeadHeight / 2);
                     if (mMaterialHeaderView != null) {
                         mMaterialHeaderView.getLayoutParams().height = (int) offsetY;
                         mMaterialHeaderView.requestLayout();
@@ -356,7 +356,6 @@ public class MaterialRefreshLayout extends FrameLayout {
     }
 
 
-
     public void autoRefresh(int delay) {
         this.postDelayed(new Runnable() {
             @Override
@@ -419,7 +418,7 @@ public class MaterialRefreshLayout extends FrameLayout {
 
     }
 
-    public void setRefreshingWaveColor(int color){
+    public void setRefreshingWaveColor(int color) {
         mMaterialHeaderView.setWaveColor(color);
     }
 
@@ -468,7 +467,7 @@ public class MaterialRefreshLayout extends FrameLayout {
                 float height = ViewCompat.getTranslationY(v);
                 fl.getLayoutParams().height = (int) height;
                 fl.requestLayout();
-                mMaterialHeaderView.onPull(MaterialRefreshLayout.this, height/h);
+                mMaterialHeaderView.onPull(MaterialRefreshLayout.this, height / h);
             }
         });
     }

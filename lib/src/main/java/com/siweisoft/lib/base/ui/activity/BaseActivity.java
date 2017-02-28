@@ -16,7 +16,7 @@ import com.siweisoft.lib.aplication.LibAplication;
  */
 public class BaseActivity extends AppCompatActivity {
 
-    protected Handler handler=new Handler();
+    protected Handler handler = new Handler();
 
     protected FragmentActivity activity;
 
@@ -24,10 +24,10 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        activity =this;
+        activity = this;
         LibAplication application = (LibAplication) getApplication();
         application.getActivityHashMap().put(getClass().getSimpleName(), activity);
         application.getActivities().add(activity);
-      //  CrashHander.getInstance().init(this);
+        //  CrashHander.getInstance().init(this);
     }
 }

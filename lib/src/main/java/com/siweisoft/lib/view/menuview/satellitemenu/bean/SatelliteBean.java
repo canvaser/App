@@ -13,7 +13,7 @@ public class SatelliteBean {
 
     int endy;
 
-    public SatelliteBean(int startx, int starty,int endx, int endy) {
+    public SatelliteBean(int startx, int starty, int endx, int endy) {
         this.endx = endx;
         this.endy = endy;
         this.startx = startx;

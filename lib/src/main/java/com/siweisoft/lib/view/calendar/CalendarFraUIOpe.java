@@ -30,11 +30,11 @@ public class CalendarFraUIOpe extends BaseUIOpe {
         return calendarMonthView;
     }
 
-    public void refresh(Bundle bundle){
-        if(bundle==null){
-            return ;
+    public void refresh(Bundle bundle) {
+        if (bundle == null) {
+            return;
         }
-        calendarMonthView.refreshDate(bundle.getInt("year"),bundle.getInt("month"));
+        calendarMonthView.refreshDate(bundle.getInt("year"), bundle.getInt("month"));
     }
 
     public void setOnDaySelectListener(OnDaySelectListener onDaySelectListener) {

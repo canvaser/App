@@ -11,12 +11,13 @@ import com.siweisoft.lib.R;
 /**
  * Created by ${viwmox} on 2016-10-09.
  */
-public class RecyclerAnim extends DefaultItemAnimator{
+public class RecyclerAnim extends DefaultItemAnimator {
 
 
-     Context context;
-    public RecyclerAnim(Context context){
-        this.context =context;
+    Context context;
+
+    public RecyclerAnim(Context context) {
+        this.context = context;
     }
 
     @Override

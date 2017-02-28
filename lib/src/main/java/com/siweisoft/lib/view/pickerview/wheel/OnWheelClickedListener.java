@@ -3,8 +3,8 @@ package com.siweisoft.lib.view.pickerview.wheel;
 /**
  * Wheel clicked listener interface.
  * <p>The onItemClicked() method is called whenever a wheel item is clicked
- *  New Wheel position is set
- *  Wheel view is scrolled
+ * New Wheel position is set
+ * Wheel view is scrolled
  */
 public interface OnWheelClickedListener {
     /**

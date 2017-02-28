@@ -25,7 +25,7 @@ public class AppMaterialRefreshLayout extends MaterialRefreshLayout {
         init();
     }
 
-    private void init(){
+    private void init() {
 
     }
 }

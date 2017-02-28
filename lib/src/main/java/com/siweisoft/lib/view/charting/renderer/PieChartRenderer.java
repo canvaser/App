@@ -513,7 +513,7 @@ public class PieChartRenderer extends DataRenderer {
 
                         mValuePaint.setTextAlign(Align.RIGHT);
 
-                        if(drawXOutside)
+                        if (drawXOutside)
                             mEntryLabelsPaint.setTextAlign(Align.RIGHT);
 
                         labelPtx = pt2x - offset;
@@ -523,7 +523,7 @@ public class PieChartRenderer extends DataRenderer {
                         pt2y = pt1y;
                         mValuePaint.setTextAlign(Align.LEFT);
 
-                        if(drawXOutside)
+                        if (drawXOutside)
                             mEntryLabelsPaint.setTextAlign(Align.LEFT);
 
                         labelPtx = pt2x + offset;
@@ -659,6 +659,7 @@ public class PieChartRenderer extends DataRenderer {
     }
 
     protected Path mDrawCenterTextPathBuffer = new Path();
+
     /**
      * draws the description text in the center of the pie chart makes most
      * sense when center-hole is enabled
@@ -732,6 +733,7 @@ public class PieChartRenderer extends DataRenderer {
     }
 
     protected RectF mDrawHighlightedRectF = new RectF();
+
     @Override
     public void drawHighlighted(Canvas c, Highlight[] indices) {
 
@@ -751,7 +753,7 @@ public class PieChartRenderer extends DataRenderer {
                 : 0.f;
 
         final RectF highlightedCircleBox = mDrawHighlightedRectF;
-        highlightedCircleBox.set(0,0,0,0);
+        highlightedCircleBox.set(0, 0, 0, 0);
 
         for (int i = 0; i < indices.length; i++) {
 

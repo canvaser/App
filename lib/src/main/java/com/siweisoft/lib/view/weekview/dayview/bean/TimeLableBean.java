@@ -7,7 +7,7 @@ import com.siweisoft.lib.base.ui.bean.ResultResBean;
  */
 public class TimeLableBean extends ResultResBean {
 
-    public float textSize ;
+    public float textSize;
 
     public int textColor;
 
@@ -17,8 +17,8 @@ public class TimeLableBean extends ResultResBean {
 
     public int height;
 
-    public int getEachHeigh(){
-        return (int)((float)height)/txt.length;
+    public int getEachHeigh() {
+        return (int) ((float) height) / txt.length;
     }
 
 

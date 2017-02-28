@@ -15,7 +15,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-06-19.
  */
-public class BaseUIWithTitleOpe extends BaseUIOpe{
+public class BaseUIWithTitleOpe extends BaseUIOpe {
 
     TextView backTV;
 
@@ -25,12 +25,12 @@ public class BaseUIWithTitleOpe extends BaseUIOpe{
 
     ImageView infoIV;
 
-    public BaseUIWithTitleOpe(Context context, View containerView){
-        super(context,containerView);
-     backTV = (TextView) containerView.findViewById(R.id.ftv_back);
-     midTV = (TextView) containerView.findViewById(R.id.ftv_title);
-     rightTV = (TextView) containerView.findViewById(R.id.ftv_right);
-     infoIV = (ImageView) containerView.findViewById(R.id.iv_info);
+    public BaseUIWithTitleOpe(Context context, View containerView) {
+        super(context, containerView);
+        backTV = (TextView) containerView.findViewById(R.id.ftv_back);
+        midTV = (TextView) containerView.findViewById(R.id.ftv_title);
+        rightTV = (TextView) containerView.findViewById(R.id.ftv_right);
+        infoIV = (ImageView) containerView.findViewById(R.id.iv_info);
     }
 
     @Nullable

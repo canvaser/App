@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by ${viwmox} on 2016-11-28.
  */
-public class Value implements Serializable{
+public class Value implements Serializable {
 
     private float x;
 

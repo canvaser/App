@@ -8,7 +8,6 @@ import android.animation.Animator;
  * @version 1.0
  * @date 2015/8/5.
  * @github: https://github.com/zzz40500
- *
  */
 public class SimpleAnimationListener implements Animator.AnimatorListener {
 

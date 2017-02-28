@@ -6,14 +6,13 @@ package com.siweisoft.lib.util;
 public class NullUtil {
 
 
-
     public static boolean isStrEmpty(String str) {
         return str == null || "".equals(str);
     }
 
     public static boolean isNull(Object... o) {
-        for(int i=0;i<o.length;i++){
-            if(o[i]==null){
+        for (int i = 0; i < o.length; i++) {
+            if (o[i] == null) {
                 return true;
             }
         }

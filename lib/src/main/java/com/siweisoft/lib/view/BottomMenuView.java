@@ -20,14 +20,14 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-10-18.
  */
-public class BottomMenuView extends LinearLayout implements View.OnTouchListener{
+public class BottomMenuView extends LinearLayout implements View.OnTouchListener {
 
 
     private Context context;
 
     OnAppItemSelectListener onAppItemClickListener;
 
-    private int index=0;
+    private int index = 0;
 
     ViewPager viewPager;
 
@@ -35,27 +35,27 @@ public class BottomMenuView extends LinearLayout implements View.OnTouchListener
 
     public BottomMenuView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        this.context =context;
+        this.context = context;
         init();
     }
 
-    private void init(){
-        View view = LayoutInflater.from(context).inflate(R.layout.item_bottommenus,null);
-        addView(view,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
+    private void init() {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_bottommenus, null);
+        addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
     }
 
-    public void initItems(ArrayList<BottomMenuBean> been){
+    public void initItems(ArrayList<BottomMenuBean> been) {
         viewGroup = (ViewGroup) findViewById(R.id.ll_container);
         viewGroup.removeAllViews();
-        for(int i=0;i<been.size();i++){
-            View view = LayoutInflater.from(context).inflate(R.layout.item_bottommenu,null);
+        for (int i = 0; i < been.size(); i++) {
+            View view = LayoutInflater.from(context).inflate(R.layout.item_bottommenu, null);
             ImageView imageView = (ImageView) view.findViewById(R.id.iv_image);
             TextView textView = (TextView) view.findViewById(R.id.tv_name);
             imageView.setBackgroundResource(been.get(i).drawbleId);
             textView.setText(been.get(i).name);
-            LayoutParams params =new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT,1);
-            viewGroup.addView(view,params);
-            view.setTag(R.id.position,i);
+            LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT, 1);
+            viewGroup.addView(view, params);
+            view.setTag(R.id.position, i);
         }
         viewGroup.setOnTouchListener(this);
 
@@ -68,18 +68,18 @@ public class BottomMenuView extends LinearLayout implements View.OnTouchListener
         float x = event.getX();
         float y = event.getY();
 
-       for(int i=0;i<viewGroup.getChildCount();i++){
-           if(x>viewGroup.getChildAt(i).getLeft() && x<viewGroup.getChildAt(i).getRight()){
-               int position = (int) viewGroup.getChildAt(i).getTag(R.id.position);
-               if(position!=index){
-                   index =position;
-                   onAppItemClickListener.onAppItemSelect(viewGroup,viewGroup.getChildAt(i),position);
-               }
-               viewGroup.getChildAt(i).setSelected(true);
-           }else{
-               viewGroup.getChildAt(i).setSelected(false);
-           }
-       }
+        for (int i = 0; i < viewGroup.getChildCount(); i++) {
+            if (x > viewGroup.getChildAt(i).getLeft() && x < viewGroup.getChildAt(i).getRight()) {
+                int position = (int) viewGroup.getChildAt(i).getTag(R.id.position);
+                if (position != index) {
+                    index = position;
+                    onAppItemClickListener.onAppItemSelect(viewGroup, viewGroup.getChildAt(i), position);
+                }
+                viewGroup.getChildAt(i).setSelected(true);
+            } else {
+                viewGroup.getChildAt(i).setSelected(false);
+            }
+        }
         return true;
     }
 
@@ -89,19 +89,19 @@ public class BottomMenuView extends LinearLayout implements View.OnTouchListener
 
     public void setViewPager(ViewPager viewPager) {
         this.viewPager = viewPager;
-        if(viewPager!=null){
-            viewPager.addOnPageChangeListener(new BaseOnPagerChangeListener(){
+        if (viewPager != null) {
+            viewPager.addOnPageChangeListener(new BaseOnPagerChangeListener() {
                 @Override
                 public void onPageSelected(int position) {
-                   if(viewGroup==null){
-                       return;
-                   }
-                    for(int i=0;i<viewGroup.getChildCount();i++){
-                        if(i==position){
-                            index=position;
+                    if (viewGroup == null) {
+                        return;
+                    }
+                    for (int i = 0; i < viewGroup.getChildCount(); i++) {
+                        if (i == position) {
+                            index = position;
                             viewGroup.getChildAt(position).setSelected(true);
-                            onAppItemClickListener.onAppItemSelect(viewGroup,viewGroup.getChildAt(i),position);
-                        }else{
+                            onAppItemClickListener.onAppItemSelect(viewGroup, viewGroup.getChildAt(i), position);
+                        } else {
                             viewGroup.getChildAt(i).setSelected(false);
                         }
                     }

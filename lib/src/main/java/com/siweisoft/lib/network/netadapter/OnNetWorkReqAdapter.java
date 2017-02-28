@@ -16,43 +16,45 @@ import org.json.JSONObject;
  */
 public abstract class OnNetWorkReqAdapter implements OnNetWorkReqInterf {
 
-    protected  Context context;
-    Gson gson=new Gson();
+    protected Context context;
+    Gson gson = new Gson();
 
     protected String tag;
 
-    public OnNetWorkReqAdapter(Context context){
-        this.context=context;
+    public OnNetWorkReqAdapter(Context context) {
+        this.context = context;
     }
+
     @Override
-    public boolean onNetWorkReqStart(String tag,String reqjson) {
+    public boolean onNetWorkReqStart(String tag, String reqjson) {
         this.tag = tag;
         boolean isNetOk = NetWorkUtil.getInstance().getNetisAvailable(context);
         return isNetOk;
     }
 
     @Override
-    public void onNetWorkReqFinish(boolean haveData, String url,BaseResBean baseResBean) {
+    public void onNetWorkReqFinish(boolean haveData, String url, BaseResBean baseResBean) {
         LogUtil.E(gson.toJson(baseResBean));
-        if(!haveData){
-            onNetWorkResult(false,baseResBean);
-        }else{
-            if(baseResBean.isException()){
-                onNetWorkResult(false,baseResBean);
-            }else{
-                if(baseResBean.getData()==null){
+        if (!haveData) {
+            onNetWorkResult(false, baseResBean);
+        } else {
+            if (baseResBean.isException()) {
+                onNetWorkResult(false, baseResBean);
+            } else {
+                if (baseResBean.getData() == null) {
 //                    baseResBean.setErrorMessage(ValueConstant.ERROR_STR_DATA_NULL);
 //                    baseResBean.setErrorCode(ValueConstant.ERROR_CODE_DATA_NULL);
 //                    onNetWorkResult(false,baseResBean);
 
                     onNetWorkResult(true, MethodConstant.toObject(baseResBean.getData()));
-                }else{
+                } else {
                     onNetWorkResult(true, MethodConstant.toObject(baseResBean.getData()));
                 }
             }
 
         }
     }
-    public abstract  void onNetWorkResult(boolean success,Object o);
+
+    public abstract void onNetWorkResult(boolean success, Object o);
 
 }

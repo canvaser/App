@@ -3,10 +3,10 @@
 
 
     <item android:state_pressed="true">
-        <color android:color="#33000000"/>
+        <color android:color="#33000000" />
     </item>
     <item>
-        <color android:color="@android:color/transparent"/>
+        <color android:color="@android:color/transparent" />
     </item>
 
 </selector>

@@ -9,72 +9,72 @@ import com.siweisoft.lib.base.ui.bean.dbbean.BaseDbBean;
  */
 
 @DatabaseTable(tableName = "table_plantip")
-public class PlanTipBean extends BaseDbBean{
+public class PlanTipBean extends BaseDbBean {
 
 
     public static final String STAR_HOUR = "STAR_HOUR";
-    @DatabaseField(columnName =STAR_HOUR )
+    @DatabaseField(columnName = STAR_HOUR)
     private int starHour;
 
     public static final String STAR_MINUTE = "STAR_MINUTE";
-    @DatabaseField(columnName =STAR_MINUTE )
+    @DatabaseField(columnName = STAR_MINUTE)
     private int starMinite;
 
 
     public static final String END_HOUR = "END_HOUR";
-    @DatabaseField(columnName =END_HOUR )
+    @DatabaseField(columnName = END_HOUR)
     private int endHour;
 
 
     public static final String END_MINUTE = "END_MINUTE";
-    @DatabaseField(columnName =END_MINUTE )
+    @DatabaseField(columnName = END_MINUTE)
     private int endMinite;
 
 
     public static final String BG_COLOR = "BG_COLOR";
-    @DatabaseField(columnName =BG_COLOR )
+    @DatabaseField(columnName = BG_COLOR)
     private int bgColor;
 
     public static final String BORDER_COLOR = "BORDER_COLOR";
-    @DatabaseField(columnName =BORDER_COLOR )
+    @DatabaseField(columnName = BORDER_COLOR)
     private int borderColor;
 
     public static final String TXT = "TXT";
-    @DatabaseField(columnName =TXT )
+    @DatabaseField(columnName = TXT)
     private String txt;
 
     public static final String TITLE = "TITLE";
-    @DatabaseField(columnName =TITLE )
+    @DatabaseField(columnName = TITLE)
     private String title;
 
 
     public static final String WIDTH = "WIDTH";
-    @DatabaseField(columnName =WIDTH )
+    @DatabaseField(columnName = WIDTH)
     private int width;
 
     public static final String SELECT = "SELECT";
-    @DatabaseField(columnName =SELECT )
-    private boolean select=false;
+    @DatabaseField(columnName = SELECT)
+    private boolean select = false;
 
-    public int getStartY(int eachY){
-        if(starHour>=6){
-            return (int)(((float)((starHour-6)*60+starMinite)*eachY)/60);
-        }else{
-            return (int)(((float)((starHour+19)*60+starMinite)*eachY)/60);
+    public int getStartY(int eachY) {
+        if (starHour >= 6) {
+            return (int) (((float) ((starHour - 6) * 60 + starMinite) * eachY) / 60);
+        } else {
+            return (int) (((float) ((starHour + 19) * 60 + starMinite) * eachY) / 60);
         }
 
     }
 
-    public int getEndY(int eachY){
-        if(endHour>=6){
-            return (int)(((float)((endHour-6)*60+endMinite)*eachY)/60);
-        }else{
-            return (int)(((float)((endHour+19)*60+endMinite)*eachY)/60);
+    public int getEndY(int eachY) {
+        if (endHour >= 6) {
+            return (int) (((float) ((endHour - 6) * 60 + endMinite) * eachY) / 60);
+        } else {
+            return (int) (((float) ((endHour + 19) * 60 + endMinite) * eachY) / 60);
         }
     }
 
-    public int getHeight(int eachY){
-        return getEndY(eachY)-getStartY(eachY);
+    public int getHeight(int eachY) {
+        return getEndY(eachY) - getStartY(eachY);
     }
 
     public int getBgColor() {

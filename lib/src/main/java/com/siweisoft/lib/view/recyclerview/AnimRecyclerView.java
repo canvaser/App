@@ -15,7 +15,7 @@ import com.siweisoft.lib.R;
  * Created by ${viwmox} on 2017-02-16.
  */
 
-public class AnimRecyclerView extends RecyclerView{
+public class AnimRecyclerView extends RecyclerView {
 
     Context context;
 
@@ -34,7 +34,7 @@ public class AnimRecyclerView extends RecyclerView{
         init(context);
     }
 
-    private void init(Context context){
+    private void init(Context context) {
         this.context = context;
     }
 
@@ -49,16 +49,16 @@ public class AnimRecyclerView extends RecyclerView{
         super.setAdapter(adapter);
     }
 
-    public void setAnimRes(int id){
-        Animation animation = (Animation) AnimationUtils.loadAnimation(context,id);
+    public void setAnimRes(int id) {
+        Animation animation = (Animation) AnimationUtils.loadAnimation(context, id);
         LayoutAnimationController lac = new LayoutAnimationController(animation);
         lac.setOrder(LayoutAnimationController.ORDER_NORMAL);
         lac.setDelay(0.5f);//注意这个地方是以秒为单位，是浮点型数据，所以要加f
         setLayoutAnimation(lac);
     }
 
-    public void setAnimRes(int id,float delay){
-        Animation animation = (Animation) AnimationUtils.loadAnimation(context,id);
+    public void setAnimRes(int id, float delay) {
+        Animation animation = (Animation) AnimationUtils.loadAnimation(context, id);
         LayoutAnimationController lac = new LayoutAnimationController(animation);
         lac.setOrder(LayoutAnimationController.ORDER_NORMAL);
         lac.setDelay(delay);//注意这个地方是以秒为单位，是浮点型数据，所以要加f

@@ -11,9 +11,7 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-11-28.
  */
-public class Data implements Serializable{
-
-
+public class Data implements Serializable {
 
 
     private XX x;
@@ -29,8 +27,6 @@ public class Data implements Serializable{
     private float maxY;
 
     private float minY;
-
-
 
 
     public ArrayList<Value> getValues() {
@@ -58,8 +54,8 @@ public class Data implements Serializable{
     }
 
     public ArrayList<YV> getYvs() {
-        if(yvs==null){
-            yvs=new ArrayList<>();
+        if (yvs == null) {
+            yvs = new ArrayList<>();
         }
         return yvs;
     }
@@ -85,7 +81,7 @@ public class Data implements Serializable{
     }
 
     public ArrayList<RR> getCircles() {
-        if(circles==null){
+        if (circles == null) {
             circles = new ArrayList<>();
         }
         return circles;

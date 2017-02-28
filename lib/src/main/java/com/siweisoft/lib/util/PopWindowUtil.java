@@ -17,18 +17,18 @@ public class PopWindowUtil {
 
     private PopupWindow popupWindow;
 
-    public static PopWindowUtil getInstance(){
-        if(instance==null){
-            instance=new PopWindowUtil();
+    public static PopWindowUtil getInstance() {
+        if (instance == null) {
+            instance = new PopWindowUtil();
         }
         return instance;
     }
 
-    private PopWindowUtil(){
+    private PopWindowUtil() {
 
     }
 
-    public View showWindow(Context context,View view,View parent){
+    public View showWindow(Context context, View view, View parent) {
 
 
         popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
@@ -37,11 +37,11 @@ public class PopWindowUtil {
         popupWindow.setBackgroundDrawable(context.getResources().getDrawable(android.R.color.transparent));
         popupWindow.setAnimationStyle(R.style.popanimstyle);
         //popupWindow.showAsDropDown(parent,(int)( ScreenUtil.getInstance().getScreenSize(context)[0]-context.getResources().getDimension(R.dimen.dimen_120)-context.getResources().getDimension(R.dimen.dimen_1)), 0);
-        popupWindow.showAtLocation(parent, Gravity.CENTER,0,0);
+        popupWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);
         return view;
     }
 
-    public View showWindow(Context context,View view,View parent,View.OnClickListener onClickListener){
+    public View showWindow(Context context, View view, View parent, View.OnClickListener onClickListener) {
 
 
         popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
@@ -49,17 +49,17 @@ public class PopWindowUtil {
 
         popupWindow.setBackgroundDrawable(context.getResources().getDrawable(android.R.color.transparent));
         popupWindow.setAnimationStyle(R.style.popanimstyle);
-        popupWindow.showAtLocation(parent, Gravity.CENTER,0,0);
+        popupWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);
         //popupWindow.showAsDropDown(parent,(int)( ScreenUtil.getInstance().getScreenSize(context)[0]-context.getResources().getDimension(R.dimen.dimen_120)-context.getResources().getDimension(R.dimen.dimen_1)), 0);
         ViewGroup viewGroup = (ViewGroup) (view.findViewById(R.id.root));
-        for(int i=0;i<viewGroup.getChildCount();i++){
+        for (int i = 0; i < viewGroup.getChildCount(); i++) {
             viewGroup.getChildAt(i).setOnClickListener(onClickListener);
         }
         return view;
     }
 
-    public void dismiss(){
-        if(popupWindow!=null){
+    public void dismiss() {
+        if (popupWindow != null) {
             popupWindow.dismiss();
         }
     }

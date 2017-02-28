@@ -15,8 +15,8 @@ import android.provider.MediaStore;
 public class URIUtil {
     private static URIUtil instance;
 
-    public static URIUtil getInstance(){
-        if(instance == null){
+    public static URIUtil getInstance() {
+        if (instance == null) {
             instance = new URIUtil();
         }
         return instance;
@@ -38,19 +38,19 @@ public class URIUtil {
             if (ContentResolver.SCHEME_FILE.equals(scheme)) {
                 data = uri.getPath();
             } else if (ContentResolver.SCHEME_CONTENT.equals(scheme)) {
-                if(DocumentsContract.isDocumentUri(context, uri)){
+                if (DocumentsContract.isDocumentUri(context, uri)) {
                     String wholeID = DocumentsContract.getDocumentId(uri);
                     String id = wholeID.split(":")[1];
-                    String[] column = { MediaStore.Images.Media.DATA };
+                    String[] column = {MediaStore.Images.Media.DATA};
                     String sel = MediaStore.Images.Media._ID + " =? ";
                     Cursor cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, column,
-                            sel, new String[] { id }, null);
+                            sel, new String[]{id}, null);
                     int columnIndex = cursor.getColumnIndex(column[0]);
                     if (cursor.moveToFirst()) {
                         data = cursor.getString(columnIndex);
                     }
                     cursor.close();
-                }else{
+                } else {
                     Cursor cursor = context.getContentResolver().query(uri, new String[]{MediaStore.Images.ImageColumns.DATA}, null, null, null);
                     if (null != cursor) {
                         if (cursor.moveToFirst()) {

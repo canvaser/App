@@ -24,16 +24,17 @@ import butterknife.OnClick;
 /**
  * Created by ${viwmox} on 2016-11-10.
  */
-public abstract class BaseNurseFrag<A extends BaseNurseUIOpe,B extends BaseNetOpe,C extends BaseDBOpe,D extends BaseDAOpe> extends BaseUIFragment implements MaterialRefreshListener {
+public abstract class BaseNurseFrag<A extends BaseNurseUIOpe, B extends BaseNetOpe, C extends BaseDBOpe, D extends BaseDAOpe> extends BaseUIFragment implements MaterialRefreshListener {
 
-    protected  int index;
+    protected int index;
 
     protected BaseNurseOpes<A, B, C, D> baseNurseOpes;
 
     View backView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if(getArguments()!=null){
+        if (getArguments() != null) {
             index = getArguments().getInt(ValueConstant.FRAG_POSITION);
         }
         return super.onCreateView(inflater, container, savedInstanceState);
@@ -49,7 +50,7 @@ public abstract class BaseNurseFrag<A extends BaseNurseUIOpe,B extends BaseNetOp
     }
 
 
-    public void onResult(int req ,Bundle bundle){
+    public void onResult(int req, Bundle bundle) {
 
     }
 
@@ -61,13 +62,13 @@ public abstract class BaseNurseFrag<A extends BaseNurseUIOpe,B extends BaseNetOp
         }
     }
 
-    public void onCmd(Bundle bundle){
+    public void onCmd(Bundle bundle) {
 
     }
 
-    public abstract BaseNurseOpes<A,B,C,D> getOpe();
+    public abstract BaseNurseOpes<A, B, C, D> getOpe();
 
-    public int getLayoutID(){
+    public int getLayoutID() {
         return R.layout.layout_baseui;
     }
 

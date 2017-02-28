@@ -10,7 +10,7 @@ import com.siweisoft.lib.R;
 
 /**
  * Initial the camera
- *
+ * <p>
  * 默认的二维码扫描Activity
  */
 public class CaptureActivity extends AppCompatActivity {

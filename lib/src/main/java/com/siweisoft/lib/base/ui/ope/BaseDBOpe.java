@@ -16,14 +16,12 @@ public class BaseDBOpe<T> {
     protected Dao<T, Integer> daoOpe;
     protected DatabaseHelper helper;
 
-    public BaseDBOpe(Context context, T t){
+    public BaseDBOpe(Context context, T t) {
         this.context = context;
-        try
-        {
+        try {
             helper = DatabaseHelper.getHelper(context);
             daoOpe = helper.getDao(t.getClass());
-        } catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

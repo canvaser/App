@@ -7,7 +7,7 @@ import android.util.DisplayMetrics;
  * Created by aaron on 16/8/9.
  */
 
-public class ZApplication extends Application{
+public class ZApplication extends Application {
 
     @Override
     public void onCreate() {

@@ -103,8 +103,8 @@ public class WalkieTalkieActivity extends Activity implements View.OnTouchListen
     }
 
     public void initializeManager() {
-        if(manager == null) {
-          manager = SipManager.newInstance(this);
+        if (manager == null) {
+            manager = SipManager.newInstance(this);
         }
 
         initializeLocalProfile();
@@ -148,19 +148,19 @@ public class WalkieTalkieActivity extends Activity implements View.OnTouchListen
             // Otherwise the methods aren't guaranteed to fire.
 
             manager.setRegistrationListener(me.getUriString(), new SipRegistrationListener() {
-                    public void onRegistering(String localProfileUri) {
-                        updateStatus("Registering with SIP Server...");
-                    }
+                public void onRegistering(String localProfileUri) {
+                    updateStatus("Registering with SIP Server...");
+                }
 
-                    public void onRegistrationDone(String localProfileUri, long expiryTime) {
-                        updateStatus("Ready");
-                    }
+                public void onRegistrationDone(String localProfileUri, long expiryTime) {
+                    updateStatus("Ready");
+                }
 
-                    public void onRegistrationFailed(String localProfileUri, int errorCode,
-                            String errorMessage) {
-                        updateStatus("Registration failed.  Please check settings.");
-                    }
-                });
+                public void onRegistrationFailed(String localProfileUri, int errorCode,
+                                                 String errorMessage) {
+                    updateStatus("Registration failed.  Please check settings.");
+                }
+            });
         } catch (ParseException pe) {
             updateStatus("Connection Error.");
         } catch (SipException se) {
@@ -213,8 +213,7 @@ public class WalkieTalkieActivity extends Activity implements View.OnTouchListen
 
             call = manager.makeAudioCall(me.getUriString(), sipAddress, listener, 30);
 
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Log.i("InitiateCall", "Error when trying to close manager.", e);
             if (me != null) {
                 try {
@@ -233,6 +232,7 @@ public class WalkieTalkieActivity extends Activity implements View.OnTouchListen
 
     /**
      * Updates the status box at the top of the UI with a messege of your choice.
+     *
      * @param status The String to display in the status box.
      */
     public void updateStatus(final String status) {
@@ -247,19 +247,21 @@ public class WalkieTalkieActivity extends Activity implements View.OnTouchListen
 
     /**
      * Updates the status box with the SIP address of the current call.
+     *
      * @param call The current, active call.
      */
     public void updateStatus(SipAudioCall call) {
         String useName = call.getPeerProfile().getDisplayName();
-        if(useName == null) {
-          useName = call.getPeerProfile().getUserName();
+        if (useName == null) {
+            useName = call.getPeerProfile().getUserName();
         }
         updateStatus(useName + "@" + call.getPeerProfile().getSipDomain());
     }
 
     /**
      * Updates whether or not the user's voice is muted, depending on whether the button is pressed.
-     * @param v The View where the touch event is being fired.
+     *
+     * @param v     The View where the touch event is being fired.
      * @param event The motion to act on.
      * @return boolean Returns false to indicate that the parent view should handle the touch event
      * as it normally would.
@@ -292,9 +294,9 @@ public class WalkieTalkieActivity extends Activity implements View.OnTouchListen
                 updatePreferences();
                 break;
             case HANG_UP:
-                if(call != null) {
+                if (call != null) {
                     try {
-                      call.endCall();
+                        call.endCall();
                     } catch (SipException se) {
                         Log.d("onOptionsItemSelected",
                                 "Error ending call.", se);
@@ -325,13 +327,13 @@ public class WalkieTalkieActivity extends Activity implements View.OnTouchListen
                                         initiateCall();
 
                                     }
-                        })
+                                })
                         .setNegativeButton(
                                 android.R.string.cancel, new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int whichButton) {
                                         // Noop.
                                     }
-                        })
+                                })
                         .create();
 
             case UPDATE_SETTINGS_DIALOG:
@@ -347,7 +349,7 @@ public class WalkieTalkieActivity extends Activity implements View.OnTouchListen
                                     public void onClick(DialogInterface dialog, int whichButton) {
                                         // Noop.
                                     }
-                        })
+                                })
                         .create();
         }
         return null;

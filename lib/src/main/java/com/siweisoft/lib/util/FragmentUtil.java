@@ -18,17 +18,17 @@ public class FragmentUtil {
 
     private static FragmentUtil instance;
 
-    public static FragmentUtil getInstance(){
-        if(instance==null){
-            instance=new FragmentUtil();
+    public static FragmentUtil getInstance() {
+        if (instance == null) {
+            instance = new FragmentUtil();
         }
         return instance;
     }
 
-    public void addToContaier(FragmentActivity activity,ArrayList<Fragment> fragments,int resid){
+    public void addToContaier(FragmentActivity activity, ArrayList<Fragment> fragments, int resid) {
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-        for(int i=0;i<fragments.size();i++){
-            transaction.add(resid,fragments.get(i));
+        for (int i = 0; i < fragments.size(); i++) {
+            transaction.add(resid, fragments.get(i));
         }
         try {
             transaction.commit();
@@ -38,19 +38,17 @@ public class FragmentUtil {
     }
 
 
-    public void addToContaier(FragmentActivity activity,Fragment fragment,int resid){
+    public void addToContaier(FragmentActivity activity, Fragment fragment, int resid) {
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.anim_push_right_in,R.anim.anim_push_left_out);
-        transaction.add(resid,fragment,fragment.getClass().getSimpleName());
+        transaction.setCustomAnimations(R.anim.anim_push_right_in, R.anim.anim_push_left_out);
+        transaction.add(resid, fragment, fragment.getClass().getSimpleName());
         transaction.commit();
     }
 
 
-
-
-    public void addToContaierWithOutAnim(FragmentActivity activity,Fragment fragment,int resid){
+    public void addToContaierWithOutAnim(FragmentActivity activity, Fragment fragment, int resid) {
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-        transaction.add(resid,fragment,fragment.getClass().getSimpleName());
+        transaction.add(resid, fragment, fragment.getClass().getSimpleName());
         try {
             transaction.addToBackStack(fragment.getClass().getSimpleName());
             transaction.commit();
@@ -59,18 +57,18 @@ public class FragmentUtil {
         }
     }
 
-    public void addToContaier(FragmentActivity activity,Fragment thisf ,Fragment nextf,int resid){
+    public void addToContaier(FragmentActivity activity, Fragment thisf, Fragment nextf, int resid) {
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.anim_push_right_in,R.anim.anim_push_left_out);
+        transaction.setCustomAnimations(R.anim.anim_push_right_in, R.anim.anim_push_left_out);
         transaction.hide(thisf);
-        transaction.add(resid,nextf,nextf.getClass().getSimpleName());
+        transaction.add(resid, nextf, nextf.getClass().getSimpleName());
         transaction.commit();
     }
 
-    public void addToContaier(FragmentActivity activity,Fragment fragment,int resid,String tag){
+    public void addToContaier(FragmentActivity activity, Fragment fragment, int resid, String tag) {
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.anim_push_left_in,R.anim.anim_push_right_out);
-        transaction.add(resid,fragment,tag);
+        transaction.setCustomAnimations(R.anim.anim_push_left_in, R.anim.anim_push_right_out);
+        transaction.add(resid, fragment, tag);
         try {
             transaction.commit();
         } catch (Exception e) {
@@ -78,29 +76,29 @@ public class FragmentUtil {
         }
     }
 
-    public void removeAll(FragmentActivity activity,int resid){
+    public void removeAll(FragmentActivity activity, int resid) {
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-        NullUIFragment nullFragment = (NullUIFragment) NullUIFragment.instantiate(activity,NullUIFragment.class.getName());
-        transaction.replace(resid,nullFragment);
+        NullUIFragment nullFragment = (NullUIFragment) NullUIFragment.instantiate(activity, NullUIFragment.class.getName());
+        transaction.replace(resid, nullFragment);
         transaction.commit();
     }
 
-    public void removeFrag(FragmentActivity activity,Fragment thisf,String tag){
+    public void removeFrag(FragmentActivity activity, Fragment thisf, String tag) {
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.anim_push_left_in,R.anim.anim_push_right_out);
+        transaction.setCustomAnimations(R.anim.anim_push_left_in, R.anim.anim_push_right_out);
         transaction.remove(thisf);
-        if(activity.getSupportFragmentManager().findFragmentByTag(tag)!=null){
+        if (activity.getSupportFragmentManager().findFragmentByTag(tag) != null) {
             transaction.show(activity.getSupportFragmentManager().findFragmentByTag(tag));
         }
 
         transaction.commit();
     }
 
-    public void removeFrag(FragmentActivity activity, Fragment thisf, String tag, Bundle bundle){
+    public void removeFrag(FragmentActivity activity, Fragment thisf, String tag, Bundle bundle) {
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-        transaction.setCustomAnimations(R.anim.anim_push_left_in,R.anim.anim_push_right_out);
+        transaction.setCustomAnimations(R.anim.anim_push_left_in, R.anim.anim_push_right_out);
         transaction.remove(thisf);
-        if(activity.getSupportFragmentManager().findFragmentByTag(tag)!=null){
+        if (activity.getSupportFragmentManager().findFragmentByTag(tag) != null) {
 //            if(activity.getSupportFragmentManager().findFragmentByTag(tag) instanceof DrawerLayoutFrag){
 //                DrawerLayoutFrag drawerLayoutFrag = (DrawerLayoutFrag) activity.getSupportFragmentManager().findFragmentByTag(tag);
 //                drawerLayoutFrag.onResult(bundle);
@@ -110,7 +108,6 @@ public class FragmentUtil {
 
         transaction.commit();
     }
-
 
 
 }

@@ -1,28 +1,28 @@
 /**
-The MIT License (MIT)
-
-Copyright (c) 2014 singwhatiwanna
-https://github.com/singwhatiwanna
-http://blog.csdn.net/singwhatiwanna
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-*/
+ * The MIT License (MIT)
+ * <p>
+ * Copyright (c) 2014 singwhatiwanna
+ * https://github.com/singwhatiwanna
+ * http://blog.csdn.net/singwhatiwanna
+ * <p>
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * <p>
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * <p>
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 
 package com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui;
 
@@ -111,10 +111,11 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
 
     /**
      * 给group添加点击事件监听
-     * @param onGroupClickListener 监听
+     *
+     * @param onGroupClickListener   监听
      * @param isHeaderGroupClickable 表示header是否可点击<br/>
-     * note : 当不想group可点击的时候，需要在OnGroupClickListener#onGroupClick中返回true，
-     * 并将isHeaderGroupClickable设为false即可
+     *                               note : 当不想group可点击的时候，需要在OnGroupClickListener#onGroupClick中返回true，
+     *                               并将isHeaderGroupClickable设为false即可
      */
     public void setOnGroupClickListener(OnGroupClickListener onGroupClickListener, boolean isHeaderGroupClickable) {
         mIsHeaderGroupClickable = isHeaderGroupClickable;
@@ -161,28 +162,27 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
     @Override
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
-        if (mHeaderView != null && mHeaderView.getVisibility()==View.VISIBLE) {
+        if (mHeaderView != null && mHeaderView.getVisibility() == View.VISIBLE) {
             drawChild(canvas, mHeaderView, getDrawingTime());
         }
     }
 
 
-
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        if(getHeadview()!=null){
-            switch (ev.getAction()){
+        if (getHeadview() != null) {
+            switch (ev.getAction()) {
                 case MotionEvent.ACTION_DOWN:
-                    if(ev.getY()<=getHeadview().getMeasuredHeight()){
-                        p= (int) ((ev.getX()/(getMeasuredWidth()/3))+1);
+                    if (ev.getY() <= getHeadview().getMeasuredHeight()) {
+                        p = (int) ((ev.getX() / (getMeasuredWidth() / 3)) + 1);
 
                     }
                     break;
                 case MotionEvent.ACTION_UP:
-                    if( p== (int) ((ev.getX()/(getMeasuredWidth()/3))+1)){
-                        onHeadViewClick.onItemClick(this,headview,p,-1);
+                    if (p == (int) ((ev.getX() / (getMeasuredWidth() / 3)) + 1)) {
+                        onHeadViewClick.onItemClick(this, headview, p, -1);
                     }
-                    p=0;
+                    p = 0;
                     break;
             }
         }
@@ -227,17 +227,17 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
     }
 
 
-
-    Value[] values = new Value[]{new Value(0,0),new Value(0,0),new Value(0,0),new Value(0,0),new Value(0,0),new Value(0,0)};
+    Value[] values = new Value[]{new Value(0, 0), new Value(0, 0), new Value(0, 0), new Value(0, 0), new Value(0, 0), new Value(0, 0)};
 
 
     int status = -1;
+
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         int x = (int) ev.getX();
         int y = (int) ev.getY();
         int pos = pointToPosition(x, y);
-        switch (ev.getAction()){
+        switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 status = 0;
                 values[0].setX(ev.getX());
@@ -247,12 +247,12 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
                 values[1].setX(ev.getX());
                 values[1].setY(ev.getY());
 
-                if((Math.abs((values[1].getY()-values[0].getY()))/Math.abs((values[1].getX()-values[0].getX())))>1){
-                    if(status!=1 ){
-                        for(int i=0;i<getChildCount();i++){
-                            if(getChildAt(i) instanceof SwipeView){
+                if ((Math.abs((values[1].getY() - values[0].getY())) / Math.abs((values[1].getX() - values[0].getX()))) > 1) {
+                    if (status != 1) {
+                        for (int i = 0; i < getChildCount(); i++) {
+                            if (getChildAt(i) instanceof SwipeView) {
                                 SwipeView swipeView = (SwipeView) getChildAt(i);
-                                if(swipeView.getFinishView()!=null&&ViewCompat.getTranslationX(swipeView.getChildView())!=0){
+                                if (swipeView.getFinishView() != null && ViewCompat.getTranslationX(swipeView.getChildView()) != 0) {
                                     swipeView.endAnimatorTranslationX();
                                 }
                             }
@@ -262,33 +262,33 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                status =2;
+                status = 2;
                 values[2].setX(ev.getX());
                 values[2].setY(ev.getY());
                 break;
         }
 
-        if(getHeadview()!=null){
-            switch (ev.getAction()){
+        if (getHeadview() != null) {
+            switch (ev.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     LogUtil.E(getHeadview().getBottom());
-                    if(ev.getY()<=getHeadview().getBottom()){
-                        p= (int) ((ev.getX()/(getWidth()/3))+1);
+                    if (ev.getY() <= getHeadview().getBottom()) {
+                        p = (int) ((ev.getX() / (getWidth() / 3)) + 1);
                         values[5].setX(-1);
-                    }else{
+                    } else {
                         values[5].setX(0);
                     }
                     break;
                 case MotionEvent.ACTION_UP:
-                    if(values[5].getX()==-1&& p== (int) ((ev.getX()/(getWidth()/3))+1)){
-                        onHeadViewClick.onItemClick(this,headview,p,-1);
+                    if (values[5].getX() == -1 && p == (int) ((ev.getX() / (getWidth() / 3)) + 1)) {
+                        onHeadViewClick.onItemClick(this, headview, p, -1);
                     }
-                    p=0;
+                    p = 0;
                     break;
             }
         }
         if (mHeaderView != null && y >= mHeaderView.getTop() && y <= mHeaderView.getBottom()) {
-            switch (ev.getAction()){
+            switch (ev.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     mTouchTarget = getTouchTarget(mHeaderView, x, y);
                     mActionDownHappened = true;
@@ -301,7 +301,7 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
                     if (touchTarget == mTouchTarget && mTouchTarget.isClickable()) {
                         mTouchTarget.performClick();
                         invalidate(new Rect(0, 0, mHeaderWidth, mHeaderHeight));
-                    } else if (mIsHeaderGroupClickable){
+                    } else if (mIsHeaderGroupClickable) {
                         int groupPosition = getPackedPositionGroup(getExpandableListPosition(pos));
                         if (groupPosition != INVALID_POSITION && mActionDownHappened) {
                             if (isGroupExpanded(groupPosition)) {
@@ -320,15 +320,14 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
     }
 
 
-
-    private int p=0;
+    private int p = 0;
 
     private View getTouchTarget(View view, int x, int y) {
         if (!(view instanceof ViewGroup)) {
             return view;
         }
 
-        ViewGroup parent = (ViewGroup)view;
+        ViewGroup parent = (ViewGroup) view;
         int childrenCount = parent.getChildCount();
         final boolean customOrder = isChildrenDrawingOrderEnabled();
         View target = null;
@@ -348,7 +347,7 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
     }
 
     private boolean isTouchPointInView(View view, int x, int y) {
-        if ( y >= view.getTop() && y <= view.getBottom()
+        if (y >= view.getTop() && y <= view.getBottom()
                 && x >= view.getLeft() && x <= view.getRight()) {
             return true;
         }
@@ -400,7 +399,7 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
     }
 
     @Override
-    public void onScroll(AbsListView view, int firstVisibleItem,int visibleItemCount, int totalItemCount) {
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
         if (totalItemCount > 0) {
             refreshHeader();
         }
@@ -423,15 +422,16 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
     }
 
     private View headview;
+
     @Override
     public void addHeaderView(View v) {
-        this.headview=v;
+        this.headview = v;
         super.addHeaderView(v);
     }
 
     @Override
     public void addHeaderView(View v, Object data, boolean isSelectable) {
-        this.headview=v;
+        this.headview = v;
         super.addHeaderView(v, data, isSelectable);
     }
 

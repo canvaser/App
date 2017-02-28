@@ -18,11 +18,11 @@ import butterknife.Optional;
  */
 public abstract class BaseNurseTestFrag extends BaseUIFragment {
 
-    protected  int index;
+    protected int index;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if(getArguments()!=null){
+        if (getArguments() != null) {
             index = getArguments().getInt(ValueConstant.FRAG_POSITION);
         }
         return super.onCreateView(inflater, container, savedInstanceState);
@@ -30,19 +30,19 @@ public abstract class BaseNurseTestFrag extends BaseUIFragment {
 
     @Optional
     @OnClick({R2.id.ftv_back})
-    public void onBackClick(View v){
-        switch (v.getId()){
+    public void onBackClick(View v) {
+        switch (v.getId()) {
             case R2.id.ftv_back:
                 FragManager.getInstance().finish(getFragmentManager(), index);
                 break;
         }
     }
 
-    public void onResult(int req ,Bundle bundle){
+    public void onResult(int req, Bundle bundle) {
 
     }
 
-    public int getLayoutID(){
+    public int getLayoutID() {
         return R.layout.layout_baseui;
     }
 

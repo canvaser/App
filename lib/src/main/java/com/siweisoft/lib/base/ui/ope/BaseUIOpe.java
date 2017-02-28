@@ -8,18 +8,18 @@ import butterknife.ButterKnife;
 /**
  * Created by ${viwmox} on 2016-06-19.
  */
-public class BaseUIOpe extends BaseOpe{
+public class BaseUIOpe extends BaseOpe {
 
 
     protected View containerView;
 
-    public BaseUIOpe(Context context,View containerView) {
+    public BaseUIOpe(Context context, View containerView) {
         super(context);
-        this.containerView=containerView;
-        if(containerView==null){
+        this.containerView = containerView;
+        if (containerView == null) {
             return;
         }
-        ButterKnife.bind(this,containerView);
+        ButterKnife.bind(this, containerView);
     }
 
 }

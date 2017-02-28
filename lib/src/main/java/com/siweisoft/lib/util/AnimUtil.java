@@ -49,7 +49,7 @@ public class AnimUtil {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 int f = (int) animation.getAnimatedValue();
-                params.height=f;
+                params.height = f;
                 view.setLayoutParams(params);
             }
         });
@@ -65,28 +65,28 @@ public class AnimUtil {
 
     public void animRotaionLeft(View view) {
         AnimatorSet animatorSet = new AnimatorSet();
-        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "rotation", 0,120,90).setDuration(500);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "rotation", 0, 120, 90).setDuration(500);
         animatorSet.playTogether(animator);
         animatorSet.start();
     }
 
     public void animRotaionRight(View view) {
         AnimatorSet animatorSet = new AnimatorSet();
-        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "rotation", 0,-120,-90).setDuration(500);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "rotation", 0, -120, -90).setDuration(500);
         animatorSet.playTogether(animator);
         animatorSet.start();
     }
 
     public void animRotaionReset(View view) {
         AnimatorSet animatorSet = new AnimatorSet();
-        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "rotation", 0,0).setDuration(500);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "rotation", 0, 0).setDuration(500);
         animatorSet.playTogether(animator);
         animatorSet.start();
     }
 
     public void animIn(View view, final OnFinishListener onFinishListener) {
         AnimatorSet animatorSet = new AnimatorSet();
-        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "alpha", 0,1f).setDuration(3000);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "alpha", 0, 1f).setDuration(3000);
         animatorSet.playTogether(animator);
         animatorSet.addListener(new AnimatorListenerAdapter() {
             @Override
@@ -99,37 +99,36 @@ public class AnimUtil {
     }
 
 
-
-    public void animX(View view,float... x) {
+    public void animX(View view, float... x) {
         AnimatorSet animatorSet = new AnimatorSet();
-        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationX",x).setDuration(500);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationX", x).setDuration(500);
         animatorSet.playTogether(animator);
         animatorSet.start();
     }
 
-    public void animY(View view,float... y) {
+    public void animY(View view, float... y) {
         AnimatorSet animatorSet = new AnimatorSet();
-        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationY",y).setDuration(500);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationY", y).setDuration(500);
         animatorSet.playTogether(animator);
         animatorSet.start();
     }
 
-    public void animY(int duration,View view,float... y) {
+    public void animY(int duration, View view, float... y) {
         AnimatorSet animatorSet = new AnimatorSet();
-        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationY",y).setDuration(duration);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationY", y).setDuration(duration);
         animatorSet.playTogether(animator);
         animatorSet.start();
     }
 
-    public void animY(int duration, final View view, final OnFinishListener onFinishListener , float... y) {
+    public void animY(int duration, final View view, final OnFinishListener onFinishListener, float... y) {
         AnimatorSet animatorSet = new AnimatorSet();
-        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationY",y).setDuration(duration);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(view, "translationY", y).setDuration(duration);
         animatorSet.playTogether(animator);
         animatorSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                if(onFinishListener!=null){
+                if (onFinishListener != null) {
                     onFinishListener.onFinish(view);
                 }
             }
@@ -138,7 +137,7 @@ public class AnimUtil {
     }
 
 
-    public void animMarginTop(int duration, final View view, final OnFinishListener onFinishListener , int... y) {
+    public void animMarginTop(int duration, final View view, final OnFinishListener onFinishListener, int... y) {
 
         ValueAnimator valueAnimator = ValueAnimator.ofInt(y);
         final RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) view.getLayoutParams();
@@ -155,7 +154,7 @@ public class AnimUtil {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-                if(onFinishListener!=null){
+                if (onFinishListener != null) {
                     onFinishListener.onFinish(view);
                 }
             }
@@ -164,13 +163,11 @@ public class AnimUtil {
     }
 
 
-
-
-    public void animXY(View view,float startx,float endx,float starty,float endy,final OnFinishListener onFinishListener) {
+    public void animXY(View view, float startx, float endx, float starty, float endy, final OnFinishListener onFinishListener) {
         AnimatorSet animatorSet = new AnimatorSet();
-        ObjectAnimator animatory = ObjectAnimator.ofFloat(view, "translationY",starty,endy).setDuration(500);
-        ObjectAnimator animatorx = ObjectAnimator.ofFloat(view, "translationX",startx,endx).setDuration(500);
-        animatorSet.playTogether(animatorx,animatory);
+        ObjectAnimator animatory = ObjectAnimator.ofFloat(view, "translationY", starty, endy).setDuration(500);
+        ObjectAnimator animatorx = ObjectAnimator.ofFloat(view, "translationX", startx, endx).setDuration(500);
+        animatorSet.playTogether(animatorx, animatory);
         animatorSet.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -181,12 +178,12 @@ public class AnimUtil {
         animatorSet.start();
     }
 
-    public void startAnim(Context context,View view, int aimres){
-        view.startAnimation(AnimationUtils.loadAnimation(context,aimres));
+    public void startAnim(Context context, View view, int aimres) {
+        view.startAnimation(AnimationUtils.loadAnimation(context, aimres));
     }
 
-    public void startAnim(Context context, View view, int aimres, final OnFinishListener onFinishListener){
-        Animation animation = AnimationUtils.loadAnimation(context,aimres);
+    public void startAnim(Context context, View view, int aimres, final OnFinishListener onFinishListener) {
+        Animation animation = AnimationUtils.loadAnimation(context, aimres);
         view.startAnimation(animation);
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -196,7 +193,7 @@ public class AnimUtil {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                if(onFinishListener!=null){
+                if (onFinishListener != null) {
                     onFinishListener.onFinish(animation);
                 }
             }

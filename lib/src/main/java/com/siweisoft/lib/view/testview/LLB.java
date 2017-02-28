@@ -10,7 +10,7 @@ import com.siweisoft.lib.util.LogUtil;
 /**
  * Created by ${viwmox} on 2016-11-25.
  */
-public class LLB extends LinearLayout{
+public class LLB extends LinearLayout {
 
 
     public LLB(Context context, AttributeSet attrs) {
@@ -18,18 +18,17 @@ public class LLB extends LinearLayout{
     }
 
 
-
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        switch (ev.getAction()){
+        switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                LogUtil.E(getClass().getSimpleName()+":dispatchTouchEvent--down");
+                LogUtil.E(getClass().getSimpleName() + ":dispatchTouchEvent--down");
                 break;
             case MotionEvent.ACTION_MOVE:
-                LogUtil.E(getClass().getSimpleName()+":dispatchTouchEvent--move");
+                LogUtil.E(getClass().getSimpleName() + ":dispatchTouchEvent--move");
                 break;
             case MotionEvent.ACTION_UP:
-                LogUtil.E(getClass().getSimpleName()+":dispatchTouchEvent--up");
+                LogUtil.E(getClass().getSimpleName() + ":dispatchTouchEvent--up");
                 break;
         }
         return super.dispatchTouchEvent(ev);
@@ -37,15 +36,15 @@ public class LLB extends LinearLayout{
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        switch (ev.getAction()){
+        switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                LogUtil.E(getClass().getSimpleName()+"--onInterceptTouchEvent--down");
+                LogUtil.E(getClass().getSimpleName() + "--onInterceptTouchEvent--down");
                 break;
             case MotionEvent.ACTION_MOVE:
-                LogUtil.E(getClass().getSimpleName()+"--onInterceptTouchEvent--move");
+                LogUtil.E(getClass().getSimpleName() + "--onInterceptTouchEvent--move");
                 break;
             case MotionEvent.ACTION_UP:
-                LogUtil.E(getClass().getSimpleName()+"--onInterceptTouchEvent--up");
+                LogUtil.E(getClass().getSimpleName() + "--onInterceptTouchEvent--up");
                 break;
         }
         return super.onInterceptTouchEvent(ev);
@@ -54,15 +53,15 @@ public class LLB extends LinearLayout{
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        switch (ev.getAction()){
+        switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                LogUtil.E(getClass().getSimpleName()+"--onTouchEvent--down");
+                LogUtil.E(getClass().getSimpleName() + "--onTouchEvent--down");
                 break;
             case MotionEvent.ACTION_MOVE:
-                LogUtil.E(getClass().getSimpleName()+"--onTouchEvent--move");
+                LogUtil.E(getClass().getSimpleName() + "--onTouchEvent--move");
                 break;
             case MotionEvent.ACTION_UP:
-                LogUtil.E(getClass().getSimpleName()+"--onTouchEvent--up");
+                LogUtil.E(getClass().getSimpleName() + "--onTouchEvent--up");
                 break;
         }
         return true;

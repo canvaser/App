@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by ${viwmox} on 2016-12-21.
  */
 
-public class BaseNurseOpes<A extends BaseNurseUIOpe,B extends BaseNetOpe,C extends BaseDBOpe,D extends BaseDAOpe> implements Serializable{
+public class BaseNurseOpes<A extends BaseNurseUIOpe, B extends BaseNetOpe, C extends BaseDBOpe, D extends BaseDAOpe> implements Serializable {
 
     A uiOpe;
 

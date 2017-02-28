@@ -17,8 +17,7 @@ public class DoubleExpandableListView extends PinnedHeaderExpandableListView {
 
     PinnedHeaderExpandableListView relativeListView;
 
-    int tag=0;
-
+    int tag = 0;
 
 
     public DoubleExpandableListView(Context context) {
@@ -42,16 +41,16 @@ public class DoubleExpandableListView extends PinnedHeaderExpandableListView {
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
         super.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount);
         View v = view.getChildAt(0);
-        if(v!=null){
-            int y = v.getHeight()*firstVisibleItem-v.getTop();
-            if(relativeListView!=null&&isFocused()){
-                relativeListView.scrollBy(0,y);
+        if (v != null) {
+            int y = v.getHeight() * firstVisibleItem - v.getTop();
+            if (relativeListView != null && isFocused()) {
+                relativeListView.scrollBy(0, y);
             }
         }
     }
 
-    public void setRelativeListView(DoubleExpandableListView relativeListView,int tag) {
+    public void setRelativeListView(DoubleExpandableListView relativeListView, int tag) {
         this.relativeListView = relativeListView;
-        this.tag= tag;
+        this.tag = tag;
     }
 }

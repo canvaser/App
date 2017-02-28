@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by ${viwmox} on 2016-06-30.
  */
-public class PackageUtil{
+public class PackageUtil {
 
     private static PackageUtil instance;
 
@@ -31,34 +31,34 @@ public class PackageUtil{
 
     public static final int FLAG_NULL = 4;
 
-    public static PackageUtil getInstance(){
-        if(instance==null){
-            instance=new PackageUtil();
+    public static PackageUtil getInstance() {
+        if (instance == null) {
+            instance = new PackageUtil();
         }
         return instance;
     }
 
-    public void getPackageInfoList(final Context context, final String type, final OnNetFinishWithObjInter onNetFinishWithObjInter){
-        new AsyncTask<String,Integer,List<ApplicationInfo>>(){
+    public void getPackageInfoList(final Context context, final String type, final OnNetFinishWithObjInter onNetFinishWithObjInter) {
+        new AsyncTask<String, Integer, List<ApplicationInfo>>() {
             @Override
             protected List<ApplicationInfo> doInBackground(String... params) {
-                List<ApplicationInfo> infos =  context.getPackageManager().getInstalledApplications(PackageManager.GET_UNINSTALLED_PACKAGES);
+                List<ApplicationInfo> infos = context.getPackageManager().getInstalledApplications(PackageManager.GET_UNINSTALLED_PACKAGES);
                 Collections.sort(infos, new ApplicationInfo.DisplayNameComparator(context.getPackageManager()));
-                List<ApplicationInfo> infoss =new ArrayList<>();
-                switch (type){
+                List<ApplicationInfo> infoss = new ArrayList<>();
+                switch (type) {
                     case "全部":
                         infoss.addAll(infos);
                         break;
                     case "系统":
-                        for(ApplicationInfo  applicationInfo:infos){
-                            if((applicationInfo.flags&ApplicationInfo.FLAG_SYSTEM)!=0){
+                        for (ApplicationInfo applicationInfo : infos) {
+                            if ((applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
                                 infoss.add(applicationInfo);
                             }
                         }
                         break;
                     case "用户":
-                        for(ApplicationInfo  applicationInfo:infos){
-                            if((applicationInfo.flags&ApplicationInfo.FLAG_SYSTEM)<=0  ||(applicationInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0){
+                        for (ApplicationInfo applicationInfo : infos) {
+                            if ((applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) <= 0 || (applicationInfo.flags & ApplicationInfo.FLAG_UPDATED_SYSTEM_APP) != 0) {
                                 infoss.add(applicationInfo);
                             }
                         }
@@ -69,23 +69,23 @@ public class PackageUtil{
 
             @Override
             protected void onPostExecute(List<ApplicationInfo> applicationInfos) {
-               if(onNetFinishWithObjInter!=null){
-                   onNetFinishWithObjInter.onNetFinish(applicationInfos);
-               }
+                if (onNetFinishWithObjInter != null) {
+                    onNetFinishWithObjInter.onNetFinish(applicationInfos);
+                }
             }
         }.execute();
     }
 
-    public void getPackageApplicationInfo(final Context context, final List<String> packageNames, final OnNetFinishWithObjInter onNetFinishWithObjInter){
+    public void getPackageApplicationInfo(final Context context, final List<String> packageNames, final OnNetFinishWithObjInter onNetFinishWithObjInter) {
 
-        final List<ApplicationInfo> applicationInfos=new ArrayList<>();
-        new AsyncTask<String,String,List<ApplicationInfo>>(){
+        final List<ApplicationInfo> applicationInfos = new ArrayList<>();
+        new AsyncTask<String, String, List<ApplicationInfo>>() {
             @Override
             protected List<ApplicationInfo> doInBackground(String... params) {
                 try {
-                    for(int i=0;i<packageNames.size();i++){
-                       ApplicationInfo applicationInfo = context.getPackageManager().getApplicationInfo(packageNames.get(i),0);
-                        if(applicationInfo!=null){
+                    for (int i = 0; i < packageNames.size(); i++) {
+                        ApplicationInfo applicationInfo = context.getPackageManager().getApplicationInfo(packageNames.get(i), 0);
+                        if (applicationInfo != null) {
                             applicationInfos.add(applicationInfo);
                         }
                     }
@@ -97,7 +97,7 @@ public class PackageUtil{
 
             @Override
             protected void onPostExecute(List<ApplicationInfo> applicationInfos) {
-                if(onNetFinishWithObjInter!=null){
+                if (onNetFinishWithObjInter != null) {
                     onNetFinishWithObjInter.onNetFinish(applicationInfos);
                 }
             }

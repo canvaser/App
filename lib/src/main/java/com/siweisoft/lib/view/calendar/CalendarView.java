@@ -13,7 +13,7 @@ import com.siweisoft.lib.view.calendar.interf.OnDaySelectListener;
 /**
  * Created by ${viwmox} on 2016-09-12.
  */
-public class CalendarView extends ViewPager{
+public class CalendarView extends ViewPager {
 
     private CalendarAdapter calendarAdapter;
 
@@ -33,38 +33,38 @@ public class CalendarView extends ViewPager{
     @Override
     public void onWindowFocusChanged(boolean hasWindowFocus) {
         super.onWindowFocusChanged(hasWindowFocus);
-        if(!refresh){
-            refresh = refreh(2016,9, baseUIFragment);
+        if (!refresh) {
+            refresh = refreh(2016, 9, baseUIFragment);
         }
     }
 
-    public boolean refreh(int year , int month,BaseUIFragment baseUIFragment){
+    public boolean refreh(int year, int month, BaseUIFragment baseUIFragment) {
         BaseUIActivity baseUIActivity = (BaseUIActivity) context;
         Bundle bundle = new Bundle();
-        bundle.putInt("year",year);
-        bundle.putInt("month",month);
-        calendarAdapter= new CalendarAdapter(baseUIFragment.getChildFragmentManager(),context,bundle);
+        bundle.putInt("year", year);
+        bundle.putInt("month", month);
+        calendarAdapter = new CalendarAdapter(baseUIFragment.getChildFragmentManager(), context, bundle);
         setAdapter(calendarAdapter);
         setOffscreenPageLimit(3);
-        setCurrentItem(month-1);
-        if(onDaySelectListener!=null){
-            for(int i=0;i<calendarAdapter.getCalendarFragments().size();i++){
+        setCurrentItem(month - 1);
+        if (onDaySelectListener != null) {
+            for (int i = 0; i < calendarAdapter.getCalendarFragments().size(); i++) {
                 calendarAdapter.getCalendarFragments().get(i).setOnDaySelectListener(onDaySelectListener);
             }
         }
-    return true;
+        return true;
     }
 
 
-    public void refreh(int year , int month){
+    public void refreh(int year, int month) {
         BaseUIActivity baseUIActivity = (BaseUIActivity) context;
         Bundle bundle = new Bundle();
-        bundle.putInt("year",year);
-        bundle.putInt("month",month);
-        calendarAdapter= new CalendarAdapter(baseUIActivity.getSupportFragmentManager(),context,bundle);
+        bundle.putInt("year", year);
+        bundle.putInt("month", month);
+        calendarAdapter = new CalendarAdapter(baseUIActivity.getSupportFragmentManager(), context, bundle);
         setAdapter(calendarAdapter);
         setOffscreenPageLimit(3);
-        setCurrentItem(month-1);
+        setCurrentItem(month - 1);
 
     }
 

@@ -70,18 +70,20 @@ public class SunFaceView extends View {
 
     /**
      * 设置眼睛大小
+     *
      * @param eyesSize
      */
-    public void setEyesSize(int eyesSize){
+    public void setEyesSize(int eyesSize) {
         mEyesRadius = changeDp(eyesSize);
         invalidate();
     }
 
     /**
      * 设置嘴巴粗细
+     *
      * @param mouthStro
      */
-    public void setMouthStro(int mouthStro){
+    public void setMouthStro(int mouthStro) {
         this.mouthStro = mouthStro;
         invalidate();
     }
@@ -89,20 +91,21 @@ public class SunFaceView extends View {
 
     /**
      * 刷新用的效果
+     *
      * @param sunRadius
      * @param per
      */
-    public void setPerView(int sunRadius ,float per){
+    public void setPerView(int sunRadius, float per) {
         sunRadius = changeDp(sunRadius);
-        if(per>=0.8){
+        if (per >= 0.8) {
             isDrawFace = true;
-        }else {
+        } else {
             isDrawFace = false;
         }
-        per = Math.min(per,1);
-        float tempRadius =  sunRadius*per;
+        per = Math.min(per, 1);
+        float tempRadius = sunRadius * per;
         mSunRadius = (int) tempRadius;
-        mCirclePaint.setAlpha((int)per*255);
+        mCirclePaint.setAlpha((int) per * 255);
         invalidate();
     }
 

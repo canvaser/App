@@ -3,33 +3,30 @@ package com.siweisoft.lib.util;
 /**
  * Created by ${viwmox} on 2016-08-29.
  */
-public class ColorUtil{
+public class ColorUtil {
     private static ColorUtil instance;
 
-    public static ColorUtil getInstance(){
-        if(instance == null){
+    public static ColorUtil getInstance() {
+        if (instance == null) {
             instance = new ColorUtil();
         }
         return instance;
     }
+
     /**
-     * @param H
-     *            0-360
-     * @param S
-     *            0-100
-     * @param V
-     *            0-100
+     * @param H 0-360
+     * @param S 0-100
+     * @param V 0-100
      * @return color in hex string
      */
-    public  String[] hsvToRgbStr(float H, float S, float V) {
+    public String[] hsvToRgbStr(float H, float S, float V) {
         float R, G, B;
 
         H /= 360f;
         S /= 100f;
         V /= 100f;
 
-        if (S == 0)
-        {
+        if (S == 0) {
             R = V * 255;
             G = V * 255;
             B = V * 255;
@@ -87,16 +84,16 @@ public class ColorUtil{
             gs = "0" + gs;
         if (bs.length() == 1)
             bs = "0" + bs;
-        return new String[]{rs,gs,bs};
+        return new String[]{rs, gs, bs};
     }
 
 
-    public  int[] HSBtoRGB(float hue, float saturation, float brightness) {
+    public int[] HSBtoRGB(float hue, float saturation, float brightness) {
         int r = 0, g = 0, b = 0;
         if (saturation == 0) {
             r = g = b = (int) (brightness * 255.0f + 0.5f);
         } else {
-            float h = (hue - (float)Math.floor(hue)) * 6.0f;
+            float h = (hue - (float) Math.floor(hue)) * 6.0f;
             float f = h - (float) Math.floor(h);
             float p = brightness * (1.0f - saturation);
             float q = brightness * (1.0f - saturation * f);
@@ -134,7 +131,7 @@ public class ColorUtil{
                     break;
             }
         }
-        return new int[]{r,g,b};
+        return new int[]{r, g, b};
     }
 
 }

@@ -20,7 +20,7 @@ public class CalendarUIFragment extends BaseUIFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        calendarFraUIOpe=new CalendarFraUIOpe(getActivity(),getView());
+        calendarFraUIOpe = new CalendarFraUIOpe(getActivity(), getView());
         calendarFraUIOpe.refresh(getArguments());
         calendarFraUIOpe.setOnDaySelectListener(onDaySelectListener);
     }

@@ -30,26 +30,26 @@ public class BaseNurseUIOpe<A extends CommonUIFrag> extends BaseUIWithTitleOpe {
         super(context, containerView);
     }
 
-    public void showMidList(Context context,String[] strings ,View v,int type,OnAppItemClickListener listener){
-        View view1 = LayoutInflater.from(context).inflate(R.layout.pup_list,null);
+    public void showMidList(Context context, String[] strings, View v, int type, OnAppItemClickListener listener) {
+        View view1 = LayoutInflater.from(context).inflate(R.layout.pup_list, null);
         RecyclerView recyclerView = (RecyclerView) view1.findViewById(R.id.rcv_pop);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new MyItemDecoration(context,1, com.siweisoft.lib.R.color.color_base_graybg));
-        PupListAdapter pupListAdapter = new PupListAdapter(context,strings);
+        recyclerView.addItemDecoration(new MyItemDecoration(context, 1, com.siweisoft.lib.R.color.color_base_graybg));
+        PupListAdapter pupListAdapter = new PupListAdapter(context, strings);
         recyclerView.setAdapter(pupListAdapter);
         pupListAdapter.setOnAppItemClickListener(listener);
-        PopupUtil.getInstance().show(context,view1,v,type);
+        PopupUtil.getInstance().show(context, view1, v, type);
     }
 
-    public void showMidList(Context context, ArrayList strings , View v, int type, OnAppItemClickListener listener){
-        View view1 = LayoutInflater.from(context).inflate(R.layout.pup_list,null);
+    public void showMidList(Context context, ArrayList strings, View v, int type, OnAppItemClickListener listener) {
+        View view1 = LayoutInflater.from(context).inflate(R.layout.pup_list, null);
         RecyclerView recyclerView = (RecyclerView) view1.findViewById(R.id.rcv_pop);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new MyItemDecoration(context,1, com.siweisoft.lib.R.color.color_base_graybg));
-        PupListAdapter pupListAdapter = new PupListAdapter(context,strings);
+        recyclerView.addItemDecoration(new MyItemDecoration(context, 1, com.siweisoft.lib.R.color.color_base_graybg));
+        PupListAdapter pupListAdapter = new PupListAdapter(context, strings);
         recyclerView.setAdapter(pupListAdapter);
         pupListAdapter.setOnAppItemClickListener(listener);
-        PopupUtil.getInstance().show(context,view1,v,type);
+        PopupUtil.getInstance().show(context, view1, v, type);
     }
 
     public A getFrag() {

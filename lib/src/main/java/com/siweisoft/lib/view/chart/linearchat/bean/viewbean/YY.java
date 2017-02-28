@@ -6,13 +6,13 @@ import com.siweisoft.lib.constant.ValueConstant;
 /**
  * Created by ${viwmox} on 2016-11-28.
  */
-public class YY extends ChartItemBean{
+public class YY extends ChartItemBean {
 
 
     private float unitVal;
 
 
-    private float unitDis= ValueConstant.DIMEN_1*50;
+    private float unitDis = ValueConstant.DIMEN_1 * 50;
 
     private float maxDis;
 

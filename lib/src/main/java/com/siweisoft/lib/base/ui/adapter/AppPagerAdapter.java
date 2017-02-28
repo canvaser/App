@@ -9,7 +9,7 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-10-18.
  */
-public class AppPagerAdapter extends AppBasePagerAdapter{
+public class AppPagerAdapter extends AppBasePagerAdapter {
 
     ArrayList<Fragment> fragments;
 

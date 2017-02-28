@@ -5,12 +5,12 @@ import android.view.View;
 /**
  * Created by ${viwmox} on 2016-05-19.
  */
-public class OnClickAdapter implements View.OnClickListener{
+public class OnClickAdapter implements View.OnClickListener {
 
     private View view;
 
-    public OnClickAdapter(View view){
-        this.view=view;
+    public OnClickAdapter(View view) {
+        this.view = view;
     }
 
     @Override
@@ -18,7 +18,7 @@ public class OnClickAdapter implements View.OnClickListener{
 
     }
 
-    public void onClickAdapter(View v){
+    public void onClickAdapter(View v) {
         onClick(v);
     }
 

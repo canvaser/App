@@ -19,19 +19,17 @@ public abstract class BaseUIWithOutTitleFrag extends BaseFrg {
     private Unbinder unbinder;
 
 
-    public BaseUIWithOutTitleFrag(){
+    public BaseUIWithOutTitleFrag() {
 
     }
 
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View group = (ViewGroup) inflater.inflate(R.layout.layout_baseui_withouttitle,null);
+        View group = (ViewGroup) inflater.inflate(R.layout.layout_baseui_withouttitle, null);
         ViewGroup parent = (ViewGroup) group.findViewById(R.id.rl_base_container);
         View view = inflater.inflate(getContainView(), container, false);
-        parent.addView(view,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        parent.addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         unbinder = ButterKnife.bind(this, group);
         return group;
     }
@@ -43,7 +41,6 @@ public abstract class BaseUIWithOutTitleFrag extends BaseFrg {
     }
 
     public abstract int getContainView();
-
 
 
 }

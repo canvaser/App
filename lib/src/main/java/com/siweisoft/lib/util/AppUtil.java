@@ -14,15 +14,15 @@ public class AppUtil {
 
     public static AppUtil instance;
 
-    public static AppUtil getInstance(){
-        if(instance == null){
+    public static AppUtil getInstance() {
+        if (instance == null) {
             instance = new AppUtil();
         }
         return instance;
     }
 
 
-    public String getAppName(Context context ,int pID) {
+    public String getAppName(Context context, int pID) {
         String processName = null;
         ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         List l = am.getRunningAppProcesses();

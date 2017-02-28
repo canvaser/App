@@ -6,7 +6,7 @@ import java.io.Serializable;
  * 响应实体基类
  * Created by ${viwmox} on 2016-04-27.
  */
-public class BaseResBean implements Serializable{
+public class BaseResBean implements Serializable {
 
     private Object data;
 

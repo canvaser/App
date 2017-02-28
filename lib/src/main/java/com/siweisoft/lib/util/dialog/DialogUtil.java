@@ -22,14 +22,14 @@ public class DialogUtil {
 
     AlertDialog alertDialog;
 
-    public static DialogUtil getInstance(){
-        if(instance ==null){
+    public static DialogUtil getInstance() {
+        if (instance == null) {
             instance = new DialogUtil();
         }
         return instance;
     }
 
-    public void showDialog(Context context, View view, View.OnClickListener listener,int... id){
+    public void showDialog(Context context, View view, View.OnClickListener listener, int... id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         alertDialog = builder.create();
         alertDialog.setCancelable(true);
@@ -39,30 +39,29 @@ public class DialogUtil {
         alertDialog.show();
         alertDialog.getWindow().setContentView(view);
 
-      for(int i=0;i<id.length;i++){
-          view.findViewById(id[i]).setOnClickListener(listener);
-      }
+        for (int i = 0; i < id.length; i++) {
+            view.findViewById(id[i]).setOnClickListener(listener);
+        }
     }
 
 
-
-    public void showLoadDialog(Context context){
+    public void showLoadDialog(Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        View view = LayoutInflater.from(context).inflate(R.layout.dialog_loading,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.dialog_loading, null);
         AVLoadingIndicatorView v = (AVLoadingIndicatorView) view.findViewById(R.id.av);
-        AlertDialog dialog =  builder.create();
+        AlertDialog dialog = builder.create();
         dialog.show();
         builder.setView(view);
         v.show();
     }
 
-    public void dismiss(){
-        if(alertDialog!=null){
+    public void dismiss() {
+        if (alertDialog != null) {
             alertDialog.dismiss();
         }
     }
 
-    public static void showTimePick(Context context, FragmentManager fragmentManager,String name,Type type, OnDateSetListener onDateSetListener){
+    public static void showTimePick(Context context, FragmentManager fragmentManager, String name, Type type, OnDateSetListener onDateSetListener) {
         long tenYears = 10L * 365 * 1000 * 60 * 60 * 24L;
         TimePickerDialog mDialogAll = new TimePickerDialog.Builder()
                 .setCallBack(onDateSetListener)
@@ -75,7 +74,7 @@ public class DialogUtil {
                 .setHourText("时")
                 .setMinuteText("分")
                 .setCyclic(false)
-                .setMinMillseconds(System.currentTimeMillis()- tenYears)
+                .setMinMillseconds(System.currentTimeMillis() - tenYears)
                 .setMaxMillseconds(System.currentTimeMillis())
                 .setCurrentMillseconds(System.currentTimeMillis())
                 .setThemeColor(context.getResources().getColor(R.color.color_base_txt_gray))
@@ -84,6 +83,6 @@ public class DialogUtil {
                 .setWheelItemTextSelectorColor(context.getResources().getColor(R.color.timepicker_toolbar_bg))
                 .setWheelItemTextSize(12)
                 .build();
-        mDialogAll.show(fragmentManager,name);
+        mDialogAll.show(fragmentManager, name);
     }
 }

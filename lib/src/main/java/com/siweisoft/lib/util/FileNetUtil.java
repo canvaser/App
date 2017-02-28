@@ -13,9 +13,9 @@ public class FileNetUtil {
 
     private static FileNetUtil instance;
 
-    public static FileNetUtil getInstance(){
-        if(instance==null){
-            instance=new FileNetUtil();
+    public static FileNetUtil getInstance() {
+        if (instance == null) {
+            instance = new FileNetUtil();
         }
         return instance;
     }
@@ -279,10 +279,6 @@ public class FileNetUtil {
 //        }
 //        x.http().post(requestParams,cacheCallback);
 //    }
-
-
-
-
 
 
 }

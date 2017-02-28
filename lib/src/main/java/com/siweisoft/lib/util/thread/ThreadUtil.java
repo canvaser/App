@@ -11,18 +11,18 @@ import com.siweisoft.lib.base.ui.interf.OnLoadingInterf;
 
 public class ThreadUtil {
 
-    private boolean stop =false;
+    private boolean stop = false;
 
-    Integer max=0;
+    Integer max = 0;
 
     Handler handler = new Handler();
 
-    public void run(final long time, final OnLoadingInterf listener){
+    public void run(final long time, final OnLoadingInterf listener) {
         new AsyncTask<String, String, Void>() {
 
             @Override
             protected Void doInBackground(String... params) {
-                while (!stop){
+                while (!stop) {
                     max++;
                     handler.post(new Runnable() {
                         @Override
@@ -47,7 +47,7 @@ public class ThreadUtil {
         }.execute();
     }
 
-    public void stop(){
+    public void stop() {
         stop = true;
     }
 

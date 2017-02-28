@@ -19,8 +19,8 @@ public class VoiceUtil {
 
     private static VoiceUtil instance;
 
-    public static VoiceUtil getInstance(){
-        if(instance == null){
+    public static VoiceUtil getInstance() {
+        if (instance == null) {
             instance = new VoiceUtil();
         }
         return instance;
@@ -30,13 +30,13 @@ public class VoiceUtil {
     MediaPlayer mp;
 
     public void play(String path, final OnLoadingInterf linstener) {
-        if(mp!=null){
-            if(mp.isPlaying()){
+        if (mp != null) {
+            if (mp.isPlaying()) {
                 mp.pause();
             }
-            mp=null;
+            mp = null;
         }
-        mp=new MediaPlayer();
+        mp = new MediaPlayer();
         try {
             mp.setDataSource(path);
             mp.prepare();
@@ -53,8 +53,8 @@ public class VoiceUtil {
         }
     }
 
-    public void pause(){
-        if(mp!=null && mp.isPlaying()){
+    public void pause() {
+        if (mp != null && mp.isPlaying()) {
             mp.pause();
         }
     }
@@ -92,7 +92,7 @@ public class VoiceUtil {
     }
 
 
-    public void stopRecording(MediaRecorder mediaRecorder,File recordFile) {
+    public void stopRecording(MediaRecorder mediaRecorder, File recordFile) {
         if (recordFile != null) {
             try {
                 mediaRecorder.stop();

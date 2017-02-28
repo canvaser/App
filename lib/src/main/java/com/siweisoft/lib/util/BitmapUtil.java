@@ -34,18 +34,18 @@ public class BitmapUtil {
     private static BitmapUtil instance;
 
 
-    private BitmapUtil(){
+    private BitmapUtil() {
 
     }
 
-    public static BitmapUtil getInstance(){
-        if(instance== null){
-            instance=new BitmapUtil();
+    public static BitmapUtil getInstance() {
+        if (instance == null) {
+            instance = new BitmapUtil();
         }
         return instance;
     }
 
-    public boolean setBg(Context context,ImageView imageView,Uri uri){
+    public boolean setBg(Context context, ImageView imageView, Uri uri) {
         //x.image().bind(imageView,uri.toString(),imageOptions);
         if (uri == null) {
             return false;
@@ -54,37 +54,37 @@ public class BitmapUtil {
         return true;
     }
 
-    public boolean setBg(Context context,ImageView imageView,String uri){
+    public boolean setBg(Context context, ImageView imageView, String uri) {
         if (uri == null) {
             return false;
         }
-        if(uri.startsWith("http://") || uri.startsWith("https://")){
+        if (uri.startsWith("http://") || uri.startsWith("https://")) {
 
         }
 //      x.image().bind(imageView,uri.toString(),imageOptions);
         Glide.clear(imageView);
-        if(uri.toLowerCase().endsWith(".gif")){
+        if (uri.toLowerCase().endsWith(".gif")) {
             Glide.with(context).load(uri).asGif().fitCenter().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageView);
-        }else{
+        } else {
             Glide.with(context).load(uri).asBitmap().fitCenter().diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
         }
-        LogUtil.E("setBg:"+uri);
+        LogUtil.E("setBg:" + uri);
         return true;
     }
 
-    public boolean setBg(Context context, final ImageView imageView, String uri, final OnFinishListener onFinishListener){
+    public boolean setBg(Context context, final ImageView imageView, String uri, final OnFinishListener onFinishListener) {
         if (uri == null) {
             return false;
         }
-        if(uri.startsWith("http://") || uri.startsWith("https://")){
+        if (uri.startsWith("http://") || uri.startsWith("https://")) {
 
         }
 //      x.image().bind(imageView,uri.toString(),imageOptions);
         Glide.clear(imageView);
-        if(uri.toLowerCase().endsWith(".gif")){
+        if (uri.toLowerCase().endsWith(".gif")) {
             Glide.with(context).load(uri).asGif().centerCrop().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageView);
             onFinishListener.onFinish(imageView);
-        }else{
+        } else {
             Glide.with(context).load(uri).asBitmap().centerCrop().diskCacheStrategy(DiskCacheStrategy.ALL).into(new SimpleTarget<Bitmap>() {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
@@ -99,34 +99,34 @@ public class BitmapUtil {
                 }
             });
         }
-        LogUtil.E("setBg:"+uri);
+        LogUtil.E("setBg:" + uri);
         return true;
     }
 
 
-    public boolean setFitBg(Context context, final float w, final ImageView imageView, final String uri){
+    public boolean setFitBg(Context context, final float w, final ImageView imageView, final String uri) {
         if (uri == null) {
             return false;
         }
-        if(uri.startsWith("http://") || uri.startsWith("https://")){
+        if (uri.startsWith("http://") || uri.startsWith("https://")) {
 
         }
 //      x.image().bind(imageView,uri.toString(),imageOptions);
         Glide.clear(imageView);
-        if(uri.toLowerCase().endsWith(".gif")){
+        if (uri.toLowerCase().endsWith(".gif")) {
             Glide.with(context).load(uri).asGif().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageView);
-        }else{
+        } else {
             Glide.with(context).load(uri).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).into(new SimpleTarget<Bitmap>() {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                     ViewGroup.LayoutParams params = imageView.getLayoutParams();
-                    params.height =(int) ((w*resource.getHeight())/resource.getWidth());
+                    params.height = (int) ((w * resource.getHeight()) / resource.getWidth());
                     LogUtil.E(imageView.getLayoutParams().width);
                     params.width = (int) w;
                     imageView.setLayoutParams(params);
                     imageView.setScaleType(ImageView.ScaleType.FIT_XY);
                     imageView.setImageBitmap(resource);
-                    imageView.setTag(R.id.uri,uri);
+                    imageView.setTag(R.id.uri, uri);
                 }
 
                 @Override
@@ -135,34 +135,34 @@ public class BitmapUtil {
                 }
             });
         }
-        LogUtil.E("setBg:"+uri);
+        LogUtil.E("setBg:" + uri);
         return true;
     }
 
 
-    public boolean setFitBg(Context context, final float w, final ImageView imageView, final String uri,boolean scale){
+    public boolean setFitBg(Context context, final float w, final ImageView imageView, final String uri, boolean scale) {
         if (uri == null) {
             return false;
         }
-        if(uri.startsWith("http://") || uri.startsWith("https://")){
+        if (uri.startsWith("http://") || uri.startsWith("https://")) {
 
         }
 //      x.image().bind(imageView,uri.toString(),imageOptions);
         Glide.clear(imageView);
-        if(uri.toLowerCase().endsWith(".gif")){
+        if (uri.toLowerCase().endsWith(".gif")) {
             Glide.with(context).load(uri).asGif().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageView);
-        }else{
+        } else {
             Glide.with(context).load(uri).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).into(new SimpleTarget<Bitmap>() {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                     ViewGroup.LayoutParams params = imageView.getLayoutParams();
-                    params.height =(int) ((w*resource.getHeight())/resource.getWidth());
+                    params.height = (int) ((w * resource.getHeight()) / resource.getWidth());
                     LogUtil.E(imageView.getLayoutParams().width);
                     params.width = (int) w;
                     imageView.setLayoutParams(params);
                     imageView.setScaleType(ImageView.ScaleType.FIT_XY);
                     imageView.setImageBitmap(resource);
-                    imageView.setTag(R.id.uri,uri);
+                    imageView.setTag(R.id.uri, uri);
                 }
 
                 @Override
@@ -171,15 +171,15 @@ public class BitmapUtil {
                 }
             });
         }
-        LogUtil.E("setBg:"+uri);
+        LogUtil.E("setBg:" + uri);
         return true;
     }
 
-    public boolean setFitBg(Context context, final float w, final float h,final ImageView imageView, final String uri){
+    public boolean setFitBg(Context context, final float w, final float h, final ImageView imageView, final String uri) {
         if (uri == null) {
             return false;
         }
-        if(uri.startsWith("http://") || uri.startsWith("https://")){
+        if (uri.startsWith("http://") || uri.startsWith("https://")) {
 
         }
 //      x.image().bind(imageView,uri.toString(),imageOptions);
@@ -188,21 +188,21 @@ public class BitmapUtil {
         params.width = (int) w;
         params.height = (int) h;
         imageView.setLayoutParams(params);
-        if(uri.toLowerCase().endsWith(".gif")){
+        if (uri.toLowerCase().endsWith(".gif")) {
             Glide.with(context).load(uri).asGif().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageView);
-        }else{
-            Glide.with(context).load(uri).asBitmap().override((int)w,(int)h).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
+        } else {
+            Glide.with(context).load(uri).asBitmap().override((int) w, (int) h).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
         }
-        LogUtil.E("setBg:"+uri);
+        LogUtil.E("setBg:" + uri);
         return true;
     }
 
 
-    public boolean setmidFitBg(Context context, final float w, final float h,final ImageView imageView, final String uri){
+    public boolean setmidFitBg(Context context, final float w, final float h, final ImageView imageView, final String uri) {
         if (uri == null) {
             return false;
         }
-        if(uri.startsWith("http://") || uri.startsWith("https://")){
+        if (uri.startsWith("http://") || uri.startsWith("https://")) {
 
         }
 //      x.image().bind(imageView,uri.toString(),imageOptions);
@@ -211,79 +211,40 @@ public class BitmapUtil {
         params.width = (int) w;
         params.height = (int) h;
         imageView.setLayoutParams(params);
-        if(uri.toLowerCase().endsWith(".gif")){
+        if (uri.toLowerCase().endsWith(".gif")) {
             Glide.with(context).load(uri).asGif().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageView);
-        }else{
-            Glide.with(context).load(uri).asBitmap().override(256,256).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
+        } else {
+            Glide.with(context).load(uri).asBitmap().override(256, 256).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
         }
-        LogUtil.E("setBg:"+uri);
+        LogUtil.E("setBg:" + uri);
         return true;
     }
 
-    public boolean setFitBg(Context context, final float w, final ImageView imageView, final String uri, final OnFinishListener onFinishListener){
+    public boolean setFitBg(Context context, final float w, final ImageView imageView, final String uri, final OnFinishListener onFinishListener) {
         if (uri == null) {
             return false;
         }
-        if(uri.startsWith("http://") || uri.startsWith("https://")){
+        if (uri.startsWith("http://") || uri.startsWith("https://")) {
 
         }
 //      x.image().bind(imageView,uri.toString(),imageOptions);
         Glide.clear(imageView);
-        if(uri.toLowerCase().endsWith(".gif")){
+        if (uri.toLowerCase().endsWith(".gif")) {
             Glide.with(context).load(uri).asGif().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageView);
-        }else{
+        } else {
             Glide.with(context).load(uri).asBitmap().diskCacheStrategy(DiskCacheStrategy.ALL).into(new SimpleTarget<Bitmap>() {
                 @Override
                 public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
                     ViewGroup.LayoutParams params = imageView.getLayoutParams();
-                    params.height =(int) ((w*resource.getHeight())/resource.getWidth());
+                    params.height = (int) ((w * resource.getHeight()) / resource.getWidth());
                     LogUtil.E(imageView.getLayoutParams().width);
                     params.width = (int) w;
                     imageView.setLayoutParams(params);
                     imageView.setScaleType(ImageView.ScaleType.FIT_XY);
                     imageView.setImageBitmap(resource);
-                    imageView.setTag(R.id.uri,uri);
-                   if(onFinishListener!=null){
-                       onFinishListener.onFinish(new ImageDBBean((int) w,params.height,uri));
-                   }
-                }
-
-                @Override
-                public void onLoadFailed(Exception e, Drawable errorDrawable) {
-                    super.onLoadFailed(e, errorDrawable);
-                }
-            });
-        }
-        LogUtil.E("setBg:"+uri);
-        return true;
-    }
-
-
-    public boolean setFitBg(boolean override,Context context, final float w, final ImageView imageView, final String uri, final OnFinishListener onFinishListener){
-        if (uri == null) {
-            return false;
-        }
-        if(uri.startsWith("http://") || uri.startsWith("https://")){
-
-        }
-//      x.image().bind(imageView,uri.toString(),imageOptions);
-        Glide.clear(imageView);
-        if(uri.toLowerCase().endsWith(".gif")){
-            Glide.with(context).load(uri).asGif().override(256,256).diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageView);
-        }else{
-            Glide.with(context).load(uri).asBitmap().override(256,256).diskCacheStrategy(DiskCacheStrategy.ALL).into(new SimpleTarget<Bitmap>() {
-                @Override
-                public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                    ViewGroup.LayoutParams params = imageView.getLayoutParams();
-                    params.height =(int) ((w*resource.getHeight())/resource.getWidth());
-                    LogUtil.E(imageView.getLayoutParams().width);
-                    params.width = (int) w;
-                    imageView.setLayoutParams(params);
-                    imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-                    imageView.setImageBitmap(resource);
-                    imageView.setTag(R.id.uri,uri);
-                    if(onFinishListener!=null){
-                        onFinishListener.onFinish(new ImageDBBean((int) w,params.height,uri));
+                    imageView.setTag(R.id.uri, uri);
+                    if (onFinishListener != null) {
+                        onFinishListener.onFinish(new ImageDBBean((int) w, params.height, uri));
                     }
                 }
 
@@ -293,51 +254,89 @@ public class BitmapUtil {
                 }
             });
         }
-        LogUtil.E("setBg:"+uri);
+        LogUtil.E("setBg:" + uri);
         return true;
     }
 
 
-    public boolean setBgWithThumbnail(Context context,ImageView imageView,String uri){
+    public boolean setFitBg(boolean override, Context context, final float w, final ImageView imageView, final String uri, final OnFinishListener onFinishListener) {
         if (uri == null) {
             return false;
         }
-        if(uri.startsWith("http://") || uri.startsWith("https://")){
+        if (uri.startsWith("http://") || uri.startsWith("https://")) {
+
+        }
+//      x.image().bind(imageView,uri.toString(),imageOptions);
+        Glide.clear(imageView);
+        if (uri.toLowerCase().endsWith(".gif")) {
+            Glide.with(context).load(uri).asGif().override(256, 256).diskCacheStrategy(DiskCacheStrategy.SOURCE).into(imageView);
+        } else {
+            Glide.with(context).load(uri).asBitmap().override(256, 256).diskCacheStrategy(DiskCacheStrategy.ALL).into(new SimpleTarget<Bitmap>() {
+                @Override
+                public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                    ViewGroup.LayoutParams params = imageView.getLayoutParams();
+                    params.height = (int) ((w * resource.getHeight()) / resource.getWidth());
+                    LogUtil.E(imageView.getLayoutParams().width);
+                    params.width = (int) w;
+                    imageView.setLayoutParams(params);
+                    imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                    imageView.setImageBitmap(resource);
+                    imageView.setTag(R.id.uri, uri);
+                    if (onFinishListener != null) {
+                        onFinishListener.onFinish(new ImageDBBean((int) w, params.height, uri));
+                    }
+                }
+
+                @Override
+                public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                    super.onLoadFailed(e, errorDrawable);
+                }
+            });
+        }
+        LogUtil.E("setBg:" + uri);
+        return true;
+    }
+
+
+    public boolean setBgWithThumbnail(Context context, ImageView imageView, String uri) {
+        if (uri == null) {
+            return false;
+        }
+        if (uri.startsWith("http://") || uri.startsWith("https://")) {
 
         }
 //      x.image().bind(imageView,uri.toString(),imageOptions);
         Glide.clear(imageView);
         Glide.with(context).load(uri).thumbnail(0.1f).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
-        LogUtil.E("setBg:"+uri);
+        LogUtil.E("setBg:" + uri);
         return true;
     }
 
 
-
-    public boolean setBg(Context context,View view,String uri){
+    public boolean setBg(Context context, View view, String uri) {
         if (uri == null) {
             return false;
         }
-       String path =URIUtil.getInstance().getPath(context, Uri.parse(uri));
-        if(path==null){
+        String path = URIUtil.getInstance().getPath(context, Uri.parse(uri));
+        if (path == null) {
             return false;
         }
-       view.setBackgroundDrawable(BitmapDrawable.createFromPath(path));
+        view.setBackgroundDrawable(BitmapDrawable.createFromPath(path));
         return true;
     }
 
-    public boolean setBg(Context activity,ImageView imageView,int resid){
+    public boolean setBg(Context activity, ImageView imageView, int resid) {
         Glide.with(activity).load(resid).into(imageView);
         return false;
     }
 
-    public boolean setGifBg(Context activity,ImageView imageView,int resid){
+    public boolean setGifBg(Context activity, ImageView imageView, int resid) {
         Glide.with(activity).load(resid).asGif().into(imageView);
         return false;
     }
 
 
-    public Bitmap getBitmap(Context activity,int resId){
+    public Bitmap getBitmap(Context activity, int resId) {
         return BitmapFactory.decodeResource(activity.getResources(), resId);
     }
 

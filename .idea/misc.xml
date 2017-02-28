@@ -43,4 +43,24 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
+  <component name="SvnBranchConfigurationManager">
+    <option name="myConfigurationMap">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://192.168.1.44/svn/NurseApp/android/App/branches" />
+                  <option value="https://192.168.1.44/svn/NurseApp/android/App/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://192.168.1.44/svn/NurseApp/android/App/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="mySupportsUserInfoFilter" value="true" />
+  </component>
 </project>

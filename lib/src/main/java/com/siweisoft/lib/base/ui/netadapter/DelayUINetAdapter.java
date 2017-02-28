@@ -11,13 +11,14 @@ import com.siweisoft.lib.util.LoadUtil;
 /**
  * Created by ${viwmox} on 2016-12-02.
  */
-public abstract class DelayUINetAdapter extends UINetAdapter{
+public abstract class DelayUINetAdapter extends UINetAdapter {
 
 
     private int delay = 500;
 
     Handler handler = new Handler();
-    public DelayUINetAdapter(Context context,int delay) {
+
+    public DelayUINetAdapter(Context context, int delay) {
         super(context);
     }
 
@@ -27,26 +28,26 @@ public abstract class DelayUINetAdapter extends UINetAdapter{
 
 
     @Override
-    public void onNetWorkReqFinish(boolean haveData,String url, final BaseResBean baseResBean) {
-        if(!haveData){
+    public void onNetWorkReqFinish(boolean haveData, String url, final BaseResBean baseResBean) {
+        if (!haveData) {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    onNetWorkResult(false,baseResBean);
+                    onNetWorkResult(false, baseResBean);
                     LoadUtil.getInstance().onStopLoading(tag);
                 }
             }, delay);
-        }else{
-            if(baseResBean.isException()){
+        } else {
+            if (baseResBean.isException()) {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        onNetWorkResult(false,baseResBean);
+                        onNetWorkResult(false, baseResBean);
                         LoadUtil.getInstance().onStopLoading(tag);
                     }
                 }, delay);
-            }else{
-                if(baseResBean.getData()==null){
+            } else {
+                if (baseResBean.getData() == null) {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
@@ -54,7 +55,7 @@ public abstract class DelayUINetAdapter extends UINetAdapter{
                             LoadUtil.getInstance().onStopLoading(tag);
                         }
                     }, delay);
-                }else{
+                } else {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {

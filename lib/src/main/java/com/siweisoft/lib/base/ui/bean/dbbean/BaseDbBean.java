@@ -7,13 +7,13 @@ import java.io.Serializable;
 /**
  * Created by ${viwmox} on 2016-05-19.
  */
-public class BaseDbBean implements Serializable{
+public class BaseDbBean implements Serializable {
 
 
     public static final String ID = "id";
 
 
-    @DatabaseField(generatedId = true )
+    @DatabaseField(generatedId = true)
     private long id;
 
 

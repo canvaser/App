@@ -11,24 +11,23 @@ import java.util.Iterator;
 /**
  * 用于一些跟应用程序生命周期一致的处理
  */
-public class LibAplication extends Application{
+public class LibAplication extends Application {
 
-    HashMap<String,Activity> activityHashMap =new HashMap<>();
+    HashMap<String, Activity> activityHashMap = new HashMap<>();
 
     ArrayList<Activity> activities = new ArrayList<>();
 
     /**
      * 退出结束所有界面
      */
-    public void exit(){
+    public void exit() {
         Iterator iterator = activityHashMap.keySet().iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             activityHashMap.get(iterator.next()).finish();
         }
         activityHashMap.clear();
         System.gc();
     }
-
 
 
     public HashMap<String, Activity> getActivityHashMap() {

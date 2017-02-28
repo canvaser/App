@@ -5,7 +5,7 @@ import com.siweisoft.lib.view.charting.utils.ViewPortHandler;
 
 /**
  * Abstract baseclass of all Renderers.
- * 
+ *
  * @author Philipp Jahoda
  */
 public abstract class Renderer {

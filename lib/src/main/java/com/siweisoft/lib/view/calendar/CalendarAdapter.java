@@ -20,15 +20,15 @@ public class CalendarAdapter extends AppBasePagerAdapter {
 
     ArrayList<CalendarUIFragment> calendarFragments = new ArrayList<>();
 
-    public CalendarAdapter(FragmentManager fm, Context context,Bundle bundle) {
+    public CalendarAdapter(FragmentManager fm, Context context, Bundle bundle) {
         super(fm, context);
         this.bundle = bundle;
 
-        for(int i=0;i<getCount();i++){
+        for (int i = 0; i < getCount(); i++) {
             CalendarUIFragment calendarFragment = new CalendarUIFragment();
             Bundle bundle1 = new Bundle();
-            bundle1.putInt("year",bundle.getInt("year"));
-            bundle1.putInt("month",i+1);
+            bundle1.putInt("year", bundle.getInt("year"));
+            bundle1.putInt("month", i + 1);
             calendarFragment.setArguments(bundle1);
             calendarFragments.add(calendarFragment);
         }

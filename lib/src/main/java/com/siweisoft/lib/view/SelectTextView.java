@@ -10,7 +10,7 @@ import com.siweisoft.lib.R;
 /**
  * Created by ${viwmox} on 2016-10-18.
  */
-public class SelectTextView extends TextView{
+public class SelectTextView extends TextView {
 
 
     public SelectTextView(Context context, AttributeSet attrs) {
@@ -20,16 +20,16 @@ public class SelectTextView extends TextView{
     @Override
     public void setSelected(boolean selected) {
         super.setSelected(selected);
-        if(selected){
+        if (selected) {
             setTextColor(getResources().getColor(R.color.red));
-        }else{
+        } else {
             setTextColor(getResources().getColor(R.color.white));
         }
-        if(getParent()!=null){
+        if (getParent() != null) {
             ViewGroup group = (ViewGroup) getParent();
-            if(group.isSelected()){
+            if (group.isSelected()) {
                 setTextColor(getResources().getColor(R.color.red));
-            }else{
+            } else {
                 setTextColor(getResources().getColor(R.color.white));
             }
         }

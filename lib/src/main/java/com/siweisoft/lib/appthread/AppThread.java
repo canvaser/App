@@ -6,7 +6,7 @@ import com.siweisoft.lib.base.ui.interf.OnNetFinishWithObjInter;
 /**
  * Created by ${viwmox} on 2016-07-22.
  */
-public class AppThread extends Thread{
+public class AppThread extends Thread {
 
     private static AppThread instance;
 
@@ -20,22 +20,21 @@ public class AppThread extends Thread{
 
     int count = 0;
 
-    private AppThread(){
+    private AppThread() {
 
     }
 
-    public static AppThread  getInstance(OnNetFinishWithObjInter o){
-        AppThread.o=o;
-        if(instance==null){
+    public static AppThread getInstance(OnNetFinishWithObjInter o) {
+        AppThread.o = o;
+        if (instance == null) {
             instance = new AppThread();
         }
         return instance;
     }
 
 
-
-    public AppThread init(){
-        stop= false;
+    public AppThread init() {
+        stop = false;
         pause = false;
         count = 0;
         return instance;
@@ -44,8 +43,8 @@ public class AppThread extends Thread{
     @Override
     public void run() {
         super.run();
-        while(!stop){
-            if(!pause){
+        while (!stop) {
+            if (!pause) {
                 doThing(count);
                 try {
                     Thread.sleep(sleepTime);
@@ -57,9 +56,9 @@ public class AppThread extends Thread{
         }
     }
 
-    public void doThing(int count){
-        if(o!=null){
-           o.onNetFinish(count);
+    public void doThing(int count) {
+        if (o != null) {
+            o.onNetFinish(count);
         }
     }
 }

@@ -11,17 +11,17 @@ import com.siweisoft.lib.base.ui.bean.dbbean.BaseDbBean;
 public class NetCacheDBBean extends BaseDbBean {
 
 
-    public static final String USERNAME ="USERNAME";
-    @DatabaseField(columnName =USERNAME )
+    public static final String USERNAME = "USERNAME";
+    @DatabaseField(columnName = USERNAME)
     private String userName;
 
 
-    public static final String REQ ="REQ";
-    @DatabaseField(columnName =REQ )
+    public static final String REQ = "REQ";
+    @DatabaseField(columnName = REQ)
     private String req;
 
-    public static final String URL ="URL";
-    @DatabaseField(columnName =URL )
+    public static final String URL = "URL";
+    @DatabaseField(columnName = URL)
     private String url;
 
     public String getReq() {

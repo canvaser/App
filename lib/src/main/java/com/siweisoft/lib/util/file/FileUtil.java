@@ -28,33 +28,33 @@ public class FileUtil {
 
     public static FileUtil instance;
 
-    public static FileUtil getInstance(){
-        if(instance == null){
+    public static FileUtil getInstance() {
+        if (instance == null) {
             instance = new FileUtil();
         }
         return instance;
     }
 
-    public void openFile(FragmentActivity activity, int reqcode){
+    public void openFile(FragmentActivity activity, int reqcode) {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_GET_CONTENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("text/plain");
-        activity.startActivityForResult(intent,reqcode);
+        activity.startActivityForResult(intent, reqcode);
     }
 
-    public void getTxt(final FragmentActivity activity, final Uri uri, final OnNetFinishWithObjInter o)  {
+    public void getTxt(final FragmentActivity activity, final Uri uri, final OnNetFinishWithObjInter o) {
 
-        final ArrayList<String> strings =new ArrayList<>();
+        final ArrayList<String> strings = new ArrayList<>();
         new AsyncTask<String, String, ArrayList<String>>() {
             @Override
             protected ArrayList<String> doInBackground(String... params) {
                 try {
-                    InputStream inputStream  = activity.getContentResolver().openInputStream(uri);
-                    InputStreamReader inputStreamReader =new InputStreamReader(inputStream,"UTF-8");
+                    InputStream inputStream = activity.getContentResolver().openInputStream(uri);
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
                     BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
                     String line = bufferedReader.readLine();
-                    while(line!=null){
+                    while (line != null) {
                         strings.add(line);
                         line = bufferedReader.readLine();
                     }
@@ -68,7 +68,7 @@ public class FileUtil {
 
             @Override
             protected void onPostExecute(ArrayList<String> strings) {
-                if(o!=null){
+                if (o != null) {
                     o.onNetFinish(strings);
                 }
             }
@@ -79,7 +79,7 @@ public class FileUtil {
     /**
      * 文本文件转换为指定编码的字符串
      *
-     * @param file         文本文件
+     * @param file     文本文件
      * @param encoding 编码类型
      * @return 转换后的字符串
      * @throws IOException
@@ -119,7 +119,7 @@ public class FileUtil {
     /**
      * 将字符串写入指定文件(当指定的父路径中文件夹不存在时，会最大限度去创建，以保证保存成功！)
      *
-     * @param res            原字符串
+     * @param res      原字符串
      * @param filePath 文件路径
      * @return 成功标记
      */

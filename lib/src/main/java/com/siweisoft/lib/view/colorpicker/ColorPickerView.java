@@ -538,7 +538,7 @@ public class ColorPickerView extends View {
         if (update) {
 
             if (mListener != null) {
-                mListener.onColorChanged(Color.HSVToColor(mAlpha, new float[]{mHue, mSat, mVal}),new float[]{mAlpha,mHue, mSat, mVal});
+                mListener.onColorChanged(Color.HSVToColor(mAlpha, new float[]{mHue, mSat, mVal}), new float[]{mAlpha, mHue, mSat, mVal});
             }
 
             invalidate();
@@ -583,7 +583,7 @@ public class ColorPickerView extends View {
         if (update) {
 
             if (mListener != null) {
-                mListener.onColorChanged(Color.HSVToColor(mAlpha, new float[]{mHue, mSat, mVal}),new float[]{mAlpha,mHue, mSat, mVal});
+                mListener.onColorChanged(Color.HSVToColor(mAlpha, new float[]{mHue, mSat, mVal}), new float[]{mAlpha, mHue, mSat, mVal});
             }
 
             invalidate();
@@ -849,7 +849,7 @@ public class ColorPickerView extends View {
         mVal = hsv[2];
 
         if (callback && mListener != null) {
-            mListener.onColorChanged(Color.HSVToColor(mAlpha, new float[]{mHue, mSat, mVal}),new float[]{mAlpha,mHue, mSat, mVal});
+            mListener.onColorChanged(Color.HSVToColor(mAlpha, new float[]{mHue, mSat, mVal}), new float[]{mAlpha, mHue, mSat, mVal});
         }
 
         invalidate();

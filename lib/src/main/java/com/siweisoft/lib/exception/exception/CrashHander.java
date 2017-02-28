@@ -25,43 +25,42 @@ public class CrashHander implements Thread.UncaughtExceptionHandler {
 
     Thread.UncaughtExceptionHandler uncaughtExceptionHandler;
 
-    public static CrashHander getInstance(){
-        if(instance==null){
+    public static CrashHander getInstance() {
+        if (instance == null) {
             instance = new CrashHander();
         }
         return instance;
     }
 
-    public void init(Context context){
+    public void init(Context context) {
         this.context = context;
         uncaughtExceptionHandler = Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler(this);
     }
 
 
-
     @Override
     public void uncaughtException(final Thread thread, final Throwable ex) {
-        if(true){
+        if (true) {
             showException();
         }
         if (true) {
             String result = print(ex);
-            saveInfo(ex,result);
+            saveInfo(ex, result);
         }
-        if(true){
+        if (true) {
             try {
                 Thread.sleep(2000);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             uncaughtExceptionHandler.uncaughtException(thread, ex);
-            restart(thread,ex);
+            restart(thread, ex);
         }
     }
 
-    private void restart(final Thread thread, final Throwable ex){
-        LibAplication libAplication =null;
+    private void restart(final Thread thread, final Throwable ex) {
+        LibAplication libAplication = null;
         if (context instanceof BaseActivity) {
             BaseActivity activity = (BaseActivity) context;
             libAplication = (LibAplication) activity.getApplication();
@@ -77,7 +76,7 @@ public class CrashHander implements Thread.UncaughtExceptionHandler {
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 
-    private String print(Throwable ex){
+    private String print(Throwable ex) {
         //如果用户没有处理则让系统默认的异常处理器来处理
         Writer writer = new StringWriter();
         PrintWriter printWriter = new PrintWriter(writer);
@@ -93,7 +92,7 @@ public class CrashHander implements Thread.UncaughtExceptionHandler {
         return result;
     }
 
-    public void saveInfo(Throwable ex,String result){
+    public void saveInfo(Throwable ex, String result) {
 
     }
 

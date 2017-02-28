@@ -90,7 +90,7 @@ public class CombinedChart extends BarLineChartBase<CombinedData> implements Com
     public void setData(CombinedData data) {
         super.setData(data);
         setHighlighter(new CombinedHighlighter(this, this));
-        ((CombinedChartRenderer)mRenderer).createRenderers();
+        ((CombinedChartRenderer) mRenderer).createRenderers();
         mRenderer.initBuffers();
     }
 

@@ -247,7 +247,7 @@ public class Legend extends ComponentBase {
         for (LegendEntry entry : mEntries) {
             final float formSize = Utils.convertDpToPixel(
                     Float.isNaN(entry.formSize)
-                    ? mFormSize : entry.formSize);
+                            ? mFormSize : entry.formSize);
             if (formSize > maxFormSize)
                 maxFormSize = formSize;
 
@@ -352,9 +352,9 @@ public class Legend extends ComponentBase {
 
     /**
      * Entries that will be appended to the end of the auto calculated
-     *   entries after calculating the legend.
+     * entries after calculating the legend.
      * (if the legend has already been calculated, you will need to call notifyDataSetChanged()
-     *   to let the changes take effect)
+     * to let the changes take effect)
      */
     public void setExtra(int[] colors, String[] labels) {
 
@@ -381,9 +381,9 @@ public class Legend extends ComponentBase {
      * Sets a custom legend's entries array.
      * * A null label will start a group.
      * This will disable the feature that automatically calculates the legend
-     *   entries from the datasets.
+     * entries from the datasets.
      * Call resetCustom() to re-enable automatic calculation (and then
-     *   notifyDataSetChanged() is needed to auto-calculate the legend again)
+     * notifyDataSetChanged() is needed to auto-calculate the legend again)
      */
     public void setCustom(LegendEntry[] entries) {
 
@@ -395,9 +395,9 @@ public class Legend extends ComponentBase {
      * Sets a custom legend's entries array.
      * * A null label will start a group.
      * This will disable the feature that automatically calculates the legend
-     *   entries from the datasets.
+     * entries from the datasets.
      * Call resetCustom() to re-enable automatic calculation (and then
-     *   notifyDataSetChanged() is needed to auto-calculate the legend again)
+     * notifyDataSetChanged() is needed to auto-calculate the legend again)
      */
     public void setCustom(List<LegendEntry> entries) {
 

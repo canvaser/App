@@ -141,13 +141,20 @@ public class ScatterDataSet extends LineScatterCandleRadarDataSet<Entry> impleme
     public static IShapeRenderer getRendererForShape(ScatterChart.ScatterShape shape) {
 
         switch (shape) {
-            case SQUARE: return new SquareShapeRenderer();
-            case CIRCLE: return new CircleShapeRenderer();
-            case TRIANGLE: return new TriangleShapeRenderer();
-            case CROSS: return new CrossShapeRenderer();
-            case X: return new XShapeRenderer();
-            case CHEVRON_UP: return new ChevronUpShapeRenderer();
-            case CHEVRON_DOWN: return new ChevronDownShapeRenderer();
+            case SQUARE:
+                return new SquareShapeRenderer();
+            case CIRCLE:
+                return new CircleShapeRenderer();
+            case TRIANGLE:
+                return new TriangleShapeRenderer();
+            case CROSS:
+                return new CrossShapeRenderer();
+            case X:
+                return new XShapeRenderer();
+            case CHEVRON_UP:
+                return new ChevronUpShapeRenderer();
+            case CHEVRON_DOWN:
+                return new ChevronDownShapeRenderer();
         }
 
         return null;

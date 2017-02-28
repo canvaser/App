@@ -239,7 +239,7 @@ public class LineChartActivity extends ActionBarActivity {
                 line.setHasLabelsOnlyForSelected(hasLabelForSelected);
                 line.setHasLines(hasLines);
                 line.setHasPoints(hasPoints);
-                if (pointsHaveDifferentColor){
+                if (pointsHaveDifferentColor) {
                     line.setPointColor(ChartUtils.COLORS[(i + 1) % ChartUtils.COLORS.length]);
                 }
                 lines.add(line);

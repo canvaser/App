@@ -19,26 +19,22 @@ public class LoadUtil {
     private static LoadUtil instance;
 
 
-
-
-
-
     ArrayList<MyDialog> dialogs = new ArrayList<>();
 
-    public static LoadUtil getInstance(){
-        if(instance==null){
-            instance=new LoadUtil();
+    public static LoadUtil getInstance() {
+        if (instance == null) {
+            instance = new LoadUtil();
         }
         return instance;
     }
 
-    public void onStartLoading(Context activity,String tag){
+    public void onStartLoading(Context activity, String tag) {
         MyDialog dialog = new MyDialog(activity, R.style.swdialog);
         dialogs.add(dialog);
         dialog.setTag(tag);
         dialog.show();
         dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
-        dialog.getWindow().getAttributes().alpha=1;
+        dialog.getWindow().getAttributes().alpha = 1;
         dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         dialog.setContentView(R.layout.dialog_loading);
         AVLoadingIndicatorView imageView;
@@ -50,16 +46,16 @@ public class LoadUtil {
     }
 
 
-    public void onStopLoading(String tag){
-        for(int i=0;i<dialogs.size();i++){
-            if(dialogs.get(i)!=null && dialogs.get(i).getTag()!=null && dialogs.get(i).getTag().equals(tag)){
+    public void onStopLoading(String tag) {
+        for (int i = 0; i < dialogs.size(); i++) {
+            if (dialogs.get(i) != null && dialogs.get(i).getTag() != null && dialogs.get(i).getTag().equals(tag)) {
                 dialogs.get(i).dismiss();
                 dialogs.get(i).cancel();
             }
         }
     }
 
-    public class  MyDialog extends Dialog{
+    public class MyDialog extends Dialog {
 
         private String tag;
 
@@ -85,7 +81,7 @@ public class LoadUtil {
     }
 
 
-    private static final String[] INDICATORS=new String[]{
+    private static final String[] INDICATORS = new String[]{
             "BallPulseIndicator",
             "BallGridPulseIndicator",
             "BallClipRotateIndicator",

@@ -11,14 +11,14 @@ import android.widget.ScrollView;
 /**
  * Created by ${viwmox} on 2016-11-11.
  */
-public class NurseScrollView extends ScrollView{
+public class NurseScrollView extends ScrollView {
 
 
-    public interface  OnScrollChangedListener{
+    public interface OnScrollChangedListener {
         public void onScrollChanged(int l, int t, int oldl, int oldt);
     }
 
-    OnScrollChangedListener  onScrollChangedListener;
+    OnScrollChangedListener onScrollChangedListener;
 
     public NurseScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -31,8 +31,8 @@ public class NurseScrollView extends ScrollView{
     @Override
     protected void onScrollChanged(int l, int t, int oldl, int oldt) {
         super.onScrollChanged(l, t, oldl, oldt);
-        if(onScrollChangedListener!=null){
-            onScrollChangedListener.onScrollChanged(l,t,oldl,oldt);
+        if (onScrollChangedListener != null) {
+            onScrollChangedListener.onScrollChanged(l, t, oldl, oldt);
         }
     }
 

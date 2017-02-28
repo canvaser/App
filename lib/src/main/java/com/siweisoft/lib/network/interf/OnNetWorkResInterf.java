@@ -6,7 +6,7 @@ import com.siweisoft.lib.network.bean.res.BaseResBean;
 /**
  * Created by ${viwmox} on 2016-05-16.
  */
-public interface OnNetWorkResInterf <T>{
+public interface OnNetWorkResInterf<T> {
     /**
      * 网络无连接
      */
@@ -24,10 +24,14 @@ public interface OnNetWorkResInterf <T>{
      */
     int ERROR_TYPE_NOTSUCCESS = 2;
 
-    /**正在发起网络请求*/
+    /**
+     * 正在发起网络请求
+     */
     boolean onNetWorkReqStart();
 
-    /**网络请求获取数据成功*/
+    /**
+     * 网络请求获取数据成功
+     */
     void onNetWorkFail(BaseResBean resBean);
 
     void onNetWorkResSuccess(T resBean);

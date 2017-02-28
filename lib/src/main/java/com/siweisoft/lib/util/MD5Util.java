@@ -9,15 +9,15 @@ import java.security.NoSuchAlgorithmException;
 */
 public class MD5Util {
 
-    private static  MD5Util instance;
-    
+    private static MD5Util instance;
+
 
     private MD5Util() {
     }
 
-    public static MD5Util getInstance(){
-        if(instance==null){
-            instance=new MD5Util();
+    public static MD5Util getInstance() {
+        if (instance == null) {
+            instance = new MD5Util();
         }
         return instance;
     }

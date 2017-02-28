@@ -7,7 +7,7 @@ import android.widget.ScrollView;
 /**
  * Created by SWSD on 2016-04-19.
  */
-public class AppScrollView extends ScrollView{
+public class AppScrollView extends ScrollView {
     public AppScrollView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }

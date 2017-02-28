@@ -17,8 +17,7 @@ import java.text.DecimalFormat;
  * @author Philipp Jahoda
  * @author Oleksandr Tyshkovets <olexandr.tyshkovets@gmail.com>
  */
-public class LargeValueFormatter implements IValueFormatter, IAxisValueFormatter
-{
+public class LargeValueFormatter implements IValueFormatter, IAxisValueFormatter {
 
     private static String[] SUFFIX = new String[]{
             "", "k", "m", "b", "t"

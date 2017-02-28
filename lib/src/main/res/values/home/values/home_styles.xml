@@ -1,7 +1,6 @@
 <resources>
 
 
-
     <style name="popanimstyle" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/anim_scale_in</item>
         <item name="android:windowExitAnimation">@anim/anim_scale_out</item>

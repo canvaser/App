@@ -21,15 +21,15 @@ public class NetCacheDBOpe extends BaseDBOpe<NetCacheDBBean> {
     }
 
 
-    public ArrayList<String> getReq(String name){
+    public ArrayList<String> getReq(String name) {
         QueryBuilder queryBuilder = daoOpe.queryBuilder();
         ArrayList<String> strings = new ArrayList<>();
-       Where where = queryBuilder.where();
+        Where where = queryBuilder.where();
         try {
-            where.eq(NetCacheDBBean.USERNAME,name);
+            where.eq(NetCacheDBBean.USERNAME, name);
 
             ArrayList<String> s = (ArrayList<String>) queryBuilder.query();
-            if(s!=null && s.size()!=0){
+            if (s != null && s.size() != 0) {
                 strings.addAll(s);
             }
         } catch (SQLException e) {
@@ -38,7 +38,7 @@ public class NetCacheDBOpe extends BaseDBOpe<NetCacheDBBean> {
         return strings;
     }
 
-    public void save(String username,String req,String url){
+    public void save(String username, String req, String url) {
         NetCacheDBBean netCacheDBBean = new NetCacheDBBean();
         netCacheDBBean.setReq(req);
         netCacheDBBean.setUserName(username);

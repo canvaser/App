@@ -7,26 +7,26 @@ import android.util.Log;
  */
 public class LogUtil {
 
-    private static LogUtil instance=new LogUtil();
+    private static LogUtil instance = new LogUtil();
 
-    public static boolean CAN_LOGIN=true;
+    public static boolean CAN_LOGIN = true;
 
-    public static void E(Object o){
-        if(!CAN_LOGIN){
+    public static void E(Object o) {
+        if (!CAN_LOGIN) {
             return;
         }
-        Log.e("LogUtil",o+"");
+        Log.e("LogUtil", o + "");
     }
 
-    public static void E(Object tag,Object o){
-        if(!CAN_LOGIN){
+    public static void E(Object tag, Object o) {
+        if (!CAN_LOGIN) {
             return;
         }
-        Log.e("LogUtil:"+tag,"LogUtil:"+o);
+        Log.e("LogUtil:" + tag, "LogUtil:" + o);
     }
 
-    public static void init(){
-        CAN_LOGIN=true;
+    public static void init() {
+        CAN_LOGIN = true;
     }
 
 }

@@ -12,8 +12,7 @@ import java.text.DecimalFormat;
  *
  * @author Philipp Jahoda
  */
-public class DefaultValueFormatter implements IValueFormatter
-{
+public class DefaultValueFormatter implements IValueFormatter {
 
     /**
      * DecimalFormat for formatting

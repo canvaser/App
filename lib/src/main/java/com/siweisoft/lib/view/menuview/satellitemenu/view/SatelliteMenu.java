@@ -20,7 +20,7 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-11-07.
  */
-public class SatelliteMenu extends RelativeLayout implements View.OnClickListener{
+public class SatelliteMenu extends RelativeLayout implements View.OnClickListener {
 
     Context context;
 
@@ -48,51 +48,51 @@ public class SatelliteMenu extends RelativeLayout implements View.OnClickListene
 
     public SatelliteMenu(Context context) {
         super(context);
-        init(context,null);
+        init(context, null);
     }
 
     public SatelliteMenu(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context,attrs);
+        init(context, attrs);
     }
 
-    private void init(Context context, AttributeSet attrs){
+    private void init(Context context, AttributeSet attrs) {
         this.context = context;
-        RelativeLayout relativeLayout = (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.layout_satellite_menu,null);
-        addView(relativeLayout,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        RelativeLayout relativeLayout = (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.layout_satellite_menu, null);
+        addView(relativeLayout, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         menuIv = (ImageView) relativeLayout.findViewById(R.id.iv_menu);
         rootRL = (RelativeLayout) relativeLayout.findViewById(R.id.rl_root);
         menuIv.setOnClickListener(this);
 
-        w=h= ValueConstant.DIMEN_1*200;
+        w = h = ValueConstant.DIMEN_1 * 200;
     }
 
-    public void addItem(int[] drawable){
-        float degree =  90f/drawable.length+1;
-        for(int i=0;i<drawable.length;i++){
-            View view = LayoutInflater.from(context).inflate(R.layout.item_satellite_image,null);
+    public void addItem(int[] drawable) {
+        float degree = 90f / drawable.length + 1;
+        for (int i = 0; i < drawable.length; i++) {
+            View view = LayoutInflater.from(context).inflate(R.layout.item_satellite_image, null);
             ImageView imageView = (ImageView) view.findViewById(R.id.iv_menu_item);
             imageView.setImageResource(drawable[i]);
-            LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-            params.leftMargin= w-45*ValueConstant.DIMEN_1;
-            params.topMargin= w-45*ValueConstant.DIMEN_1;
-            rootRL.addView(view,params);
+            LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            params.leftMargin = w - 45 * ValueConstant.DIMEN_1;
+            params.topMargin = w - 45 * ValueConstant.DIMEN_1;
+            rootRL.addView(view, params);
             view.setVisibility(View.GONE);
             itemViews.add(view);
-            float rad = (float) Math.toRadians(degree*i);
-            satelliteBeen.add(new SatelliteBean(0,0,(int)Math.cos(rad),(int)Math.sin(rad)));
+            float rad = (float) Math.toRadians(degree * i);
+            satelliteBeen.add(new SatelliteBean(0, 0, (int) Math.cos(rad), (int) Math.sin(rad)));
         }
     }
 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R2.id.iv_menu:
-                switch (STATE){
+                switch (STATE) {
                     case STATE_CLOSE:
 
-                        for(int i=0;i<itemViews.size();i++){
+                        for (int i = 0; i < itemViews.size(); i++) {
                             final int finalI = i;
                             itemViews.get(finalI).setVisibility(View.VISIBLE);
                             AnimUtil.getInstance().animXY(v, satelliteBeen.get(i).getEndx(), 0, satelliteBeen.get(i).getEndy(), 0, new OnFinishListener() {
@@ -106,7 +106,7 @@ public class SatelliteMenu extends RelativeLayout implements View.OnClickListene
                         STATE = STATE_RUN;
                         break;
                     case STATE_OPEN:
-                        for(int i=0;i<itemViews.size();i++){
+                        for (int i = 0; i < itemViews.size(); i++) {
                             final int finalI = i;
                             itemViews.get(finalI).setVisibility(View.VISIBLE);
                             AnimUtil.getInstance().animXY(v, 0, satelliteBeen.get(i).getEndx(), 0, satelliteBeen.get(i).getEndy(), new OnFinishListener() {

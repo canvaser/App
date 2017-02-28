@@ -11,15 +11,15 @@ import java.util.Calendar;
 public class TimePickUtil {
     private static TimePickUtil instance;
 
-    public static TimePickUtil getInstance(){
-        if(instance == null){
+    public static TimePickUtil getInstance() {
+        if (instance == null) {
             instance = new TimePickUtil();
         }
         return instance;
     }
 
-    public void showTimePickDialog(Context context,TimePickerDialog.OnTimeSetListener listener){
-        TimePickerDialog timePickerDialog =new TimePickerDialog(context, listener, Calendar.getInstance().get(Calendar.HOUR_OF_DAY),Calendar.getInstance().get(Calendar.MINUTE),true);
+    public void showTimePickDialog(Context context, TimePickerDialog.OnTimeSetListener listener) {
+        TimePickerDialog timePickerDialog = new TimePickerDialog(context, listener, Calendar.getInstance().get(Calendar.HOUR_OF_DAY), Calendar.getInstance().get(Calendar.MINUTE), true);
         timePickerDialog.show();
     }
 }

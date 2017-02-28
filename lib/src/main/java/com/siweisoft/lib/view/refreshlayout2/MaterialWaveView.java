@@ -97,7 +97,7 @@ public class MaterialWaveView extends View implements MaterialHeadListener {
     @Override
     public void onComlete(MaterialRefreshLayout br) {
         waveHeight = 0;
-        ValueAnimator animator =ValueAnimator.ofInt(headHeight,0);
+        ValueAnimator animator = ValueAnimator.ofInt(headHeight, 0);
         animator.setDuration(200);
         animator.setInterpolator(new DecelerateInterpolator());
         animator.start();
@@ -131,7 +131,7 @@ public class MaterialWaveView extends View implements MaterialHeadListener {
     @Override
     public void onRefreshing(MaterialRefreshLayout br) {
         setHeadHeight((int) (Util.dip2px(getContext(), DefaulHeadHeight)));
-        ValueAnimator animator = ValueAnimator.ofInt(getWaveHeight(),0);
+        ValueAnimator animator = ValueAnimator.ofInt(getWaveHeight(), 0);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
@@ -144,7 +144,6 @@ public class MaterialWaveView extends View implements MaterialHeadListener {
         animator.setDuration(200);
         animator.start();
     }
-
 
 
 }

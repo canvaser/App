@@ -12,28 +12,28 @@ public class MemoryUtil {
 
     private static MemoryUtil instance;
 
-    public static MemoryUtil getInstance(){
-        if(instance==null){
+    public static MemoryUtil getInstance() {
+        if (instance == null) {
             instance = new MemoryUtil();
         }
         return instance;
     }
 
-    public void clear(Context context){
-        ActivityManager am = (ActivityManager)context.getSystemService(Context.ACTIVITY_SERVICE);
+    public void clear(Context context) {
+        ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
         getAvailMemory(context);
         List<ActivityManager.RunningAppProcessInfo> infoList = am.getRunningAppProcesses();
-        for(int i=0;i<infoList.size();i++){
-            ActivityManager.RunningAppProcessInfo runningAppProcessInfo =infoList.get(i);
-            if(true ){
+        for (int i = 0; i < infoList.size(); i++) {
+            ActivityManager.RunningAppProcessInfo runningAppProcessInfo = infoList.get(i);
+            if (true) {
                 String[] pkgList = runningAppProcessInfo.pkgList;
-                for(int j=0;j<pkgList.length;j++){
+                for (int j = 0; j < pkgList.length; j++) {
                     am.killBackgroundProcesses(pkgList[j]);
                     LogUtil.E(pkgList[j]);
                 }
             }
         }
-        List<ActivityManager.RunningServiceInfo> runningServiceInfos =am.getRunningServices(100);
+        List<ActivityManager.RunningServiceInfo> runningServiceInfos = am.getRunningServices(100);
         getAvailMemory(context);
     }
 

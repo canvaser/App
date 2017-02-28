@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 /**
  * Created by ${viwmox} on 2016-11-10.
  */
-public class TitleView extends RelativeLayout{
+public class TitleView extends RelativeLayout {
     TextView textView;
 
     public TitleView(Context context) {
@@ -31,10 +31,10 @@ public class TitleView extends RelativeLayout{
         init(context, attrs);
     }
 
-    private void init(Context context, AttributeSet attrs){
-        View view = LayoutInflater.from(context).inflate(R.layout.layout_title,null);
-        addView(view,new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        ButterKnife.bind(this,this);
+    private void init(Context context, AttributeSet attrs) {
+        View view = LayoutInflater.from(context).inflate(R.layout.layout_title, null);
+        addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        ButterKnife.bind(this, this);
         textView = (TextView) findViewById(R.id.tvt_title);
 
     }

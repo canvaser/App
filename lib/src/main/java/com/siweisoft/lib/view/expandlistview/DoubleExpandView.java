@@ -10,7 +10,7 @@ import android.widget.ExpandableListView;
 /**
  * Created by ${viwmox} on 2016-11-09.
  */
-public class DoubleExpandView extends ExpandableListView{
+public class DoubleExpandView extends ExpandableListView {
 
     public DoubleExpandView(Context context) {
         super(context);
@@ -29,7 +29,7 @@ public class DoubleExpandView extends ExpandableListView{
     @Override
     protected void dispatchDraw(Canvas canvas) {
         super.dispatchDraw(canvas);
-        canvas.clipRect(0,0,getWidth(),100);
+        canvas.clipRect(0, 0, getWidth(), 100);
         canvas.drawColor(Color.RED);
 
     }

@@ -6,11 +6,11 @@ import com.siweisoft.lib.constant.ValueConstant;
 /**
  * Created by ${viwmox} on 2016-11-28.
  */
-public class YV extends ChartItemBean{
+public class YV extends ChartItemBean {
 
-    private int ply= ValueConstant.DIMEN_1*3;
+    private int ply = ValueConstant.DIMEN_1 * 3;
 
-    private int radous= ValueConstant.DIMEN_1*5;
+    private int radous = ValueConstant.DIMEN_1 * 5;
 
     public int getPly() {
         return ply;

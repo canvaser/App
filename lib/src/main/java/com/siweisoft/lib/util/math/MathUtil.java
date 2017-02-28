@@ -6,12 +6,12 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-11-28.
  */
-public class MathUtil implements Serializable{
+public class MathUtil implements Serializable {
 
-    public static float max(ArrayList<Float> values){
-        float max=values.get(0);
-        for(int i=0;i<values.size();i++){
-            if(values.get(i)>max){
+    public static float max(ArrayList<Float> values) {
+        float max = values.get(0);
+        for (int i = 0; i < values.size(); i++) {
+            if (values.get(i) > max) {
                 max = values.get(i);
             }
         }
@@ -19,10 +19,10 @@ public class MathUtil implements Serializable{
     }
 
 
-    public static float min(ArrayList<Float> values){
-        float min=values.get(0);
-        for(int i=0;i<values.size();i++){
-            if(values.get(i)<min){
+    public static float min(ArrayList<Float> values) {
+        float min = values.get(0);
+        for (int i = 0; i < values.size(); i++) {
+            if (values.get(i) < min) {
                 min = values.get(i);
             }
         }

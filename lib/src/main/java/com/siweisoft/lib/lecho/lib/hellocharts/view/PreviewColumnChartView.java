@@ -16,7 +16,6 @@ import com.siweisoft.lib.lecho.lib.hellocharts.renderer.PreviewColumnChartRender
  * Preview chart that can be used as overview for other ColumnChart. When you change Viewport of this chart, visible
  * area of other chart will change. For that you need also to use
  *
- *
  * @author Leszek Wach
  */
 public class PreviewColumnChartView extends ColumnChartView {

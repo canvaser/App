@@ -71,6 +71,7 @@ public final class ViewfinderView extends View {
 
     /**
      * 初始化内部框的大小
+     *
      * @param context
      * @param attrs
      */

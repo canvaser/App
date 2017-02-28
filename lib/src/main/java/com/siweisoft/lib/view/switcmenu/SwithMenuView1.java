@@ -16,12 +16,12 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-11-07.
  */
-public class SwithMenuView1 extends LinearLayout implements View.OnClickListener{
+public class SwithMenuView1 extends LinearLayout implements View.OnClickListener {
 
 
     private Context context;
 
-    private ArrayList<ItemSwitchMenu> itemSwitchMenus=new ArrayList<>();
+    private ArrayList<ItemSwitchMenu> itemSwitchMenus = new ArrayList<>();
 
     private OnClickListener onClickListener;
 
@@ -47,19 +47,18 @@ public class SwithMenuView1 extends LinearLayout implements View.OnClickListener
         init();
     }
 
-    private void init(){
+    private void init() {
         ViewGroup viewGroup1 = (ViewGroup) LayoutInflater.from(context).inflate(R.layout.item_swith_menu, null);
         addView(viewGroup1, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         lineView = viewGroup1.findViewById(R.id.line);
         LinearLayout viewGroup = (LinearLayout) findViewById(R.id.menu_root);
-        for(int i=0;i<strings.size();i++){
-            View view = LayoutInflater.from(context).inflate(R.layout.item_swith_menu_txt,null);
-            viewGroup.addView(view,new LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT,1));
+        for (int i = 0; i < strings.size(); i++) {
+            View view = LayoutInflater.from(context).inflate(R.layout.item_swith_menu_txt, null);
+            viewGroup.addView(view, new LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1));
             TextView textView = (TextView) view.findViewById(R.id.text);
             textViews.add(textView);
             textView.setText(strings.get(i));
         }
-
 
 
     }
@@ -68,7 +67,7 @@ public class SwithMenuView1 extends LinearLayout implements View.OnClickListener
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         super.onLayout(changed, l, t, r, b);
         LayoutParams params = (LayoutParams) lineView.getLayoutParams();
-        params.width = getWidth()/strings.size();
+        params.width = getWidth() / strings.size();
         lineView.setTag(params.width);
         lineView.setLayoutParams(params);
     }
@@ -80,24 +79,24 @@ public class SwithMenuView1 extends LinearLayout implements View.OnClickListener
 
     public void setViewPager(final ViewPager viewPager) {
         this.viewPager = viewPager;
-        if(viewPager==null){
+        if (viewPager == null) {
             return;
         }
-        if(listener!=null){
+        if (listener != null) {
             viewPager.removeOnPageChangeListener(listener);
         }
-        listener= new ViewPager.OnPageChangeListener() {
+        listener = new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                lineView.setTranslationX(lineView.getWidth()*(position+positionOffset));
+                lineView.setTranslationX(lineView.getWidth() * (position + positionOffset));
             }
 
             @Override
             public void onPageSelected(int position) {
-                for(int i=0;i<textViews.size();i++){
-                    if(i==position){
+                for (int i = 0; i < textViews.size(); i++) {
+                    if (i == position) {
                         textViews.get(i).setTextColor(getResources().getColor(R.color.color_base));
-                    }else{
+                    } else {
                         textViews.get(i).setTextColor(getResources().getColor(R.color.black));
                     }
                 }
@@ -110,7 +109,7 @@ public class SwithMenuView1 extends LinearLayout implements View.OnClickListener
         };
         viewPager.addOnPageChangeListener(listener);
 
-        for(int i=0;i<textViews.size();i++){
+        for (int i = 0; i < textViews.size(); i++) {
             textViews.get(i).setTag(i);
             textViews.get(i).setOnClickListener(new OnClickListener() {
                 @Override

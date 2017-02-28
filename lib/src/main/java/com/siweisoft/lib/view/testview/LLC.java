@@ -11,7 +11,7 @@ import com.siweisoft.lib.util.LogUtil;
 /**
  * Created by ${viwmox} on 2016-11-25.
  */
-public class LLC extends LinearLayout{
+public class LLC extends LinearLayout {
 
 
     public LLC(Context context, AttributeSet attrs) {
@@ -19,18 +19,17 @@ public class LLC extends LinearLayout{
     }
 
 
-
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        switch (ev.getAction()){
+        switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                LogUtil.E(getClass().getSimpleName()+":dispatchTouchEvent--down");
+                LogUtil.E(getClass().getSimpleName() + ":dispatchTouchEvent--down");
                 break;
             case MotionEvent.ACTION_MOVE:
-                LogUtil.E(getClass().getSimpleName()+":dispatchTouchEvent--move");
+                LogUtil.E(getClass().getSimpleName() + ":dispatchTouchEvent--move");
                 break;
             case MotionEvent.ACTION_UP:
-                LogUtil.E(getClass().getSimpleName()+":dispatchTouchEvent--up");
+                LogUtil.E(getClass().getSimpleName() + ":dispatchTouchEvent--up");
                 break;
         }
         return super.dispatchTouchEvent(ev);
@@ -38,15 +37,15 @@ public class LLC extends LinearLayout{
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        switch (ev.getAction()){
+        switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                LogUtil.E(getClass().getSimpleName()+"--onInterceptTouchEvent--down");
+                LogUtil.E(getClass().getSimpleName() + "--onInterceptTouchEvent--down");
                 break;
             case MotionEvent.ACTION_MOVE:
-                LogUtil.E(getClass().getSimpleName()+"--onInterceptTouchEvent--move");
+                LogUtil.E(getClass().getSimpleName() + "--onInterceptTouchEvent--move");
                 break;
             case MotionEvent.ACTION_UP:
-                LogUtil.E(getClass().getSimpleName()+"--onInterceptTouchEvent--up");
+                LogUtil.E(getClass().getSimpleName() + "--onInterceptTouchEvent--up");
                 break;
         }
         return super.onInterceptTouchEvent(ev);

@@ -114,11 +114,11 @@ public class ComboLineColumnChartView extends AbstractChartView implements Combo
         }
     }
 
-    public void setColumnChartRenderer(Context context, ColumnChartRenderer columnChartRenderer){
-        setChartRenderer(new ComboLineColumnChartRenderer(context, this , columnChartRenderer, lineChartDataProvider));
+    public void setColumnChartRenderer(Context context, ColumnChartRenderer columnChartRenderer) {
+        setChartRenderer(new ComboLineColumnChartRenderer(context, this, columnChartRenderer, lineChartDataProvider));
     }
 
-    public void setLineChartRenderer(Context context, LineChartRenderer lineChartRenderer){
+    public void setLineChartRenderer(Context context, LineChartRenderer lineChartRenderer) {
         setChartRenderer(new ComboLineColumnChartRenderer(context, this, columnChartDataProvider, lineChartRenderer));
     }
 

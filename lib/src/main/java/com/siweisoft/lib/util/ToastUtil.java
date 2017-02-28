@@ -11,18 +11,18 @@ public class ToastUtil {
 
     private static ToastUtil instance;
 
-    public static ToastUtil getInstance(){
-        if(instance==null){
-            instance=new ToastUtil();
+    public static ToastUtil getInstance() {
+        if (instance == null) {
+            instance = new ToastUtil();
         }
         return instance;
     }
 
-    public void showSueess(Context context){
-        Toast.makeText(context,"操作成功",Toast.LENGTH_LONG).show();
+    public void showSueess(Context context) {
+        Toast.makeText(context, "操作成功", Toast.LENGTH_LONG).show();
     }
 
-    public void show(Context context,String msg){
+    public void show(Context context, String msg) {
         Toast.makeText(context, StringUtil.getStr(msg), Toast.LENGTH_SHORT).show();
     }
 
@@ -35,17 +35,17 @@ public class ToastUtil {
     }
 
 
-    public void showSueess(final Context context, Handler handler){
+    public void showSueess(final Context context, Handler handler) {
         handler.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(context,"操作成功",Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "操作成功", Toast.LENGTH_LONG).show();
             }
         });
 
     }
 
-    public void show(final Context context, final String msg, Handler handler){
+    public void show(final Context context, final String msg, Handler handler) {
         handler.post(new Runnable() {
             @Override
             public void run() {

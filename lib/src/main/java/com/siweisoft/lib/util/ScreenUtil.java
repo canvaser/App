@@ -31,27 +31,27 @@ public class ScreenUtil {
 
     public int[] getScreenSize(Context context) {
         int[] size = new int[]{context.getResources().getDisplayMetrics().widthPixels, context.getResources().getDisplayMetrics().heightPixels};
-        w= size[0];
-        h= size[1];
+        w = size[0];
+        h = size[1];
         mw = context.getResources().getDimension(R.dimen.dimen_1);
         return size;
     }
 
-    public void setFullScreen(Activity activity){
+    public void setFullScreen(Activity activity) {
         activity.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        activity.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
-    public int getIndex(int x,int y, int sx,int sy,int ex,int ey,int num){
-        if(y<sy ||y>ey|| x<sx||x>ex){
+    public int getIndex(int x, int y, int sx, int sy, int ex, int ey, int num) {
+        if (y < sy || y > ey || x < sx || x > ex) {
             return -1;
         }
-        return ((x-sx)*num)/(ex-sx);
+        return ((x - sx) * num) / (ex - sx);
 
     }
 
-    public float getStatusBarHeight(Activity activity){
-        sbh = ValueConstant.DIMEN_1*20;
+    public float getStatusBarHeight(Activity activity) {
+        sbh = ValueConstant.DIMEN_1 * 20;
         //获取status_bar_height资源的ID
         int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {

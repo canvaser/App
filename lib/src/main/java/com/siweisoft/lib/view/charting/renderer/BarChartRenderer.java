@@ -104,9 +104,9 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
             final float barWidthHalf = barWidth / 2.0f;
             float x;
 
-            for (int i = 0, count = Math.min((int)(Math.ceil((float)(dataSet.getEntryCount()) * phaseX)), dataSet.getEntryCount());
-                i < count;
-                i++) {
+            for (int i = 0, count = Math.min((int) (Math.ceil((float) (dataSet.getEntryCount()) * phaseX)), dataSet.getEntryCount());
+                 i < count;
+                 i++) {
 
                 BarEntry e = dataSet.getEntryForIndex(i);
 
@@ -351,14 +351,14 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
             mHighlightPaint.setColor(set.getHighLightColor());
             mHighlightPaint.setAlpha(set.getHighLightAlpha());
 
-            boolean isStack = (high.getStackIndex() >= 0  && e.isStacked()) ? true : false;
+            boolean isStack = (high.getStackIndex() >= 0 && e.isStacked()) ? true : false;
 
             final float y1;
             final float y2;
 
             if (isStack) {
 
-                if(mChart.isHighlightFullBarEnabled()) {
+                if (mChart.isHighlightFullBarEnabled()) {
 
                     y1 = e.getPositiveSum();
                     y2 = -e.getNegativeSum();
@@ -386,6 +386,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
 
     /**
      * Sets the drawing position of the highlight object based on the riven bar-rect.
+     *
      * @param high
      */
     protected void setHighlightDrawPos(Highlight high, RectF bar) {

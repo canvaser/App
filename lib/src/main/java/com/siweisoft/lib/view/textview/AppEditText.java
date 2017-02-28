@@ -22,25 +22,24 @@ public class AppEditText extends EditText implements View.OnFocusChangeListener 
     int type = InputType.TYPE_NULL;
 
 
-
     public AppEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
         init();
     }
 
-    private void init(){
+    private void init() {
         setOnFocusChangeListener(this);
     }
 
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
-        if(hasFocus){
+        if (hasFocus) {
             setInputType(type);
-            setText(getText().toString().replace(subTxt,""));
-        }else{
+            setText(getText().toString().replace(subTxt, ""));
+        } else {
             setInputType(InputType.TYPE_NULL);
-            setText(getText().toString()+subTxt);
+            setText(getText().toString() + subTxt);
         }
     }
 

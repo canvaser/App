@@ -383,7 +383,7 @@ public class MaterialRefreshLayout extends FrameLayout {
 
     }
 
-    public void setRefreshingWaveColor(int color){
+    public void setRefreshingWaveColor(int color) {
         mMaterialHeaderView.setWaveColor(color);
     }
 

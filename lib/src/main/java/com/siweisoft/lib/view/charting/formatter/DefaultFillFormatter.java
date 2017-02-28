@@ -10,8 +10,7 @@ import com.siweisoft.lib.view.charting.interfaces.datasets.ILineDataSet;
  *
  * @author Philipp Jahoda
  */
-public class DefaultFillFormatter implements IFillFormatter
-{
+public class DefaultFillFormatter implements IFillFormatter {
 
     @Override
     public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {

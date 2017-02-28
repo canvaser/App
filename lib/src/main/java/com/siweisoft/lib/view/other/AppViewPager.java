@@ -20,9 +20,10 @@ public class AppViewPager extends ViewPager {
     }
 
 
-    private void init(){
+    private void init() {
         setPageTransformer(true, new ZoomOutPageTransformer());
     }
+
     @Override
     public void setPageTransformer(boolean reverseDrawingOrder, PageTransformer transformer) {
         super.setPageTransformer(reverseDrawingOrder, transformer);

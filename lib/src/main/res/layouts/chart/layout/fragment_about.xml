@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:fillViewport="true" >
+    android:fillViewport="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -11,7 +11,7 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="lecho.lib.hellocharts.samples.AboutActivity$PlaceholderFragment" >
+        tools:context="lecho.lib.hellocharts.samples.AboutActivity$PlaceholderFragment">
 
         <ImageView
             android:id="@+id/app_icon"
@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/app_name"
             android:layout_centerHorizontal="true"
-            android:orientation="horizontal" >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/version_label"

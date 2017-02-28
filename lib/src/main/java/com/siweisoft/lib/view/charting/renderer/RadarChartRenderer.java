@@ -70,6 +70,7 @@ public class RadarChartRenderer extends LineRadarRenderer {
     }
 
     protected Path mDrawDataSetSurfacePathBuffer = new Path();
+
     /**
      * Draws the RadarDataSet
      *
@@ -89,7 +90,7 @@ public class RadarChartRenderer extends LineRadarRenderer {
         float factor = mChart.getFactor();
 
         MPPointF center = mChart.getCenterOffsets();
-        MPPointF pOut = MPPointF.getInstance(0,0);
+        MPPointF pOut = MPPointF.getInstance(0, 0);
         Path surface = mDrawDataSetSurfacePathBuffer;
         surface.reset();
 
@@ -159,7 +160,7 @@ public class RadarChartRenderer extends LineRadarRenderer {
         float factor = mChart.getFactor();
 
         MPPointF center = mChart.getCenterOffsets();
-        MPPointF pOut = MPPointF.getInstance(0,0);
+        MPPointF pOut = MPPointF.getInstance(0, 0);
 
         float yoffset = Utils.convertDpToPixel(5f);
 
@@ -177,11 +178,11 @@ public class RadarChartRenderer extends LineRadarRenderer {
 
                 RadarEntry entry = dataSet.getEntryForIndex(j);
 
-                 Utils.getPosition(
-                         center,
-                         (entry.getY() - mChart.getYChartMin()) * factor * phaseY,
-                         sliceangle * j * phaseX + mChart.getRotationAngle(),
-                         pOut);
+                Utils.getPosition(
+                        center,
+                        (entry.getY() - mChart.getYChartMin()) * factor * phaseY,
+                        sliceangle * j * phaseX + mChart.getRotationAngle(),
+                        pOut);
 
                 drawValue(c, dataSet.getValueFormatter(), entry.getY(), entry, i, pOut.x, pOut.y - yoffset, dataSet.getValueTextColor
                         (j));
@@ -216,7 +217,7 @@ public class RadarChartRenderer extends LineRadarRenderer {
         final int xIncrements = 1 + mChart.getSkipWebLineCount();
         int maxEntryCount = mChart.getData().getMaxEntryCountSet().getEntryCount();
 
-        MPPointF p = MPPointF.getInstance(0,0);
+        MPPointF p = MPPointF.getInstance(0, 0);
         for (int i = 0; i < maxEntryCount; i += xIncrements) {
 
             Utils.getPosition(
@@ -236,8 +237,8 @@ public class RadarChartRenderer extends LineRadarRenderer {
 
         int labelCount = mChart.getYAxis().mEntryCount;
 
-        MPPointF p1out = MPPointF.getInstance(0,0);
-        MPPointF p2out = MPPointF.getInstance(0,0);
+        MPPointF p1out = MPPointF.getInstance(0, 0);
+        MPPointF p2out = MPPointF.getInstance(0, 0);
         for (int j = 0; j < labelCount; j++) {
 
             for (int i = 0; i < mChart.getData().getEntryCount(); i++) {
@@ -266,7 +267,7 @@ public class RadarChartRenderer extends LineRadarRenderer {
         float factor = mChart.getFactor();
 
         MPPointF center = mChart.getCenterOffsets();
-        MPPointF pOut = MPPointF.getInstance(0,0);
+        MPPointF pOut = MPPointF.getInstance(0, 0);
 
         RadarData radarData = mChart.getData();
 
@@ -323,6 +324,7 @@ public class RadarChartRenderer extends LineRadarRenderer {
     }
 
     protected Path mDrawHighlightCirclePathBuffer = new Path();
+
     public void drawHighlightCircle(Canvas c,
                                     MPPointF point,
                                     float innerRadius,

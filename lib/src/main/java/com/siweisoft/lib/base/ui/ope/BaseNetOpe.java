@@ -14,17 +14,17 @@ import com.siweisoft.lib.network.interf.OnNetWorkReqInterf;
  */
 public class BaseNetOpe {
 
-    protected Gson gson=new Gson();
+    protected Gson gson = new Gson();
 
-    protected  Context context;
+    protected Context context;
 
-    protected Handler handler=new Handler();
+    protected Handler handler = new Handler();
 
-    public BaseNetOpe(Context context){
-        this.context=context;
+    public BaseNetOpe(Context context) {
+        this.context = context;
     }
 
-    protected void onNetLoadData(Context context, String model, BaseReqBean baseReqBean, OnNetWorkReqInterf reqInterf){
-        NetWork.getInstance(context).doHttpRequset(context,model,baseReqBean, reqInterf);
+    protected void onNetLoadData(Context context, String model, BaseReqBean baseReqBean, OnNetWorkReqInterf reqInterf) {
+        NetWork.getInstance(context).doHttpRequset(context, model, baseReqBean, reqInterf);
     }
 }

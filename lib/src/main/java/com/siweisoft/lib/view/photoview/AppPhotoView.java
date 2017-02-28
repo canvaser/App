@@ -10,7 +10,7 @@ import uk.co.senab.photoview.PhotoView;
 /**
  * Created by ${viwmox} on 2016-11-01.
  */
-public class AppPhotoView extends PhotoView{
+public class AppPhotoView extends PhotoView {
 
 
     public AppPhotoView(Context context, AttributeSet attr) {

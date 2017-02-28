@@ -11,8 +11,7 @@ import com.siweisoft.lib.view.charting.utils.ViewPortHandler;
  *
  * @author Philipp Jahoda
  */
-public interface IValueFormatter
-{
+public interface IValueFormatter {
 
     /**
      * Called when a value (from labels inside the chart) is formatted

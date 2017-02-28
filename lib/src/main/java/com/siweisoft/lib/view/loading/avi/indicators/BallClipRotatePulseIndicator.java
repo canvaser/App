@@ -15,14 +15,14 @@ import java.util.ArrayList;
  */
 public class BallClipRotatePulseIndicator extends Indicator {
 
-    float scaleFloat1,scaleFloat2,degrees;
+    float scaleFloat1, scaleFloat2, degrees;
 
 
     @Override
     public void draw(Canvas canvas, Paint paint) {
-        float circleSpacing=12;
-        float x=getWidth()/2;
-        float y=getHeight()/2;
+        float circleSpacing = 12;
+        float x = getWidth() / 2;
+        float y = getHeight() / 2;
 
         //draw fill circle
         canvas.save();
@@ -41,19 +41,19 @@ public class BallClipRotatePulseIndicator extends Indicator {
         paint.setStyle(Paint.Style.STROKE);
 
         //draw two arc
-        float[] startAngles=new float[]{225,45};
+        float[] startAngles = new float[]{225, 45};
         for (int i = 0; i < 2; i++) {
-            RectF rectF=new RectF(-x+circleSpacing,-y+circleSpacing,x-circleSpacing,y-circleSpacing);
+            RectF rectF = new RectF(-x + circleSpacing, -y + circleSpacing, x - circleSpacing, y - circleSpacing);
             canvas.drawArc(rectF, startAngles[i], 90, false, paint);
         }
     }
 
     @Override
     public ArrayList<ValueAnimator> onCreateAnimators() {
-        ValueAnimator scaleAnim=ValueAnimator.ofFloat(1,0.3f,1);
+        ValueAnimator scaleAnim = ValueAnimator.ofFloat(1, 0.3f, 1);
         scaleAnim.setDuration(1000);
         scaleAnim.setRepeatCount(-1);
-        addUpdateListener(scaleAnim,new ValueAnimator.AnimatorUpdateListener() {
+        addUpdateListener(scaleAnim, new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 scaleFloat1 = (float) animation.getAnimatedValue();
@@ -61,10 +61,10 @@ public class BallClipRotatePulseIndicator extends Indicator {
             }
         });
 
-        ValueAnimator scaleAnim2=ValueAnimator.ofFloat(1,0.6f,1);
+        ValueAnimator scaleAnim2 = ValueAnimator.ofFloat(1, 0.6f, 1);
         scaleAnim2.setDuration(1000);
         scaleAnim2.setRepeatCount(-1);
-        addUpdateListener(scaleAnim2,new ValueAnimator.AnimatorUpdateListener() {
+        addUpdateListener(scaleAnim2, new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 scaleFloat2 = (float) animation.getAnimatedValue();
@@ -72,17 +72,17 @@ public class BallClipRotatePulseIndicator extends Indicator {
             }
         });
 
-        ValueAnimator rotateAnim=ValueAnimator.ofFloat(0, 180,360);
+        ValueAnimator rotateAnim = ValueAnimator.ofFloat(0, 180, 360);
         rotateAnim.setDuration(1000);
         rotateAnim.setRepeatCount(-1);
-        addUpdateListener(rotateAnim,new ValueAnimator.AnimatorUpdateListener() {
+        addUpdateListener(rotateAnim, new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 degrees = (float) animation.getAnimatedValue();
                 postInvalidate();
             }
         });
-        ArrayList<ValueAnimator> animators=new ArrayList<>();
+        ArrayList<ValueAnimator> animators = new ArrayList<>();
         animators.add(scaleAnim);
         animators.add(scaleAnim2);
         animators.add(rotateAnim);

@@ -17,27 +17,27 @@ public class SPUtil {
 
     private SharedPreferences.Editor editor;
 
-    public static SPUtil getInstance(){
-        if(instance==null){
-            instance=new SPUtil();
+    public static SPUtil getInstance() {
+        if (instance == null) {
+            instance = new SPUtil();
         }
         return instance;
     }
 
-    public SPUtil init(Context context){
+    public SPUtil init(Context context) {
         sharedPreferences = context.getSharedPreferences(ValueConstant.ACCOUT_SHAREPRE, Context.MODE_PRIVATE);
-        editor=sharedPreferences.edit();
+        editor = sharedPreferences.edit();
         return instance;
     }
 
 
-    public void saveAccount(String account){
-        editor.putString(ValueConstant.ACCOUT,account);
+    public void saveAccount(String account) {
+        editor.putString(ValueConstant.ACCOUT, account);
         editor.commit();
     }
 
-    public String getAccount(){
-        return sharedPreferences.getString(ValueConstant.ACCOUT,"");
+    public String getAccount() {
+        return sharedPreferences.getString(ValueConstant.ACCOUT, "");
 
     }
 
@@ -49,6 +49,7 @@ public class SPUtil {
 
     /**
      * 获取string 类型数据
+     *
      * @param strKey
      * @return
      */
@@ -64,6 +65,7 @@ public class SPUtil {
 
     /**
      * 获取int 类型数据
+     *
      * @param Key
      * @return
      */
@@ -80,6 +82,7 @@ public class SPUtil {
 
     /**
      * 获取boolean 类型数据
+     *
      * @param Key
      * @return
      */

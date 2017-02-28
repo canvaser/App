@@ -11,23 +11,22 @@ public class NetWorkUtil {
 
     private static NetWorkUtil instance;
 
-    public static NetWorkUtil getInstance(){
-        if(instance==null){
-            instance=new NetWorkUtil();
+    public static NetWorkUtil getInstance() {
+        if (instance == null) {
+            instance = new NetWorkUtil();
         }
         return instance;
     }
 
-    public boolean getNetStatus(Context context){
+    public boolean getNetStatus(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivityManager == null){
+        if (connectivityManager == null) {
             return false;
-        }
-        else{
+        } else {
             NetworkInfo[] networkInfo = connectivityManager.getAllNetworkInfo();
-            if (networkInfo != null && networkInfo.length > 0){
-                for (int i = 0; i < networkInfo.length; i++){
-                    if (networkInfo[i].getState() == NetworkInfo.State.CONNECTED){
+            if (networkInfo != null && networkInfo.length > 0) {
+                for (int i = 0; i < networkInfo.length; i++) {
+                    if (networkInfo[i].getState() == NetworkInfo.State.CONNECTED) {
                         return true;
                     }
                 }

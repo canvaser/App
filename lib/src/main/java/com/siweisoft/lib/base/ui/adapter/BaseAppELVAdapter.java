@@ -11,11 +11,11 @@ import android.widget.BaseExpandableListAdapter;
 public abstract class BaseAppELVAdapter extends BaseExpandableListAdapter {
 
 
-    protected  Context context;
+    protected Context context;
 
     protected LayoutInflater inflater;
 
-    public BaseAppELVAdapter(Context context){
+    public BaseAppELVAdapter(Context context) {
         this.context = context;
         inflater = LayoutInflater.from(context);
     }

@@ -97,7 +97,7 @@ public class TimePickerDialog extends DialogFragment implements View.OnClickList
             sureClicked();
         }
     }
-    
+
     /*
     * @desc This method returns the current milliseconds. If current milliseconds is not set,
     *       this will return the system milliseconds.
@@ -206,27 +206,27 @@ public class TimePickerDialog extends DialogFragment implements View.OnClickList
             return this;
         }
 
-        public Builder setYearText(String year){
+        public Builder setYearText(String year) {
             mPickerConfig.mYear = year;
             return this;
         }
 
-        public Builder setMonthText(String month){
+        public Builder setMonthText(String month) {
             mPickerConfig.mMonth = month;
             return this;
         }
 
-        public Builder setDayText(String day){
+        public Builder setDayText(String day) {
             mPickerConfig.mDay = day;
             return this;
         }
 
-        public Builder setHourText(String hour){
+        public Builder setHourText(String hour) {
             mPickerConfig.mHour = hour;
             return this;
         }
 
-        public Builder setMinuteText(String minute){
+        public Builder setMinuteText(String minute) {
             mPickerConfig.mMinute = minute;
             return this;
         }

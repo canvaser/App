@@ -10,7 +10,7 @@ import com.siweisoft.lib.util.LogUtil;
 /**
  * Created by ${viwmox} on 2016-11-25.
  */
-public class TVA extends TextView{
+public class TVA extends TextView {
 
 
     public TVA(Context context, AttributeSet attrs) {
@@ -18,18 +18,17 @@ public class TVA extends TextView{
     }
 
 
-
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-        switch (ev.getAction()){
+        switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                LogUtil.E(getClass().getSimpleName()+":dispatchTouchEvent--down");
+                LogUtil.E(getClass().getSimpleName() + ":dispatchTouchEvent--down");
                 break;
             case MotionEvent.ACTION_MOVE:
-                LogUtil.E(getClass().getSimpleName()+":dispatchTouchEvent--move");
+                LogUtil.E(getClass().getSimpleName() + ":dispatchTouchEvent--move");
                 break;
             case MotionEvent.ACTION_UP:
-                LogUtil.E(getClass().getSimpleName()+":dispatchTouchEvent--up");
+                LogUtil.E(getClass().getSimpleName() + ":dispatchTouchEvent--up");
                 break;
         }
         return super.dispatchTouchEvent(ev);

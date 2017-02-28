@@ -12,14 +12,14 @@ public class BaseOpe {
 
     protected Context context;
 
-    protected Handler handler=new Handler();
+    protected Handler handler = new Handler();
 
 
-    public BaseOpe(Context context){
-        this.context=context;
+    public BaseOpe(Context context) {
+        this.context = context;
     }
 
-    private BaseOpe(){
+    private BaseOpe() {
 
     }
 }

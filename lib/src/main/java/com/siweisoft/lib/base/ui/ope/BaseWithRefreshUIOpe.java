@@ -13,7 +13,7 @@ import butterknife.ButterKnife;
 /**
  * Created by ${viwmox} on 2016-06-19.
  */
-public class BaseWithRefreshUIOpe extends BaseOpe{
+public class BaseWithRefreshUIOpe extends BaseOpe {
 
     protected View containerView;
 
@@ -22,11 +22,11 @@ public class BaseWithRefreshUIOpe extends BaseOpe{
 
     public BaseWithRefreshUIOpe(Context context, View containerView) {
         super(context);
-        this.containerView=containerView;
-        if(containerView==null){
+        this.containerView = containerView;
+        if (containerView == null) {
             return;
         }
-        ButterKnife.bind(this,containerView);
+        ButterKnife.bind(this, containerView);
     }
 
 }

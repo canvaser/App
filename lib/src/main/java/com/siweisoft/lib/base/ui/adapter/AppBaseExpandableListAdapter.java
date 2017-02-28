@@ -12,7 +12,7 @@ import com.siweisoft.lib.base.ui.interf.view.OnAppItemsClickListener;
  * Created by ${viwmox} on 2017-02-17.
  */
 
-public class AppBaseExpandableListAdapter extends BaseExpandableListAdapter implements View.OnClickListener{
+public class AppBaseExpandableListAdapter extends BaseExpandableListAdapter implements View.OnClickListener {
 
     protected Context context;
 
@@ -21,7 +21,7 @@ public class AppBaseExpandableListAdapter extends BaseExpandableListAdapter impl
     protected OnAppItemsClickListener onAppItemsClickListener;
 
     public AppBaseExpandableListAdapter(Context context) {
-        this.context  = context;
+        this.context = context;
         inflater = LayoutInflater.from(context);
     }
 

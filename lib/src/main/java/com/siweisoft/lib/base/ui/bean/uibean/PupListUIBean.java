@@ -18,7 +18,6 @@ public class PupListUIBean extends BaseUIBean {
     TextView textView;
 
 
-
     public PupListUIBean(Context context, View convertView) {
         super(context, convertView);
         textView = (TextView) convertView.findViewById(R.id.txt);

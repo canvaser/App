@@ -30,18 +30,18 @@ public class GridRecyclerView extends RecyclerView {
 
     @Override
     public void setLayoutManager(LayoutManager layout) {
-        if (layout instanceof GridLayoutManager){
+        if (layout instanceof GridLayoutManager) {
             super.setLayoutManager(layout);
         } else {
             throw new ClassCastException("You should only use a GridLayoutManager with GridRecyclerView.");
-            }
         }
+    }
 
     @Override
     public boolean onTouchEvent(MotionEvent e) {
-        if(move){
+        if (move) {
             return super.onTouchEvent(e);
-        }else{
+        } else {
             return false;
         }
 
@@ -50,7 +50,7 @@ public class GridRecyclerView extends RecyclerView {
     @Override
     protected void attachLayoutAnimationParameters(View child, ViewGroup.LayoutParams params, int index, int count) {
 
-        if (getAdapter() != null && getLayoutManager() instanceof GridLayoutManager){
+        if (getAdapter() != null && getLayoutManager() instanceof GridLayoutManager) {
 
             GridLayoutAnimationController.AnimationParameters animationParams =
                     (GridLayoutAnimationController.AnimationParameters) params.layoutAnimationParameters;

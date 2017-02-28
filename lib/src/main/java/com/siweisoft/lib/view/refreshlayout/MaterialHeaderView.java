@@ -58,20 +58,20 @@ public class MaterialHeaderView extends FrameLayout implements MaterialHeadListe
         this.progressSize = progressSize;
         LayoutParams layoutParams = new LayoutParams((int) density * progressSize, (int) density * progressSize);
         layoutParams.gravity = Gravity.CENTER;
-        if(circleProgressBar!=null)
-        circleProgressBar.setLayoutParams(layoutParams);
+        if (circleProgressBar != null)
+            circleProgressBar.setLayoutParams(layoutParams);
     }
 
     public void setProgressBg(int progressBg) {
         this.progressBg = progressBg;
-        if(circleProgressBar!=null)
-        circleProgressBar.setProgressBackGroundColor(progressBg);
+        if (circleProgressBar != null)
+            circleProgressBar.setProgressBackGroundColor(progressBg);
     }
 
     public void setIsProgressBg(boolean isShowProgressBg) {
         this.isShowProgressBg = isShowProgressBg;
-        if(circleProgressBar!=null)
-        circleProgressBar.setCircleBackgroundEnabled(isShowProgressBg);
+        if (circleProgressBar != null)
+            circleProgressBar.setCircleBackgroundEnabled(isShowProgressBg);
     }
 
     public void setProgressTextColor(int textColor) {
@@ -80,8 +80,8 @@ public class MaterialHeaderView extends FrameLayout implements MaterialHeadListe
 
     public void setProgressColors(int[] colors) {
         this.progress_colors = colors;
-        if(circleProgressBar!=null)
-        circleProgressBar.setColorSchemeColors(progress_colors);
+        if (circleProgressBar != null)
+            circleProgressBar.setColorSchemeColors(progress_colors);
     }
 
     public void setTextType(int textType) {
@@ -107,14 +107,14 @@ public class MaterialHeaderView extends FrameLayout implements MaterialHeadListe
 
     public void setProgressStokeWidth(int w) {
         this.progressStokeWidth = w;
-        if(circleProgressBar!=null)
+        if (circleProgressBar != null)
             circleProgressBar.setProgressStokeWidth(progressStokeWidth);
     }
 
     public void showProgressArrow(boolean isShowArrow) {
         this.isShowArrow = isShowArrow;
-        if(circleProgressBar!=null)
-        circleProgressBar.setShowArrow(isShowArrow);
+        if (circleProgressBar != null)
+            circleProgressBar.setShowArrow(isShowArrow);
     }
 
     @Override
@@ -138,7 +138,7 @@ public class MaterialHeaderView extends FrameLayout implements MaterialHeadListe
         circleProgressBar.setMax(progressValueMax);
         circleProgressBar.setCircleBackgroundEnabled(isShowProgressBg);
         circleProgressBar.setProgressBackGroundColor(progressBg);
-       // addView(circleProgressBar);
+        // addView(circleProgressBar);
     }
 
     @Override

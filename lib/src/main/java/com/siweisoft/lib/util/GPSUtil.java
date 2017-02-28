@@ -28,8 +28,8 @@ public class GPSUtil {
 
     private String TAG = "TAG";
 
-    public static GPSUtil getInstance(){
-        if(instance == null){
+    public static GPSUtil getInstance() {
+        if (instance == null) {
             instance = new GPSUtil();
         }
         return instance;
@@ -147,7 +147,7 @@ public class GPSUtil {
 
             @Override
             public void onLocationChanged(Location location) {
-                    updateToNewLocation(l);
+                updateToNewLocation(l);
 
             }
         });
@@ -155,10 +155,10 @@ public class GPSUtil {
 
 
     public void updateToNewLocation(Location location) {
-        Log. e( "updateToNewLocation" ,"fdf" );
-        if ( location != null) {
+        Log.e("updateToNewLocation", "fdf");
+        if (location != null) {
             double latitude = location.getLatitude();
-            double longitude= location.getLongitude();
+            double longitude = location.getLongitude();
 //Toast.makeText(this,latitude+"："+longitude,Toast.LENGTH_SHORT).show();
             LogUtil.E(TAG, "时间：" + location.getTime());
             LogUtil.E(TAG, "经度： " + location.getLongitude());

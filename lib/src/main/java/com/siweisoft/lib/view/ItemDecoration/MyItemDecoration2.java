@@ -12,24 +12,24 @@ import com.siweisoft.lib.R;
 /**
  * Created by ${viwmox} on 2016-08-30.
  */
-public class MyItemDecoration2 extends RecyclerView.ItemDecoration{
+public class MyItemDecoration2 extends RecyclerView.ItemDecoration {
 
     private Context context;
 
     Paint paint = new Paint();
 
-    private int w=0;
+    private int w = 0;
 
-    public MyItemDecoration2(Context context, int w){
+    public MyItemDecoration2(Context context, int w) {
         super();
-        this.context =context;
+        this.context = context;
         paint.setColor(context.getResources().getColor(R.color.color_base_graybg));
         this.w = w;
     }
 
-    public MyItemDecoration2(Context context, int w, int color){
+    public MyItemDecoration2(Context context, int w, int color) {
         super();
-        this.context =context;
+        this.context = context;
         paint.setColor(color);
         this.w = w;
     }
@@ -37,17 +37,17 @@ public class MyItemDecoration2 extends RecyclerView.ItemDecoration{
     @Override
     public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
 
-        final int childSize = parent.getChildCount() ;
+        final int childSize = parent.getChildCount();
 
-        for(int i = 0 ; i < childSize -1; i ++){
-            final int left = parent.getPaddingLeft() ;
-            final int right = parent.getMeasuredWidth() - parent.getPaddingRight() ;
-            final View child = parent.getChildAt( i ) ;
+        for (int i = 0; i < childSize - 1; i++) {
+            final int left = parent.getPaddingLeft();
+            final int right = parent.getMeasuredWidth() - parent.getPaddingRight();
+            final View child = parent.getChildAt(i);
             RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) child.getLayoutParams();
-            final int top = child.getBottom() + layoutParams.bottomMargin ;
-            final int bottom = top+w;
-            c.drawRect(child.getLeft()-w,child.getTop(),child.getLeft(),child.getBottom()+w,paint);
-            c.drawRect(child.getLeft(),child.getTop()-w,child.getRight(),child.getTop(),paint);
+            final int top = child.getBottom() + layoutParams.bottomMargin;
+            final int bottom = top + w;
+            c.drawRect(child.getLeft() - w, child.getTop(), child.getLeft(), child.getBottom() + w, paint);
+            c.drawRect(child.getLeft(), child.getTop() - w, child.getRight(), child.getTop(), paint);
         }
 
     }
@@ -58,10 +58,9 @@ public class MyItemDecoration2 extends RecyclerView.ItemDecoration{
     }
 
 
-
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-        outRect.set(w, w,0,0);
+        outRect.set(w, w, 0, 0);
     }
 
 }

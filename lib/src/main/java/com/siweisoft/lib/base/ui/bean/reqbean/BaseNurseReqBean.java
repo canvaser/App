@@ -8,7 +8,9 @@ import com.siweisoft.lib.network.bean.req.BaseReqBean;
  */
 public class BaseNurseReqBean extends BaseReqBean {
 
-    /**获取该指定病区的任务；可忽略，忽略时默认为当前用户所在的病区*/
+    /**
+     * 获取该指定病区的任务；可忽略，忽略时默认为当前用户所在的病区
+     */
     private String rid;
 
     private String begin;

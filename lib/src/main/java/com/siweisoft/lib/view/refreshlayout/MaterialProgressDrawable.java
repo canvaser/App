@@ -128,33 +128,31 @@ public class MaterialProgressDrawable extends Drawable implements Animatable {
     }
 
     public void setSizeParameters(double progressCircleWidth, double progressCircleHeight,
-                                   double centerRadius, double strokeWidth, float arrowWidth, float arrowHeight) {
+                                  double centerRadius, double strokeWidth, float arrowWidth, float arrowHeight) {
         final Ring ring = mRing;
         mWidth = progressCircleWidth;
-        mHeight = progressCircleHeight ;
-        ring.setStrokeWidth((float) strokeWidth );
+        mHeight = progressCircleHeight;
+        ring.setStrokeWidth((float) strokeWidth);
         ring.setCenterRadius(centerRadius);
         ring.setColorIndex(0);
-        ring.setArrowDimensions(arrowWidth , arrowHeight );
+        ring.setArrowDimensions(arrowWidth, arrowHeight);
         ring.setInsets((int) mWidth, (int) mHeight);
     }
 
     /**
      * Set the overall size for the progress spinner. This updates the radius
      * and stroke width of the ring.
-     *
-
      */
     public void updateSizes(@ProgressDrawableSize int size) {
         final DisplayMetrics metrics = mResources.getDisplayMetrics();
         final float screenDensity = metrics.density;
 
         if (size == LARGE) {
-            setSizeParameters(CIRCLE_DIAMETER_LARGE*screenDensity, CIRCLE_DIAMETER_LARGE*screenDensity, CENTER_RADIUS_LARGE*screenDensity,
-                    STROKE_WIDTH_LARGE*screenDensity, ARROW_WIDTH_LARGE*screenDensity, ARROW_HEIGHT_LARGE*screenDensity);
+            setSizeParameters(CIRCLE_DIAMETER_LARGE * screenDensity, CIRCLE_DIAMETER_LARGE * screenDensity, CENTER_RADIUS_LARGE * screenDensity,
+                    STROKE_WIDTH_LARGE * screenDensity, ARROW_WIDTH_LARGE * screenDensity, ARROW_HEIGHT_LARGE * screenDensity);
         } else {
-            setSizeParameters(CIRCLE_DIAMETER*screenDensity, CIRCLE_DIAMETER*screenDensity, CENTER_RADIUS*screenDensity, STROKE_WIDTH*screenDensity,
-                    ARROW_WIDTH*screenDensity, ARROW_HEIGHT*screenDensity);
+            setSizeParameters(CIRCLE_DIAMETER * screenDensity, CIRCLE_DIAMETER * screenDensity, CENTER_RADIUS * screenDensity, STROKE_WIDTH * screenDensity,
+                    ARROW_WIDTH * screenDensity, ARROW_HEIGHT * screenDensity);
         }
     }
 
@@ -262,7 +260,7 @@ public class MaterialProgressDrawable extends Drawable implements Animatable {
 
     @Override
     public boolean isRunning() {
-        return  !this.mAnimation.hasEnded();
+        return !this.mAnimation.hasEnded();
     }
 
     @Override
@@ -332,10 +330,10 @@ public class MaterialProgressDrawable extends Drawable implements Animatable {
                     float startTrim = startingTrim + (MAX_PROGRESS_ARC
                             * END_CURVE_INTERPOLATOR.getInterpolation(interpolatedTime));
 
-                    final float sweepTrim =  endTrim-startTrim;
+                    final float sweepTrim = endTrim - startTrim;
                     //Avoid the ring to be a full circle
-                    if(Math.abs(sweepTrim)>=1){
-                        endTrim = startTrim+0.5f;
+                    if (Math.abs(sweepTrim) >= 1) {
+                        endTrim = startTrim + 0.5f;
                     }
 
                     ring.setEndTrim(endTrim);
@@ -494,12 +492,12 @@ public class MaterialProgressDrawable extends Drawable implements Animatable {
                 mArrow.lineTo((mArrowWidth) * mArrowScale, 0);
                 mArrow.lineTo(((mArrowWidth) * mArrowScale / 2), (mArrowHeight
                         * mArrowScale));
-                mArrow.offset(x-((mArrowWidth) * mArrowScale / 2), y);
+                mArrow.offset(x - ((mArrowWidth) * mArrowScale / 2), y);
                 mArrow.close();
                 // draw a triangle
                 mArrowPaint.setColor(mColors[mColorIndex]);
                 //when sweepAngle < 0 adjust the position of the arrow
-                c.rotate(startAngle + (sweepAngle<0?0:sweepAngle) - ARROW_OFFSET_ANGLE, bounds.exactCenterX(),
+                c.rotate(startAngle + (sweepAngle < 0 ? 0 : sweepAngle) - ARROW_OFFSET_ANGLE, bounds.exactCenterX(),
                         bounds.exactCenterY());
                 c.drawPath(mArrow, mArrowPaint);
             }

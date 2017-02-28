@@ -7,16 +7,18 @@ import com.siweisoft.lib.R;
  */
 public class ColorConstant {
 
-    /**最基本颜色*/
+    /**
+     * 最基本颜色
+     */
     public static int COLOR_BASE = R.color.color_base;
 
-    /**状态栏颜色*/
+    /**
+     * 状态栏颜色
+     */
     public static int COLOR_STATUS = R.color.color_bg_refresh;
 
 
-    public static int COLOR_BOTTOMENU= R.color.color_base_bottommenu;
-
-
+    public static int COLOR_BOTTOMENU = R.color.color_base_bottommenu;
 
 
 }

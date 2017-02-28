@@ -12,19 +12,19 @@ import com.siweisoft.lib.base.ui.bean.dbbean.BaseDbBean;
 public class ImageDBBean extends BaseDbBean {
 
     public static final String URI = "URI";
-    @DatabaseField(columnName =URI )
+    @DatabaseField(columnName = URI)
     private String uri;
 
     public static final String W = "W";
-    @DatabaseField(columnName =W )
+    @DatabaseField(columnName = W)
     private int w;
 
     public static final String H = "H";
-    @DatabaseField(columnName =H )
+    @DatabaseField(columnName = H)
     private int h;
 
 
-    public ImageDBBean(int w,int h, String uri ) {
+    public ImageDBBean(int w, int h, String uri) {
         this.h = h;
         this.uri = uri;
         this.w = w;

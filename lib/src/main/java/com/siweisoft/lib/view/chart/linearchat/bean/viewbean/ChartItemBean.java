@@ -8,16 +8,15 @@ import java.io.Serializable;
 /**
  * Created by ${viwmox} on 2016-11-28.
  */
-public class ChartItemBean implements Serializable{
+public class ChartItemBean implements Serializable {
 
     private Paint paint;
 
     private RectF rectF;
 
 
-
     public Paint getPaint() {
-        if(paint==null){
+        if (paint == null) {
             paint = new Paint();
         }
         return paint;

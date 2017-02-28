@@ -7,16 +7,16 @@ public class FormatUtil {
 
     private static FormatUtil instance;
 
-    public static FormatUtil getInstance(){
-        if(instance==null){
-            instance=new FormatUtil();
+    public static FormatUtil getInstance() {
+        if (instance == null) {
+            instance = new FormatUtil();
         }
         return instance;
     }
 
-    public float getFloat(String str){
+    public float getFloat(String str) {
 
-        if(str==null){
+        if (str == null) {
             return 0f;
         }
         try {
@@ -27,9 +27,9 @@ public class FormatUtil {
         return 0f;
     }
 
-    public int getInt(String str){
+    public int getInt(String str) {
 
-        if(str==null){
+        if (str == null) {
             return 0;
         }
         try {
@@ -40,26 +40,26 @@ public class FormatUtil {
         return 0;
     }
 
-    public String getYYMMDD(int y,int m,int d){
+    public String getYYMMDD(int y, int m, int d) {
         //SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
-        String yy,mm,dd;
-        yy=y+"";
-        mm=m<10?"0"+m:m+"";
-        dd=d<10?"0"+d:d+"";
-        return yy+"-"+mm+"-"+dd;
+        String yy, mm, dd;
+        yy = y + "";
+        mm = m < 10 ? "0" + m : m + "";
+        dd = d < 10 ? "0" + d : d + "";
+        return yy + "-" + mm + "-" + dd;
     }
 
-    public String getHHMM(int h,int m){
+    public String getHHMM(int h, int m) {
         //SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
-        String hh,mm;
-        hh=h+"";
-        mm=m+"";
-        if(h<10){
-            hh="0"+h;
+        String hh, mm;
+        hh = h + "";
+        mm = m + "";
+        if (h < 10) {
+            hh = "0" + h;
         }
-        if(m<10){
-            mm="0"+m;
+        if (m < 10) {
+            mm = "0" + m;
         }
-        return hh+":"+mm;
+        return hh + ":" + mm;
     }
 }

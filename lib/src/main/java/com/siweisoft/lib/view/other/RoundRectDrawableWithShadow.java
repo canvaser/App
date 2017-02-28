@@ -107,7 +107,7 @@ public class RoundRectDrawableWithShadow extends Drawable {
                 = new RoundRectDrawableWithShadow.RoundRectHelper() {
             @Override
             public void drawRoundRect(Canvas canvas, RectF bounds, float cornerRadius,
-                    Paint paint) {
+                                      Paint paint) {
                 canvas.drawRoundRect(bounds, cornerRadius, cornerRadius, paint);
             }
         };
@@ -159,7 +159,7 @@ public class RoundRectDrawableWithShadow extends Drawable {
         }
         mRawShadowSize = shadowSize;
         mRawMaxShadowSize = maxShadowSize;
-        mShadowSize = (int)(shadowSize * SHADOW_MULTIPLIER + mInsetShadow + .5f);
+        mShadowSize = (int) (shadowSize * SHADOW_MULTIPLIER + mInsetShadow + .5f);
         mMaxShadowSize = maxShadowSize + mInsetShadow;
         mDirty = true;
         invalidateSelf();
@@ -177,7 +177,7 @@ public class RoundRectDrawableWithShadow extends Drawable {
     }
 
     static float calculateVerticalPadding(float maxShadowSize, float cornerRadius,
-            boolean addPaddingForCorners) {
+                                          boolean addPaddingForCorners) {
         if (addPaddingForCorners) {
             return (float) (maxShadowSize * SHADOW_MULTIPLIER + (1 - COS_45) * cornerRadius);
         } else {
@@ -186,7 +186,7 @@ public class RoundRectDrawableWithShadow extends Drawable {
     }
 
     static float calculateHorizontalPadding(float maxShadowSize, float cornerRadius,
-            boolean addPaddingForCorners) {
+                                            boolean addPaddingForCorners) {
         if (addPaddingForCorners) {
             return (float) (maxShadowSize + (1 - COS_45) * cornerRadius);
         } else {
@@ -325,7 +325,7 @@ public class RoundRectDrawableWithShadow extends Drawable {
 
     float getMinHeight() {
         final float content = 2 * Math.max(mRawMaxShadowSize, mCornerRadius + mInsetShadow
-                        + mRawMaxShadowSize * SHADOW_MULTIPLIER / 2);
+                + mRawMaxShadowSize * SHADOW_MULTIPLIER / 2);
         return content + (mRawMaxShadowSize * SHADOW_MULTIPLIER + mInsetShadow) * 2;
     }
 

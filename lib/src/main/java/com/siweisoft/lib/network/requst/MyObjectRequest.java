@@ -23,10 +23,10 @@ import java.util.regex.Pattern;
 /**
  * Created by ${viwmox} on 2016-11-16.
  */
-public class MyObjectRequest extends JsonObjectRequest{
+public class MyObjectRequest extends JsonObjectRequest {
 
     private String mHeader;
-    private Map<String, String> sendHeader=new HashMap<String, String>(1);
+    private Map<String, String> sendHeader = new HashMap<String, String>(1);
 
     private Response.Listener<JSONObject> mListener;
 
@@ -54,25 +54,25 @@ public class MyObjectRequest extends JsonObjectRequest{
     @Override
     protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
         try {
-            if(ValueConstant.cookieFromResponse!=null){
-                return  super.parseNetworkResponse(response);
+            if (ValueConstant.cookieFromResponse != null) {
+                return super.parseNetworkResponse(response);
             }
-            String jsonString =new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+            String jsonString = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
             mHeader = response.headers.toString();
-            Log.w("LOG","get headers in parseNetworkResponse "+response.headers.toString());
+            Log.w("LOG", "get headers in parseNetworkResponse " + response.headers.toString());
             //使用正则表达式从reponse的头中提取cookie内容的子串
-            Pattern pattern=Pattern.compile("Set-Cookie.*?;");
-            Matcher m=pattern.matcher(mHeader);
-            if(m.find()){
-                ValueConstant.cookieFromResponse =m.group();
-                Log.w("LOG","cookie from server "+ ValueConstant.cookieFromResponse);
+            Pattern pattern = Pattern.compile("Set-Cookie.*?;");
+            Matcher m = pattern.matcher(mHeader);
+            if (m.find()) {
+                ValueConstant.cookieFromResponse = m.group();
+                Log.w("LOG", "cookie from server " + ValueConstant.cookieFromResponse);
             }
             //去掉cookie末尾的分号
-            ValueConstant.cookieFromResponse = ValueConstant.cookieFromResponse.substring(11,ValueConstant.cookieFromResponse.length()-1);
-            Log.w("LOG","cookie substring "+ ValueConstant.cookieFromResponse);
+            ValueConstant.cookieFromResponse = ValueConstant.cookieFromResponse.substring(11, ValueConstant.cookieFromResponse.length() - 1);
+            Log.w("LOG", "cookie substring " + ValueConstant.cookieFromResponse);
             //将cookie字符串添加到jsonObject中，该jsonObject会被deliverResponse递交，调用请求时则能在onResponse中得到
             try {
-                return Response.success(new JSONObject(jsonString),HttpHeaderParser.parseCacheHeaders(response));
+                return Response.success(new JSONObject(jsonString), HttpHeaderParser.parseCacheHeaders(response));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -88,13 +88,13 @@ public class MyObjectRequest extends JsonObjectRequest{
 
     @Override
     public byte[] getBody() {
-        LogUtil.E("###"+new String(super.getBody()));
+        LogUtil.E("###" + new String(super.getBody()));
         return super.getBody();
     }
 
     @Override
     public Map<String, String> getHeaders() throws AuthFailureError {
-        sendHeader.put("Cookie",ValueConstant.cookieFromResponse);
+        sendHeader.put("Cookie", ValueConstant.cookieFromResponse);
         return sendHeader;
     }
 

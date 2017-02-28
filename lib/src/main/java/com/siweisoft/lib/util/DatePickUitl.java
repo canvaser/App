@@ -12,14 +12,14 @@ public class DatePickUitl {
 
     private static DatePickUitl instance;
 
-    public static DatePickUitl getInstance(){
-        if(instance==null){
-            instance=new DatePickUitl();
+    public static DatePickUitl getInstance() {
+        if (instance == null) {
+            instance = new DatePickUitl();
         }
         return instance;
     }
 
-    public void showDatePickDialog(Context context,DatePickerDialog.OnDateSetListener listener){
-        new DatePickerDialog(context,listener, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH)).show();
+    public void showDatePickDialog(Context context, DatePickerDialog.OnDateSetListener listener) {
+        new DatePickerDialog(context, listener, Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH)).show();
     }
 }

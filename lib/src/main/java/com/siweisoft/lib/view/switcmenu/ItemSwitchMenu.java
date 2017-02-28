@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 /**
  * Created by ${viwmox} on 2016-07-29.
  */
-public class ItemSwitchMenu extends LinearLayout{
+public class ItemSwitchMenu extends LinearLayout {
 
     @BindView(R2.id.tv_title)
     TextView titleTv;
@@ -28,15 +28,15 @@ public class ItemSwitchMenu extends LinearLayout{
 
     private Context context;
 
-    public ItemSwitchMenu(Context context, AttributeSet attrs,String title) {
+    public ItemSwitchMenu(Context context, AttributeSet attrs, String title) {
         super(context, attrs);
-        init(context, attrs,title);
+        init(context, attrs, title);
     }
 
-    private void init(Context context, AttributeSet attrs,String title){
+    private void init(Context context, AttributeSet attrs, String title) {
         this.context = context;
-        addView(LayoutInflater.from(context).inflate(R.layout.item_swith_menu_item, null),new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT));
-        ButterKnife.bind(this,this);
+        addView(LayoutInflater.from(context).inflate(R.layout.item_swith_menu_item, null), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        ButterKnife.bind(this, this);
         titleTv.setText(title);
 
     }
@@ -45,10 +45,10 @@ public class ItemSwitchMenu extends LinearLayout{
     @Override
     public void setSelected(boolean selected) {
         super.setSelected(selected);
-        if(selected){
+        if (selected) {
             getTitleTv().setTextColor(context.getResources().getColor(R.color.red));
             getLineView().setVisibility(View.VISIBLE);
-        }else{
+        } else {
             getTitleTv().setTextColor(context.getResources().getColor(R.color.black));
             getLineView().setVisibility(View.INVISIBLE);
         }

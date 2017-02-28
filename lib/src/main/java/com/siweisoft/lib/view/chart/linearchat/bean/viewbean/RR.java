@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Created by ${viwmox} on 2016-11-28.
  */
-public class RR implements Serializable{
+public class RR implements Serializable {
 
     private float cx;
 
@@ -49,7 +49,7 @@ public class RR implements Serializable{
     }
 
     public Paint getPaint() {
-        if(paint==null){
+        if (paint == null) {
             paint = new Paint();
         }
         return paint;

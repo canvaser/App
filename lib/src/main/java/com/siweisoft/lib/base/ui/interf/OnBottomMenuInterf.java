@@ -7,5 +7,6 @@ import android.view.View;
  */
 public interface OnBottomMenuInterf {
     public void setBottomMenu(int resid);
+
     public void setBottomMenu(View view);
 }

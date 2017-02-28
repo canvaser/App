@@ -73,7 +73,7 @@ public class HorizontalBarChartRenderer extends BarChartRenderer {
             final float barWidthHalf = barWidth / 2.0f;
             float x;
 
-            for (int i = 0, count = Math.min((int)(Math.ceil((float)(dataSet.getEntryCount()) * phaseX)), dataSet.getEntryCount());
+            for (int i = 0, count = Math.min((int) (Math.ceil((float) (dataSet.getEntryCount()) * phaseX)), dataSet.getEntryCount());
                  i < count;
                  i++) {
 

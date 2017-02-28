@@ -5,16 +5,16 @@ package com.siweisoft.lib.util;
  */
 public class ShadowUtil {
 
-    private static  ShadowUtil instance;
+    private static ShadowUtil instance;
 
-    private ShadowUtil(){
+    private ShadowUtil() {
 
     }
 
-    public static ShadowUtil getInstance(){
-        if(instance==null){
-            instance=new ShadowUtil();
+    public static ShadowUtil getInstance() {
+        if (instance == null) {
+            instance = new ShadowUtil();
         }
-        return  instance;
+        return instance;
     }
 }

@@ -21,7 +21,7 @@ import com.siweisoft.lib.util.ScreenUtil;
  */
 public class PopupUtil {
 
-    private static  PopupUtil instance;
+    private static PopupUtil instance;
 
     private PopupWindow popupWindow;
 
@@ -31,8 +31,8 @@ public class PopupUtil {
 
     public static final int RIGHT = 2;
 
-    public static PopupUtil getInstance(){
-        if(instance==null){
+    public static PopupUtil getInstance() {
+        if (instance == null) {
             instance = new PopupUtil();
         }
         return instance;
@@ -40,11 +40,11 @@ public class PopupUtil {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void show(Context context, View view, View archerview, int type){
+    public void show(Context context, View view, View archerview, int type) {
         ScreenUtil.getInstance().getScreenSize(context);
         popupWindow = new PopupWindow(context);
-        popupWindow.setHeight((int) (ScreenUtil.w/2));
-        popupWindow.setWidth(102* ValueConstant.DIMEN_1);
+        popupWindow.setHeight((int) (ScreenUtil.w / 2));
+        popupWindow.setWidth(102 * ValueConstant.DIMEN_1);
         popupWindow.setBackgroundDrawable(null);
         popupWindow.setOutsideTouchable(true);
         popupWindow.setFocusable(true);
@@ -65,7 +65,7 @@ public class PopupUtil {
 //                }
 //            });
 //        }
-        int xoff = (archerview.getWidth()-popupWindow.getWidth())/2;
+        int xoff = (archerview.getWidth() - popupWindow.getWidth()) / 2;
 //        switch (type){
 //            case LEFT:
 //                xoff+=ValueConstant.DIMEN_1*10;
@@ -78,14 +78,14 @@ public class PopupUtil {
 //        }
 //        popupWindow.setElevation(ValueConstant.DIMEN_1*10);
 //        popupWindow.showAtLocation(archerview,Gravity.CENTER,0,0);
-        popupWindow.showAsDropDown(archerview,xoff,-0);
+        popupWindow.showAsDropDown(archerview, xoff, -0);
     }
 
-    public void show(Context context,View view,View archerview){
+    public void show(Context context, View view, View archerview) {
         ScreenUtil.getInstance().getScreenSize(context);
         popupWindow = new PopupWindow(context);
-        popupWindow.setHeight((int) (ScreenUtil.w/2));
-        popupWindow.setWidth(102* ValueConstant.DIMEN_1);
+        popupWindow.setHeight((int) (ScreenUtil.w / 2));
+        popupWindow.setWidth(102 * ValueConstant.DIMEN_1);
         popupWindow.setBackgroundDrawable(null);
         popupWindow.setOutsideTouchable(true);
         popupWindow.setFocusable(true);
@@ -106,12 +106,12 @@ public class PopupUtil {
 //                }
 //            });
 //        }
-        int xoff = (archerview.getWidth()-popupWindow.getWidth())/2;
-        popupWindow.showAsDropDown(archerview,xoff,0);
+        int xoff = (archerview.getWidth() - popupWindow.getWidth()) / 2;
+        popupWindow.showAsDropDown(archerview, xoff, 0);
     }
 
-    public void dimess(){
-        if(popupWindow!=null){
+    public void dimess() {
+        if (popupWindow != null) {
             popupWindow.dismiss();
         }
     }

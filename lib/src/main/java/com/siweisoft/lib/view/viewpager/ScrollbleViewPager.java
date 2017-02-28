@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 /**
  * Created by ${viwmox} on 2016-11-24.
  */
-public class ScrollbleViewPager extends ViewPager{
+public class ScrollbleViewPager extends ViewPager {
 
     private boolean scrollble = false;
 
@@ -22,21 +22,21 @@ public class ScrollbleViewPager extends ViewPager{
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-       switch (ev.getAction()){
-           case MotionEvent.ACTION_MOVE:
-               if(!scrollble){
-                   return false;
-               }
-               break;
-       }
+        switch (ev.getAction()) {
+            case MotionEvent.ACTION_MOVE:
+                if (!scrollble) {
+                    return false;
+                }
+                break;
+        }
         return super.onInterceptTouchEvent(ev);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        switch (ev.getAction()){
+        switch (ev.getAction()) {
             case MotionEvent.ACTION_MOVE:
-                if(!scrollble){
+                if (!scrollble) {
                     return false;
                 }
         }

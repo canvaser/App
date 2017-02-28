@@ -7,5 +7,6 @@ import java.util.Objects;
  */
 public interface OnLoadingInterf {
     public Void onStarLoading(Object o);
+
     public Void onStopLoading(Object o);
 }
