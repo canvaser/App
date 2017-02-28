@@ -72,9 +72,8 @@ public class AxisValue {
         AxisValue axisValue = (AxisValue) o;
 
         if (Float.compare(axisValue.value, value) != 0) return false;
-        if (!Arrays.equals(label, axisValue.label)) return false;
+        return Arrays.equals(label, axisValue.label);
 
-        return true;
     }
 
     @Override

@@ -40,7 +40,11 @@ public class MyMissionUIBean extends BaseUIBean {
     @BindView(R.id.iv_codename)
     ImageView codenameIV;
 
+    @BindView(R.id.iv_arrow)
+    ImageView arrowIV;
 
+    @BindView(R.id.tv_tasktype)
+    TextView typeTV;
 
 
     public MyMissionUIBean(Context context, View convertView) {
@@ -76,5 +80,13 @@ public class MyMissionUIBean extends BaseUIBean {
 
     public TextView getTitleView() {
         return titleView;
+    }
+
+    public ImageView getArrowIV() {
+        return arrowIV;
+    }
+
+    public TextView getTypeTV() {
+        return typeTV;
     }
 }

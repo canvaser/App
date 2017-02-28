@@ -8,5 +8,5 @@ import android.view.ViewGroup;
  */
 public interface OnAppItemSelectListener {
 
-    public void onAppItemSelect(ViewGroup viewGroup, View view, int position);
+    void onAppItemSelect(ViewGroup viewGroup, View view, int position);
 }

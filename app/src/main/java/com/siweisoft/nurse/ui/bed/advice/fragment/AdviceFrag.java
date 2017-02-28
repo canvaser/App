@@ -60,8 +60,8 @@ public class AdviceFrag extends BaseNurseFrag<AdviceUIOpe, NurseNetOpe, BaseDBOp
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA)==null){
-           return;
+        if (getArguments() == null || getArguments().getSerializable(ValueConstant.DATA_DATA) == null) {
+            return;
         }
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
         getOpe().getUiOpe().initTitle(patientAdditionDAOpe.getPatientBedResBean().get住院号() + patientAdditionDAOpe.getPatientBedResBean().get姓名());
@@ -87,8 +87,8 @@ public class AdviceFrag extends BaseNurseFrag<AdviceUIOpe, NurseNetOpe, BaseDBOp
         getOpe().getNetOpe().getPatientAdviceData(patientAdditionDAOpe.getPatientBedResBean().get住院号(), new OnNetWorkReqAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    AdviceListResBean adviceListResBean = GsonUtil.getInstance().fromJson(o.toString(),AdviceListResBean.class);
+                if (success) {
+                    AdviceListResBean adviceListResBean = GsonUtil.getInstance().fromJson(o.toString(), AdviceListResBean.class);
                     getOpe().getUiOpe().initAdviceList(new TimeSortOpe().sortTime(adviceListResBean.getData()));
                 }
                 if (onFinishListener != null) {
@@ -111,7 +111,7 @@ public class AdviceFrag extends BaseNurseFrag<AdviceUIOpe, NurseNetOpe, BaseDBOp
 
     @Override
     public View getPinnedHeader() {
-        View headerView = (ViewGroup) LayoutInflater.from(activity).inflate(R.layout.list_head_advice, null);
+        View headerView = LayoutInflater.from(activity).inflate(R.layout.list_head_advice, null);
         headerView.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.WRAP_CONTENT));
         return headerView;
     }
@@ -123,7 +123,7 @@ public class AdviceFrag extends BaseNurseFrag<AdviceUIOpe, NurseNetOpe, BaseDBOp
             return;
         }
         headerView.setVisibility(View.VISIBLE);
-        MyMissionHeadUIBean myMissionHeadUIBean = new MyMissionHeadUIBean(activity,headerView);
+        MyMissionHeadUIBean myMissionHeadUIBean = new MyMissionHeadUIBean(activity, headerView);
         myMissionHeadUIBean.getTitleTV().setText(DataValue.STATUS_TYPE_TIME.get(firstVisibleGroupPos));
         myMissionHeadUIBean.getNumTV().setText(StringUtil.getStr(getOpe().getUiOpe().getAdviceListAdapter().getChildrenCount(firstVisibleGroupPos)));
     }
@@ -134,9 +134,9 @@ public class AdviceFrag extends BaseNurseFrag<AdviceUIOpe, NurseNetOpe, BaseDBOp
     }
 
     @OnClick({BaseID.ID_RIGHT, BaseID.ID_MID})
-    public void onClick(View v){
+    public void onClick(View v) {
         super.onClick(v);
-        switch (v.getId()){
+        switch (v.getId()) {
             case BaseID.ID_MID:
                 NurseDialogFrag.show(getFragmentManager(), BaseID.ID_ROOT, patientAdditionDAOpe.getNames(), NurseDialogFrag.MID, new OnAppItemClickListener() {
                     @Override

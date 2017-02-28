@@ -263,7 +263,7 @@ public class MainActivity extends Activity implements
 
     @Override
     public View getPinnedHeader() {
-        View headerView = (ViewGroup) getLayoutInflater().inflate(R.layout.group, null);
+        View headerView = getLayoutInflater().inflate(R.layout.group, null);
         headerView.setLayoutParams(new LayoutParams(
                 LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 

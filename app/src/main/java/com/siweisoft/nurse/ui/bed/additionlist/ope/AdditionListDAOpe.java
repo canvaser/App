@@ -13,21 +13,20 @@ import java.util.ArrayList;
 public class AdditionListDAOpe extends BaseOpe {
 
 
-
     public AdditionListDAOpe(Context context) {
         super(context);
     }
 
-    public String getData(ArrayList<AdditionResbean> list){
+    public String getData(ArrayList<AdditionResbean> list) {
         String str = "";
-        for(int i=0;i< list.size();i++){
-            if( list.get(i).isSelect()){
-                str+=list.get(i).getCode();
-                str+=",";
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).isSelect()) {
+                str += list.get(i).getCode();
+                str += ",";
             }
         }
-        if(str.lastIndexOf(",")!=-1){
-            str= str.substring(0,str.length()-1);
+        if (str.lastIndexOf(",") != -1) {
+            str = str.substring(0, str.length() - 1);
         }
         return str;
     }

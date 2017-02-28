@@ -46,11 +46,7 @@ public abstract class BarLineScatterCandleBubbleRenderer extends DataRenderer {
 
         float entryIndex = set.getEntryIndex(e);
 
-        if (e == null || entryIndex >= set.getEntryCount() * mAnimator.getPhaseX()) {
-            return false;
-        } else {
-            return true;
-        }
+        return !(e == null || entryIndex >= set.getEntryCount() * mAnimator.getPhaseX());
     }
 
     /**

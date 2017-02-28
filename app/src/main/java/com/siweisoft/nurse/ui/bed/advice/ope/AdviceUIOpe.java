@@ -18,7 +18,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-11.
  */
-public class AdviceUIOpe extends BaseNurseUIOpe{
+public class AdviceUIOpe extends BaseNurseUIOpe {
 
 
     @BindView(R.id.elv_elv)
@@ -30,11 +30,10 @@ public class AdviceUIOpe extends BaseNurseUIOpe{
 
     AdviceListAdapter adviceListAdapter;
 
-    public static String[] strings = new String[]{"0","1","2","3","4","5","6","7","8","9","10","11","12","13"};
+    public static String[] strings = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"};
 
 
-
-    HashMap<String,ArrayList<AdviceResBean>> hashMap = new HashMap<>();
+    HashMap<String, ArrayList<AdviceResBean>> hashMap = new HashMap<>();
 
     public AdviceUIOpe(Context context, View containerView) {
         super(context, containerView);
@@ -43,7 +42,7 @@ public class AdviceUIOpe extends BaseNurseUIOpe{
     }
 
 
-    private void init(){
+    private void init() {
         getBackTV().setText("返回");
         getBackTV().setSelected(true);
         getRightTV().setSelected(true);
@@ -58,9 +57,9 @@ public class AdviceUIOpe extends BaseNurseUIOpe{
         getMidTV().setSelected(true);
     }
 
-    public void initAdviceList(HashMap<String,ArrayList<AdviceResBean>> hashMap){
+    public void initAdviceList(HashMap<String, ArrayList<AdviceResBean>> hashMap) {
         this.hashMap = hashMap;
-        adviceListAdapter = new AdviceListAdapter(context,this.hashMap);
+        adviceListAdapter = new AdviceListAdapter(context, this.hashMap);
         doubleExpandView.setAdapter(adviceListAdapter);
     }
 

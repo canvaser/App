@@ -334,7 +334,7 @@ public class RoundRectDrawableWithShadow extends Drawable {
         invalidateSelf();
     }
 
-    static interface RoundRectHelper {
+    interface RoundRectHelper {
         void drawRoundRect(Canvas canvas, RectF bounds, float cornerRadius, Paint paint);
     }
 }

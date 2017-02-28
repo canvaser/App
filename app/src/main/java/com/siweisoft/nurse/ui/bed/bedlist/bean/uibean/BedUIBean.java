@@ -43,14 +43,17 @@ public class BedUIBean extends BaseUIBean {
     ImageView chuIV;
 
     @BindView(R.id.ll_r)
-    View  rV;
+    View rV;
+
+    @BindView(R.id.rl_item)
+    View itemV;
 
     public BedUIBean(Context context, View convertView) {
         super(context, convertView);
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) getLevelIV().getLayoutParams();
         LinearLayout linearLayout = (LinearLayout) getLevelIV().getParent();
-        params.width = (int) ((ScreenUtil.w/5)-params.leftMargin-params.rightMargin)-linearLayout.getPaddingLeft()-linearLayout.getPaddingRight();
-        params.height=params.width;
+        params.width = (int) ((ScreenUtil.w / 5) - params.leftMargin - params.rightMargin) - linearLayout.getPaddingLeft() - linearLayout.getPaddingRight();
+        params.height = params.width;
         getLevelIV().setLayoutParams(params);
     }
 
@@ -88,5 +91,13 @@ public class BedUIBean extends BaseUIBean {
 
     public ImageView getShuIV() {
         return shuIV;
+    }
+
+    public View[] getStatus() {
+        return new View[]{shuIV, mingIV, ruIV, chuIV};
+    }
+
+    public View getItemV() {
+        return itemV;
     }
 }

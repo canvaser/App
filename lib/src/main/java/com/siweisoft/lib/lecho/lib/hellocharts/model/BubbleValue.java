@@ -187,9 +187,8 @@ public class BubbleValue {
         if (Float.compare(that.y, y) != 0) return false;
         if (Float.compare(that.z, z) != 0) return false;
         if (!Arrays.equals(label, that.label)) return false;
-        if (shape != that.shape) return false;
+        return shape == that.shape;
 
-        return true;
     }
 
     @Override

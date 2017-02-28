@@ -19,7 +19,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-16.
  */
-public class AddMyPatientUIOpe extends BaseNurseUIOpe{
+public class AddMyPatientUIOpe extends BaseNurseUIOpe {
 
 
     @BindView(R.id.iv_select)
@@ -40,7 +40,7 @@ public class AddMyPatientUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setText("返回");
         getBackTV().setSelected(true);
         getMidTV().setText("选择病人数");
@@ -50,29 +50,29 @@ public class AddMyPatientUIOpe extends BaseNurseUIOpe{
         getRightTV().setVisibility(View.VISIBLE);
     }
 
-    public void initList(ArrayList<AddMyPatientAdapterBean> resBeen){
+    public void initList(ArrayList<AddMyPatientAdapterBean> resBeen) {
 
         list.clear();
         list.addAll(resBeen);
-        recyclerView.addItemDecoration(new MyItemDecoration(context,2));
+        recyclerView.addItemDecoration(new MyItemDecoration(context, 2));
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        if(addMyPatientListAdapter==null){
-            addMyPatientListAdapter = new AddMyPatientListAdapter(context,list);
+        if (addMyPatientListAdapter == null) {
+            addMyPatientListAdapter = new AddMyPatientListAdapter(context, list);
             recyclerView.setAdapter(addMyPatientListAdapter);
-        }else{
+        } else {
             addMyPatientListAdapter.notifyDataSetChanged();
         }
         refreshMid();
     }
 
-    public void refreshMid(){
+    public void refreshMid() {
         getListSelect().clear();
-        for(int i=0;i<getList().size();i++){
-            if(getList().get(i).isSelect()){
+        for (int i = 0; i < getList().size(); i++) {
+            if (getList().get(i).isSelect()) {
                 getListSelect().add(getList().get(i));
             }
         }
-        getMidTV().setText("选择病人数:"+(getListSelect().size()==0?"":getListSelect().size()));
+        getMidTV().setText("选择病人数:" + (getListSelect().size() == 0 ? "" : getListSelect().size()));
     }
 
     public AddMyPatientListAdapter getAddMyPatientListAdapter() {

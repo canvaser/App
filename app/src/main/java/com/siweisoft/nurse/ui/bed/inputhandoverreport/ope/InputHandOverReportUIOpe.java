@@ -17,7 +17,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-12-05.
  */
-public class InputHandOverReportUIOpe extends BaseNurseUIOpe{
+public class InputHandOverReportUIOpe extends BaseNurseUIOpe {
 
     @BindView(R.id.et_input)
     EditText inputET;
@@ -41,9 +41,8 @@ public class InputHandOverReportUIOpe extends BaseNurseUIOpe{
     RecordView recordingIV;
 
 
-
-    private int[] res = new int[]{R.drawable.icon_record,R.drawable.icon_record_started,R.drawable.icon_record_pause,R.drawable.icon_record_stop};
-    public static final String[] str = new String[]{"录音","开始录音","暂停录音","停止录音"};
+    private int[] res = new int[]{R.drawable.icon_record, R.drawable.icon_record_started, R.drawable.icon_record_pause, R.drawable.icon_record_stop};
+    public static final String[] str = new String[]{"录音", "开始录音", "暂停录音", "停止录音"};
 
 
     public InputHandOverReportUIOpe(Context context, View containerView) {
@@ -51,7 +50,7 @@ public class InputHandOverReportUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
         getRightTV().setSelected(true);
@@ -65,8 +64,8 @@ public class InputHandOverReportUIOpe extends BaseNurseUIOpe{
     }
 
 
-    public void init(String type){
-        switch (type){
+    public void init(String type) {
+        switch (type) {
             case InputHandOverReportFrag.TYPE_INPUT:
                 inputET.setEnabled(true);
                 recordingIV.setVisibility(View.VISIBLE);

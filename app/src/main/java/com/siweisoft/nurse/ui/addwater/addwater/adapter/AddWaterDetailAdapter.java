@@ -16,29 +16,30 @@ import java.util.List;
  * Created by ${viwmox} on 2017-02-17.
  */
 
-public class AddWaterDetailAdapter extends AppRecycleAdapter<AddWaterDetailUIBean>{
+public class AddWaterDetailAdapter extends AppRecycleAdapter<AddWaterDetailUIBean> {
 
     List<AddWaterListResBean.DataBean.FilesBean> data;
-    public AddWaterDetailAdapter(Context context,List<AddWaterListResBean.DataBean.FilesBean> data) {
+
+    public AddWaterDetailAdapter(Context context, List<AddWaterListResBean.DataBean.FilesBean> data) {
         super(context);
-        this.data= data;
+        this.data = data;
     }
 
     @Override
     public AddWaterDetailUIBean onCreateViewHolder(ViewGroup parent, int viewType) {
-        AddWaterDetailUIBean uiBean = new AddWaterDetailUIBean(context,parent, R.layout.list_item_addwater_detail);
+        AddWaterDetailUIBean uiBean = new AddWaterDetailUIBean(context, parent, R.layout.list_item_addwater_detail);
         return uiBean;
     }
 
     @Override
     public void onBindViewHolder(AddWaterDetailUIBean holder, int position) {
         holder.getNameTV().setText(StringUtil.getStr(data.get(position).getTermname()));
-        holder.getValueTV().setText(StringUtil.getStr(data.get(position).getValue())+StringUtil.getStr(data.get(position).getSuffix()));
+        holder.getValueTV().setText(StringUtil.getStr(data.get(position).getValue()) + StringUtil.getStr(data.get(position).getSuffix()));
     }
 
     @Override
     public int getItemCount() {
-        return data==null?0:data.size();
+        return data == null ? 0 : data.size();
     }
 
     @Override

@@ -9,12 +9,13 @@ import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 
 import butterknife.BindView;
+
 import com.siweisoft.lib.lecho.lib.hellocharts.view.LineChartView;
 
 /**
  * Created by ${viwmox} on 2016-12-08.
  */
-public class DataChartUIOpe extends BaseNurseUIOpe{
+public class DataChartUIOpe extends BaseNurseUIOpe {
 
 
     @BindView(R.id.chart)

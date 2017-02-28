@@ -1,109 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
 
     <com.siweisoft.lib.view.expandlistview.NurseScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scroll"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout
-        android:id="@+id/ll_scrollchild"
+        android:id="@+id/scroll"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <include layout="@layout/list_tem"/>
-
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_temperature"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-            <include layout="@layout/list_pressure"/>
-
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_pressure"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
-
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:id="@+id/ll_scrollchild"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-
-            <include layout="@layout/list_drainage"/>
-
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_drainage"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+                android:layout_height="wrap_content">
 
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <include layout="@layout/list_tem" />
 
 
-            <include layout="@layout/list_other"/>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_temperature"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_other"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </LinearLayout>
+                android:layout_height="wrap_content">
 
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <include layout="@layout/list_pressure" />
 
 
-            <include layout="@layout/list_stamp"/>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_pressure"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_stamp"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content">
+
+
+                <include layout="@layout/list_drainage" />
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_drainage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <include layout="@layout/list_other" />
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_other"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <include layout="@layout/list_stamp" />
+
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_stamp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
     </com.siweisoft.lib.view.expandlistview.NurseScrollView>
 
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#34C6D6"
-        android:id="@+id/ll_title_head"
-        >
+        android:id="@+id/ll_title_head">
 
 
         <TextView
@@ -121,8 +122,7 @@
             android:focusableInTouchMode="true"
             android:id="@+id/rv_head_rv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
+            android:layout_height="wrap_content" />
 
 
     </LinearLayout>

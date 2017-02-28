@@ -1,7 +1,6 @@
 package com.siweisoft.nurse.ui.mission.missionlist.bean.adaapterbean;
 
 import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionListResBean;
-import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionResBean;
 
 import java.util.ArrayList;
 
@@ -19,8 +18,8 @@ public class AreaMissionListAdapterBean extends AreaMessionListResBean {
     private int hour;
 
 
-    public AreaMissionListAdapterBean(int year, int month, int day,int hour,ArrayList<AreaMessionResBean> data) {
-        super(data);
+    public AreaMissionListAdapterBean(int year, int month, int day, int hour, ArrayList<DataBean> data) {
+        setData(data);
         this.day = day;
         this.hour = hour;
         this.month = month;
@@ -59,25 +58,25 @@ public class AreaMissionListAdapterBean extends AreaMessionListResBean {
         this.year = year;
     }
 
-    public String getYYYYMMDD(){
-        String y=year+"";
-        String m=(month+1)+"";
-        String d=day+"";
+    public String getYYYYMMDD() {
+        String y = year + "";
+        String m = (month + 1) + "";
+        String d = day + "";
 
-        if(month<10){
-            m="0"+month;
+        if (month < 10) {
+            m = "0" + month;
         }
-        if(day<10){
-            d = "0"+day;
+        if (day < 10) {
+            d = "0" + day;
         }
-        return y+"-"+m+"-"+d;
+        return y + "-" + m + "-" + d;
     }
 
-    public long getYYYYMMDD_INT(){
+    public long getYYYYMMDD_INT() {
 
-        return year*1000000+
-                month*10000+
-                day*100+
+        return year * 1000000 +
+                month * 10000 +
+                day * 100 +
                 hour;
     }
 

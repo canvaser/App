@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <TextView
         android:id="@+id/tv_body_txt"
         android:background="@color/color_dark_red"
@@ -19,6 +21,6 @@
     <View
         android:background="@color/gray"
         android:layout_width="100dp"
-        android:layout_height="1dp"/>
+        android:layout_height="1dp" />
 
 </LinearLayout>

@@ -70,11 +70,8 @@ public class FloatUtils {
         b = Math.abs(b);
         float largest = (a > b) ? a : b;
 
-        if (diff <= largest * relativeDiff) {
-            return true;
-        }
+        return diff <= largest * relativeDiff;
 
-        return false;
     }
 
     /**

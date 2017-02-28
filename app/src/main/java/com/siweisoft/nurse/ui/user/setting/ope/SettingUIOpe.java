@@ -33,7 +33,7 @@ public class SettingUIOpe extends BaseUIWithTitleOpe {
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setText("返回");
         getBackTV().setSelected(true);
         getMidTV().setText("服务器地址");

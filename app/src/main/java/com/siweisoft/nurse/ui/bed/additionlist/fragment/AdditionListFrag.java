@@ -29,13 +29,13 @@ import butterknife.Optional;
 /**
  * Created by ${viwmox} on 2016-11-22.
  */
-public class AdditionListFrag extends BaseNurseFrag<AdditionListUIOpe,NurseNetOpe,BaseDBOpe,BaseDAOpe> implements OnAppItemClickListener {
+public class AdditionListFrag extends BaseNurseFrag<AdditionListUIOpe, NurseNetOpe, BaseDBOpe, BaseDAOpe> implements OnAppItemClickListener {
 
     PatientBedResBean data;
 
     @Override
     public BaseNurseOpes<AdditionListUIOpe, NurseNetOpe, BaseDBOpe, BaseDAOpe> getOpe() {
-        if(baseNurseOpes==null){
+        if (baseNurseOpes == null) {
             baseNurseOpes = new BaseNurseOpes(new AdditionListUIOpe(activity, getView()), new NurseNetOpe(activity), null, null);
         }
         return baseNurseOpes;
@@ -44,7 +44,7 @@ public class AdditionListFrag extends BaseNurseFrag<AdditionListUIOpe,NurseNetOp
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments()==null || getArguments().getString(ValueConstant.DATA_POSITION)==null){
+        if (getArguments() == null || getArguments().getString(ValueConstant.DATA_POSITION) == null) {
             return;
         }
         data = (PatientBedResBean) getArguments().getSerializable(ValueConstant.DATA_DATA);
@@ -55,7 +55,6 @@ public class AdditionListFrag extends BaseNurseFrag<AdditionListUIOpe,NurseNetOp
     }
 
 
-
     @Override
     public int getContainView() {
         return R.layout.frag_additionlist;
@@ -63,12 +62,12 @@ public class AdditionListFrag extends BaseNurseFrag<AdditionListUIOpe,NurseNetOp
 
     @Optional
     @OnClick({BaseID.ID_RIGHT})
-    public void onClick(View view){
+    public void onClick(View view) {
         super.onClick(view);
-        switch (view.getId()){
+        switch (view.getId()) {
             case BaseID.ID_RIGHT:
-                UpdateAdditionReqBean reqBean=null;
-                switch (getArguments().getString(ValueConstant.DATA_POSITION)){
+                UpdateAdditionReqBean reqBean = null;
+                switch (getArguments().getString(ValueConstant.DATA_POSITION)) {
                     case "0":
                         reqBean = new UpdateAdditionReqBean(data.get住院号(), "导管", new AdditionListDAOpe(activity).getData(getOpe().getUiOpe().getData()));
                         break;
@@ -79,10 +78,10 @@ public class AdditionListFrag extends BaseNurseFrag<AdditionListUIOpe,NurseNetOp
                 getOpe().getNetOpe().writePatientAdditionData(reqBean, new UINetAdapter(activity) {
                     @Override
                     public void onNetWorkResult(boolean success, Object o) {
-                        if(success){
+                        if (success) {
                             Bundle bundle = new Bundle();
                             bundle.putSerializable(ValueConstant.DATA_DATA, new AdditionListDAOpe(activity).getData(getOpe().getUiOpe().getData()));
-                            FragManager.getInstance().finish(getFragmentManager(),index,bundle);
+                            FragManager.getInstance().finish(getFragmentManager(), index, bundle);
                         }
                     }
                 });

@@ -19,7 +19,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-17.
  */
-public class ShiftDuteUIOpe extends BaseNurseUIOpe{
+public class ShiftDuteUIOpe extends BaseNurseUIOpe {
 
 
     @BindView(R.id.rcv_rcv)
@@ -34,7 +34,7 @@ public class ShiftDuteUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
         getBackTV().setVisibility(View.VISIBLE);
@@ -44,9 +44,9 @@ public class ShiftDuteUIOpe extends BaseNurseUIOpe{
         return recyclerView;
     }
 
-    public void initList(ArrayList<ShiftDuteResBean> data){
+    public void initList(ArrayList<ShiftDuteResBean> data) {
         this.data = data;
-        shiftDuteListAdpter = new ShiftDuteListAdpter(context,data);
+        shiftDuteListAdpter = new ShiftDuteListAdpter(context, data);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1));
         recyclerView.setAdapter(shiftDuteListAdpter);

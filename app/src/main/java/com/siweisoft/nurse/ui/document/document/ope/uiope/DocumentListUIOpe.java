@@ -17,7 +17,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2017-02-15.
  */
-public class DocumentListUIOpe extends BaseNurseUIOpe{
+public class DocumentListUIOpe extends BaseNurseUIOpe {
 
     @BindView(R.id.refresh)
     MaterialRefreshLayout refreshLayout;
@@ -30,22 +30,22 @@ public class DocumentListUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setVisibility(View.VISIBLE);
         getBackTV().setText("返回");
         getBackTV().setSelected(true);
     }
 
-    public void init(String name){
-        if(name!=null){
+    public void init(String name) {
+        if (name != null) {
             getMidTV().setText(name);
         }
     }
 
-    public void initUpdate(DocumentListResBean documentListResBean){
-        if(documentListResBean!=null &&documentListResBean.getData()!=null&&documentListResBean.getData().size()>0
-                &&documentListResBean.getData().get(0).getType()!=null
-                && documentListResBean.getData().get(0).getType().equals(DocumentListResBean.DataBean.TYPE_NO_CHILD)){
+    public void initUpdate(DocumentListResBean documentListResBean) {
+        if (documentListResBean != null && documentListResBean.getData() != null && documentListResBean.getData().size() > 0
+                && documentListResBean.getData().get(0).getType() != null
+                && documentListResBean.getData().get(0).getType().equals(DocumentListResBean.DataBean.TYPE_NO_CHILD)) {
             getRightTV().setVisibility(View.VISIBLE);
             getRightTV().setText("修改");
             getRightTV().setSelected(true);
@@ -53,10 +53,10 @@ public class DocumentListUIOpe extends BaseNurseUIOpe{
     }
 
 
-    public void initList(DocumentListResBean documentListResBean){
+    public void initList(DocumentListResBean documentListResBean) {
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new MyItemDecoration(context,2));
-        recyclerView.setAdapter(new DocumentListAdapter(context,documentListResBean));
+        recyclerView.addItemDecoration(new MyItemDecoration(context, 2));
+        recyclerView.setAdapter(new DocumentListAdapter(context, documentListResBean));
     }
 
     public RecyclerView getRecyclerView() {

@@ -7,5 +7,5 @@ import android.view.View;
  */
 public interface OnAppItemTouchListener {
 
-    public void onAppItemTouch(View view, int position);
+    void onAppItemTouch(View view, int position);
 }

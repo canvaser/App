@@ -35,7 +35,7 @@ public class MissionItenHeadUIBean extends BaseUIBean {
     @BindView(R.id.ll_long)
     View longV;
 
-    TextView[] textViews = new TextView[]{allTV,linTV,longTV};
+    TextView[] textViews = new TextView[]{allTV, linTV, longTV};
 
     public MissionItenHeadUIBean(Context context, View convertView) {
         super(context, convertView);
@@ -65,21 +65,21 @@ public class MissionItenHeadUIBean extends BaseUIBean {
         return longV;
     }
 
-    public void select(int index){
-        for(int i=0;i<textViews.length;i++){
-            if(i==index){
+    public void select(int index) {
+        for (int i = 0; i < textViews.length; i++) {
+            if (i == index) {
                 textViews[i].setSelected(true);
-            }else{
+            } else {
                 textViews[i].setSelected(false);
             }
         }
     }
 
-    public void setOnClick(View.OnClickListener onClick){
+    public void setOnClick(View.OnClickListener onClick) {
         getAllV().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtil.getInstance().show(context,"3232323232");
+                ToastUtil.getInstance().show(context, "3232323232");
             }
         });
         getLinV().setOnClickListener(onClick);

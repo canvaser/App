@@ -13,7 +13,6 @@ public class DataChartDAOpe extends BaseOpe {
     TitleDataResBean titleDataResBean;
 
 
-
     public DataChartDAOpe(Context context) {
         super(context);
     }

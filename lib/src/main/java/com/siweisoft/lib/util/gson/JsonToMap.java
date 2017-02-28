@@ -57,11 +57,11 @@ public class JsonToMap {
             String key = entry.getKey();
             Object value = entry.getValue();
             if (value instanceof JsonArray)
-                map.put((String) key, toList((JsonArray) value));
+                map.put(key, toList((JsonArray) value));
             else if (value instanceof JsonObject)
-                map.put((String) key, toMap((JsonObject) value));
+                map.put(key, toMap((JsonObject) value));
             else
-                map.put((String) key, value);
+                map.put(key, value);
         }
         return map;
     }

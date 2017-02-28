@@ -26,13 +26,13 @@ import com.siweisoft.nurse.ui.document.document.ope.uiope.DocumentDetailListUIOp
  * Created by ${viwmox} on 2017-02-16.
  */
 
-public class DocumentDetailListFrag extends BaseNurseFrag<DocumentDetailListUIOpe,NurseNetOpe,BaseDBOpe,DocumentDetailListDAOpe> {
+public class DocumentDetailListFrag extends BaseNurseFrag<DocumentDetailListUIOpe, NurseNetOpe, BaseDBOpe, DocumentDetailListDAOpe> {
 
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA2)==null){
+        if (getArguments() == null || getArguments().getSerializable(ValueConstant.DATA_DATA2) == null) {
             return;
         }
         getOpe().getDaOpe().setDataBean((DocumentListResBean.DataBean) getArguments().get(ValueConstant.DATA_DATA2));
@@ -51,21 +51,21 @@ public class DocumentDetailListFrag extends BaseNurseFrag<DocumentDetailListUIOp
     }
 
     @Override
-    public BaseNurseOpes<DocumentDetailListUIOpe,NurseNetOpe,BaseDBOpe,DocumentDetailListDAOpe> getOpe() {
-        if(baseNurseOpes==null){
-            baseNurseOpes = new BaseNurseOpes(new DocumentDetailListUIOpe(activity,getView()),new NurseNetOpe(activity),null,new DocumentDetailListDAOpe(activity));
+    public BaseNurseOpes<DocumentDetailListUIOpe, NurseNetOpe, BaseDBOpe, DocumentDetailListDAOpe> getOpe() {
+        if (baseNurseOpes == null) {
+            baseNurseOpes = new BaseNurseOpes(new DocumentDetailListUIOpe(activity, getView()), new NurseNetOpe(activity), null, new DocumentDetailListDAOpe(activity));
         }
         return baseNurseOpes;
     }
 
 
-    public void getData(@NonNull final OnFinishListener onFinishListener){
+    public void getData(@NonNull final OnFinishListener onFinishListener) {
         getOpe().getNetOpe().document_documemtdetail(getOpe().getDaOpe().getDataBean().getId(), new DelayUINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
+                if (success) {
                     LogUtil.E(o.toString());
-                    DocumentDetailResBean documentDetailResBean = GsonUtil.getInstance().fromJson(o.toString(),DocumentDetailResBean.class);
+                    DocumentDetailResBean documentDetailResBean = GsonUtil.getInstance().fromJson(o.toString(), DocumentDetailResBean.class);
                     getOpe().getDaOpe().setDocumentDetailResBean(documentDetailResBean);
                     getOpe().getUiOpe().initList(getOpe().getDaOpe().getDocumentDetailResBean());
                 }

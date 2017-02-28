@@ -543,7 +543,7 @@ public abstract class AxisBase extends ComponentBase {
      * @return
      */
     public boolean isGridDashedLineEnabled() {
-        return mGridDashPathEffect == null ? false : true;
+        return mGridDashPathEffect != null;
     }
 
     /**
@@ -595,7 +595,7 @@ public abstract class AxisBase extends ComponentBase {
      * @return
      */
     public boolean isAxisLineDashedLineEnabled() {
-        return mAxisLineDashPathEffect == null ? false : true;
+        return mAxisLineDashPathEffect != null;
     }
 
     /**

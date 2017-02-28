@@ -27,22 +27,22 @@ public class CheckListFGMUIOpe extends BaseNurseUIOpe {
 
     CheckListAdapter checkListAdapter;
 
-    public static String[] strings = new String[]{"0","1","2","3","4","5","6"};
+    public static String[] strings = new String[]{"0", "1", "2", "3", "4", "5", "6"};
 
     public CheckListFGMUIOpe(Context context, View convertView) {
         super(context, convertView);
         init();
     }
 
-    private void init(){
+    private void init() {
 
         getMidTV().setVisibility(View.VISIBLE);
         getMidTV().setText("配药核对");
 
     }
 
-    public void initList(ArrayList<CheckResBean> data){
-        checkListAdapter = new CheckListAdapter(context,data);
+    public void initList(ArrayList<CheckResBean> data) {
+        checkListAdapter = new CheckListAdapter(context, data);
         missionExpandView.setGroupIndicator(null);
         missionExpandView.setAdapter(checkListAdapter);
     }

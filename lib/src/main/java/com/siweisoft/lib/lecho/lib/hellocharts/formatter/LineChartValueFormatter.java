@@ -5,5 +5,5 @@ import com.siweisoft.lib.lecho.lib.hellocharts.model.PointValue;
 
 public interface LineChartValueFormatter {
 
-    public int formatChartValue(char[] formattedValue, PointValue value);
+    int formatChartValue(char[] formattedValue, PointValue value);
 }

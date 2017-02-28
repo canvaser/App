@@ -37,9 +37,6 @@ public class CalendarUtil {
 
     public boolean isDay() {
         int h = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-        if (h >= 6 && h <= 17) {
-            return true;
-        }
-        return false;
+        return h >= 6 && h <= 17;
     }
 }

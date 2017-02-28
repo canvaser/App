@@ -34,7 +34,7 @@ import butterknife.OnClick;
 /**
  * Created by ${viwmox} on 2016-12-05.
  */
-public class InputHandOverReportFrag extends BaseNurseFrag implements RecordView.RecordListener{
+public class InputHandOverReportFrag extends BaseNurseFrag implements RecordView.RecordListener {
 
 
     InputHandOverReportUIOpe inputHandOverReportUIOpe;
@@ -45,10 +45,9 @@ public class InputHandOverReportFrag extends BaseNurseFrag implements RecordView
 
     InputHORDAOpe inputHORDAOpe;
 
-    public static final String TYPE_INPUT ="TYPE_INPUT";
+    public static final String TYPE_INPUT = "TYPE_INPUT";
 
-    public static final String TYPE_PLAY ="TYPE_PLAY";
-
+    public static final String TYPE_PLAY = "TYPE_PLAY";
 
 
     @Override
@@ -60,29 +59,28 @@ public class InputHandOverReportFrag extends BaseNurseFrag implements RecordView
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments()==null ){
+        if (getArguments() == null) {
             return;
         }
-        PermissionUtil.getInstance().addPermission(this,"android.permission.RECORD_AUDIO");
+        PermissionUtil.getInstance().addPermission(this, "android.permission.RECORD_AUDIO");
 
         inputHORDAOpe = new InputHORDAOpe(activity);
         inputHORDAOpe.setShiftDuteResBean((ShiftDuteResBean) getArguments().getSerializable(ValueConstant.DATA_DATA2));
         inputHORDAOpe.setType(getArguments().getString(ValueConstant.DATA_TYPE));
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
-        inputHandOverReportUIOpe = new InputHandOverReportUIOpe(activity,getView());
+        inputHandOverReportUIOpe = new InputHandOverReportUIOpe(activity, getView());
         inputHandOverReportUIOpe.setContent(inputHORDAOpe.getShiftDuteResBean().get内容());
         inputHORDAOpe.setStatus(inputHandOverReportUIOpe.getStr()[0]);
         inputHORNetOpe = new NurseNetOpe(activity);
         inputHandOverReportUIOpe.getRecordingIV().setRecordListener(this);
         inputHandOverReportUIOpe.init(inputHORDAOpe.getType());
-        if(inputHORDAOpe.getType().equals(TYPE_PLAY)){
-            File file =MethodValue.getRecordFile(""+System.currentTimeMillis());
+        if (inputHORDAOpe.getType().equals(TYPE_PLAY)) {
+            File file = MethodValue.getRecordFile("" + System.currentTimeMillis());
             inputHORDAOpe.setFile(file);
-            TestBase64.byte2File(inputHORDAOpe.getShiftDuteResBean().getAudio().getBytes(),file);
+            TestBase64.byte2File(inputHORDAOpe.getShiftDuteResBean().getAudio().getBytes(), file);
 
         }
     }
-
 
 
     @Override
@@ -90,11 +88,11 @@ public class InputHandOverReportFrag extends BaseNurseFrag implements RecordView
         return R.layout.frag_inputhandovereport;
     }
 
-    public void writeData(final OnFinishListener onFinishListener){
+    public void writeData(final OnFinishListener onFinishListener) {
         InputHORReqBean reqBean = new InputHORReqBean();
         reqBean.setContent(inputHandOverReportUIOpe.getInputET().getText().toString());
         reqBean.setZyh(patientAdditionDAOpe.getPatientBedResBean().get住院号());
-        if(inputHORDAOpe.getFile()!=null){
+        if (inputHORDAOpe.getFile() != null) {
             reqBean.setContent("audio");
             reqBean.setAudio(TestBase64.getJsonData(inputHORDAOpe.getFile()));
         }
@@ -105,24 +103,24 @@ public class InputHandOverReportFrag extends BaseNurseFrag implements RecordView
         inputHORNetOpe.writePatientReportData(reqBean, new UINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
+                if (success) {
 
                 }
-                if(onFinishListener!=null){
+                if (onFinishListener != null) {
                     onFinishListener.onFinish(o);
                 }
             }
         });
     }
 
-    @OnClick({BaseID.ID_RIGHT,R.id.iv_record,R.id.iv_cancle})
-    public void onClickEvent(View v){
-        switch (v.getId()){
+    @OnClick({BaseID.ID_RIGHT, R.id.iv_record, R.id.iv_cancle})
+    public void onClickEvent(View v) {
+        switch (v.getId()) {
             case BaseID.ID_RIGHT:
                 writeData(new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
-                        FragManager.getInstance().finish(getFragmentManager(),index);
+                        FragManager.getInstance().finish(getFragmentManager(), index);
                     }
                 });
                 break;
@@ -153,7 +151,7 @@ public class InputHandOverReportFrag extends BaseNurseFrag implements RecordView
 
     @Override
     public void start(RecordView recordView) {
-        inputHORDAOpe.setFile(MethodValue.getRecordFile(System.currentTimeMillis()+""));
+        inputHORDAOpe.setFile(MethodValue.getRecordFile(System.currentTimeMillis() + ""));
         inputHandOverReportUIOpe.getShowIV().setVisibility(View.VISIBLE);
         inputHORDAOpe.setMediaRecorder(VoiceUtil.getInstance().startRecording(activity, inputHORDAOpe.getFile()));
     }
@@ -164,9 +162,9 @@ public class InputHandOverReportFrag extends BaseNurseFrag implements RecordView
         inputHandOverReportUIOpe.getRecordingIV().setVisibility(View.GONE);
         inputHandOverReportUIOpe.getRecordIV().setVisibility(View.VISIBLE);
         inputHandOverReportUIOpe.getTimeTV().setVisibility(View.VISIBLE);
-        inputHandOverReportUIOpe.getTimeTV().setText(time/1000+"s");
+        inputHandOverReportUIOpe.getTimeTV().setText(time / 1000 + "s");
         inputHandOverReportUIOpe.getCancleIV().setVisibility(View.VISIBLE);
-        VoiceUtil.getInstance().stopRecording(inputHORDAOpe.getMediaRecorder(),inputHORDAOpe.getFile());
+        VoiceUtil.getInstance().stopRecording(inputHORDAOpe.getMediaRecorder(), inputHORDAOpe.getFile());
     }
 
     @Override

@@ -12,7 +12,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-11.
  */
-public class StampUIBean extends BaseUIBean{
+public class StampUIBean extends BaseUIBean {
 
     @BindView(R.id.tv_head_stamp)
     TextView headTV;

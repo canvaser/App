@@ -105,9 +105,8 @@ public class PointValue {
         if (Float.compare(that.originY, originY) != 0) return false;
         if (Float.compare(that.x, x) != 0) return false;
         if (Float.compare(that.y, y) != 0) return false;
-        if (!Arrays.equals(label, that.label)) return false;
+        return Arrays.equals(label, that.label);
 
-        return true;
     }
 
     @Override

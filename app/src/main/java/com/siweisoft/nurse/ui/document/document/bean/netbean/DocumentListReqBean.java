@@ -6,7 +6,7 @@ import com.siweisoft.lib.network.bean.req.BaseReqBean;
  * Created by ${viwmox} on 2017-02-15.
  */
 
-public class DocumentListReqBean extends BaseReqBean{
+public class DocumentListReqBean extends BaseReqBean {
 
     private String pid;
 

@@ -97,11 +97,7 @@ public class SunFaceView extends View {
      */
     public void setPerView(int sunRadius, float per) {
         sunRadius = changeDp(sunRadius);
-        if (per >= 0.8) {
-            isDrawFace = true;
-        } else {
-            isDrawFace = false;
-        }
+        isDrawFace = per >= 0.8;
         per = Math.min(per, 1);
         float tempRadius = sunRadius * per;
         mSunRadius = (int) tempRadius;

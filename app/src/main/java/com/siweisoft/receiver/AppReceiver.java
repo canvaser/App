@@ -11,21 +11,19 @@ import com.siweisoft.lib.util.NotificationUtil;
 /**
  * Created by ${viwmox} on 2016-10-28.
  */
-public class AppReceiver extends BroadcastReceiver{
-
-
+public class AppReceiver extends BroadcastReceiver {
 
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if(intent ==null || intent.getStringExtra(ValueConstant.DATA_DATA)==null){
+        if (intent == null || intent.getStringExtra(ValueConstant.DATA_DATA) == null) {
             return;
         }
-        switch (intent.getStringExtra(ValueConstant.DATA_DATA)){
+        switch (intent.getStringExtra(ValueConstant.DATA_DATA)) {
             case NotificationUtil.NOTIFICATION_APP:
                 AppAplication appAplication = (AppAplication) context.getApplicationContext();
-                Intent intent1 = new Intent(context,appAplication.getActivities().get(appAplication.getActivities().size()-1).getClass());
-                intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);//关键的一步，设置启动模式
+                Intent intent1 = new Intent(context, appAplication.getActivities().get(appAplication.getActivities().size() - 1).getClass());
+                intent1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);//关键的一步，设置启动模式
                 context.startActivity(intent1);
                 break;
         }

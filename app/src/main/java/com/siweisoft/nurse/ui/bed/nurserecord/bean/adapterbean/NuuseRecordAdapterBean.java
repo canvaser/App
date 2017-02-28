@@ -9,6 +9,4 @@ import com.siweisoft.lib.base.ui.bean.ResultResBean;
 public class NuuseRecordAdapterBean extends ResultResBean {
 
 
-
-
 }

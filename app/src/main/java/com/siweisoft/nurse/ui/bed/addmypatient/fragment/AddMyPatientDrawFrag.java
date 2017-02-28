@@ -33,17 +33,17 @@ public class AddMyPatientDrawFrag extends BaseUIFragment implements OnAppItemCli
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        addMyPatientUIOpe = new AddMyPatientDrawUIOpe(activity,getView());
+        addMyPatientUIOpe = new AddMyPatientDrawUIOpe(activity, getView());
         getMyPatientListNetOpe = new NurseNetOpe(activity);
         addMyPatientNetOpe = new NurseNetOpe(activity);
         getMyPatientListNetOpe.getRegion(new OnNetWorkReqAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-              if(success){
-                  AddMyPatientListAdapterBean resBean = GsonUtil.getInstance().fromJson(o.toString(),AddMyPatientListAdapterBean.class);
-                  addMyPatientUIOpe.initList(resBean.getData());
-                  addMyPatientUIOpe.getAddMyPatientListAdapter().setOnAppItemClickListener(AddMyPatientDrawFrag.this);
-              }
+                if (success) {
+                    AddMyPatientListAdapterBean resBean = GsonUtil.getInstance().fromJson(o.toString(), AddMyPatientListAdapterBean.class);
+                    addMyPatientUIOpe.initList(resBean.getData());
+                    addMyPatientUIOpe.getAddMyPatientListAdapter().setOnAppItemClickListener(AddMyPatientDrawFrag.this);
+                }
             }
         });
     }
@@ -54,32 +54,32 @@ public class AddMyPatientDrawFrag extends BaseUIFragment implements OnAppItemCli
     }
 
     @Optional
-    @OnClick({BaseID.ID_RIGHT,BaseID.ID_BACK})
-    public void onClick(View v){
+    @OnClick({BaseID.ID_RIGHT, BaseID.ID_BACK})
+    public void onClick(View v) {
         Bundle bundle = new Bundle();
-        switch (v.getId()){
+        switch (v.getId()) {
             case BaseID.ID_RIGHT:
 
-                for(int i=0;i<addMyPatientUIOpe.getList().size();i++){
-                    if(addMyPatientUIOpe.getList().get(i).isSelect()){
-                        bundle.putSerializable(ValueConstant.DATA_DATA,addMyPatientUIOpe.getList().get(i));
+                for (int i = 0; i < addMyPatientUIOpe.getList().size(); i++) {
+                    if (addMyPatientUIOpe.getList().get(i).isSelect()) {
+                        bundle.putSerializable(ValueConstant.DATA_DATA, addMyPatientUIOpe.getList().get(i));
                         break;
                     }
                 }
-                FragmentUtil.getInstance().removeFrag(activity,this,DrawerLayoutFrag.class.getSimpleName(),bundle);
+                FragmentUtil.getInstance().removeFrag(activity, this, DrawerLayoutFrag.class.getSimpleName(), bundle);
                 break;
             case BaseID.ID_BACK:
-                FragmentUtil.getInstance().removeFrag(activity,this,DrawerLayoutFrag.class.getSimpleName(),bundle);
+                FragmentUtil.getInstance().removeFrag(activity, this, DrawerLayoutFrag.class.getSimpleName(), bundle);
                 break;
         }
     }
 
     @Override
     public void onAppItemClick(View view, int position) {
-        for(int i=0;i<addMyPatientUIOpe.getList().size();i++){
-            if(i==position){
+        for (int i = 0; i < addMyPatientUIOpe.getList().size(); i++) {
+            if (i == position) {
                 addMyPatientUIOpe.getList().get(i).setSelect(true);
-            }else{
+            } else {
                 addMyPatientUIOpe.getList().get(i).setSelect(false);
             }
         }

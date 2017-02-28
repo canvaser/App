@@ -21,15 +21,15 @@ public class DuteScheDuleListAadpter extends AppRecycleAdapter {
     private ArrayList<DuteScheDuleResBean> data;
 
 
-    public DuteScheDuleListAadpter(Context context,ArrayList<DuteScheDuleResBean> data) {
+    public DuteScheDuleListAadpter(Context context, ArrayList<DuteScheDuleResBean> data) {
         super(context);
-        this.data =data;
+        this.data = data;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view =layoutInflater.inflate(R.layout.list_duteschedule,parent,false);
-        DuteScheDuleUIBean duteScheDuleUIBean = new DuteScheDuleUIBean(context,view);
+        View view = layoutInflater.inflate(R.layout.list_duteschedule, parent, false);
+        DuteScheDuleUIBean duteScheDuleUIBean = new DuteScheDuleUIBean(context, view);
         return duteScheDuleUIBean;
     }
 
@@ -42,7 +42,7 @@ public class DuteScheDuleListAadpter extends AppRecycleAdapter {
 
     @Override
     public int getItemCount() {
-        return data==null?0:data.size();
+        return data == null ? 0 : data.size();
     }
 
     @Override

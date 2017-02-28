@@ -23,7 +23,7 @@ import com.siweisoft.nurse.ui.addwater.addaddwater.ope.uiope.AddAddWaterUIOpe;
 import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
 import com.siweisoft.lib.base.ui.netadapter.DelayUINetAdapter;
 import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
-import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionResBean;
+import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionListResBean;
 
 import butterknife.OnClick;
 
@@ -31,17 +31,17 @@ import butterknife.OnClick;
  * Created by ${viwmox} on 2017-02-17.
  */
 
-public class AddAddWaterFrag extends BaseNurseFrag<AddAddWaterUIOpe,NurseNetOpe,BaseDBOpe,AddAddWaterDAOpe>{
+public class AddAddWaterFrag extends BaseNurseFrag<AddAddWaterUIOpe, NurseNetOpe, BaseDBOpe, AddAddWaterDAOpe> {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        getOpe().getDaOpe().setAreaMessionResBean((AreaMessionResBean) getArguments().getSerializable(ValueConstant.DATA_DATA));
+        getOpe().getDaOpe().setAreaMessionResBean((AreaMessionListResBean.DataBean) getArguments().getSerializable(ValueConstant.DATA_DATA));
         getOpe().getUiOpe().getRefreshLayout().setMaterialRefreshListener(this);
         getOpe().getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
     }
 
-    public void getData(final OnFinishListener onFinishListener){
+    public void getData(final OnFinishListener onFinishListener) {
         getOpe().getNetOpe().document_documemtdetail("71", new DelayUINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
@@ -53,7 +53,7 @@ public class AddAddWaterFrag extends BaseNurseFrag<AddAddWaterUIOpe,NurseNetOpe,
         });
     }
 
-    public void getBYLbyId(final OnFinishListener onFinishListener){
+    public void getBYLbyId(final OnFinishListener onFinishListener) {
         getOpe().getNetOpe().getbylbyadvid(getOpe().getDaOpe().getAreaMessionResBean().getTitles().get(0).get医嘱ID(), new DelayUINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
@@ -64,7 +64,7 @@ public class AddAddWaterFrag extends BaseNurseFrag<AddAddWaterUIOpe,NurseNetOpe,
         });
     }
 
-    public void wirteData(){
+    public void wirteData() {
 
         getOpe().getNetOpe().write_addwater_data(getOpe().getDaOpe().getAreaMessionResBean().getTitles().get(0).getId(),
                 getOpe().getDaOpe().getAreaMessionResBean().getTitles().get(0).get医嘱ID(),
@@ -74,12 +74,12 @@ public class AddAddWaterFrag extends BaseNurseFrag<AddAddWaterUIOpe,NurseNetOpe,
                 new DelayUINetAdapter(activity) {
                     @Override
                     public void onNetWorkResult(boolean success, Object o) {
-                        BottomDialogMenuView bottomDialogMenuView = new BottomDialogMenuView(activity,new String[]{"稍后是否还需要新增补液卡记录","是","否","取消"});
+                        BottomDialogMenuView bottomDialogMenuView = new BottomDialogMenuView(activity, new String[]{"稍后是否还需要新增补液卡记录", "是", "否", "取消"});
                         SheetDialogUtil.getInstance().showBottomSheet(activity, bottomDialogMenuView, new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 TextView textView = (TextView) v;
-                                switch (textView.getText().toString()){
+                                switch (textView.getText().toString()) {
                                     case "是":
 
                                         break;
@@ -98,14 +98,14 @@ public class AddAddWaterFrag extends BaseNurseFrag<AddAddWaterUIOpe,NurseNetOpe,
     }
 
     @OnClick({R.id.tv_start, BaseID.ID_RIGHT})
-    public void onClick(View v){
+    public void onClick(View v) {
         super.onClick(v);
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.tv_start:
                 getOpe().getDaOpe().numPlus();
                 if (getOpe().getDaOpe().getNum() == 0) {
                     getOpe().getUiOpe().getStartTV().setText("已开始");
-                }else{
+                } else {
                     getOpe().getUiOpe().getStartTV().setText("第" + StringUtil.getStr(getOpe().getDaOpe().getNum()) + "滴");
                 }
 
@@ -137,8 +137,8 @@ public class AddAddWaterFrag extends BaseNurseFrag<AddAddWaterUIOpe,NurseNetOpe,
 
     @Override
     public BaseNurseOpes<AddAddWaterUIOpe, NurseNetOpe, BaseDBOpe, AddAddWaterDAOpe> getOpe() {
-        if(baseNurseOpes ==null){
-            baseNurseOpes = new BaseNurseOpes(new AddAddWaterUIOpe(activity,getView()),new NurseNetOpe(activity),null,new AddAddWaterDAOpe(activity));
+        if (baseNurseOpes == null) {
+            baseNurseOpes = new BaseNurseOpes(new AddAddWaterUIOpe(activity, getView()), new NurseNetOpe(activity), null, new AddAddWaterDAOpe(activity));
         }
         return baseNurseOpes;
     }

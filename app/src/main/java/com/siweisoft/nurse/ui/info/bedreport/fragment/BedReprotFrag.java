@@ -27,7 +27,7 @@ import org.json.JSONObject;
 /**
  * Created by ${viwmox} on 2016-11-29.
  */
-public class BedReprotFrag extends BaseNurseFrag{
+public class BedReprotFrag extends BaseNurseFrag {
 
 
     NurseNetOpe bedReportNetOpe;
@@ -43,7 +43,7 @@ public class BedReprotFrag extends BaseNurseFrag{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bedReportNetOpe = new NurseNetOpe(activity);
-        bedReportUIOpe= new BedReportUIOpe(activity,getView());
+        bedReportUIOpe = new BedReportUIOpe(activity, getView());
         bedReportUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
@@ -58,13 +58,13 @@ public class BedReprotFrag extends BaseNurseFrag{
         bedReportUIOpe.getRefreshLayout().autoRefresh();
     }
 
-    public void getData(final OnFinishListener onFinishListener){
+    public void getData(final OnFinishListener onFinishListener) {
         String s = SPUtil.getInstance().getStr(ValueConstant.AREA_INFO);
-        if(s==null ){
+        if (s == null) {
             return;
         }
         GetallregionbyuserResBean.Data data = GsonUtil.getInstance().fromJson(s, GetallregionbyuserResBean.Data.class);
-        if(data==null || data.getWardcode()==null){
+        if (data == null || data.getWardcode() == null) {
             return;
         }
 
@@ -73,12 +73,12 @@ public class BedReprotFrag extends BaseNurseFrag{
         bedReportNetOpe.getDailyBedReportByRegion(reqBean, new OnNetWorkReqAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    BedReportListResBean bedReportResBean = GsonUtil.getInstance().fromJson(o.toString(),BedReportListResBean.class);
+                if (success) {
+                    BedReportListResBean bedReportResBean = GsonUtil.getInstance().fromJson(o.toString(), BedReportListResBean.class);
                     try {
                         JSONObject jsonObject = new JSONObject(o.toString());
                         JSONArray jsonArray = jsonObject.getJSONArray("data");
-                        for(int i=0;i<jsonArray.length();i++){
+                        for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject j = new JSONObject(GsonUtil.getInstance().toJson(jsonArray.get(i)));
 
                             JSONObject jj = new JSONObject(j.get("nameValuePairs").toString());
@@ -93,14 +93,12 @@ public class BedReprotFrag extends BaseNurseFrag{
                     bedReportUIOpe.initList(bedReportResBean.getData());
 
                 }
-                if(onFinishListener!=null){
+                if (onFinishListener != null) {
                     onFinishListener.onFinish(o);
                 }
             }
         });
     }
-
-
 
 
     @Override

@@ -4,8 +4,8 @@ import com.siweisoft.lib.lecho.lib.hellocharts.model.PieChartData;
 
 public interface PieChartDataProvider {
 
-    public PieChartData getPieChartData();
+    PieChartData getPieChartData();
 
-    public void setPieChartData(PieChartData data);
+    void setPieChartData(PieChartData data);
 
 }

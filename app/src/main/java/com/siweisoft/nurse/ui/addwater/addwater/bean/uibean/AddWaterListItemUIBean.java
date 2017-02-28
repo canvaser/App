@@ -14,7 +14,7 @@ import butterknife.BindView;
  * Created by ${viwmox} on 2017-02-17.
  */
 
-public class AddWaterListItemUIBean extends BaseUIBean{
+public class AddWaterListItemUIBean extends BaseUIBean {
 
     @BindView(R.id.tv_name)
     TextView nameTV;

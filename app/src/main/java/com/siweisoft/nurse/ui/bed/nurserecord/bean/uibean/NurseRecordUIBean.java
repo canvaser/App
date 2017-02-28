@@ -22,6 +22,7 @@ public class NurseRecordUIBean extends BaseUIBean {
 
     @BindView(R.id.tv_num)
     TextView numTV;
+
     public NurseRecordUIBean(Context context, View convertView) {
         super(context, convertView);
     }

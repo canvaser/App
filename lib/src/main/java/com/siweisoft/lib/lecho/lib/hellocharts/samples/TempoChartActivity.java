@@ -159,7 +159,7 @@ public class TempoChartActivity extends ActionBarActivity {
             // translate value to seconds, for example
             int valueInSeconds = (int) (value * 60);
             int minutes = (int) Math.floor(valueInSeconds / 60);
-            int seconds = (int) valueInSeconds % 60;
+            int seconds = valueInSeconds % 60;
 
             sb.append(String.valueOf(minutes)).append(':');
             if (seconds < 10) {

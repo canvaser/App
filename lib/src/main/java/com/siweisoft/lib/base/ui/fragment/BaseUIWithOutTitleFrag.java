@@ -26,7 +26,7 @@ public abstract class BaseUIWithOutTitleFrag extends BaseFrg {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View group = (ViewGroup) inflater.inflate(R.layout.layout_baseui_withouttitle, null);
+        View group = inflater.inflate(R.layout.layout_baseui_withouttitle, null);
         ViewGroup parent = (ViewGroup) group.findViewById(R.id.rl_base_container);
         View view = inflater.inflate(getContainView(), container, false);
         parent.addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));

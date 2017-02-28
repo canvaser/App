@@ -17,7 +17,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class NurseRecordDetailUIOpe extends BaseNurseUIOpe{
+public class NurseRecordDetailUIOpe extends BaseNurseUIOpe {
 
     @BindView(R.id.rcv_rcv)
     RecyclerView recyclerView;
@@ -29,7 +29,7 @@ public class NurseRecordDetailUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setVisibility(View.VISIBLE);
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
@@ -37,8 +37,8 @@ public class NurseRecordDetailUIOpe extends BaseNurseUIOpe{
         getMidTV().setVisibility(View.VISIBLE);
     }
 
-    public void initList(NurseRecordListResBean listResBean){
-        nurseRecordDetailListAdapter = new NurseRecordDetailListAdapter(context,listResBean.getData());
+    public void initList(NurseRecordListResBean listResBean) {
+        nurseRecordDetailListAdapter = new NurseRecordDetailListAdapter(context, listResBean.getData());
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1));
         recyclerView.setAdapter(nurseRecordDetailListAdapter);

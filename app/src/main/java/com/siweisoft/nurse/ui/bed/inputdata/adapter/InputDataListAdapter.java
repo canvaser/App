@@ -31,18 +31,18 @@ public class InputDataListAdapter extends AppRecycleAdapter {
 
     DataTemplateResBean data;
 
-    public InputDataListAdapter(Context context,DataTemplateResBean data) {
+    public InputDataListAdapter(Context context, DataTemplateResBean data) {
         super(context);
         this.data = data;
     }
 
     @Override
     public int getItemViewType(int position) {
-        if(data.getData().get(position).getItems().size()>0 &&data.getData().get(position).getItems().get(0).size()>0 ){
+        if (data.getData().get(position).getItems().size() > 0 && data.getData().get(position).getItems().get(0).size() > 0) {
             return 0;
-        }else if(data.getData().get(position).getSignname().equals("录入时间") || data.getData().get(position).getSignname().equals("图章时间")){
+        } else if (data.getData().get(position).getSignname().equals("录入时间") || data.getData().get(position).getSignname().equals("图章时间")) {
             return 1;
-        }else{
+        } else {
             return 2;
         }
     }
@@ -50,15 +50,15 @@ public class InputDataListAdapter extends AppRecycleAdapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         InputDataUIBean uiBean = null;
-        switch (viewType){
+        switch (viewType) {
             case 0:
             case 1:
-                View view = layoutInflater.inflate(R.layout.list_inputdata2,parent,false);
-                 uiBean = new InputDataUIBean(context,view);
+                View view = layoutInflater.inflate(R.layout.list_inputdata2, parent, false);
+                uiBean = new InputDataUIBean(context, view);
                 break;
             case 2:
-                View view1 = layoutInflater.inflate(R.layout.list_inputdata,parent,false);
-                 uiBean = new InputDataUIBean(context,view1);
+                View view1 = layoutInflater.inflate(R.layout.list_inputdata, parent, false);
+                uiBean = new InputDataUIBean(context, view1);
                 break;
         }
         return uiBean;
@@ -68,12 +68,12 @@ public class InputDataListAdapter extends AppRecycleAdapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         final InputDataUIBean uiBean = (InputDataUIBean) holder;
         uiBean.getNameTV().setText(StringUtil.getStr(data.getData().get(position).getSignname()));
-        switch (getItemViewType(position)){
+        switch (getItemViewType(position)) {
             case 0:
                 uiBean.getValueTV().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        BottomDialogMenuView bottomDialogMenuView = new BottomDialogMenuView(context,data.getData().get(position).getItems().get(0));
+                        BottomDialogMenuView bottomDialogMenuView = new BottomDialogMenuView(context, data.getData().get(position).getItems().get(0));
                         SheetDialogUtil.getInstance().showBottomSheet(context, bottomDialogMenuView, new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -96,7 +96,7 @@ public class InputDataListAdapter extends AppRecycleAdapter {
                                 TimePickUtil.getInstance().showTimePickDialog(context, new TimePickerDialog.OnTimeSetListener() {
                                     @Override
                                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                                        data.getData().get(position).setValue(DateFormatUtil.getYYYYMMDDHHMM(year,month,dayOfMonth,hourOfDay,minute));
+                                        data.getData().get(position).setValue(DateFormatUtil.getYYYYMMDDHHMM(year, month, dayOfMonth, hourOfDay, minute));
                                         uiBean.getValueTV().setText(data.getData().get(position).getValue());
                                     }
                                 });
@@ -106,7 +106,7 @@ public class InputDataListAdapter extends AppRecycleAdapter {
                 });
                 break;
             case 2:
-                uiBean.getValueETV().addTextChangedListener(new BaseTextWather(){
+                uiBean.getValueETV().addTextChangedListener(new BaseTextWather() {
                     @Override
                     public void afterTextChanged(Editable s) {
                         data.getData().get(position).setValue(s.toString());
@@ -127,7 +127,7 @@ public class InputDataListAdapter extends AppRecycleAdapter {
 
     @Override
     public int getItemCount() {
-        return data.getData()==null?0:data.getData().size();
+        return data.getData() == null ? 0 : data.getData().size();
     }
 
     @Override

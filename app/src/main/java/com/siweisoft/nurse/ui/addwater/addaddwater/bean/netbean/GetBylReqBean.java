@@ -6,7 +6,7 @@ import com.siweisoft.lib.network.bean.req.BaseReqBean;
  * Created by ${viwmox} on 2017-02-21.
  */
 
-public class GetBylReqBean extends BaseReqBean{
+public class GetBylReqBean extends BaseReqBean {
 
     private String advID;
 

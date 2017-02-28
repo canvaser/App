@@ -235,7 +235,7 @@ public class SwipeView extends LinearLayout {
                             p.getChildAt(i).setTag(R.id.position, i);
                             if (p.getChildAt(i) != this && p.getChildAt(i) instanceof SwipeView) {
                                 SwipeView s = (SwipeView) p.getChildAt(i);
-                                LogUtil.E(i + "--" + s.status + "---" + ViewCompat.getTranslationX(s));
+                                LogUtil.E(i + "--" + status + "---" + ViewCompat.getTranslationX(s));
                                 s.endAnimatorTranslationX();
                             }
                         }

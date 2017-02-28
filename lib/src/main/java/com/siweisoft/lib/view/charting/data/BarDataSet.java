@@ -138,7 +138,7 @@ public class BarDataSet extends BarLineScatterCandleBubbleDataSet<BarEntry> impl
 
     @Override
     public boolean isStacked() {
-        return mStackSize > 1 ? true : false;
+        return mStackSize > 1;
     }
 
     /**

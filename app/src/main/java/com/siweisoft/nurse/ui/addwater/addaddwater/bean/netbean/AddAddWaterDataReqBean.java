@@ -16,7 +16,7 @@ public class AddAddWaterDataReqBean extends BaseReqBean {
 
     private String fileid;
 
-    private String filename ;
+    private String filename;
 
     private String taskid;
 

@@ -49,20 +49,20 @@ public class AddMyPatientFrag extends BaseNurseFrag implements OnAppItemClickLis
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments()!=null && getArguments().getSerializable(ValueConstant.DATA_DATA)!=null){
+        if (getArguments() != null && getArguments().getSerializable(ValueConstant.DATA_DATA) != null) {
             res = (ArrayList<PatientBedResBean>) getArguments().getSerializable(ValueConstant.DATA_DATA);
         }
-        addMyPatientUIOpe = new AddMyPatientUIOpe(activity,getView());
+        addMyPatientUIOpe = new AddMyPatientUIOpe(activity, getView());
         getMyPatientListNetOpe = new NurseNetOpe(activity);
         addMyPatientNetOpe = new NurseNetOpe(activity);
         getMyPatientListNetOpe.getRegion(new UINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-              if(success){
-                  AddMyPatientListAdapterBean resBean = GsonUtil.getInstance().fromJson(o.toString(),AddMyPatientListAdapterBean.class);
-                  addMyPatientUIOpe.initList(new AddMyPatientSelectOpe(activity).select(res,resBean.getData()));
-                  addMyPatientUIOpe.getAddMyPatientListAdapter().setOnAppItemClickListener(AddMyPatientFrag.this);
-              }
+                if (success) {
+                    AddMyPatientListAdapterBean resBean = GsonUtil.getInstance().fromJson(o.toString(), AddMyPatientListAdapterBean.class);
+                    addMyPatientUIOpe.initList(new AddMyPatientSelectOpe(activity).select(res, resBean.getData()));
+                    addMyPatientUIOpe.getAddMyPatientListAdapter().setOnAppItemClickListener(AddMyPatientFrag.this);
+                }
             }
         });
     }
@@ -73,16 +73,16 @@ public class AddMyPatientFrag extends BaseNurseFrag implements OnAppItemClickLis
     }
 
     @Optional
-    @OnClick({BaseID.ID_RIGHT,R.id.iv_select, BaseID.ID_BACK})
-    public void onClick(View v){
-        switch (v.getId()){
+    @OnClick({BaseID.ID_RIGHT, R.id.iv_select, BaseID.ID_BACK})
+    public void onClick(View v) {
+        switch (v.getId()) {
             case BaseID.ID_BACK:
-                if(addMyPatientUIOpe.getListSelect().size()>0){
-                    View view = LayoutInflater.from(activity).inflate(R.layout.dialog_backinfo,null);
+                if (addMyPatientUIOpe.getListSelect().size() > 0) {
+                    View view = LayoutInflater.from(activity).inflate(R.layout.dialog_backinfo, null);
                     DialogUtil.getInstance().showDialog(activity, view, new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            switch (v.getId()){
+                            switch (v.getId()) {
                                 case R.id.ok:
                                     DialogUtil.getInstance().dismiss();
                                     break;
@@ -93,19 +93,19 @@ public class AddMyPatientFrag extends BaseNurseFrag implements OnAppItemClickLis
                             }
                         }
                     }, R.id.ok, R.id.cancle);
-                }else{
+                } else {
                     FragManager.getInstance().finish(getFragmentManager(), index);
                 }
 
                 break;
             case BaseID.ID_RIGHT:
-                if(addMyPatientUIOpe.getList()==null || addMyPatientUIOpe.getList().size()==0){
+                if (addMyPatientUIOpe.getList() == null || addMyPatientUIOpe.getList().size() == 0) {
                     return;
                 }
                 MyPaitentUpdateListReqBean myPaitentUpdateListReqBean = new MyPaitentUpdateListReqBean();
                 ArrayList<MyPaitentUpdateReqBean> list = new ArrayList<>();
-                for(int i=0;i<addMyPatientUIOpe.getList().size();i++){
-                    if(addMyPatientUIOpe.getList().get(i).isSelect()){
+                for (int i = 0; i < addMyPatientUIOpe.getList().size(); i++) {
+                    if (addMyPatientUIOpe.getList().get(i).isSelect()) {
                         list.add(new MyPaitentUpdateReqBean(addMyPatientUIOpe.getList().get(i).get病床号(),
                                 addMyPatientUIOpe.getList().get(i).get姓名(),
                                 addMyPatientUIOpe.getList().get(i).get关联病区号(),
@@ -117,18 +117,18 @@ public class AddMyPatientFrag extends BaseNurseFrag implements OnAppItemClickLis
                 addMyPatientNetOpe.updateMyPatientList(myPaitentUpdateListReqBean, new UINetAdapter(activity) {
                     @Override
                     public void onNetWorkResult(boolean success, Object o) {
-                        if(success){
-                            FragManager.getInstance().finish(getFragmentManager(),index);
+                        if (success) {
+                            FragManager.getInstance().finish(getFragmentManager(), index);
                         }
                     }
                 });
                 break;
             case R.id.iv_select:
-                if(addMyPatientUIOpe.getList()==null || addMyPatientUIOpe.getList().size()==0){
+                if (addMyPatientUIOpe.getList() == null || addMyPatientUIOpe.getList().size() == 0) {
                     return;
                 }
                 addMyPatientUIOpe.getSelectIV().setSelected(!addMyPatientUIOpe.getSelectIV().isSelected());
-                for(int i=0;i<addMyPatientUIOpe.getList().size();i++){
+                for (int i = 0; i < addMyPatientUIOpe.getList().size(); i++) {
                     addMyPatientUIOpe.getList().get(i).setSelect(addMyPatientUIOpe.getSelectIV().isSelected());
                 }
                 addMyPatientUIOpe.refreshMid();
@@ -141,6 +141,6 @@ public class AddMyPatientFrag extends BaseNurseFrag implements OnAppItemClickLis
     public void onAppItemClick(View view, int position) {
         addMyPatientUIOpe.getList().get(position).setSelect(!addMyPatientUIOpe.getList().get(position).isSelect());
         addMyPatientUIOpe.getAddMyPatientListAdapter().notifyDataSetChanged();
-       addMyPatientUIOpe.refreshMid();
+        addMyPatientUIOpe.refreshMid();
     }
 }

@@ -1,6 +1,7 @@
 package com.siweisoft.nurse.ui.bed.MyMission.bean.uibean;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,6 +21,10 @@ public class MyMissionHeadUIBean extends BaseUIBean {
     @BindView(R.id.tv_num)
     TextView numTV;
 
+    @Nullable
+    @BindView(R.id.ll_item)
+    View itemV;
+
     public MyMissionHeadUIBean(Context context, View convertView) {
         super(context, convertView);
     }
@@ -30,5 +35,9 @@ public class MyMissionHeadUIBean extends BaseUIBean {
 
     public TextView getTitleTV() {
         return titleTV;
+    }
+
+    public View getItemV() {
+        return itemV;
     }
 }

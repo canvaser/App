@@ -58,9 +58,9 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
          * 返回一个view对象即可
          * 注意：view必须要有LayoutParams
          */
-        public View getPinnedHeader();
+        View getPinnedHeader();
 
-        public void updatePinnedHeader(View headerView, int firstVisibleGroupPos);
+        void updatePinnedHeader(View headerView, int firstVisibleGroupPos);
     }
 
     private View mHeaderView;
@@ -347,11 +347,8 @@ public class PinnedHeaderExpandableListView extends ExpandableListView implement
     }
 
     private boolean isTouchPointInView(View view, int x, int y) {
-        if (y >= view.getTop() && y <= view.getBottom()
-                && x >= view.getLeft() && x <= view.getRight()) {
-            return true;
-        }
-        return false;
+        return y >= view.getTop() && y <= view.getBottom()
+                && x >= view.getLeft() && x <= view.getRight();
     }
 
     public void requestRefreshHeader() {

@@ -577,12 +577,9 @@ public class DateFormatUtil {
 
     public static boolean isTodayMMDDHHMM(int year, int month, int day) {
         Calendar today = Calendar.getInstance();
-        if (year == today.get(Calendar.YEAR)
+        return year == today.get(Calendar.YEAR)
                 && month == today.get(Calendar.MONTH)
-                && day == today.get(Calendar.DAY_OF_MONTH)) {
-            return true;
-        }
-        return false;
+                && day == today.get(Calendar.DAY_OF_MONTH);
     }
 
 

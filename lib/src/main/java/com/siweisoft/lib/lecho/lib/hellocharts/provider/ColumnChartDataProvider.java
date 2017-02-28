@@ -4,8 +4,8 @@ import com.siweisoft.lib.lecho.lib.hellocharts.model.ColumnChartData;
 
 public interface ColumnChartDataProvider {
 
-    public ColumnChartData getColumnChartData();
+    ColumnChartData getColumnChartData();
 
-    public void setColumnChartData(ColumnChartData data);
+    void setColumnChartData(ColumnChartData data);
 
 }

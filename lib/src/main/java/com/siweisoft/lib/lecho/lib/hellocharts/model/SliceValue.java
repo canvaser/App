@@ -158,9 +158,8 @@ public class SliceValue {
         if (Float.compare(that.originValue, originValue) != 0) return false;
         if (sliceSpacing != that.sliceSpacing) return false;
         if (Float.compare(that.value, value) != 0) return false;
-        if (!Arrays.equals(label, that.label)) return false;
+        return Arrays.equals(label, that.label);
 
-        return true;
     }
 
     @Override

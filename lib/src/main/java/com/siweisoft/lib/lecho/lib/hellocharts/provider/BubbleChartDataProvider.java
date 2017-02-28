@@ -4,8 +4,8 @@ import com.siweisoft.lib.lecho.lib.hellocharts.model.BubbleChartData;
 
 public interface BubbleChartDataProvider {
 
-    public BubbleChartData getBubbleChartData();
+    BubbleChartData getBubbleChartData();
 
-    public void setBubbleChartData(BubbleChartData data);
+    void setBubbleChartData(BubbleChartData data);
 
 }

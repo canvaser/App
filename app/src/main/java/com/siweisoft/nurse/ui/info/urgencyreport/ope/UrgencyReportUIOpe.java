@@ -20,7 +20,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class UrgencyReportUIOpe extends BaseNurseUIOpe{
+public class UrgencyReportUIOpe extends BaseNurseUIOpe {
 
 
     @BindView(R.id.refresh)
@@ -38,7 +38,8 @@ public class UrgencyReportUIOpe extends BaseNurseUIOpe{
         super(context, containerView);
         init();
     }
-    private void init(){
+
+    private void init() {
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
         getMidTV().setText("紧急报告");
@@ -46,11 +47,11 @@ public class UrgencyReportUIOpe extends BaseNurseUIOpe{
         getMidTV().setVisibility(View.VISIBLE);
     }
 
-    public void initList(ArrayList<UrgencyReportResBean> data){
-        this.data= data;
+    public void initList(ArrayList<UrgencyReportResBean> data) {
+        this.data = data;
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new MyItemDecoration(context,2));
-        ungencyReportListAdapter = new UngencyReportListAdapter(context,this.data);
+        recyclerView.addItemDecoration(new MyItemDecoration(context, 2));
+        ungencyReportListAdapter = new UngencyReportListAdapter(context, this.data);
         recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1));
         recyclerView.setAdapter(ungencyReportListAdapter);
     }

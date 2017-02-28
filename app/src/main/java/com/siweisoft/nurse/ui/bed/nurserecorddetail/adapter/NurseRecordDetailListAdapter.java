@@ -18,31 +18,30 @@ import java.util.ArrayList;
 public class NurseRecordDetailListAdapter extends AppRecycleAdapter {
 
 
-
     ArrayList<NurseRecordResBean> data;
 
-    public NurseRecordDetailListAdapter(Context context,ArrayList<NurseRecordResBean> data) {
+    public NurseRecordDetailListAdapter(Context context, ArrayList<NurseRecordResBean> data) {
         super(context);
         this.data = data;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.list_nurserecorddetail,parent,false);
-        NurseRecordDetailUIBean uiBean= new NurseRecordDetailUIBean(context,view);
+        View view = layoutInflater.inflate(R.layout.list_nurserecorddetail, parent, false);
+        NurseRecordDetailUIBean uiBean = new NurseRecordDetailUIBean(context, view);
         return uiBean;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        NurseRecordDetailUIBean uiBean= (NurseRecordDetailUIBean) holder;
+        NurseRecordDetailUIBean uiBean = (NurseRecordDetailUIBean) holder;
         uiBean.getTimeTV().setText(data.get(position).getExecdate());
         uiBean.getTxtTV().setText(data.get(position).get医嘱详情());
     }
 
     @Override
     public int getItemCount() {
-        return data==null?0:data.size();
+        return data == null ? 0 : data.size();
     }
 
     @Override

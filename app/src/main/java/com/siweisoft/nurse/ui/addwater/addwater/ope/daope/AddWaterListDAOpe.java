@@ -53,10 +53,7 @@ public class AddWaterListDAOpe<A extends CommonUIFrag> extends BaseDAOpe<A> {
 
 
     public boolean canGoOn() {
-        if (getFrag().getArguments() == null || getFrag().getArguments().getSerializable(ValueConstant.DATA_DATA) == null) {
-            return false;
-        }
-        return true;
+        return !(getFrag().getArguments() == null || getFrag().getArguments().getSerializable(ValueConstant.DATA_DATA) == null);
     }
 
     public PatientAdditionDAOpe getPatientAdditionDAOpe() {

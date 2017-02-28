@@ -12,7 +12,7 @@ import com.siweisoft.nurse.ui.info.adddutereport.ope.AddDuteReportUIOpe;
 /**
  * Created by ${viwmox} on 2016-11-17.
  */
-public class AddDuteReportFrag extends BaseNurseFrag{
+public class AddDuteReportFrag extends BaseNurseFrag {
 
     AddDuteReportUIOpe addDuteReportUIOpe;
 
@@ -24,7 +24,7 @@ public class AddDuteReportFrag extends BaseNurseFrag{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        addDuteReportUIOpe = new AddDuteReportUIOpe(activity,getView());
+        addDuteReportUIOpe = new AddDuteReportUIOpe(activity, getView());
     }
 
     @Override

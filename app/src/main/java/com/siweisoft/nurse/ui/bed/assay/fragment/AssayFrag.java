@@ -44,7 +44,7 @@ public class AssayFrag extends BaseNurseFrag<AssayUIOpe, NurseNetOpe, BaseDBOpe,
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA)==null){
+        if (getArguments() == null || getArguments().getSerializable(ValueConstant.DATA_DATA) == null) {
             return;
         }
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
@@ -68,8 +68,8 @@ public class AssayFrag extends BaseNurseFrag<AssayUIOpe, NurseNetOpe, BaseDBOpe,
         getOpe().getNetOpe().getAssayDataList(patientAdditionDAOpe.getPatientBedResBean().get住院号(), getOpe().getDaOpe().getBeginTime(), new OnNetWorkReqAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    AssayListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(),AssayListResBean.class);
+                if (success) {
+                    AssayListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(), AssayListResBean.class);
                     getOpe().getUiOpe().initList(new AssaySortOpe().sortAssay(resBean.getData()));
                     getOpe().getUiOpe().getAssayListAdapter().setOnAppItemClickListener(AssayFrag.this);
                 }
@@ -123,6 +123,6 @@ public class AssayFrag extends BaseNurseFrag<AssayUIOpe, NurseNetOpe, BaseDBOpe,
     public void onAppItemClick(View view, int position) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(ValueConstant.DATA_DATA, getOpe().getUiOpe().getAssayListAdapter().getData().get(position));
-        FragManager.getInstance().startFragment(getFragmentManager(),index,new AssayDetailFrag(),bundle);
+        FragManager.getInstance().startFragment(getFragmentManager(), index, new AssayDetailFrag(), bundle);
     }
 }

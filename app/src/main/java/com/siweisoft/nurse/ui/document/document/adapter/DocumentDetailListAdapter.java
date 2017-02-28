@@ -14,17 +14,18 @@ import com.siweisoft.nurse.ui.document.document.bean.uibean.DocumentDetailUIBean
  * Created by ${viwmox} on 2017-02-16.
  */
 
-public class DocumentDetailListAdapter extends AppRecycleAdapter<DocumentDetailUIBean>{
+public class DocumentDetailListAdapter extends AppRecycleAdapter<DocumentDetailUIBean> {
 
     DocumentDetailResBean data;
-    public DocumentDetailListAdapter(Context context,DocumentDetailResBean data) {
+
+    public DocumentDetailListAdapter(Context context, DocumentDetailResBean data) {
         super(context);
-        this.data =data;
+        this.data = data;
     }
 
     @Override
     public DocumentDetailUIBean onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new DocumentDetailUIBean(context, parent,R.layout.list_documentdetaillist);
+        return new DocumentDetailUIBean(context, parent, R.layout.list_documentdetaillist);
     }
 
     @Override
@@ -34,7 +35,7 @@ public class DocumentDetailListAdapter extends AppRecycleAdapter<DocumentDetailU
 
     @Override
     public int getItemCount() {
-        return data==null?0:data.getData()==null?0:data.getData().get(0)==null?0:data.getData().get(0).getData()==null?0:data.getData().get(0).getData().size();
+        return data == null ? 0 : data.getData() == null ? 0 : data.getData().get(0) == null ? 0 : data.getData().get(0).getData() == null ? 0 : data.getData().get(0).getData().size();
     }
 
     @Override

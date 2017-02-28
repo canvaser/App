@@ -10,7 +10,7 @@ import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentListResBean
  * Created by ${viwmox} on 2017-02-16.
  */
 
-public class DocumentDetailListDAOpe extends BaseDAOpe{
+public class DocumentDetailListDAOpe extends BaseDAOpe {
 
 
     DocumentListResBean.DataBean dataBean;

@@ -26,7 +26,7 @@ import butterknife.Optional;
 /**
  * Created by ${viwmox} on 2016-11-17.
  */
-public class ShiftDuteReportFrag extends BaseNurseFrag{
+public class ShiftDuteReportFrag extends BaseNurseFrag {
 
 
     ShiftDuteReportUIOpe shiftDuteReportUIOpe;
@@ -41,16 +41,16 @@ public class ShiftDuteReportFrag extends BaseNurseFrag{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        shiftDuteReportUIOpe = new ShiftDuteReportUIOpe(activity,getView());
+        shiftDuteReportUIOpe = new ShiftDuteReportUIOpe(activity, getView());
         shiftDuteReportNetOpe = new NurseNetOpe(activity);
         BaseNurseReqBean baseNurseReqBean = new BaseNurseReqBean();
-        DoLoginResBean doLoginResBean = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(ValueConstant.LOGIN_INFO),DoLoginResBean.class);
+        DoLoginResBean doLoginResBean = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(ValueConstant.LOGIN_INFO), DoLoginResBean.class);
         //baseNurseReqBean.setRegionid(doLoginResBean.getData().getUser().getRegions().get(0));
         shiftDuteReportNetOpe.getReportData(baseNurseReqBean, new OnNetWorkReqAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    ShiftDuteReportDataResBean reportResBean = GsonUtil.getInstance().fromJson(o.toString(),ShiftDuteReportDataResBean.class);
+                if (success) {
+                    ShiftDuteReportDataResBean reportResBean = GsonUtil.getInstance().fromJson(o.toString(), ShiftDuteReportDataResBean.class);
                     shiftDuteReportUIOpe.initData(reportResBean.getData());
                 }
             }
@@ -65,9 +65,9 @@ public class ShiftDuteReportFrag extends BaseNurseFrag{
     @Optional
     @OnClick({BaseID.ID_RIGHT})
     public void onClickEvent(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case BaseID.ID_RIGHT:
-                FragManager.getInstance().startFragment(getFragmentManager(),index,new AddDuteReportFrag());
+                FragManager.getInstance().startFragment(getFragmentManager(), index, new AddDuteReportFrag());
                 break;
         }
     }

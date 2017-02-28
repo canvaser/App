@@ -511,18 +511,10 @@ public class AxesRenderer {
             if (isVertical) {
                 float marginBottom = labelTextAscentTab[BOTTOM] + axisMargin;
                 float marginTop = labelTextAscentTab[TOP] + axisMargin;
-                if (rawValue <= rect.bottom - marginBottom && rawValue >= rect.top + marginTop) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return rawValue <= rect.bottom - marginBottom && rawValue >= rect.top + marginTop;
             } else {
                 float margin = labelWidthTab[position] / 2;
-                if (rawValue >= rect.left + margin && rawValue <= rect.right - margin) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return rawValue >= rect.left + margin && rawValue <= rect.right - margin;
             }
         }
         return true;

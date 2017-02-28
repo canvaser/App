@@ -4,8 +4,8 @@ import com.siweisoft.lib.lecho.lib.hellocharts.model.ComboLineColumnChartData;
 
 public interface ComboLineColumnChartDataProvider {
 
-    public ComboLineColumnChartData getComboLineColumnChartData();
+    ComboLineColumnChartData getComboLineColumnChartData();
 
-    public void setComboLineColumnChartData(ComboLineColumnChartData data);
+    void setComboLineColumnChartData(ComboLineColumnChartData data);
 
 }

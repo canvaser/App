@@ -26,36 +26,36 @@ public class AddMyPatientDrawListAdapter extends AppRecycleAdapter {
 
     public AddMyPatientDrawListAdapter(Context context, ArrayList<AddMyPatientAdapterBean> resBeen) {
         super(context);
-        this.resBeen =resBeen;
+        this.resBeen = resBeen;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.list_addmypatient,parent,false);
-        AddMyPatientUIBean addMyPatientUIBean = new AddMyPatientUIBean(context,view);
+        View view = layoutInflater.inflate(R.layout.list_addmypatient, parent, false);
+        AddMyPatientUIBean addMyPatientUIBean = new AddMyPatientUIBean(context, view);
         return addMyPatientUIBean;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        AddMyPatientUIBean  bean = (AddMyPatientUIBean) holder;
+        AddMyPatientUIBean bean = (AddMyPatientUIBean) holder;
         bean.getNameTV().setText(StringUtil.getStr(resBeen.get(position).get姓名()));
         bean.getRootV().setSelected(resBeen.get(position).isSelect());
         bean.getSelectIV().setSelected(resBeen.get(position).isSelect());
         bean.getRootV().setOnClickListener(this);
-        bean.getRootV().setTag(R.id.position,position);
+        bean.getRootV().setTag(R.id.position, position);
     }
 
     @Override
     public int getItemCount() {
-        return resBeen==null?0:resBeen.size();
+        return resBeen == null ? 0 : resBeen.size();
     }
 
     @Override
     public void onClick(View v) {
         int position = (int) v.getTag(R.id.position);
-        if(onAppItemClickListener!=null){
-            onAppItemClickListener.onAppItemClick(v,position);
+        if (onAppItemClickListener != null) {
+            onAppItemClickListener.onAppItemClick(v, position);
         }
     }
 

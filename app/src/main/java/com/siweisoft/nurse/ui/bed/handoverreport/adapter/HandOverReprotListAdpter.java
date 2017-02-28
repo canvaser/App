@@ -30,31 +30,31 @@ public class HandOverReprotListAdpter extends AppRecycleAdapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = layoutInflater.inflate(R.layout.list_shiftdute,parent,false);
-        ShiftDuteUIBean shiftDuteUIBean =new ShiftDuteUIBean(context,view);
+        View view = layoutInflater.inflate(R.layout.list_shiftdute, parent, false);
+        ShiftDuteUIBean shiftDuteUIBean = new ShiftDuteUIBean(context, view);
         return shiftDuteUIBean;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ShiftDuteUIBean shiftDuteUIBean = (ShiftDuteUIBean) holder;
-        shiftDuteUIBean.getTimeTV().setText("时间： "+data.get(position).getCreate_time());
-        shiftDuteUIBean.getNameTV().setText("护士:  "+data.get(position).getDisplayname());
+        shiftDuteUIBean.getTimeTV().setText("时间： " + data.get(position).getCreate_time());
+        shiftDuteUIBean.getNameTV().setText("护士:  " + data.get(position).getDisplayname());
         shiftDuteUIBean.getContentTV().setText(data.get(position).get内容());
         shiftDuteUIBean.getRootV().setOnClickListener(this);
-        shiftDuteUIBean.getRootV().setTag(R.id.position,position);
+        shiftDuteUIBean.getRootV().setTag(R.id.position, position);
     }
 
     @Override
     public int getItemCount() {
-        return data==null?0:data.size();
+        return data == null ? 0 : data.size();
     }
 
     @Override
     public void onClick(View v) {
         int p = (int) v.getTag(R.id.position);
-        if(onAppItemClickListener!=null){
-            onAppItemClickListener.onAppItemClick(v,p);
+        if (onAppItemClickListener != null) {
+            onAppItemClickListener.onAppItemClick(v, p);
         }
     }
 }

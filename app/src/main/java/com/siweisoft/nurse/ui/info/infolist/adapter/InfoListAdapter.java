@@ -20,8 +20,7 @@ public class InfoListAdapter extends AppRecycleAdapter {
     OnAppItemClickListener onAppItemClickListener;
 
 
-
-    public static final String[] titles = new String[]{"病房巡视","语音联系","通知公告","病床日报","紧急报告","交班本","点物本","工作明细","排班表"};
+    public static final String[] titles = new String[]{"病房巡视", "语音联系", "通知公告", "病床日报", "紧急报告", "交班本", "点物本", "工作明细", "排班表"};
 
     public static final int[] icons = new int[]{R.drawable.icon_info_bedscan,
             R.drawable.icon_info_voice,
@@ -39,8 +38,8 @@ public class InfoListAdapter extends AppRecycleAdapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.list_info,parent,false);
-        InfoListUIBean infoListUIBean = new InfoListUIBean(context,view);
+        View view = layoutInflater.inflate(R.layout.list_info, parent, false);
+        InfoListUIBean infoListUIBean = new InfoListUIBean(context, view);
         return infoListUIBean;
     }
 
@@ -48,9 +47,9 @@ public class InfoListAdapter extends AppRecycleAdapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         InfoListUIBean infoListUIBean = (InfoListUIBean) holder;
         infoListUIBean.getTitleView().setText(titles[position]);
-        infoListUIBean.getRootV().setTag(R.id.position,position);
+        infoListUIBean.getRootV().setTag(R.id.position, position);
         infoListUIBean.getRootV().setOnClickListener(this);
-        BitmapUtil.getInstance().setBg(context,infoListUIBean.getImageView(),icons[position]);
+        BitmapUtil.getInstance().setBg(context, infoListUIBean.getImageView(), icons[position]);
 
     }
 
@@ -62,8 +61,8 @@ public class InfoListAdapter extends AppRecycleAdapter {
     @Override
     public void onClick(View v) {
         int p = (int) v.getTag(R.id.position);
-        if(onAppItemClickListener!=null){
-            onAppItemClickListener.onAppItemClick(v,p);
+        if (onAppItemClickListener != null) {
+            onAppItemClickListener.onAppItemClick(v, p);
         }
     }
 

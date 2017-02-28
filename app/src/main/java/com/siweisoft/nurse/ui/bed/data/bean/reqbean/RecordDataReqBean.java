@@ -5,7 +5,7 @@ import com.siweisoft.lib.base.ui.bean.reqbean.BaseNurseReqBean;
 /**
  * Created by ${viwmox} on 2016-11-24.
  */
-public class RecordDataReqBean extends BaseNurseReqBean{
+public class RecordDataReqBean extends BaseNurseReqBean {
 
     private String groupid;
 

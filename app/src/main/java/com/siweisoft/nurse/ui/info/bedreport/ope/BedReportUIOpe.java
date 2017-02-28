@@ -19,7 +19,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-29.
  */
-public class BedReportUIOpe extends BaseNurseUIOpe{
+public class BedReportUIOpe extends BaseNurseUIOpe {
 
 
     @BindView(R.id.rcv_rcv)
@@ -38,7 +38,7 @@ public class BedReportUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
         getMidTV().setText("病床报告");
@@ -46,10 +46,10 @@ public class BedReportUIOpe extends BaseNurseUIOpe{
         getMidTV().setVisibility(View.VISIBLE);
     }
 
-    public void initList(ArrayList<BedReportResBean> data){
+    public void initList(ArrayList<BedReportResBean> data) {
         getRecyclerView().setLayoutManager(new LinearLayoutManager(context));
-        getRecyclerView().addItemDecoration(new MyItemDecoration(context,1));
-        bedReportListAdapter = new BedReportListAdapter(context,data);
+        getRecyclerView().addItemDecoration(new MyItemDecoration(context, 1));
+        bedReportListAdapter = new BedReportListAdapter(context, data);
         getRecyclerView().setAdapter(bedReportListAdapter);
     }
 

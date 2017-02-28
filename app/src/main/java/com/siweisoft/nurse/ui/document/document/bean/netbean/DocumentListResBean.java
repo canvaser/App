@@ -22,7 +22,7 @@ public class DocumentListResBean extends ResultResBean {
         this.data = data;
     }
 
-    public static class DataBean implements Serializable{
+    public static class DataBean implements Serializable {
         /**
          * id : 47
          * pid : 0

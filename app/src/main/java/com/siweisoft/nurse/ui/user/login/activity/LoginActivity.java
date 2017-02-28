@@ -14,21 +14,19 @@ import com.siweisoft.nurse.ui.user.login.fragment.LoginFrag;
 public class LoginActivity extends BaseUIWithOutTitleActivity {
 
 
-
     static {
-        System.loadLibrary("native-lib");
+        //System.loadLibrary("native-lib");
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FragmentUtil.getInstance().addToContaier(activity,new LoginFrag(),R.id.root);
-        LogUtil.E(test());
+        FragmentUtil.getInstance().addToContaier(activity, new LoginFrag(), R.id.root);
+        //LogUtil.E(test());
     }
 
 
     public native String test();
-
 
 
     @Override
@@ -38,11 +36,11 @@ public class LoginActivity extends BaseUIWithOutTitleActivity {
 
     @Override
     public void onBackPressed() {
-        if(getSupportFragmentManager().getFragments().size()==2){
+        if (getSupportFragmentManager().getFragments().size() == 2) {
             FragmentUtil.getInstance().removeFrag(activity,
                     getSupportFragmentManager().getFragments().get(1),
                     getSupportFragmentManager().getFragments().get(0).getClass().getSimpleName());
-        }else{
+        } else {
             super.onBackPressed();
         }
     }

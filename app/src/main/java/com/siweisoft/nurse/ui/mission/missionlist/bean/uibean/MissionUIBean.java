@@ -59,6 +59,8 @@ public class MissionUIBean extends BaseUIBean {
     @BindView(R.id.tv_key)
     TextView keyTV;
 
+    @BindView(R.id.iv_arrow)
+    ImageView arrowIV;
 
     public MissionUIBean(Context context, View convertView) {
         super(context, convertView);
@@ -112,4 +114,9 @@ public class MissionUIBean extends BaseUIBean {
     public TextView getKeyTV() {
         return keyTV;
     }
+
+    public ImageView getArrowIV() {
+        return arrowIV;
+    }
+
 }

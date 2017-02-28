@@ -41,7 +41,7 @@ public class CheckBookFrag extends BaseNurseFrag implements OnAppItemClickListen
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        checkBookUIOpe = new CheckBookUIOpe(activity,getView());
+        checkBookUIOpe = new CheckBookUIOpe(activity, getView());
         checkBookNetOpe = new NurseNetOpe(activity);
         checkBookUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
@@ -57,16 +57,16 @@ public class CheckBookFrag extends BaseNurseFrag implements OnAppItemClickListen
         checkBookUIOpe.getRefreshLayout().autoRefresh();
     }
 
-    public void getData(final OnFinishListener onFinishListener){
+    public void getData(final OnFinishListener onFinishListener) {
         checkBookNetOpe.getInstrumentFileItem(new UINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    CheckBookListResBean checkBookListResBean = GsonUtil.getInstance().fromJson(o.toString(),CheckBookListResBean.class);
+                if (success) {
+                    CheckBookListResBean checkBookListResBean = GsonUtil.getInstance().fromJson(o.toString(), CheckBookListResBean.class);
                     checkBookUIOpe.initList(checkBookListResBean.getData());
                     checkBookUIOpe.getCheckBookAdapter().setOnAppItemClickListener(CheckBookFrag.this);
                 }
-                if(onFinishListener!=null){
+                if (onFinishListener != null) {
                     onFinishListener.onFinish(o);
                 }
             }
@@ -79,12 +79,12 @@ public class CheckBookFrag extends BaseNurseFrag implements OnAppItemClickListen
     }
 
     @OnClick({BaseID.ID_RIGHT})
-    public void onClickEvent(View v){
-        switch (v.getId()){
+    public void onClickEvent(View v) {
+        switch (v.getId()) {
             case BaseID.ID_RIGHT:
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(ValueConstant.DATA_DATA,checkBookUIOpe.getData());
-                FragManager.getInstance().startFragmentForResult(getFragmentManager(),index,new AddCheckBookFrag(),bundle, ValueConstant.CODE_REQUSET);
+                bundle.putSerializable(ValueConstant.DATA_DATA, checkBookUIOpe.getData());
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new AddCheckBookFrag(), bundle, ValueConstant.CODE_REQUSET);
                 break;
         }
     }
@@ -92,8 +92,8 @@ public class CheckBookFrag extends BaseNurseFrag implements OnAppItemClickListen
     @Override
     public void onAppItemClick(View view, int position) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(ValueConstant.DATA_DATA,checkBookUIOpe.getData().get(position));
-        FragManager.getInstance().startFragment(getFragmentManager(),index,new CheckBookDetailFrag(),bundle);
+        bundle.putSerializable(ValueConstant.DATA_DATA, checkBookUIOpe.getData().get(position));
+        FragManager.getInstance().startFragment(getFragmentManager(), index, new CheckBookDetailFrag(), bundle);
     }
 
     @Override

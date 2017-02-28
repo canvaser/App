@@ -18,7 +18,7 @@ import butterknife.BindView;
  * Created by ${viwmox} on 2017-02-20.
  */
 
-public class NurseDialogUIOpe extends BaseUIOpe{
+public class NurseDialogUIOpe extends BaseUIOpe {
 
     @BindView(R.id.rcv_pop)
     RecyclerView recyclerView;
@@ -33,32 +33,32 @@ public class NurseDialogUIOpe extends BaseUIOpe{
         super(context, containerView);
     }
 
-    public void showList(String[] strings,OnAppItemClickListener onAppItemClickListener){
+    public void showList(String[] strings, OnAppItemClickListener onAppItemClickListener) {
         recyclerView.setVisibility(View.VISIBLE);
-        AnimUtil.getInstance().startAnim(context,recyclerView,R.anim.anim_scale_in);
+        AnimUtil.getInstance().startAnim(context, recyclerView, R.anim.anim_scale_in);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new MyItemDecoration(context,1, com.siweisoft.lib.R.color.color_base_graybg));
-        DialogAdapter pupListAdapter = new DialogAdapter(context,strings);
+        recyclerView.addItemDecoration(new MyItemDecoration(context, 1, com.siweisoft.lib.R.color.color_base_graybg));
+        DialogAdapter pupListAdapter = new DialogAdapter(context, strings);
         recyclerView.setAdapter(pupListAdapter);
         pupListAdapter.setOnAppItemClickListener(onAppItemClickListener);
     }
 
-    public void showLeft(String[] strings,OnAppItemClickListener onAppItemClickListener){
+    public void showLeft(String[] strings, OnAppItemClickListener onAppItemClickListener) {
         leftRecycle.setVisibility(View.VISIBLE);
-        AnimUtil.getInstance().startAnim(context,leftRecycle,R.anim.anim_scale_in);
+        AnimUtil.getInstance().startAnim(context, leftRecycle, R.anim.anim_scale_in);
         leftRecycle.setLayoutManager(new LinearLayoutManager(context));
-        leftRecycle.addItemDecoration(new MyItemDecoration(context,1, com.siweisoft.lib.R.color.color_base_graybg));
-        DialogAdapter pupListAdapter = new DialogAdapter(context,strings);
+        leftRecycle.addItemDecoration(new MyItemDecoration(context, 1, com.siweisoft.lib.R.color.color_base_graybg));
+        DialogAdapter pupListAdapter = new DialogAdapter(context, strings);
         leftRecycle.setAdapter(pupListAdapter);
         pupListAdapter.setOnAppItemClickListener(onAppItemClickListener);
     }
 
-    public void showRight(String[] strings,OnAppItemClickListener onAppItemClickListener){
+    public void showRight(String[] strings, OnAppItemClickListener onAppItemClickListener) {
         rightRecycle.setVisibility(View.VISIBLE);
-        AnimUtil.getInstance().startAnim(context,rightRecycle,R.anim.anim_scale_in);
+        AnimUtil.getInstance().startAnim(context, rightRecycle, R.anim.anim_scale_in);
         rightRecycle.setLayoutManager(new LinearLayoutManager(context));
-        rightRecycle.addItemDecoration(new MyItemDecoration(context,1, com.siweisoft.lib.R.color.color_base_graybg));
-        DialogAdapter pupListAdapter = new DialogAdapter(context,strings);
+        rightRecycle.addItemDecoration(new MyItemDecoration(context, 1, com.siweisoft.lib.R.color.color_base_graybg));
+        DialogAdapter pupListAdapter = new DialogAdapter(context, strings);
         rightRecycle.setAdapter(pupListAdapter);
         pupListAdapter.setOnAppItemClickListener(onAppItemClickListener);
     }

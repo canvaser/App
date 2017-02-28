@@ -29,15 +29,15 @@ import butterknife.OnClick;
 /**
  * Created by ${viwmox} on 2016-11-17.
  */
-public class NurseRecordFrag extends BaseNurseFrag<NurseRecordUIOpe,NurseNetOpe,BaseDBOpe,BaseDAOpe> implements OnAppItemClickListener {
+public class NurseRecordFrag extends BaseNurseFrag<NurseRecordUIOpe, NurseNetOpe, BaseDBOpe, BaseDAOpe> implements OnAppItemClickListener {
 
 
     PatientAdditionDAOpe patientAdditionDAOpe;
 
     @Override
     public BaseNurseOpes<NurseRecordUIOpe, NurseNetOpe, BaseDBOpe, BaseDAOpe> getOpe() {
-        if(baseNurseOpes==null){
-            baseNurseOpes = new BaseNurseOpes(new NurseRecordUIOpe(activity,getView()),new NurseNetOpe(activity),null,null);
+        if (baseNurseOpes == null) {
+            baseNurseOpes = new BaseNurseOpes(new NurseRecordUIOpe(activity, getView()), new NurseNetOpe(activity), null, null);
         }
         return baseNurseOpes;
     }
@@ -45,7 +45,7 @@ public class NurseRecordFrag extends BaseNurseFrag<NurseRecordUIOpe,NurseNetOpe,
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA)==null){
+        if (getArguments() == null || getArguments().getSerializable(ValueConstant.DATA_DATA) == null) {
             return;
         }
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
@@ -69,8 +69,8 @@ public class NurseRecordFrag extends BaseNurseFrag<NurseRecordUIOpe,NurseNetOpe,
         getOpe().getNetOpe().getTaskSummaryByPatient(patientAdditionDAOpe.getPatientBedResBean().get住院号(), new DelayUINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    NurseRecordListResBean nurseRecordListResBean = GsonUtil.getInstance().fromJson(o.toString(),NurseRecordListResBean.class);
+                if (success) {
+                    NurseRecordListResBean nurseRecordListResBean = GsonUtil.getInstance().fromJson(o.toString(), NurseRecordListResBean.class);
                     getOpe().getUiOpe().initList(nurseRecordListResBean.getData());
                     getOpe().getUiOpe().getNurseRecordListAdapter().setOnAppItemClickListener(NurseRecordFrag.this);
                 }
@@ -82,9 +82,9 @@ public class NurseRecordFrag extends BaseNurseFrag<NurseRecordUIOpe,NurseNetOpe,
     }
 
     @OnClick({BaseID.ID_MID})
-    public void onClick(View v){
+    public void onClick(View v) {
         super.onClick(v);
-        switch (v.getId()){
+        switch (v.getId()) {
             case BaseID.ID_MID:
                 getOpe().getUiOpe().showMidList(activity, patientAdditionDAOpe.getNames(), v, 0, new OnAppItemClickListener() {
                     @Override
@@ -108,8 +108,8 @@ public class NurseRecordFrag extends BaseNurseFrag<NurseRecordUIOpe,NurseNetOpe,
     @Override
     public void onAppItemClick(View view, int position) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(ValueConstant.DATA_DATA2,patientAdditionDAOpe.getPatientBedResBean());
+        bundle.putSerializable(ValueConstant.DATA_DATA2, patientAdditionDAOpe.getPatientBedResBean());
         bundle.putSerializable(ValueConstant.DATA_DATA, getOpe().getUiOpe().getNurseRecordListAdapter().getData().get(position));
-        FragManager.getInstance().startFragment(getFragmentManager(),index,new NurseRecordDetailFrag(),bundle);
+        FragManager.getInstance().startFragment(getFragmentManager(), index, new NurseRecordDetailFrag(), bundle);
     }
 }

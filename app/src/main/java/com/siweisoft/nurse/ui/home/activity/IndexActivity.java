@@ -49,8 +49,8 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        homeUIOpe = new HomeUIOpe(activity,getRootVG());
-        homeDataOpe= new HomeDataOpe(activity);
+        homeUIOpe = new HomeUIOpe(activity, getRootVG());
+        homeDataOpe = new HomeDataOpe(activity);
         homeNetOpe = new NurseNetOpe(activity);
 
         homeUIOpe.getHomeBottomView().setOnAppItemSelectListener(this);
@@ -59,13 +59,13 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
         homeNetOpe.getAdditionList(new OnNetWorkReqAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    SPUtil.getInstance().saveStr(ValueConstant.ADDITION_INFO,o.toString());
+                if (success) {
+                    SPUtil.getInstance().saveStr(ValueConstant.ADDITION_INFO, o.toString());
                 }
             }
         });
         keepLive = new KeepLive();
-        registerReceiver(keepLive,new IntentFilter(getPackageName()+ValueConstant.ACITON_GLOB_CAST));
+        registerReceiver(keepLive, new IntentFilter(getPackageName() + ValueConstant.ACITON_GLOB_CAST));
     }
 
     @Override
@@ -87,10 +87,10 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
 
     @Override
     public void onBackPressed() {
-        if(FragManager.getInstance().getFragMaps().get(homeDataOpe.getIndex()).size()>1){
+        if (FragManager.getInstance().getFragMaps().get(homeDataOpe.getIndex()).size() > 1) {
 
             FragManager.getInstance().finish(getSupportFragmentManager(), homeDataOpe.getIndex());
-        }else{
+        } else {
 //            FragManager.getInstance().finish(activity);
 //            activity.finish();
         }
@@ -103,19 +103,19 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
 
     @Override
     public void onAppItemLongClick(View view, int position) {
-        FragManager.getInstance().clearTop(getSupportFragmentManager(),position);
+        FragManager.getInstance().clearTop(getSupportFragmentManager(), position);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode){
+        switch (requestCode) {
             case ValueConstant.CODE_REQUSET:
                 if (null != data) {
                     Bundle bundle = data.getExtras();
                     if (bundle == null) {
                         return;
                     }
-                    switch (bundle.getInt(CodeUtils.RESULT_TYPE)){
+                    switch (bundle.getInt(CodeUtils.RESULT_TYPE)) {
                         case CodeUtils.RESULT_SUCCESS:
                             String result = bundle.getString(CodeUtils.RESULT_STRING);
                             Toast.makeText(activity, "解析结果:" + result, Toast.LENGTH_LONG).show();
@@ -152,21 +152,21 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
         return true;
     }
 
-    class KeepLive extends BroadcastReceiver{
+    class KeepLive extends BroadcastReceiver {
 
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            if(intent==null && intent.getIntExtra(ValueConstant.DATA_DATA,-1)==-1){
+            if (intent == null && intent.getIntExtra(ValueConstant.DATA_DATA, -1) == -1) {
                 return;
             }
             homeNetOpe.keepAlive(new OnNetWorkReqAdapter(activity) {
                 @Override
                 public void onNetWorkResult(boolean success, Object o) {
-                    LogUtil.E(o+"");
-                    if(success){
-                        KeepAliveResBean keepAliveResBean = GsonUtil.getInstance().fromJson(o.toString(),KeepAliveResBean.class);
-                    }else{
+                    LogUtil.E(o + "");
+                    if (success) {
+                        KeepAliveResBean keepAliveResBean = GsonUtil.getInstance().fromJson(o.toString(), KeepAliveResBean.class);
+                    } else {
                         startActivity(new Intent(activity, LoginActivity.class));
                         finish();
                     }

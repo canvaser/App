@@ -19,7 +19,7 @@ import butterknife.OnClick;
 /**
  * Created by ${viwmox} on 2016-12-07.
  */
-public class UpdatePwdFrag extends BaseNurseFrag{
+public class UpdatePwdFrag extends BaseNurseFrag {
 
 
     UpdatePwdUIOpe updatePwdUIOpe;
@@ -35,7 +35,7 @@ public class UpdatePwdFrag extends BaseNurseFrag{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        updatePwdUIOpe = new UpdatePwdUIOpe(activity,getView());
+        updatePwdUIOpe = new UpdatePwdUIOpe(activity, getView());
         updatePwdNetOpe = new NurseNetOpe(activity);
     }
 
@@ -46,18 +46,18 @@ public class UpdatePwdFrag extends BaseNurseFrag{
 
 
     @OnClick({BaseID.ID_RIGHT})
-    public void onClickEvent(View v){
-        switch (v.getId()){
+    public void onClickEvent(View v) {
+        switch (v.getId()) {
             case BaseID.ID_RIGHT:
-                if(updatePwdUIOpe.isReady()){
+                if (updatePwdUIOpe.isReady()) {
                     UpdatePwdReqBean reqBean = new UpdatePwdReqBean();
                     reqBean.setNew_password(updatePwdUIOpe.getNewPwdEt().getText().toString());
                     reqBean.setOld_password(updatePwdUIOpe.getBeforePwdEt().getText().toString());
                     updatePwdNetOpe.changePassword(reqBean, new UINetAdapter(activity) {
                         @Override
                         public void onNetWorkResult(boolean success, Object o) {
-                            if(success){
-                                FragManager.getInstance().finish(getFragmentManager(),index);
+                            if (success) {
+                                FragManager.getInstance().finish(getFragmentManager(), index);
                             }
                         }
                     });

@@ -80,11 +80,7 @@ public class BubbleChartRenderer extends AbstractChartRenderer {
     public void onChartSizeChanged() {
         final ChartComputator computator = chart.getChartComputator();
         Rect contentRect = computator.getContentRectMinusAllMargins();
-        if (contentRect.width() < contentRect.height()) {
-            isBubbleScaledByX = true;
-        } else {
-            isBubbleScaledByX = false;
-        }
+        isBubbleScaledByX = contentRect.width() < contentRect.height();
     }
 
     @Override

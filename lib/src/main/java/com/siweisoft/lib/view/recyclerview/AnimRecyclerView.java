@@ -41,7 +41,7 @@ public class AnimRecyclerView extends RecyclerView {
 
     @Override
     public void setAdapter(Adapter adapter) {
-        Animation animation = (Animation) AnimationUtils.loadAnimation(context, R.anim.anim_push_left_in);
+        Animation animation = AnimationUtils.loadAnimation(context, R.anim.anim_push_left_in);
         LayoutAnimationController lac = new LayoutAnimationController(animation);
         lac.setOrder(LayoutAnimationController.ORDER_NORMAL);
         lac.setDelay(0.5f);//注意这个地方是以秒为单位，是浮点型数据，所以要加f
@@ -50,7 +50,7 @@ public class AnimRecyclerView extends RecyclerView {
     }
 
     public void setAnimRes(int id) {
-        Animation animation = (Animation) AnimationUtils.loadAnimation(context, id);
+        Animation animation = AnimationUtils.loadAnimation(context, id);
         LayoutAnimationController lac = new LayoutAnimationController(animation);
         lac.setOrder(LayoutAnimationController.ORDER_NORMAL);
         lac.setDelay(0.5f);//注意这个地方是以秒为单位，是浮点型数据，所以要加f
@@ -58,7 +58,7 @@ public class AnimRecyclerView extends RecyclerView {
     }
 
     public void setAnimRes(int id, float delay) {
-        Animation animation = (Animation) AnimationUtils.loadAnimation(context, id);
+        Animation animation = AnimationUtils.loadAnimation(context, id);
         LayoutAnimationController lac = new LayoutAnimationController(animation);
         lac.setOrder(LayoutAnimationController.ORDER_NORMAL);
         lac.setDelay(delay);//注意这个地方是以秒为单位，是浮点型数据，所以要加f

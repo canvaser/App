@@ -15,7 +15,7 @@ import butterknife.BindView;
  * Created by ${viwmox} on 2017-02-15.
  */
 
-public class DocumentBean extends BaseUIBean{
+public class DocumentBean extends BaseUIBean {
 
     @BindView(R.id.tv_name)
     TextView nameTV;

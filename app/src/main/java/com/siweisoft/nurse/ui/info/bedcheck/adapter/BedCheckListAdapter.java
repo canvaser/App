@@ -28,9 +28,9 @@ public class BedCheckListAdapter extends AppRecycleAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        if(position==0){
+        if (position == 0) {
             return 0;
-        }else{
+        } else {
             return 1;
         }
     }
@@ -38,14 +38,14 @@ public class BedCheckListAdapter extends AppRecycleAdapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         BedCheckUIBean bedCheckUIBean = null;
-        switch (viewType){
+        switch (viewType) {
             case 0:
-                View view0 = layoutInflater.inflate(R.layout.item_head_bedcheck,parent,false);
-                bedCheckUIBean = new BedCheckUIBean(context,view0);
+                View view0 = layoutInflater.inflate(R.layout.item_head_bedcheck, parent, false);
+                bedCheckUIBean = new BedCheckUIBean(context, view0);
                 break;
             case 1:
-                View view = layoutInflater.inflate(R.layout.list_bedcheck,parent,false);
-                bedCheckUIBean = new BedCheckUIBean(context,view);
+                View view = layoutInflater.inflate(R.layout.list_bedcheck, parent, false);
+                bedCheckUIBean = new BedCheckUIBean(context, view);
                 break;
         }
         return bedCheckUIBean;
@@ -53,11 +53,11 @@ public class BedCheckListAdapter extends AppRecycleAdapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        switch (getItemViewType(position)){
+        switch (getItemViewType(position)) {
             case 0:
                 break;
             case 1:
-                position = position-1;
+                position = position - 1;
                 BedCheckUIBean bedCheckUIBean = (BedCheckUIBean) holder;
                 bedCheckUIBean.getDateTV().setText(StringUtil.getStr(DateFormatUtil.getMMDDHHMM(data.get(position).getTimestamp())));
                 bedCheckUIBean.getAreaTV().setText(StringUtil.getStr(data.get(position).getRegion()));
@@ -69,7 +69,7 @@ public class BedCheckListAdapter extends AppRecycleAdapter {
 
     @Override
     public int getItemCount() {
-        return data==null?1:data.size()+1;
+        return data == null ? 1 : data.size() + 1;
     }
 
     @Override

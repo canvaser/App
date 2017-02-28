@@ -31,15 +31,15 @@ public class NurseRecordListAdapter extends AppRecycleAdapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.list_nurserecord,parent,false);
-        NurseRecordUIBean nurseRecordUIBean = new NurseRecordUIBean(context,view);
+        View view = layoutInflater.inflate(R.layout.list_nurserecord, parent, false);
+        NurseRecordUIBean nurseRecordUIBean = new NurseRecordUIBean(context, view);
         return nurseRecordUIBean;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         NurseRecordUIBean nurseRecordUIBean = (NurseRecordUIBean) holder;
-        nurseRecordUIBean.getRootV().setTag(R.id.position,position);
+        nurseRecordUIBean.getRootV().setTag(R.id.position, position);
         nurseRecordUIBean.getRootV().setOnClickListener(this);
         nurseRecordUIBean.getTimeTV().setText(StringUtil.getStr(data.get(position).getExecdate()));
         nurseRecordUIBean.getTypeTV().setText(StringUtil.getStr(data.get(position).get医嘱类别名称()));
@@ -48,7 +48,7 @@ public class NurseRecordListAdapter extends AppRecycleAdapter {
 
     @Override
     public int getItemCount() {
-        return data==null?0:data.size();
+        return data == null ? 0 : data.size();
     }
 
     public void setOnAppItemClickListener(OnAppItemClickListener onAppItemClickListener) {
@@ -58,8 +58,8 @@ public class NurseRecordListAdapter extends AppRecycleAdapter {
     @Override
     public void onClick(View v) {
         int p = (int) v.getTag(R.id.position);
-        if(onAppItemClickListener!=null){
-            onAppItemClickListener.onAppItemClick(v,p);
+        if (onAppItemClickListener != null) {
+            onAppItemClickListener.onAppItemClick(v, p);
         }
     }
 

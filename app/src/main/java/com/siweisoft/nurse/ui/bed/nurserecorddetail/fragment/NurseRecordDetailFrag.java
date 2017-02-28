@@ -20,7 +20,7 @@ import com.siweisoft.nurse.ui.bed.nurserecorddetail.ope.NurseRecordDetailUIOpe;
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class NurseRecordDetailFrag extends BaseNurseFrag{
+public class NurseRecordDetailFrag extends BaseNurseFrag {
 
 
     NurseRecordDetailUIOpe nurseRecordDetailUIOpe;
@@ -39,12 +39,12 @@ public class NurseRecordDetailFrag extends BaseNurseFrag{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA)==null|| getArguments().getSerializable(ValueConstant.DATA_DATA2)==null){
+        if (getArguments() == null || getArguments().getSerializable(ValueConstant.DATA_DATA) == null || getArguments().getSerializable(ValueConstant.DATA_DATA2) == null) {
             return;
         }
         nurseRecordResBean = (NurseRecordResBean) getArguments().getSerializable(ValueConstant.DATA_DATA);
         patientBedResBean = (PatientBedResBean) getArguments().getSerializable(ValueConstant.DATA_DATA2);
-        nurseRecordDetailUIOpe= new NurseRecordDetailUIOpe(activity,getView());
+        nurseRecordDetailUIOpe = new NurseRecordDetailUIOpe(activity, getView());
         nurseRecordDetailNetOpe = new NurseNetOpe(activity);
         NurseRecordReqBean nurseRecordReqBean = new NurseRecordReqBean();
         nurseRecordReqBean.setZyh(patientBedResBean.get住院号());
@@ -53,8 +53,8 @@ public class NurseRecordDetailFrag extends BaseNurseFrag{
         nurseRecordDetailNetOpe.getTaskDetailByCondition(nurseRecordReqBean, new OnNetWorkReqAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    NurseRecordListResBean listResBean = GsonUtil.getInstance().fromJson(o.toString(),NurseRecordListResBean.class);
+                if (success) {
+                    NurseRecordListResBean listResBean = GsonUtil.getInstance().fromJson(o.toString(), NurseRecordListResBean.class);
                     nurseRecordDetailUIOpe.initList(listResBean);
                 }
             }

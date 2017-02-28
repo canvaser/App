@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.lib.R;
+import com.siweisoft.lib.base.ui.interf.FragIntef;
 import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
 import com.siweisoft.lib.base.ui.ope.BaseUIOpe;
 import com.siweisoft.lib.base.ui.ope.CommonOpes;
@@ -22,7 +23,7 @@ import butterknife.Unbinder;
  * Created by ${viwmox} on 2017-02-27.
  */
 
-public abstract class CommonUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseFrg implements View.OnClickListener, MaterialRefreshListener {
+public abstract class CommonUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseFrg implements View.OnClickListener, MaterialRefreshListener, FragIntef {
 
     private Unbinder unbinder;
 
@@ -33,13 +34,18 @@ public abstract class CommonUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> ext
     View backView;
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (getArguments() != null) {
             index = getArguments().getInt(ValueConstant.FRAG_POSITION);
         }
-        View group = (ViewGroup) inflater.inflate(getLayoutID(), null);
-        ViewGroup parent = (ViewGroup) group.findViewById(R.id.frag_base_container);
-        View view = inflater.inflate(getContainView(), container, false);
+        View group = inflater.inflate(getLayoutID(), null);
+        ViewGroup parent = (ViewGroup) group.findViewById(R.id.common_container);
+        View view = inflater.inflate(onCreateView(false), container, false);
         parent.addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         unbinder = ButterKnife.bind(this, group);
         return group;
@@ -54,13 +60,11 @@ public abstract class CommonUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> ext
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        commonOpes = getOpe();
+        onCreateView(true);
         backView = getView().findViewById(R.id.ftv_back);
         backView.setOnClickListener(this);
         unbinder = ButterKnife.bind(this, view);
     }
-
-    public abstract int getContainView();
 
     public void onResult(int req, Bundle bundle) {
 
@@ -73,14 +77,8 @@ public abstract class CommonUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> ext
         }
     }
 
-    public void onCmd(Bundle bundle) {
-
-    }
-
-    public abstract CommonOpes<A, B> getOpe();
-
     public int getLayoutID() {
-        return R.layout.layout_baseui;
+        return R.layout.layout_commonui;
     }
 
     @Override

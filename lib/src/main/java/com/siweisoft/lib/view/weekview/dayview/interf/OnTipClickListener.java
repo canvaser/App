@@ -9,5 +9,5 @@ import com.siweisoft.lib.view.weekview.dayview.bean.PlanTipBean;
  */
 public interface OnTipClickListener {
 
-    public void onTipClick(View view, PlanTipBean planTipBean);
+    void onTipClick(View view, PlanTipBean planTipBean);
 }

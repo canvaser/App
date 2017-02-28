@@ -15,6 +15,7 @@ import com.siweisoft.lib.util.BitmapUtil;
 import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.bed.bedlist.adapter.BedListAdapter;
+import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.AdditionCodeResBean;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class BedListDAOpe extends BaseDAOpe {
     ArrayList<PatientBedResBean> myList;
 
 
-    private int index=0;
+    private int index = 0;
 
     public BedListDAOpe(Context context) {
         super(context);
@@ -44,17 +45,17 @@ public class BedListDAOpe extends BaseDAOpe {
         this.index = index;
     }
 
-    public ArrayList<String> getPatientNames(ArrayList<PatientBedResBean> patientBedResBeen){
+    public ArrayList<String> getPatientNames(ArrayList<PatientBedResBean> patientBedResBeen) {
         ArrayList<String> strings = new ArrayList<>();
-        for(int i=0;i<patientBedResBeen.size();i++){
+        for (int i = 0; i < patientBedResBeen.size(); i++) {
             strings.add(patientBedResBeen.get(i).get姓名());
         }
         return strings;
     }
 
-    public int getPosition(ArrayList<PatientBedResBean> patientBedResBeen,String zyh){
-        for(int i=0;i<patientBedResBeen.size();i++){
-            if(patientBedResBeen.get(i).get住院号().equals(zyh)){
+    public int getPosition(ArrayList<PatientBedResBean> patientBedResBeen, String zyh) {
+        for (int i = 0; i < patientBedResBeen.size(); i++) {
+            if (patientBedResBeen.get(i).get住院号().equals(zyh)) {
                 return i;
             }
         }
@@ -77,73 +78,73 @@ public class BedListDAOpe extends BaseDAOpe {
         this.myList = myList;
     }
 
-    public void initMyBedList(Context context){
-            for(int i=0;i<myList.size();i++){
-                String sex = "";
-                String age ="";
-                String level = "";
-                if(myList.get(i).get性别().equals("女")){
-                    sex = "woman";
-                }else{
-                    sex = "man";
-                }
-                if(myList.get(i).getPatAge()>=60){
-                    age="old";
-                }else if(myList.get(i).getPatAge()>=14){
-                    age="middle";
-                }else{
-                    age="young";
-                }
-                switch (myList.get(i).get护理级别名称()){
-                    case DataValue.LEVEL_NURSE_1:
-                        level="l1";
-                        break;
-                    case DataValue.LEVEL_NURSE_2:
-                        level="l2";
-                        break;
-                    case DataValue.LEVEL_NURSE_3:
-                        level="l3";
-                        break;
-                }
-
-                int id = context.getResources().getIdentifier(age+"_"+sex+"_"+level,"drawable",context.getPackageName());
-                myList.get(i).setResId(id);
+    public void initMyBedList(Context context) {
+        for (int i = 0; i < myList.size(); i++) {
+            String sex = "";
+            String age = "";
+            String level = "";
+            if (myList.get(i).get性别().equals("女")) {
+                sex = "woman";
+            } else {
+                sex = "man";
             }
+            if (myList.get(i).getPatAge() >= 60) {
+                age = "old";
+            } else if (myList.get(i).getPatAge() >= 14) {
+                age = "middle";
+            } else {
+                age = "young";
+            }
+            switch (myList.get(i).get护理级别名称()) {
+                case DataValue.LEVEL_NURSE_1:
+                    level = "l1";
+                    break;
+                case DataValue.LEVEL_NURSE_2:
+                    level = "l2";
+                    break;
+                case DataValue.LEVEL_NURSE_3:
+                    level = "l3";
+                    break;
+            }
+
+            int id = context.getResources().getIdentifier(age + "_" + sex + "_" + level, "drawable", context.getPackageName());
+            myList.get(i).setResId(id);
+        }
     }
 
-    public void initAllBedList(final Context context, final OnFinishListener onFinishListener){
+    public void initAllBedList(final Context context, final OnFinishListener onFinishListener) {
         new AsyncTask<String, String, String>() {
             @Override
             protected String doInBackground(String... params) {
-                for(int i=0;i<allList.size();i++){
+                for (int i = 0; i < allList.size(); i++) {
                     String sex = "";
-                    String age ="";
+                    String age = "";
                     String level = "";
-                    if(allList.get(i).get性别().equals("女")){
+                    if (allList.get(i).get性别().equals("女")) {
                         sex = "woman";
-                    }else{
+                    } else {
                         sex = "man";
                     }
-                    if(allList.get(i).getPatAge()>=60){
-                        age="old";
-                    }else if(allList.get(i).getPatAge()>=14){
-                        age="middle";
-                    }else{
-                        age="young";
+                    if (allList.get(i).getPatAge() >= 60) {
+                        age = "old";
+                    } else if (allList.get(i).getPatAge() >= 14) {
+                        age = "middle";
+                    } else {
+                        age = "young";
                     }
-                    switch (allList.get(i).get护理级别名称()){
+                    switch (allList.get(i).get护理级别名称()) {
                         case DataValue.LEVEL_NURSE_1:
-                            level="l1";
+                            level = "l1";
                             break;
                         case DataValue.LEVEL_NURSE_2:
-                            level="l2";
+                            level = "l2";
                             break;
                         case DataValue.LEVEL_NURSE_3:
-                            level="l3";
+                            level = "l3";
                             break;
                     }
 
-                    int id = context.getResources().getIdentifier(age+"_"+sex+"_"+level,"drawable",context.getPackageName());
+                    int id = context.getResources().getIdentifier(age + "_" + sex + "_" + level, "drawable", context.getPackageName());
                     allList.get(i).setResId(id);
                 }
                 return null;
@@ -192,6 +193,37 @@ public class BedListDAOpe extends BaseDAOpe {
                 }
                 break;
         }
+    }
+
+    public boolean isEmptyBed(String bed) {
+        if (bed.equals("空床")) {
+            return true;
+        }
+        return false;
+    }
+
+    public int[] getStatus(ArrayList<AdditionCodeResBean> data) {
+        int[] i = new int[]{View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE};
+        if (data != null && data.size() > 0) {
+            switch (data.get(0).getType()) {
+                case "过敏":
+                    i = new int[]{View.INVISIBLE, View.VISIBLE, View.INVISIBLE, View.INVISIBLE};
+                    break;
+                case "手术":
+                    i = new int[]{View.VISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE};
+                    break;
+                default:
+                    i = new int[]{View.INVISIBLE, View.INVISIBLE, View.INVISIBLE, View.INVISIBLE};
+            }
+        }
+        return i;
+    }
+
+    public boolean booleanICU(String status) {
+        if (status.equals("ICU")) {
+            return true;
+        }
+        return false;
     }
 
 

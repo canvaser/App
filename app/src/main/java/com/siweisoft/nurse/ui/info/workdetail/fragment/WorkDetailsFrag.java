@@ -15,7 +15,7 @@ import com.siweisoft.nurse.ui.info.workdetail.ope.WorkDetailsUIOpe;
 /**
  * Created by ${viwmox} on 2016-12-08.
  */
-public class WorkDetailsFrag extends BaseNurseFrag{
+public class WorkDetailsFrag extends BaseNurseFrag {
 
     WorkDetailsUIOpe workDetailsUIOpe;
 
@@ -29,10 +29,10 @@ public class WorkDetailsFrag extends BaseNurseFrag{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments()==null ||getArguments().getSerializable(ValueConstant.DATA_DATA)==null){
+        if (getArguments() == null || getArguments().getSerializable(ValueConstant.DATA_DATA) == null) {
             return;
         }
-        workDetailsUIOpe= new WorkDetailsUIOpe(activity,getView());
+        workDetailsUIOpe = new WorkDetailsUIOpe(activity, getView());
         workDetailsDAOpe = new WorkDetailsDAOpe(activity);
         workDetailsDAOpe.setWorkDetailAdapterBean((WorkDetailAdapterBean) getArguments().getSerializable(ValueConstant.DATA_DATA));
         workDetailsUIOpe.initMid(workDetailsDAOpe.getWorkDetailAdapterBean().getDate());

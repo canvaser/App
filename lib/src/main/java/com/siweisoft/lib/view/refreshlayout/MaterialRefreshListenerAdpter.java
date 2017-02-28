@@ -5,12 +5,9 @@ public abstract class MaterialRefreshListenerAdpter implements MaterialRefreshLi
     public void onfinish() {
     }
 
-    ;
-
     public abstract void onRefresh(MaterialRefreshLayout materialRefreshLayout);
 
     public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
     }
 
-    ;
 }

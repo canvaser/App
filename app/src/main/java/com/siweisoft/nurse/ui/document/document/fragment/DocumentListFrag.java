@@ -36,7 +36,7 @@ import butterknife.OnClick;
  * Created by ${viwmox} on 2017-02-15.
  */
 
-public class DocumentListFrag extends BaseNurseFrag<DocumentListUIOpe,NurseNetOpe,BaseDBOpe,DocumentListDAOpe> implements OnAppItemClickListener{
+public class DocumentListFrag extends BaseNurseFrag<DocumentListUIOpe, NurseNetOpe, BaseDBOpe, DocumentListDAOpe> implements OnAppItemClickListener {
 
 
     PatientAdditionDAOpe patientAdditionDAOpe;
@@ -45,7 +45,7 @@ public class DocumentListFrag extends BaseNurseFrag<DocumentListUIOpe,NurseNetOp
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA2)==null){
+        if (getArguments() == null || getArguments().getSerializable(ValueConstant.DATA_DATA2) == null) {
             return;
         }
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
@@ -65,12 +65,12 @@ public class DocumentListFrag extends BaseNurseFrag<DocumentListUIOpe,NurseNetOp
         getOpe().getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
     }
 
-    public void getData(@NonNull final OnFinishListener onFinishListener){
+    public void getData(@NonNull final OnFinishListener onFinishListener) {
         getOpe().getNetOpe().document_documemtList(getOpe().getDaOpe().getDataBean().getId(), new DelayUINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    DocumentListResBean documentListResBean = GsonUtil.getInstance().fromJson(o.toString(),DocumentListResBean.class);
+                if (success) {
+                    DocumentListResBean documentListResBean = GsonUtil.getInstance().fromJson(o.toString(), DocumentListResBean.class);
                     getOpe().getDaOpe().setDocumentListResBean(documentListResBean);
                     getOpe().getUiOpe().initList(documentListResBean);
                     getOpe().getUiOpe().initUpdate(documentListResBean);
@@ -84,28 +84,28 @@ public class DocumentListFrag extends BaseNurseFrag<DocumentListUIOpe,NurseNetOp
 
     @Override
     public BaseNurseOpes<DocumentListUIOpe, NurseNetOpe, BaseDBOpe, DocumentListDAOpe> getOpe() {
-        if(baseNurseOpes==null){
-            baseNurseOpes = new BaseNurseOpes(new DocumentListUIOpe(activity,getView()),new NurseNetOpe(activity),null,new DocumentListDAOpe(activity));
+        if (baseNurseOpes == null) {
+            baseNurseOpes = new BaseNurseOpes(new DocumentListUIOpe(activity, getView()), new NurseNetOpe(activity), null, new DocumentListDAOpe(activity));
         }
         return baseNurseOpes;
     }
 
-    @OnClick({BaseID.ID_MID,BaseID.ID_RIGHT})
-    public void onClick(View v){
+    @OnClick({BaseID.ID_MID, BaseID.ID_RIGHT})
+    public void onClick(View v) {
         super.onClick(v);
-        switch (v.getId()){
+        switch (v.getId()) {
             case BaseID.ID_MID:
                 if (getOpe().getDaOpe().getDataBean().getTitle() != null) {
                     return;
                 }
-                View view1 = layoutInflater.inflate(R.layout.pup_list,null);
+                View view1 = layoutInflater.inflate(R.layout.pup_list, null);
                 RecyclerView recyclerView = (RecyclerView) view1.findViewById(R.id.rcv_pop);
-                recyclerView.getLayoutParams().height = ValueConstant.DIMEN_1*200;
+                recyclerView.getLayoutParams().height = ValueConstant.DIMEN_1 * 200;
                 recyclerView.requestLayout();
                 recyclerView.setLayoutManager(new LinearLayoutManager(activity));
-                recyclerView.addItemDecoration(new MyItemDecoration(activity,2));
+                recyclerView.addItemDecoration(new MyItemDecoration(activity, 2));
 
-                PupListAdapter p = new PupListAdapter(activity,patientAdditionDAOpe.getNames());
+                PupListAdapter p = new PupListAdapter(activity, patientAdditionDAOpe.getNames());
                 p.setOnAppItemClickListener(new OnAppItemClickListener() {
                     @Override
                     public void onAppItemClick(View view, int position) {
@@ -115,7 +115,7 @@ public class DocumentListFrag extends BaseNurseFrag<DocumentListUIOpe,NurseNetOp
                     }
                 });
                 recyclerView.setAdapter(p);
-                PopupUtil.getInstance().show(activity,view1,v);
+                PopupUtil.getInstance().show(activity, view1, v);
                 break;
             case BaseID.ID_RIGHT:
                 getOpe().getDaOpe().setEnableEnter();
@@ -131,18 +131,18 @@ public class DocumentListFrag extends BaseNurseFrag<DocumentListUIOpe,NurseNetOp
 
     @Override
     public void onAppItemClick(View view, int position) {
-        if(!((DocumentListResBean.DataBean)view.getTag(R.id.data)).isEnter()){
+        if (!((DocumentListResBean.DataBean) view.getTag(R.id.data)).isEnter()) {
             return;
         }
-        if(((DocumentListResBean.DataBean)view.getTag(R.id.data)).getType().equals(DocumentListResBean.DataBean.TYPE_HAVE_CHILD)){
+        if (((DocumentListResBean.DataBean) view.getTag(R.id.data)).getType().equals(DocumentListResBean.DataBean.TYPE_HAVE_CHILD)) {
             Bundle bundle = new Bundle();
-            bundle.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
-            bundle.putSerializable(ValueConstant.DATA_DATA2,((DocumentListResBean.DataBean)view.getTag(R.id.data)));
-            FragManager.getInstance().startFragmentForResult(getFragmentManager(),index,new DocumentListFrag(),bundle,ValueConstant.CODE_REQUSET1);
-        }else{
+            bundle.putSerializable(ValueConstant.DATA_DATA, patientAdditionDAOpe);
+            bundle.putSerializable(ValueConstant.DATA_DATA2, ((DocumentListResBean.DataBean) view.getTag(R.id.data)));
+            FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new DocumentListFrag(), bundle, ValueConstant.CODE_REQUSET1);
+        } else {
             Bundle bundle = new Bundle();
-            bundle.putSerializable(ValueConstant.DATA_DATA2,((DocumentListResBean.DataBean)view.getTag(R.id.data)));
-            FragManager.getInstance().startFragmentForResult(getFragmentManager(),index,new DocumentDetailListFrag(),bundle,ValueConstant.CODE_REQUSET2);
+            bundle.putSerializable(ValueConstant.DATA_DATA2, ((DocumentListResBean.DataBean) view.getTag(R.id.data)));
+            FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new DocumentDetailListFrag(), bundle, ValueConstant.CODE_REQUSET2);
         }
 
     }

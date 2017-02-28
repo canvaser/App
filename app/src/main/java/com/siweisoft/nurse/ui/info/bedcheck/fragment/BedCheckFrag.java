@@ -29,8 +29,7 @@ import butterknife.OnClick;
 /**
  * Created by ${viwmox} on 2016-11-29.
  */
-public class BedCheckFrag extends BaseNurseFrag{
-
+public class BedCheckFrag extends BaseNurseFrag {
 
 
     BedCheckUIOpe bedCheckUIOpe;
@@ -49,8 +48,8 @@ public class BedCheckFrag extends BaseNurseFrag{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         bedCheckNetOpe = new NurseNetOpe(activity);
-        bedCheckUIOpe = new BedCheckUIOpe(activity,getView());
-        bedCheckDAOpe= new BedCheckDAOpe(activity);
+        bedCheckUIOpe = new BedCheckUIOpe(activity, getView());
+        bedCheckDAOpe = new BedCheckDAOpe(activity);
         bedCheckUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
             public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
@@ -62,19 +61,19 @@ public class BedCheckFrag extends BaseNurseFrag{
                 });
             }
         });
-     bedCheckUIOpe.getRefreshLayout().autoRefresh();
+        bedCheckUIOpe.getRefreshLayout().autoRefresh();
     }
 
-    public void getData(final OnFinishListener listener){
+    public void getData(final OnFinishListener listener) {
         bedCheckNetOpe.getWardInspectionList(new OnNetWorkReqAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    BedCheckListResBean bedCheckListResBean = GsonUtil.getInstance().fromJson(o.toString(),BedCheckListResBean.class);
+                if (success) {
+                    BedCheckListResBean bedCheckListResBean = GsonUtil.getInstance().fromJson(o.toString(), BedCheckListResBean.class);
                     bedCheckDAOpe.setData(bedCheckListResBean.getData());
                     bedCheckUIOpe.initList(bedCheckDAOpe.getSelectData());
                 }
-                if(listener!=null){
+                if (listener != null) {
                     listener.onFinish(o);
                 }
             }
@@ -87,16 +86,16 @@ public class BedCheckFrag extends BaseNurseFrag{
     }
 
     @OnClick({BaseID.ID_MID})
-    public void onClick(View v){
+    public void onClick(View v) {
         super.onClick(v);
-        switch (v.getId()){
+        switch (v.getId()) {
             case BaseID.ID_MID:
-                View view1 = layoutInflater.inflate(R.layout.pup_list,null);
+                View view1 = layoutInflater.inflate(R.layout.pup_list, null);
                 RecyclerView recyclerView = (RecyclerView) view1.findViewById(R.id.rcv_pop);
                 recyclerView.setLayoutManager(new LinearLayoutManager(activity));
-                recyclerView.addItemDecoration(new MyItemDecoration(activity,2));
-                String[] strings = new String[]{"我的巡视","病房巡视"};
-                PupListAdapter pupListAdapter = new PupListAdapter(activity,strings);
+                recyclerView.addItemDecoration(new MyItemDecoration(activity, 2));
+                String[] strings = new String[]{"我的巡视", "病房巡视"};
+                PupListAdapter pupListAdapter = new PupListAdapter(activity, strings);
                 recyclerView.setAdapter(pupListAdapter);
                 pupListAdapter.setOnAppItemClickListener(new OnAppItemClickListener() {
                     @Override
@@ -106,7 +105,7 @@ public class BedCheckFrag extends BaseNurseFrag{
                         PopupUtil.getInstance().dimess();
                     }
                 });
-                PopupUtil.getInstance().show(activity,view1,v);
+                PopupUtil.getInstance().show(activity, view1, v);
                 break;
         }
     }

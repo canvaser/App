@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/root"
-    >
-        <LinearLayout
-            android:orientation="vertical" android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
->
+    android:id="@+id/root">
 
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
 
         <TextView
@@ -21,7 +21,6 @@
             android:textColor="@color/black"
             android:layout_width="100dp"
             android:layout_height="wrap_content" />
-
 
 
         <TextView
@@ -40,7 +39,7 @@
         <View
             android:background="@color/gray"
             android:layout_width="100dp"
-            android:layout_height="1dp"/>
+            android:layout_height="1dp" />
 
         <TextView
             android:background="@color/color_dark_red"
@@ -58,7 +57,7 @@
         <View
             android:background="@color/gray"
             android:layout_width="100dp"
-            android:layout_height="1dp"/>
+            android:layout_height="1dp" />
 
         <TextView
             android:background="@color/white"
@@ -76,7 +75,7 @@
         <View
             android:background="@color/gray"
             android:layout_width="100dp"
-            android:layout_height="1dp"/>
+            android:layout_height="1dp" />
 
         <TextView
             android:background="@color/color_dark_red"
@@ -94,7 +93,7 @@
         <View
             android:background="@color/gray"
             android:layout_width="100dp"
-            android:layout_height="1dp"/>
+            android:layout_height="1dp" />
 
         <TextView
             android:background="@color/white"
@@ -112,7 +111,7 @@
         <View
             android:background="@color/gray"
             android:layout_width="100dp"
-            android:layout_height="1dp"/>
+            android:layout_height="1dp" />
 
         <TextView
             android:background="@color/color_dark_red"
@@ -130,19 +129,18 @@
         <View
             android:background="@color/gray"
             android:layout_width="100dp"
-            android:layout_height="1dp"/>
-
-
-
+            android:layout_height="1dp" />
 
 
     </LinearLayout>
-        <View android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:background="@color/gray"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_rv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:background="@color/gray" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

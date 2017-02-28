@@ -27,7 +27,7 @@ import com.siweisoft.nurse.ui.info.checkbookdetail.ope.CheckBookDetailUIOpe;
 /**
  * Created by ${viwmox} on 2016-11-28.
  */
-public class CheckBookDetailFrag extends BaseNurseFrag implements PinnedHeaderExpandableListView.OnHeaderUpdateListener{
+public class CheckBookDetailFrag extends BaseNurseFrag implements PinnedHeaderExpandableListView.OnHeaderUpdateListener {
 
 
     CheckBookDetailUIOpe checkBookDetailUIOpe;
@@ -44,11 +44,11 @@ public class CheckBookDetailFrag extends BaseNurseFrag implements PinnedHeaderEx
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA)==null){
+        if (getArguments() == null || getArguments().getSerializable(ValueConstant.DATA_DATA) == null) {
             return;
         }
         checkBookResBean = (CheckBookResBean) getArguments().getSerializable(ValueConstant.DATA_DATA);
-        checkBookDetailUIOpe = new CheckBookDetailUIOpe(activity,getView());
+        checkBookDetailUIOpe = new CheckBookDetailUIOpe(activity, getView());
         checkBookDetailNetOpe = new NurseNetOpe(activity);
         checkBookDetailUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
@@ -66,17 +66,17 @@ public class CheckBookDetailFrag extends BaseNurseFrag implements PinnedHeaderEx
 
     }
 
-    public void getData(final OnFinishListener onFinishListener){
+    public void getData(final OnFinishListener onFinishListener) {
         CheckBookDetailReqBean reqBean = new CheckBookDetailReqBean();
         reqBean.setFileid(checkBookResBean.getFileid());
         checkBookDetailNetOpe.getInstrumentCountData(reqBean, new OnNetWorkReqAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    CheckBookResbean checkBookResbean = GsonUtil.getInstance().fromJson(o.toString(),CheckBookResbean.class);
+                if (success) {
+                    CheckBookResbean checkBookResbean = GsonUtil.getInstance().fromJson(o.toString(), CheckBookResbean.class);
                     checkBookDetailUIOpe.initList(checkBookResbean.getData());
                 }
-                if(onFinishListener!=null){
+                if (onFinishListener != null) {
                     onFinishListener.onFinish(o);
                 }
             }
@@ -90,21 +90,21 @@ public class CheckBookDetailFrag extends BaseNurseFrag implements PinnedHeaderEx
 
     @Override
     public View getPinnedHeader() {
-        CheckBookDetailHeadUIBean checkHeadUIBean =null;
-        View convertView = LayoutInflater.from(activity).inflate(R.layout.list_head_checkbookdetail,null);
-        checkHeadUIBean= (CheckBookDetailHeadUIBean) convertView.getTag();
-        convertView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ValueConstant.DIMEN_1*40));
+        CheckBookDetailHeadUIBean checkHeadUIBean = null;
+        View convertView = LayoutInflater.from(activity).inflate(R.layout.list_head_checkbookdetail, null);
+        checkHeadUIBean = (CheckBookDetailHeadUIBean) convertView.getTag();
+        convertView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ValueConstant.DIMEN_1 * 40));
         return convertView;
     }
 
     @Override
     public void updatePinnedHeader(View headerView, int firstVisibleGroupPos) {
-        if(firstVisibleGroupPos<0 || checkBookDetailUIOpe==null || checkBookDetailUIOpe.getData()==null){
+        if (firstVisibleGroupPos < 0 || checkBookDetailUIOpe == null || checkBookDetailUIOpe.getData() == null) {
             headerView.setVisibility(View.GONE);
             return;
         }
         headerView.setVisibility(View.VISIBLE);
-        CheckBookDetailHeadUIBean checkHeadUIBean =new CheckBookDetailHeadUIBean(activity,headerView);
+        CheckBookDetailHeadUIBean checkHeadUIBean = new CheckBookDetailHeadUIBean(activity, headerView);
         checkHeadUIBean.getTimeTV().setText(StringUtil.getStr(checkBookDetailUIOpe.getData().get(firstVisibleGroupPos).getExectime()));
         checkHeadUIBean.getDuteTV().setText(StringUtil.getStr(checkBookDetailUIOpe.getData().get(firstVisibleGroupPos).getShift()));
         checkHeadUIBean.getNameTV().setText(StringUtil.getStr(checkBookDetailUIOpe.getData().get(firstVisibleGroupPos).getUsername()));

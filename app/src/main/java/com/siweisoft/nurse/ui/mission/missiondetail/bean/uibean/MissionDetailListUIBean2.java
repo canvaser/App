@@ -28,7 +28,6 @@ public class MissionDetailListUIBean2 extends BaseUIBean {
     View cotainV;
 
 
-
     public MissionDetailListUIBean2(Context context, View convertView) {
         super(context, convertView);
     }

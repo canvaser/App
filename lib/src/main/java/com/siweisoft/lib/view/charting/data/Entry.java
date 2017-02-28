@@ -94,10 +94,8 @@ public class Entry extends BaseEntry implements Parcelable {
         if (Math.abs(e.x - this.x) > Utils.FLOAT_EPSILON)
             return false;
 
-        if (Math.abs(e.getY() - this.getY()) > Utils.FLOAT_EPSILON)
-            return false;
+        return Math.abs(e.getY() - this.getY()) <= Utils.FLOAT_EPSILON;
 
-        return true;
     }
 
     /**

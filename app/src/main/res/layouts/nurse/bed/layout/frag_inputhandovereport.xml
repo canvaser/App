@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_base_graybg">
-<EditText
-    android:gravity="left|top"
-    android:padding="3dp"
-    android:id="@+id/et_input"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:layout_marginTop="10dp"
-    android:background="@drawable/drawable_border"
-    android:layout_width="match_parent"
-    android:layout_height="150dp" />
+
+    <EditText
+        android:gravity="left|top"
+        android:padding="3dp"
+        android:id="@+id/et_input"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/drawable_border"
+        android:layout_width="match_parent"
+        android:layout_height="150dp" />
 
 
     <RelativeLayout
@@ -21,13 +23,13 @@
         android:layout_height="wrap_content">
 
 
-
         <com.siweisoft.nurse.ui.bed.inputhandoverreport.view.RecordView
             android:id="@+id/iv_recording"
             android:background="@drawable/icon_record"
             android:layout_centerInParent="true"
             android:layout_width="60dp"
             android:layout_height="60dp" />
+
         <ImageView
             android:visibility="gone"
             android:id="@+id/iv_record"

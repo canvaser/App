@@ -17,7 +17,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-12-07.
  */
-public class AddCheckBookUIOpe extends BaseNurseUIOpe{
+public class AddCheckBookUIOpe extends BaseNurseUIOpe {
 
     @BindView(R.id.rcv_rcv)
     RecyclerView recyclerView;
@@ -30,7 +30,7 @@ public class AddCheckBookUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
         getBackTV().setVisibility(View.VISIBLE);
@@ -39,13 +39,13 @@ public class AddCheckBookUIOpe extends BaseNurseUIOpe{
         getRightTV().setText("提交");
     }
 
-    public void initMid(String name){
+    public void initMid(String name) {
         getMidTV().setText(name);
         getMidTV().setSelected(true);
     }
 
-    public void initList(CheckBookResBean checkBookResBean){
-        addCheckBookListAdapter = new AddCheckBookListAdapter(context,checkBookResBean.getItems());
+    public void initList(CheckBookResBean checkBookResBean) {
+        addCheckBookListAdapter = new AddCheckBookListAdapter(context, checkBookResBean.getItems());
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1));
         recyclerView.setAdapter(addCheckBookListAdapter);

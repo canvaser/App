@@ -18,9 +18,7 @@ import butterknife.BindView;
  * Created by ${viwmox} on 2017-02-16.
  */
 
-public class DocumentDetailListUIOpe extends BaseNurseUIOpe{
-
-
+public class DocumentDetailListUIOpe extends BaseNurseUIOpe {
 
 
     @BindView(R.id.refresh)
@@ -33,22 +31,22 @@ public class DocumentDetailListUIOpe extends BaseNurseUIOpe{
         super(context, containerView);
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setVisibility(View.VISIBLE);
         getBackTV().setText("返回");
         getBackTV().setSelected(true);
     }
 
-    public void init(String name){
-        if(name!=null){
+    public void init(String name) {
+        if (name != null) {
             getMidTV().setText(name);
         }
     }
 
-    public void initList(DocumentDetailResBean documentDetailResBean){
+    public void initList(DocumentDetailResBean documentDetailResBean) {
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new MyItemDecoration(context,2));
-        recyclerView.setAdapter(new DocumentDetailListAdapter(context,documentDetailResBean));
+        recyclerView.addItemDecoration(new MyItemDecoration(context, 2));
+        recyclerView.setAdapter(new DocumentDetailListAdapter(context, documentDetailResBean));
     }
 
     public RecyclerView getRecyclerView() {

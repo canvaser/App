@@ -54,7 +54,7 @@ public class HomeUIOpe extends BaseUIOpe {
         init();
     }
 
-    private void init(){
+    private void init() {
 
         final ArrayList<Fragment> fragments = new ArrayList<>();
         fragments.add(new BedListFGM());
@@ -65,27 +65,26 @@ public class HomeUIOpe extends BaseUIOpe {
 
         final ArrayList<View> views = new ArrayList<>();
         final FragmentActivity fragmentActivity = (FragmentActivity) context;
-        int[] ints = new int[]{R.layout.item_bed,R.layout.item_mission,R.layout.item_check,R.layout.item_info,R.layout.item_setting};
-        for(int i=0;i<ints.length;i++){
-            View view = LayoutInflater.from(context).inflate(ints[i],null);
+        int[] ints = new int[]{R.layout.item_bed, R.layout.item_mission, R.layout.item_check, R.layout.item_info, R.layout.item_setting};
+        for (int i = 0; i < ints.length; i++) {
+            View view = LayoutInflater.from(context).inflate(ints[i], null);
             views.add(view);
 
         }
 
         ArrayList<Integer> integers = new ArrayList<>();
-        for(int i=0;i<views.size();i++){
+        for (int i = 0; i < views.size(); i++) {
             integers.add(views.get(i).getId());
         }
         FragManager.getInstance().init(integers);
 
 
-
         homePageAdapter = new HomePageAdapter(context, views, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
-                if(!load){
-                    for(int i=0;i<views.size();i++){
-                        FragManager.getInstance().startFragment(fragmentActivity.getSupportFragmentManager(),i,fragments.get(i));
+                if (!load) {
+                    for (int i = 0; i < views.size(); i++) {
+                        FragManager.getInstance().startFragment(fragmentActivity.getSupportFragmentManager(), i, fragments.get(i));
                     }
                     load = true;
                 }
@@ -93,7 +92,7 @@ public class HomeUIOpe extends BaseUIOpe {
         });
         viewPager.setOffscreenPageLimit(views.size());
         viewPager.setAdapter(homePageAdapter);
-        viewPager.addOnPageChangeListener(new BaseOnPagerChangeListener(){
+        viewPager.addOnPageChangeListener(new BaseOnPagerChangeListener() {
             @Override
             public void onPageSelected(int position) {
                 getHomeBottomView().select(position);
@@ -101,8 +100,7 @@ public class HomeUIOpe extends BaseUIOpe {
         });
 
 
-
-        FragmentUtil.getInstance().addToContaier(fragmentActivity,new DrawerLayoutFrag(),R.id.content_frame);
+        FragmentUtil.getInstance().addToContaier(fragmentActivity, new DrawerLayoutFrag(), R.id.content_frame);
 
     }
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#34C6D6"
-    android:id="@+id/head"
->
+    android:id="@+id/head">
 
 
     <TextView
@@ -22,8 +22,7 @@
         android:focusableInTouchMode="true"
         android:id="@+id/rv_head_rv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

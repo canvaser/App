@@ -15,7 +15,7 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-11-11.
  */
-public class DataAdapter4 extends BaseExpandableListAdapter{
+public class DataAdapter4 extends BaseExpandableListAdapter {
 
 
     Context context;
@@ -25,7 +25,7 @@ public class DataAdapter4 extends BaseExpandableListAdapter{
     ArrayList<DataAdapterBean> list;
 
 
-    public DataAdapter4(Context context, ArrayList<View> containers,ArrayList<DataAdapterBean> list){
+    public DataAdapter4(Context context, ArrayList<View> containers, ArrayList<DataAdapterBean> list) {
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
         this.containers = containers;
@@ -68,10 +68,9 @@ public class DataAdapter4 extends BaseExpandableListAdapter{
     }
 
 
-
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        convertView = layoutInflater.inflate(R.layout.list_data_head,parent,false);
+        convertView = layoutInflater.inflate(R.layout.list_data_head, parent, false);
         TextView textView = (TextView) convertView.findViewById(R.id.tv_txt);
         textView.setText(list.get(groupPosition).getHead());
         return convertView;

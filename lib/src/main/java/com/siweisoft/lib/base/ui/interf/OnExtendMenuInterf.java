@@ -7,5 +7,5 @@ import android.view.View;
  */
 public interface OnExtendMenuInterf {
 
-    public void onExtendMenuClickEvent(View view);
+    void onExtendMenuClickEvent(View view);
 }

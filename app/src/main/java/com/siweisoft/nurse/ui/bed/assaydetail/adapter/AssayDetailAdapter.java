@@ -9,9 +9,7 @@ import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.util.StringUtil;
-import com.siweisoft.nurse.ui.bed.assay.bean.adapterbean.AssayAdapterBean;
-import com.siweisoft.nurse.ui.bed.assay.bean.resbean.AssayResBean;
-import com.siweisoft.nurse.ui.bed.assay.bean.uibean.AssayUIBean;
+import com.siweisoft.nurse.ui.bed.assay.bean.resbean.AssayListResBean;
 import com.siweisoft.nurse.ui.bed.assaydetail.bean.uibean.AssayDetailUIBean;
 
 import java.util.ArrayList;
@@ -21,27 +19,27 @@ import java.util.ArrayList;
  */
 public class AssayDetailAdapter extends AppRecycleAdapter {
 
-    ArrayList<AssayResBean>  data;
+    ArrayList<AssayListResBean.AssayDataBean> data;
 
     OnAppItemClickListener onAppItemClickListener;
 
 
-    public AssayDetailAdapter(Context context, ArrayList<AssayResBean>  data) {
+    public AssayDetailAdapter(Context context, ArrayList<AssayListResBean.AssayDataBean> data) {
         super(context);
         this.data = data;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.list_assaydetail,parent,false);
-        AssayDetailUIBean assayUIBean = new AssayDetailUIBean(context,view);
+        View view = layoutInflater.inflate(R.layout.list_assaydetail, parent, false);
+        AssayDetailUIBean assayUIBean = new AssayDetailUIBean(context, view);
         return assayUIBean;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         AssayDetailUIBean assayUIBean = (AssayDetailUIBean) holder;
-        assayUIBean.getRootV().setTag(R.id.position,position);
+        assayUIBean.getRootV().setTag(R.id.position, position);
         assayUIBean.getNameTV().setText(StringUtil.getStr(data.get(position).getItemname()));
         assayUIBean.getValueTV().setText(StringUtil.getStr(data.get(position).getResult()));
         assayUIBean.getAreaTV().setText(StringUtil.getStr(data.get(position).getReferencerange()));
@@ -50,7 +48,7 @@ public class AssayDetailAdapter extends AppRecycleAdapter {
 
     @Override
     public int getItemCount() {
-        return data==null?0:data.size();
+        return data == null ? 0 : data.size();
     }
 
     public void setOnAppItemClickListener(OnAppItemClickListener onAppItemClickListener) {
@@ -60,8 +58,8 @@ public class AssayDetailAdapter extends AppRecycleAdapter {
     @Override
     public void onClick(View v) {
         int p = (int) v.getTag(R.id.position);
-        if(onAppItemClickListener!=null){
-            onAppItemClickListener.onAppItemClick(v,p);
+        if (onAppItemClickListener != null) {
+            onAppItemClickListener.onAppItemClick(v, p);
         }
     }
 }

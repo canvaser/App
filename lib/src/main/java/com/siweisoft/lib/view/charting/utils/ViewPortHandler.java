@@ -104,10 +104,7 @@ public class ViewPortHandler {
     }
 
     public boolean hasChartDimens() {
-        if (mChartHeight > 0 && mChartWidth > 0)
-            return true;
-        else
-            return false;
+        return mChartHeight > 0 && mChartWidth > 0;
     }
 
     public void restrainViewPort(float offsetLeft, float offsetTop, float offsetRight,

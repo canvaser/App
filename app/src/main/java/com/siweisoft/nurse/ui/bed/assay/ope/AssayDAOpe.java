@@ -17,7 +17,7 @@ public class AssayDAOpe extends BaseDAOpe {
 
     public AssayDAOpe(Context context) {
         super(context);
-        beginTime = DateFormatUtil.convent_YYYYMMDD(new Date());
+        // beginTime = DateFormatUtil.convent_YYYYMMDD(new Date());
     }
 
     public String getBeginTime() {

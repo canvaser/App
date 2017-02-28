@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * Created by ${viwmox} on 2017-02-20.
  */
 
-public class DialogAdapter extends AppRecycleAdapter{
+public class DialogAdapter extends AppRecycleAdapter {
 
     String[] strings;
 
@@ -25,21 +25,22 @@ public class DialogAdapter extends AppRecycleAdapter{
 
     public DialogAdapter(Context context, String[] strings) {
         super(context);
-        this.strings =strings;
+        this.strings = strings;
     }
 
 
     ArrayList<String> ss = new ArrayList<>();
-    public DialogAdapter(Context context,ArrayList<String> ss) {
+
+    public DialogAdapter(Context context, ArrayList<String> ss) {
         super(context);
         strings = new String[ss.size()];
-        strings  =ss.toArray(strings);
+        strings = ss.toArray(strings);
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.list_pop,parent,false);
-        PupListUIBean pupListUIBean = new PupListUIBean(context,view);
+        View view = layoutInflater.inflate(R.layout.list_pop, parent, false);
+        PupListUIBean pupListUIBean = new PupListUIBean(context, view);
         return pupListUIBean;
     }
 
@@ -47,15 +48,14 @@ public class DialogAdapter extends AppRecycleAdapter{
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         PupListUIBean pupListUIBean = (PupListUIBean) holder;
         pupListUIBean.getTextView().setText(StringUtil.getStr(strings[position]));
-        pupListUIBean.getTextView().setTag(R.id.position,position);
+        pupListUIBean.getTextView().setTag(R.id.position, position);
         pupListUIBean.getTextView().setOnClickListener(this);
     }
 
     @Override
     public int getItemCount() {
-        return strings==null?0:strings.length;
+        return strings == null ? 0 : strings.length;
     }
-
 
 
     public void setOnAppItemClickListener(OnAppItemClickListener onAppItemClickListener) {
@@ -64,9 +64,9 @@ public class DialogAdapter extends AppRecycleAdapter{
 
     @Override
     public void onClick(View v) {
-        int position  = (int) v.getTag(R.id.position);
-        if(onAppItemClickListener!=null){
-            onAppItemClickListener.onAppItemClick(v,position);
+        int position = (int) v.getTag(R.id.position);
+        if (onAppItemClickListener != null) {
+            onAppItemClickListener.onAppItemClick(v, position);
         }
     }
 }

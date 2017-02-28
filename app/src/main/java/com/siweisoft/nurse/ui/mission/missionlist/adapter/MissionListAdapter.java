@@ -16,13 +16,14 @@ import com.siweisoft.lib.util.data.DateFormatUtil;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.uibean.MissionHeadUIBean;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.uibean.MissionUIBean;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.adaapterbean.AreaMissionListAdapterBean;
+import com.siweisoft.nurse.ui.mission.missionlist.ope.AreaMessionDAOpe;
 
 import java.util.ArrayList;
 
 /**
  * Created by ${viwmox} on 2016-11-08.
  */
-public class MissionListAdapter extends BaseExpandableListAdapter{
+public class MissionListAdapter extends BaseExpandableListAdapter {
 
 
     Context context;
@@ -33,21 +34,24 @@ public class MissionListAdapter extends BaseExpandableListAdapter{
 
     OnAppItemsClickListener onAppItemsClickListener;
 
-    public MissionListAdapter(Context context,ArrayList<AreaMissionListAdapterBean> data) {
-        this.context  = context;
+    AreaMessionDAOpe areaMessionDAOpe;
+
+    public MissionListAdapter(Context context, ArrayList<AreaMissionListAdapterBean> data) {
+        this.context = context;
         inflater = LayoutInflater.from(context);
         this.data = data;
+        areaMessionDAOpe = new AreaMessionDAOpe(context);
     }
 
 
     @Override
     public int getGroupCount() {
-        return data ==null?0: data.size();
+        return data == null ? 0 : data.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return data ==null?0: data.get(groupPosition).getData()==null?0: data.get(groupPosition).getData().size();
+        return data == null ? 0 : data.get(groupPosition).getData() == null ? 0 : data.get(groupPosition).getData().size();
     }
 
     @Override
@@ -77,19 +81,19 @@ public class MissionListAdapter extends BaseExpandableListAdapter{
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        MissionHeadUIBean missionHeadUIBean =null;
-        if(convertView==null){
-            convertView = inflater.inflate(R.layout.list_head_mission,null);
-            missionHeadUIBean = new MissionHeadUIBean(context,convertView);
+        MissionHeadUIBean missionHeadUIBean = null;
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.list_head_mission, null);
+            missionHeadUIBean = new MissionHeadUIBean(context, convertView);
         }
         missionHeadUIBean = (MissionHeadUIBean) convertView.getTag();
-        if(DateFormatUtil.isTodayMMDDHHMM(data.get(groupPosition).getYear(),data.get(groupPosition).getMonth(),data.get(groupPosition).getDay())){
+        if (DateFormatUtil.isTodayMMDDHHMM(data.get(groupPosition).getYear(), data.get(groupPosition).getMonth(), data.get(groupPosition).getDay())) {
             missionHeadUIBean.getTitleTV().setText("今日");
-        }else{
-            missionHeadUIBean.getTitleTV().setText(DateFormatUtil.getYYYYMMDD(data.get(groupPosition).getYear(),data.get(groupPosition).getMonth(),data.get(groupPosition).getDay()));
+        } else {
+            missionHeadUIBean.getTitleTV().setText(DateFormatUtil.getYYYYMMDD(data.get(groupPosition).getYear(), data.get(groupPosition).getMonth(), data.get(groupPosition).getDay()));
         }
-        missionHeadUIBean.getStartTimeTV().setText(StringUtil.getStr((data.get(groupPosition).getHour())+":00"));
-        missionHeadUIBean.getEndTimeTV().setText(StringUtil.getStr(data.get(groupPosition).getHour()+2)+":00");
+        missionHeadUIBean.getStartTimeTV().setText(StringUtil.getStr((data.get(groupPosition).getHour()) + ":00"));
+        missionHeadUIBean.getEndTimeTV().setText(StringUtil.getStr(data.get(groupPosition).getHour() + 2) + ":00");
         return convertView;
     }
 
@@ -97,8 +101,8 @@ public class MissionListAdapter extends BaseExpandableListAdapter{
     public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
         MissionUIBean missionUIBean = null;
-        if(convertView == null){
-            convertView= inflater.inflate(R.layout.list_mission,null);
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.list_mission, null);
             missionUIBean = new MissionUIBean(context, convertView);
         }
         missionUIBean = (MissionUIBean) convertView.getTag();
@@ -108,57 +112,27 @@ public class MissionListAdapter extends BaseExpandableListAdapter{
         missionUIBean.getNameTV().setText(StringUtil.getStr(data.get(groupPosition).getData().get(childPosition).getName()));
         missionUIBean.getTimeTV().setText(StringUtil.getStr(DateFormatUtil.getMMDDHHMM(data.get(groupPosition).getData().get(childPosition).getStart())));
         missionUIBean.getTaskNameTV().setText(StringUtil.getStr(data.get(groupPosition).getData().get(childPosition).getTitles().get(0).getTaskname()));
-        missionUIBean.getNumTV().setText(StringUtil.getStr(data.get(groupPosition).getData().get(childPosition).getTitles().size()==1?"":data.get(groupPosition).getData().get(childPosition).getTitles().size()));
+        missionUIBean.getNumTV().setText(StringUtil.getStr(data.get(groupPosition).getData().get(childPosition).getTitles().size() == 1 ? "" : data.get(groupPosition).getData().get(childPosition).getTitles().size()));
         missionUIBean.getKeyTV().setText(StringUtil.getStr(data.get(groupPosition).getData().get(childPosition).getTitles().get(0).getKey()));
-        String timetype = "";
-        if(data.get(groupPosition).getData().get(childPosition).getTitles().get(0).get医嘱ID().toLowerCase().startsWith("cq")){
-            timetype = "长期";
-        }
-        if(data.get(groupPosition).getData().get(childPosition).getTitles().get(0).get医嘱ID().toLowerCase().startsWith("ls")){
-            timetype = "临时";
-        }
 
-        if(data.get(groupPosition).getData().get(childPosition).getTitles().get(0).get医嘱ID().toLowerCase().startsWith("hz")){
-            if("st".equals(data.get(groupPosition).getData().get(childPosition).getTitles().get(0).getKey().toLowerCase())){
-                timetype = "临时";
-            }else{
-                timetype = "长期";
-            }
-        }
 
-        if(timetype.equals("临时")){
+        if (areaMessionDAOpe.isLin(data.get(groupPosition).getData().get(childPosition).getTitles().get(0).get医嘱ID(), data.get(groupPosition).getData().get(childPosition).getTitles().get(0).getKey())) {
             missionUIBean.getLinTV().setText("临");
-            missionUIBean.getLinTV().setTextColor(Color.parseColor("#7FFFD4"));
-        }
-
-        if(timetype.equals("长期")) {
+            missionUIBean.getLinTV().setSelected(true);
+        } else {
             missionUIBean.getLinTV().setText("长");
-            missionUIBean.getLinTV().setTextColor(Color.parseColor("#A52A2A"));
+            missionUIBean.getLinTV().setSelected(false);
         }
 
-        switch (data.get(groupPosition).getData().get(childPosition).getCodename()){
-            case "出院带药":
-            case "药品":
-            case "输液":
-                missionUIBean.getTitleView().setTextColor(R.color.light_blue);
-                BitmapUtil.getInstance().setBg(context,missionUIBean.getCodenameIV(),R.drawable.icon_injecting);
-                break;
-            case "检查":
-            case "化验":
-                missionUIBean.getTitleView().setTextColor(R.color.light_blue);
-                BitmapUtil.getInstance().setBg(context,missionUIBean.getCodenameIV(),R.drawable.icon_injecting);
-                break;
-            default:
-                missionUIBean.getTitleView().setTextColor(R.color.black);
-                BitmapUtil.getInstance().setBg(context,missionUIBean.getCodenameIV(),R.drawable.icon_medicine);
-                break;
-        }
+        int[] i = areaMessionDAOpe.isInJecting(data.get(groupPosition).getData().get(childPosition).getCodename());
+        missionUIBean.getTitleView().setTextColor(i[0]);
+        BitmapUtil.getInstance().setBg(context, missionUIBean.getCodenameIV(), i[1]);
 
         missionUIBean.getSwipeView().setOnAppClickListener(new OnAppItemClickListener() {
             @Override
             public void onAppItemClick(View view, int position) {
-                if(onAppItemsClickListener!=null){
-                    onAppItemsClickListener.onAppItemClick(groupPosition,view,childPosition);
+                if (onAppItemsClickListener != null) {
+                    onAppItemsClickListener.onAppItemClick(groupPosition, view, childPosition);
                 }
             }
         });

@@ -27,17 +27,17 @@ public class AddCheckBookListAdapter extends AppRecycleAdapter {
 
     ArrayList<CheckItemResBean> data;
 
-    String[] strings = new String[]{"早早班","早班","两头班(早)","大夜班","小夜班","两头班"};
+    String[] strings = new String[]{"早早班", "早班", "两头班(早)", "大夜班", "小夜班", "两头班"};
 
 
-    public AddCheckBookListAdapter(Context context,ArrayList<CheckItemResBean> data) {
+    public AddCheckBookListAdapter(Context context, ArrayList<CheckItemResBean> data) {
         super(context);
-        this.data =data;
+        this.data = data;
     }
 
     @Override
     public int getItemViewType(int position) {
-        if(position==0){
+        if (position == 0) {
             return 0;
         }
         return 1;
@@ -45,15 +45,15 @@ public class AddCheckBookListAdapter extends AppRecycleAdapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        BaseUIBean baseUIBean =null;
-        switch (viewType){
+        BaseUIBean baseUIBean = null;
+        switch (viewType) {
             case 0:
-                View view = layoutInflater.inflate(R.layout.list_head_addcheckbook,null);
-                baseUIBean = new AddCheckBookHeadUIBean(context,view);
+                View view = layoutInflater.inflate(R.layout.list_head_addcheckbook, null);
+                baseUIBean = new AddCheckBookHeadUIBean(context, view);
                 break;
             case 1:
-                View view1 = layoutInflater.inflate(R.layout.list_addcheckbook,null);
-                baseUIBean = new AddCheckBookUIBean(context,view1);
+                View view1 = layoutInflater.inflate(R.layout.list_addcheckbook, null);
+                baseUIBean = new AddCheckBookUIBean(context, view1);
                 break;
         }
 
@@ -62,14 +62,14 @@ public class AddCheckBookListAdapter extends AppRecycleAdapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        switch (getItemViewType(position)){
+        switch (getItemViewType(position)) {
             case 0:
                 final AddCheckBookHeadUIBean addCheckBookHeadUIBean = (AddCheckBookHeadUIBean) holder;
                 addCheckBookHeadUIBean.getNameTV().setText(data.get(position).getItemname());
                 addCheckBookHeadUIBean.getValueETV().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        BottomDialogMenuView bottomDialogMenuView = new BottomDialogMenuView(context,strings);
+                        BottomDialogMenuView bottomDialogMenuView = new BottomDialogMenuView(context, strings);
                         SheetDialogUtil.getInstance().showBottomSheet(context, bottomDialogMenuView, new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -86,7 +86,7 @@ public class AddCheckBookListAdapter extends AppRecycleAdapter {
                 AddCheckBookUIBean addCheckBookUIBean = (AddCheckBookUIBean) holder;
                 addCheckBookUIBean.getNameTV().setText(data.get(position).getItemname());
                 addCheckBookUIBean.getValueETV().setText(data.get(position).getValue());
-                addCheckBookUIBean.getValueETV().addTextChangedListener(new BaseTextWather(){
+                addCheckBookUIBean.getValueETV().addTextChangedListener(new BaseTextWather() {
                     @Override
                     public void afterTextChanged(Editable s) {
                         data.get(position).setValue(s.toString());
@@ -99,7 +99,7 @@ public class AddCheckBookListAdapter extends AppRecycleAdapter {
 
     @Override
     public int getItemCount() {
-        return data==null?0:data.size();
+        return data == null ? 0 : data.size();
     }
 
     @Override

@@ -20,27 +20,26 @@ import java.util.ArrayList;
 public class CareListAdapter extends AppRecycleAdapter {
 
 
-
     ArrayList<PatientAdditionResBean> resBeen;
 
-    public CareListAdapter(Context context,ArrayList<PatientAdditionResBean> resBeen) {
+    public CareListAdapter(Context context, ArrayList<PatientAdditionResBean> resBeen) {
         super(context);
-        this.resBeen =resBeen;
+        this.resBeen = resBeen;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.item_care,null);
-        CareUIBean careUIBean = new CareUIBean(context,view);
+        View view = layoutInflater.inflate(R.layout.item_care, null);
+        CareUIBean careUIBean = new CareUIBean(context, view);
         return careUIBean;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         CareUIBean careUIBean = (CareUIBean) holder;
-        switch (resBeen.get(position).getType()){
+        switch (resBeen.get(position).getType()) {
             case "导管":
-                careUIBean.getIconIV().setImageResource( R.drawable.drawable_care_hightemp);
+                careUIBean.getIconIV().setImageResource(R.drawable.drawable_care_hightemp);
                 break;
             case "关怀":
                 careUIBean.getIconIV().setImageResource(R.drawable.drawable_care_heart);
@@ -67,7 +66,7 @@ public class CareListAdapter extends AppRecycleAdapter {
 
     @Override
     public int getItemCount() {
-        return resBeen==null?0:resBeen.size();
+        return resBeen == null ? 0 : resBeen.size();
     }
 
     @Override

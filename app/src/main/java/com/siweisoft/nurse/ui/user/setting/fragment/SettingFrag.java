@@ -26,7 +26,7 @@ public class SettingFrag extends BaseUIFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        settingUIOpe= new SettingUIOpe(activity,getView());
+        settingUIOpe = new SettingUIOpe(activity, getView());
     }
 
     @Override
@@ -34,16 +34,16 @@ public class SettingFrag extends BaseUIFragment {
         return R.layout.frag_loginsetting;
     }
 
-    @OnClick({BaseID.ID_BACK,R.id.btn_submit})
-    public void onClickEvent(View v){
-        switch (v.getId()){
+    @OnClick({BaseID.ID_BACK, R.id.btn_submit})
+    public void onClickEvent(View v) {
+        switch (v.getId()) {
             case BaseID.ID_BACK:
-                FragmentUtil.getInstance().removeFrag(activity,this, LoginFrag.class.getSimpleName());
+                FragmentUtil.getInstance().removeFrag(activity, this, LoginFrag.class.getSimpleName());
                 break;
             case R.id.btn_submit:
-                if(!NullUtil.isStrEmpty(settingUIOpe.getNewET().getText().toString())){
-                    UrlConstant.URI = settingUIOpe.getNewET().getText().toString()+"/api.cshtml?key=";
-                    FragmentUtil.getInstance().removeFrag(activity,this, LoginFrag.class.getSimpleName());
+                if (!NullUtil.isStrEmpty(settingUIOpe.getNewET().getText().toString())) {
+                    UrlConstant.URI = settingUIOpe.getNewET().getText().toString() + "/api.cshtml?key=";
+                    FragmentUtil.getInstance().removeFrag(activity, this, LoginFrag.class.getSimpleName());
                 }
                 break;
         }

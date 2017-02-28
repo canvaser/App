@@ -22,7 +22,7 @@ public class ScanListUIOpe extends BaseNurseUIOpe {
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setText("返回");
         getBackTV().setSelected(true);
         getMidTV().setText("二维码记录");

@@ -10,7 +10,7 @@ import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.MyMission.adapter.MyMissionListAdapter;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
-import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionResBean;
+import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionListResBean;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.uibean.MissionItenHeadUIBean;
 
 import java.util.ArrayList;
@@ -21,7 +21,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-11.
  */
-public class MyMissonUIOpe extends BaseNurseUIOpe{
+public class MyMissonUIOpe extends BaseNurseUIOpe {
 
 
     @BindView(R.id.refresh)
@@ -32,7 +32,6 @@ public class MyMissonUIOpe extends BaseNurseUIOpe{
 
     MyMissionListAdapter myMissionListAdapter;
 
-    private HashMap<String,ArrayList<AreaMessionResBean>> list;
 
     MissionItenHeadUIBean missionItenHeadUIBean;
 
@@ -42,7 +41,7 @@ public class MyMissonUIOpe extends BaseNurseUIOpe{
         init(null);
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
         getBackTV().setVisibility(View.VISIBLE);
@@ -51,20 +50,19 @@ public class MyMissonUIOpe extends BaseNurseUIOpe{
         getMidTV().setSelected(true);
         getRightTV().setSelected(true);
         getRightTV().setText("全部");
-        View view = LayoutInflater.from(context).inflate(R.layout.item_head_mission,null);
-        missionItenHeadUIBean = new MissionItenHeadUIBean(context,view);
-        missionExpandView.addHeaderView(view,null,true);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_head_mission, null);
+        missionItenHeadUIBean = new MissionItenHeadUIBean(context, view);
+        missionExpandView.addHeaderView(view, null, true);
         view.findViewById(R.id.tv_all).setSelected(true);
     }
 
-    public void init(PatientAdditionDAOpe patientAdditionDAOpe){
-        if(patientAdditionDAOpe!=null){
-            getMidTV().setText(patientAdditionDAOpe.getPatientBedResBean().get姓名()+patientAdditionDAOpe.getPatientBedResBean().get病床号());
+    public void init(PatientAdditionDAOpe patientAdditionDAOpe) {
+        if (patientAdditionDAOpe != null) {
+            getMidTV().setText(patientAdditionDAOpe.getPatientBedResBean().get姓名() + patientAdditionDAOpe.getPatientBedResBean().get病床号());
         }
     }
 
-    public void initList(HashMap<String,ArrayList<AreaMessionResBean>> list){
-        this.list = list;
+    public void initList(HashMap<String, ArrayList<AreaMessionListResBean.DataBean>> list) {
         if (myMissionListAdapter == null) {
             myMissionListAdapter = new MyMissionListAdapter(context, list);
             missionExpandView.setGroupIndicator(null);
@@ -87,9 +85,6 @@ public class MyMissonUIOpe extends BaseNurseUIOpe{
         return myMissionListAdapter;
     }
 
-    public HashMap<String, ArrayList<AreaMessionResBean>> getList() {
-        return list;
-    }
 
     public MissionItenHeadUIBean getMissionItenHeadUIBean() {
         return missionItenHeadUIBean;

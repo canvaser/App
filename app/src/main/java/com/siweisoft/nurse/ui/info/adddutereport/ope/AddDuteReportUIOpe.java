@@ -12,11 +12,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-17.
  */
-public class AddDuteReportUIOpe extends BaseNurseUIOpe{
-
-
-
-
+public class AddDuteReportUIOpe extends BaseNurseUIOpe {
 
 
     @BindView(R.id.tv_zs)
@@ -52,7 +48,7 @@ public class AddDuteReportUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setText("返回");
         getBackTV().setSelected(true);
         getMidTV().setText("交班本");

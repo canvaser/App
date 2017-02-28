@@ -24,7 +24,7 @@ public class GetallregionbyuserResBean extends ResultResBean {
         this.data = data;
     }
 
-    public class Data implements Serializable{
+    public class Data implements Serializable {
 
         private String wardcode;
 

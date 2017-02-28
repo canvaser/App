@@ -22,7 +22,7 @@ public class ShiftDuteListAdpter extends AppRecycleAdapter {
 
     OnAppItemClickListener onAppItemClickListener;
 
-    public ShiftDuteListAdpter(Context context,ArrayList<ShiftDuteResBean> data) {
+    public ShiftDuteListAdpter(Context context, ArrayList<ShiftDuteResBean> data) {
         super(context);
         this.data = data;
     }
@@ -30,8 +30,8 @@ public class ShiftDuteListAdpter extends AppRecycleAdapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = layoutInflater.inflate(R.layout.list_shiftdute,parent,false);
-        ShiftDuteUIBean shiftDuteUIBean =new ShiftDuteUIBean(context,view);
+        View view = layoutInflater.inflate(R.layout.list_shiftdute, parent, false);
+        ShiftDuteUIBean shiftDuteUIBean = new ShiftDuteUIBean(context, view);
         return shiftDuteUIBean;
     }
 
@@ -42,19 +42,19 @@ public class ShiftDuteListAdpter extends AppRecycleAdapter {
         shiftDuteUIBean.getNameTV().setText(data.get(position).getDisplayname());
         shiftDuteUIBean.getContentTV().setText(data.get(position).get内容());
         shiftDuteUIBean.getRootV().setOnClickListener(this);
-        shiftDuteUIBean.getRootV().setTag(R.id.position,position);
+        shiftDuteUIBean.getRootV().setTag(R.id.position, position);
     }
 
     @Override
     public int getItemCount() {
-        return data==null?0:data.size();
+        return data == null ? 0 : data.size();
     }
 
     @Override
     public void onClick(View v) {
         int p = (int) v.getTag(R.id.position);
-        if(onAppItemClickListener!=null){
-            onAppItemClickListener.onAppItemClick(v,p);
+        if (onAppItemClickListener != null) {
+            onAppItemClickListener.onAppItemClick(v, p);
         }
     }
 

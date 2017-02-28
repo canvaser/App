@@ -37,57 +37,56 @@ public class AppAplication extends com.siweisoft.lib.aplication.LibAplication {
 
     }
 
-    private void initBase(){
+    private void initBase() {
         ScreenUtil.getInstance().getScreenSize(this);
         ValueConstant.DIMEN_1 = (int) getResources().getDimension(R.dimen.dimen_1);
         NetWork.getInstance(this).init(DataValue.URL_NURSE);
         DataValue.init();
     }
 
-    private void initXUtil(){
+    private void initXUtil() {
         x.Ext.init(this);
     }
 
 
-    private void initServer(){
+    private void initServer() {
         Intent intent = new Intent(this, AppService.class);
         startService(intent);
 
     }
 
-    private void initCrash(){
+    private void initCrash() {
 
     }
 
 
-
-    public void initEM(){
+    public void initEM() {
 
     }
 
-    private String initUUUId(){
+    private String initUUUId() {
         final TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
         final String tmDevice, tmSerial, tmPhone, androidId;
         tmDevice = "" + tm.getDeviceId();
         tmSerial = "" + tm.getSimSerialNumber();
         androidId = "" + android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
 
-        UUID deviceUuid = new UUID(androidId.hashCode(), ((long)tmDevice.hashCode() << 32) | tmSerial.hashCode());
+        UUID deviceUuid = new UUID(androidId.hashCode(), ((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
         String uniqueId = deviceUuid.toString();
         ValueConstant.UUUID = uniqueId;
         return uniqueId;
     }
 
-    private void initZxing(){
+    private void initZxing() {
         ZXingLibrary.initDisplayOpinion(this);
     }
 
-    private boolean JustInitOnce(){
-        String processAppName = AppUtil.getInstance().getAppName(this,android.os.Process.myPid());
+    private boolean JustInitOnce() {
+        String processAppName = AppUtil.getInstance().getAppName(this, android.os.Process.myPid());
         // 如果APP启用了远程的service，此application:onCreate会被调用2次
         // 为了防止环信SDK被初始化2次，加此判断会保证SDK被初始化1次
         // 默认的APP会在以包名为默认的process name下运行，如果查到的process name不是APP的process name就立即返回
-        if (processAppName == null ||!processAppName.equalsIgnoreCase(this.getPackageName())) {
+        if (processAppName == null || !processAppName.equalsIgnoreCase(this.getPackageName())) {
             LogUtil.E("enter the service process!");
             // 则此application::onCreate 是被service 调用的，直接返回
             return false;
@@ -95,7 +94,7 @@ public class AppAplication extends com.siweisoft.lib.aplication.LibAplication {
         return true;
     }
 
-    public void reStart(){
+    public void reStart() {
         exit();
         startActivity(new Intent(this, IndexActivity.class));
     }

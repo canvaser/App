@@ -57,40 +57,40 @@ public class AddWaterListFrag extends CommonUIFrag<AddWaterListUIOpe<AddWaterLis
 
     @Override
     public View getPinnedHeader() {
-        View view = LayoutInflater.from(activity).inflate(R.layout.list_head_addwater,null);
+        View view = LayoutInflater.from(activity).inflate(R.layout.list_head_addwater, null);
         view.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, AbsListView.LayoutParams.WRAP_CONTENT));
         return view;
     }
 
     @Override
     public void updatePinnedHeader(View headerView, int firstVisibleGroupPos) {
-        if (getOpe().getDaOpe() == null || getOpe().getDaOpe().getAddWaterListResBean() == null || firstVisibleGroupPos < 0 || getOpe().getDaOpe().getAddWaterListResBean().getData().get(firstVisibleGroupPos) == null) {
+        if (commonOpes.getDaOpe() == null || commonOpes.getDaOpe().getAddWaterListResBean() == null || firstVisibleGroupPos < 0 || commonOpes.getDaOpe().getAddWaterListResBean().getData().get(firstVisibleGroupPos) == null) {
             headerView.setVisibility(View.GONE);
             return;
         }
         headerView.setVisibility(View.VISIBLE);
-        AddWaterListHeadUIBean uiBean = new AddWaterListHeadUIBean(activity,headerView);
-        uiBean.getNameTV().setText(StringUtil.getStr(getOpe().getDaOpe().getAddWaterListResBean().getData().get(firstVisibleGroupPos).getAdvCon() + getOpe().getDaOpe().getAddWaterListResBean().getData().get(firstVisibleGroupPos).getStart()));
+        AddWaterListHeadUIBean uiBean = new AddWaterListHeadUIBean(activity, headerView);
+        uiBean.getNameTV().setText(StringUtil.getStr(commonOpes.getDaOpe().getAddWaterListResBean().getData().get(firstVisibleGroupPos).getAdvCon() + commonOpes.getDaOpe().getAddWaterListResBean().getData().get(firstVisibleGroupPos).getStart()));
     }
 
     @Override
     public void onAppItemClick(int index, View view, int position) {
         Bundle bundle = new Bundle();
         bundle.putSerializable(ValueConstant.DATA_DATA, (Serializable) view.getTag(R.id.data));
-        FragManager.getInstance().startFragmentForResult(getFragmentManager(),index,new AddWaterDetailFrag(),bundle,ValueConstant.CODE_REQUSET1);
+        FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new AddWaterDetailFrag(), bundle, ValueConstant.CODE_REQUSET1);
     }
 
     @OnClick({BaseID.ID_RIGHT})
-    public void onClick(View v){
+    public void onClick(View v) {
         super.onClick(v);
-        switch (v.getId()){
+        switch (v.getId()) {
             case BaseID.ID_RIGHT:
-                DialogUtil.showTimePick(activity,getFragmentManager(),"date", Type.ALL, new OnDateSetListener() {
+                DialogUtil.showTimePick(activity, getFragmentManager(), "date", Type.ALL, new OnDateSetListener() {
                     @Override
                     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                        getOpe().getDaOpe().setStartTime(DateFormatUtil.convent_yyyyMMddHHMM(new Date(millseconds)));
-                        getOpe().getDaOpe().setEndtime(DateFormatUtil.getTomorromTimeYYYYMMdd() + " 00:00");
-                        getOpe().getUiOpe().getRefreshLayout().autoRefresh();
+                        commonOpes.getDaOpe().setStartTime(DateFormatUtil.convent_yyyyMMddHHMM(new Date(millseconds)));
+                        commonOpes.getDaOpe().setEndtime(DateFormatUtil.getTomorromTimeYYYYMMdd() + " 00:00");
+                        commonOpes.getUiOpe().getRefreshLayout().autoRefresh();
                     }
                 });
                 break;
@@ -98,31 +98,26 @@ public class AddWaterListFrag extends CommonUIFrag<AddWaterListUIOpe<AddWaterLis
     }
 
     @Override
-    public CommonOpes<AddWaterListUIOpe<AddWaterListFrag>, AddWaterListDAOpe<AddWaterListFrag>> getOpe() {
-        if (commonOpes == null) {
-            commonOpes = new CommonOpes<>(new AddWaterListUIOpe<AddWaterListFrag>(activity, getView(), this), new AddWaterListDAOpe<AddWaterListFrag>(activity, this));
-        }
-        return commonOpes;
-    }
-
-    @Override
-    public int getContainView() {
-        return R.layout.frag_addwater_list;
-    }
-
-    @Override
     public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
-        SimpleNetOpe.addwater_list(activity, commonOpes.getDaOpe().getPatientAdditionDAOpe().getPatientBedResBean().get住院号(), "71", getOpe().getDaOpe().getStartTime(), getOpe().getDaOpe().getEndtime(), new DelayUINetAdapter(activity) {
+        SimpleNetOpe.addwater_list(activity, commonOpes.getDaOpe().getPatientAdditionDAOpe().getPatientBedResBean().get住院号(), "71", commonOpes.getDaOpe().getStartTime(), commonOpes.getDaOpe().getEndtime(), new DelayUINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
                 if (success) {
-                    getOpe().getDaOpe().setAddWaterListResBean(GsonUtil.getInstance().fromJson(o.toString(), AddWaterListResBean.class));
-                    getOpe().getUiOpe().initList(commonOpes.getDaOpe().getAddWaterListResBean());
-                    getOpe().getUiOpe().getListView().setOnHeaderUpdateListener(AddWaterListFrag.this);
+                    commonOpes.getDaOpe().setAddWaterListResBean(GsonUtil.getInstance().fromJson(o.toString(), AddWaterListResBean.class));
+                    commonOpes.getUiOpe().initList(commonOpes.getDaOpe().getAddWaterListResBean());
+                    commonOpes.getUiOpe().getListView().setOnHeaderUpdateListener(AddWaterListFrag.this);
                 }
                 commonOpes.getUiOpe().getRefreshLayout().finishRefresh();
                 ((AppBaseExpandableListAdapter) (commonOpes.getUiOpe().getListView().getExpandableListAdapter())).setOnAppItemsClickListener(AddWaterListFrag.this);
             }
         });
+    }
+
+    @Override
+    public int onCreateView(boolean create) {
+        if (create) {
+            commonOpes = new CommonOpes<>(new AddWaterListUIOpe<AddWaterListFrag>(activity, getView(), this), new AddWaterListDAOpe<AddWaterListFrag>(activity, this));
+        }
+        return R.layout.frag_addwater_list;
     }
 }

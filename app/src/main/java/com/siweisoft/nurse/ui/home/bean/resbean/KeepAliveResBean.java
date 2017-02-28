@@ -9,8 +9,6 @@ import com.siweisoft.lib.base.ui.bean.ResultResBean;
 public class KeepAliveResBean extends ResultResBean {
 
 
-
-
     //1：无新数据；3：有新床位呼叫；5：有新紧急报告；7：有新床位呼叫和新紧急报告
     private int data;
 

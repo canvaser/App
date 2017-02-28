@@ -275,7 +275,7 @@ public class NetWork {
                     BaseResBean baseResBean = gson.fromJson(response.toString(), BaseResBean.class);
                     reqInterf.onNetWorkReqFinish(true, UrlConstant.URI + model, baseResBean);
                 }
-                LogUtil.E(response);
+                LogUtil.E("gson", response);
             }
 
             @Override

@@ -38,7 +38,7 @@ public class SettingFGMUIOpe extends BaseNurseUIOpe {
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setBackgroundResource(R.drawable.drawable_right);
         getMidTV().setText("设置");
         getRightTV().setText("注销");
@@ -49,8 +49,8 @@ public class SettingFGMUIOpe extends BaseNurseUIOpe {
         getMidTV().setVisibility(View.VISIBLE);
         getRightTV().setVisibility(View.VISIBLE);
         String str = SPUtil.getInstance().init(context).getStr(ValueConstant.LOGIN_INFO);
-        if(str!=null){
-            DoLoginResBean doLoginResBean = GsonUtil.getInstance().fromJson(str,DoLoginResBean.class);
+        if (str != null) {
+            DoLoginResBean doLoginResBean = GsonUtil.getInstance().fromJson(str, DoLoginResBean.class);
             nameTV.setText(doLoginResBean.getData().getUser().getDisplayname());
             accountTV.setText(doLoginResBean.getData().getUser().getEmail());
             versionTV.setText(MethodConstant.getVersionName(context));

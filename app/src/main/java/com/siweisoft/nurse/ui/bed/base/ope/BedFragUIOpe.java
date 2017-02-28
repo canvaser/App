@@ -12,7 +12,6 @@ import com.siweisoft.lib.base.ui.ope.BaseUIWithTitleOpe;
 public class BedFragUIOpe extends BaseUIWithTitleOpe {
 
 
-
     public BedFragUIOpe(Context context, View containerView) {
         super(context, containerView);
     }

@@ -48,29 +48,29 @@ public class AddCheckBookDAOpe extends BaseOpe {
         this.data = data;
     }
 
-    public ArrayList<String> getNames(){
+    public ArrayList<String> getNames() {
         ArrayList<String> strings = new ArrayList<>();
-        if(data!=null){
-            for(int i=0;i<data.size();i++){
+        if (data != null) {
+            for (int i = 0; i < data.size(); i++) {
                 strings.add(data.get(i).getFilename());
             }
         }
         return strings;
     }
 
-    public void addHead(){
-       for(int i=0;i<data.size();i++){
-           CheckItemResBean checkItemResBean = new CheckItemResBean();
-           checkItemResBean.setItemname("班次");
-           checkItemResBean.setValue("");
-           data.get(i).getItems().add(0,checkItemResBean);
-       }
+    public void addHead() {
+        for (int i = 0; i < data.size(); i++) {
+            CheckItemResBean checkItemResBean = new CheckItemResBean();
+            checkItemResBean.setItemname("班次");
+            checkItemResBean.setValue("");
+            data.get(i).getItems().add(0, checkItemResBean);
+        }
     }
 
 
-    public String getJsonData(CheckBookResBean bean){
+    public String getJsonData(CheckBookResBean bean) {
         ArrayList<AddCheckBookReqBean> addCheckBookReqBeen = new ArrayList<>();
-        for(int i=1;i<bean.getItems().size();i++){
+        for (int i = 1; i < bean.getItems().size(); i++) {
             AddCheckBookReqBean addCheckBookReqBean = new AddCheckBookReqBean();
             addCheckBookReqBean.setValue(bean.getItems().get(i).getValue());
             addCheckBookReqBean.setFilename(bean.getFilename());

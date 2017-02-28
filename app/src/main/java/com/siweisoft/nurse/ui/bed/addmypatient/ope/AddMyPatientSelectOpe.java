@@ -18,13 +18,13 @@ public class AddMyPatientSelectOpe extends BaseOpe {
         super(context);
     }
 
-    public ArrayList<AddMyPatientAdapterBean> select(ArrayList<PatientBedResBean> resBeen,ArrayList<AddMyPatientAdapterBean> been){
-        if(resBeen==null || resBeen.size()==0){
+    public ArrayList<AddMyPatientAdapterBean> select(ArrayList<PatientBedResBean> resBeen, ArrayList<AddMyPatientAdapterBean> been) {
+        if (resBeen == null || resBeen.size() == 0) {
             return been;
         }
-        for(int i=0;i<been.size();i++){
-            for(int j=0;j<resBeen.size();j++){
-                if(been.get(i).get住院号().equals(resBeen.get(j).get住院号())){
+        for (int i = 0; i < been.size(); i++) {
+            for (int j = 0; j < resBeen.size(); j++) {
+                if (been.get(i).get住院号().equals(resBeen.get(j).get住院号())) {
                     been.get(i).setSelect(true);
                 }
             }

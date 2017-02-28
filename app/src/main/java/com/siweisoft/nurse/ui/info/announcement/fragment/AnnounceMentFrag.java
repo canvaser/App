@@ -17,7 +17,7 @@ import com.siweisoft.nurse.ui.info.announcement.ope.AnnounceUIOpe;
 /**
  * Created by ${viwmox} on 2016-12-13.
  */
-public class AnnounceMentFrag extends BaseNurseFrag{
+public class AnnounceMentFrag extends BaseNurseFrag {
 
 
     AnnounceUIOpe announceUIOpe;
@@ -33,7 +33,7 @@ public class AnnounceMentFrag extends BaseNurseFrag{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        announceUIOpe= new AnnounceUIOpe(activity,getView());
+        announceUIOpe = new AnnounceUIOpe(activity, getView());
         announceNetOpe = new NurseNetOpe(activity);
         announceUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
@@ -49,14 +49,14 @@ public class AnnounceMentFrag extends BaseNurseFrag{
         announceUIOpe.getRefreshLayout().autoRefresh(500);
     }
 
-    private void getData(final OnFinishListener onFinishListener){
+    private void getData(final OnFinishListener onFinishListener) {
         announceNetOpe.getHospitalAnnounceMent(new DelayUINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
+                if (success) {
 
                 }
-                if(onFinishListener !=null){
+                if (onFinishListener != null) {
                     onFinishListener.onFinish(o);
                 }
             }

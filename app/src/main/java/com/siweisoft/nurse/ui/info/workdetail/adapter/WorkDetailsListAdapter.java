@@ -19,15 +19,15 @@ public class WorkDetailsListAdapter extends AppRecycleAdapter {
 
     WorkDetailAdapterBean data;
 
-    public WorkDetailsListAdapter(Context context,WorkDetailAdapterBean data) {
+    public WorkDetailsListAdapter(Context context, WorkDetailAdapterBean data) {
         super(context);
         this.data = data;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.list_workdetails,parent,false);
-        WorkDetailUIBean workDetailUIBean = new WorkDetailUIBean(context,view);
+        View view = layoutInflater.inflate(R.layout.list_workdetails, parent, false);
+        WorkDetailUIBean workDetailUIBean = new WorkDetailUIBean(context, view);
         return workDetailUIBean;
     }
 
@@ -41,7 +41,7 @@ public class WorkDetailsListAdapter extends AppRecycleAdapter {
 
     @Override
     public int getItemCount() {
-        return data==null?0:data.getList().size();
+        return data == null ? 0 : data.getList().size();
     }
 
     @Override

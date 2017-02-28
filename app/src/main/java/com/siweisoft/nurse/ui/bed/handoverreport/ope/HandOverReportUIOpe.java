@@ -19,7 +19,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class HandOverReportUIOpe extends BaseNurseUIOpe{
+public class HandOverReportUIOpe extends BaseNurseUIOpe {
 
     @BindView(R.id.rcv_rcv)
     RecyclerView recyclerView;
@@ -34,7 +34,7 @@ public class HandOverReportUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
         getBackTV().setVisibility(View.VISIBLE);
@@ -43,16 +43,15 @@ public class HandOverReportUIOpe extends BaseNurseUIOpe{
         getRightTV().setVisibility(View.VISIBLE);
     }
 
-    public void initMid(String name){
+    public void initMid(String name) {
         getMidTV().setSelected(true);
         getMidTV().setText(name);
     }
 
 
-
-    public void initList(ArrayList<ShiftDuteResBean> data){
+    public void initList(ArrayList<ShiftDuteResBean> data) {
         this.data = data;
-        shiftDuteListAdpter = new ShiftDuteListAdpter(context,data);
+        shiftDuteListAdpter = new ShiftDuteListAdpter(context, data);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1));
         recyclerView.setAdapter(shiftDuteListAdpter);

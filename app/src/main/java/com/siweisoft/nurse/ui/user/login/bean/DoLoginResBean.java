@@ -32,8 +32,6 @@ public class DoLoginResBean extends ResultResBean {
         private ArrayList<String> nurseType;
 
 
-
-
         public AppResBean getApp() {
             return app;
         }
@@ -74,7 +72,6 @@ public class DoLoginResBean extends ResultResBean {
             this.voip = voip;
         }
     }
-
 
 
 }

@@ -8,12 +8,15 @@ import com.siweisoft.lib.base.ui.bean.reqbean.BaseNurseReqBean;
 public class AreaMissionReqBean extends BaseNurseReqBean {
 
 
-    /**开始时间；可忽略，忽略时默认为当前时间减7天*/
+    /**
+     * 开始时间；可忽略，忽略时默认为当前时间减7天
+     */
     private String begin;
 
-    /**结束时间；可忽略，忽略时默认为当前时间加8小时*/
+    /**
+     * 结束时间；可忽略，忽略时默认为当前时间加8小时
+     */
     private String end;
-
 
 
     public String getBegin() {

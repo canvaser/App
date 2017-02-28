@@ -12,7 +12,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-22.
  */
-public class AddAdditionUIOpe extends BaseNurseUIOpe{
+public class AddAdditionUIOpe extends BaseNurseUIOpe {
 
 
     @BindView(R.id.tv_daoguan)
@@ -27,7 +27,7 @@ public class AddAdditionUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setVisibility(View.VISIBLE);
         getBackTV().setSelected(true);
         getBackTV().setText("返回");

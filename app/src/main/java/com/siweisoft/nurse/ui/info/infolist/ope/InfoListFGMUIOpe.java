@@ -29,13 +29,13 @@ public class InfoListFGMUIOpe extends BaseNurseUIOpe {
         init();
     }
 
-    private void init(){
+    private void init() {
 
         getMidTV().setText("信息");
         getBackTV().setText("返回");
         getMidTV().setVisibility(View.VISIBLE);
-        recyclerView.setLayoutManager(new GridLayoutManager(context,3));
-        recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1*2));
+        recyclerView.setLayoutManager(new GridLayoutManager(context, 3));
+        recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1 * 2));
         infoListAdapter = new InfoListAdapter(context);
         recyclerView.setAdapter(infoListAdapter);
     }

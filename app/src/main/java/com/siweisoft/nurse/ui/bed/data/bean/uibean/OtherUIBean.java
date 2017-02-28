@@ -12,7 +12,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-11.
  */
-public class OtherUIBean extends BaseUIBean{
+public class OtherUIBean extends BaseUIBean {
 
 
     @BindView(R.id.tv_head_other)

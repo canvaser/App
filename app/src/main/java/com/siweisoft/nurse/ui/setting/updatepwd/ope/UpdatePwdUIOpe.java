@@ -14,7 +14,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-12-07.
  */
-public class UpdatePwdUIOpe extends BaseNurseUIOpe{
+public class UpdatePwdUIOpe extends BaseNurseUIOpe {
 
 
     @BindView(R.id.et_beforepwd)
@@ -34,7 +34,7 @@ public class UpdatePwdUIOpe extends BaseNurseUIOpe{
     }
 
 
-    private void init(){
+    private void init() {
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
 
@@ -45,23 +45,23 @@ public class UpdatePwdUIOpe extends BaseNurseUIOpe{
         getRightTV().setVisibility(View.VISIBLE);
     }
 
-    public boolean isReady(){
-        if(NullUtil.isStrEmpty(getBeforePwdEt().getText().toString())){
-            ToastUtil.getInstance().show(context,"请输入原密码");
+    public boolean isReady() {
+        if (NullUtil.isStrEmpty(getBeforePwdEt().getText().toString())) {
+            ToastUtil.getInstance().show(context, "请输入原密码");
             return false;
         }
 
-        if(NullUtil.isStrEmpty(getNewPwdEt().getText().toString())){
-            ToastUtil.getInstance().show(context,"请输入新密码");
+        if (NullUtil.isStrEmpty(getNewPwdEt().getText().toString())) {
+            ToastUtil.getInstance().show(context, "请输入新密码");
             return false;
         }
 
-        if(NullUtil.isStrEmpty(getNewPwd2Et().getText().toString())){
-            ToastUtil.getInstance().show(context,"请输重复密码");
+        if (NullUtil.isStrEmpty(getNewPwd2Et().getText().toString())) {
+            ToastUtil.getInstance().show(context, "请输重复密码");
             return false;
         }
-        if(!getNewPwd2Et().getText().toString().equals(getNewPwdEt().getText().toString())){
-            ToastUtil.getInstance().show(context,"重复密码不一致");
+        if (!getNewPwd2Et().getText().toString().equals(getNewPwdEt().getText().toString())) {
+            ToastUtil.getInstance().show(context, "重复密码不一致");
             return false;
         }
         return true;

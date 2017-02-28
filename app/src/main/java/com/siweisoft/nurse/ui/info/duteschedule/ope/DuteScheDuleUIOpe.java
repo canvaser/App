@@ -19,7 +19,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-12-07.
  */
-public class DuteScheDuleUIOpe extends BaseNurseUIOpe{
+public class DuteScheDuleUIOpe extends BaseNurseUIOpe {
 
 
     @BindView(R.id.rcv_rcv)
@@ -35,7 +35,7 @@ public class DuteScheDuleUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setSelected(true);
         getBackTV().setText("信息");
         getMidTV().setText("排班表");
@@ -44,9 +44,9 @@ public class DuteScheDuleUIOpe extends BaseNurseUIOpe{
     }
 
 
-    public void initList(ArrayList<DuteScheDuleResBean> data){
-        this.data =data;
-        duteScheDuleListAadpter = new DuteScheDuleListAadpter(context,this.data);
+    public void initList(ArrayList<DuteScheDuleResBean> data) {
+        this.data = data;
+        duteScheDuleListAadpter = new DuteScheDuleListAadpter(context, this.data);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1));
         recyclerView.setAdapter(duteScheDuleListAadpter);

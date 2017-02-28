@@ -19,7 +19,7 @@ public class InputHORDAOpe extends BaseOpe {
 
     private String status;
 
-    private String type ;
+    private String type;
 
     private ShiftDuteResBean shiftDuteResBean;
 

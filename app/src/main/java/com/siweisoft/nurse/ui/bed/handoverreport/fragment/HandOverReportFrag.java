@@ -47,25 +47,25 @@ public class HandOverReportFrag extends BaseNurseFrag implements OnAppItemClickL
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA)==null){
+        if (getArguments() == null || getArguments().getSerializable(ValueConstant.DATA_DATA) == null) {
             return;
         }
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
-        handOverReportUIOpe = new HandOverReportUIOpe(activity,getView());
+        handOverReportUIOpe = new HandOverReportUIOpe(activity, getView());
         handOverReportUIOpe.initMid(patientAdditionDAOpe.getPatientBedResBean().get姓名());
         handOverNetOpe = new NurseNetOpe(activity);
         getData();
 
     }
 
-    public void getData(){
+    public void getData() {
         BaseNurseReqBean baseNurseReqBean = new BaseNurseReqBean();
         baseNurseReqBean.setZyh(patientAdditionDAOpe.getPatientBedResBean().get住院号());
         handOverNetOpe.getPatientReportData(baseNurseReqBean, new DelayUINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    ShiftDuteListResBean shiftDuteListResBean = GsonUtil.getInstance().fromJson(o.toString(),ShiftDuteListResBean.class);
+                if (success) {
+                    ShiftDuteListResBean shiftDuteListResBean = GsonUtil.getInstance().fromJson(o.toString(), ShiftDuteListResBean.class);
                     handOverReportUIOpe.initList(shiftDuteListResBean.getData());
                     handOverReportUIOpe.getShiftDuteListAdpter().setOnAppItemClickListener(HandOverReportFrag.this);
                 }
@@ -78,14 +78,14 @@ public class HandOverReportFrag extends BaseNurseFrag implements OnAppItemClickL
         return R.layout.frag_handoverreprot;
     }
 
-    @OnClick({BaseID.ID_MID,BaseID.ID_RIGHT})
-    public void onClickEvent(View v){
-        switch (v.getId()){
+    @OnClick({BaseID.ID_MID, BaseID.ID_RIGHT})
+    public void onClickEvent(View v) {
+        switch (v.getId()) {
             case BaseID.ID_MID:
-                View view1 = layoutInflater.inflate(R.layout.pup_list,null);
+                View view1 = layoutInflater.inflate(R.layout.pup_list, null);
                 RecyclerView recyclerView = (RecyclerView) view1.findViewById(R.id.rcv_pop);
                 recyclerView.setLayoutManager(new LinearLayoutManager(activity));
-                recyclerView.addItemDecoration(new MyItemDecoration(activity,2));
+                recyclerView.addItemDecoration(new MyItemDecoration(activity, 2));
                 PupListAdapter p = new PupListAdapter(activity, new BedListDAOpe(activity).getPatientNames(patientAdditionDAOpe.getPatientBedResBeen()));
                 p.setOnAppItemClickListener(new OnAppItemClickListener() {
                     @Override
@@ -97,17 +97,17 @@ public class HandOverReportFrag extends BaseNurseFrag implements OnAppItemClickL
                     }
                 });
                 recyclerView.setAdapter(p);
-                PopupUtil.getInstance().show(activity,view1,v);
-                if(patientAdditionDAOpe.getPatientBedResBeen().size()>10){
-                    view1.getLayoutParams().height = ValueConstant.DIMEN_1*300;
+                PopupUtil.getInstance().show(activity, view1, v);
+                if (patientAdditionDAOpe.getPatientBedResBeen().size() > 10) {
+                    view1.getLayoutParams().height = ValueConstant.DIMEN_1 * 300;
                     view1.requestLayout();
                 }
                 break;
             case BaseID.ID_RIGHT:
                 Bundle bundle = new Bundle();
-                bundle.putString(ValueConstant.DATA_TYPE,InputHandOverReportFrag.TYPE_INPUT);
-                bundle.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
-                FragManager.getInstance().startFragmentForResult(getFragmentManager(),index,new InputHandOverReportFrag(),bundle,ValueConstant.CODE_REQUSET);
+                bundle.putString(ValueConstant.DATA_TYPE, InputHandOverReportFrag.TYPE_INPUT);
+                bundle.putSerializable(ValueConstant.DATA_DATA, patientAdditionDAOpe);
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new InputHandOverReportFrag(), bundle, ValueConstant.CODE_REQUSET);
                 break;
         }
     }
@@ -120,8 +120,8 @@ public class HandOverReportFrag extends BaseNurseFrag implements OnAppItemClickL
     @Override
     public void onAppItemClick(View view, int position) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(ValueConstant.DATA_DATA2,handOverReportUIOpe.getData().get(position));
-        bundle.putString(ValueConstant.DATA_TYPE,InputHandOverReportFrag.TYPE_PLAY);
-        FragManager.getInstance().startFragment(getFragmentManager(),index,new InputHandOverReportFrag(),bundle);
+        bundle.putSerializable(ValueConstant.DATA_DATA2, handOverReportUIOpe.getData().get(position));
+        bundle.putString(ValueConstant.DATA_TYPE, InputHandOverReportFrag.TYPE_PLAY);
+        FragManager.getInstance().startFragment(getFragmentManager(), index, new InputHandOverReportFrag(), bundle);
     }
 }

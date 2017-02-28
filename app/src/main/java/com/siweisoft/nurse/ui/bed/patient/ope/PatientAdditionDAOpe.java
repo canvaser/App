@@ -36,17 +36,17 @@ public class PatientAdditionDAOpe extends BaseDABean {
     }
 
     public PatientBedResBean getPatientBedResBean() {
-        if(position!=-1){
+        if (position != -1) {
             return patientBedResBeen.get(position);
         }
         return patientBedResBean;
     }
 
 
-    public ArrayList<String> getNames(){
+    public ArrayList<String> getNames() {
         ArrayList<String> strings = new ArrayList<>();
-        for(int i=0;i<getPatientBedResBeen().size();i++){
-            strings.add(getPatientBedResBeen().get(i).get病床号()+" "+getPatientBedResBeen().get(i).get姓名());
+        for (int i = 0; i < getPatientBedResBeen().size(); i++) {
+            strings.add(getPatientBedResBeen().get(i).get病床号() + " " + getPatientBedResBeen().get(i).get姓名());
         }
         return strings;
     }

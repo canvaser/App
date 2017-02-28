@@ -8,6 +8,7 @@ import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.SPUtil;
 import com.siweisoft.nurse.ui.user.login.bean.DoLoginResBean;
 import com.siweisoft.nurse.ui.user.login.bean.GetallregionbyuserResBean;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -16,31 +17,31 @@ import java.io.IOException;
  */
 public class MethodValue {
 
-    public static GetallregionbyuserResBean.Data getArea(){
+    public static GetallregionbyuserResBean.Data getArea() {
         String area = SPUtil.getInstance().getStr(ValueConstant.AREA_INFO);
-        if(area==null){
+        if (area == null) {
             return null;
         }
         GetallregionbyuserResBean.Data data = GsonUtil.getInstance().fromJson(area, GetallregionbyuserResBean.Data.class);
-        if(data==null){
+        if (data == null) {
             return null;
         }
         return data;
     }
 
-    public static DoLoginResBean getUserInfo(Context context){
+    public static DoLoginResBean getUserInfo(Context context) {
         String str = SPUtil.getInstance().init(context).getStr(ValueConstant.LOGIN_INFO);
-        DoLoginResBean doLoginResBean = GsonUtil.getInstance().fromJson(str,DoLoginResBean.class);
+        DoLoginResBean doLoginResBean = GsonUtil.getInstance().fromJson(str, DoLoginResBean.class);
         return doLoginResBean;
     }
 
-    public static File getRecordFile(String name){
-        File file = new File(Environment.getExternalStorageDirectory(),"nurse");
-        if(!file.exists()){
+    public static File getRecordFile(String name) {
+        File file = new File(Environment.getExternalStorageDirectory(), "nurse");
+        if (!file.exists()) {
             file.mkdirs();
         }
-        File f = new File(file.getPath()+"/"+name);
-        if(!f.exists()){
+        File f = new File(file.getPath() + "/" + name);
+        if (!f.exists()) {
             try {
                 f.createNewFile();
             } catch (IOException e) {
@@ -50,9 +51,9 @@ public class MethodValue {
         return f;
     }
 
-    public static String getRecordFile(){
-        File file = new File(Environment.getExternalStorageDirectory(),"nurse");
-        if(!file.exists()){
+    public static String getRecordFile() {
+        File file = new File(Environment.getExternalStorageDirectory(), "nurse");
+        if (!file.exists()) {
             file.mkdirs();
         }
         return file.getPath();

@@ -52,11 +52,7 @@ public class SelectedValue {
      * Return true if selected value have meaningful value.
      */
     public boolean isSet() {
-        if (firstIndex >= 0 && secondIndex >= 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return firstIndex >= 0 && secondIndex >= 0;
     }
 
     /**
@@ -112,9 +108,7 @@ public class SelectedValue {
             return false;
         if (secondIndex != other.secondIndex)
             return false;
-        if (type != other.type)
-            return false;
-        return true;
+        return type == other.type;
     }
 
     @Override

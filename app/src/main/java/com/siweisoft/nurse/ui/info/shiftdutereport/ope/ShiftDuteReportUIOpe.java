@@ -14,7 +14,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-17.
  */
-public class ShiftDuteReportUIOpe extends BaseNurseUIOpe{
+public class ShiftDuteReportUIOpe extends BaseNurseUIOpe {
 
     @BindView(R.id.tv_displayname)
     TextView nameTV;
@@ -60,7 +60,7 @@ public class ShiftDuteReportUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setText("返回");
         getBackTV().setSelected(true);
         getMidTV().setText("交班本");
@@ -71,7 +71,7 @@ public class ShiftDuteReportUIOpe extends BaseNurseUIOpe{
         getRightTV().setVisibility(View.VISIBLE);
     }
 
-    public void initData(ShiftDuteReportResBean res){
+    public void initData(ShiftDuteReportResBean res) {
         getBwTV().setText(StringUtil.getStr(res.get病危()));
         getCyTV().setText(StringUtil.getStr(res.get出院()));
         getGyTV().setText(StringUtil.getStr(res.get割症()));

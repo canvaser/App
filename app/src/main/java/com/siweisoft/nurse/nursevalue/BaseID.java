@@ -13,5 +13,5 @@ public class BaseID {
 
     public static final int ID_RIGHT = R.id.ftv_right;
 
-    public static final int ID_ROOT= R.id.ll_base_root;
+    public static final int ID_ROOT = R.id.ll_base_root;
 }

@@ -14,7 +14,7 @@ import com.siweisoft.nurse.ui.bed.assaydetail.ope.AssayDetailUIOpe;
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class AssayDetailFrag extends BaseNurseFrag{
+public class AssayDetailFrag extends BaseNurseFrag {
 
 
     AssayDetailUIOpe assayDetailUIOpe;
@@ -29,10 +29,10 @@ public class AssayDetailFrag extends BaseNurseFrag{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA)==null){
+        if (getArguments() == null || getArguments().getSerializable(ValueConstant.DATA_DATA) == null) {
             return;
         }
-        assayDetailUIOpe = new AssayDetailUIOpe(activity,getView());
+        assayDetailUIOpe = new AssayDetailUIOpe(activity, getView());
         assayAdapterBean = (AssayAdapterBean) getArguments().getSerializable(ValueConstant.DATA_DATA);
         assayDetailUIOpe.initList(assayAdapterBean.getList());
 

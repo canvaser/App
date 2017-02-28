@@ -18,15 +18,15 @@ public class DataChartActivity extends BaseUIWithOutTitleActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(getIntent()==null || getIntent().getSerializableExtra(ValueConstant.DATA_DATA)==null|| getIntent().getSerializableExtra(ValueConstant.DATA_DATA2)==null){
+        if (getIntent() == null || getIntent().getSerializableExtra(ValueConstant.DATA_DATA) == null || getIntent().getSerializableExtra(ValueConstant.DATA_DATA2) == null) {
             return;
         }
         Bundle bundle = new Bundle();
-        bundle.putSerializable(ValueConstant.DATA_DATA,getIntent().getSerializableExtra(ValueConstant.DATA_DATA));
-        bundle.putSerializable(ValueConstant.DATA_DATA2,getIntent().getSerializableExtra(ValueConstant.DATA_DATA2));
+        bundle.putSerializable(ValueConstant.DATA_DATA, getIntent().getSerializableExtra(ValueConstant.DATA_DATA));
+        bundle.putSerializable(ValueConstant.DATA_DATA2, getIntent().getSerializableExtra(ValueConstant.DATA_DATA2));
         DataChartFrag dataChartFrag = new DataChartFrag();
         dataChartFrag.setArguments(bundle);
-        FragmentUtil.getInstance().addToContaier(activity,dataChartFrag,R.id.chartcontainer);
+        FragmentUtil.getInstance().addToContaier(activity, dataChartFrag, R.id.chartcontainer);
     }
 
     @Override

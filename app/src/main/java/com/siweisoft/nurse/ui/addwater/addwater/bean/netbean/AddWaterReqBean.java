@@ -6,7 +6,7 @@ import com.siweisoft.lib.network.bean.req.BaseReqBean;
  * Created by ${viwmox} on 2017-02-17.
  */
 
-public class AddWaterReqBean extends BaseReqBean{
+public class AddWaterReqBean extends BaseReqBean {
 
     private String zyh;
 

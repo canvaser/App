@@ -8,10 +8,14 @@ import com.siweisoft.lib.network.bean.req.BaseReqBean;
  */
 public class DoLoginReqBean extends BaseReqBean {
 
-    /**用户名*/
+    /**
+     * 用户名
+     */
     private String username;
 
-    /**密码*/
+    /**
+     * 密码
+     */
     private String password;
 
 

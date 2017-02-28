@@ -25,7 +25,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-08.
  */
-public class BedListFGMUIOpe extends BaseNurseUIOpe{
+public class BedListFGMUIOpe extends BaseNurseUIOpe {
 
     @BindView(R.id.refresh)
     MaterialRefreshLayout refreshLayout;
@@ -36,16 +36,15 @@ public class BedListFGMUIOpe extends BaseNurseUIOpe{
     BedListAdapter bedListAdapter;
 
 
-
     public BedListFGMUIOpe(Context context, View convertView) {
         super(context, convertView);
         init();
     }
 
-    private void init(){
+    private void init() {
 
         getMidTV().setSelected(true);
-        setTitle(1,0);
+        setTitle(1, 0);
         getMidTV().setVisibility(View.VISIBLE);
         getRightTV().setVisibility(View.VISIBLE);
         getRightTV().setSelected(true);
@@ -53,17 +52,17 @@ public class BedListFGMUIOpe extends BaseNurseUIOpe{
 
     }
 
-    public void setTitle(int index , int num){
+    public void setTitle(int index, int num) {
 
-        switch (index){
+        switch (index) {
             case 0:
-                getMidTV().setText("我的病人"+(num==0?"":num));
+                getMidTV().setText("我的病人" + (num == 0 ? "" : num));
                 getRightTV().setText("增加");
                 getRightTV().setSelected(true);
                 break;
             case 1:
                 GetallregionbyuserResBean.Data data = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(ValueConstant.AREA_INFO), GetallregionbyuserResBean.Data.class);
-                getMidTV().setText(data.getWardname()+(num==0?"":num));
+                getMidTV().setText(data.getWardname() + (num == 0 ? "" : num));
                 getRightTV().setText("");
                 getRightTV().setSelected(false);
                 break;
@@ -71,10 +70,10 @@ public class BedListFGMUIOpe extends BaseNurseUIOpe{
         }
     }
 
-    public void initBedList(ArrayList<PatientBedResBean> list){
-        recyclerView.setLayoutManager(new GridLayoutManager(context,4));
+    public void initBedList(ArrayList<PatientBedResBean> list) {
+        recyclerView.setLayoutManager(new GridLayoutManager(context, 4));
         //recyclerView.addItemDecoration(new MyItemDecoration(context,3* ValueConstant.DIMEN_1));
-        bedListAdapter = new BedListAdapter(context,list);
+        bedListAdapter = new BedListAdapter(context, list);
         recyclerView.setAdapter(bedListAdapter);
         recyclerView.setLayoutAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -109,7 +108,6 @@ public class BedListFGMUIOpe extends BaseNurseUIOpe{
     public BedListAdapter getBedListAdapter() {
         return bedListAdapter;
     }
-
 
 
 }

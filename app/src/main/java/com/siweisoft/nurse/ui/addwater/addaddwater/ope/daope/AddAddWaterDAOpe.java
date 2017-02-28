@@ -15,7 +15,6 @@ import com.siweisoft.lib.base.ui.bean.uibean.CommonUIBean;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.base.ui.listener.BaseTextWather;
 import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
-import com.siweisoft.lib.util.LogUtil;
 import com.siweisoft.lib.util.NullUtil;
 import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.lib.util.data.DateFormatUtil;
@@ -28,7 +27,7 @@ import com.siweisoft.lib.view.textview.AppEditText;
 import com.siweisoft.nurse.ui.addwater.addaddwater.bean.netbean.AddAddWaterResBean;
 import com.siweisoft.nurse.ui.addwater.addaddwater.bean.netbean.GetBylResBean;
 import com.siweisoft.nurse.ui.dialog.dialog.adapter.DialogAdapter;
-import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionResBean;
+import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionListResBean;
 
 import java.util.Date;
 
@@ -36,9 +35,9 @@ import java.util.Date;
  * Created by ${viwmox} on 2017-02-21.
  */
 
-public class AddAddWaterDAOpe extends BaseDAOpe{
+public class AddAddWaterDAOpe extends BaseDAOpe {
 
-    AreaMessionResBean areaMessionResBean;
+    AreaMessionListResBean.DataBean areaMessionResBean;
 
     AddAddWaterResBean addAddWaterResBean;
 
@@ -48,7 +47,7 @@ public class AddAddWaterDAOpe extends BaseDAOpe{
 
     int click = 0;
 
-    long[] time = new long[]{0l,0l};
+    long[] time = new long[]{0l, 0l};
 
     public static final int TYPE_DATE = 0;
     public static final int TYPE_TEXT = 1;
@@ -57,11 +56,11 @@ public class AddAddWaterDAOpe extends BaseDAOpe{
         super(context);
     }
 
-    public AreaMessionResBean getAreaMessionResBean() {
+    public AreaMessionListResBean.DataBean getAreaMessionResBean() {
         return areaMessionResBean;
     }
 
-    public void setAreaMessionResBean(AreaMessionResBean areaMessionResBean) {
+    public void setAreaMessionResBean(AreaMessionListResBean.DataBean areaMessionResBean) {
         this.areaMessionResBean = areaMessionResBean;
     }
 
@@ -97,29 +96,29 @@ public class AddAddWaterDAOpe extends BaseDAOpe{
         this.getBylResBean = getBylResBean;
     }
 
-    public void fillcontent(String value){
-        for(int i=0;i<addAddWaterResBean.getData().get(0).getData().size();i++){
-            if(addAddWaterResBean.getData().get(0).getData().get(i).getTermname().equals("补液内容")){
+    public void fillcontent(String value) {
+        for (int i = 0; i < addAddWaterResBean.getData().get(0).getData().size(); i++) {
+            if (addAddWaterResBean.getData().get(0).getData().get(i).getTermname().equals("补液内容")) {
                 addAddWaterResBean.getData().get(0).getData().get(i).setValue(value);
             }
         }
     }
 
-    public void numPlus(){
+    public void numPlus() {
         click++;
-        if(click<=11){
+        if (click <= 11) {
             num++;
-            if(num==0){
-                time[0]=System.currentTimeMillis();
+            if (num == 0) {
+                time[0] = System.currentTimeMillis();
             }
-            if(num==10){
-                time[1]=System.currentTimeMillis();
+            if (num == 10) {
+                time[1] = System.currentTimeMillis();
             }
         }
     }
 
-    public int getDisu(){
-        float f = 600000l/(time[1]-time[0]);
+    public int getDisu() {
+        float f = 600000l / (time[1] - time[0]);
         return Math.round(f);
     }
 

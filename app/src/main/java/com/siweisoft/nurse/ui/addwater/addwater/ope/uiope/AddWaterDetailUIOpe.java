@@ -20,7 +20,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2017-02-17.
  */
-public class AddWaterDetailUIOpe extends BaseNurseUIOpe{
+public class AddWaterDetailUIOpe extends BaseNurseUIOpe {
 
     @BindView(R.id.refresh)
     MaterialRefreshLayout refreshLayout;
@@ -33,7 +33,7 @@ public class AddWaterDetailUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setVisibility(View.VISIBLE);
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
@@ -41,10 +41,10 @@ public class AddWaterDetailUIOpe extends BaseNurseUIOpe{
         getMidTV().setText("补液卡详情");
     }
 
-    public void initList(List<AddWaterListResBean.DataBean.FilesBean> filesBeans){
+    public void initList(List<AddWaterListResBean.DataBean.FilesBean> filesBeans) {
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.addItemDecoration(new MyItemDecoration2(context, ValueConstant.DIMEN_1));
-        recyclerView.setAdapter(new AddWaterDetailAdapter(context,filesBeans));
+        recyclerView.setAdapter(new AddWaterDetailAdapter(context, filesBeans));
     }
 
     public RecyclerView getRecyclerView() {

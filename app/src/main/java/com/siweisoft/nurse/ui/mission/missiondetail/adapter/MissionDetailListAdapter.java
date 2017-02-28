@@ -12,9 +12,11 @@ import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.mission.missiondetail.bean.MissionDetailListUIBean;
 import com.siweisoft.nurse.ui.mission.missiondetail.bean.uibean.MissionDetailListUIBean2;
+import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionListResBean;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionTitleResBean;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by ${viwmox} on 2016-11-11.
@@ -23,15 +25,16 @@ public class MissionDetailListAdapter extends AppRecycleAdapter {
 
     OnAppItemClickListener onAppItemClickListener;
 
-    ArrayList<AreaMessionTitleResBean> resBeen;
-    public MissionDetailListAdapter(Context context,ArrayList<AreaMessionTitleResBean> resBeen) {
+    List<AreaMessionListResBean.DataBean.TitlesBean> resBeen;
+
+    public MissionDetailListAdapter(Context context, List<AreaMessionListResBean.DataBean.TitlesBean> resBeen) {
         super(context);
         this.resBeen = resBeen;
     }
 
     @Override
     public int getItemViewType(int position) {
-        switch (resBeen.get(position).getStatus()){
+        switch (resBeen.get(position).getStatus()) {
             case "F":
                 return 0;
             default:
@@ -42,29 +45,29 @@ public class MissionDetailListAdapter extends AppRecycleAdapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        switch (viewType){
+        switch (viewType) {
             case 0:
-                View view = layoutInflater.inflate(R.layout.list_mission_detail_txt,parent,false);
-                MissionDetailListUIBean missionDetailListUIBean = new MissionDetailListUIBean(context,view);
+                View view = layoutInflater.inflate(R.layout.list_mission_detail_txt, parent, false);
+                MissionDetailListUIBean missionDetailListUIBean = new MissionDetailListUIBean(context, view);
                 return missionDetailListUIBean;
             default:
-                View view2 = layoutInflater.inflate(R.layout.list_mission_detail_txt2,parent,false);
-                MissionDetailListUIBean2 missionDetailListUIBean2 = new MissionDetailListUIBean2(context,view2);
+                View view2 = layoutInflater.inflate(R.layout.list_mission_detail_txt2, parent, false);
+                MissionDetailListUIBean2 missionDetailListUIBean2 = new MissionDetailListUIBean2(context, view2);
                 return missionDetailListUIBean2;
         }
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        switch (getItemViewType(position)){
+        switch (getItemViewType(position)) {
             case 0:
                 MissionDetailListUIBean missionDetailListUIBean = (MissionDetailListUIBean) holder;
                 missionDetailListUIBean.getTxtTV().setText(StringUtil.getStr(resBeen.get(position).getTitle()));
-                missionDetailListUIBean.getTxtTV().setTag(R.id.position,position);
-                missionDetailListUIBean.getDoneView().setTag(R.id.position,position);
-                missionDetailListUIBean.getAbsentView().setTag(R.id.position,position);
-                missionDetailListUIBean.getRefuseView().setTag(R.id.position,position);
-                missionDetailListUIBean.getDeleteView().setTag(R.id.position,position);
+                missionDetailListUIBean.getTxtTV().setTag(R.id.position, position);
+                missionDetailListUIBean.getDoneView().setTag(R.id.position, position);
+                missionDetailListUIBean.getAbsentView().setTag(R.id.position, position);
+                missionDetailListUIBean.getRefuseView().setTag(R.id.position, position);
+                missionDetailListUIBean.getDeleteView().setTag(R.id.position, position);
                 missionDetailListUIBean.getTxtTV().setOnClickListener(this);
                 missionDetailListUIBean.getDoneView().setOnClickListener(this);
                 missionDetailListUIBean.getAbsentView().setOnClickListener(this);
@@ -74,13 +77,13 @@ public class MissionDetailListAdapter extends AppRecycleAdapter {
             default:
 
                 MissionDetailListUIBean2 missionDetailListUIBean2 = (MissionDetailListUIBean2) holder;
-                missionDetailListUIBean2.getNameView().setText(resBeen.get(position).get医嘱ID()+" "+ resBeen.get(position).getDisplayname());
-                missionDetailListUIBean2.getTitleTV().setText(resBeen.get(position).get医嘱ID()+" "+ resBeen.get(position).getTitle());
-                missionDetailListUIBean2.getPressView().setTag(R.id.position,position);
+                missionDetailListUIBean2.getNameView().setText(resBeen.get(position).get医嘱ID() + " " + resBeen.get(position).getDisplayname());
+                missionDetailListUIBean2.getTitleTV().setText(resBeen.get(position).get医嘱ID() + " " + resBeen.get(position).getTitle());
+                missionDetailListUIBean2.getPressView().setTag(R.id.position, position);
                 missionDetailListUIBean2.getPressView().setOnClickListener(this);
-                missionDetailListUIBean2.getCotainV().setTag(R.id.position,position);
+                missionDetailListUIBean2.getCotainV().setTag(R.id.position, position);
                 missionDetailListUIBean2.getCotainV().setOnClickListener(this);
-                switch (resBeen.get(position).getStatus()){
+                switch (resBeen.get(position).getStatus()) {
                     case DataValue.STATUS_YI_SENG_HE:
 
                         break;
@@ -106,14 +109,14 @@ public class MissionDetailListAdapter extends AppRecycleAdapter {
 
     @Override
     public int getItemCount() {
-        return resBeen==null?0:resBeen.size();
+        return resBeen == null ? 0 : resBeen.size();
     }
 
     @Override
     public void onClick(View v) {
         int position = (int) v.getTag(R.id.position);
-        if(onAppItemClickListener!=null){
-            onAppItemClickListener.onAppItemClick(v,position);
+        if (onAppItemClickListener != null) {
+            onAppItemClickListener.onAppItemClick(v, position);
         }
     }
 

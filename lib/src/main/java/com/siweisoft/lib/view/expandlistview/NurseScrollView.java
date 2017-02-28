@@ -15,7 +15,7 @@ public class NurseScrollView extends ScrollView {
 
 
     public interface OnScrollChangedListener {
-        public void onScrollChanged(int l, int t, int oldl, int oldt);
+        void onScrollChanged(int l, int t, int oldl, int oldt);
     }
 
     OnScrollChangedListener onScrollChangedListener;

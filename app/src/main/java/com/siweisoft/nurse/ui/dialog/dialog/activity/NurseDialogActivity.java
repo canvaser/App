@@ -20,13 +20,12 @@ public class NurseDialogActivity extends DialogActivity implements OnAppItemClic
     private String[] strings;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        uiOpe = new NurseDialogUIOpe(activity,getRootVG());
+        uiOpe = new NurseDialogUIOpe(activity, getRootVG());
         strings = getIntent().getStringArrayExtra(ValueConstant.DATA_DATA);
-        uiOpe.showList(strings,this);
+        uiOpe.showList(strings, this);
     }
 
     @Override

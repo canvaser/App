@@ -4,8 +4,8 @@ import com.siweisoft.lib.lecho.lib.hellocharts.model.LineChartData;
 
 public interface LineChartDataProvider {
 
-    public LineChartData getLineChartData();
+    LineChartData getLineChartData();
 
-    public void setLineChartData(LineChartData data);
+    void setLineChartData(LineChartData data);
 
 }

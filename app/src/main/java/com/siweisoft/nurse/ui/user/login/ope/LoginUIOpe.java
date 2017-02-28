@@ -34,13 +34,14 @@ public class LoginUIOpe extends BaseUIWithTitleOpe {
         init();
     }
 
-    private void init(){
+    private void init() {
         getMidTV().setText("护士工作站");
         getRightTV().setSelected(true);
         getRightTV().setText("设置");
         getBackTV().setVisibility(View.VISIBLE);
         getRightTV().setVisibility(View.VISIBLE);
     }
+
     public EditText getAccountEt() {
         return accountEt;
     }

@@ -10,7 +10,8 @@ import com.siweisoft.lib.base.ui.ope.BaseOpe;
  */
 public class HomeDataOpe extends BaseOpe {
 
-     int index=0;
+    int index = 0;
+
     public HomeDataOpe(Context context) {
         super(context);
     }

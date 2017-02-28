@@ -14,7 +14,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-11.
  */
-public class DataHeadUIBean extends BaseUIBean{
+public class DataHeadUIBean extends BaseUIBean {
 
     @BindView(R.id.tv_head_tem)
     TextView textView;

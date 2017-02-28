@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * Created by ${viwmox} on 2017-02-20.
  */
 
-public class NurseDialogFrag extends Fragment implements View.OnClickListener{
+public class NurseDialogFrag extends Fragment implements View.OnClickListener {
 
     NurseDialogUIOpe nurseDialogUIOpe;
 
@@ -37,9 +37,9 @@ public class NurseDialogFrag extends Fragment implements View.OnClickListener{
 
     public static final int RIGHT = 2;
 
-    public static void show(FragmentManager fragmentManagers , int id, String[]strings,int position, OnAppItemClickListener onAppItemClickListener){
+    public static void show(FragmentManager fragmentManagers, int id, String[] strings, int position, OnAppItemClickListener onAppItemClickListener) {
         Bundle bundle = new Bundle();
-        bundle.putStringArray(ValueConstant.DATA_DATA,strings);
+        bundle.putStringArray(ValueConstant.DATA_DATA, strings);
         bundle.putInt(ValueConstant.DATA_POSITION, position);
         NurseDialogFrag nurseDialogFrag = new NurseDialogFrag();
         nurseDialogFrag.setArguments(bundle);
@@ -50,26 +50,26 @@ public class NurseDialogFrag extends Fragment implements View.OnClickListener{
     public static void show(FragmentManager fragmentManagers, int id, ArrayList<String> strings, int position, OnAppItemClickListener onAppItemClickListener) {
         Bundle bundle = new Bundle();
         bundle.putStringArray(ValueConstant.DATA_DATA, strings.toArray(new String[strings.size()]));
-        bundle.putInt(ValueConstant.DATA_POSITION,position);
+        bundle.putInt(ValueConstant.DATA_POSITION, position);
         NurseDialogFrag nurseDialogFrag = new NurseDialogFrag();
         nurseDialogFrag.setArguments(bundle);
         nurseDialogFrag.onAppItemClickListener = onAppItemClickListener;
-        fragmentManagers.beginTransaction().add(id,nurseDialogFrag).commit();
+        fragmentManagers.beginTransaction().add(id, nurseDialogFrag).commit();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_dialog_list,container,false);
+        return inflater.inflate(R.layout.activity_dialog_list, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        nurseDialogUIOpe= new NurseDialogUIOpe(getActivity(),getView());
+        nurseDialogUIOpe = new NurseDialogUIOpe(getActivity(), getView());
         strings = getArguments().getStringArray(ValueConstant.DATA_DATA);
         getView().findViewById(R.id.root).setOnClickListener(this);
-        switch (getArguments().getInt(ValueConstant.DATA_POSITION)){
+        switch (getArguments().getInt(ValueConstant.DATA_POSITION)) {
             case LEFT:
                 nurseDialogUIOpe.showLeft(strings, new OnAppItemClickListener() {
                     @Override
@@ -80,7 +80,7 @@ public class NurseDialogFrag extends Fragment implements View.OnClickListener{
                                 getFragmentManager().beginTransaction().remove(NurseDialogFrag.this).commit();
                             }
                         });
-                        onAppItemClickListener.onAppItemClick(view,position);
+                        onAppItemClickListener.onAppItemClick(view, position);
                     }
                 });
                 break;
@@ -88,13 +88,13 @@ public class NurseDialogFrag extends Fragment implements View.OnClickListener{
                 nurseDialogUIOpe.showRight(strings, new OnAppItemClickListener() {
                     @Override
                     public void onAppItemClick(View view, int position) {
-                        AnimUtil.getInstance().startAnim(getActivity(),nurseDialogUIOpe.getRightRecycle(),R.anim.anim_out_fast_right,new OnFinishListener() {
+                        AnimUtil.getInstance().startAnim(getActivity(), nurseDialogUIOpe.getRightRecycle(), R.anim.anim_out_fast_right, new OnFinishListener() {
                             @Override
                             public void onFinish(Object o) {
                                 getFragmentManager().beginTransaction().remove(NurseDialogFrag.this).commit();
                             }
                         });
-                        onAppItemClickListener.onAppItemClick(view,position);
+                        onAppItemClickListener.onAppItemClick(view, position);
                     }
                 });
                 break;
@@ -102,13 +102,13 @@ public class NurseDialogFrag extends Fragment implements View.OnClickListener{
                 nurseDialogUIOpe.showList(strings, new OnAppItemClickListener() {
                     @Override
                     public void onAppItemClick(View view, int position) {
-                        AnimUtil.getInstance().startAnim(getActivity(),nurseDialogUIOpe.getRecyclerView(),R.anim.anim_out_fast_mid,new OnFinishListener() {
+                        AnimUtil.getInstance().startAnim(getActivity(), nurseDialogUIOpe.getRecyclerView(), R.anim.anim_out_fast_mid, new OnFinishListener() {
                             @Override
                             public void onFinish(Object o) {
                                 getFragmentManager().beginTransaction().remove(NurseDialogFrag.this).commit();
                             }
                         });
-                        onAppItemClickListener.onAppItemClick(view,position);
+                        onAppItemClickListener.onAppItemClick(view, position);
                     }
                 });
                 break;
@@ -122,18 +122,18 @@ public class NurseDialogFrag extends Fragment implements View.OnClickListener{
 
         RecyclerView recyclerView = nurseDialogUIOpe.getRecyclerView();
 
-        if(nurseDialogUIOpe.getLeftRecycle().getVisibility()==View.VISIBLE){
+        if (nurseDialogUIOpe.getLeftRecycle().getVisibility() == View.VISIBLE) {
             anim = R.anim.anim_out_fast;
             recyclerView = nurseDialogUIOpe.getLeftRecycle();
-        }else if(nurseDialogUIOpe.getRightRecycle().getVisibility()==View.VISIBLE){
+        } else if (nurseDialogUIOpe.getRightRecycle().getVisibility() == View.VISIBLE) {
             anim = R.anim.anim_out_fast_right;
             recyclerView = nurseDialogUIOpe.getRightRecycle();
-        }else{
+        } else {
             anim = R.anim.anim_out_fast_mid;
             recyclerView = nurseDialogUIOpe.getRecyclerView();
         }
 
-        AnimUtil.getInstance().startAnim(getActivity(),recyclerView,anim,new OnFinishListener() {
+        AnimUtil.getInstance().startAnim(getActivity(), recyclerView, anim, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 getFragmentManager().beginTransaction().remove(NurseDialogFrag.this).commit();

@@ -26,7 +26,7 @@ import butterknife.BindView;
  * Created by ${viwmox} on 2017-02-17.
  */
 
-public class AddAddWaterUIOpe extends BaseNurseUIOpe{
+public class AddAddWaterUIOpe extends BaseNurseUIOpe {
 
     @BindView(R.id.refresh)
     MaterialRefreshLayout refreshLayout;
@@ -44,7 +44,7 @@ public class AddAddWaterUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setVisibility(View.VISIBLE);
         getMidTV().setText("增加补液卡");
         getMidTV().setVisibility(View.VISIBLE);
@@ -55,21 +55,21 @@ public class AddAddWaterUIOpe extends BaseNurseUIOpe{
         getRightTV().setSelected(true);
     }
 
-    public void sethead(){
+    public void sethead() {
 
     }
 
     public void initList(final AddAddWaterResBean aa) {
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new MyItemDecoration2(context,2));
+        recyclerView.addItemDecoration(new MyItemDecoration2(context, 2));
         final AddAddWaterDAOpe addAddWaterDAOpe = new AddAddWaterDAOpe(context);
         recyclerView.setAdapter(new AddAddWaterAdapter(context, aa));
     }
 
-    public void setDishu(String dishu){
-        for(int i=0;i<recyclerView.getChildCount();i++){
+    public void setDishu(String dishu) {
+        for (int i = 0; i < recyclerView.getChildCount(); i++) {
             AddAddWaterUIBean uiBean = (AddAddWaterUIBean) recyclerView.getChildViewHolder(recyclerView.getChildAt(i));
-            if(uiBean.getNameTV().getText().equals("滴速")){
+            if (uiBean.getNameTV().getText().equals("滴速")) {
                 uiBean.getTxtET().setFocusable(true);
                 uiBean.getTxtET().setFocusableInTouchMode(true);
                 uiBean.getTxtET().requestFocus();
@@ -80,10 +80,10 @@ public class AddAddWaterUIOpe extends BaseNurseUIOpe{
 
     }
 
-    public void setleftBuyeLiang(String str){
-        for(int i=0;i<recyclerView.getChildCount();i++){
+    public void setleftBuyeLiang(String str) {
+        for (int i = 0; i < recyclerView.getChildCount(); i++) {
             AddAddWaterUIBean uiBean = (AddAddWaterUIBean) recyclerView.getChildViewHolder(recyclerView.getChildAt(i));
-            if(uiBean.getNameTV().getText().equals("剩余补液量")){
+            if (uiBean.getNameTV().getText().equals("剩余补液量")) {
                 uiBean.getTxtET().setFocusable(true);
                 uiBean.getTxtET().setFocusableInTouchMode(true);
                 uiBean.getTxtET().requestFocus();

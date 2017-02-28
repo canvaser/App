@@ -58,27 +58,27 @@ import java.util.List;
  * Created by ${viwmox} on 2017-02-15.
  */
 
-public class NurseNetOpe extends BaseNetOpe{
+public class NurseNetOpe extends BaseNetOpe {
 
 
     public NurseNetOpe(Context context) {
         super(context);
     }
 
-    public void document_documemtList(String id,OnNetWorkReqInterf reqInterf) {
+    public void document_documemtList(String id, OnNetWorkReqInterf reqInterf) {
         DocumentListReqBean baseReqBean = new DocumentListReqBean();
         baseReqBean.setPid(id);
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_DOCUMENT_FORM, baseReqBean, reqInterf);
     }
 
-    public void document_documemtdetail(String id,OnNetWorkReqInterf reqInterf) {
+    public void document_documemtdetail(String id, OnNetWorkReqInterf reqInterf) {
         DocumentDetailReqBean baseReqBean = new DocumentDetailReqBean();
         baseReqBean.setFid(id);
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_DOCUMENT_DETAIL, baseReqBean, reqInterf);
     }
 
     //补液卡列表
-    public void addwater_list(String zyh,String fileid,String begin,String end,OnNetWorkReqInterf reqInterf){
+    public void addwater_list(String zyh, String fileid, String begin, String end, OnNetWorkReqInterf reqInterf) {
         AddWaterReqBean baseReqBean = new AddWaterReqBean();
         baseReqBean.setZyh(zyh);
         baseReqBean.setFileid(fileid);
@@ -87,14 +87,18 @@ public class NurseNetOpe extends BaseNetOpe{
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_FILE_DATA_BY_PATIENT, baseReqBean, reqInterf);
     }
 
-    /**获取指定医嘱的用药量*/
-    public void getbylbyadvid(String id,OnNetWorkReqInterf reqInterf) {
+    /**
+     * 获取指定医嘱的用药量
+     */
+    public void getbylbyadvid(String id, OnNetWorkReqInterf reqInterf) {
         GetBylReqBean baseReqBean = new GetBylReqBean();
         baseReqBean.setAdvID(id);
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_BYL_BY_ADVID, baseReqBean, reqInterf);
     }
 
-    /**提交补液卡数据*/
+    /**
+     * 提交补液卡数据
+     */
     public void write_addwater_data(String id, String yizhuid, String regionId, String zyh, List<AddAddWaterResBean.DataBeanX.DataBean> data, OnNetWorkReqInterf reqInterf) {
         AddAddWaterDataReqBean reqBean = new AddAddWaterDataReqBean();
         reqBean.setPid("0");
@@ -107,7 +111,7 @@ public class NurseNetOpe extends BaseNetOpe{
         reqBean.setWardid(regionId);
 
         List<AddAddWaterReqBean> d = new ArrayList<>();
-        for(int i=0;i<data.size();i++){
+        for (int i = 0; i < data.size(); i++) {
             AddAddWaterReqBean a = new AddAddWaterReqBean();
             a.setCoeff(data.get(i).getCoeff());
             a.setFileid(data.get(i).getFileid());
@@ -146,9 +150,9 @@ public class NurseNetOpe extends BaseNetOpe{
     }
 
 
-
-
-    /**获取病区病人*/
+    /**
+     * 获取病区病人
+     */
     public void updateMyPatientList(MyPaitentUpdateListReqBean myPaitentUpdateListReqBean, OnNetWorkReqInterf reqInterf) {
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_UPDATE_Y_PATIENT_LIST, myPaitentUpdateListReqBean, reqInterf);
     }
@@ -158,8 +162,10 @@ public class NurseNetOpe extends BaseNetOpe{
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_UPDATE_PATIENT_ADDITION, reqBean, reqInterf);
     }
 
-    /**获取护理记录统计*/
-    public void getTaskSummaryByPatient(String zyh,OnNetWorkReqInterf reqInterf) {
+    /**
+     * 获取护理记录统计
+     */
+    public void getTaskSummaryByPatient(String zyh, OnNetWorkReqInterf reqInterf) {
         BaseNurseReqBean baseNurseReqBean = new BaseNurseReqBean();
         baseNurseReqBean.setZyh(zyh);
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_SUMMARY_BY_PAITENT, baseNurseReqBean, reqInterf);
@@ -182,14 +188,16 @@ public class NurseNetOpe extends BaseNetOpe{
         Calendar beginCalendar = Calendar.getInstance();
         Calendar endCalendar = Calendar.getInstance();
         String end = null;
-        try {
-            date = DateFormatUtil.convent_yyyyMMdd(begin);
-            beginCalendar.setTime(date);
-            endCalendar.setTime(date);
-            endCalendar.set(Calendar.DAY_OF_MONTH, beginCalendar.get(Calendar.DAY_OF_MONTH) + 1);
-            end = DateFormatUtil.convent_yyyyMMdd(endCalendar.getTime());
-        } catch (ParseException e) {
-            e.printStackTrace();
+        if (begin != null) {
+            try {
+                date = DateFormatUtil.convent_yyyyMMdd(begin);
+                beginCalendar.setTime(date);
+                endCalendar.setTime(date);
+                endCalendar.set(Calendar.DAY_OF_MONTH, beginCalendar.get(Calendar.DAY_OF_MONTH) + 1);
+                end = DateFormatUtil.convent_yyyyMMdd(endCalendar.getTime());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
         BaseNurseReqBean baseNurseReqBean = new BaseNurseReqBean();
         baseNurseReqBean.setPatientid(zyh);
@@ -509,7 +517,6 @@ public class NurseNetOpe extends BaseNetOpe{
         BaseReqBean baseReqBean = new BaseReqBean();
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_DOLOGIN_OUT, baseReqBean, reqInterf);
     }
-
 
 
 }

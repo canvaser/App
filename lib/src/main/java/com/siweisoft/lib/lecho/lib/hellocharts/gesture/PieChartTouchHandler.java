@@ -32,7 +32,7 @@ public class PieChartTouchHandler extends ChartTouchHandler {
 
     public PieChartTouchHandler(Context context, PieChartView chart) {
         super(context, chart);
-        pieChart = (PieChartView) chart;
+        pieChart = chart;
         scroller = ScrollerCompat.create(context);
         gestureDetector = new GestureDetector(context, new ChartGestureListener());
         scaleGestureDetector = new ScaleGestureDetector(context, new ChartScaleGestureListener());
@@ -122,7 +122,7 @@ public class PieChartTouchHandler extends ChartTouchHandler {
                 float scrollTheta = vectorToScalarScroll(velocityX, velocityY, e2.getX() - centerX, e2.getY() -
                         centerY);
                 scroller.abortAnimation();
-                scroller.fling(0, (int) pieChart.getChartRotation(), 0, (int) scrollTheta / FLING_VELOCITY_DOWNSCALE,
+                scroller.fling(0, pieChart.getChartRotation(), 0, (int) scrollTheta / FLING_VELOCITY_DOWNSCALE,
                         0, 0, Integer.MIN_VALUE, Integer.MAX_VALUE);
                 return true;
             }

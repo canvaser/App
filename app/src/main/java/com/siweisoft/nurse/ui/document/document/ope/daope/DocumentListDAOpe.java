@@ -9,7 +9,7 @@ import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentListResBean
  * Created by ${viwmox} on 2017-02-16.
  */
 
-public class DocumentListDAOpe extends BaseDAOpe{
+public class DocumentListDAOpe extends BaseDAOpe {
 
     DocumentListResBean.DataBean dataBean;
 
@@ -34,20 +34,20 @@ public class DocumentListDAOpe extends BaseDAOpe{
 
     public void setDocumentListResBean(DocumentListResBean documentListResBean) {
         this.documentListResBean = documentListResBean;
-        if(documentListResBean!=null && documentListResBean.getData()!=null && documentListResBean.getData().size()>0){
-            for(int i=0;i<documentListResBean.getData().size();i++){
-                if(documentListResBean.getData().get(i).getType().equals(DocumentListResBean.DataBean.TYPE_HAVE_CHILD)){
+        if (documentListResBean != null && documentListResBean.getData() != null && documentListResBean.getData().size() > 0) {
+            for (int i = 0; i < documentListResBean.getData().size(); i++) {
+                if (documentListResBean.getData().get(i).getType().equals(DocumentListResBean.DataBean.TYPE_HAVE_CHILD)) {
                     documentListResBean.getData().get(i).setEnter(true);
-                }else{
+                } else {
                     documentListResBean.getData().get(i).setEnter(false);
                 }
             }
         }
     }
 
-    public void setEnableEnter(){
-        if(documentListResBean!=null && documentListResBean.getData()!=null && documentListResBean.getData().size()>0){
-            for(int i=0;i<documentListResBean.getData().size();i++){
+    public void setEnableEnter() {
+        if (documentListResBean != null && documentListResBean.getData() != null && documentListResBean.getData().size() > 0) {
+            for (int i = 0; i < documentListResBean.getData().size(); i++) {
                 documentListResBean.getData().get(i).setEnter(true);
             }
         }

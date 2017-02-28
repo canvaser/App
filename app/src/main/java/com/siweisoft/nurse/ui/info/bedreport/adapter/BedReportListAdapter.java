@@ -28,8 +28,8 @@ public class BedReportListAdapter extends AppRecycleAdapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view  = layoutInflater.inflate(R.layout.list_bedreport,parent,false);
-        BedReportUIBean bedReportUIBean = new BedReportUIBean(context,view);
+        View view = layoutInflater.inflate(R.layout.list_bedreport, parent, false);
+        BedReportUIBean bedReportUIBean = new BedReportUIBean(context, view);
         return bedReportUIBean;
     }
 
@@ -44,7 +44,7 @@ public class BedReportListAdapter extends AppRecycleAdapter {
 
     @Override
     public int getItemCount() {
-        return data==null?0:data.size();
+        return data == null ? 0 : data.size();
     }
 
     @Override

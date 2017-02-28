@@ -38,7 +38,6 @@ import butterknife.Optional;
 public class BedListFGM extends BaseNurseFrag<BedListFGMUIOpe, NurseNetOpe, BaseDBOpe, BedListDAOpe> implements OnAppItemClickListener {
 
 
-
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -57,7 +56,7 @@ public class BedListFGM extends BaseNurseFrag<BedListFGMUIOpe, NurseNetOpe, Base
     }
 
 
-    public void getData(final OnFinishListener onFinishListener){
+    public void getData(final OnFinishListener onFinishListener) {
         baseNurseOpes.getUiOpe().setTitle(baseNurseOpes.getDaOpe().getIndex(), 0);
         switch (baseNurseOpes.getDaOpe().getIndex()) {
             case 0:
@@ -69,13 +68,13 @@ public class BedListFGM extends BaseNurseFrag<BedListFGMUIOpe, NurseNetOpe, Base
         }
     }
 
-    private void getRegion(final OnFinishListener onFinishListener){
+    private void getRegion(final OnFinishListener onFinishListener) {
         baseNurseOpes.getNetOpe().getRegion(new UINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
 
-                if(success){
-                    final PatientBedListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(),PatientBedListResBean.class);
+                if (success) {
+                    final PatientBedListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(), PatientBedListResBean.class);
                     baseNurseOpes.getDaOpe().setAllList(resBean.getData());
                     baseNurseOpes.getDaOpe().initAllBedList(activity, new OnFinishListener() {
                         @Override
@@ -86,23 +85,23 @@ public class BedListFGM extends BaseNurseFrag<BedListFGMUIOpe, NurseNetOpe, Base
                         }
                     });
 
-                }else{
+                } else {
                     baseNurseOpes.getUiOpe().initBedList(null);
                 }
-                if(onFinishListener!=null){
+                if (onFinishListener != null) {
                     onFinishListener.onFinish(null);
                 }
             }
         });
     }
 
-    private void getRegion2(final OnFinishListener onFinishListener){
+    private void getRegion2(final OnFinishListener onFinishListener) {
         baseNurseOpes.getNetOpe().getRegion(new UINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
 
-                if(success){
-                    final PatientBedListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(),PatientBedListResBean.class);
+                if (success) {
+                    final PatientBedListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(), PatientBedListResBean.class);
                     baseNurseOpes.getDaOpe().setAllList(resBean.getData());
                     baseNurseOpes.getDaOpe().initAllBedList(context, new OnFinishListener() {
                         @Override
@@ -113,7 +112,7 @@ public class BedListFGM extends BaseNurseFrag<BedListFGMUIOpe, NurseNetOpe, Base
                             onFinishListener.onFinish(o);
                         }
                     });
-                }else{
+                } else {
                     baseNurseOpes.getUiOpe().initBedList(null);
                     onFinishListener.onFinish(o);
                 }
@@ -121,21 +120,21 @@ public class BedListFGM extends BaseNurseFrag<BedListFGMUIOpe, NurseNetOpe, Base
         });
     }
 
-    private void getMyPatientList(final OnFinishListener onFinishListener){
+    private void getMyPatientList(final OnFinishListener onFinishListener) {
         baseNurseOpes.getNetOpe().getMyPatientList(new UINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    PatientBedListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(),PatientBedListResBean.class);
+                if (success) {
+                    PatientBedListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(), PatientBedListResBean.class);
                     baseNurseOpes.getDaOpe().setMyList(resBean.getData());
                     baseNurseOpes.getDaOpe().initMyBedList(activity);
                     baseNurseOpes.getUiOpe().initBedList(baseNurseOpes.getDaOpe().getMyList());
                     ((BedListAdapter) baseNurseOpes.getUiOpe().getRecyclerView().getAdapter()).setOnAppItemClickListener(BedListFGM.this);
                     baseNurseOpes.getUiOpe().setTitle(baseNurseOpes.getDaOpe().getIndex(), resBean.getData().size());
-                }else{
+                } else {
                     baseNurseOpes.getUiOpe().initBedList(null);
                 }
-                if(onFinishListener!=null){
+                if (onFinishListener != null) {
                     onFinishListener.onFinish(null);
                 }
             }
@@ -148,31 +147,31 @@ public class BedListFGM extends BaseNurseFrag<BedListFGMUIOpe, NurseNetOpe, Base
     }
 
     @Optional
-    @OnClick({BaseID.ID_MID,BaseID.ID_RIGHT})
-    public void onClick(View view){
-        switch (view.getId()){
+    @OnClick({BaseID.ID_MID, BaseID.ID_RIGHT})
+    public void onClick(View view) {
+        switch (view.getId()) {
             case BaseID.ID_MID:
-                NurseDialogFrag.show(getFragmentManager(),BaseID.ID_ROOT,new String[]{"我的病人",MethodValue.getArea().getWardname()}, NurseDialogFrag.MID,new OnAppItemClickListener() {
+                NurseDialogFrag.show(getFragmentManager(), BaseID.ID_ROOT, new String[]{"我的病人", MethodValue.getArea().getWardname()}, NurseDialogFrag.MID, new OnAppItemClickListener() {
 
-                            @Override
-                            public void onAppItemClick(View view, int position) {
-                                switch (position){
-                                    case 0:
-                                        baseNurseOpes.getDaOpe().setIndex(0);
-                                        baseNurseOpes.getUiOpe().getRefreshLayout().autoRefresh();
-                                        break;
-                                    case 1:
-                                        baseNurseOpes.getDaOpe().setIndex(1);
-                                        baseNurseOpes.getUiOpe().getRefreshLayout().autoRefresh();
-                                        break;
-                                }
-                            }
-                        });
+                    @Override
+                    public void onAppItemClick(View view, int position) {
+                        switch (position) {
+                            case 0:
+                                baseNurseOpes.getDaOpe().setIndex(0);
+                                baseNurseOpes.getUiOpe().getRefreshLayout().autoRefresh();
+                                break;
+                            case 1:
+                                baseNurseOpes.getDaOpe().setIndex(1);
+                                baseNurseOpes.getUiOpe().getRefreshLayout().autoRefresh();
+                                break;
+                        }
+                    }
+                });
                 break;
             case BaseID.ID_RIGHT:
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(ValueConstant.DATA_DATA, baseNurseOpes.getDaOpe().getMyList());
-                FragManager.getInstance().startFragmentForResult(getFragmentManager(),index,new AddMyPatientFrag(),bundle,ValueConstant.CODE_REQUSET);
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new AddMyPatientFrag(), bundle, ValueConstant.CODE_REQUSET);
                 break;
         }
     }
@@ -186,14 +185,14 @@ public class BedListFGM extends BaseNurseFrag<BedListFGMUIOpe, NurseNetOpe, Base
                     Bundle bundle = new Bundle();
                     bundle.putSerializable(ValueConstant.DATA_DATA, baseNurseOpes.getDaOpe().getAllList());
                     bundle.putSerializable(ValueConstant.DATA_DATA2, ((BedListAdapter) baseNurseOpes.getUiOpe().getRecyclerView().getAdapter()).getData().get(position));
-                    FragManager.getInstance().startFragment(getFragmentManager(),index,new PatientFrag(),bundle);
+                    FragManager.getInstance().startFragment(getFragmentManager(), index, new PatientFrag(), bundle);
                 }
             });
-        }else{
+        } else {
             Bundle bundle = new Bundle();
             bundle.putSerializable(ValueConstant.DATA_DATA, baseNurseOpes.getDaOpe().getAllList());
             bundle.putSerializable(ValueConstant.DATA_DATA2, ((BedListAdapter) baseNurseOpes.getUiOpe().getRecyclerView().getAdapter()).getData().get(position));
-            FragManager.getInstance().startFragment(getFragmentManager(),index,new PatientFrag(),bundle);
+            FragManager.getInstance().startFragment(getFragmentManager(), index, new PatientFrag(), bundle);
         }
     }
 
@@ -204,7 +203,7 @@ public class BedListFGM extends BaseNurseFrag<BedListFGMUIOpe, NurseNetOpe, Base
 
     @Override
     public void onCmd(final Bundle bundle) {
-        if(bundle==null || bundle.getString(ValueConstant.FARG_TYPE)==null|| !bundle.getString(ValueConstant.FARG_TYPE).equals(ValueConstant.FARG_TYPE_CMD)){
+        if (bundle == null || bundle.getString(ValueConstant.FARG_TYPE) == null || !bundle.getString(ValueConstant.FARG_TYPE).equals(ValueConstant.FARG_TYPE_CMD)) {
             return;
         }
         if (baseNurseOpes.getDaOpe().getAllList() == null) {
@@ -213,28 +212,28 @@ public class BedListFGM extends BaseNurseFrag<BedListFGMUIOpe, NurseNetOpe, Base
                 public void onFinish(Object o) {
                     String zyh = bundle.getString(ValueConstant.DATA_POSITION);
                     int p = baseNurseOpes.getDaOpe().getPosition(baseNurseOpes.getDaOpe().getAllList(), zyh);
-                    if(p!=-1){
-                        onAppItemClick(null,p);
+                    if (p != -1) {
+                        onAppItemClick(null, p);
                     }
                 }
             });
-        }else{
+        } else {
             final String zyh = bundle.getString(ValueConstant.DATA_POSITION);
             int p = baseNurseOpes.getDaOpe().getPosition(baseNurseOpes.getDaOpe().getAllList(), zyh);
-            if(p!=-1){
-                onAppItemClick(null,p);
-            }else{
+            if (p != -1) {
+                onAppItemClick(null, p);
+            } else {
                 getRegion(new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
                         int p = baseNurseOpes.getDaOpe().getPosition(baseNurseOpes.getDaOpe().getAllList(), zyh);
-                        if(p!=-1){
+                        if (p != -1) {
                             Bundle bundle = new Bundle();
                             bundle.putSerializable(ValueConstant.DATA_DATA, baseNurseOpes.getDaOpe().getAllList());
-                            bundle.putSerializable(ValueConstant.DATA_POSITION2,p);
-                            bundle.putInt(ValueConstant.DATA_POSITION,R.id.rl_mymission);
-                            bundle.putString(ValueConstant.FARG_TYPE,ValueConstant.FARG_TYPE_CMD);
-                            FragManager.getInstance().startFragment(getFragmentManager(),index,new PatientFrag(),bundle);
+                            bundle.putSerializable(ValueConstant.DATA_POSITION2, p);
+                            bundle.putInt(ValueConstant.DATA_POSITION, R.id.rl_mymission);
+                            bundle.putString(ValueConstant.FARG_TYPE, ValueConstant.FARG_TYPE_CMD);
+                            FragManager.getInstance().startFragment(getFragmentManager(), index, new PatientFrag(), bundle);
                         }
                     }
                 });

@@ -18,7 +18,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-16.
  */
-public class AddMyPatientDrawUIOpe extends BaseNurseUIOpe{
+public class AddMyPatientDrawUIOpe extends BaseNurseUIOpe {
 
 
     @BindView(R.id.rcv_rcv)
@@ -33,7 +33,7 @@ public class AddMyPatientDrawUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setText("返回");
         getBackTV().setSelected(true);
         getMidTV().setText("选择病人数");
@@ -41,15 +41,15 @@ public class AddMyPatientDrawUIOpe extends BaseNurseUIOpe{
         getRightTV().setSelected(true);
     }
 
-    public void initList(ArrayList<AddMyPatientAdapterBean> resBeen){
+    public void initList(ArrayList<AddMyPatientAdapterBean> resBeen) {
         list.clear();
         list.addAll(resBeen);
-        recyclerView.addItemDecoration(new MyItemDecoration(context,2));
+        recyclerView.addItemDecoration(new MyItemDecoration(context, 2));
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        if(addMyPatientListAdapter==null){
-            addMyPatientListAdapter = new AddMyPatientDrawListAdapter(context,list);
+        if (addMyPatientListAdapter == null) {
+            addMyPatientListAdapter = new AddMyPatientDrawListAdapter(context, list);
             recyclerView.setAdapter(addMyPatientListAdapter);
-        }else{
+        } else {
             addMyPatientListAdapter.notifyDataSetChanged();
         }
 

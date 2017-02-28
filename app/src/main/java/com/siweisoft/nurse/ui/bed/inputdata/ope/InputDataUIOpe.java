@@ -19,14 +19,14 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-25.
  */
-public class InputDataUIOpe extends BaseNurseUIOpe{
+public class InputDataUIOpe extends BaseNurseUIOpe {
 
     @BindView(R.id.rcv_rcv)
     RecyclerView recyclerView;
 
-    ArrayList<DataTemplateResBean> list= new ArrayList<>();
+    ArrayList<DataTemplateResBean> list = new ArrayList<>();
 
-    int p=0;
+    int p = 0;
 
     InputDataListAdapter inputDataListAdapter;
 
@@ -36,7 +36,7 @@ public class InputDataUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
 
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
@@ -49,20 +49,20 @@ public class InputDataUIOpe extends BaseNurseUIOpe{
         getRightTV().setVisibility(View.VISIBLE);
     }
 
-    public void initList(ArrayList<DataTemplateResBean> list,int p){
+    public void initList(ArrayList<DataTemplateResBean> list, int p) {
         this.list.clear();
         this.list.addAll(list);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1));
-        inputDataListAdapter = new InputDataListAdapter(context,this.list.get(p));
+        inputDataListAdapter = new InputDataListAdapter(context, this.list.get(p));
         recyclerView.setAdapter(inputDataListAdapter);
     }
 
-    public void refreshList(int p){
-        this.p=p;
+    public void refreshList(int p) {
+        this.p = p;
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1));
-        inputDataListAdapter = new InputDataListAdapter(context,this.list.get(p));
+        inputDataListAdapter = new InputDataListAdapter(context, this.list.get(p));
         recyclerView.setAdapter(inputDataListAdapter);
     }
 

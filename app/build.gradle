@@ -6,7 +6,7 @@ android {
     useLibrary 'org.apache.http.legacy'
 
 
-    lintOptions{
+    lintOptions {
         checkReleaseBuilds false
         abortOnError false
     }
@@ -88,7 +88,7 @@ android {
                     'src/main/res/bed',
 
             ]
-            jniLibs.srcDirs=[
+            jniLibs.srcDirs = [
                     'libs',
             ]
         }
@@ -111,7 +111,7 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.4.0'
     compile 'com.github.florent37:viewanimator:1.0.5'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
-   // compile 'org.xutils:xutils:3.3.40'
+    // compile 'org.xutils:xutils:3.3.40'
 
     compile project(':lib')
 }

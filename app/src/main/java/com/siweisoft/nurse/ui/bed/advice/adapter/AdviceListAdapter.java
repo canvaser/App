@@ -20,19 +20,19 @@ import java.util.HashMap;
 /**
  * Created by ${viwmox} on 2016-11-08.
  */
-public class AdviceListAdapter extends BaseExpandableListAdapter implements View.OnClickListener{
+public class AdviceListAdapter extends BaseExpandableListAdapter implements View.OnClickListener {
 
 
     Context context;
 
     LayoutInflater inflater;
 
-    HashMap<String,ArrayList<AdviceResBean>> resBean;
+    HashMap<String, ArrayList<AdviceResBean>> resBean;
 
     OnAppItemsClickListener onAppItemsClickListener;
 
-    public AdviceListAdapter(Context context, HashMap<String,ArrayList<AdviceResBean>> resBean) {
-        this.context  = context;
+    public AdviceListAdapter(Context context, HashMap<String, ArrayList<AdviceResBean>> resBean) {
+        this.context = context;
         inflater = LayoutInflater.from(context);
         this.resBean = resBean;
     }
@@ -45,7 +45,7 @@ public class AdviceListAdapter extends BaseExpandableListAdapter implements View
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return resBean==null?0:resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition))==null?0:resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).size();
+        return resBean == null ? 0 : resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)) == null ? 0 : resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).size();
     }
 
     @Override
@@ -75,10 +75,10 @@ public class AdviceListAdapter extends BaseExpandableListAdapter implements View
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        MyMissionHeadUIBean myMissionHeadUIBean =null;
-        if(convertView==null){
-            convertView = inflater.inflate(R.layout.list_head_advice,null);
-            myMissionHeadUIBean = new MyMissionHeadUIBean(context,convertView);
+        MyMissionHeadUIBean myMissionHeadUIBean = null;
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.list_head_advice, null);
+            myMissionHeadUIBean = new MyMissionHeadUIBean(context, convertView);
         }
         myMissionHeadUIBean = (MyMissionHeadUIBean) convertView.getTag();
         myMissionHeadUIBean.getTitleTV().setText(DataValue.STATUS_TYPE_TIME.get(groupPosition));
@@ -90,14 +90,18 @@ public class AdviceListAdapter extends BaseExpandableListAdapter implements View
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
         AdviceUIBean adviceUIBean = null;
-        if(convertView == null){
-            convertView= inflater.inflate(R.layout.list_advice,null);
+        if (convertView == null) {
+            convertView = inflater.inflate(R.layout.list_advice, null);
             adviceUIBean = new AdviceUIBean(context, convertView);
         }
         adviceUIBean = (AdviceUIBean) convertView.getTag();
-        adviceUIBean.getTitleView().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get医嘱详情s()));
-        adviceUIBean.getRootV().setTag(R.id.position,childPosition);
-        adviceUIBean.getRootV().setTag(R.id.groupposition,groupPosition);
+        adviceUIBean.getTvTitle().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get医嘱详情s()));
+        adviceUIBean.getTypeTV().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).getKey()));
+        adviceUIBean.getStartTV().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get开始时间s()));
+        adviceUIBean.getEndTV().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get结束时间s()));
+        adviceUIBean.getNumTV().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get医嘱IDs()));
+        adviceUIBean.getRootV().setTag(R.id.position, childPosition);
+        adviceUIBean.getRootV().setTag(R.id.groupposition, groupPosition);
         adviceUIBean.getRootV().setOnClickListener(this);
         return convertView;
     }
@@ -111,8 +115,8 @@ public class AdviceListAdapter extends BaseExpandableListAdapter implements View
     public void onClick(View v) {
         int g = (int) v.getTag(R.id.groupposition);
         int p = (int) v.getTag(R.id.position);
-        if(onAppItemsClickListener!=null){
-            onAppItemsClickListener.onAppItemClick(g,v,p);
+        if (onAppItemsClickListener != null) {
+            onAppItemsClickListener.onAppItemClick(g, v, p);
         }
     }
 

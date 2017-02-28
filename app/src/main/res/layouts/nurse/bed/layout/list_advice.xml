@@ -1,122 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/root">
-<LinearLayout
-    android:orientation="horizontal"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="10dp">
-
-<RelativeLayout
-    android:orientation="horizontal"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <TextView
-        android:id="@+id/lin"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="20dp"
-        android:textSize="15sp"
-        android:textColor="@color/black"
-        android:text="临"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <ImageView
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/lin"
-        android:layout_marginLeft="3dp"
-        android:src="@drawable/icon_injecting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</RelativeLayout>
 
     <LinearLayout
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="5dp"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
 
-
-        <TextView
-            android:textSize="17sp"
-            android:textColor="@color/red"
-            android:text="口服"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
-            android:layout_marginTop="5dp"
-            android:gravity="center_vertical"
+        <RelativeLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tv_title"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:minLines="2"
-            android:textSize="15sp"
-            android:textColor="@color/black"
-            android:text="根据3p999999999999fhj9q39q38ijfgre[wafj4389iq[fj4e9iq[fjrugh"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content" />
+
 
             <ImageView
-                android:src="@drawable/icon_arraw"
-                android:layout_width="15dp"
-                android:layout_height="15dp" />
-
-        </LinearLayout>
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@id/lin"
+                android:layout_marginLeft="3dp"
+                android:src="@drawable/icon_injecting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
 
         <LinearLayout
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:textSize="15sp"
-                android:textColor="@color/black"
-                android:text="王小二"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
-            <TextView
-                android:layout_marginLeft="5dp"
-                android:textSize="15sp"
-                android:textColor="@color/black"
-                android:text="二病区1床"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_marginLeft="5dp"
-                android:textSize="15sp"
-                android:textColor="@color/black"
-                android:text="QD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:minLines="2"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:text="根据3p999999999999fhj9q39q38ijfgre[wafj4389iq[fj4e9iq[fjrugh"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_type"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:text="王小二"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_start"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:text="王小二"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_end"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:text="二病区1床"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
 
-            <View
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="0dp" />
+                <View
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp" />
 
-            <TextView
-                android:layout_marginRight="5dp"
-                android:textSize="15sp"
-                android:textColor="@color/black"
-                android:text="11-01 07:33"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_num"
+                    android:layout_marginRight="5dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/black"
+                    android:text="11-01 07:33"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
 
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </LinearLayout>

@@ -39,19 +39,19 @@ public class WorkDetailFrag extends BaseNurseFrag implements OnAppItemClickListe
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        workDetailUIOpe = new WorkDetailUIOpe(activity,getView());
+        workDetailUIOpe = new WorkDetailUIOpe(activity, getView());
         workDetailNetOpe = new NurseNetOpe(activity);
         getData();
     }
 
-    public void getData(){
+    public void getData() {
         BaseNurseReqBean reqBean = new BaseNurseReqBean();
         reqBean.setBegin(DateFormatUtil.getbefore7TimeYYYYMMdd());
         workDetailNetOpe.getWorkloadByUser(reqBean, new UINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    WorkDetailListResBean  resBean = GsonUtil.getInstance().fromJson(o.toString(),WorkDetailListResBean.class);
+                if (success) {
+                    WorkDetailListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(), WorkDetailListResBean.class);
                     workDetailUIOpe.initList(new WorkDetailDAOpe(context).sort(resBean.getData()));
                     workDetailUIOpe.getWorkDetailListAdapter().setOnAppItemClickListener(WorkDetailFrag.this);
                 }
@@ -67,7 +67,7 @@ public class WorkDetailFrag extends BaseNurseFrag implements OnAppItemClickListe
     @Override
     public void onAppItemClick(View view, int position) {
         Bundle bundle = new Bundle();
-        bundle.putSerializable(ValueConstant.DATA_DATA,workDetailUIOpe.getWorkDetailListAdapter().getData().get(position));
-        FragManager.getInstance().startFragment(getFragmentManager(),index,new WorkDetailsFrag(),bundle);
+        bundle.putSerializable(ValueConstant.DATA_DATA, workDetailUIOpe.getWorkDetailListAdapter().getData().get(position));
+        FragManager.getInstance().startFragment(getFragmentManager(), index, new WorkDetailsFrag(), bundle);
     }
 }

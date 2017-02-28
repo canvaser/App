@@ -22,37 +22,37 @@ public class AdditionListAdapter extends AppRecycleAdapter {
 
     OnAppItemClickListener onAppItemClickListener;
 
-    public AdditionListAdapter(Context context,ArrayList<AdditionResbean> data) {
+    public AdditionListAdapter(Context context, ArrayList<AdditionResbean> data) {
         super(context);
-        this.data =data;
+        this.data = data;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.list_addition,parent,false);
-        AdditonUIBean additonUIBean = new AdditonUIBean(context,view);
+        View view = layoutInflater.inflate(R.layout.list_addition, parent, false);
+        AdditonUIBean additonUIBean = new AdditonUIBean(context, view);
         return additonUIBean;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        AdditonUIBean additonUIBean= (AdditonUIBean) holder;
+        AdditonUIBean additonUIBean = (AdditonUIBean) holder;
         additonUIBean.getTxtTV().setText(data.get(position).getName());
         additonUIBean.getGouIV().setSelected(data.get(position).isSelect());
         additonUIBean.getRootV().setOnClickListener(this);
-        additonUIBean.getRootV().setTag(R.id.position,position);
+        additonUIBean.getRootV().setTag(R.id.position, position);
     }
 
     @Override
     public int getItemCount() {
-        return data==null?0:data.size();
+        return data == null ? 0 : data.size();
     }
 
     @Override
     public void onClick(View v) {
         int p = (int) v.getTag(R.id.position);
-        if(onAppItemClickListener!=null){
-            onAppItemClickListener.onAppItemClick(v,p);
+        if (onAppItemClickListener != null) {
+            onAppItemClickListener.onAppItemClick(v, p);
         }
     }
 

@@ -14,7 +14,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-12-13.
  */
-public class AnnounceUIOpe extends BaseNurseUIOpe{
+public class AnnounceUIOpe extends BaseNurseUIOpe {
 
 
     @BindView(R.id.refresh)
@@ -30,7 +30,7 @@ public class AnnounceUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getMidTV().setText("通知公告");
         getBackTV().setText("返回");
         getBackTV().setSelected(true);

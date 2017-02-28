@@ -9,7 +9,7 @@ import java.util.List;
  * Created by ${viwmox} on 2017-02-17.
  */
 
-public class AddWaterListResBean extends ResultResBean{
+public class AddWaterListResBean extends ResultResBean {
 
 
     private List<DataBean> data;
@@ -22,7 +22,7 @@ public class AddWaterListResBean extends ResultResBean{
         this.data = data;
     }
 
-    public static class DataBean implements Serializable{
+    public static class DataBean implements Serializable {
         /**
          * id : 1898559
          * advCon : 氯化钠0.9%(浙江) 1500ml (12月11号8点挂)  (共3袋) 静滴
@@ -117,7 +117,7 @@ public class AddWaterListResBean extends ResultResBean{
             this.files = files;
         }
 
-        public static class FilesBean implements Serializable{
+        public static class FilesBean implements Serializable {
             /**
              * resultid : 1487294475658807891
              * user_id : 4190

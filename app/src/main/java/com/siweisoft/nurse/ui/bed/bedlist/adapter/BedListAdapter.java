@@ -13,6 +13,8 @@ import com.siweisoft.lib.util.NullUtil;
 import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.uibean.BedUIBean;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
+import com.siweisoft.nurse.ui.bed.bedlist.ope.BedListDAOpe;
+import com.siweisoft.nurse.ui.user.login.bean.DoLoginResBean;
 
 import java.util.ArrayList;
 
@@ -24,66 +26,59 @@ public class BedListAdapter extends AppRecycleAdapter {
     OnAppItemClickListener onAppItemClickListener;
 
     ArrayList<PatientBedResBean> data;
-    public BedListAdapter(Context context,ArrayList<PatientBedResBean> data) {
+
+    BedListDAOpe bedListDAOpe;
+
+    public BedListAdapter(Context context, ArrayList<PatientBedResBean> data) {
         super(context);
         this.data = data;
+        bedListDAOpe = new BedListDAOpe(context);
     }
 
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = layoutInflater.inflate(R.layout.list_bed,parent,false);
-        BedUIBean bedUIBean = new BedUIBean(context,view);
+        View view = layoutInflater.inflate(R.layout.list_bed, parent, false);
+        BedUIBean bedUIBean = new BedUIBean(context, view);
         return bedUIBean;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         BedUIBean bedUIBean = (BedUIBean) holder;
-        switch (data.get(position).get状态()){
-            case "空床":
-                bedUIBean.getrV().setVisibility(View.INVISIBLE);
-                bedUIBean.getEmptyTV().setText(StringUtil.getStr(StringUtil.getSpilitStr(data.get(position).get病床号(),2)+"."+"空床"));
-                break;
-            default:
-                bedUIBean.getNumAndNameTV().setText(StringUtil.getStr(StringUtil.getSpilitStr(data.get(position).get病床号(),2)+"."+ data.get(position).get姓名()));
-                bedUIBean.getRootV().setTag(R.id.position,position);
-                bedUIBean.getRootV().setOnClickListener(this);
-                bedUIBean.getrV().setVisibility(View.VISIBLE);
-                bedUIBean.getEmptyTV().setText("");
-                if(data.get(position).getAdditionCodes()!=null && data.get(position).getAdditionCodes().size()>0){
-                    switch (data.get(position).getAdditionCodes().get(0).getType()){
-                        case "过敏":
-                            bedUIBean.getMingIV().setVisibility(View.VISIBLE);
-                            break;
-                        case "手术":
-                            bedUIBean.getShuIV().setVisibility(View.VISIBLE);
-                            break;
-                        default:
-                            bedUIBean.getShuIV().setVisibility(View.INVISIBLE);
-                            bedUIBean.getMingIV().setVisibility(View.INVISIBLE);
-                            bedUIBean.getRuIV().setVisibility(View.INVISIBLE);
-                            bedUIBean.getChuIV().setVisibility(View.INVISIBLE);
-                    }
-                }
+        if (bedListDAOpe.isEmptyBed(data.get(position).get状态())) {
+            bedUIBean.getrV().setVisibility(View.INVISIBLE);
+            bedUIBean.getEmptyTV().setText(StringUtil.getStr(data.get(position).get病床名() + "." + "空床"));
+        } else {
+            bedUIBean.getNumAndNameTV().setText(StringUtil.getStr(data.get(position).get病床名() + "." + data.get(position).get姓名()));
+            bedUIBean.getRootV().setTag(R.id.position, position);
+            bedUIBean.getRootV().setOnClickListener(this);
+            bedUIBean.getrV().setVisibility(View.VISIBLE);
+            bedUIBean.getEmptyTV().setText("");
 
-                if(data.get(position).getResId()!=0){
-                    BitmapUtil.getInstance().setBg(context,bedUIBean.getLevelIV(), data.get(position).getResId());
-                }
+            int[] l = bedListDAOpe.getStatus(data.get(position).getAdditionCodes());
+            for (int i = 0; i < l.length; i++) {
+                bedUIBean.getStatus()[i].setVisibility(l[i]);
+            }
 
-                if(data.get(position).get性别().equals("男")){
-                    BitmapUtil.getInstance().setBg(context,bedUIBean.getSexIV(),R.drawable.icon_sex_man);
-                }else{
-                    BitmapUtil.getInstance().setBg(context,bedUIBean.getSexIV(),R.drawable.icon_sex_woman);
-                }
-                break;
+            if (data.get(position).getResId() != 0) {
+                BitmapUtil.getInstance().setBg(context, bedUIBean.getLevelIV(), data.get(position).getResId());
+            }
+
+            if (data.get(position).get性别().equals("男")) {
+                BitmapUtil.getInstance().setBg(context, bedUIBean.getSexIV(), R.drawable.icon_sex_man);
+            } else {
+                BitmapUtil.getInstance().setBg(context, bedUIBean.getSexIV(), R.drawable.icon_sex_woman);
+            }
+
+            bedUIBean.getItemV().setSelected(bedListDAOpe.booleanICU(data.get(position).get状态()));
         }
     }
 
     @Override
     public int getItemCount() {
-        return data ==null?0: data.size();
+        return data == null ? 0 : data.size();
     }
 
     public void setOnAppItemClickListener(OnAppItemClickListener onAppItemClickListener) {
@@ -93,8 +88,8 @@ public class BedListAdapter extends AppRecycleAdapter {
     @Override
     public void onClick(View v) {
         int position = (int) v.getTag(R.id.position);
-        if(onAppItemClickListener!=null && !NullUtil.isStrEmpty(data.get(position).get住院号())){
-            onAppItemClickListener.onAppItemClick(v,position);
+        if (onAppItemClickListener != null && !NullUtil.isStrEmpty(data.get(position).get住院号())) {
+            onAppItemClickListener.onAppItemClick(v, position);
         }
     }
 

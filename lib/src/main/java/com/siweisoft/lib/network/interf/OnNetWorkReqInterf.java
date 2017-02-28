@@ -14,17 +14,17 @@ public interface OnNetWorkReqInterf {
     /**
      * 正在发起网络请求
      */
-    public boolean onNetWorkReqStart(String reqjson, String tag);
+    boolean onNetWorkReqStart(String reqjson, String tag);
 
     /**
      * 网络请求完成
      */
-    public void onNetWorkReqFinish(boolean haveData, String url, BaseResBean baseResBean);
+    void onNetWorkReqFinish(boolean haveData, String url, BaseResBean baseResBean);
 
     /**
      * 网络请求获取数据结果
      */
-    public void onNetWorkResult(boolean success, Object o);
+    void onNetWorkResult(boolean success, Object o);
 
 
 }

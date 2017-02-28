@@ -17,43 +17,43 @@ import com.siweisoft.nurse.ui.document.document.bean.uibean.DocumentBean;
  * Created by ${viwmox} on 2017-02-16.
  */
 
-public class DocumentListAdapter extends AppRecycleAdapter<DocumentBean>{
+public class DocumentListAdapter extends AppRecycleAdapter<DocumentBean> {
 
     DocumentListResBean data;
 
     OnAppItemClickListener onAppItemClickListener;
 
-    public DocumentListAdapter(Context context,DocumentListResBean data) {
+    public DocumentListAdapter(Context context, DocumentListResBean data) {
         super(context);
-        this.data =data;
+        this.data = data;
     }
 
 
     @Override
     public DocumentBean onCreateViewHolder(ViewGroup parent, int viewType) {
-        DocumentBean documentBean = new DocumentBean(context, parent,R.layout.list_documentlist);
-       // AnimUtil.getInstance().startAnim(context,documentBean.getRootV(),R.anim.anim_scale_in);
+        DocumentBean documentBean = new DocumentBean(context, parent, R.layout.list_documentlist);
+        // AnimUtil.getInstance().startAnim(context,documentBean.getRootV(),R.anim.anim_scale_in);
         return documentBean;
     }
 
     @Override
     public void onBindViewHolder(DocumentBean holder, int position) {
         holder.getNameTV().setText(StringUtil.getStr(data.getData().get(position).getTitle()));
-        holder.getArrawIV().setVisibility(data.getData().get(position).isEnter()?View.VISIBLE:View.GONE);
+        holder.getArrawIV().setVisibility(data.getData().get(position).isEnter() ? View.VISIBLE : View.GONE);
         holder.getRootV().setOnClickListener(this);
-        holder.getRootV().setTag(R.id.data,data.getData().get(position));
-        holder.getRootV().setTag(R.id.position,position);
+        holder.getRootV().setTag(R.id.data, data.getData().get(position));
+        holder.getRootV().setTag(R.id.position, position);
     }
 
 
     @Override
     public int getItemCount() {
-        return data==null?0:data.getData()==null?0:data.getData().size();
+        return data == null ? 0 : data.getData() == null ? 0 : data.getData().size();
     }
 
     @Override
     public void onClick(View v) {
-        if(onAppItemClickListener!=null){
+        if (onAppItemClickListener != null) {
             onAppItemClickListener.onAppItemClick(v, (Integer) v.getTag(R.id.position));
         }
     }

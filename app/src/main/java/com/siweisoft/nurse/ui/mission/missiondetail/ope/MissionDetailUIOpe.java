@@ -13,14 +13,14 @@ import com.siweisoft.lib.util.BitmapUtil;
 import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.mission.missiondetail.adapter.MissionDetailListAdapter;
-import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionResBean;
+import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionListResBean;
 
 import butterknife.BindView;
 
 /**
  * Created by ${viwmox} on 2016-11-11.
  */
-public class MissionDetailUIOpe extends BaseNurseUIOpe{
+public class MissionDetailUIOpe extends BaseNurseUIOpe {
 
 
     @BindView(R.id.lin)
@@ -41,7 +41,6 @@ public class MissionDetailUIOpe extends BaseNurseUIOpe{
     TextView typeTV;
 
 
-
     @BindView(R.id.recycle)
     RecyclerView recyclerView;
 
@@ -52,7 +51,7 @@ public class MissionDetailUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
 
 
         getBackTV().setText("返回");
@@ -62,34 +61,39 @@ public class MissionDetailUIOpe extends BaseNurseUIOpe{
     }
 
 
-    public void initData(AreaMessionResBean resBean){
+    public void initData(AreaMessionListResBean.DataBean resBean) {
 
         getMidTV().setText(resBean.getName());
 
 
-        getTypeTV().setText(resBean.getBedId()+" "+resBean.getCodename());
-        if("st".equals(resBean.getTitles().get(0).getKey().toLowerCase())|| resBean.getCodename().equals("出院带药")){
+        getTypeTV().setText(resBean.getBedId() + " " + resBean.getCodename());
+        if ("st".equals(resBean.getTitles().get(0).getKey().toLowerCase()) || resBean.getCodename().equals("出院带药")) {
             getLinTv().setText("临");
             getLinTv().setTextColor(Color.parseColor("#A52A2A"));
-        }else{
+        } else {
             getLinTv().setText("长");
             getLinTv().setTextColor(Color.parseColor("#7FFFD4"));
         }
 
-        switch (resBean.getCodename()){
+        switch (resBean.getCodename()) {
             case "护理":
-                BitmapUtil.getInstance().setBg(context,getCodenameIV(),R.drawable.icon_medicine);
+                BitmapUtil.getInstance().setBg(context, getCodenameIV(), R.drawable.icon_medicine);
                 break;
             case "药品":
-                BitmapUtil.getInstance().setBg(context,getCodenameIV(),R.drawable.icon_injecting);
+                BitmapUtil.getInstance().setBg(context, getCodenameIV(), R.drawable.icon_injecting);
                 break;
         }
 
-        getYzIdTV().setText("医嘱ID:  "+ StringUtil.getStr(resBean.getTitles().get(0)==null?"":resBean.getTitles().get(0).get医嘱ID()));
-        getDateTV().setText("任务时间:"+StringUtil.getStr(resBean.getStart()));
+        getYzIdTV().setText("医嘱ID:  " + StringUtil.getStr(resBean.getTitles().get(0) == null ? "" : resBean.getTitles().get(0).get医嘱ID()));
+        getDateTV().setText("任务时间:" + StringUtil.getStr(resBean.getStart()));
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        missionDetailListAdapter = new MissionDetailListAdapter(context,resBean.getTitles());
-        recyclerView.setAdapter(missionDetailListAdapter);
+        if (missionDetailListAdapter == null) {
+            missionDetailListAdapter = new MissionDetailListAdapter(context, resBean.getTitles());
+            recyclerView.setAdapter(missionDetailListAdapter);
+        } else {
+            missionDetailListAdapter.notifyDataSetChanged();
+        }
+
     }
 
     public RecyclerView getRecyclerView() {

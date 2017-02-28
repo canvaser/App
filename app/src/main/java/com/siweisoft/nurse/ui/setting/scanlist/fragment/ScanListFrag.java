@@ -12,7 +12,7 @@ import com.siweisoft.nurse.ui.setting.scanlist.ope.ScanListUIOpe;
 /**
  * Created by ${viwmox} on 2016-12-09.
  */
-public class ScanListFrag extends BaseNurseFrag{
+public class ScanListFrag extends BaseNurseFrag {
 
 
     ScanListUIOpe scanListUIOpe;
@@ -25,7 +25,7 @@ public class ScanListFrag extends BaseNurseFrag{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        scanListUIOpe = new ScanListUIOpe(activity,getView());
+        scanListUIOpe = new ScanListUIOpe(activity, getView());
     }
 
     @Override

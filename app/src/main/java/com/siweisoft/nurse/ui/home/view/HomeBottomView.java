@@ -42,7 +42,6 @@ public class HomeBottomView extends LinearLayout implements View.OnLongClickList
     OnLongClickListener onLongClickListener;
 
 
-
     public HomeBottomView(Context context) {
         super(context);
         init(context, null);
@@ -53,10 +52,10 @@ public class HomeBottomView extends LinearLayout implements View.OnLongClickList
         init(context, attrs);
     }
 
-    private void init(Context context, AttributeSet attrs){
-        this.context= context;
+    private void init(Context context, AttributeSet attrs) {
+        this.context = context;
 
-        View view = LayoutInflater.from(context).inflate(R.layout.activity_home_bottom,null);
+        View view = LayoutInflater.from(context).inflate(R.layout.activity_home_bottom, null);
         tabViews.add(view.findViewById(R.id.ll_bed));
         tabViews.add(view.findViewById(R.id.ll_mission));
         tabViews.add(view.findViewById(R.id.ll_check));
@@ -67,42 +66,43 @@ public class HomeBottomView extends LinearLayout implements View.OnLongClickList
         txtViews.add((TextView) view.findViewById(R.id.tv_check));
         txtViews.add((TextView) view.findViewById(R.id.tv_info));
         txtViews.add((TextView) view.findViewById(R.id.tv_setting));
-        addView(view,new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        ButterKnife.bind(this,this);
+        addView(view, new LinearLayoutCompat.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        ButterKnife.bind(this, this);
         onClick(tabViews.get(0));
         findViewById(R.id.ll_check).setOnLongClickListener(this);
     }
 
 
-    long time=0;
+    long time = 0;
     int id = R.id.ll_bed;
+
     @Optional
-    @OnClick({R.id.ll_bed,R.id.ll_check,R.id.ll_mission,R.id.ll_info,R.id.ll_setting})
-    public void onClick(View v){
+    @OnClick({R.id.ll_bed, R.id.ll_check, R.id.ll_mission, R.id.ll_info, R.id.ll_setting})
+    public void onClick(View v) {
         long t = System.currentTimeMillis();
-        long d = t-time;
+        long d = t - time;
         int idd = v.getId();
-        boolean b = v.getId()==id;
-        id= v.getId();
+        boolean b = v.getId() == id;
+        id = v.getId();
         time = t;
         LogUtil.E(d);
-        if(d<500 && b){
-            if(onAppItemLongClickListener!=null){
-                for(int i=0;i<tabViews.size();i++){
-                    if(v.getId()==tabViews.get(i).getId()){
-                        onAppItemLongClickListener.onAppItemLongClick(v,i);
+        if (d < 500 && b) {
+            if (onAppItemLongClickListener != null) {
+                for (int i = 0; i < tabViews.size(); i++) {
+                    if (v.getId() == tabViews.get(i).getId()) {
+                        onAppItemLongClickListener.onAppItemLongClick(v, i);
                     }
                 }
             }
-        }else{
-            for(int i=0;i<tabViews.size();i++){
-                if(v.getId()==tabViews.get(i).getId()){
+        } else {
+            for (int i = 0; i < tabViews.size(); i++) {
+                if (v.getId() == tabViews.get(i).getId()) {
                     tabViews.get(i).setSelected(true);
                     txtViews.get(i).setTextColor(context.getResources().getColor(R.color.color_text_select));
-                    if(onAppItemSelectListener!=null){
-                        onAppItemSelectListener.onAppItemSelect(this,v,i);
+                    if (onAppItemSelectListener != null) {
+                        onAppItemSelectListener.onAppItemSelect(this, v, i);
                     }
-                }else{
+                } else {
                     tabViews.get(i).setSelected(false);
                     txtViews.get(i).setTextColor(context.getResources().getColor(R.color.color_text_notsel));
                 }
@@ -115,12 +115,12 @@ public class HomeBottomView extends LinearLayout implements View.OnLongClickList
         this.onAppItemSelectListener = onAppItemSelectListener;
     }
 
-    public void select(int index){
-        for(int i=0;i<tabViews.size();i++){
-            if(index==i){
+    public void select(int index) {
+        for (int i = 0; i < tabViews.size(); i++) {
+            if (index == i) {
                 tabViews.get(i).setSelected(true);
                 txtViews.get(i).setTextColor(context.getResources().getColor(R.color.color_text_select));
-            }else{
+            } else {
                 tabViews.get(i).setSelected(false);
                 txtViews.get(i).setTextColor(context.getResources().getColor(R.color.color_text_notsel));
             }

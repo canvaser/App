@@ -1,6 +1,7 @@
 package com.siweisoft.nurse.ui.bed.assay.bean.adapterbean;
 
 import com.siweisoft.lib.base.ui.bean.ResultResBean;
+import com.siweisoft.nurse.ui.bed.assay.bean.resbean.AssayListResBean;
 import com.siweisoft.nurse.ui.bed.assay.bean.resbean.AssayResBean;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class AssayAdapterBean extends ResultResBean {
 
     private String applyno;
 
-    ArrayList<AssayResBean> list;
+    ArrayList<AssayListResBean.AssayDataBean> list;
 
     private String title;
 
@@ -26,11 +27,11 @@ public class AssayAdapterBean extends ResultResBean {
         this.applyno = applyno;
     }
 
-    public ArrayList<AssayResBean> getList() {
+    public ArrayList<AssayListResBean.AssayDataBean> getList() {
         return list;
     }
 
-    public void setList(ArrayList<AssayResBean> list) {
+    public void setList(ArrayList<AssayListResBean.AssayDataBean> list) {
         this.list = list;
     }
 

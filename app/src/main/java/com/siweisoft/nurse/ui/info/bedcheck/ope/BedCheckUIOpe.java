@@ -19,7 +19,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-29.
  */
-public class BedCheckUIOpe extends BaseNurseUIOpe{
+public class BedCheckUIOpe extends BaseNurseUIOpe {
 
 
     @BindView(R.id.refresh)
@@ -39,7 +39,7 @@ public class BedCheckUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
         getMidTV().setText("我的巡视");
@@ -47,11 +47,11 @@ public class BedCheckUIOpe extends BaseNurseUIOpe{
         getMidTV().setVisibility(View.VISIBLE);
     }
 
-    public void initList(ArrayList<BedCheckResBean> data){
-        this.data =data;
-        bedCheckListAdapter = new BedCheckListAdapter(context,data);
+    public void initList(ArrayList<BedCheckResBean> data) {
+        this.data = data;
+        bedCheckListAdapter = new BedCheckListAdapter(context, data);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new MyItemDecoration(context,1));
+        recyclerView.addItemDecoration(new MyItemDecoration(context, 1));
 
         recyclerView.setAdapter(bedCheckListAdapter);
 

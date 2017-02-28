@@ -8,5 +8,4 @@ import com.siweisoft.lib.base.ui.bean.reqbean.BaseNurseReqBean;
 public class MyWardTaskTodayReqBean extends BaseNurseReqBean {
 
 
-
 }

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/head"
-    >
+    android:id="@+id/head">
+
     <LinearLayout
-        android:background="@drawable/icon_bg_exp_head"
+        android:id="@+id/ll_item"
+        android:background="@drawable/drawable_bg_exp_head"
         android:layout_width="match_parent"
         android:layout_height="40dp">
+
         <LinearLayout
             android:id="@+id/ll_title"
             android:layout_marginTop="10dp"

@@ -29,7 +29,7 @@ import butterknife.OnClick;
 /**
  * Created by ${viwmox} on 2016-12-07.
  */
-public class AddCheckBookFrag extends BaseNurseFrag{
+public class AddCheckBookFrag extends BaseNurseFrag {
 
 
     AddCheckBookDAOpe addCheckBookDAOpe;
@@ -47,11 +47,11 @@ public class AddCheckBookFrag extends BaseNurseFrag{
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA)==null){
+        if (getArguments() == null || getArguments().getSerializable(ValueConstant.DATA_DATA) == null) {
             return;
         }
-        addCheckBookUIOpe = new AddCheckBookUIOpe(activity,getView());
-        addCheckBookDAOpe= new AddCheckBookDAOpe(activity);
+        addCheckBookUIOpe = new AddCheckBookUIOpe(activity, getView());
+        addCheckBookDAOpe = new AddCheckBookDAOpe(activity);
         addCheckBookNetOpe = new NurseNetOpe(activity);
         addCheckBookDAOpe.setData((ArrayList<CheckBookResBean>) getArguments().getSerializable(ValueConstant.DATA_DATA));
         addCheckBookDAOpe.addHead();
@@ -60,13 +60,13 @@ public class AddCheckBookFrag extends BaseNurseFrag{
     }
 
     @OnClick({BaseID.ID_MID, BaseID.ID_RIGHT})
-    public void onClickEvent(View v){
-        switch (v.getId()){
+    public void onClickEvent(View v) {
+        switch (v.getId()) {
             case BaseID.ID_MID:
-                View view1 = layoutInflater.inflate(R.layout.pup_list,null);
+                View view1 = layoutInflater.inflate(R.layout.pup_list, null);
                 RecyclerView recyclerView = (RecyclerView) view1.findViewById(R.id.rcv_pop);
                 recyclerView.setLayoutManager(new LinearLayoutManager(activity));
-                PupListAdapter p = new PupListAdapter(activity,addCheckBookDAOpe.getNames());
+                PupListAdapter p = new PupListAdapter(activity, addCheckBookDAOpe.getNames());
                 p.setOnAppItemClickListener(new OnAppItemClickListener() {
                     @Override
                     public void onAppItemClick(View view, int position) {
@@ -76,7 +76,7 @@ public class AddCheckBookFrag extends BaseNurseFrag{
                     }
                 });
                 recyclerView.setAdapter(p);
-                PopupUtil.getInstance().show(activity,view1,v);
+                PopupUtil.getInstance().show(activity, view1, v);
                 break;
             case BaseID.ID_RIGHT:
                 AddCheckBookListReqBean reqBean = new AddCheckBookListReqBean();
@@ -84,8 +84,8 @@ public class AddCheckBookFrag extends BaseNurseFrag{
                 addCheckBookNetOpe.writeInventoryCount(reqBean, new UINetAdapter(activity) {
                     @Override
                     public void onNetWorkResult(boolean success, Object o) {
-                        if(success){
-                            FragManager.getInstance().finish(getFragmentManager(),index);
+                        if (success) {
+                            FragManager.getInstance().finish(getFragmentManager(), index);
                         }
                     }
                 });

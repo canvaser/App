@@ -8,6 +8,7 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
+import com.siweisoft.nurse.ui.bed.assay.bean.resbean.AssayListResBean;
 import com.siweisoft.nurse.ui.bed.assay.bean.resbean.AssayResBean;
 import com.siweisoft.nurse.ui.bed.assaydetail.adapter.AssayDetailAdapter;
 
@@ -18,7 +19,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class AssayDetailUIOpe extends BaseNurseUIOpe{
+public class AssayDetailUIOpe extends BaseNurseUIOpe {
 
     @BindView(R.id.rcv_rcv)
     RecyclerView recyclerView;
@@ -30,19 +31,18 @@ public class AssayDetailUIOpe extends BaseNurseUIOpe{
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
         getBackTV().setVisibility(View.VISIBLE);
     }
 
-    public void initList(ArrayList<AssayResBean> list){
+    public void initList(ArrayList<AssayListResBean.AssayDataBean> list) {
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new MyItemDecoration(context,2));
-        assayDetailAdapter = new AssayDetailAdapter(context,list);
+        recyclerView.addItemDecoration(new MyItemDecoration(context, 2));
+        assayDetailAdapter = new AssayDetailAdapter(context, list);
         recyclerView.setAdapter(assayDetailAdapter);
     }
-
 
 
 }

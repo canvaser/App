@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/refresh"
         android:layout_width="match_parent"
@@ -15,15 +16,15 @@
         app:wave_height_type="normal"
         app:progress_size_type="normal"
         android:background="@color/color_bg_refresh"
-        app:wave_show="false"
-        >
+        app:wave_show="false">
+
         <com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView
             android:divider="@null"
             android:background="@color/white"
             android:dividerHeight="0dp"
             android:id="@+id/elv_elv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout>
 </LinearLayout>

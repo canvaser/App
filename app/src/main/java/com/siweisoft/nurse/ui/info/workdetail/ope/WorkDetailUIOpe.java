@@ -19,7 +19,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-12-07.
  */
-public class WorkDetailUIOpe extends BaseNurseUIOpe{
+public class WorkDetailUIOpe extends BaseNurseUIOpe {
 
     @BindView(R.id.rcv_rcv)
     RecyclerView recyclerView;
@@ -33,7 +33,7 @@ public class WorkDetailUIOpe extends BaseNurseUIOpe{
     }
 
 
-    private void init(){
+    private void init() {
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
         getBackTV().setVisibility(View.VISIBLE);
@@ -41,8 +41,8 @@ public class WorkDetailUIOpe extends BaseNurseUIOpe{
         getMidTV().setText("工作明细");
     }
 
-    public void initList(ArrayList<WorkDetailAdapterBean> data){
-        workDetailListAdapter = new WorkDetailListAdapter(context,data);
+    public void initList(ArrayList<WorkDetailAdapterBean> data) {
+        workDetailListAdapter = new WorkDetailListAdapter(context, data);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1));
         recyclerView.setAdapter(workDetailListAdapter);

@@ -30,7 +30,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-11.
  */
-public class DataUIOpe extends BaseNurseUIOpe{
+public class DataUIOpe extends BaseNurseUIOpe {
 
 
     @BindView(R.id.elv_data)
@@ -54,8 +54,7 @@ public class DataUIOpe extends BaseNurseUIOpe{
 
     DataAdapter4 dataAdapter;
 
-    ArrayList<DataAdapterBean> list=new ArrayList<>();
-
+    ArrayList<DataAdapterBean> list = new ArrayList<>();
 
 
     public DataUIOpe(Context context, View containerView) {
@@ -81,62 +80,62 @@ public class DataUIOpe extends BaseNurseUIOpe{
         getMidTV().setText(patientAdditionDAOpe.getPatientBedResBean().get住院号() + "" + patientAdditionDAOpe.getPatientBedResBean().get姓名());
     }
 
-    public void init(ArrayList<DataAdapterBean> list){
+    public void init(ArrayList<DataAdapterBean> list) {
         this.list.clear();
         this.list.addAll(list);
         leftV.clear();
         recyclerViews.clear();
-        containers.clear();;
-        for(int i=0;i<list.size();i++){
-            View view = LayoutInflater.from(context).inflate(R.layout.item_container_data,null);
+        containers.clear();
+        for (int i = 0; i < list.size(); i++) {
+            View view = LayoutInflater.from(context).inflate(R.layout.item_container_data, null);
             //rootV.addView(view,new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             containers.add(view);
             leftV.add((LinearLayout) view.findViewById(R.id.ll_left));
             recyclerViews.add((RecyclerView) view.findViewById(R.id.rcv_rcv));
         }
 
-        for(int i = 0;i<leftV.size();i++){
+        for (int i = 0; i < leftV.size(); i++) {
 
-            for(int j=0;j<list.get(i).getTitle().size();j++){
-                View v = LayoutInflater.from(context).inflate(R.layout.list_data,null);
-                leftV.get(i).addView(v,new LinearLayout.LayoutParams(ValueConstant.DIMEN_1*100, ValueConstant.DIMEN_1*40));
+            for (int j = 0; j < list.get(i).getTitle().size(); j++) {
+                View v = LayoutInflater.from(context).inflate(R.layout.list_data, null);
+                leftV.get(i).addView(v, new LinearLayout.LayoutParams(ValueConstant.DIMEN_1 * 100, ValueConstant.DIMEN_1 * 40));
                 TextView textView = (TextView) v.findViewById(R.id.tv_txt);
-                if(j==list.get(i).getTitle().size()-1 && i!=leftV.size()-1){
-                    ViewGroup.LayoutParams p =textView.getLayoutParams();
-                    p.height = ValueConstant.DIMEN_1*40;
+                if (j == list.get(i).getTitle().size() - 1 && i != leftV.size() - 1) {
+                    ViewGroup.LayoutParams p = textView.getLayoutParams();
+                    p.height = ValueConstant.DIMEN_1 * 40;
                     textView.setLayoutParams(p);
                 }
-                if(j%2==0){
+                if (j % 2 == 0) {
                     textView.setBackgroundColor(Color.WHITE);
-                }else{
+                } else {
                     textView.setBackgroundColor(context.getResources().getColor(R.color.light_pink));
                 }
                 textView.setText(list.get(i).getTitle().get(j));
             }
         }
 
-        for(int i=0;i<list.size();i++){
-            recyclerViews.get(i).setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
-            if(i==list.size()-1){
-                recyclerViews.get(i).setAdapter(new DataAdapter3(context,list.get(i),false));
-            }else{
-                recyclerViews.get(i).setAdapter(new DataAdapter3(context,list.get(i)));
+        for (int i = 0; i < list.size(); i++) {
+            recyclerViews.get(i).setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+            if (i == list.size() - 1) {
+                recyclerViews.get(i).setAdapter(new DataAdapter3(context, list.get(i), false));
+            } else {
+                recyclerViews.get(i).setAdapter(new DataAdapter3(context, list.get(i)));
             }
         }
     }
 
-    public void init2(){
-        dataAdapter = new DataAdapter4(context,containers,list);
+    public void init2() {
+        dataAdapter = new DataAdapter4(context, containers, list);
         listView.setAdapter(dataAdapter);
     }
 
-    public void initLeftListener(View.OnClickListener onClickListener){
-        for(int i=0;i<getLeftV().size();i++){
+    public void initLeftListener(View.OnClickListener onClickListener) {
+        for (int i = 0; i < getLeftV().size(); i++) {
             ViewGroup group = getLeftV().get(i);
-            for(int j=0;j<group.getChildCount();j++){
-                group.getChildAt(j).setTag(R.id.type,"left");
-                group.getChildAt(j).setTag(R.id.groupposition,i);
-                group.getChildAt(j).setTag(R.id.childposition,j);
+            for (int j = 0; j < group.getChildCount(); j++) {
+                group.getChildAt(j).setTag(R.id.type, "left");
+                group.getChildAt(j).setTag(R.id.groupposition, i);
+                group.getChildAt(j).setTag(R.id.childposition, j);
                 group.getChildAt(j).setOnClickListener(onClickListener);
             }
         }

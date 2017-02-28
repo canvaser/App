@@ -26,32 +26,32 @@ public class UngencyReportListAdapter extends AppRecycleAdapter {
     ArrayList<UrgencyReportResBean> data;
 
 
-    public UngencyReportListAdapter(Context context,ArrayList<UrgencyReportResBean> data) {
+    public UngencyReportListAdapter(Context context, ArrayList<UrgencyReportResBean> data) {
         super(context);
-        this.data =data;
+        this.data = data;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.list_urgencyreport,parent,false);
-        UngencyReportUIBean uiBean = new UngencyReportUIBean(context,view);
+        View view = layoutInflater.inflate(R.layout.list_urgencyreport, parent, false);
+        UngencyReportUIBean uiBean = new UngencyReportUIBean(context, view);
         return uiBean;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         UngencyReportUIBean uiBean = (UngencyReportUIBean) holder;
-        uiBean.getRootV().setTag(R.id.position,position);
+        uiBean.getRootV().setTag(R.id.position, position);
         uiBean.getRootV().setOnClickListener(this);
         uiBean.getTimeTV().setText(data.get(position).getCreate_time());
-        uiBean.getDetailTV().setText("详情:"+data.get(position).getContent());
-        uiBean.getLevelTV().setText("等级:"+data.get(position).getLevel());
+        uiBean.getDetailTV().setText("详情:" + data.get(position).getContent());
+        uiBean.getLevelTV().setText("等级:" + data.get(position).getLevel());
         uiBean.getNumnameTV().setText(data.get(position).getPatname());
         uiBean.getStatusTV().setText(data.get(position).getUpdate_value());
-        if(data.get(position).getUpdate_value().equals("0")){
+        if (data.get(position).getUpdate_value().equals("0")) {
             uiBean.getStatusTV().setText("状态:未取消");
             uiBean.getRootV().setBackgroundColor(Color.parseColor("#f08080"));
-        }else{
+        } else {
             uiBean.getStatusTV().setText("状态:已取消");
             uiBean.getRootV().setBackgroundColor(Color.parseColor("#33FFAA"));
         }
@@ -66,8 +66,8 @@ public class UngencyReportListAdapter extends AppRecycleAdapter {
     @Override
     public void onClick(View v) {
         int p = (int) v.getTag(R.id.position);
-        if(onAppItemClickListener!=null){
-            onAppItemClickListener.onAppItemClick(v,p);
+        if (onAppItemClickListener != null) {
+            onAppItemClickListener.onAppItemClick(v, p);
         }
     }
 

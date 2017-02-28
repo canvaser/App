@@ -12,7 +12,8 @@ Java_com_siweisoft_test_main_Test_sayHello(JNIEnv *env, jclass type) {
 
 extern "C"
 jstring
-Java_com_siweisoft_nurse_ui_user_login_activity_LoginActivity_test(JNIEnv* env,jobject /* this */) {
+Java_com_siweisoft_nurse_ui_user_login_activity_LoginActivity_test(JNIEnv *env,
+                                                                   jobject /* this */) {
     std::string hello = "Hello from C++";
     return env->NewStringUTF(hello.c_str());
 }

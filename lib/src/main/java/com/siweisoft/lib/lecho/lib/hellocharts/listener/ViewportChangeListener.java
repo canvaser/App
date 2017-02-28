@@ -12,6 +12,6 @@ public interface ViewportChangeListener {
     /**
      * Called when current viewport of chart changed. You should not modify that viewport.
      */
-    public void onViewportChanged(Viewport viewport);
+    void onViewportChanged(Viewport viewport);
 
 }

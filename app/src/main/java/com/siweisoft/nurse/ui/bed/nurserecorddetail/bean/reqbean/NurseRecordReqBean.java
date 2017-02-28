@@ -5,7 +5,7 @@ import com.siweisoft.lib.base.ui.bean.reqbean.BaseNurseReqBean;
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class NurseRecordReqBean extends BaseNurseReqBean{
+public class NurseRecordReqBean extends BaseNurseReqBean {
 
     private String type;
 

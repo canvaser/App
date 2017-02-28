@@ -5,5 +5,5 @@ import com.siweisoft.lib.lecho.lib.hellocharts.model.SliceValue;
 
 public interface PieChartValueFormatter {
 
-    public int formatChartValue(char[] formattedValue, SliceValue value);
+    int formatChartValue(char[] formattedValue, SliceValue value);
 }

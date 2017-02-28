@@ -9,7 +9,7 @@ import java.util.List;
  * Created by ${viwmox} on 2017-02-16.
  */
 
-public class DocumentDetailResBean extends ResultResBean{
+public class DocumentDetailResBean extends ResultResBean {
 
 
     private List<DataBeanX> data;
@@ -22,7 +22,7 @@ public class DocumentDetailResBean extends ResultResBean{
         this.data = data;
     }
 
-    public static class DataBeanX implements Serializable{
+    public static class DataBeanX implements Serializable {
         /**
          * filename : 入院介绍
          * fileid : 48
@@ -57,7 +57,7 @@ public class DocumentDetailResBean extends ResultResBean{
             this.data = data;
         }
 
-        public static class DataBean implements Serializable{
+        public static class DataBean implements Serializable {
             /**
              * nid : 40
              * fileid : 48

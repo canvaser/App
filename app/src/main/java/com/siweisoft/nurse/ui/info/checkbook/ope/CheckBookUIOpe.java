@@ -37,7 +37,7 @@ public class CheckBookUIOpe extends BaseNurseUIOpe {
         init();
     }
 
-    private void init(){
+    private void init() {
 
         getMidTV().setText("点物本");
         getBackTV().setText("返回");
@@ -50,11 +50,11 @@ public class CheckBookUIOpe extends BaseNurseUIOpe {
         getRightTV().setVisibility(View.VISIBLE);
     }
 
-    public void initList(ArrayList<CheckBookResBean> data){
-        this.data =data;
+    public void initList(ArrayList<CheckBookResBean> data) {
+        this.data = data;
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new MyItemDecoration(context,1));
-        checkBookAdapter = new CheckBookAdapter(context,data);
+        recyclerView.addItemDecoration(new MyItemDecoration(context, 1));
+        checkBookAdapter = new CheckBookAdapter(context, data);
         recyclerView.setAdapter(checkBookAdapter);
     }
 

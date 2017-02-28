@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    >
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
     <LinearLayout
-        android:orientation="vertical" android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
->
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/tv_head_stamp"
@@ -18,6 +19,7 @@
             android:textColor="@color/black"
             android:layout_width="100dp"
             android:layout_height="wrap_content" />
+
         <LinearLayout
             android:id="@+id/ll_content"
             android:orientation="vertical"
@@ -25,33 +27,32 @@
             android:layout_height="wrap_content">
 
 
+            <TextView
+                android:background="@color/white"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="图章"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
 
 
-
-        <TextView
-            android:background="@color/white"
-            android:paddingLeft="5dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingRight="5dp"
-            android:gravity="center"
-            android:text="图章"
-            android:textSize="15sp"
-            android:textColor="@color/black"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content" />
-
-        <View
-            android:background="@color/gray"
-            android:layout_width="100dp"
-            android:layout_height="1dp"/>
-
-
-</LinearLayout>
+        </LinearLayout>
 
 
     </LinearLayout>
-    <View android:layout_width="1dp"
+
+    <View
+        android:layout_width="1dp"
         android:layout_height="wrap_content"
-        android:background="@color/gray"/>
+        android:background="@color/gray" />
 </LinearLayout>

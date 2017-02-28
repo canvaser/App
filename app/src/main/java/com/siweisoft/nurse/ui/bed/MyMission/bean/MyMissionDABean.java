@@ -8,7 +8,7 @@ import com.siweisoft.lib.base.ui.bean.ResultResBean;
  */
 public class MyMissionDABean extends ResultResBean {
 
-    public int position=-1;
+    public int position = -1;
 
 
 }

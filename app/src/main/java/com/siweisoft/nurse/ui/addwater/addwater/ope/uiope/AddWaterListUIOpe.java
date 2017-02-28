@@ -31,7 +31,7 @@ public class AddWaterListUIOpe<B extends CommonUIFrag> extends BaseNurseUIOpe<B>
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setVisibility(View.VISIBLE);
         getBackTV().setSelected(true);
         getBackTV().setText("返回");
@@ -43,10 +43,10 @@ public class AddWaterListUIOpe<B extends CommonUIFrag> extends BaseNurseUIOpe<B>
         getRefreshLayout().setMaterialRefreshListener(getFrag());
     }
 
-    public void initList(AddWaterListResBean addWaterListResBean){
+    public void initList(AddWaterListResBean addWaterListResBean) {
         getListView().setGroupIndicator(null);
-        getListView().setAdapter(new AddWaterListAdpter(context,addWaterListResBean));
-        for(int i=0;i<getListView().getExpandableListAdapter().getGroupCount();i++){
+        getListView().setAdapter(new AddWaterListAdpter(context, addWaterListResBean));
+        for (int i = 0; i < getListView().getExpandableListAdapter().getGroupCount(); i++) {
             getListView().expandGroup(i);
         }
     }

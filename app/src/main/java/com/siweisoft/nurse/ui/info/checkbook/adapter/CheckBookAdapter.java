@@ -24,38 +24,39 @@ public class CheckBookAdapter extends AppRecycleAdapter {
     OnAppItemClickListener onAppItemClickListener;
 
 
-    ArrayList<CheckBookResBean> data ;
-    public CheckBookAdapter(Context context,ArrayList<CheckBookResBean> data) {
+    ArrayList<CheckBookResBean> data;
+
+    public CheckBookAdapter(Context context, ArrayList<CheckBookResBean> data) {
         super(context);
         this.data = data;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = layoutInflater.inflate(R.layout.list_checkbook,parent,false);
-        CheckBookUIBean checkBookUIBean = new CheckBookUIBean(context,view);
+        View view = layoutInflater.inflate(R.layout.list_checkbook, parent, false);
+        CheckBookUIBean checkBookUIBean = new CheckBookUIBean(context, view);
         return checkBookUIBean;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        CheckBookUIBean checkBookUIBean =(CheckBookUIBean) holder;
+        CheckBookUIBean checkBookUIBean = (CheckBookUIBean) holder;
         checkBookUIBean.getNameTV().setText(data.get(position).getFilename());
         checkBookUIBean.getRootV().setOnClickListener(this);
-        checkBookUIBean.getRootV().setTag(R.id.position,position);
+        checkBookUIBean.getRootV().setTag(R.id.position, position);
 
     }
 
     @Override
     public int getItemCount() {
-        return data==null?0:data.size();
+        return data == null ? 0 : data.size();
     }
 
     @Override
     public void onClick(View v) {
         int p = (int) v.getTag(R.id.position);
-        if(onAppItemClickListener!=null){
-            onAppItemClickListener.onAppItemClick(v,p);
+        if (onAppItemClickListener != null) {
+            onAppItemClickListener.onAppItemClick(v, p);
         }
     }
 

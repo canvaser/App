@@ -64,14 +64,14 @@ public class PatientFrag extends BaseNurseFrag {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA)==null || getArguments().getSerializable(ValueConstant.DATA_DATA2)==null){
+        if (getArguments() == null || getArguments().getSerializable(ValueConstant.DATA_DATA) == null || getArguments().getSerializable(ValueConstant.DATA_DATA2) == null) {
             return;
         }
         patientAdditionDAOpe = new PatientAdditionDAOpe();
         patientAdditionDAOpe.setPatientBedResBeen((ArrayList<PatientBedResBean>) getArguments().getSerializable(ValueConstant.DATA_DATA));
         patientAdditionDAOpe.setPatientBedResBean((PatientBedResBean) getArguments().getSerializable(ValueConstant.DATA_DATA2));
         patientAdditionDAOpe.setPosition(-1);
-        patientFragUIOpe = new PatientFragUIOpe(activity,getView());
+        patientFragUIOpe = new PatientFragUIOpe(activity, getView());
         patientNetOpe = new NurseNetOpe(activity);
         patientFragUIOpe.initInfo(patientAdditionDAOpe.getPatientBedResBean());
         patientFragUIOpe.initAddionList(new PatientAdditionOpe().getThispatientAdditionList(null));
@@ -87,22 +87,22 @@ public class PatientFrag extends BaseNurseFrag {
                 });
             }
         });
-        patientFragUIOpe.getRefreshLayout().autoRefresh((int) getResources().getInteger(R.integer.integer_time_short));
+        patientFragUIOpe.getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
     }
 
-    private void getData(final OnFinishListener onFinishListener){
+    private void getData(final OnFinishListener onFinishListener) {
         patientNetOpe.getPatientAdditionData(patientAdditionDAOpe.getPatientBedResBean(), new DelayUINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    PatientAdditionListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(),PatientAdditionListResBean.class);
-                    ArrayList<PatientAdditionResBean> list =  new PatientAdditionOpe().getThispatientAdditionList(resBean);
+                if (success) {
+                    PatientAdditionListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(), PatientAdditionListResBean.class);
+                    ArrayList<PatientAdditionResBean> list = new PatientAdditionOpe().getThispatientAdditionList(resBean);
                     patientFragUIOpe.initAddionList(list);
-                    patientFragUIOpe.initTitle(patientAdditionDAOpe.getPatientBedResBean().get病床号()+" "+patientAdditionDAOpe.getPatientBedResBean().get姓名());
+                    patientFragUIOpe.initTitle(patientAdditionDAOpe.getPatientBedResBean().get病床号() + " " + patientAdditionDAOpe.getPatientBedResBean().get姓名());
                 }
-               if(onFinishListener!=null){
-                   onFinishListener.onFinish(o);
-               }
+                if (onFinishListener != null) {
+                    onFinishListener.onFinish(o);
+                }
             }
         });
     }
@@ -114,18 +114,19 @@ public class PatientFrag extends BaseNurseFrag {
     }
 
 
-    int i=0;
+    int i = 0;
+
     @Optional
-    @OnClick({R.id.rl_fluid_card,R.id.rl_nurse_document,R.id.iv_arrow, BaseID.ID_MID,BaseID.ID_RIGHT,R.id.ll_baseinfo,R.id.rl_mymission,R.id.rl_advice,R.id.rl_data,R.id.rl_assay,R.id.rl_nurserecord,R.id.rl_handoverreport})
-    public void onClick(final View view){
+    @OnClick({R.id.rl_fluid_card, R.id.rl_nurse_document, R.id.iv_arrow, BaseID.ID_MID, BaseID.ID_RIGHT, R.id.ll_baseinfo, R.id.rl_mymission, R.id.rl_advice, R.id.rl_data, R.id.rl_assay, R.id.rl_nurserecord, R.id.rl_handoverreport})
+    public void onClick(final View view) {
         super.onClick(view);
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.ll_baseinfo:
             case R.id.iv_arrow:
-               if( patientFragUIOpe.getArrowIV().isEnabled()){
-                   patientFragUIOpe.getArrowIV().setSelected(!patientFragUIOpe.getArrowIV().isSelected());
-               }
-                if(patientFragUIOpe.getArrowIV().isSelected()){
+                if (patientFragUIOpe.getArrowIV().isEnabled()) {
+                    patientFragUIOpe.getArrowIV().setSelected(!patientFragUIOpe.getArrowIV().isSelected());
+                }
+                if (patientFragUIOpe.getArrowIV().isSelected()) {
                     AnimUtil.getInstance().animMarginTop(2000, patientFragUIOpe.getSomeView(), new OnFinishListener() {
                         @Override
                         public void onFinish(Object o) {
@@ -133,7 +134,7 @@ public class PatientFrag extends BaseNurseFrag {
                             patientFragUIOpe.getBaseInfoView().setEnabled(true);
                         }
                     }, 0, patientFragUIOpe.getInfoDetailView().getHeight());
-                }else{
+                } else {
                     AnimUtil.getInstance().animMarginTop(2000, patientFragUIOpe.getSomeView(), new OnFinishListener() {
                         @Override
                         public void onFinish(Object o) {
@@ -159,14 +160,14 @@ public class PatientFrag extends BaseNurseFrag {
                 break;
             case BaseID.ID_RIGHT:
                 Bundle bundle0 = new Bundle();
-                bundle0.putSerializable(ValueConstant.DATA_DATA2,patientFragUIOpe.getSelectAddition());
-                bundle0.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe.getPatientBedResBean());
-                FragManager.getInstance().startFragmentForResult(getFragmentManager(),index,new AddAdditionFrag(),bundle0,ValueConstant.CODE_REQUSET);
+                bundle0.putSerializable(ValueConstant.DATA_DATA2, patientFragUIOpe.getSelectAddition());
+                bundle0.putSerializable(ValueConstant.DATA_DATA, patientAdditionDAOpe.getPatientBedResBean());
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new AddAdditionFrag(), bundle0, ValueConstant.CODE_REQUSET);
                 break;
             case R.id.rl_mymission:
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
-                FragManager.getInstance().startFragmentForResult(getFragmentManager(),index, new MyMissonFrag(),bundle,ValueConstant.CODE_REQUSET1);
+                bundle.putSerializable(ValueConstant.DATA_DATA, patientAdditionDAOpe);
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new MyMissonFrag(), bundle, ValueConstant.CODE_REQUSET1);
                 break;
             case R.id.rl_advice:
                 Bundle bundle1 = new Bundle();
@@ -175,7 +176,7 @@ public class PatientFrag extends BaseNurseFrag {
                 break;
             case R.id.rl_data:
                 Bundle bundlea = new Bundle();
-                bundlea.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
+                bundlea.putSerializable(ValueConstant.DATA_DATA, patientAdditionDAOpe);
                 FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new DataFrag(), bundlea, ValueConstant.CODE_REQUSET1);
                 break;
             case R.id.rl_assay:
@@ -186,25 +187,25 @@ public class PatientFrag extends BaseNurseFrag {
             //护理记录单
             case R.id.rl_nurserecord:
                 Bundle bundle3 = new Bundle();
-                bundle3.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
+                bundle3.putSerializable(ValueConstant.DATA_DATA, patientAdditionDAOpe);
                 FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new NurseRecordFrag(), bundle3, ValueConstant.CODE_REQUSET1);
                 break;
             //交接班记录
             case R.id.rl_handoverreport:
                 Bundle bundle4 = new Bundle();
-                bundle4.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
+                bundle4.putSerializable(ValueConstant.DATA_DATA, patientAdditionDAOpe);
                 FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new HandOverReportFrag(), bundle4, ValueConstant.CODE_REQUSET1);
                 break;
             case R.id.rl_nurse_document:
                 Bundle bundle5 = new Bundle();
-                bundle5.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
+                bundle5.putSerializable(ValueConstant.DATA_DATA, patientAdditionDAOpe);
                 bundle5.putSerializable(ValueConstant.DATA_DATA2, new DocumentListResBean.DataBean(DocumentListResBean.DataBean.PID_START));
-                FragManager.getInstance().startFragmentForResult(getFragmentManager(),index, new DocumentListFrag(),bundle5,ValueConstant.CODE_REQUSET1);
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new DocumentListFrag(), bundle5, ValueConstant.CODE_REQUSET1);
                 break;
             case R.id.rl_fluid_card:
                 Bundle bundle6 = new Bundle();
-                bundle6.putSerializable(ValueConstant.DATA_DATA,patientAdditionDAOpe);
-                FragManager.getInstance().startFragmentForResult(getFragmentManager(),index, new AddWaterListFrag(),bundle6,ValueConstant.CODE_REQUSET1);
+                bundle6.putSerializable(ValueConstant.DATA_DATA, patientAdditionDAOpe);
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new AddWaterListFrag(), bundle6, ValueConstant.CODE_REQUSET1);
                 break;
         }
 
@@ -212,9 +213,9 @@ public class PatientFrag extends BaseNurseFrag {
 
     @Override
     public void onResult(int req, Bundle bundle) {
-        switch (req){
+        switch (req) {
             case ValueConstant.CODE_REQUSET1:
-                if(bundle!=null &&bundle.getSerializable(ValueConstant.DATA_DATA)!=null){
+                if (bundle != null && bundle.getSerializable(ValueConstant.DATA_DATA) != null) {
                     patientAdditionDAOpe = (PatientAdditionDAOpe) bundle.getSerializable(ValueConstant.DATA_DATA);
                 }
                 break;
@@ -222,9 +223,9 @@ public class PatientFrag extends BaseNurseFrag {
         patientNetOpe.getPatientAdditionData(patientAdditionDAOpe.getPatientBedResBean(), new DelayUINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    PatientAdditionListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(),PatientAdditionListResBean.class);
-                    ArrayList<PatientAdditionResBean> list =  new PatientAdditionOpe().getThispatientAdditionList(resBean);
+                if (success) {
+                    PatientAdditionListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(), PatientAdditionListResBean.class);
+                    ArrayList<PatientAdditionResBean> list = new PatientAdditionOpe().getThispatientAdditionList(resBean);
                     patientFragUIOpe.initTitle(patientAdditionDAOpe.getPatientBedResBean().get姓名());
                     patientFragUIOpe.initInfo(patientAdditionDAOpe.getPatientBedResBean());
                     patientFragUIOpe.initAddionList(list);
@@ -235,7 +236,7 @@ public class PatientFrag extends BaseNurseFrag {
 
     @Override
     public void onCmd(Bundle bundle) {
-        if(bundle==null || bundle.getString(ValueConstant.FARG_TYPE)==null|| !bundle.getString(ValueConstant.FARG_TYPE).equals(ValueConstant.FARG_TYPE_CMD)){
+        if (bundle == null || bundle.getString(ValueConstant.FARG_TYPE) == null || !bundle.getString(ValueConstant.FARG_TYPE).equals(ValueConstant.FARG_TYPE_CMD)) {
             return;
         }
         onClick(getView().findViewById(bundle.getInt(ValueConstant.DATA_POSITION)));

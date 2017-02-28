@@ -11,13 +11,12 @@ import com.siweisoft.lib.util.LogUtil;
 /**
  * Created by ${viwmox} on 2016-12-06.
  */
-public class RecordView extends View{
-
+public class RecordView extends View {
 
 
     RecordListener recordListener;
 
-    long[] times = new long[]{0l,0l};
+    long[] times = new long[]{0l, 0l};
 
     public RecordView(Context context) {
         super(context);
@@ -29,11 +28,11 @@ public class RecordView extends View{
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch (event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 LogUtil.E("ACTION_DOWN");
-                times[0]=System.currentTimeMillis();
-                if(recordListener!=null){
+                times[0] = System.currentTimeMillis();
+                if (recordListener != null) {
                     recordListener.start(this);
                 }
                 break;
@@ -43,9 +42,9 @@ public class RecordView extends View{
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
                 LogUtil.E("ACTION_UP");
-                times[1]=System.currentTimeMillis();
-                if(recordListener!=null){
-                    recordListener.stop(this,times[1]-times[0]);
+                times[1] = System.currentTimeMillis();
+                if (recordListener != null) {
+                    recordListener.stop(this, times[1] - times[0]);
                 }
                 break;
         }
@@ -54,12 +53,11 @@ public class RecordView extends View{
     }
 
 
+    public interface RecordListener {
 
-    public interface RecordListener{
+        void start(RecordView recordView);
 
-        public void start(RecordView recordView);
-
-        public void stop(RecordView recordView,long time);
+        void stop(RecordView recordView, long time);
     }
 
     public void setRecordListener(RecordListener recordListener) {

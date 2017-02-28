@@ -17,7 +17,7 @@ import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
 import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.mission.missiondetail.bean.reqbean.MissisonDetailReqBean;
 import com.siweisoft.nurse.ui.mission.missiondetail.ope.MissionDetailUIOpe;
-import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionResBean;
+import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionListResBean;
 import com.siweisoft.nurse.ui.user.login.bean.GetallregionbyuserResBean;
 import com.siweisoft.lib.util.fragment.FragManager;
 
@@ -29,7 +29,7 @@ public class MissionDetailFrag extends BaseNurseFrag implements OnAppItemClickLi
 
     MissionDetailUIOpe missionDetailUIOpe;
 
-    AreaMessionResBean resBean;
+    AreaMessionListResBean.DataBean resBean;
 
     NurseNetOpe missionDetailNetOpe;
 
@@ -41,11 +41,11 @@ public class MissionDetailFrag extends BaseNurseFrag implements OnAppItemClickLi
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA)==null){
+        if (getArguments() == null || getArguments().getSerializable(ValueConstant.DATA_DATA) == null) {
             return;
         }
-        resBean = (AreaMessionResBean) getArguments().getSerializable(ValueConstant.DATA_DATA);
-        missionDetailUIOpe = new MissionDetailUIOpe(activity,getView());
+        resBean = (AreaMessionListResBean.DataBean) getArguments().getSerializable(ValueConstant.DATA_DATA);
+        missionDetailUIOpe = new MissionDetailUIOpe(activity, getView());
         missionDetailNetOpe = new NurseNetOpe(activity);
         missionDetailUIOpe.initData(resBean);
         missionDetailUIOpe.getMissionDetailListAdapter().setOnAppItemClickListener(this);
@@ -57,22 +57,22 @@ public class MissionDetailFrag extends BaseNurseFrag implements OnAppItemClickLi
     }
 
     @Override
-    public void onAppItemClick(View view, int position) {
+    public void onAppItemClick(View view, final int position) {
         String status = DataValue.STATUS_WEI_ZHI_XING;
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.tv_txt:
-                View menu = ((View)view.getParent()).findViewById(R.id.ll_menu);
-                if(menu.getVisibility()==View.VISIBLE){
+                View menu = ((View) view.getParent()).findViewById(R.id.ll_menu);
+                if (menu.getVisibility() == View.VISIBLE) {
                     menu.setVisibility(View.GONE);
-                }else{
+                } else {
                     menu.setVisibility(View.VISIBLE);
                 }
                 return;
             case R.id.ll_content:
-                View mm = ((View)view.getParent()).findViewById(R.id.tv_press);
-                if(mm.getVisibility()==View.VISIBLE){
+                View mm = ((View) view.getParent()).findViewById(R.id.tv_press);
+                if (mm.getVisibility() == View.VISIBLE) {
                     mm.setVisibility(View.GONE);
-                }else{
+                } else {
                     mm.setVisibility(View.VISIBLE);
                 }
                 return;
@@ -105,12 +105,14 @@ public class MissionDetailFrag extends BaseNurseFrag implements OnAppItemClickLi
         reqBean.setRegion(data.getWardcode());
         reqBean.setId(resBean.getTitles().get(position).getId());
         reqBean.setStatus(status);
+        final String finalStatus = status;
         missionDetailNetOpe.updateTask(reqBean, new UINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    FragManager.getInstance().finish(getFragmentManager(),index,null);
-
+                if (success) {
+                    // FragManager.getInstance().finish(getFragmentManager(), index, null);
+                    resBean.getTitles().get(position).setStatus(finalStatus);
+                    missionDetailUIOpe.initData(resBean);
                 }
             }
         });

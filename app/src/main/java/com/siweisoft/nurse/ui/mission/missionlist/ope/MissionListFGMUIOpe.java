@@ -1,10 +1,12 @@
 package com.siweisoft.nurse.ui.mission.missionlist.ope;
 
 import android.content.Context;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.base.ui.interf.FragIntef;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.SPUtil;
@@ -28,7 +30,6 @@ import butterknife.BindView;
 public class MissionListFGMUIOpe extends BaseNurseUIOpe {
 
 
-
     @BindView(R.id.refresh)
     MaterialRefreshLayout refreshLayout;
 
@@ -37,9 +38,9 @@ public class MissionListFGMUIOpe extends BaseNurseUIOpe {
 
     MissionListAdapter missionListAdapter;
 
-    public static String[] strings = new String[]{"0","1","2","3","4","5","6","7","8","9","10","11","12","13"};
+    public static String[] strings = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"};
 
-    ArrayList<AreaMissionListAdapterBean> adapterList= new ArrayList<>();
+    ArrayList<AreaMissionListAdapterBean> adapterList = new ArrayList<>();
 
 
     @BindArray(R.array.strarr_mission_type)
@@ -55,7 +56,8 @@ public class MissionListFGMUIOpe extends BaseNurseUIOpe {
         init();
     }
 
-    private void init(){
+
+    private void init() {
         getBackTV().setBackgroundResource(R.drawable.drawable_right);
         getBackTV().setSelected(true);
         getBackTV().setText("全部");
@@ -69,10 +71,10 @@ public class MissionListFGMUIOpe extends BaseNurseUIOpe {
 
     }
 
-    public void initMid(String area,int count){
-        switch (area){
+    public void initMid(String area, int count) {
+        switch (area) {
             case AreaMessionDAOpe.AREA_TYPE_AREA:
-                getMidTV().setText(MethodValue.getArea().getWardname()+(count==0?"":count));
+                getMidTV().setText(MethodValue.getArea().getWardname() + (count == 0 ? "" : count));
                 break;
             case AreaMessionDAOpe.AREA_TYPE_MY_PATIENT:
                 getMidTV().setText("我的任务");
@@ -80,32 +82,30 @@ public class MissionListFGMUIOpe extends BaseNurseUIOpe {
         }
     }
 
-    public void initMissionList(ArrayList<AreaMissionListAdapterBean> adapterBeen){
+    public void initMissionList(ArrayList<AreaMissionListAdapterBean> adapterBeen) {
         adapterList.clear();
-        if(adapterBeen!=null){
+        if (adapterBeen != null) {
             adapterList.addAll(new AreaMessionDAOpe(context).initData(adapterBeen));
         }
-        if(missionListAdapter==null){
-            View view = LayoutInflater.from(context).inflate(R.layout.item_head_mission,null);
-            missionItenHeadUIBean = new MissionItenHeadUIBean(context,view);
-            missionExpandView.addHeaderView(view,null,true);
+        if (missionListAdapter == null) {
+            View view = LayoutInflater.from(context).inflate(R.layout.item_head_mission, null);
+            missionItenHeadUIBean = new MissionItenHeadUIBean(context, view);
+            missionExpandView.addHeaderView(view, null, true);
             view.findViewById(R.id.tv_all).setSelected(true);
-            missionListAdapter = new MissionListAdapter(context,adapterList);
+            missionListAdapter = new MissionListAdapter(context, adapterList);
             missionExpandView.setGroupIndicator(null);
             missionExpandView.setAdapter(missionListAdapter);
-            for(int i=0;i<missionListAdapter.getGroupCount();i++){
+            for (int i = 0; i < missionListAdapter.getGroupCount(); i++) {
                 missionExpandView.expandGroup(i);
             }
-        }else{
+        } else {
             missionListAdapter.notifyDataSetChanged();
         }
 
-        DoLoginResBean loginResBean = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(ValueConstant.LOGIN_INFO),DoLoginResBean.class);
-        loginResBean.getData().getNurseType().add(0,"全部");
-        missionSortStr = (String[]) loginResBean.getData().getNurseType().toArray(new String[loginResBean.getData().getNurseType().size()]);
+        DoLoginResBean loginResBean = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(ValueConstant.LOGIN_INFO), DoLoginResBean.class);
+        loginResBean.getData().getNurseType().add(0, "全部");
+        missionSortStr = loginResBean.getData().getNurseType().toArray(new String[loginResBean.getData().getNurseType().size()]);
     }
-
-
 
 
     public MissionListAdapter getMissionListAdapter() {
@@ -135,6 +135,5 @@ public class MissionListFGMUIOpe extends BaseNurseUIOpe {
     public MissionItenHeadUIBean getMissionItenHeadUIBean() {
         return missionItenHeadUIBean;
     }
-
 
 }

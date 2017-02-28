@@ -23,7 +23,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-22.
  */
-public class AdditionListUIOpe extends BaseNurseUIOpe{
+public class AdditionListUIOpe extends BaseNurseUIOpe {
 
 
     AdditionListAdapter additionListAdapter;
@@ -40,7 +40,7 @@ public class AdditionListUIOpe extends BaseNurseUIOpe{
     }
 
 
-    private void init(){
+    private void init() {
         getBackTV().setVisibility(View.VISIBLE);
         getRightTV().setVisibility(View.VISIBLE);
         getBackTV().setSelected(true);
@@ -50,30 +50,30 @@ public class AdditionListUIOpe extends BaseNurseUIOpe{
 
     }
 
-    public void initList(ArrayList<PatientAdditionResBean> list ,String position){
+    public void initList(ArrayList<PatientAdditionResBean> list, String position) {
         data.clear();
-       String s =  SPUtil.getInstance().getStr(ValueConstant.ADDITION_INFO);
-        if(s!=null){
+        String s = SPUtil.getInstance().getStr(ValueConstant.ADDITION_INFO);
+        if (s != null) {
 
             AdditionListResBean resBean = GsonUtil.getInstance().fromJson(s, AdditionListResBean.class);
-            for(int i=0;i<resBean.getData().size();i++){
-                switch (position){
+            for (int i = 0; i < resBean.getData().size(); i++) {
+                switch (position) {
                     case "0":
-                        if(resBean.getData().get(i).getCanSet().equals("Y") && resBean.getData().get(i).getType().equals("导管")){
+                        if (resBean.getData().get(i).getCanSet().equals("Y") && resBean.getData().get(i).getType().equals("导管")) {
                             data.add(resBean.getData().get(i));
                         }
                         break;
                     case "1":
-                        if(resBean.getData().get(i).getCanSet().equals("Y") && resBean.getData().get(i).getType().equals("关怀")){
+                        if (resBean.getData().get(i).getCanSet().equals("Y") && resBean.getData().get(i).getType().equals("关怀")) {
                             data.add(resBean.getData().get(i));
                         }
                         break;
                 }
             }
-            if(list!=null && list.size()>0){
-                for(int i=0;i<data.size();i++){
-                    for(int j=0;j<list.size();j++){
-                        if(data.get(i).getName().equals(list.get(j).getValue())){
+            if (list != null && list.size() > 0) {
+                for (int i = 0; i < data.size(); i++) {
+                    for (int j = 0; j < list.size(); j++) {
+                        if (data.get(i).getName().equals(list.get(j).getValue())) {
                             data.get(i).setSelect(true);
                             break;
                         }
@@ -81,9 +81,9 @@ public class AdditionListUIOpe extends BaseNurseUIOpe{
                 }
             }
 
-            additionListAdapter = new AdditionListAdapter(context,data);
+            additionListAdapter = new AdditionListAdapter(context, data);
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            recyclerView.addItemDecoration(new MyItemDecoration(context,ValueConstant.DIMEN_1));
+            recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1));
             recyclerView.setAdapter(additionListAdapter);
         }
     }

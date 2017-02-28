@@ -44,7 +44,7 @@ public class StickyLayout extends LinearLayout {
     private static final boolean DEBUG = true;
 
     public interface OnGiveUpTouchEventListener {
-        public boolean giveUpTouchEvent(MotionEvent event);
+        boolean giveUpTouchEvent(MotionEvent event);
     }
 
     private View mHeader;
@@ -244,8 +244,6 @@ public class StickyLayout extends LinearLayout {
                     setOriginalHeaderHeight(to);
                 }
             }
-
-            ;
 
         }.start();
     }

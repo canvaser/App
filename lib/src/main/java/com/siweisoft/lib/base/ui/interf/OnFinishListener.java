@@ -5,5 +5,5 @@ package com.siweisoft.lib.base.ui.interf;
  */
 public interface OnFinishListener {
 
-    public void onFinish(Object o);
+    void onFinish(Object o);
 }

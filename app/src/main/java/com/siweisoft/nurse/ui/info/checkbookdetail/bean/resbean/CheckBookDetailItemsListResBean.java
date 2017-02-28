@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class CheckBookDetailItemsListResBean extends ResultResBean {
 
-   ArrayList<CheckBookDetailItemsResBean> items;
+    ArrayList<CheckBookDetailItemsResBean> items;
 
     private String instruid;
 

@@ -16,7 +16,7 @@ public class BedCheckDAOpe extends BaseOpe {
 
     ArrayList<BedCheckResBean> data;
 
-    private int position=0;
+    private int position = 0;
 
 
     public BedCheckDAOpe(Context context) {
@@ -40,14 +40,14 @@ public class BedCheckDAOpe extends BaseOpe {
     }
 
     public ArrayList<BedCheckResBean> getSelectData() {
-        ArrayList<BedCheckResBean> l= new ArrayList<>();
+        ArrayList<BedCheckResBean> l = new ArrayList<>();
         String disname = MethodValue.getUserInfo(context).getData().getUser().getDisplayname();
-        switch (position){
+        switch (position) {
             case 1:
                 return data;
             case 0:
-                for(int i=0;i<data.size();i++){
-                    if(data.get(i).getDisplayname().equals(disname)){
+                for (int i = 0; i < data.size(); i++) {
+                    if (data.get(i).getDisplayname().equals(disname)) {
                         l.add(data.get(i));
                     }
                 }

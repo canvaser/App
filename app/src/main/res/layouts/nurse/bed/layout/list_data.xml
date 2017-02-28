@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="horizontal"
+<LinearLayout android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="100dp"
     android:layout_height="40dp"
     android:background="@color/darkgray">
 
- <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-     android:background="@color/white"
-            android:id="@+id/tv_txt"
-            android:gravity="center"
-            android:textSize="13sp"
-            android:textColor="@color/black"
-            android:layout_width="99dp"
-            android:layout_height="39dp"
-     />
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@color/white"
+        android:id="@+id/tv_txt"
+        android:gravity="center"
+        android:textSize="13sp"
+        android:textColor="@color/black"
+        android:layout_width="99dp"
+        android:layout_height="39dp" />
 </LinearLayout>

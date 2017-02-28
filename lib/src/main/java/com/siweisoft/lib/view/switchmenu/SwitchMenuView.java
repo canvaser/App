@@ -56,7 +56,7 @@ public class SwitchMenuView extends LinearLayout implements View.OnClickListener
             group.getChildAt(i).setTag(R.id.position, i);
             group.getChildAt(i).setOnClickListener(this);
             if (i == 0) {
-                ((Button) group.getChildAt(i)).setSelected(true);
+                group.getChildAt(i).setSelected(true);
             }
         }
         onClick(group.getChildAt(0));

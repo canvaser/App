@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Created by ${viwmox} on 2017-02-21.
  */
 
-public class GetBylResBean extends ResultResBean{
+public class GetBylResBean extends ResultResBean {
 
 
     /**
@@ -25,7 +25,7 @@ public class GetBylResBean extends ResultResBean{
         this.data = data;
     }
 
-    public static class DataBean implements Serializable{
+    public static class DataBean implements Serializable {
         /**
          * nid : 1452
          * result : 100.00

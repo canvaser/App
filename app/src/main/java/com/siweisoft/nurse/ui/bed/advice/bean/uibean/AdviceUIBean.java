@@ -2,6 +2,7 @@ package com.siweisoft.nurse.ui.bed.advice.bean.uibean;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
@@ -16,17 +17,42 @@ public class AdviceUIBean extends BaseUIBean {
 
 
     @BindView(R.id.tv_title)
-    TextView titleView;
+    TextView tvTitle;
+    @BindView(R.id.tv_type)
+    TextView typeTV;
 
+    @BindView(R.id.tv_start)
+    TextView startTV;
+
+    @BindView(R.id.tv_end)
+    TextView endTV;
+
+
+    @BindView(R.id.tv_num)
+    TextView numTV;
 
 
     public AdviceUIBean(Context context, View convertView) {
         super(context, convertView);
     }
 
+    public TextView getEndTV() {
+        return endTV;
+    }
 
+    public TextView getNumTV() {
+        return numTV;
+    }
 
-    public TextView getTitleView() {
-        return titleView;
+    public TextView getStartTV() {
+        return startTV;
+    }
+
+    public TextView getTvTitle() {
+        return tvTitle;
+    }
+
+    public TextView getTypeTV() {
+        return typeTV;
     }
 }

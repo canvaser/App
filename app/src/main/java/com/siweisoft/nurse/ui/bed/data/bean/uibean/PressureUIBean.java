@@ -12,7 +12,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-11.
  */
-public class PressureUIBean extends BaseUIBean{
+public class PressureUIBean extends BaseUIBean {
 
     @BindView(R.id.tv_head_pressure)
     TextView headTV;

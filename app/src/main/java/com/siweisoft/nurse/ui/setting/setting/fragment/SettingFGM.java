@@ -38,7 +38,7 @@ public class SettingFGM extends BaseNurseFrag {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        settingFGMUIOpe = new SettingFGMUIOpe(activity,getView());
+        settingFGMUIOpe = new SettingFGMUIOpe(activity, getView());
 
     }
 
@@ -48,15 +48,15 @@ public class SettingFGM extends BaseNurseFrag {
         return R.layout.frag_setting;
     }
 
-    @OnClick({BaseID.ID_RIGHT,R.id.rl_updatepwd, BaseID.ID_BACK})
-    public void onClickEvent(View v){
-        switch (v.getId()){
+    @OnClick({BaseID.ID_RIGHT, R.id.rl_updatepwd, BaseID.ID_BACK})
+    public void onClickEvent(View v) {
+        switch (v.getId()) {
             case BaseID.ID_RIGHT:
-                View view = LayoutInflater.from(activity).inflate(R.layout.dialog_info,null);
+                View view = LayoutInflater.from(activity).inflate(R.layout.dialog_info, null);
                 DialogUtil.getInstance().showDialog(activity, view, new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        switch (v.getId()){
+                        switch (v.getId()) {
                             case R.id.ok:
                                 DialogUtil.getInstance().dismiss();
                                 new NurseNetOpe(activity).onDologout(new OnNetWorkReqAdapter(activity) {
@@ -76,10 +76,10 @@ public class SettingFGM extends BaseNurseFrag {
                 }, R.id.ok, R.id.cancle);
                 break;
             case R.id.rl_updatepwd:
-                FragManager.getInstance().startFragment(getFragmentManager(),index,new UpdatePwdFrag());
+                FragManager.getInstance().startFragment(getFragmentManager(), index, new UpdatePwdFrag());
                 break;
             case BaseID.ID_BACK:
-                FragManager.getInstance().startFragment(getFragmentManager(),index,new ScanListFrag());
+                FragManager.getInstance().startFragment(getFragmentManager(), index, new ScanListFrag());
                 break;
         }
     }

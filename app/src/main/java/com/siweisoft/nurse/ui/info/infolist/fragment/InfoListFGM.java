@@ -35,7 +35,7 @@ public class InfoListFGM extends BaseNurseFrag implements OnAppItemClickListener
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        infoListFGMUIOpe = new InfoListFGMUIOpe(activity,getView());
+        infoListFGMUIOpe = new InfoListFGMUIOpe(activity, getView());
         infoListFGMUIOpe.getInfoListAdapter().setOnAppItemClickListener(this);
     }
 
@@ -46,31 +46,31 @@ public class InfoListFGM extends BaseNurseFrag implements OnAppItemClickListener
 
     @Override
     public void onAppItemClick(View view, int position) {
-        switch (position){
+        switch (position) {
             case 0:
-                FragManager.getInstance().startFragment(getFragmentManager(),index,new BedCheckFrag());
+                FragManager.getInstance().startFragment(getFragmentManager(), index, new BedCheckFrag());
                 break;
             case 2:
-                FragManager.getInstance().startFragment(getFragmentManager(),index,new AnnounceMentFrag());
+                FragManager.getInstance().startFragment(getFragmentManager(), index, new AnnounceMentFrag());
                 break;
             case 3:
-                FragManager.getInstance().startFragment(getFragmentManager(),index,new BedReprotFrag());
+                FragManager.getInstance().startFragment(getFragmentManager(), index, new BedReprotFrag());
                 break;
             case 4:
-                FragManager.getInstance().startFragment(getFragmentManager(),index,new UrgencyReportFrag());
+                FragManager.getInstance().startFragment(getFragmentManager(), index, new UrgencyReportFrag());
                 break;
             case 5:
-                FragManager.getInstance().startFragment(getFragmentManager(),index,new ShiftDuteReportFrag());
+                FragManager.getInstance().startFragment(getFragmentManager(), index, new ShiftDuteReportFrag());
                 break;
             case 6:
-                FragManager.getInstance().startFragment(getFragmentManager(),index,new CheckBookFrag());
+                FragManager.getInstance().startFragment(getFragmentManager(), index, new CheckBookFrag());
                 break;
             case 7:
-                FragManager.getInstance().startFragment(getFragmentManager(),index,new WorkDetailFrag());
+                FragManager.getInstance().startFragment(getFragmentManager(), index, new WorkDetailFrag());
                 break;
             case 8:
-                FragManager.getInstance().startFragment(getFragmentManager(),index,new DuteScheDuleFrag());
-            break;
+                FragManager.getInstance().startFragment(getFragmentManager(), index, new DuteScheDuleFrag());
+                break;
         }
     }
 }

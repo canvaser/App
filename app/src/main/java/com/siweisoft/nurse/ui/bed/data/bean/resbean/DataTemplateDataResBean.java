@@ -97,7 +97,6 @@ public class DataTemplateDataResBean extends ResultResBean {
     }
 
 
-
     public String getLower() {
         return lower;
     }

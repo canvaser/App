@@ -49,7 +49,7 @@ public class MissionExpandView extends RelativeLayout implements AbsListView.OnS
 
         getExpandableListView().setGroupIndicator(null);
         getExpandableListView().setOnScrollListener(this);
-        getExpandableListView().setFriction((float) (ViewConfiguration.getScrollFriction() * 3));
+        getExpandableListView().setFriction(ViewConfiguration.getScrollFriction() * 3);
         getExpandableListView().setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
@@ -201,7 +201,7 @@ public class MissionExpandView extends RelativeLayout implements AbsListView.OnS
 
     public interface onScrollListener {
 
-        public void onHeadAtOne(View view, int position);
+        void onHeadAtOne(View view, int position);
     }
 
     public void setOnScrollListener(MissionExpandView.onScrollListener onScrollListener) {

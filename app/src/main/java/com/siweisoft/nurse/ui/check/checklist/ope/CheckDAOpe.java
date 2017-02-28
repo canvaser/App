@@ -12,9 +12,9 @@ import java.util.ArrayList;
  */
 public class CheckDAOpe {
 
-    private int position=0;
+    private int position = 0;
 
-    ArrayList<TitleBean> titles  = new ArrayList<>();
+    ArrayList<TitleBean> titles = new ArrayList<>();
 
     public int getPosition() {
         return position;
@@ -28,13 +28,13 @@ public class CheckDAOpe {
         return titles;
     }
 
-    public ArrayList<CheckResBean> initData(ArrayList<CheckResBean> res){
+    public ArrayList<CheckResBean> initData(ArrayList<CheckResBean> res) {
         GetallregionbyuserResBean.Data data = MethodValue.getArea();
-        for(int i=0;i<res.size();i++){
-           for(int j=0;j<res.get(i).getData().size();j++){
-               String bedid = res.get(i).getData().get(j).getBedId();
-               res.get(i).getData().get(j).setBedId(data.getWardname()+bedid.substring(2,bedid.length())+"床");
-           }
+        for (int i = 0; i < res.size(); i++) {
+            for (int j = 0; j < res.get(i).getData().size(); j++) {
+                String bedid = res.get(i).getData().get(j).getBedId();
+                res.get(i).getData().get(j).setBedId(data.getWardname() + bedid.substring(2, bedid.length()) + "床");
+            }
         }
         return res;
     }

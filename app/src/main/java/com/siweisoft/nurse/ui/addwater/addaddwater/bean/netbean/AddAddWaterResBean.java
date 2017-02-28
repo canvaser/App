@@ -10,7 +10,7 @@ import java.util.List;
  * Created by ${viwmox} on 2017-02-21.
  */
 
-public class AddAddWaterResBean extends ResultResBean{
+public class AddAddWaterResBean extends ResultResBean {
 
 
     private List<DataBeanX> data;
@@ -23,7 +23,7 @@ public class AddAddWaterResBean extends ResultResBean{
         this.data = data;
     }
 
-    public static class DataBeanX implements Serializable{
+    public static class DataBeanX implements Serializable {
         /**
          * filename : 补液卡
          * fileid : 71
@@ -58,7 +58,7 @@ public class AddAddWaterResBean extends ResultResBean{
             this.data = data;
         }
 
-        public static class DataBean implements Serializable{
+        public static class DataBean implements Serializable {
             /**
              * nid : 142
              * fileid : 71

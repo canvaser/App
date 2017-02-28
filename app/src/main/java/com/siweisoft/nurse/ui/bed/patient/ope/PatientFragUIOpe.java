@@ -27,7 +27,6 @@ import butterknife.BindView;
 public class PatientFragUIOpe extends BaseNurseUIOpe {
 
 
-
     @BindView(R.id.ll_baseinfo)
     View baseInfoView;
 
@@ -102,11 +101,10 @@ public class PatientFragUIOpe extends BaseNurseUIOpe {
         init();
     }
 
-    private void init(){
+    private void init() {
         getBackTV().setSelected(true);
         getBackTV().setText("病区");
         getBackTV().setVisibility(View.VISIBLE);
-
 
 
         getRightTV().setSelected(true);
@@ -116,55 +114,53 @@ public class PatientFragUIOpe extends BaseNurseUIOpe {
 
     }
 
-    public void initTitle(String title){
+    public void initTitle(String title) {
         getMidTV().setVisibility(View.VISIBLE);
         getMidTV().setSelected(true);
         getMidTV().setText(title);
     }
 
-    public void initInfo(PatientBedResBean resBean){
-
-
+    public void initInfo(PatientBedResBean resBean) {
 
 
         getNameTV().setText(StringUtil.getStr(resBean.get姓名()));
-        getSexAndAgeTV().setText("性别:  "+StringUtil.getStr(resBean.get性别())+"  年龄:  "+StringUtil.getStr(resBean.getPatAge())+"岁");
-        getEatTV().setText("膳食信息:  "+StringUtil.getStr(resBean.getLS31()));
+        getSexAndAgeTV().setText("性别:  " + StringUtil.getStr(resBean.get性别()) + "  年龄:  " + StringUtil.getStr(resBean.getPatAge()) + "岁");
+        getEatTV().setText("膳食信息:  " + StringUtil.getStr(resBean.getLS31()));
 
 
-        getTelTV().setText("电话号码:  "+resBean.get联系电话());
-        getZyhTV().setText("住院号  :  "+resBean.get住院号());
-        getBrithTV().setText("出生日期:  "+ resBean.get出生日期());
-        getTypeTV().setText("就诊类型:  "+resBean.get就诊类型名称());
-        getStartTimeTV().setText("入院时间:  "+resBean.get入院时间());
-        getWhatTV().setText("入院诊断:  "+StringUtil.getStr(resBean.get诊断名称()));
-        String srt  ="";
-        for(int i=0;i<resBean.getLA54().size();i++){
-            srt+=resBean.getLA54().get(i)+"\n\t";
+        getTelTV().setText("电话号码:  " + resBean.get联系电话());
+        getZyhTV().setText("住院号  :  " + resBean.get住院号());
+        getBrithTV().setText("出生日期:  " + resBean.get出生日期());
+        getTypeTV().setText("就诊类型:  " + resBean.get就诊类型名称());
+        getStartTimeTV().setText("入院时间:  " + resBean.get入院时间());
+        getWhatTV().setText("入院诊断:  " + StringUtil.getStr(resBean.get诊断名称()));
+        String srt = "";
+        for (int i = 0; i < resBean.getLA54().size(); i++) {
+            srt += resBean.getLA54().get(i) + "\n\t";
         }
-        if(srt.endsWith("\n\t")){
-            srt.substring(0,srt.length()-"\n\t".length());
+        if (srt.endsWith("\n\t")) {
+            srt.substring(0, srt.length() - "\n\t".length());
         }
 
-        getSsTimeTV().setText("手术记录:  "+(srt.equals("")?"无":srt));
-        getOutTimeTV().setText("预出院日:  "+(NullUtil.isStrEmpty(resBean.get出院时间())?"暂无":resBean.get出院时间()));
+        getSsTimeTV().setText("手术记录:  " + (srt.equals("") ? "无" : srt));
+        getOutTimeTV().setText("预出院日:  " + (NullUtil.isStrEmpty(resBean.get出院时间()) ? "暂无" : resBean.get出院时间()));
 
-        BitmapUtil.getInstance().setBg(context,getHeadIV(),resBean.getResId());
-
+        BitmapUtil.getInstance().setBg(context, getHeadIV(), resBean.getResId());
 
 
     }
-    public void initAddionList(ArrayList<PatientAdditionResBean> resBeen){
+
+    public void initAddionList(ArrayList<PatientAdditionResBean> resBeen) {
         this.resBeen = resBeen;
-        recyclerView.setLayoutManager(new GridLayoutManager(context,6));
-        careListAdapter = new CareListAdapter(context,resBeen);
+        recyclerView.setLayoutManager(new GridLayoutManager(context, 6));
+        careListAdapter = new CareListAdapter(context, resBeen);
         recyclerView.setAdapter(careListAdapter);
     }
 
-    public ArrayList<PatientAdditionResBean> getSelectAddition(){
+    public ArrayList<PatientAdditionResBean> getSelectAddition() {
         ArrayList<PatientAdditionResBean> list = new ArrayList<>();
-        for(int i=0;i<this.resBeen.size();i++){
-            if(this.resBeen.get(i).isSelect()){
+        for (int i = 0; i < this.resBeen.size(); i++) {
+            if (this.resBeen.get(i).isSelect()) {
                 list.add(resBeen.get(i));
             }
         }

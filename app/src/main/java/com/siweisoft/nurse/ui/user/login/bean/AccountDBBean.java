@@ -12,19 +12,19 @@ import com.siweisoft.lib.base.ui.bean.dbbean.BaseDbBean;
 public class AccountDBBean extends BaseDbBean {
 
 
-    public static final int TYPE_NURSE= 0;
+    public static final int TYPE_NURSE = 0;
 
-    public static final int TYPE_PATIENT= 1;
+    public static final int TYPE_PATIENT = 1;
 
-    public static final int TYPE_DOCTOR= 2;
+    public static final int TYPE_DOCTOR = 2;
 
 
-    public static final String ACCOUNT= "account";
+    public static final String ACCOUNT = "account";
     @DatabaseField(columnName = ACCOUNT)
     private String account;
 
 
-    public static final String TYPE= "type";
+    public static final String TYPE = "type";
     @DatabaseField(columnName = TYPE)
     private int type;
 

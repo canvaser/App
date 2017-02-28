@@ -35,7 +35,7 @@ public class CheckBookDetailUIOpe extends BaseNurseUIOpe {
         init();
     }
 
-    private void init(){
+    private void init() {
 
         getMidTV().setText("物品清点单");
         getBackTV().setText("返回");
@@ -44,9 +44,9 @@ public class CheckBookDetailUIOpe extends BaseNurseUIOpe {
         getMidTV().setVisibility(View.VISIBLE);
     }
 
-    public void initList( ArrayList<CheckBookDetailItemsListResBean> data){
-        this.data =data;
-        checkBookAdapter = new CheckBookDetailListAdapter(context,data);
+    public void initList(ArrayList<CheckBookDetailItemsListResBean> data) {
+        this.data = data;
+        checkBookAdapter = new CheckBookDetailListAdapter(context, data);
         listView.setAdapter(checkBookAdapter);
     }
 

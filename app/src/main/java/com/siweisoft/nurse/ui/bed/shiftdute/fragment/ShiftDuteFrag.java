@@ -19,7 +19,7 @@ import com.siweisoft.nurse.ui.bed.shiftdute.ope.ShiftDuteUIOpe;
 /**
  * Created by ${viwmox} on 2016-11-17.
  */
-public class ShiftDuteFrag extends BaseNurseFrag{
+public class ShiftDuteFrag extends BaseNurseFrag {
 
 
     ShiftDuteUIOpe shiftDuteUIOpe;
@@ -37,10 +37,10 @@ public class ShiftDuteFrag extends BaseNurseFrag{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        if(getArguments()==null || getArguments().getSerializable(ValueConstant.DATA_DATA)==null){
+        if (getArguments() == null || getArguments().getSerializable(ValueConstant.DATA_DATA) == null) {
             return;
         }
-        shiftDuteUIOpe = new ShiftDuteUIOpe(activity,getView());
+        shiftDuteUIOpe = new ShiftDuteUIOpe(activity, getView());
         resBean = (PatientBedResBean) getArguments().getSerializable(ValueConstant.DATA_DATA);
 
         assayListNetOpe = new NurseNetOpe(activity);
@@ -49,8 +49,8 @@ public class ShiftDuteFrag extends BaseNurseFrag{
         assayListNetOpe.getlistResultPatient(baseNurseReqBean, new OnNetWorkReqAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                if(success){
-                    ShiftDuteListResBean shiftDuteListResBean = GsonUtil.getInstance().fromJson(o.toString(),ShiftDuteListResBean.class);
+                if (success) {
+                    ShiftDuteListResBean shiftDuteListResBean = GsonUtil.getInstance().fromJson(o.toString(), ShiftDuteListResBean.class);
                     shiftDuteUIOpe.initList(shiftDuteListResBean.getData());
                 }
             }
