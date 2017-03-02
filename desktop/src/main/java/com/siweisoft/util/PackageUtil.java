@@ -55,12 +55,8 @@ public class PackageUtil {
                     case "系统":
                         for (ApplicationInfo applicationInfo : infos) {
                             if ((applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
-                                try {
-                                    if (context.getPackageManager().getPackageInfo(applicationInfo.packageName, 0) != null) {
-                                        infoss.add(applicationInfo);
-                                    }
-                                } catch (PackageManager.NameNotFoundException e) {
-                                    e.printStackTrace();
+                                if (context.getPackageManager().getLaunchIntentForPackage(applicationInfo.packageName) != null) {
+                                    infoss.add(applicationInfo);
                                 }
                             }
                         }

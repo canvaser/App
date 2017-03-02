@@ -134,11 +134,12 @@ public class CalendarNetOpe extends BaseNetOpe {
                 return;
             }
         }
+        onProgressInterf.onProgess((i + 1) + "/" + (datas == null ? 0 : datas.size()));
         addRecord(txt, datas == null ? null : datas.get(i).getPath(), new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 i++;
-                onProgressInterf.onProgess((i + 1) + "/" + datas == null ? 0 : datas.size());
+                onProgressInterf.onProgess((i + 1) + "/" + (datas == null ? 0 : datas.size()));
                 addRecord(txt, datas, onProgressInterf);
             }
         });

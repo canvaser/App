@@ -54,6 +54,18 @@ public class AppsDBOpe extends BaseDBOpe<AppDBBean> {
         }
     }
 
+    //移除系统和用户
+    public void removeNotZDY() {
+        DeleteBuilder deleteBuilder = daoOpe.deleteBuilder();
+        try {
+            Where where = deleteBuilder.where();
+            where.or(where.eq(AppDBBean.GROUPNAME, "系统"), where.eq(AppDBBean.GROUPNAME, "用户"));
+            deleteBuilder.delete();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public ArrayList<AppDBBean> get() {
         ArrayList<AppDBBean> list = new ArrayList<>();
         try {

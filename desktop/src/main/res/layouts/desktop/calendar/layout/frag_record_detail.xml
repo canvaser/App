@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <EditText
         android:layout_margin="2dp"
         android:background="@drawable/drawable_border_app"
         android:id="@+id/et_addrecord"
@@ -12,7 +12,7 @@
         android:gravity="left|top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="200dp" />
+        android:minHeight="10dp" />
 
     <ImageView
         android:id="@+id/iv_image"

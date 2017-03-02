@@ -63,7 +63,7 @@ public class AppsDAOpe extends BaseDAOpe {
         ArrayList<AppDBBean> sysList = appsDBOpe.get("系统");
         ArrayList<AppDBBean> userList = appsDBOpe.get("用户");
         if (sysList.size() == 0 || ValueConstant.IS_FROM_SYS) {
-            appsDBOpe.removeAll();
+            appsDBOpe.removeNotZDY();
             final ArrayList<AppDBBean> finalUserList = userList;
             getApps("系统", new OnNetFinishWithObjInter() {
                 @Override

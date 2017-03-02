@@ -54,6 +54,8 @@ public class AddDayRecordFrag extends BaseNurseFrag<AddDayRecordUIOpe, CalendarN
                 }
                 //LoadUtil.getInstance().onStartLoading(activity,AddDayRecordFrag.class.getName());
                 getOpe().getBaseNurseUIOpe().getMidTV().setText("上传中...");
+                getOpe().getBaseNurseUIOpe().getRightTV().setEnabled(false);
+                getOpe().getBaseNurseUIOpe().getRightTV().setText("上传中");
                 if (getOpe().getBaseDAOpe().getPicBeen() == null || getOpe().getBaseDAOpe().getPicBeen().size() == 0) {
                     getOpe().getBaseNetOpe().addRecordtext(getOpe().getBaseNurseUIOpe().getAddET().getText().toString(), new OnFinishListener() {
                         @Override
@@ -66,6 +68,8 @@ public class AddDayRecordFrag extends BaseNurseFrag<AddDayRecordUIOpe, CalendarN
                             dayRecordFrag.getOpe().getBaseNurseUIOpe().getViewPager().setCurrentItem(1);
                             //LoadUtil.getInstance().onStopLoading(AddDayRecordFrag.class.getName());
                             getOpe().getBaseNurseUIOpe().getMidTV().setText("上传完成");
+                            getOpe().getBaseNurseUIOpe().getRightTV().setEnabled(true);
+                            getOpe().getBaseNurseUIOpe().getRightTV().setText("上传完成");
                         }
                     });
                     return;
@@ -88,10 +92,13 @@ public class AddDayRecordFrag extends BaseNurseFrag<AddDayRecordUIOpe, CalendarN
                         DayRecordFrag dayRecordFrag = (DayRecordFrag) FragManager.getInstance().getFragMaps().get(3).get(0);
                         getOpe().getBaseNurseUIOpe().getAddET().setText("");
                         getOpe().getBaseDAOpe().setUrl(null);
+                        getOpe().getBaseDAOpe().getPicBeen().clear();
                         getOpe().getBaseNurseUIOpe().initList(null);
                         dayRecordFrag.getOpe().getBaseNurseUIOpe().getViewPager().setCurrentItem(1);
                         //LoadUtil.getInstance().onStopLoading(AddDayRecordFrag.class.getName());
                         getOpe().getBaseNurseUIOpe().getMidTV().setText("上传完成");
+                        getOpe().getBaseNurseUIOpe().getRightTV().setEnabled(true);
+                        getOpe().getBaseNurseUIOpe().getRightTV().setText("上传完成");
                     }
                 });
                 break;
@@ -105,9 +112,10 @@ public class AddDayRecordFrag extends BaseNurseFrag<AddDayRecordUIOpe, CalendarN
     @Override
     public void onResult(int req, Bundle bundle) {
         super.onResult(req, bundle);
-        if (bundle.getSerializable(ValueConstant.DATA_DATA) == null && !(bundle.getSerializable(ValueConstant.DATA_DATA) instanceof ArrayList)) {
+        if (bundle.getSerializable(ValueConstant.DATA_DATA) == null || !(bundle.getSerializable(ValueConstant.DATA_DATA) instanceof ArrayList)) {
             return;
         }
+
         ArrayList<PicBean> picBeen = (ArrayList<PicBean>) bundle.getSerializable(ValueConstant.DATA_DATA);
         getOpe().getBaseDAOpe().setPicBeen(picBeen);
         getOpe().getBaseNurseUIOpe().initList(getOpe().getBaseDAOpe().getPicBeen());

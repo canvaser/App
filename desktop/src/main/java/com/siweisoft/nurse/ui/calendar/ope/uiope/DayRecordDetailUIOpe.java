@@ -22,7 +22,7 @@ import uk.co.senab.photoview.PhotoViewAttacher;
 public class DayRecordDetailUIOpe extends BaseNurseUIOpe {
 
     @BindView(R.id.et_addrecord)
-    TextView txtET;
+    EditText txtET;
 
 
     @BindView(R.id.iv_image)
@@ -30,6 +30,8 @@ public class DayRecordDetailUIOpe extends BaseNurseUIOpe {
 
     public DayRecordDetailUIOpe(Context context, View containerView) {
         super(context, containerView);
+        getBackTV().setVisibility(View.VISIBLE);
+        getBackTV().setText("返回");
     }
 
     public void loadData(DayBean d) {
@@ -39,6 +41,7 @@ public class DayRecordDetailUIOpe extends BaseNurseUIOpe {
         txtET.setText(StringUtil.getStr(d.getContent()));
         BitmapUtil.getInstance().setBg(context, imageIV, d.getImage() == null ? "" : d.getImage().getFileUrl());
         PhotoViewAttacher mAttacher = new PhotoViewAttacher(imageIV);
+        mAttacher.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         mAttacher.update();
     }
 
@@ -46,7 +49,7 @@ public class DayRecordDetailUIOpe extends BaseNurseUIOpe {
         return imageIV;
     }
 
-    public TextView getTxtET() {
+    public EditText getTxtET() {
         return txtET;
     }
 }
