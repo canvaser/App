@@ -1,0 +1,123 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    useLibrary 'org.apache.http.legacy'
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+
+    defaultConfig {
+        applicationId "com.summer.desktop"
+        minSdkVersion 14
+        targetSdkVersion 19
+        versionCode 4
+        versionName "1.0.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                cppFlags "-frtti -fexceptions"
+            }
+        }
+    }
+
+    dexOptions {
+        javaMaxHeapSize "8g"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+
+    sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res/layouts',
+                    'src/main/res/layouts/baseui',
+                    'src/main/res/layouts/image',
+                    'src/main/res/layouts/bottom',
+                    'src/main/res/layouts/menu',
+                    'src/main/res/layouts/time',
+                    'src/main/res/layouts/home',
+                    'src/main/res/layouts/setting',
+                    'src/main/res/layouts/user',
+                    'src/main/res/layouts/dialog',
+                    'src/main/res/layouts/chart',
+                    'src/main/res/layouts/zxing',
+                    'src/main/res/layouts/voip',
+                    'src/main/res/layouts/calendar',
+
+
+                    'src/main/res/layouts/desktop',
+                    'src/main/res/layouts/desktop/app',
+                    'src/main/res/layouts/desktop/calendar',
+                    'src/main/res/layouts/desktop/day',
+                    'src/main/res/layouts/desktop/setting',
+                    'src/main/res/layouts/desktop/home',
+
+                    'src/main/res',
+                    'src/main/res/values/base',
+                    'src/main/res/values/home',
+                    'src/main/res/values/animstyle',
+                    'src/main/res/values/view',
+                    'src/main/res/values/user',
+                    'src/main/res/values/avi',
+                    'src/main/res/values/chart',
+                    'src/main/res/values/zxing',
+                    'src/main/res/values/voip',
+                    'src/main/res/values/calendar',
+                    'src/main/res/values/calen',
+
+                    'src/main/res/drawables/base',
+                    'src/main/res/drawables/dialog',
+                    'src/main/res/drawables/image',
+                    'src/main/res/drawables/home',
+                    'src/main/res/drawables/setting',
+                    'src/main/res/drawables/user',
+                    'src/main/res/drawables/chart',
+                    'src/main/res/drawables/voip',
+                    'src/main/res/drawables/calendar',
+
+                    'src/main/res/anims/bottommenu',
+                    'src/main/res/anims/in',
+                    'src/main/res/anims/scale',
+                    'src/main/res/anims/trans',
+                    'src/main/res/anims/base',
+
+            ]
+            jniLibs.srcDirs = [
+                    'libs',
+            ]
+        }
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('libs/ormlite-android-4.48.jar')
+    compile files('libs/ormlite-core-4.48.jar')
+    compile 'com.android.support:recyclerview-v7:25.1.0'
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.mcxiaoke.volley:library:1.0.19'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.github.chrisbanes:PhotoView:1.2.6'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile files('libs/zxing.jar')
+
+    compile 'cn.bmob.android:bmob-sdk:3.5.0'
+    compile 'cn.bmob.android:http-legacy:1.0'
+}

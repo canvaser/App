@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mcv_showOtherDates="all"
+        app:mcv_selectionColor="#00F" />
+
+    <com.siweisoft.view.refreshlayout.MaterialRefreshLayout
+
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:isLoadMore="false"
+        app:wave_color="@color/color_base"
+        app:progress_size_type="normal"
+        app:overlay="false"
+        app:wave_show="false"
+        app:wave_height_type="normal"
+        app:progress_show_circle_backgroud="false">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.siweisoft.view.refreshlayout.MaterialRefreshLayout>
+</LinearLayout>
