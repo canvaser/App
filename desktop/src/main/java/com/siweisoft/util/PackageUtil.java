@@ -1,8 +1,11 @@
 package com.siweisoft.util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.os.AsyncTask;
 
 import com.siweisoft.base.ui.interf.OnNetFinishWithObjInter;
@@ -41,7 +44,8 @@ public class PackageUtil {
         new AsyncTask<String, Integer, List<ApplicationInfo>>() {
             @Override
             protected List<ApplicationInfo> doInBackground(String... params) {
-                List<ApplicationInfo> infos = context.getPackageManager().getInstalledApplications(PackageManager.GET_UNINSTALLED_PACKAGES);
+
+                List<ApplicationInfo> infos = context.getPackageManager().getInstalledApplications(PackageManager.MATCH_DEFAULT_ONLY);
                 Collections.sort(infos, new ApplicationInfo.DisplayNameComparator(context.getPackageManager()));
                 List<ApplicationInfo> infoss = new ArrayList<>();
                 switch (type) {
@@ -51,7 +55,13 @@ public class PackageUtil {
                     case "系统":
                         for (ApplicationInfo applicationInfo : infos) {
                             if ((applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) != 0) {
-                                infoss.add(applicationInfo);
+                                try {
+                                    if (context.getPackageManager().getPackageInfo(applicationInfo.packageName, 0) != null) {
+                                        infoss.add(applicationInfo);
+                                    }
+                                } catch (PackageManager.NameNotFoundException e) {
+                                    e.printStackTrace();
+                                }
                             }
                         }
                         break;
@@ -74,6 +84,7 @@ public class PackageUtil {
             }
         }.execute();
     }
+
 
     public void getPackageApplicationInfo(final Context context, final List<String> packageNames, final OnNetFinishWithObjInter onNetFinishWithObjInter) {
 

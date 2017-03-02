@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_head_tem"
+            android:background="#2FC2D1"
+            android:gravity="center"
+            android:text="体温单"
+            android:padding="10dp"
+            android:textSize="13sp"
+            android:textColor="@color/black"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:background="@color/white"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="体温类型"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:background="@color/color_dark_red"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="体温"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:background="@color/white"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="脉搏类型"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:background="@color/color_dark_red"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="脉搏"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:background="@color/white"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="呼吸类型"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:background="@color/color_dark_red"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="呼吸"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:background="@color/white"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="疼痛"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:background="@color/color_dark_red"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="止痛"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:background="@color/white"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="大便类型"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:background="@color/color_dark_red"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="大便单位"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:background="@color/white"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="大便"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:background="@color/color_dark_red"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="心率"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:background="@color/white"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="降温"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:background="@color/color_dark_red"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="出液量"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:background="@color/white"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="入液量"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:background="@color/color_dark_red"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="尿量"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:background="@color/white"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="胃液"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:background="@color/color_dark_red"
+                android:paddingLeft="5dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingRight="5dp"
+                android:gravity="center"
+                android:text="胆汁"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:background="@color/gray"
+                android:layout_width="100dp"
+                android:layout_height="1dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:background="@color/gray" />
+</LinearLayout>

@@ -116,8 +116,6 @@ dependencies {
     compile 'com.github.chrisbanes:PhotoView:1.2.6'
     compile 'com.jakewharton:butterknife:8.4.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
-    compile files('libs/zxing.jar')
 
-    compile 'cn.bmob.android:bmob-sdk:3.5.0'
-    compile 'cn.bmob.android:http-legacy:1.0'
+    compile project(':lib')
 }

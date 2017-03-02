@@ -58,7 +58,6 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile files('libs/gson-2.2.1.jar')
     compile files('libs/ormlite-android-4.48.jar')
     compile files('libs/ormlite-core-4.48.jar')
     compile files('libs/zxing.jar')
@@ -74,6 +73,10 @@ dependencies {
     compile 'com.jakewharton:butterknife:8.5.1'
     compile 'com.github.florent37:viewanimator:1.0.5'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
+    compile 'cn.bmob.android:bmob-sdk:3.5.0'
+    compile 'cn.bmob.android:http-legacy:1.0'
+
     compile files('libs/fastjson-1.2.24.jar')
     compile files('libs/classes.jar')
 }
