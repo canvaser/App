@@ -49,43 +49,19 @@ android {
             res.srcDirs = [
                     'src/main/res',
 
-                    'src/main/res/layouts/nurse',
-                    'src/main/res/layouts/nurse/bed',
-                    'src/main/res/layouts/nurse/mission',
-                    'src/main/res/layouts/nurse/check',
-                    'src/main/res/layouts/nurse/info',
-                    'src/main/res/layouts/nurse/home',
-                    'src/main/res/layouts/nurse/info',
-                    'src/main/res/layouts/nurse/mission',
-                    'src/main/res/layouts/nurse/setting',
-                    'src/main/res/layouts/nurse/time',
-                    'src/main/res/layouts/nurse/user',
-                    'src/main/res/layouts/nurse/voip',
-
-                    'src/main/res/values/nurse/bed',
-                    'src/main/res/values/nurse/check',
-                    'src/main/res/values/nurse/home',
-                    'src/main/res/values/nurse/info',
-                    'src/main/res/values/nurse/mission',
-                    'src/main/res/values/nurse/setting',
-                    'src/main/res/values/nurse/time',
-                    'src/main/res/values/nurse/user',
-                    'src/main/res/values/nurse/voip',
-                    'src/main/res/values/nurse/base',
-
-                    'src/main/res/drawables/nurse/bed',
-                    'src/main/res/drawables/nurse/check',
-                    'src/main/res/drawables/nurse/home',
-                    'src/main/res/drawables/nurse/info',
-                    'src/main/res/drawables/nurse/mission',
-                    'src/main/res/drawables/nurse/setting',
-
-
                     'src/main/res/document',
                     'src/main/res/addwater',
                     'src/main/res/task',
                     'src/main/res/dialog',
                     'src/main/res/bed',
+                    'src/main/res/check',
+                    'src/main/res/user',
+                    'src/main/res/base',
+                    'src/main/res/user',
+                    'src/main/res/home',
+                    'src/main/res/info',
+                    'src/main/res/setting',
+                    'src/main/res/time',
 
             ]
             jniLibs.srcDirs = [

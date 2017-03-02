@@ -40,6 +40,9 @@ public class DataValue {
 
     //-------------------------------------------------------------------------------------------------------
 
+    //录入病房巡视数据
+    public static final String URL_WRITE_WARD_INSPECTION_INOF = "writeWardInspectionInfo";
+
     /**
      * 获取病区
      */

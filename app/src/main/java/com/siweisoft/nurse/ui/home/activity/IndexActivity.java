@@ -13,7 +13,6 @@ import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.activity.BaseUIWithOutTitleActivity;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemLongClickListener;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemSelectListener;
-import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
 import com.siweisoft.lib.util.GsonUtil;
@@ -23,8 +22,7 @@ import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.ui.home.bean.resbean.KeepAliveResBean;
 import com.siweisoft.nurse.ui.home.ope.HomeDataOpe;
 import com.siweisoft.nurse.ui.home.ope.HomeUIOpe;
-import com.siweisoft.nurse.ui.info.bedcheck.bean.reqbean.WriteBedCheckReqBean;
-import com.siweisoft.nurse.ui.info.bedcheck.fragment.BedCheckFrag;
+import com.siweisoft.nurse.ui.scan.ope.ScanResultDAOpe;
 import com.siweisoft.nurse.ui.user.login.activity.LoginActivity;
 import com.siweisoft.lib.util.fragment.FragManager;
 import com.siweisoft.lib.uuzuche.lib_zxing.activity.CaptureActivity;
@@ -52,7 +50,6 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
         homeUIOpe = new HomeUIOpe(activity, getRootVG());
         homeDataOpe = new HomeDataOpe(activity);
         homeNetOpe = new NurseNetOpe(activity);
-
         homeUIOpe.getHomeBottomView().setOnAppItemSelectListener(this);
         homeUIOpe.getHomeBottomView().setOnAppItemLongClickListener(this);
         homeUIOpe.getHomeBottomView().setOnLongClick(this);
@@ -101,6 +98,10 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
         return homeUIOpe;
     }
 
+    public HomeDataOpe getHomeDataOpe() {
+        return homeDataOpe;
+    }
+
     @Override
     public void onAppItemLongClick(View view, int position) {
         FragManager.getInstance().clearTop(getSupportFragmentManager(), position);
@@ -118,8 +119,8 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
                     switch (bundle.getInt(CodeUtils.RESULT_TYPE)) {
                         case CodeUtils.RESULT_SUCCESS:
                             String result = bundle.getString(CodeUtils.RESULT_STRING);
-                            Toast.makeText(activity, "解析结果:" + result, Toast.LENGTH_LONG).show();
-
+                            //Toast.makeText(activity, "解析结果:" + result, Toast.LENGTH_LONG).show();
+                            ScanResultDAOpe.getInstance().sortResult(activity, result);
 
 //                            WriteBedCheckReqBean reqBean = GsonUtil.getInstance().fromJson(result,WriteBedCheckReqBean.class);
 //

@@ -86,4 +86,8 @@ public abstract class BaseNurseFrag<A extends BaseNurseUIOpe, B extends BaseNetO
     public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
 
     }
+
+    public int getIndex() {
+        return index;
+    }
 }

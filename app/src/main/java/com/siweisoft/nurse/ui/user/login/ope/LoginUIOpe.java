@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.base.ui.fragment.CommonUIFrag;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.lib.base.ui.ope.BaseUIWithTitleOpe;
 
 import butterknife.BindView;
@@ -15,7 +17,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-10-21.
  */
-public class LoginUIOpe extends BaseUIWithTitleOpe {
+public class LoginUIOpe<A extends CommonUIFrag> extends BaseNurseUIOpe<A> {
 
     @BindView(R.id.et_account)
     EditText accountEt;

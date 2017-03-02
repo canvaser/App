@@ -95,7 +95,7 @@ public class BedListFGM extends BaseNurseFrag<BedListFGMUIOpe, NurseNetOpe, Base
         });
     }
 
-    private void getRegion2(final OnFinishListener onFinishListener) {
+    public void getRegion2(final OnFinishListener onFinishListener) {
         baseNurseOpes.getNetOpe().getRegion(new UINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
@@ -244,7 +244,10 @@ public class BedListFGM extends BaseNurseFrag<BedListFGMUIOpe, NurseNetOpe, Base
 
     @Override
     public BaseNurseOpes<BedListFGMUIOpe, NurseNetOpe, BaseDBOpe, BedListDAOpe> getOpe() {
-        return new BaseNurseOpes<>(new BedListFGMUIOpe(activity, getView()), new NurseNetOpe(activity), null, new BedListDAOpe(activity));
+        if (baseNurseOpes == null) {
+            baseNurseOpes = new BaseNurseOpes<>(new BedListFGMUIOpe(activity, getView()), new NurseNetOpe(activity), null, new BedListDAOpe(activity));
+        }
+        return baseNurseOpes;
     }
 
 

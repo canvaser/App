@@ -12,6 +12,7 @@ import com.siweisoft.lib.base.ui.bean.uibean.CommonUIBean;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
 import com.siweisoft.lib.util.BitmapUtil;
+import com.siweisoft.lib.util.LogUtil;
 import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.bed.bedlist.adapter.BedListAdapter;
@@ -56,10 +57,21 @@ public class BedListDAOpe extends BaseDAOpe {
     public int getPosition(ArrayList<PatientBedResBean> patientBedResBeen, String zyh) {
         for (int i = 0; i < patientBedResBeen.size(); i++) {
             if (patientBedResBeen.get(i).get住院号().equals(zyh)) {
+                LogUtil.E(zyh + "----" + i);
                 return i;
             }
         }
         return -1;
+    }
+
+    public PatientBedResBean getPatientBedResBean(ArrayList<PatientBedResBean> patientBedResBeen, String zyh) {
+        for (int i = 0; i < patientBedResBeen.size(); i++) {
+            if (patientBedResBeen.get(i).get住院号().equals(zyh)) {
+                LogUtil.E(zyh + "----" + i);
+                return patientBedResBeen.get(i);
+            }
+        }
+        return null;
     }
 
     public ArrayList<PatientBedResBean> getAllList() {
@@ -157,6 +169,7 @@ public class BedListDAOpe extends BaseDAOpe {
             }
         }.execute();
     }
+
 
     public void initBedListDetail(CommonUIBean holder, ArrayList<PatientBedResBean> data, int position) {
         switch (data.get(position).get状态()) {

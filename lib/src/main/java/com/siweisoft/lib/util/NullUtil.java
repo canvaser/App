@@ -1,5 +1,7 @@
 package com.siweisoft.lib.util;
 
+import java.util.Objects;
+
 /**
  * Created by ${viwmox} on 2016-06-01.
  */
@@ -15,6 +17,13 @@ public class NullUtil {
             if (o[i] == null) {
                 return true;
             }
+        }
+        return false;
+    }
+
+    public static boolean isNull(Object o) {
+        if (o == null) {
+            return true;
         }
         return false;
     }

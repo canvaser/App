@@ -27,31 +27,6 @@ android {
             res.srcDirs = [
                     'src/main/res',
 
-                    'src/main/res/layouts',
-                    'src/main/res/layouts/baseui',
-                    'src/main/res/layouts/bottom',
-                    'src/main/res/layouts/chart',
-                    'src/main/res/layouts/dialog',
-                    'src/main/res/layouts/image',
-                    'src/main/res/layouts/menu',
-                    'src/main/res/layouts/zxing',
-                    'src/main/res/layouts/time',
-                    'src/main/res/layouts/voip',
-
-                    'src/main/res/values/animstyle',
-                    'src/main/res/values/avi',
-                    'src/main/res/values/base',
-                    'src/main/res/values/chart',
-                    'src/main/res/values/zxing',
-                    'src/main/res/values/view',
-                    'src/main/res/values/home',
-
-                    'src/main/res/drawables/base',
-                    'src/main/res/drawables/chart',
-                    'src/main/res/drawables/dialog',
-                    'src/main/res/drawables/image',
-                    'src/main/res/drawables/voip',
-
                     'src/main/res/anims/bottommenu',
                     'src/main/res/anims/in',
                     'src/main/res/anims/scale',
@@ -61,7 +36,18 @@ android {
                     'src/main/res/menus/chart',
                     'src/main/res/timepick',
                     'src/main/res/refreshlayout',
-
+                    'src/main/res/base',
+                    'src/main/res/dialog',
+                    'src/main/res/image',
+                    'src/main/res/voip',
+                    'src/main/res/chart',
+                    'src/main/res/zxing',
+                    'src/main/res/view',
+                    'src/main/res/home',
+                    'src/main/res/avi',
+                    'src/main/res/animstyle',
+                    'src/main/res/bottom',
+                    'src/main/res/time',
             ]
             jniLibs.srcDirs = [
                     'libs',

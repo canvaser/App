@@ -514,4 +514,12 @@ public class SimpleNetOpe extends BaseNetOpe {
         BaseReqBean baseReqBean = new BaseReqBean();
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_DOLOGIN_OUT, baseReqBean, reqInterf);
     }
+
+    public static void writeWardInspectionInfo(Context context, String zyh, String region, String room, String bed, OnNetWorkReqInterf reqInterf) {
+
+        WriteBedCheckReqBean reqBean = new WriteBedCheckReqBean();
+        NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_WRITE_WARD_INSPECTION_INFO, reqBean, reqInterf);
+    }
+
+
 }

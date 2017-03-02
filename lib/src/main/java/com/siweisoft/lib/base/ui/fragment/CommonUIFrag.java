@@ -12,9 +12,13 @@ import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
 import com.siweisoft.lib.base.ui.ope.BaseUIOpe;
 import com.siweisoft.lib.base.ui.ope.CommonOpes;
 import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.NullUtil;
 import com.siweisoft.lib.util.fragment.FragManager;
+import com.siweisoft.lib.uuzuche.lib_zxing.view.ViewfinderView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
+
+import java.util.Objects;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -33,6 +37,8 @@ public abstract class CommonUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> ext
 
     View backView;
 
+    private ViewGroup parent;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +50,16 @@ public abstract class CommonUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> ext
             index = getArguments().getInt(ValueConstant.FRAG_POSITION);
         }
         View group = inflater.inflate(getLayoutID(), null);
-        ViewGroup parent = (ViewGroup) group.findViewById(R.id.common_container);
+        parent = (ViewGroup) group.findViewById(R.id.common_container);
         View view = inflater.inflate(onCreateView(false), container, false);
         parent.addView(view, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         unbinder = ButterKnife.bind(this, group);
         return group;
+    }
+
+    protected void setDisEnable() {
+        parent.setEnabled(false);
+        getView().findViewById(R.id.iv_info).setVisibility(View.VISIBLE);
     }
 
     @Override

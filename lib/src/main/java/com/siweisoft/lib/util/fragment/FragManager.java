@@ -21,6 +21,8 @@ import java.util.HashMap;
 public class FragManager {
     private static FragManager instance;
 
+    private int index = 0;
+
 
     private HashMap<Integer, ArrayList<Fragment>> fragMaps = new HashMap<>();
 
@@ -82,7 +84,7 @@ public class FragManager {
                         }
                     }
                 }
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
             }
         }
     }
@@ -113,7 +115,7 @@ public class FragManager {
                     }
 
                 }
-                transaction.commit();
+                transaction.commitAllowingStateLoss();
             }
         }
     }
@@ -124,6 +126,7 @@ public class FragManager {
     }
 
     public void startFragment(FragmentManager manager, int index, Fragment fragment) {
+        this.index = index;
         if (fragMaps.get(index) == null) {
             fragMaps.put(index, new ArrayList<Fragment>());
         }
@@ -143,12 +146,13 @@ public class FragManager {
             transaction.add(containsView.get(index), fragment, fragment.getClass().getSimpleName());
             fragMaps.get(index).add(fragment);
         }
-        transaction.commit();
+        transaction.commitAllowingStateLoss();
         System.gc();
     }
 
 
     public void startFragment(FragmentManager manager, int index, Fragment fragment, Bundle bundle) {
+        this.index = index;
         if (fragMaps.get(index) == null) {
             fragMaps.put(index, new ArrayList<Fragment>());
         }
@@ -170,12 +174,13 @@ public class FragManager {
             transaction.add(containsView.get(index), fragment, fragment.getClass().getSimpleName());
             fragMaps.get(index).add(fragment);
         }
-        transaction.commit();
+        transaction.commitAllowingStateLoss();
         System.gc();
     }
 
 
     public void startFragmentForResult(FragmentManager manager, int index, Fragment fragment, Bundle bundle, int req) {
+        this.index = index;
         if (fragMaps.get(index) == null) {
             fragMaps.put(index, new ArrayList<Fragment>());
         }
@@ -201,12 +206,13 @@ public class FragManager {
             transaction.add(containsView.get(index), fragment, fragment.getClass().getSimpleName());
             fragMaps.get(index).add(fragment);
         }
-        transaction.commit();
+        transaction.commitAllowingStateLoss();
         System.gc();
     }
 
 
     public void clearTop(FragmentManager manager, int positon) {
+        this.index = positon;
         ArrayList<Fragment> fragments = fragMaps.get(positon);
         if (fragments.size() > 1) {
             FragmentTransaction transaction = manager.beginTransaction();
@@ -218,12 +224,31 @@ public class FragManager {
                     transaction.show(fragments.get(j - 1));
                 }
             }
-            transaction.commit();
+            transaction.commitAllowingStateLoss();
+        }
+    }
+
+
+    public void clearTopWith(FragmentManager manager, int positon) {
+        this.index = positon;
+        ArrayList<Fragment> fragments = fragMaps.get(positon);
+        if (fragments.size() > 1) {
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.setCustomAnimations(R.anim.anim_push_left_in, R.anim.anim_push_right_out);
+            for (int j = fragments.size() - 1; j > 0; j--) {
+                transaction.remove(fragments.get(j));
+                fragments.remove(j);
+                if (fragments.get(j - 1) != null) {
+                    transaction.show(fragments.get(j - 1));
+                }
+            }
+            transaction.commitAllowingStateLoss();
         }
     }
 
 
     public void clear(FragmentManager manager, int positon) {
+        this.index = positon;
         ArrayList<Fragment> fragments = fragMaps.get(positon);
         if (fragments.size() > 0) {
             FragmentTransaction transaction = manager.beginTransaction();
@@ -235,7 +260,7 @@ public class FragManager {
                     transaction.show(fragments.get(j - 1));
                 }
             }
-            transaction.commit();
+            transaction.commitAllowingStateLoss();
         }
     }
 
@@ -246,5 +271,9 @@ public class FragManager {
 
     public HashMap<Integer, ArrayList<Fragment>> getFragMaps() {
         return fragMaps;
+    }
+
+    public Fragment getCurrentClass(int index) {
+        return fragMaps.get(index).get(fragMaps.get(index).size() - 1);
     }
 }
