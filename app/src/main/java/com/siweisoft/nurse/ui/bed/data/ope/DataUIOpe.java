@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
@@ -71,12 +72,12 @@ public class DataUIOpe extends BaseNurseUIOpe {
         getRightTV().setText("录入");
         getRightTV().setSelected(true);
         getRightTV().setVisibility(View.VISIBLE);
-
+        getMidTV().setSelected(true);
+        getMidTV().setVisibility(View.VISIBLE);
         getDateTV().setText(StringUtil.getStr(DateFormatUtil.convent_yyyyMMdd(new Date())));
     }
 
     public void initTitle(PatientAdditionDAOpe patientAdditionDAOpe) {
-        getMidTV().setVisibility(View.VISIBLE);
         getMidTV().setText(patientAdditionDAOpe.getPatientBedResBean().get住院号() + "" + patientAdditionDAOpe.getPatientBedResBean().get姓名());
     }
 
@@ -127,6 +128,9 @@ public class DataUIOpe extends BaseNurseUIOpe {
     public void init2() {
         dataAdapter = new DataAdapter4(context, containers, list);
         listView.setAdapter(dataAdapter);
+        for (int i = 0; i < dataAdapter.getGroupCount(); i++) {
+            listView.expandGroup(i);
+        }
     }
 
     public void initLeftListener(View.OnClickListener onClickListener) {

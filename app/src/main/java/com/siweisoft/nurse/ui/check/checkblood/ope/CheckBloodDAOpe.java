@@ -2,14 +2,14 @@ package com.siweisoft.nurse.ui.check.checkblood.ope;
 
 import android.content.Context;
 
-import com.siweisoft.lib.base.ui.fragment.CommonUIFrag;
+import com.siweisoft.lib.base.ui.common.CommonUIFrag2;
 import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
 
 /**
  * Created by ${viwmox} on 2017-03-01.
  */
 
-public class CheckBloodDAOpe<A extends CommonUIFrag> extends BaseDAOpe<A> {
+public class CheckBloodDAOpe<A extends CommonUIFrag2> extends BaseDAOpe<A> {
 
     String result;
 

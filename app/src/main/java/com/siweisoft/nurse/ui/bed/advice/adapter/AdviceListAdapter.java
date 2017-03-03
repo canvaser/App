@@ -8,11 +8,14 @@ import android.widget.BaseExpandableListAdapter;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemsClickListener;
+import com.siweisoft.lib.util.BitmapUtil;
 import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.bed.MyMission.bean.uibean.MyMissionHeadUIBean;
+import com.siweisoft.nurse.ui.bed.MyMission.ope.MyMissionStatusOpe;
 import com.siweisoft.nurse.ui.bed.advice.bean.resbean.AdviceResBean;
 import com.siweisoft.nurse.ui.bed.advice.bean.uibean.AdviceUIBean;
+import com.siweisoft.nurse.ui.mission.missionlist.ope.AreaMessionDAOpe;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,10 +34,13 @@ public class AdviceListAdapter extends BaseExpandableListAdapter implements View
 
     OnAppItemsClickListener onAppItemsClickListener;
 
+    AreaMessionDAOpe areaMessionDAOpe;
+
     public AdviceListAdapter(Context context, HashMap<String, ArrayList<AdviceResBean>> resBean) {
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.resBean = resBean;
+        areaMessionDAOpe = new AreaMessionDAOpe(context);
     }
 
 
@@ -95,10 +101,12 @@ public class AdviceListAdapter extends BaseExpandableListAdapter implements View
             adviceUIBean = new AdviceUIBean(context, convertView);
         }
         adviceUIBean = (AdviceUIBean) convertView.getTag();
+        int[] i = areaMessionDAOpe.isInJecting(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).getCodename());
+        BitmapUtil.getInstance().setBg(context, adviceUIBean.getCodeNameIV(), i[1]);
         adviceUIBean.getTvTitle().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get医嘱详情s()));
         adviceUIBean.getTypeTV().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).getKey()));
         adviceUIBean.getStartTV().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get开始时间s()));
-        adviceUIBean.getEndTV().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get结束时间s()));
+        //adviceUIBean.getEndTV().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get结束时间s()));
         adviceUIBean.getNumTV().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get医嘱IDs()));
         adviceUIBean.getRootV().setTag(R.id.position, childPosition);
         adviceUIBean.getRootV().setTag(R.id.groupposition, groupPosition);

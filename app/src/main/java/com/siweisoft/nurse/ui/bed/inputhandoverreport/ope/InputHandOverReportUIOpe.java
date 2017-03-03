@@ -113,4 +113,6 @@ public class InputHandOverReportUIOpe extends BaseNurseUIOpe {
     public RecordView getRecordingIV() {
         return recordingIV;
     }
+
+
 }

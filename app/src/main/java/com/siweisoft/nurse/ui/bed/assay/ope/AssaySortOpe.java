@@ -33,7 +33,7 @@ public class AssaySortOpe {
             assayAdapterBean.setApplyno(key);
             assayAdapterBean.setList(hashMap.get(key));
             assayAdapterBean.setTitle(assayAdapterBean.getList().get(0).getReporttitle());
-            assayAdapterBean.setTitle(assayAdapterBean.getList().get(0).getResulttime());
+            assayAdapterBean.setTime(assayAdapterBean.getList().get(0).getResulttime());
             Collections.sort(assayAdapterBean.getList(), new TimeSort());
             assayAdapterBeen.add(assayAdapterBean);
         }

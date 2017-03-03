@@ -15,7 +15,7 @@ import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
-import com.siweisoft.nurse.ui.addwater.addwater.fragment.AddWaterListFrag;
+import com.siweisoft.nurse.ui.addwater.addwater.fragment.AddWaterListFrag2;
 import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
 import com.siweisoft.lib.base.ui.netadapter.DelayUINetAdapter;
 import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
@@ -25,7 +25,7 @@ import com.siweisoft.nurse.ui.bed.advice.fragment.AdviceFrag;
 import com.siweisoft.nurse.ui.bed.assay.fragment.AssayFrag;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 import com.siweisoft.nurse.ui.bed.data.fragment.DataFrag;
-import com.siweisoft.nurse.ui.bed.handoverreport.fragment.HandOverReportFrag;
+import com.siweisoft.nurse.ui.bed.handoverreport.fragment.HandOverReportFrag2;
 import com.siweisoft.nurse.ui.bed.nurserecord.fragment.NurseRecordFrag;
 import com.siweisoft.nurse.ui.bed.patient.bean.resbean.PatientAdditionListResBean;
 import com.siweisoft.nurse.ui.bed.patient.bean.resbean.PatientAdditionResBean;
@@ -98,7 +98,8 @@ public class PatientFrag extends BaseNurseFrag {
                     PatientAdditionListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(), PatientAdditionListResBean.class);
                     ArrayList<PatientAdditionResBean> list = new PatientAdditionOpe().getThispatientAdditionList(resBean);
                     patientFragUIOpe.initAddionList(list);
-                    patientFragUIOpe.initTitle(patientAdditionDAOpe.getPatientBedResBean().get病床号() + " " + patientAdditionDAOpe.getPatientBedResBean().get姓名());
+                    patientFragUIOpe.setGuoMing(list);
+                    patientFragUIOpe.initTitle(patientAdditionDAOpe.getMidTitle());
                 }
                 if (onFinishListener != null) {
                     onFinishListener.onFinish(o);
@@ -122,7 +123,6 @@ public class PatientFrag extends BaseNurseFrag {
         super.onClick(view);
         switch (view.getId()) {
             case R.id.ll_baseinfo:
-            case R.id.iv_arrow:
                 if (patientFragUIOpe.getArrowIV().isEnabled()) {
                     patientFragUIOpe.getArrowIV().setSelected(!patientFragUIOpe.getArrowIV().isSelected());
                 }
@@ -194,7 +194,7 @@ public class PatientFrag extends BaseNurseFrag {
             case R.id.rl_handoverreport:
                 Bundle bundle4 = new Bundle();
                 bundle4.putSerializable(ValueConstant.DATA_DATA, patientAdditionDAOpe);
-                FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new HandOverReportFrag(), bundle4, ValueConstant.CODE_REQUSET1);
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new HandOverReportFrag2(), bundle4, ValueConstant.CODE_REQUSET1);
                 break;
             case R.id.rl_nurse_document:
                 Bundle bundle5 = new Bundle();
@@ -205,7 +205,7 @@ public class PatientFrag extends BaseNurseFrag {
             case R.id.rl_fluid_card:
                 Bundle bundle6 = new Bundle();
                 bundle6.putSerializable(ValueConstant.DATA_DATA, patientAdditionDAOpe);
-                FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new AddWaterListFrag(), bundle6, ValueConstant.CODE_REQUSET1);
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new AddWaterListFrag2(), bundle6, ValueConstant.CODE_REQUSET1);
                 break;
         }
 

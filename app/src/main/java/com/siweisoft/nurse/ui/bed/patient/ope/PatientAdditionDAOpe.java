@@ -54,4 +54,9 @@ public class PatientAdditionDAOpe extends BaseDABean {
     public void setPatientBedResBean(PatientBedResBean patientBedResBean) {
         this.patientBedResBean = patientBedResBean;
     }
+
+
+    public String getMidTitle() {
+        return getPatientBedResBean().get病床号() + "" + getPatientBedResBean().get姓名();
+    }
 }

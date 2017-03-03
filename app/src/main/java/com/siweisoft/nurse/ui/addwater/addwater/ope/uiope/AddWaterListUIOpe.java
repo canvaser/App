@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.siweisoft.app.R;
-import com.siweisoft.lib.base.ui.fragment.CommonUIFrag;
+import com.siweisoft.lib.base.ui.common.CommonUIFrag2;
 import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
@@ -17,7 +17,7 @@ import butterknife.BindView;
  * Created by ${viwmox} on 2017-02-17.
  */
 
-public class AddWaterListUIOpe<B extends CommonUIFrag> extends BaseNurseUIOpe<B> {
+public class AddWaterListUIOpe<B extends CommonUIFrag2> extends BaseNurseUIOpe<B> {
 
     @BindView(R.id.elv_elv)
     PinnedHeaderExpandableListView listView;

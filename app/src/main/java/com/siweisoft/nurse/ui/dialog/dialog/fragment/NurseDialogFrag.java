@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
@@ -116,6 +117,8 @@ public class NurseDialogFrag extends Fragment implements View.OnClickListener {
 
     }
 
+    boolean showing = false;
+
     @Override
     public void onClick(View v) {
         int anim = R.anim.anim_out_fast_mid;
@@ -133,11 +136,25 @@ public class NurseDialogFrag extends Fragment implements View.OnClickListener {
             recyclerView = nurseDialogUIOpe.getRecyclerView();
         }
 
-        AnimUtil.getInstance().startAnim(getActivity(), recyclerView, anim, new OnFinishListener() {
-            @Override
-            public void onFinish(Object o) {
-                getFragmentManager().beginTransaction().remove(NurseDialogFrag.this).commit();
-            }
-        });
+        if (!showing) {
+            AnimUtil.getInstance().startAnim(getActivity(), recyclerView, anim, new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+                    showing = true;
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+                    getFragmentManager().beginTransaction().remove(NurseDialogFrag.this).commit();
+                    showing = false;
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+        }
+
     }
 }

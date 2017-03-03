@@ -5,8 +5,7 @@ import android.os.Bundle;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.activity.BaseUIWithOutTitleActivity;
 import com.siweisoft.lib.util.FragmentUtil;
-import com.siweisoft.lib.util.LogUtil;
-import com.siweisoft.nurse.ui.user.login.fragment.LoginFrag;
+import com.siweisoft.nurse.ui.user.login.fragment.LoginFrag2;
 
 /**
  * Created by ${viwmox} on 2016-10-21.
@@ -21,7 +20,7 @@ public class LoginActivity extends BaseUIWithOutTitleActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FragmentUtil.getInstance().addToContaier(activity, new LoginFrag(), R.id.root);
+        FragmentUtil.getInstance().addToContaier(activity, new LoginFrag2(), R.id.root);
         //LogUtil.E(test());
     }
 

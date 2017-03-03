@@ -1,7 +1,6 @@
 package com.siweisoft.lib.base.ui.ope;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,9 +8,8 @@ import android.view.View;
 
 import com.siweisoft.lib.R;
 import com.siweisoft.lib.base.ui.adapter.PupListAdapter;
-import com.siweisoft.lib.base.ui.fragment.CommonUIFrag;
+import com.siweisoft.lib.base.ui.common.CommonUIFrag2;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
-import com.siweisoft.lib.base.ui.ope.BaseUIWithTitleOpe;
 import com.siweisoft.lib.util.menu.popup.PopupUtil;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 
@@ -20,7 +18,7 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-11-10.
  */
-public class BaseNurseUIOpe<A extends CommonUIFrag> extends BaseUIWithTitleOpe {
+public class BaseNurseUIOpe<A extends CommonUIFrag2> extends BaseUIWithTitleOpe {
 
 
     protected A frag;

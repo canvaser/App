@@ -67,6 +67,11 @@ public class DateFormatUtil {
         return format.format(date);
     }
 
+    public static String convent_MMddHHMM(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat(" MM-dd HH:mm");
+        return format.format(date);
+    }
+
     @SuppressLint("SimpleDateFormat")
     public static String convent_yyyyMMddHHMM(Date date) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");

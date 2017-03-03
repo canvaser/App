@@ -8,10 +8,9 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.lib.base.ui.fragment.BaseUIFragment;
-import com.siweisoft.lib.base.ui.fragment.CommonUIFrag;
-import com.siweisoft.lib.base.ui.ope.CommonOpes;
-import com.siweisoft.nurse.nursenet.NurseNetOpe;
+import com.siweisoft.lib.base.ui.common.CommonUIFrag2;
+import com.siweisoft.lib.base.ui.ope.BaseOpes;
+import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.base.ui.listener.BaseTextWather;
@@ -40,7 +39,7 @@ import butterknife.Optional;
 /**
  * Created by ${viwmox} on 2016-12-07.
  */
-public class LoginFrag extends CommonUIFrag<LoginUIOpe<LoginFrag>, LoginDAOpe<LoginFrag>> {
+public class LoginFrag2 extends CommonUIFrag2<LoginUIOpe<LoginFrag2>, LoginDAOpe<LoginFrag2>> {
 
 
     GetallregionbyuserResBean getallregionbyuserResBean;
@@ -48,7 +47,7 @@ public class LoginFrag extends CommonUIFrag<LoginUIOpe<LoginFrag>, LoginDAOpe<Lo
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        commonOpes.getUiOpe().getAccountEt().addTextChangedListener(new BaseTextWather() {
+        baseOpes.getUiOpe().getAccountEt().addTextChangedListener(new BaseTextWather() {
             @Override
             public void afterTextChanged(Editable s) {
                 // getData();
@@ -63,24 +62,25 @@ public class LoginFrag extends CommonUIFrag<LoginUIOpe<LoginFrag>, LoginDAOpe<Lo
     }
 
     public void getData(final OnFinishListener onFinishListener) {
-        SimpleNetOpe.onGetallregionbyuser(activity, commonOpes.getUiOpe().getAccountEt().getText().toString(), new UINetAdapter(activity) {
+        SimpleNetOpe.onGetallregionbyuser(activity, baseOpes.getUiOpe().getAccountEt().getText().toString(), new UINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
                 if (success) {
                     getallregionbyuserResBean = GsonUtil.getInstance().fromJson(o.toString(), GetallregionbyuserResBean.class);
                     if (getallregionbyuserResBean.getData().size() > 0) {
-                        commonOpes.getUiOpe().getAreaTV().setText(getallregionbyuserResBean.getData().get(0).getWardname());
-                        commonOpes.getDaOpe().setSuffix(getallregionbyuserResBean.getData().get(0).getSuffix());
-                        commonOpes.getDaOpe().setAreaName(getallregionbyuserResBean.getData().get(0).getWardname());
+                        baseOpes.getUiOpe().getAreaTV().setText(getallregionbyuserResBean.getData().get(0).getWardname());
+                        baseOpes.getDaOpe().setSuffix(getallregionbyuserResBean.getData().get(0).getSuffix());
+                        baseOpes.getDaOpe().setAreaName(getallregionbyuserResBean.getData().get(0).getWardname());
                         SPUtil.getInstance().init(activity).saveStr(ValueConstant.AREA_INFO, GsonUtil.getInstance().toJson(getallregionbyuserResBean.getData().get(0)));
+                        baseOpes.getUiOpe().getPwdEt().setText(StringUtil.getStr(SPUtil.getInstance().init(activity).getStr(ValueConstant.PWD)));
                     }
                     if (onFinishListener != null) {
                         onFinishListener.onFinish(true);
                     }
                 } else {
-                    commonOpes.getUiOpe().getAreaTV().setText("");
-                    commonOpes.getDaOpe().setSuffix("");
-                    commonOpes.getDaOpe().setAreaName("");
+                    baseOpes.getUiOpe().getAreaTV().setText("");
+                    baseOpes.getDaOpe().setSuffix("");
+                    baseOpes.getDaOpe().setAreaName("");
                     SPUtil.getInstance().init(activity).saveStr(ValueConstant.AREA_INFO, "");
                     if (onFinishListener != null) {
                         onFinishListener.onFinish(false);
@@ -96,13 +96,14 @@ public class LoginFrag extends CommonUIFrag<LoginUIOpe<LoginFrag>, LoginDAOpe<Lo
         switch (v.getId()) {
             case R.id.btn_login:
                 //LoadUtil.getInstance().onStartLoading(this);
-                SimpleNetOpe.onLogin(activity, commonOpes.getUiOpe().getAccountEt().getText().toString() + commonOpes.getDaOpe().getSuffix(), commonOpes.getUiOpe().getPwdEt().getText().toString(), new UINetAdapter(activity) {
+                SimpleNetOpe.onLogin(activity, baseOpes.getUiOpe().getAccountEt().getText().toString() + baseOpes.getDaOpe().getSuffix(), baseOpes.getUiOpe().getPwdEt().getText().toString(), new UINetAdapter(activity) {
 
                     @Override
                     public void onNetWorkResult(boolean success, Object o) {
                         if (success) {
                             DoLoginResBean doLoginResBean = GsonUtil.getInstance().fromJson(o.toString(), DoLoginResBean.class);
                             SPUtil.getInstance().init(activity).saveStr(ValueConstant.LOGIN_INFO, o.toString());
+                            SPUtil.getInstance().init(activity).saveStr(ValueConstant.PWD, baseOpes.getUiOpe().getPwdEt().getText().toString());
                             startActivity(new Intent(activity, IndexActivity.class));
                             activity.finish();
                         } else {
@@ -133,11 +134,11 @@ public class LoginFrag extends CommonUIFrag<LoginUIOpe<LoginFrag>, LoginDAOpe<Lo
                             @Override
                             public void onClick(View v) {
                                 TextView textView = (TextView) v;
-                                commonOpes.getUiOpe().getAreaTV().setText(textView.getText().toString());
+                                baseOpes.getUiOpe().getAreaTV().setText(textView.getText().toString());
                                 for (int i = 0; i < getallregionbyuserResBean.getData().size(); i++) {
-                                    if (getallregionbyuserResBean.getData().get(i).getWardname().equals(commonOpes.getUiOpe().getAreaTV().getText().toString())) {
-                                        commonOpes.getDaOpe().setSuffix(getallregionbyuserResBean.getData().get(i).getSuffix());
-                                        commonOpes.getDaOpe().setAreaName(getallregionbyuserResBean.getData().get(i).getWardname());
+                                    if (getallregionbyuserResBean.getData().get(i).getWardname().equals(baseOpes.getUiOpe().getAreaTV().getText().toString())) {
+                                        baseOpes.getDaOpe().setSuffix(getallregionbyuserResBean.getData().get(i).getSuffix());
+                                        baseOpes.getDaOpe().setAreaName(getallregionbyuserResBean.getData().get(i).getWardname());
                                         SPUtil.getInstance().init(activity).saveStr(ValueConstant.AREA_INFO, GsonUtil.getInstance().toJson(getallregionbyuserResBean.getData().get(i)));
                                     }
                                 }
@@ -157,7 +158,7 @@ public class LoginFrag extends CommonUIFrag<LoginUIOpe<LoginFrag>, LoginDAOpe<Lo
     @Override
     public int onCreateView(boolean create) {
         if (create) {
-            commonOpes = new CommonOpes<>(new LoginUIOpe<LoginFrag>(activity, getView()), new LoginDAOpe<LoginFrag>(activity));
+            baseOpes = new BaseOpes<>(new LoginUIOpe<LoginFrag2>(activity, getView()), new LoginDAOpe<LoginFrag2>(activity));
         }
         return R.layout.frag_login;
     }

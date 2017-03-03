@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
-import com.siweisoft.lib.base.ui.fragment.CommonUIFrag;
+import com.siweisoft.lib.base.ui.common.CommonUIFrag2;
 import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 
 import butterknife.BindView;
@@ -15,7 +15,7 @@ import butterknife.BindView;
  * Created by ${viwmox} on 2017-03-01.
  */
 
-public class CheckBloodUIOpe<A extends CommonUIFrag> extends BaseNurseUIOpe<A> {
+public class CheckBloodUIOpe<A extends CommonUIFrag2> extends BaseNurseUIOpe<A> {
 
     @BindView(R.id.tv_name)
     TextView tvName;

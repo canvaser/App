@@ -2,20 +2,18 @@ package com.siweisoft.nurse.ui.bed.bedlist.ope;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
-import android.view.animation.Animation;
 import android.widget.ImageView;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.bean.uibean.CommonUIBean;
+import com.siweisoft.lib.base.ui.common.CommonUIFrag2;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
 import com.siweisoft.lib.util.BitmapUtil;
 import com.siweisoft.lib.util.LogUtil;
 import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.nursevalue.DataValue;
-import com.siweisoft.nurse.ui.bed.bedlist.adapter.BedListAdapter;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.AdditionCodeResBean;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 
@@ -24,18 +22,21 @@ import java.util.ArrayList;
 /**
  * Created by ${viwmox} on 2016-11-30.
  */
-public class BedListDAOpe extends BaseDAOpe {
+public class BedListDAOpe<B extends CommonUIFrag2> extends BaseDAOpe<B> {
 
 
     ArrayList<PatientBedResBean> allList;
+
+    ArrayList<PatientBedResBean> validList = new ArrayList<>();
 
     ArrayList<PatientBedResBean> myList;
 
 
     private int index = 0;
 
-    public BedListDAOpe(Context context) {
+    public BedListDAOpe(Context context, B a) {
         super(context);
+        this.frag = a;
     }
 
     public int getIndex() {
@@ -158,6 +159,10 @@ public class BedListDAOpe extends BaseDAOpe {
 
                     int id = context.getResources().getIdentifier(age + "_" + sex + "_" + level, "drawable", context.getPackageName());
                     allList.get(i).setResId(id);
+
+                    if (!isEmptyBed(allList.get(i).get状态())) {
+                        validList.add(allList.get(i));
+                    }
                 }
                 return null;
             }
@@ -208,6 +213,10 @@ public class BedListDAOpe extends BaseDAOpe {
         }
     }
 
+    public ArrayList<PatientBedResBean> getValidList() {
+        return validList;
+    }
+
     public boolean isEmptyBed(String bed) {
         if (bed.equals("空床")) {
             return true;
@@ -231,6 +240,21 @@ public class BedListDAOpe extends BaseDAOpe {
         }
         return i;
     }
+
+    public int getNotNullBedSize(ArrayList<PatientBedResBean> data) {
+        if (data == null) {
+            return 0;
+        }
+        int i = 0;
+        for (int j = 0; j < data.size(); j++) {
+            if (!isEmptyBed(data.get(j).get状态())) {
+                i++;
+            }
+
+        }
+        return i;
+    }
+
 
     public boolean booleanICU(String status) {
         if (status.equals("ICU")) {

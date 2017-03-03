@@ -32,7 +32,7 @@ public class BedListAdapter extends AppRecycleAdapter {
     public BedListAdapter(Context context, ArrayList<PatientBedResBean> data) {
         super(context);
         this.data = data;
-        bedListDAOpe = new BedListDAOpe(context);
+        bedListDAOpe = new BedListDAOpe(context, null);
     }
 
 
@@ -49,11 +49,12 @@ public class BedListAdapter extends AppRecycleAdapter {
         BedUIBean bedUIBean = (BedUIBean) holder;
         if (bedListDAOpe.isEmptyBed(data.get(position).get状态())) {
             bedUIBean.getrV().setVisibility(View.INVISIBLE);
+            bedUIBean.itemView.setOnClickListener(null);
             bedUIBean.getEmptyTV().setText(StringUtil.getStr(data.get(position).get病床名() + "." + "空床"));
         } else {
             bedUIBean.getNumAndNameTV().setText(StringUtil.getStr(data.get(position).get病床名() + "." + data.get(position).get姓名()));
-            bedUIBean.getRootV().setTag(R.id.position, position);
-            bedUIBean.getRootV().setOnClickListener(this);
+            bedUIBean.itemView.setTag(R.id.position, position);
+            bedUIBean.itemView.setOnClickListener(this);
             bedUIBean.getrV().setVisibility(View.VISIBLE);
             bedUIBean.getEmptyTV().setText("");
 

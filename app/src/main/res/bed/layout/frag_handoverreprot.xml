@@ -4,8 +4,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout
+
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:isLoadMore="false"
+        app:wave_color="@color/color_base"
+        app:progress_size_type="normal"
+        android:background="@color/color_bg_refresh"
+        app:overlay="false"
+        app:wave_show="false"
+        app:wave_height_type="normal"
+        app:progress_show_circle_backgroud="false">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rcv_rcv"
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
+    </com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout>
 </LinearLayout>

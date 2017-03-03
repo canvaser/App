@@ -60,6 +60,7 @@ public class AddMyPatientFrag extends BaseNurseFrag implements OnAppItemClickLis
             public void onNetWorkResult(boolean success, Object o) {
                 if (success) {
                     AddMyPatientListAdapterBean resBean = GsonUtil.getInstance().fromJson(o.toString(), AddMyPatientListAdapterBean.class);
+                    new AddMyPatientSelectOpe(activity).removeEmpty(activity, resBean.getData());
                     addMyPatientUIOpe.initList(new AddMyPatientSelectOpe(activity).select(res, resBean.getData()));
                     addMyPatientUIOpe.getAddMyPatientListAdapter().setOnAppItemClickListener(AddMyPatientFrag.this);
                 }

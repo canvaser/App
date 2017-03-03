@@ -27,7 +27,7 @@
             android:clickable="true">
 
             <LinearLayout
-
+                android:id="@+id/ll_baseinfo"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -40,7 +40,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:orientation="horizontal"
-                    android:id="@+id/ll_baseinfo"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -73,14 +73,22 @@
                         <TextView
                             android:layout_marginTop="2dp"
                             android:gravity="center_vertical"
-                            android:id="@+id/tv_sex_age"
+                            android:id="@+id/tv_sex"
                             android:textColor="@color/black"
                             android:textSize="13sp"
                             android:text="性别：女 年龄：44岁"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
 
-
+                        <TextView
+                            android:layout_marginTop="2dp"
+                            android:gravity="center_vertical"
+                            android:id="@+id/tv_age"
+                            android:textColor="@color/black"
+                            android:textSize="13sp"
+                            android:text="性别：女 年龄：44岁"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
                         <TextView
                             android:layout_marginTop="2dp"
                             android:gravity="center_vertical"

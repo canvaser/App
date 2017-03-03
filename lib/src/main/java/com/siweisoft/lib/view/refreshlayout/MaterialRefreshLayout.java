@@ -19,6 +19,7 @@ import android.widget.FrameLayout;
 
 import com.siweisoft.lib.R;
 import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.system.HandleUtil;
 
 
 public class MaterialRefreshLayout extends FrameLayout {
@@ -538,6 +539,58 @@ public class MaterialRefreshLayout extends FrameLayout {
                 mSunLayout.onComlete(MaterialRefreshLayout.this);
             }
 
+            if (refreshListener != null) {
+                refreshListener.onfinish();
+            }
+        }
+        isRefreshing = false;
+        progressValue = 0;
+    }
+
+    public void finishRefreshingDelay(int time) {
+        if (mChildView != null) {
+            HandleUtil.getInstance().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ViewPropertyAnimatorCompat viewPropertyAnimatorCompat = ViewCompat.animate(mChildView);
+                    viewPropertyAnimatorCompat.setDuration(200);
+                    viewPropertyAnimatorCompat.y(ViewCompat.getTranslationY(mChildView));
+                    viewPropertyAnimatorCompat.translationY(0);
+                    viewPropertyAnimatorCompat.setInterpolator(new DecelerateInterpolator());
+                    viewPropertyAnimatorCompat.start();
+                }
+            }, time);
+            if (mMaterialHeaderView != null) {
+                mMaterialHeaderView.onComlete(MaterialRefreshLayout.this);
+            } else if (mSunLayout != null) {
+                mSunLayout.onComlete(MaterialRefreshLayout.this);
+            }
+            if (refreshListener != null) {
+                refreshListener.onfinish();
+            }
+        }
+        isRefreshing = false;
+        progressValue = 0;
+    }
+
+    public void finishRefreshingDelay() {
+        if (mChildView != null) {
+            HandleUtil.getInstance().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ViewPropertyAnimatorCompat viewPropertyAnimatorCompat = ViewCompat.animate(mChildView);
+                    viewPropertyAnimatorCompat.setDuration(200);
+                    viewPropertyAnimatorCompat.y(ViewCompat.getTranslationY(mChildView));
+                    viewPropertyAnimatorCompat.translationY(0);
+                    viewPropertyAnimatorCompat.setInterpolator(new DecelerateInterpolator());
+                    viewPropertyAnimatorCompat.start();
+                }
+            }, 500);
+            if (mMaterialHeaderView != null) {
+                mMaterialHeaderView.onComlete(MaterialRefreshLayout.this);
+            } else if (mSunLayout != null) {
+                mSunLayout.onComlete(MaterialRefreshLayout.this);
+            }
             if (refreshListener != null) {
                 refreshListener.onfinish();
             }

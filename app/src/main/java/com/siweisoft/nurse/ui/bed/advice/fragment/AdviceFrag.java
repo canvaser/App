@@ -31,6 +31,7 @@ import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
 import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.nurse.ui.bed.MyMission.bean.uibean.MyMissionHeadUIBean;
 import com.siweisoft.nurse.ui.bed.advice.bean.resbean.AdviceListResBean;
+import com.siweisoft.nurse.ui.bed.advice.ope.AdviceDAOpe;
 import com.siweisoft.nurse.ui.bed.advice.ope.AdviceUIOpe;
 import com.siweisoft.nurse.ui.bed.advice.ope.TimeSortOpe;
 import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
@@ -64,7 +65,7 @@ public class AdviceFrag extends BaseNurseFrag<AdviceUIOpe, NurseNetOpe, BaseDBOp
             return;
         }
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
-        getOpe().getUiOpe().initTitle(patientAdditionDAOpe.getPatientBedResBean().get住院号() + patientAdditionDAOpe.getPatientBedResBean().get姓名());
+        getOpe().getUiOpe().initTitle(patientAdditionDAOpe.getMidTitle());
         getOpe().getUiOpe().getDoubleExpandView().setOnHeaderUpdateListener(this);
         getOpe().getUiOpe().getDoubleExpandView().setOnChildClickListener(this);
         getOpe().getUiOpe().getMaterialRefreshLayout().setMaterialRefreshListener(this);
@@ -89,6 +90,7 @@ public class AdviceFrag extends BaseNurseFrag<AdviceUIOpe, NurseNetOpe, BaseDBOp
             public void onNetWorkResult(boolean success, Object o) {
                 if (success) {
                     AdviceListResBean adviceListResBean = GsonUtil.getInstance().fromJson(o.toString(), AdviceListResBean.class);
+                    new AdviceDAOpe().cutTime(adviceListResBean.getData());
                     getOpe().getUiOpe().initAdviceList(new TimeSortOpe().sortTime(adviceListResBean.getData()));
                 }
                 if (onFinishListener != null) {

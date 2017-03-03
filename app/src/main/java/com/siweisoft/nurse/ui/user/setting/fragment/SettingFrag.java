@@ -10,7 +10,7 @@ import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.lib.constant.UrlConstant;
 import com.siweisoft.lib.util.FragmentUtil;
 import com.siweisoft.lib.util.NullUtil;
-import com.siweisoft.nurse.ui.user.login.fragment.LoginFrag;
+import com.siweisoft.nurse.ui.user.login.fragment.LoginFrag2;
 import com.siweisoft.nurse.ui.user.setting.ope.SettingUIOpe;
 
 import butterknife.OnClick;
@@ -38,12 +38,12 @@ public class SettingFrag extends BaseUIFragment {
     public void onClickEvent(View v) {
         switch (v.getId()) {
             case BaseID.ID_BACK:
-                FragmentUtil.getInstance().removeFrag(activity, this, LoginFrag.class.getSimpleName());
+                FragmentUtil.getInstance().removeFrag(activity, this, LoginFrag2.class.getSimpleName());
                 break;
             case R.id.btn_submit:
                 if (!NullUtil.isStrEmpty(settingUIOpe.getNewET().getText().toString())) {
                     UrlConstant.URI = settingUIOpe.getNewET().getText().toString() + "/api.cshtml?key=";
-                    FragmentUtil.getInstance().removeFrag(activity, this, LoginFrag.class.getSimpleName());
+                    FragmentUtil.getInstance().removeFrag(activity, this, LoginFrag2.class.getSimpleName());
                 }
                 break;
         }

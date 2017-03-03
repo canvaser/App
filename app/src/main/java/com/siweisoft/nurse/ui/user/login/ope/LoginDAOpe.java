@@ -2,15 +2,14 @@ package com.siweisoft.nurse.ui.user.login.ope;
 
 import android.content.Context;
 
-import com.siweisoft.lib.base.ui.fragment.CommonUIFrag;
+import com.siweisoft.lib.base.ui.common.CommonUIFrag2;
 import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
-import com.siweisoft.lib.base.ui.ope.BaseOpe;
 
 
 /**
  * Created by ${viwmox} on 2016-11-28.
  */
-public class LoginDAOpe<A extends CommonUIFrag> extends BaseDAOpe<A> {
+public class LoginDAOpe<A extends CommonUIFrag2> extends BaseDAOpe<A> {
 
 
     private String suffix;

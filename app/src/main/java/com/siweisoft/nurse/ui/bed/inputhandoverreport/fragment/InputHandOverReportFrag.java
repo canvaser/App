@@ -1,5 +1,6 @@
 package com.siweisoft.nurse.ui.bed.inputhandoverreport.fragment;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -69,7 +70,6 @@ public class InputHandOverReportFrag extends BaseNurseFrag implements RecordView
         inputHORDAOpe.setType(getArguments().getString(ValueConstant.DATA_TYPE));
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
         inputHandOverReportUIOpe = new InputHandOverReportUIOpe(activity, getView());
-        inputHandOverReportUIOpe.setContent(inputHORDAOpe.getShiftDuteResBean().get内容());
         inputHORDAOpe.setStatus(inputHandOverReportUIOpe.getStr()[0]);
         inputHORNetOpe = new NurseNetOpe(activity);
         inputHandOverReportUIOpe.getRecordingIV().setRecordListener(this);
@@ -78,7 +78,7 @@ public class InputHandOverReportFrag extends BaseNurseFrag implements RecordView
             File file = MethodValue.getRecordFile("" + System.currentTimeMillis());
             inputHORDAOpe.setFile(file);
             TestBase64.byte2File(inputHORDAOpe.getShiftDuteResBean().getAudio().getBytes(), file);
-
+            inputHandOverReportUIOpe.setContent(inputHORDAOpe.getShiftDuteResBean().get内容());
         }
     }
 
@@ -153,12 +153,14 @@ public class InputHandOverReportFrag extends BaseNurseFrag implements RecordView
     public void start(RecordView recordView) {
         inputHORDAOpe.setFile(MethodValue.getRecordFile(System.currentTimeMillis() + ""));
         inputHandOverReportUIOpe.getShowIV().setVisibility(View.VISIBLE);
+        ((AnimationDrawable) inputHandOverReportUIOpe.getShowIV().getBackground()).start();
         inputHORDAOpe.setMediaRecorder(VoiceUtil.getInstance().startRecording(activity, inputHORDAOpe.getFile()));
     }
 
     @Override
     public void stop(RecordView recordView, long time) {
         inputHandOverReportUIOpe.getShowIV().setVisibility(View.GONE);
+        ((AnimationDrawable) inputHandOverReportUIOpe.getShowIV().getBackground()).stop();
         inputHandOverReportUIOpe.getRecordingIV().setVisibility(View.GONE);
         inputHandOverReportUIOpe.getRecordIV().setVisibility(View.VISIBLE);
         inputHandOverReportUIOpe.getTimeTV().setVisibility(View.VISIBLE);

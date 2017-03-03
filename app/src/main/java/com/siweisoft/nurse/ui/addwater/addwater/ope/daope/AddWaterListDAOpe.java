@@ -2,7 +2,7 @@ package com.siweisoft.nurse.ui.addwater.addwater.ope.daope;
 
 import android.content.Context;
 
-import com.siweisoft.lib.base.ui.fragment.CommonUIFrag;
+import com.siweisoft.lib.base.ui.common.CommonUIFrag2;
 import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.nurse.ui.addwater.addwater.bean.netbean.AddWaterListResBean;
@@ -12,7 +12,7 @@ import com.siweisoft.nurse.ui.bed.patient.ope.PatientAdditionDAOpe;
  * Created by ${viwmox} on 2017-02-17.
  */
 
-public class AddWaterListDAOpe<A extends CommonUIFrag> extends BaseDAOpe<A> {
+public class AddWaterListDAOpe<A extends CommonUIFrag2> extends BaseDAOpe<A> {
 
     AddWaterListResBean addWaterListResBean;
 

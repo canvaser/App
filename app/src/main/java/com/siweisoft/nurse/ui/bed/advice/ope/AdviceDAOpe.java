@@ -1,8 +1,12 @@
 package com.siweisoft.nurse.ui.bed.advice.ope;
 
 import com.siweisoft.lib.base.ui.bean.databean.BaseDABean;
+import com.siweisoft.lib.util.NullUtil;
+import com.siweisoft.lib.util.data.DateFormatUtil;
+import com.siweisoft.nurse.ui.bed.advice.bean.resbean.AdviceResBean;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 /**
@@ -40,6 +44,23 @@ public class AdviceDAOpe extends BaseDABean {
             return patientBedResBeen.get(position);
         }
         return patientBedResBean;
+    }
+
+
+    public void cutTime(ArrayList<AdviceResBean> data) {
+        if (data == null) {
+            return;
+        }
+        for (int i = 0; i < data.size(); i++) {
+            if (NullUtil.isStrEmpty(data.get(i).get结束时间s())) {
+                continue;
+            }
+            try {
+                data.get(i).set结束时间s(DateFormatUtil.convent_MMddHHMM(DateFormatUtil.convent_yyyyMMddHHmmss(data.get(i).get结束时间s())));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 

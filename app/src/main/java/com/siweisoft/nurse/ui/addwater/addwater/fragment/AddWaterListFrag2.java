@@ -8,10 +8,10 @@ import android.widget.AbsListView;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.adapter.AppBaseExpandableListAdapter;
-import com.siweisoft.lib.base.ui.fragment.CommonUIFrag;
+import com.siweisoft.lib.base.ui.common.CommonUIFrag2;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemsClickListener;
 import com.siweisoft.lib.base.ui.netadapter.DelayUINetAdapter;
-import com.siweisoft.lib.base.ui.ope.CommonOpes;
+import com.siweisoft.lib.base.ui.ope.BaseOpes;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.StringUtil;
@@ -40,18 +40,18 @@ import butterknife.OnClick;
  * Created by ${viwmox} on 2017-02-17.
  */
 //补液卡
-public class AddWaterListFrag extends CommonUIFrag<AddWaterListUIOpe<AddWaterListFrag>, AddWaterListDAOpe<AddWaterListFrag>>
+public class AddWaterListFrag2 extends CommonUIFrag2<AddWaterListUIOpe<AddWaterListFrag>, AddWaterListDAOpe<AddWaterListFrag>>
         implements PinnedHeaderExpandableListView.OnHeaderUpdateListener, OnAppItemsClickListener {
 
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (!commonOpes.getDaOpe().canGoOn()) {
+        if (!baseOpes.getDaOpe().canGoOn()) {
             return;
         }
-        commonOpes.getDaOpe().setPatientAdditionDAOpe((PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA));
-        commonOpes.getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        baseOpes.getDaOpe().setPatientAdditionDAOpe((PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA));
+        baseOpes.getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
     }
 
 
@@ -64,13 +64,13 @@ public class AddWaterListFrag extends CommonUIFrag<AddWaterListUIOpe<AddWaterLis
 
     @Override
     public void updatePinnedHeader(View headerView, int firstVisibleGroupPos) {
-        if (commonOpes.getDaOpe() == null || commonOpes.getDaOpe().getAddWaterListResBean() == null || firstVisibleGroupPos < 0 || commonOpes.getDaOpe().getAddWaterListResBean().getData().get(firstVisibleGroupPos) == null) {
+        if (baseOpes.getDaOpe() == null || baseOpes.getDaOpe().getAddWaterListResBean() == null || firstVisibleGroupPos < 0 || baseOpes.getDaOpe().getAddWaterListResBean().getData().get(firstVisibleGroupPos) == null) {
             headerView.setVisibility(View.GONE);
             return;
         }
         headerView.setVisibility(View.VISIBLE);
         AddWaterListHeadUIBean uiBean = new AddWaterListHeadUIBean(activity, headerView);
-        uiBean.getNameTV().setText(StringUtil.getStr(commonOpes.getDaOpe().getAddWaterListResBean().getData().get(firstVisibleGroupPos).getAdvCon() + commonOpes.getDaOpe().getAddWaterListResBean().getData().get(firstVisibleGroupPos).getStart()));
+        uiBean.getNameTV().setText(StringUtil.getStr(baseOpes.getDaOpe().getAddWaterListResBean().getData().get(firstVisibleGroupPos).getAdvCon() + baseOpes.getDaOpe().getAddWaterListResBean().getData().get(firstVisibleGroupPos).getStart()));
     }
 
     @Override
@@ -88,9 +88,9 @@ public class AddWaterListFrag extends CommonUIFrag<AddWaterListUIOpe<AddWaterLis
                 DialogUtil.showTimePick(activity, getFragmentManager(), "date", Type.ALL, new OnDateSetListener() {
                     @Override
                     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
-                        commonOpes.getDaOpe().setStartTime(DateFormatUtil.convent_yyyyMMddHHMM(new Date(millseconds)));
-                        commonOpes.getDaOpe().setEndtime(DateFormatUtil.getTomorromTimeYYYYMMdd() + " 00:00");
-                        commonOpes.getUiOpe().getRefreshLayout().autoRefresh();
+                        baseOpes.getDaOpe().setStartTime(DateFormatUtil.convent_yyyyMMddHHMM(new Date(millseconds)));
+                        baseOpes.getDaOpe().setEndtime(DateFormatUtil.getTomorromTimeYYYYMMdd() + " 00:00");
+                        baseOpes.getUiOpe().getRefreshLayout().autoRefresh();
                     }
                 });
                 break;
@@ -99,16 +99,16 @@ public class AddWaterListFrag extends CommonUIFrag<AddWaterListUIOpe<AddWaterLis
 
     @Override
     public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
-        SimpleNetOpe.addwater_list(activity, commonOpes.getDaOpe().getPatientAdditionDAOpe().getPatientBedResBean().get住院号(), "71", commonOpes.getDaOpe().getStartTime(), commonOpes.getDaOpe().getEndtime(), new DelayUINetAdapter(activity) {
+        SimpleNetOpe.addwater_list(activity, baseOpes.getDaOpe().getPatientAdditionDAOpe().getPatientBedResBean().get住院号(), "71", baseOpes.getDaOpe().getStartTime(), baseOpes.getDaOpe().getEndtime(), new DelayUINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
                 if (success) {
-                    commonOpes.getDaOpe().setAddWaterListResBean(GsonUtil.getInstance().fromJson(o.toString(), AddWaterListResBean.class));
-                    commonOpes.getUiOpe().initList(commonOpes.getDaOpe().getAddWaterListResBean());
-                    commonOpes.getUiOpe().getListView().setOnHeaderUpdateListener(AddWaterListFrag.this);
+                    baseOpes.getDaOpe().setAddWaterListResBean(GsonUtil.getInstance().fromJson(o.toString(), AddWaterListResBean.class));
+                    baseOpes.getUiOpe().initList(baseOpes.getDaOpe().getAddWaterListResBean());
+                    baseOpes.getUiOpe().getListView().setOnHeaderUpdateListener(AddWaterListFrag2.this);
                 }
-                commonOpes.getUiOpe().getRefreshLayout().finishRefresh();
-                ((AppBaseExpandableListAdapter) (commonOpes.getUiOpe().getListView().getExpandableListAdapter())).setOnAppItemsClickListener(AddWaterListFrag.this);
+                baseOpes.getUiOpe().getRefreshLayout().finishRefresh();
+                ((AppBaseExpandableListAdapter) (baseOpes.getUiOpe().getListView().getExpandableListAdapter())).setOnAppItemsClickListener(AddWaterListFrag2.this);
             }
         });
     }
@@ -116,7 +116,7 @@ public class AddWaterListFrag extends CommonUIFrag<AddWaterListUIOpe<AddWaterLis
     @Override
     public int onCreateView(boolean create) {
         if (create) {
-            commonOpes = new CommonOpes<>(new AddWaterListUIOpe<AddWaterListFrag>(activity, getView(), this), new AddWaterListDAOpe<AddWaterListFrag>(activity, this));
+            baseOpes = new BaseOpes<>(new AddWaterListUIOpe<AddWaterListFrag2>(activity, getView(), this), new AddWaterListDAOpe<AddWaterListFrag2>(activity, this));
         }
         return R.layout.frag_addwater_list;
     }

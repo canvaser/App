@@ -1,4 +1,4 @@
-package com.siweisoft.lib.base.ui.ope;
+package com.siweisoft.lib.base.ui.common;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by ${viwmox} on 2016-12-21.
  */
 
-public class CommonOpes<A extends BaseUIOpe, B extends BaseDAOpe> implements Serializable {
+public class CommonOpes<A extends CommonUIOpe, B extends CommonDAOpe> implements Serializable {
 
     A uiOpe;
 

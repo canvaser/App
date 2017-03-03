@@ -3,6 +3,7 @@ package com.siweisoft.nurse.ui.bed.inputdata.adapter;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.view.View;
@@ -19,10 +20,16 @@ import com.siweisoft.lib.util.DatePickUitl;
 import com.siweisoft.lib.util.SheetDialogUtil;
 import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.lib.util.data.DateFormatUtil;
+import com.siweisoft.lib.util.dialog.DialogUtil;
 import com.siweisoft.lib.util.file.TimePickUtil;
 import com.siweisoft.lib.view.bottomdialogmenuview.BottomDialogMenuView;
+import com.siweisoft.lib.view.pickerview.data.Type;
+import com.siweisoft.lib.view.pickerview.listener.OnDateSetListener;
 import com.siweisoft.nurse.ui.bed.data.bean.resbean.DataTemplateResBean;
 import com.siweisoft.nurse.ui.bed.inputdata.bean.uibean.InputDataUIBean;
+
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by ${viwmox} on 2016-11-25.
@@ -31,9 +38,12 @@ public class InputDataListAdapter extends AppRecycleAdapter {
 
     DataTemplateResBean data;
 
+    FragmentActivity fragmentActivity;
+
     public InputDataListAdapter(Context context, DataTemplateResBean data) {
         super(context);
         this.data = data;
+        fragmentActivity = (FragmentActivity) context;
     }
 
     @Override
@@ -70,6 +80,7 @@ public class InputDataListAdapter extends AppRecycleAdapter {
         uiBean.getNameTV().setText(StringUtil.getStr(data.getData().get(position).getSignname()));
         switch (getItemViewType(position)) {
             case 0:
+                uiBean.getValueTV().setText(StringUtil.getStr(data.getData().get(position).getItems().get(0).get(0)));
                 uiBean.getValueTV().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -90,16 +101,12 @@ public class InputDataListAdapter extends AppRecycleAdapter {
                 uiBean.getValueTV().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(final View v) {
-                        DatePickUitl.getInstance().showDatePickDialog(context, new DatePickerDialog.OnDateSetListener() {
+                        DialogUtil.showTimePick(context, fragmentActivity.getSupportFragmentManager(), "date", Type.ALL, new OnDateSetListener() {
                             @Override
-                            public void onDateSet(DatePicker view, final int year, final int month, final int dayOfMonth) {
-                                TimePickUtil.getInstance().showTimePickDialog(context, new TimePickerDialog.OnTimeSetListener() {
-                                    @Override
-                                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                                        data.getData().get(position).setValue(DateFormatUtil.getYYYYMMDDHHMM(year, month, dayOfMonth, hourOfDay, minute));
-                                        uiBean.getValueTV().setText(data.getData().get(position).getValue());
-                                    }
-                                });
+                            public void onDateSet(com.siweisoft.lib.view.pickerview.TimePickerDialog timePickerView, long millseconds) {
+                                data.getData().get(position).setValue(DateFormatUtil.convent_yyyyMMddHHmmss(new Date(millseconds)));
+                                uiBean.getValueTV().setText(data.getData().get(position).getValue());
+
                             }
                         });
                     }

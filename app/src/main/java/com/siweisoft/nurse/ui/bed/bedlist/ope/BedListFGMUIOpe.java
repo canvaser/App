@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.animation.Animation;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.base.ui.common.CommonUIFrag2;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.LogUtil;
@@ -25,7 +26,7 @@ import butterknife.BindView;
 /**
  * Created by ${viwmox} on 2016-11-08.
  */
-public class BedListFGMUIOpe extends BaseNurseUIOpe {
+public class BedListFGMUIOpe<A extends CommonUIFrag2> extends BaseNurseUIOpe<A> {
 
     @BindView(R.id.refresh)
     MaterialRefreshLayout refreshLayout;
@@ -36,8 +37,9 @@ public class BedListFGMUIOpe extends BaseNurseUIOpe {
     BedListAdapter bedListAdapter;
 
 
-    public BedListFGMUIOpe(Context context, View convertView) {
+    public BedListFGMUIOpe(Context context, View convertView, A a) {
         super(context, convertView);
+        this.frag = a;
         init();
     }
 
@@ -49,6 +51,7 @@ public class BedListFGMUIOpe extends BaseNurseUIOpe {
         getRightTV().setVisibility(View.VISIBLE);
         getRightTV().setSelected(true);
         getRightTV().setText("增加");
+        getRefreshLayout().setMaterialRefreshListener(frag);
 
     }
 

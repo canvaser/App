@@ -1,4 +1,4 @@
-package com.siweisoft.lib.base.ui.fragment;
+package com.siweisoft.lib.base.ui.common;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,18 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.lib.R;
+import com.siweisoft.lib.base.ui.fragment.BaseFrg;
 import com.siweisoft.lib.base.ui.interf.FragIntef;
 import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
 import com.siweisoft.lib.base.ui.ope.BaseUIOpe;
-import com.siweisoft.lib.base.ui.ope.CommonOpes;
+import com.siweisoft.lib.base.ui.ope.BaseOpes;
 import com.siweisoft.lib.constant.ValueConstant;
-import com.siweisoft.lib.util.NullUtil;
 import com.siweisoft.lib.util.fragment.FragManager;
-import com.siweisoft.lib.uuzuche.lib_zxing.view.ViewfinderView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
-
-import java.util.Objects;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -27,13 +24,13 @@ import butterknife.Unbinder;
  * Created by ${viwmox} on 2017-02-27.
  */
 
-public abstract class CommonUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseFrg implements View.OnClickListener, MaterialRefreshListener, FragIntef {
+public abstract class CommonUIFrag2<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseFrg implements View.OnClickListener, MaterialRefreshListener, FragIntef {
 
     private Unbinder unbinder;
 
     protected int index;
 
-    protected CommonOpes<A, B> commonOpes;
+    protected BaseOpes<A, B> baseOpes;
 
     View backView;
 
@@ -81,6 +78,10 @@ public abstract class CommonUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> ext
 
     }
 
+    public void onCmd(Bundle bundle) {
+
+    }
+
     @Override
     public void onClick(View v) {
         if (v == backView) {
@@ -107,5 +108,11 @@ public abstract class CommonUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> ext
 
     }
 
+    public BaseOpes<A, B> getBaseOpes() {
+        return baseOpes;
+    }
 
+    public int getIndex() {
+        return index;
+    }
 }

@@ -1,6 +1,7 @@
 package com.siweisoft.nurse.ui.bed.patient.ope;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,6 +12,8 @@ import com.siweisoft.app.R;
 import com.siweisoft.lib.util.BitmapUtil;
 import com.siweisoft.lib.util.NullUtil;
 import com.siweisoft.lib.util.StringUtil;
+import com.siweisoft.lib.util.string.TextUtil;
+import com.siweisoft.lib.view.chart.linearchat.bean.databean.Value;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
@@ -49,8 +52,12 @@ public class PatientFragUIOpe extends BaseNurseUIOpe {
     TextView nameTV;
 
 
-    @BindView(R.id.tv_sex_age)
-    TextView sexAndAgeTV;
+    @BindView(R.id.tv_sex)
+    TextView sexTV;
+
+
+    @BindView(R.id.tv_age)
+    TextView ageTV;
 
     @BindView(R.id.tv_eat)
     TextView eatTV;
@@ -124,30 +131,42 @@ public class PatientFragUIOpe extends BaseNurseUIOpe {
 
 
         getNameTV().setText(StringUtil.getStr(resBean.get姓名()));
-        getSexAndAgeTV().setText("性别:  " + StringUtil.getStr(resBean.get性别()) + "  年龄:  " + StringUtil.getStr(resBean.getPatAge()) + "岁");
-        getEatTV().setText("膳食信息:  " + StringUtil.getStr(resBean.getLS31()));
+        TextUtil.getInstance().setText(getAgeTV(), "年龄:  " + StringUtil.getStr(resBean.getPatAge()) + "岁", "年龄:  ".length(), Color.GRAY, Color.BLACK);
+        TextUtil.getInstance().setText(getSexTV(), "性别:  " + StringUtil.getStr(resBean.get性别()), "性别:  ".length(), Color.GRAY, Color.BLACK);
+        TextUtil.getInstance().setText(getTelTV(), "电话号码:  " + resBean.get联系电话(), "电话号码:  ".length(), Color.GRAY, Color.BLACK);
+        TextUtil.getInstance().setText(getEatTV(), "膳食信息:  " + StringUtil.getStr(resBean.getLS31()), "膳食信息:  ".length(), Color.GRAY, Color.BLACK);
+        TextUtil.getInstance().setText(getTelTV(), "电话号码:  " + resBean.get联系电话(), "电话号码:  ".length(), Color.GRAY, Color.BLACK);
+        TextUtil.getInstance().setText(getZyhTV(), "住院号  :  " + resBean.get住院号(), "住院号  :  ".length(), Color.GRAY, Color.BLACK);
+        TextUtil.getInstance().setText(getBrithTV(), "出生日期:  " + resBean.get出生日期(), "出生日期:  ".length(), Color.GRAY, Color.BLACK);
+        TextUtil.getInstance().setText(getTypeTV(), "就诊类型:  " + resBean.get就诊类型名称(), "就诊类型:  ".length(), Color.GRAY, Color.BLACK);
+        TextUtil.getInstance().setText(getStartTimeTV(), "入院时间:  " + resBean.get入院时间(), "入院时间:  ".length(), Color.GRAY, Color.BLACK);
+        TextUtil.getInstance().setText(getWhatTV(), "入院诊断:  " + StringUtil.getStr(resBean.get诊断名称()), "入院诊断:  ".length(), Color.GRAY, Color.BLACK);
 
-
-        getTelTV().setText("电话号码:  " + resBean.get联系电话());
-        getZyhTV().setText("住院号  :  " + resBean.get住院号());
-        getBrithTV().setText("出生日期:  " + resBean.get出生日期());
-        getTypeTV().setText("就诊类型:  " + resBean.get就诊类型名称());
-        getStartTimeTV().setText("入院时间:  " + resBean.get入院时间());
-        getWhatTV().setText("入院诊断:  " + StringUtil.getStr(resBean.get诊断名称()));
         String srt = "";
         for (int i = 0; i < resBean.getLA54().size(); i++) {
             srt += resBean.getLA54().get(i) + "\n\t";
         }
         if (srt.endsWith("\n\t")) {
-            srt.substring(0, srt.length() - "\n\t".length());
+            srt = srt.substring(0, srt.length() - "\n\t".length());
         }
-
-        getSsTimeTV().setText("手术记录:  " + (srt.equals("") ? "无" : srt));
-        getOutTimeTV().setText("预出院日:  " + (NullUtil.isStrEmpty(resBean.get出院时间()) ? "暂无" : resBean.get出院时间()));
+        TextUtil.getInstance().setText(getSsTimeTV(), "手术记录:  " + (srt.equals("") ? "无" : srt), "手术记录:  ".length(), Color.GRAY, Color.BLACK);
+        TextUtil.getInstance().setText(getOutTimeTV(), "预出院日:  " + (NullUtil.isStrEmpty(resBean.get出院时间()) ? "暂无" : resBean.get出院时间()), "预出院日:  ".length(), Color.GRAY, Color.BLACK);
 
         BitmapUtil.getInstance().setBg(context, getHeadIV(), resBean.getResId());
 
 
+    }
+
+    public void setGuoMing(ArrayList<PatientAdditionResBean> resBeen) {
+        String value = "无";
+        for (int i = 0; i < resBeen.size(); i++) {
+            if (resBeen.get(i).getType().equals("过敏")) {
+                value = resBeen.get(i).getValue();
+                TextUtil.getInstance().setText(getGuoMingTV(), "药物过敏:  " + value, "药物过敏:  ".length(), Color.RED, Color.RED);
+                return;
+            }
+        }
+        TextUtil.getInstance().setText(getGuoMingTV(), "药物过敏:  " + value, "药物过敏:  ".length(), Color.GRAY, Color.BLACK);
     }
 
     public void initAddionList(ArrayList<PatientAdditionResBean> resBeen) {
@@ -204,8 +223,8 @@ public class PatientFragUIOpe extends BaseNurseUIOpe {
         return resBeen;
     }
 
-    public TextView getSexAndAgeTV() {
-        return sexAndAgeTV;
+    public TextView getAgeTV() {
+        return ageTV;
     }
 
     public TextView getBrithTV() {
@@ -250,5 +269,9 @@ public class PatientFragUIOpe extends BaseNurseUIOpe {
 
     public MaterialRefreshLayout getRefreshLayout() {
         return refreshLayout;
+    }
+
+    public TextView getSexTV() {
+        return sexTV;
     }
 }

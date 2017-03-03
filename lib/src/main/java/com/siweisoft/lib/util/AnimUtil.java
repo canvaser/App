@@ -204,4 +204,10 @@ public class AnimUtil {
             }
         });
     }
+
+    public void startAnim(Context context, View view, int aimres, final Animation.AnimationListener listener) {
+        Animation animation = AnimationUtils.loadAnimation(context, aimres);
+        view.startAnimation(animation);
+        animation.setAnimationListener(listener);
+    }
 }

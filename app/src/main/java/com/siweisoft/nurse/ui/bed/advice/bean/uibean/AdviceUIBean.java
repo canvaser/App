@@ -2,6 +2,7 @@ package com.siweisoft.nurse.ui.bed.advice.bean.uibean;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -31,6 +32,8 @@ public class AdviceUIBean extends BaseUIBean {
     @BindView(R.id.tv_num)
     TextView numTV;
 
+    @BindView(R.id.iv_codename)
+    ImageView codeNameIV;
 
     public AdviceUIBean(Context context, View convertView) {
         super(context, convertView);
@@ -54,5 +57,9 @@ public class AdviceUIBean extends BaseUIBean {
 
     public TextView getTypeTV() {
         return typeTV;
+    }
+
+    public ImageView getCodeNameIV() {
+        return codeNameIV;
     }
 }

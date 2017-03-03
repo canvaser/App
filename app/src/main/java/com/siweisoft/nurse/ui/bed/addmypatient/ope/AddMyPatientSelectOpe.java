@@ -5,6 +5,7 @@ import android.content.Context;
 import com.siweisoft.lib.base.ui.ope.BaseOpe;
 import com.siweisoft.nurse.ui.bed.addmypatient.bean.AddMyPatientAdapterBean;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
+import com.siweisoft.nurse.ui.bed.bedlist.ope.BedListDAOpe;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,7 @@ public class AddMyPatientSelectOpe extends BaseOpe {
             return been;
         }
         for (int i = 0; i < been.size(); i++) {
+
             for (int j = 0; j < resBeen.size(); j++) {
                 if (been.get(i).get住院号().equals(resBeen.get(j).get住院号())) {
                     been.get(i).setSelect(true);
@@ -30,5 +32,18 @@ public class AddMyPatientSelectOpe extends BaseOpe {
             }
         }
         return been;
+    }
+
+    public void removeEmpty(Context context, ArrayList<AddMyPatientAdapterBean> data) {
+        if (data == null) {
+            return;
+        }
+        BedListDAOpe bedListDAOpe = new BedListDAOpe(context, null);
+        for (int i = 0; i < data.size(); i++) {
+            if (bedListDAOpe.isEmptyBed(data.get(i).get状态())) {
+                data.remove(i);
+                i--;
+            }
+        }
     }
 }

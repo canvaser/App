@@ -35,7 +35,7 @@ public class DialogUtil {
         alertDialog.setCancelable(true);
 //        alertDialog.setView(view);
         alertDialog.getWindow().setWindowAnimations(R.style.fadein);
-        alertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        // alertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
         alertDialog.show();
         alertDialog.getWindow().setContentView(view);
 

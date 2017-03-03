@@ -48,7 +48,7 @@ public class AssayFrag extends BaseNurseFrag<AssayUIOpe, NurseNetOpe, BaseDBOpe,
             return;
         }
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
-        getOpe().getUiOpe().initTitle(patientAdditionDAOpe.getPatientBedResBean().get住院号() + patientAdditionDAOpe.getPatientBedResBean().get姓名());
+        getOpe().getUiOpe().initTitle(patientAdditionDAOpe.getMidTitle());
         getOpe().getUiOpe().getRefreshLayout().setMaterialRefreshListener(this);
         getOpe().getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
     }
@@ -111,7 +111,7 @@ public class AssayFrag extends BaseNurseFrag<AssayUIOpe, NurseNetOpe, BaseDBOpe,
                     @Override
                     public void onAppItemClick(View view, int position) {
                         patientAdditionDAOpe.setPosition(position);
-                        getOpe().getUiOpe().initTitle(patientAdditionDAOpe.getPatientBedResBean().get住院号() + patientAdditionDAOpe.getPatientBedResBean().get姓名());
+                        getOpe().getUiOpe().initTitle(patientAdditionDAOpe.getMidTitle());
                         getOpe().getUiOpe().getRefreshLayout().autoRefresh();
                     }
                 });

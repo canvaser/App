@@ -1,12 +1,10 @@
 package com.siweisoft.lib.base.ui.ope;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
 
-import com.siweisoft.lib.base.ui.fragment.CommonUIFrag;
-import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.base.ui.common.CommonUIFrag2;
 
-public class BaseDAOpe<A extends CommonUIFrag> extends BaseOpe {
+public class BaseDAOpe<A extends CommonUIFrag2> extends BaseOpe {
 
     protected A frag;
 
