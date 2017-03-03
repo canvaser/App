@@ -40,7 +40,7 @@ import butterknife.OnClick;
  * Created by ${viwmox} on 2017-02-17.
  */
 //补液卡
-public class AddWaterListFrag2 extends CommonUIFrag2<AddWaterListUIOpe<AddWaterListFrag>, AddWaterListDAOpe<AddWaterListFrag>>
+public class AddWaterListFrag2 extends CommonUIFrag2<AddWaterListUIOpe<AddWaterListFrag2>, AddWaterListDAOpe<AddWaterListFrag2>>
         implements PinnedHeaderExpandableListView.OnHeaderUpdateListener, OnAppItemsClickListener {
 
 
