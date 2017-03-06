@@ -29,7 +29,7 @@ import butterknife.OnClick;
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class HandOverReportFrag2 extends CommonUIFrag2<HandOverReportUIOpe<HandOverReportFrag>, BaseDAOpe> implements OnAppItemClickListener {
+public class HandOverReportFrag2 extends CommonUIFrag2<HandOverReportUIOpe<HandOverReportFrag2>, BaseDAOpe> implements OnAppItemClickListener {
 
 
     NurseNetOpe handOverNetOpe;

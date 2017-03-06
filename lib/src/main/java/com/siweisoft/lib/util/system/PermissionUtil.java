@@ -20,10 +20,12 @@ public class PermissionUtil {
     }
 
     public void addPermission(Fragment f, String permission) {
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (!(PackageManager.PERMISSION_GRANTED == f.getActivity().getPackageManager().checkPermission(permission, "packageName"))) {
-                f.requestPermissions(new String[]{permission}, 200);
+                f.requestPermissions(new String[]{permission}, 1);
             }
         }
     }
+
 }

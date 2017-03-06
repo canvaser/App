@@ -17,7 +17,7 @@ import com.siweisoft.nurse.ui.check.checkblood.ope.CheckBloodUIOpe;
  * Created by ${viwmox} on 2017-03-01.
  */
 
-public class CheckBloodFrag2 extends CommonUIFrag2<CheckBloodUIOpe<CheckBloodFrag>, CheckBloodDAOpe<CheckBloodFrag>> {
+public class CheckBloodFrag2 extends CommonUIFrag2<CheckBloodUIOpe<CheckBloodFrag2>, CheckBloodDAOpe<CheckBloodFrag2>> {
 
 
     @Override

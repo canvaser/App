@@ -14,6 +14,7 @@ import com.siweisoft.lib.util.NullUtil;
 import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.lib.util.string.TextUtil;
 import com.siweisoft.lib.view.chart.linearchat.bean.databean.Value;
+import com.siweisoft.lib.view.recyclerview.GridRecyclerView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
@@ -42,7 +43,7 @@ public class PatientFragUIOpe extends BaseNurseUIOpe {
     View infoDetailView;
 
     @BindView(R.id.recycle)
-    RecyclerView recyclerView;
+    GridRecyclerView recyclerView;
 
     CareListAdapter careListAdapter;
 

@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ExpandableListView;
 
@@ -29,7 +28,7 @@ import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.Pinne
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
 import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
-import com.siweisoft.nurse.ui.bed.MyMission.bean.uibean.MyMissionHeadUIBean;
+import com.siweisoft.nurse.ui.bed.persontask.bean.uibean.MyMissionHeadUIBean;
 import com.siweisoft.nurse.ui.bed.advice.bean.resbean.AdviceListResBean;
 import com.siweisoft.nurse.ui.bed.advice.ope.AdviceDAOpe;
 import com.siweisoft.nurse.ui.bed.advice.ope.AdviceUIOpe;

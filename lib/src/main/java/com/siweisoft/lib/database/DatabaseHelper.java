@@ -18,14 +18,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
-    private static final String TABLE_NAME = "sqlite-sw.db";
+    protected static String TABLE_NAME = "sqlite-sw.db";
     private static DatabaseHelper instance;
     private Map<String, Dao> daos = new HashMap<String, Dao>();
+
+    private DBListener dbListener;
 
     private DatabaseHelper(Context context) {
         super(context, TABLE_NAME, null, 2);
     }
 
+
+    public static void init(String tableName, DBListener dbListener) {
+        TABLE_NAME = tableName;
+
+    }
     /**
      * 单例获取该Helper
      *

@@ -32,7 +32,7 @@ public class RecordView extends View {
             case MotionEvent.ACTION_DOWN:
                 LogUtil.E("ACTION_DOWN");
                 times[0] = System.currentTimeMillis();
-                if (recordListener != null) {
+                if (recordListener != null && isEnabled()) {
                     recordListener.start(this);
                 }
                 break;
@@ -43,7 +43,7 @@ public class RecordView extends View {
             case MotionEvent.ACTION_CANCEL:
                 LogUtil.E("ACTION_UP");
                 times[1] = System.currentTimeMillis();
-                if (recordListener != null) {
+                if (recordListener != null && isEnabled()) {
                     recordListener.stop(this, times[1] - times[0]);
                 }
                 break;

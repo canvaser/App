@@ -10,8 +10,12 @@ import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.LogUtil;
+import com.siweisoft.lib.util.NullUtil;
 import com.siweisoft.lib.util.ToastUtil;
+import com.siweisoft.lib.util.data.DateFormatUtil;
 import com.siweisoft.lib.util.fragment.FragManager;
+import com.siweisoft.nurse.db.bean.ScanDBBean;
+import com.siweisoft.nurse.db.ope.ScanDBOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.fragment.BedListFGM;
 import com.siweisoft.nurse.ui.bed.patient.fragment.PatientFrag;
 import com.siweisoft.nurse.ui.check.checkblood.fragment.CheckBloodFrag2;
@@ -55,6 +59,13 @@ public class ScanResultDAOpe extends BaseDAOpe {
     }
 
     public void sortResult(FragmentActivity activity, String result) {
+        if (NullUtil.isStrEmpty(result)) {
+            return;
+        }
+        ScanDBBean scanDBBean = new ScanDBBean();
+        scanDBBean.setTime(DateFormatUtil.getnowTime());
+        scanDBBean.setResult(result);
+        new ScanDBOpe(activity, scanDBBean).save(scanDBBean);
 
 
         IndexActivity baseActivity = (IndexActivity) activity;

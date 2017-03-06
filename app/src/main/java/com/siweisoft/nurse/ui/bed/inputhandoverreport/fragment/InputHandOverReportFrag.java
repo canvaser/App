@@ -1,7 +1,11 @@
 package com.siweisoft.nurse.ui.bed.inputhandoverreport.fragment;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.AnimationDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 
@@ -63,13 +67,23 @@ public class InputHandOverReportFrag extends BaseNurseFrag implements RecordView
         if (getArguments() == null) {
             return;
         }
-        PermissionUtil.getInstance().addPermission(this, "android.permission.RECORD_AUDIO");
+        inputHandOverReportUIOpe = new InputHandOverReportUIOpe(activity, getView());
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!(PackageManager.PERMISSION_GRANTED == getActivity().checkSelfPermission(Manifest.permission.RECORD_AUDIO))) {
+                getActivity().requestPermissions(new String[]{Manifest.permission.RECORD_AUDIO}, 1);
+                if (!(PackageManager.PERMISSION_GRANTED == getActivity().checkSelfPermission(Manifest.permission.RECORD_AUDIO))) {
+                    ToastUtil.getInstance().show(activity, "请打开手机安全中心开启护士工作站录音权限");
+                    inputHandOverReportUIOpe.getRecordingIV().setEnabled(false);
+                }
+            }
+        }
 
         inputHORDAOpe = new InputHORDAOpe(activity);
         inputHORDAOpe.setShiftDuteResBean((ShiftDuteResBean) getArguments().getSerializable(ValueConstant.DATA_DATA2));
         inputHORDAOpe.setType(getArguments().getString(ValueConstant.DATA_TYPE));
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
-        inputHandOverReportUIOpe = new InputHandOverReportUIOpe(activity, getView());
+
         inputHORDAOpe.setStatus(inputHandOverReportUIOpe.getStr()[0]);
         inputHORNetOpe = new NurseNetOpe(activity);
         inputHandOverReportUIOpe.getRecordingIV().setRecordListener(this);
@@ -173,5 +187,23 @@ public class InputHandOverReportFrag extends BaseNurseFrag implements RecordView
     public void onDestroy() {
         VoiceUtil.getInstance().pause();
         super.onDestroy();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case 1:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    inputHandOverReportUIOpe.getRecordingIV().setEnabled(true);
+                } else {
+                    inputHandOverReportUIOpe.getRecordingIV().setEnabled(false);
+                }
+                break;
+        }
+    }
+
+    @Override
+    public boolean shouldShowRequestPermissionRationale(@NonNull String permission) {
+        return true;
     }
 }

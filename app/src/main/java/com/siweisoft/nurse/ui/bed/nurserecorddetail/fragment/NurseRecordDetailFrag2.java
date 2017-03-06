@@ -22,7 +22,7 @@ import com.siweisoft.nurse.ui.bed.nurserecorddetail.ope.NurseRecordDetailUIOpe;
 /**
  * Created by ${viwmox} on 2016-11-18.
  */
-public class NurseRecordDetailFrag2 extends CommonUIFrag2<NurseRecordDetailUIOpe<NurseRecordDetailFrag>, NurseRecordDetailDAOpe<NurseRecordDetailFrag>> {
+public class NurseRecordDetailFrag2 extends CommonUIFrag2<NurseRecordDetailUIOpe<NurseRecordDetailFrag2>, NurseRecordDetailDAOpe<NurseRecordDetailFrag2>> {
 
 
     NurseRecordDetailUIOpe nurseRecordDetailUIOpe;

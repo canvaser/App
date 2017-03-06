@@ -7,6 +7,8 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
 import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
+import com.siweisoft.nurse.db.bean.ScanDBBean;
+import com.siweisoft.nurse.db.ope.ScanDBOpe;
 import com.siweisoft.nurse.ui.setting.scanlist.ope.ScanListUIOpe;
 
 /**
@@ -26,6 +28,7 @@ public class ScanListFrag extends BaseNurseFrag {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         scanListUIOpe = new ScanListUIOpe(activity, getView());
+        new ScanDBOpe(activity, new ScanDBBean()).getList();
     }
 
     @Override

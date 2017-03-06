@@ -42,12 +42,12 @@ public class NurseRecordDetailUIOpe<A extends CommonUIFrag2> extends BaseNurseUI
         getMidTV().setText("护理明细");
         getMidTV().setVisibility(View.VISIBLE);
         refreshLayout.setMaterialRefreshListener(frag);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1));
     }
 
     public void initList(NurseRecordListResBean listResBean) {
         nurseRecordDetailListAdapter = new NurseRecordDetailListAdapter(context, listResBean.getData());
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1));
         recyclerView.setAdapter(nurseRecordDetailListAdapter);
     }
 

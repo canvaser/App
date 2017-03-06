@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.siweisoft.lib.view.swipeview.view.SwipeView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root"
+    android:background="@color/color_base_graybg">
+
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:layout_marginBottom="1dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:id="@+id/ll_xyz"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:textSize="13sp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/color_dark_red"
+                android:id="@+id/tv_titlenum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:layout_centerInParent="true"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_marginLeft="5dp"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/lin"
+                    android:textSize="17sp"
+                    android:textColor="@color/color_lin"
+                    android:text="临"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:id="@+id/iv_codename"
+                    android:layout_toRightOf="@id/lin"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/icon_injecting"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="5dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:padding="2dp"
+                    android:id="@+id/tv_taskname"
+                    android:textSize="16sp"
+                    android:textColor="@color/red"
+                    android:text="口服"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp" />
+
+                <TextView
+                    android:layout_marginRight="40dp"
+                    android:gravity="right"
+                    android:padding="2dp"
+                    android:id="@+id/tv_key"
+                    android:textSize="15sp"
+                    android:textColor="@color/red"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:padding="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:ellipsize="end"
+                    android:textSize="15sp"
+                    android:textColor="@color/light_blue"
+                    android:text="根据3p999999999999fhj9q39q38ijfgre[wafj4389iq[fj4e9iq[fjrugh"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/iv_arrow"
+                    android:visibility="gone"
+                    android:src="@drawable/icon_gou"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:padding="2dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_name"
+                    android:layout_marginRight="5dp"
+                    android:textSize="13sp"
+                    android:textColor="@color/color_base_txt_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tv_badid"
+                    android:layout_marginRight="5dp"
+                    android:textSize="13sp"
+                    android:textColor="@color/color_base_txt_gray"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:gravity="left|center_vertical"
+                    android:id="@+id/tv_time"
+                    android:layout_marginRight="5dp"
+                    android:textSize="13sp"
+                    android:textColor="@color/color_base_txt_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:id="@+id/tv_finish"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:background="@color/red"
+        android:text="完成"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content" />
+
+</com.siweisoft.lib.view.swipeview.view.SwipeView>

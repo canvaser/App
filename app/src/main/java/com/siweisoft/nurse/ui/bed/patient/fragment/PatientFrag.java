@@ -19,7 +19,7 @@ import com.siweisoft.nurse.ui.addwater.addwater.fragment.AddWaterListFrag2;
 import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
 import com.siweisoft.lib.base.ui.netadapter.DelayUINetAdapter;
 import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
-import com.siweisoft.nurse.ui.bed.MyMission.fragment.MyMissonFrag;
+import com.siweisoft.nurse.ui.bed.persontask.fragment.PersonTaskFrag;
 import com.siweisoft.nurse.ui.bed.addaddition.fragment.AddAdditionFrag;
 import com.siweisoft.nurse.ui.bed.advice.fragment.AdviceFrag;
 import com.siweisoft.nurse.ui.bed.assay.fragment.AssayFrag;
@@ -81,7 +81,7 @@ public class PatientFrag extends BaseNurseFrag {
                 getData(new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
-                        patientFragUIOpe.getRefreshLayout().finishRefresh();
+                        patientFragUIOpe.getRefreshLayout().finishRefreshingDelay();
                         onCmd(getArguments());
                     }
                 });
@@ -167,7 +167,7 @@ public class PatientFrag extends BaseNurseFrag {
             case R.id.rl_mymission:
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(ValueConstant.DATA_DATA, patientAdditionDAOpe);
-                FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new MyMissonFrag(), bundle, ValueConstant.CODE_REQUSET1);
+                FragManager.getInstance().startFragmentForResult(getFragmentManager(), index, new PersonTaskFrag(), bundle, ValueConstant.CODE_REQUSET1);
                 break;
             case R.id.rl_advice:
                 Bundle bundle1 = new Bundle();
@@ -226,7 +226,7 @@ public class PatientFrag extends BaseNurseFrag {
                 if (success) {
                     PatientAdditionListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(), PatientAdditionListResBean.class);
                     ArrayList<PatientAdditionResBean> list = new PatientAdditionOpe().getThispatientAdditionList(resBean);
-                    patientFragUIOpe.initTitle(patientAdditionDAOpe.getPatientBedResBean().get姓名());
+                    patientFragUIOpe.initTitle(patientAdditionDAOpe.getMidTitle());
                     patientFragUIOpe.initInfo(patientAdditionDAOpe.getPatientBedResBean());
                     patientFragUIOpe.initAddionList(list);
                 }

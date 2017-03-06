@@ -19,8 +19,8 @@ import com.siweisoft.nurse.ui.addwater.addaddwater.bean.netbean.AddAddWaterReqBe
 import com.siweisoft.nurse.ui.addwater.addaddwater.bean.netbean.AddAddWaterResBean;
 import com.siweisoft.nurse.ui.addwater.addaddwater.bean.netbean.GetBylReqBean;
 import com.siweisoft.nurse.ui.addwater.addwater.bean.netbean.AddWaterReqBean;
-import com.siweisoft.nurse.ui.bed.MyMission.bean.reqbean.GetPatientTaskOfTodayReqBean;
-import com.siweisoft.nurse.ui.bed.MyMission.bean.reqbean.GetPatientTaskReqBean;
+import com.siweisoft.nurse.ui.bed.persontask.bean.reqbean.GetPatientTaskOfTodayReqBean;
+import com.siweisoft.nurse.ui.bed.persontask.bean.reqbean.GetPatientTaskReqBean;
 import com.siweisoft.nurse.ui.bed.additionlist.bean.reqbean.UpdateAdditionReqBean;
 import com.siweisoft.nurse.ui.bed.addmypatient.bean.MyPaitentUpdateListReqBean;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;

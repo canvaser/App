@@ -31,7 +31,7 @@
                 android:gravity="center"
                 android:layout_marginLeft="10dp"
                 android:text="2016-11-02"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 android:textColor="@color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -46,7 +46,7 @@
                 android:gravity="center"
                 android:background="@drawable/icon_time_left"
                 android:text="08:00"
-                android:textSize="13sp"
+                android:textSize="16sp"
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp" />
@@ -56,10 +56,10 @@
                 android:id="@+id/tv_endtime"
                 android:layout_marginLeft="5dp"
                 android:gravity="center"
-                android:layout_marginRight="30dp"
+                android:layout_marginRight="10dp"
                 android:background="@drawable/icon_time_right"
                 android:text="10:00"
-                android:textSize="13sp"
+                android:textSize="16sp"
                 android:textColor="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp" />

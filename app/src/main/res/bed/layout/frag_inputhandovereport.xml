@@ -71,7 +71,7 @@
         android:id="@+id/iv_show"
         android:layout_marginTop="50dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/drawable_recordlist"
+        android:background="@drawable/drawable_recordlist"
         android:layout_width="100dp"
         android:layout_height="100dp" />
 </LinearLayout>

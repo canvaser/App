@@ -1,6 +1,7 @@
 package com.siweisoft.nurse.ui.setting.scanlist.ope;
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -36,5 +37,10 @@ public class ScanListUIOpe extends BaseNurseUIOpe {
 
     public RecyclerView getRecyclerView() {
         return recyclerView;
+    }
+
+    public void initList() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        // recyclerView.setAdapter();
     }
 }

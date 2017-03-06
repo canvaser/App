@@ -14,6 +14,7 @@ import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.mission.missiondetail.adapter.MissionDetailListAdapter;
 import com.siweisoft.nurse.ui.mission.missionlist.bean.res.AreaMessionListResBean;
+import com.siweisoft.nurse.ui.mission.missionlist.ope.AreaMessionDAOpe;
 
 import butterknife.BindView;
 
@@ -63,26 +64,19 @@ public class MissionDetailUIOpe extends BaseNurseUIOpe {
 
     public void initData(AreaMessionListResBean.DataBean resBean) {
 
-        getMidTV().setText(resBean.getName());
-
-
-        getTypeTV().setText(resBean.getBedId() + " " + resBean.getCodename());
-        if ("st".equals(resBean.getTitles().get(0).getKey().toLowerCase()) || resBean.getCodename().equals("出院带药")) {
+        getMidTV().setText(resBean.getBedId() + " " + resBean.getName());
+        AreaMessionDAOpe areaMessionDAOpe = new AreaMessionDAOpe(context);
+        if (areaMessionDAOpe.isLin(resBean.getTitles().get(0).get医嘱ID(), resBean.getTitles().get(0).getKey())) {
             getLinTv().setText("临");
-            getLinTv().setTextColor(Color.parseColor("#A52A2A"));
+            getLinTv().setSelected(true);
         } else {
             getLinTv().setText("长");
-            getLinTv().setTextColor(Color.parseColor("#7FFFD4"));
+            getLinTv().setSelected(false);
         }
-
-        switch (resBean.getCodename()) {
-            case "护理":
-                BitmapUtil.getInstance().setBg(context, getCodenameIV(), R.drawable.icon_medicine);
-                break;
-            case "药品":
-                BitmapUtil.getInstance().setBg(context, getCodenameIV(), R.drawable.icon_injecting);
-                break;
-        }
+        int[] i = areaMessionDAOpe.isInJecting(resBean.getCodename());
+        getTypeTV().setTextColor(i[0]);
+        BitmapUtil.getInstance().setBg(context, getCodenameIV(), i[1]);
+        getTypeTV().setText(resBean.getCodename());
 
         getYzIdTV().setText("医嘱ID:  " + StringUtil.getStr(resBean.getTitles().get(0) == null ? "" : resBean.getTitles().get(0).get医嘱ID()));
         getDateTV().setText("任务时间:" + StringUtil.getStr(resBean.getStart()));

@@ -20,7 +20,7 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:id="@+id/txt"
-            android:textSize="14sp"
+            android:textSize="16sp"
             android:textColor="@color/color_base_txt_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

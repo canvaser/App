@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.siweisoft.lib.R;
-import com.siweisoft.lib.base.ui.fragment.BaseUIFragment;
 import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
 import com.siweisoft.lib.base.ui.ope.BaseDBOpe;
 import com.siweisoft.lib.base.ui.ope.BaseNetOpe;
@@ -19,7 +18,6 @@ import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Created by ${viwmox} on 2016-11-10.
