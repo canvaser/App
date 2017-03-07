@@ -2,6 +2,7 @@ package com.siweisoft.lib.base.ui.common;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,8 @@ public abstract class CommonUIFrag<A extends CommonUIOpe, B extends CommonDAOpe>
     View backView;
 
     private ViewGroup parent;
+
+    protected CommonUIFrag fragment;
 
 
     @Override

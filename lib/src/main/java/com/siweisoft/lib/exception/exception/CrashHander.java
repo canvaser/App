@@ -93,7 +93,7 @@ public class CrashHander implements Thread.UncaughtExceptionHandler {
     }
 
     public void saveInfo(Throwable ex, String result) {
-
+        LogUtil.E(ex.getMessage() + "---" + result);
     }
 
     private boolean showException() {

@@ -30,7 +30,7 @@ public class BottomDialogMenuView extends LinearLayout {
             View view1 = LayoutInflater.from(context).inflate(R.layout.dialog_bottom_textview, null);
             TextView textView = (TextView) view1.findViewById(R.id.tv_txt);
             textView.setText(names.get(i));
-            viewGroup.addView(view1, 0);
+            viewGroup.addView(view1);
         }
     }
 

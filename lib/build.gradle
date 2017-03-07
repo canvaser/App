@@ -72,4 +72,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     compile 'cn.bmob.android:bmob-sdk:3.5.0'
     compile 'cn.bmob.android:http-legacy:1.0'
+    compile files('libDir/ormlite-android.jar')
+    compile files('libDir/ormlite-core.jar')
 }

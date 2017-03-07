@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 
 import com.siweisoft.lib.R;
+import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
 import com.siweisoft.lib.base.ui.fragment.NullUIFragment;
 
 import java.util.ArrayList;
@@ -94,15 +95,16 @@ public class FragmentUtil {
         transaction.commit();
     }
 
+
     public void removeFrag(FragmentActivity activity, Fragment thisf, String tag, Bundle bundle) {
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(R.anim.anim_push_left_in, R.anim.anim_push_right_out);
         transaction.remove(thisf);
         if (activity.getSupportFragmentManager().findFragmentByTag(tag) != null) {
-//            if(activity.getSupportFragmentManager().findFragmentByTag(tag) instanceof DrawerLayoutFrag){
-//                DrawerLayoutFrag drawerLayoutFrag = (DrawerLayoutFrag) activity.getSupportFragmentManager().findFragmentByTag(tag);
-//                drawerLayoutFrag.onResult(bundle);
-//            }
+            if (activity.getSupportFragmentManager().findFragmentByTag(tag) instanceof BaseNurseFrag) {
+                BaseNurseFrag drawerLayoutFrag = (BaseNurseFrag) activity.getSupportFragmentManager().findFragmentByTag(tag);
+                drawerLayoutFrag.onResult(-1, bundle);
+            }
             transaction.show(activity.getSupportFragmentManager().findFragmentByTag(tag));
         }
 

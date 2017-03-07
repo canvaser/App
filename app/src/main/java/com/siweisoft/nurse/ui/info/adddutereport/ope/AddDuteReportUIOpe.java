@@ -54,6 +54,7 @@ public class AddDuteReportUIOpe extends BaseNurseUIOpe {
         getMidTV().setText("交班本");
         getBackTV().setVisibility(View.VISIBLE);
         getMidTV().setVisibility(View.VISIBLE);
+        getRightTV().setVisibility(View.VISIBLE);
     }
 
     public EditText getBwTV() {

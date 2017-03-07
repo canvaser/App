@@ -3,6 +3,8 @@ package com.siweisoft.nurse.db.base;
 import android.content.Context;
 
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.stmt.DeleteBuilder;
+import com.siweisoft.lib.base.ui.bean.dbbean.BaseDbBean;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -43,6 +45,17 @@ public class NurseDBOpe<T> {
             e.printStackTrace();
         }
         return new ArrayList<T>();
+    }
+
+    public void clear() {
+        DeleteBuilder deleteBuilder = daoOpe.deleteBuilder();
+        try {
+            deleteBuilder.where().isNotNull(BaseDbBean.ID);
+            deleteBuilder.delete();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

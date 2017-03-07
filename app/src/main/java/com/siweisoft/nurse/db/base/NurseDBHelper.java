@@ -24,7 +24,7 @@ public class NurseDBHelper extends OrmLiteSqliteOpenHelper {
 
 
     private NurseDBHelper(Context context) {
-        super(context, TABLE_NAME, null, 0);
+        super(context, TABLE_NAME, null, 1);
     }
 
     /**

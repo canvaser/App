@@ -87,7 +87,7 @@ public class SweetView extends View {
 
                     mAnimationListener.onContentShow();
                 }
-            }, 600);
+            }, 100);
         }
 
         ValueAnimator valueAnimator = ValueAnimator.ofInt(0, mMaxArcHeight);
@@ -103,7 +103,7 @@ public class SweetView extends View {
                 invalidate();
             }
         });
-        valueAnimator.setDuration(800);
+        valueAnimator.setDuration(400);
         valueAnimator.setInterpolator(new AccelerateInterpolator());
         valueAnimator.start();
 
@@ -130,7 +130,7 @@ public class SweetView extends View {
             }
 
         });
-        valueAnimator.setDuration(500);
+        valueAnimator.setDuration(300);
         valueAnimator.setInterpolator(new OvershootInterpolator(4f));
         valueAnimator.start();
 

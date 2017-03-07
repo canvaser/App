@@ -19,9 +19,11 @@ import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.LogUtil;
 import com.siweisoft.lib.util.SPUtil;
 import com.siweisoft.nurse.nursenet.NurseNetOpe;
+import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.home.bean.resbean.KeepAliveResBean;
 import com.siweisoft.nurse.ui.home.ope.HomeDataOpe;
 import com.siweisoft.nurse.ui.home.ope.HomeUIOpe;
+import com.siweisoft.nurse.ui.home.ope.KeepAliveDAOpe;
 import com.siweisoft.nurse.ui.scan.ope.ScanResultDAOpe;
 import com.siweisoft.nurse.ui.user.login.activity.LoginActivity;
 import com.siweisoft.lib.util.fragment.FragManager;
@@ -155,6 +157,7 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
 
     class KeepLive extends BroadcastReceiver {
 
+        KeepAliveDAOpe keepAliveDAOpe = new KeepAliveDAOpe(activity);
         @Override
         public void onReceive(Context context, Intent intent) {
 
@@ -164,9 +167,10 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
             homeNetOpe.keepAlive(new OnNetWorkReqAdapter(activity) {
                 @Override
                 public void onNetWorkResult(boolean success, Object o) {
-                    LogUtil.E(o + "");
+                    LogUtil.E(DataValue.URL_KEEP_ALIVE + "-" + o);
                     if (success) {
                         KeepAliveResBean keepAliveResBean = GsonUtil.getInstance().fromJson(o.toString(), KeepAliveResBean.class);
+                        keepAliveDAOpe.analysisData(activity, keepAliveResBean.getData());
                     } else {
                         startActivity(new Intent(activity, LoginActivity.class));
                         finish();

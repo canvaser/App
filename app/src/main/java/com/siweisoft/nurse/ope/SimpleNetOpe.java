@@ -37,6 +37,7 @@ import com.siweisoft.nurse.ui.bed.patient.bean.reqbean.PatientAdditionReqBean;
 import com.siweisoft.nurse.ui.check.checklist.bean.reqbean.UpdateCheckListReqBean;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentDetailReqBean;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentListReqBean;
+import com.siweisoft.nurse.ui.home.bean.reqbean.UpdateCallingLogsReqBean;
 import com.siweisoft.nurse.ui.home.bean.reqbean.WriteAlarmReqBean;
 import com.siweisoft.nurse.ui.info.addcheckbook.bean.reqbean.AddCheckBookListReqBean;
 import com.siweisoft.nurse.ui.info.bedcheck.bean.reqbean.WriteBedCheckReqBean;
@@ -519,6 +520,18 @@ public class SimpleNetOpe extends BaseNetOpe {
 
         WriteBedCheckReqBean reqBean = new WriteBedCheckReqBean();
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_WRITE_WARD_INSPECTION_INFO, reqBean, reqInterf);
+    }
+
+
+    public static void getCallingLogs(Context context, OnNetWorkReqInterf reqInterf) {
+        BaseReqBean reqBean = new BaseReqBean();
+        NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_CALLING_LOGS, reqBean, reqInterf);
+    }
+
+    public static void updateCallingLogs(Context context, String id, OnNetWorkReqInterf reqInterf) {
+        UpdateCallingLogsReqBean reqBean = new UpdateCallingLogsReqBean();
+        reqBean.setId(id);
+        NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_UPDATE_CALLING_LOGS, reqBean, reqInterf);
     }
 
 

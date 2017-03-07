@@ -45,6 +45,9 @@ public class CheckListFGMUIOpe extends BaseNurseUIOpe {
         checkListAdapter = new CheckListAdapter(context, data);
         missionExpandView.setGroupIndicator(null);
         missionExpandView.setAdapter(checkListAdapter);
+        for (int i = 0; i < checkListAdapter.getGroupCount(); i++) {
+            missionExpandView.expandGroup(i);
+        }
     }
 
     public PinnedHeaderExpandableListView getMissionExpandView() {

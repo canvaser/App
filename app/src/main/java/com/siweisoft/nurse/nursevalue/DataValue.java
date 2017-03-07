@@ -297,6 +297,13 @@ public class DataValue {
      */
     public static final String URL_KEEP_ALIVE = "keepAlive";
 
+    //获取床位呼叫(一小时内)
+    public static final String URL_GET_CALLING_LOGS = "getCallingLogs";
+
+    //更新床位呼叫
+    public static final String URL_UPDATE_CALLING_LOGS = "updateCallingLogs";
+
+
 
     //----------------------------------------------------------------------------------------------
 

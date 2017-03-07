@@ -81,6 +81,7 @@ public class InputDataListAdapter extends AppRecycleAdapter {
         switch (getItemViewType(position)) {
             case 0:
                 uiBean.getValueTV().setText(StringUtil.getStr(data.getData().get(position).getItems().get(0).get(0)));
+                data.getData().get(position).setValue(StringUtil.getStr(uiBean.getValueTV().getText()));
                 uiBean.getValueTV().setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

@@ -34,6 +34,10 @@ public class AddMyPatientDrawUIOpe extends BaseNurseUIOpe {
     }
 
     private void init() {
+        getBackTV().setVisibility(View.VISIBLE);
+        getBackTV().setSelected(true);
+        getMidTV().setVisibility(View.VISIBLE);
+        getRightTV().setVisibility(View.VISIBLE);
         getBackTV().setText("返回");
         getBackTV().setSelected(true);
         getMidTV().setText("选择病人数");

@@ -73,10 +73,11 @@ public class DrawerLayoutFrag extends BaseNurseFrag implements OnAppItemClickLis
                     onClickEvent(getView().findViewById(R.id.tv_selectt));
                 } else {
                     WriteAlarmReqBean reqBean = new WriteAlarmReqBean();
+                    reqBean.setLevel("1");
                     reqBean.setZyh(bean.get住院号());
                     reqBean.setContent("");
                     reqBean.setUpdate_value("0");
-                    reqBean.setPatname(bean.get病房号() + " " + bean.get姓名());
+                    reqBean.setPatname(bean.get病床号() + " " + bean.get姓名());
                     String s = "";
                     for (int i = 0; i < drawerLayoutUIOpe.getSelectVs().size(); i++) {
                         if (drawerLayoutUIOpe.getSelectVs().get(i).isSelected()) {
@@ -106,7 +107,9 @@ public class DrawerLayoutFrag extends BaseNurseFrag implements OnAppItemClickLis
         }
     }
 
-    public void onResult(Bundle bundle) {
+    @Override
+    public void onResult(int req, Bundle bundle) {
+        super.onResult(req, bundle);
         if (bundle == null || bundle.getSerializable(ValueConstant.DATA_DATA) == null) {
             drawerLayoutUIOpe.getSelectTV().setText("请选择病人");
             return;

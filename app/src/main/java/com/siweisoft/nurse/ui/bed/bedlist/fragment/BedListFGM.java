@@ -24,6 +24,7 @@ import com.siweisoft.nurse.ui.bed.bedlist.ope.BedListDAOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.ope.BedListFGMUIOpe;
 import com.siweisoft.nurse.ui.bed.patient.fragment.PatientFrag;
 import com.siweisoft.nurse.ui.dialog.dialog.fragment.NurseDialogFrag;
+import com.siweisoft.nurse.ui.home.activity.IndexActivity;
 
 import butterknife.OnClick;
 import butterknife.Optional;
@@ -89,6 +90,29 @@ public class BedListFGM extends CommonUIFrag2<BedListFGMUIOpe<BedListFGM>, BedLi
                         }
                     }
                 });
+            case 3:
+                SimpleNetOpe.getRegion(activity, new UINetAdapter(activity) {
+                    @Override
+                    public void onNetWorkResult(boolean success, Object o) {
+
+                        if (success) {
+                            final PatientBedListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(), PatientBedListResBean.class);
+                            baseOpes.getDaOpe().setAllList(resBean.getData());
+                            baseOpes.getDaOpe().initAllBedList(context, new OnFinishListener() {
+                                @Override
+                                public void onFinish(Object o) {
+                                    //bedListFGMUIOpe.initBedList(resBean.getData());
+                                    //bedListFGMUIOpe.getBedListAdapter().setOnAppItemClickListener(BedListFGM.this);
+                                    //bedListFGMUIOpe.setTitle(bedListDAOpe.getIndex(),resBean.getData().size());
+                                    onFinishListener.onFinish(o);
+                                }
+                            });
+                        } else {
+                            baseOpes.getUiOpe().initBedList(null);
+                            onFinishListener.onFinish(o);
+                        }
+                    }
+                });
                 break;
         }
     }
@@ -106,31 +130,6 @@ public class BedListFGM extends CommonUIFrag2<BedListFGMUIOpe<BedListFGM>, BedLi
 
     private void getRegion(final OnFinishListener onFinishListener) {
 
-    }
-
-    public void getRegion2(final OnFinishListener onFinishListener) {
-        SimpleNetOpe.getRegion(activity, new UINetAdapter(activity) {
-            @Override
-            public void onNetWorkResult(boolean success, Object o) {
-
-                if (success) {
-                    final PatientBedListResBean resBean = GsonUtil.getInstance().fromJson(o.toString(), PatientBedListResBean.class);
-                    baseOpes.getDaOpe().setAllList(resBean.getData());
-                    baseOpes.getDaOpe().initAllBedList(context, new OnFinishListener() {
-                        @Override
-                        public void onFinish(Object o) {
-                            //bedListFGMUIOpe.initBedList(resBean.getData());
-                            //bedListFGMUIOpe.getBedListAdapter().setOnAppItemClickListener(BedListFGM.this);
-                            //bedListFGMUIOpe.setTitle(bedListDAOpe.getIndex(),resBean.getData().size());
-                            onFinishListener.onFinish(o);
-                        }
-                    });
-                } else {
-                    baseOpes.getUiOpe().initBedList(null);
-                    onFinishListener.onFinish(o);
-                }
-            }
-        });
     }
 
     private void getMyPatientList(final OnFinishListener onFinishListener) {
@@ -170,7 +169,7 @@ public class BedListFGM extends CommonUIFrag2<BedListFGMUIOpe<BedListFGM>, BedLi
     @Override
     public void onAppItemClick(View view, final int position) {
         if (baseOpes.getDaOpe().getAllList() == null) {
-            getRegion2(new OnFinishListener() {
+            getData(3, new OnFinishListener() {
                 @Override
                 public void onFinish(Object o) {
                     Bundle bundle = new Bundle();
@@ -198,37 +197,26 @@ public class BedListFGM extends CommonUIFrag2<BedListFGMUIOpe<BedListFGM>, BedLi
             return;
         }
         if (baseOpes.getDaOpe().getAllList() == null) {
-            getData(1, new OnFinishListener() {
+            getData(3, new OnFinishListener() {
                 @Override
                 public void onFinish(Object o) {
                     String zyh = bundle.getString(ValueConstant.DATA_POSITION);
-                    int p = baseOpes.getDaOpe().getPosition(baseOpes.getDaOpe().getAllList(), zyh);
-                    if (p != -1) {
-                        onAppItemClick(null, p);
-                    }
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(ValueConstant.DATA_DATA, baseOpes.getDaOpe().getValidList());
+                    bundle.putSerializable(ValueConstant.DATA_DATA2, baseOpes.getDaOpe().getPatientBedResBean(baseOpes.getDaOpe().getValidList(), zyh));
+                    IndexActivity indexActivity = (IndexActivity) activity;
+                    indexActivity.getHomeUIOpe().getViewPager().setCurrentItem(0);
+                    FragManager.getInstance().startFragment(getFragmentManager(), index, new PatientFrag(), bundle);
                 }
             });
         } else {
             final String zyh = bundle.getString(ValueConstant.DATA_POSITION);
-            int p = baseOpes.getDaOpe().getPosition(baseOpes.getDaOpe().getAllList(), zyh);
-            if (p != -1) {
-                onAppItemClick(null, p);
-            } else {
-                getData(1, new OnFinishListener() {
-                    @Override
-                    public void onFinish(Object o) {
-                        int p = baseOpes.getDaOpe().getPosition(baseOpes.getDaOpe().getAllList(), zyh);
-                        if (p != -1) {
-                            Bundle bundle = new Bundle();
-                            bundle.putSerializable(ValueConstant.DATA_DATA, baseOpes.getDaOpe().getValidList());
-                            bundle.putSerializable(ValueConstant.DATA_POSITION2, p);
-                            bundle.putInt(ValueConstant.DATA_POSITION, R.id.rl_mymission);
-                            bundle.putString(ValueConstant.FARG_TYPE, ValueConstant.FARG_TYPE_CMD);
-                            FragManager.getInstance().startFragment(getFragmentManager(), index, new PatientFrag(), bundle);
-                        }
-                    }
-                });
-            }
+            Bundle bundle1 = new Bundle();
+            bundle1.putSerializable(ValueConstant.DATA_DATA, baseOpes.getDaOpe().getValidList());
+            bundle1.putSerializable(ValueConstant.DATA_DATA2, baseOpes.getDaOpe().getPatientBedResBean(baseOpes.getDaOpe().getValidList(), zyh));
+            IndexActivity indexActivity = (IndexActivity) activity;
+            indexActivity.getHomeUIOpe().getViewPager().setCurrentItem(0);
+            FragManager.getInstance().startFragment(getFragmentManager(), index, new PatientFrag(), bundle1);
         }
 
     }

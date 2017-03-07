@@ -11,6 +11,8 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.util.menu.popup.PopupUtil;
@@ -47,6 +49,8 @@ import com.siweisoft.nurse.ui.dialog.dialog.fragment.NurseDialogFrag;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 import butterknife.OnClick;
 
@@ -215,9 +219,12 @@ public class DataFrag extends BaseNurseFrag implements PinnedHeaderExpandableLis
                                 reqBean.setValue(inputEt.getText().toString());
                                 DialogUtil.getInstance().dismiss();
                                 JsonDataListReqBean r = new JsonDataListReqBean();
-                                ArrayList<JsonDataReqBean> list = new ArrayList<JsonDataReqBean>();
-                                list.add(reqBean);
-                                r.setJson_data(GsonUtil.getInstance().toJson(list));
+                                List<HashMap> list = new ArrayList<HashMap>();
+                                HashMap<String, String> map = new HashMap<String, String>();
+                                map.put("_id", dataResBean.get_id());
+                                map.put("value", inputEt.getText().toString());
+                                list.add(map);
+                                r.setJson_data(list);
                                 dataNetOpe.updateRecordData(r, new UINetAdapter(activity) {
                                     @Override
                                     public void onNetWorkResult(boolean success, Object o) {
@@ -228,6 +235,7 @@ public class DataFrag extends BaseNurseFrag implements PinnedHeaderExpandableLis
                                 });
                                 break;
                             case R.id.cancle:
+                                LogUtil.E("cancle");
                                 DialogUtil.getInstance().dismiss();
                                 break;
                         }

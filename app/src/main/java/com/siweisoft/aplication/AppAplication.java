@@ -6,6 +6,7 @@ import android.telephony.TelephonyManager;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.exception.exception.CrashHander;
 import com.siweisoft.lib.network.NetWork;
 import com.siweisoft.lib.service.main.AppService;
 import com.siweisoft.lib.util.AppUtil;
@@ -56,7 +57,7 @@ public class AppAplication extends com.siweisoft.lib.aplication.LibAplication {
     }
 
     private void initCrash() {
-
+        CrashHander.getInstance().init(getApplicationContext());
     }
 
 

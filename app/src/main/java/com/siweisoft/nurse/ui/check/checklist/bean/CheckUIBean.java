@@ -2,6 +2,7 @@ package com.siweisoft.nurse.ui.check.checklist.bean;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
@@ -45,6 +46,12 @@ public class CheckUIBean extends BaseUIBean {
     @BindView(R.id.ll_left)
     View leftView;
 
+    @BindView(R.id.iv_codename)
+    ImageView codeName;
+
+    @BindView(R.id.iv_gou)
+    ImageView gou;
+
 
     public CheckUIBean(Context context, View convertView) {
         super(context, convertView);
@@ -84,5 +91,13 @@ public class CheckUIBean extends BaseUIBean {
 
     public View getLeftView() {
         return leftView;
+    }
+
+    public ImageView getCodeName() {
+        return codeName;
+    }
+
+    public ImageView getGou() {
+        return gou;
     }
 }

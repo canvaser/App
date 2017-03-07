@@ -126,11 +126,16 @@ public class DataUIOpe extends BaseNurseUIOpe {
     }
 
     public void init2() {
-        dataAdapter = new DataAdapter4(context, containers, list);
-        listView.setAdapter(dataAdapter);
-        for (int i = 0; i < dataAdapter.getGroupCount(); i++) {
-            listView.expandGroup(i);
+        if (dataAdapter == null) {
+            dataAdapter = new DataAdapter4(context, containers, list);
+            listView.setAdapter(dataAdapter);
+            for (int i = 0; i < dataAdapter.getGroupCount(); i++) {
+                listView.expandGroup(i);
+            }
+        } else {
+            dataAdapter.notifyDataSetChanged();
         }
+
     }
 
     public void initLeftListener(View.OnClickListener onClickListener) {

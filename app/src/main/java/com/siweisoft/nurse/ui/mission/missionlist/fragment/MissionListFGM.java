@@ -242,7 +242,7 @@ public class MissionListFGM extends CommonUIFrag2<MissionListFGMUIOpe, AreaMessi
             @Override
             public void onFinish(Object o) {
                 baseOpes.getUiOpe().getMissionExpandView().setOnHeadViewClick(MissionListFGM.this);
-                materialRefreshLayout.finishRefresh();
+                materialRefreshLayout.finishRefreshingDelay();
             }
         });
     }

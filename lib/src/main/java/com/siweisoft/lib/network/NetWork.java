@@ -283,6 +283,7 @@ public class NetWork {
                 BaseResBean baseResBean = new BaseResBean();
                 baseResBean.setErrorCode(ValueConstant.ERROR_CODE_VOLLEY_FAIL);
                 baseResBean.setErrorMessage(ex.getMessage() == null ? "" : ex.getMessage());
+                baseResBean.setException(true);
                 reqInterf.onNetWorkReqFinish(false, UrlConstant.URI + model, baseResBean);
                 LogUtil.E(ex == null ? "" : ex.getMessage());
             }

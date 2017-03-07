@@ -8,6 +8,7 @@ import android.view.View;
 import com.siweisoft.app.R;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration2;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.nurse.ui.info.urgencyreport.adapter.UngencyReportListAdapter;
@@ -32,7 +33,7 @@ public class UrgencyReportUIOpe extends BaseNurseUIOpe {
 
     UngencyReportListAdapter ungencyReportListAdapter;
 
-    ArrayList<UrgencyReportResBean> data;
+    ArrayList<UrgencyReportResBean> data = new ArrayList<>();
 
     public UrgencyReportUIOpe(Context context, View containerView) {
         super(context, containerView);
@@ -48,12 +49,18 @@ public class UrgencyReportUIOpe extends BaseNurseUIOpe {
     }
 
     public void initList(ArrayList<UrgencyReportResBean> data) {
-        this.data = data;
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new MyItemDecoration(context, 2));
-        ungencyReportListAdapter = new UngencyReportListAdapter(context, this.data);
-        recyclerView.addItemDecoration(new MyItemDecoration(context, ValueConstant.DIMEN_1));
-        recyclerView.setAdapter(ungencyReportListAdapter);
+        this.data.clear();
+        this.data.addAll(data);
+        if (ungencyReportListAdapter == null) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            recyclerView.addItemDecoration(new MyItemDecoration(context, 2));
+            ungencyReportListAdapter = new UngencyReportListAdapter(context, this.data);
+            recyclerView.addItemDecoration(new MyItemDecoration2(context, ValueConstant.DIMEN_1));
+            recyclerView.setAdapter(ungencyReportListAdapter);
+        } else {
+            ungencyReportListAdapter.notifyDataSetChanged();
+        }
+
     }
 
     public RecyclerView getRecyclerView() {

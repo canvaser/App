@@ -50,10 +50,10 @@ public class UngencyReportListAdapter extends AppRecycleAdapter {
         uiBean.getStatusTV().setText(data.get(position).getUpdate_value());
         if (data.get(position).getUpdate_value().equals("0")) {
             uiBean.getStatusTV().setText("状态:未取消");
-            uiBean.getRootV().setBackgroundColor(Color.parseColor("#f08080"));
+            uiBean.getRootV().setBackgroundColor(Color.parseColor("#FFA07A"));
         } else {
             uiBean.getStatusTV().setText("状态:已取消");
-            uiBean.getRootV().setBackgroundColor(Color.parseColor("#33FFAA"));
+            uiBean.getRootV().setBackgroundColor(Color.parseColor("#E0FFFF"));
         }
 
     }

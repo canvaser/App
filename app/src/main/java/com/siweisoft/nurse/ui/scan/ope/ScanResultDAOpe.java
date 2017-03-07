@@ -19,6 +19,7 @@ import com.siweisoft.nurse.db.ope.ScanDBOpe;
 import com.siweisoft.nurse.ui.bed.bedlist.fragment.BedListFGM;
 import com.siweisoft.nurse.ui.bed.patient.fragment.PatientFrag;
 import com.siweisoft.nurse.ui.check.checkblood.fragment.CheckBloodFrag2;
+import com.siweisoft.nurse.ui.check.patientcheck.fragment.PatientCheckFarg;
 import com.siweisoft.nurse.ui.home.activity.IndexActivity;
 import com.siweisoft.nurse.ui.info.bedcheck.fragment.BedCheckFrag;
 import com.siweisoft.nurse.ui.scan.bean.DrugInfoResBean;
@@ -40,7 +41,12 @@ public class ScanResultDAOpe extends BaseDAOpe {
     //{pat#zywd#864871#840176}
     //{\"qrtype\":\"room\",\"region\":\"0250040\",\"room\":\"01\"}
     //{"qrtype":"drug","pno":"住院号","zyh":"住院流水号","advno":"医嘱ID","time":"用药时间"} {"qrtype":"drug","pno":"929443","zyh":"929443","advno":"cq_2747691","time":"2016-12-08 10:10"}
-    String[] rule = new String[]{"\\d{12}", "(?=.*qrtype)(?=.*pat)(?=.*qrseat)(?=.*wd)(?=.*pno)(?=.*zyh)^.*$", "\\{.*pat#zywd#\\d{6}#\\d{6}.*\\}", "(?=.*qrtype)(?=.*region)(?=.*room)^.*$", "(?=.*qrtype)(?=.*pno)(?=.*zyh)(?=.*advno)(?=.*time)^.*$"};
+    String rule0 = "\\d{12}";
+    String rule1 = "\"(?=.*qrtype)(?=.*pat)(?=.*qrseat)(?=.*wd)(?=.*pno)(?=.*zyh)^.*$\"";
+    String rule2 = "\\{.*pat#zywd#\\d{6}#\\d{6}.*\\}";
+    String rule3 = "(?=.*qrtype)(?=.*region)(?=.*room)^.*$";
+    String rule4 = "(?=.*qrtype)(?=.*pno)(?=.*zyh)(?=.*advno)(?=.*time)^.*$";
+    String[] rule = new String[]{rule0, rule1, rule2, rule3, rule4};
 
 
     public static ScanResultDAOpe getInstance() {
@@ -100,7 +106,11 @@ public class ScanResultDAOpe extends BaseDAOpe {
 
         if (Pattern.compile(rule[4]).matcher(result).matches()) {
             DrugInfoResBean resBean = GsonUtil.getInstance().fromJson(result, DrugInfoResBean.class);
-            goToPatient(activity, resBean.getPno());
+            IndexActivity indexActivity = (IndexActivity) activity;
+            indexActivity.getHomeUIOpe().getViewPager().setCurrentItem(2);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(ValueConstant.DATA_DATA, resBean);
+            FragManager.getInstance().startFragment(indexActivity.getSupportFragmentManager(), 2, new PatientCheckFarg(), bundle);
             return;
         }
 
@@ -139,11 +149,11 @@ public class ScanResultDAOpe extends BaseDAOpe {
         if (fragment != null && fragment instanceof BedListFGM) {
             final BedListFGM bedListFGM = (BedListFGM) fragment;
             if (bedListFGM.getBaseOpes().getDaOpe().getAllList() == null) {
-                bedListFGM.getRegion2(new OnFinishListener() {
+                bedListFGM.getData(3, new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
                         Bundle bundle = new Bundle();
-                        bundle.putSerializable(ValueConstant.DATA_DATA, bedListFGM.getBaseOpes().getDaOpe().getAllList());
+                        bundle.putSerializable(ValueConstant.DATA_DATA, bedListFGM.getBaseOpes().getDaOpe().getValidList());
                         bundle.putSerializable(ValueConstant.DATA_DATA2, bedListFGM.getBaseOpes().getDaOpe().getPatientBedResBean(bedListFGM.getBaseOpes().getDaOpe().getAllList(), pno));
                         if (bundle.getSerializable(ValueConstant.DATA_DATA2) == null) {
                             ToastUtil.getInstance().show(activity, "没有查找到此人");
@@ -154,7 +164,7 @@ public class ScanResultDAOpe extends BaseDAOpe {
                 });
             } else {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable(ValueConstant.DATA_DATA, bedListFGM.getBaseOpes().getDaOpe().getAllList());
+                bundle.putSerializable(ValueConstant.DATA_DATA, bedListFGM.getBaseOpes().getDaOpe().getValidList());
                 bundle.putSerializable(ValueConstant.DATA_DATA2, bedListFGM.getBaseOpes().getDaOpe().getPatientBedResBean(bedListFGM.getBaseOpes().getDaOpe().getAllList(), pno));
                 if (bundle.getSerializable(ValueConstant.DATA_DATA2) == null) {
                     ToastUtil.getInstance().show(activity, "没有查找到此人");

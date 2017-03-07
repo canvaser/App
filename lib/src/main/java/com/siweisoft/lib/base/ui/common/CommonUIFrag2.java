@@ -10,6 +10,7 @@ import com.siweisoft.lib.R;
 import com.siweisoft.lib.base.ui.fragment.BaseFrg;
 import com.siweisoft.lib.base.ui.interf.FragIntef;
 import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
+import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.lib.base.ui.ope.BaseUIOpe;
 import com.siweisoft.lib.base.ui.ope.BaseOpes;
 import com.siweisoft.lib.constant.ValueConstant;
@@ -24,7 +25,7 @@ import butterknife.Unbinder;
  * Created by ${viwmox} on 2017-02-27.
  */
 
-public abstract class CommonUIFrag2<A extends BaseUIOpe, B extends BaseDAOpe> extends BaseFrg implements View.OnClickListener, MaterialRefreshListener, FragIntef {
+public abstract class CommonUIFrag2<A extends BaseNurseUIOpe, B extends BaseDAOpe> extends BaseFrg implements View.OnClickListener, MaterialRefreshListener, FragIntef {
 
     private Unbinder unbinder;
 
@@ -72,6 +73,7 @@ public abstract class CommonUIFrag2<A extends BaseUIOpe, B extends BaseDAOpe> ex
         backView = getView().findViewById(R.id.ftv_back);
         backView.setOnClickListener(this);
         unbinder = ButterKnife.bind(this, view);
+        onCmd(getArguments());
     }
 
     public void onResult(int req, Bundle bundle) {

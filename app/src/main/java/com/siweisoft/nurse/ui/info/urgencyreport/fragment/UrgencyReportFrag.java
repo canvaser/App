@@ -52,7 +52,7 @@ public class UrgencyReportFrag extends BaseNurseFrag implements OnAppItemClickLi
                 getData(new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
-                        materialRefreshLayout.finishRefresh();
+                        materialRefreshLayout.finishRefreshingDelay();
                     }
                 });
             }

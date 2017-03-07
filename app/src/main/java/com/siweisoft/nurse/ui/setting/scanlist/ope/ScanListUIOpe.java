@@ -7,6 +7,11 @@ import android.view.View;
 
 import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration2;
+import com.siweisoft.nurse.db.bean.ScanDBBean;
+import com.siweisoft.nurse.ui.setting.scanlist.adapter.ScanListAdapter;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 
@@ -39,8 +44,12 @@ public class ScanListUIOpe extends BaseNurseUIOpe {
         return recyclerView;
     }
 
-    public void initList() {
+    public void initList(ArrayList<ScanDBBean> scanList) {
+        if (scanList == null) {
+            return;
+        }
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        // recyclerView.setAdapter();
+        recyclerView.addItemDecoration(new MyItemDecoration2(context, 2));
+        recyclerView.setAdapter(new ScanListAdapter(context, scanList));
     }
 }

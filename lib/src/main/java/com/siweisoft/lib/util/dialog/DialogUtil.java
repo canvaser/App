@@ -13,6 +13,10 @@ import com.siweisoft.lib.view.pickerview.TimePickerDialog;
 import com.siweisoft.lib.view.pickerview.data.Type;
 import com.siweisoft.lib.view.pickerview.listener.OnDateSetListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
+
 /**
  * Created by ${viwmox} on 2016-11-30.
  */
@@ -20,7 +24,7 @@ public class DialogUtil {
 
     private static DialogUtil instance;
 
-    AlertDialog alertDialog;
+    private HashMap<String, AlertDialog> dialogs = new HashMap<>();
 
     public static DialogUtil getInstance() {
         if (instance == null) {
@@ -31,17 +35,46 @@ public class DialogUtil {
 
     public void showDialog(Context context, View view, View.OnClickListener listener, int... id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        alertDialog = builder.create();
-        alertDialog.setCancelable(true);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.setCancelable(false);
+        dialogs.put(System.currentTimeMillis() + "", alertDialog);
 //        alertDialog.setView(view);
         alertDialog.getWindow().setWindowAnimations(R.style.fadein);
         // alertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
         alertDialog.show();
+        alertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        alertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         alertDialog.getWindow().setContentView(view);
 
         for (int i = 0; i < id.length; i++) {
             view.findViewById(id[i]).setOnClickListener(listener);
         }
+        show = true;
+    }
+
+    public boolean show = false;
+
+    public boolean isShow() {
+        return show;
+    }
+
+
+    public void showDialogWithTag(Context context, String o, View view, View.OnClickListener listener, int... id) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        AlertDialog alertDialog = builder.create();
+        dialogs.put(o, alertDialog);
+        alertDialog.setCancelable(false);
+//        alertDialog.setView(view);
+        alertDialog.getWindow().setWindowAnimations(R.style.fadein);
+        // alertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        alertDialog.show();
+        alertDialog.getWindow().setContentView(view);
+        alertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_ALT_FOCUSABLE_IM);
+        alertDialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        for (int i = 0; i < id.length; i++) {
+            view.findViewById(id[i]).setOnClickListener(listener);
+        }
+        show = true;
     }
 
 
@@ -53,12 +86,20 @@ public class DialogUtil {
         dialog.show();
         builder.setView(view);
         v.show();
+        show = true;
     }
 
     public void dismiss() {
-        if (alertDialog != null) {
-            alertDialog.dismiss();
+        String[] longs = dialogs.keySet().toArray(new String[dialogs.size()]);
+        for (int i = 0; i < longs.length; i++) {
+            dialogs.get(longs[i]).dismiss();
+            dialogs.remove(longs[i]);
         }
+        show = false;
+    }
+
+    public AlertDialog getDialog(String o) {
+        return dialogs.get(o);
     }
 
     public static void showTimePick(Context context, FragmentManager fragmentManager, String name, Type type, OnDateSetListener onDateSetListener) {
