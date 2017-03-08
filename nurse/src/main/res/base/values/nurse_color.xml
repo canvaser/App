@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="strarr_mission_type">
+        <item>全部</item>
+        <item>完成</item>
+        <item>未完</item>
+        <item>删除</item>
+        <item>拒绝</item>
+        <item>不在</item>
+        <item>历史</item>
+    </string-array>
+
+    <string-array name="strarr_mission_sort">
+        <item>全部</item>
+        <item>膳食</item>
+        <item>静滴</item>
+        <item>静推</item>
+        <item>小治疗</item>
+        <item>口服药</item>
+        <item>肌肉针</item>
+        <item>眼药水</item>
+        <item>术前治疗</item>
+        <item>术中</item>
+        <item>其他</item>
+
+    </string-array>
+</resources>

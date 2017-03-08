@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/icon_bg_exp_head">
+
+        <TextView
+            android:text="任务名称"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/tv_date"
+            android:textSize="17sp"
+            android:textColor="@color/color_base_txt_gray"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:text="数量"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/tv_num"
+            android:textSize="17sp"
+            android:textColor="@color/color_base_txt_gray"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:text="工作量"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/tv_works"
+            android:textSize="17sp"
+            android:textColor="@color/color_base_txt_gray"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="30dp" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rcv_rcv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

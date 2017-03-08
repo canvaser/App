@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/root">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/tv_head_drainage"
+            android:background="#2FC2D1"
+            android:gravity="center"
+            android:text="引流"
+            android:padding="10dp"
+            android:textSize="13sp"
+            android:textColor="@color/black"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:background="@color/white"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="5dp"
+            android:gravity="center"
+            android:text="导管1"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:background="@color/gray"
+            android:layout_width="100dp"
+            android:layout_height="1dp" />
+
+        <TextView
+            android:background="@color/color_dark_red"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="5dp"
+            android:gravity="center"
+            android:text="导管2"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:background="@color/gray"
+            android:layout_width="100dp"
+            android:layout_height="1dp" />
+
+        <TextView
+            android:background="@color/white"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="5dp"
+            android:gravity="center"
+            android:text="导管3"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:background="@color/gray"
+            android:layout_width="100dp"
+            android:layout_height="1dp" />
+
+        <TextView
+            android:background="@color/color_dark_red"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="5dp"
+            android:gravity="center"
+            android:text="导管4"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:background="@color/gray"
+            android:layout_width="100dp"
+            android:layout_height="1dp" />
+
+        <TextView
+            android:background="@color/white"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="5dp"
+            android:gravity="center"
+            android:text="导管5"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:background="@color/gray"
+            android:layout_width="100dp"
+            android:layout_height="1dp" />
+
+        <TextView
+            android:background="@color/color_dark_red"
+            android:paddingLeft="5dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingRight="5dp"
+            android:gravity="center"
+            android:text="导管6"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+        <View
+            android:background="@color/gray"
+            android:layout_width="100dp"
+            android:layout_height="1dp" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:background="@color/gray" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</LinearLayout>
