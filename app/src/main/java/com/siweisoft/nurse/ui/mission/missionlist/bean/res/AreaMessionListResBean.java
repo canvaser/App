@@ -147,6 +147,15 @@ public class AreaMessionListResBean extends ResultResBean {
             private String view_type;
             private String exectime;
             private String creator;
+            private boolean isSelect;
+
+            public boolean isSelect() {
+                return isSelect;
+            }
+
+            public void setSelect(boolean select) {
+                isSelect = select;
+            }
 
             public String get医嘱ID() {
                 return 医嘱ID;

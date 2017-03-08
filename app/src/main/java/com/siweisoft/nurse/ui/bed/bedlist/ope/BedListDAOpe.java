@@ -16,6 +16,7 @@ import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.nurse.nursevalue.DataValue;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.AdditionCodeResBean;
 import com.siweisoft.nurse.ui.bed.bedlist.bean.resbean.PatientBedResBean;
+import com.siweisoft.nurse.ui.check.patientcheck.bean.PatAndTaskInfoResBean;
 
 import java.util.ArrayList;
 
@@ -123,6 +124,39 @@ public class BedListDAOpe<B extends CommonUIFrag2> extends BaseDAOpe<B> {
             int id = context.getResources().getIdentifier(age + "_" + sex + "_" + level, "drawable", context.getPackageName());
             myList.get(i).setResId(id);
         }
+    }
+
+
+    public void initMyBedList(Context context, PatAndTaskInfoResBean.DataBean.PatInfoBean patInfoBean) {
+        String sex = "";
+        String age = "";
+        String level = "";
+        if (patInfoBean.get性别().equals("女")) {
+            sex = "woman";
+        } else {
+            sex = "man";
+        }
+        if (patInfoBean.getPatAge() >= 60) {
+            age = "old";
+        } else if (patInfoBean.getPatAge() >= 14) {
+            age = "middle";
+        } else {
+            age = "young";
+        }
+        switch (patInfoBean.get护理级别名称()) {
+            case DataValue.LEVEL_NURSE_1:
+                level = "l1";
+                break;
+            case DataValue.LEVEL_NURSE_2:
+                level = "l2";
+                break;
+            case DataValue.LEVEL_NURSE_3:
+                level = "l3";
+                break;
+        }
+
+        int id = context.getResources().getIdentifier(age + "_" + sex + "_" + level, "drawable", context.getPackageName());
+        patInfoBean.setResId(id);
     }
 
     public void initAllBedList(final Context context, final OnFinishListener onFinishListener) {

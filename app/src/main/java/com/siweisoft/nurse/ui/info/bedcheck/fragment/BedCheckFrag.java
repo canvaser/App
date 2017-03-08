@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.siweisoft.app.R;
+import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
 import com.siweisoft.nurse.nursenet.NurseNetOpe;
 import com.siweisoft.nurse.nursevalue.BaseID;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
@@ -20,6 +21,8 @@ import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
 import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
 import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.lib.base.ui.adapter.PupListAdapter;
+import com.siweisoft.nurse.ope.SimpleNetOpe;
+import com.siweisoft.nurse.ui.info.bedcheck.bean.reqbean.WriteBedCheckReqBean;
 import com.siweisoft.nurse.ui.info.bedcheck.bean.resbean.BedCheckListResBean;
 import com.siweisoft.nurse.ui.info.bedcheck.ope.BedCheckDAOpe;
 import com.siweisoft.nurse.ui.info.bedcheck.ope.BedCheckUIOpe;
@@ -56,12 +59,12 @@ public class BedCheckFrag extends BaseNurseFrag {
                 getData(new OnFinishListener() {
                     @Override
                     public void onFinish(Object o) {
-                        materialRefreshLayout.finishRefresh();
+                        materialRefreshLayout.finishRefreshingDelay();
                     }
                 });
             }
         });
-        bedCheckUIOpe.getRefreshLayout().autoRefresh();
+        bedCheckUIOpe.getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
     }
 
     public void getData(final OnFinishListener listener) {
@@ -76,6 +79,15 @@ public class BedCheckFrag extends BaseNurseFrag {
                 if (listener != null) {
                     listener.onFinish(o);
                 }
+            }
+        });
+    }
+
+    public void writeData(WriteBedCheckReqBean reqBean) {
+        SimpleNetOpe.writeWardInspectionInfo(activity, reqBean, new UINetAdapter(activity) {
+            @Override
+            public void onNetWorkResult(boolean success, Object o) {
+                bedCheckUIOpe.getRefreshLayout().autoRefresh();
             }
         });
     }

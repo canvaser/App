@@ -285,6 +285,10 @@ public class DataValue {
     public static final String URL_GET_DAILYBED_REPORT_BY_REGION = "getDailyBedReportByRegion";
 
 
+    //
+    public static final String URL_GET_PAT_AND_TASK_INFO_BY_DOC_ADVID = "getPatAndTaskInfoByDocAdvID";
+
+
     //----------------------------------------------------------------------------------------------
 
     /**
@@ -309,7 +313,7 @@ public class DataValue {
 
 
     /**
-     * 获取病房巡视数据
+     * 获取通知公告
      */
     public static final String URL_GET_HOSPITAL_ANNOUNCEMENT = "getHospitalAnnouncement";
 
@@ -317,7 +321,7 @@ public class DataValue {
     /**
      * 获取病房巡视数据
      */
-    public static final String URL_GET_WARD_INSPECTION_LIST = "getHospitalAnnounceMent";
+    public static final String URL_GET_WARD_INSPECTION_LIST = "getWardInspectionList";
 
 
     /**

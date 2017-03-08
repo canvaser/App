@@ -35,6 +35,7 @@ import com.siweisoft.nurse.ui.bed.inputhandoverreport.bean.reqbean.InputHORReqBe
 import com.siweisoft.nurse.ui.bed.nurserecorddetail.bean.reqbean.NurseRecordReqBean;
 import com.siweisoft.nurse.ui.bed.patient.bean.reqbean.PatientAdditionReqBean;
 import com.siweisoft.nurse.ui.check.checklist.bean.reqbean.UpdateCheckListReqBean;
+import com.siweisoft.nurse.ui.check.patientcheck.bean.PatAndTaskInfoByDocAdvIdReqBean;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentDetailReqBean;
 import com.siweisoft.nurse.ui.document.document.bean.netbean.DocumentListReqBean;
 import com.siweisoft.nurse.ui.home.bean.reqbean.UpdateCallingLogsReqBean;
@@ -374,6 +375,13 @@ public class SimpleNetOpe extends BaseNetOpe {
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_UPDATE_CHECK_TASK, reqBean, reqInterf);
     }
 
+    public static void getPatAndTaskInfoByDocAdvID(Context context, String advid, OnNetWorkReqInterf reqInterf) {
+        advid = advid.substring(0, 7);
+        PatAndTaskInfoByDocAdvIdReqBean reqBean = new PatAndTaskInfoByDocAdvIdReqBean();
+        reqBean.setAdviceid(advid);
+        NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_PAT_AND_TASK_INFO_BY_DOC_ADVID, reqBean, reqInterf);
+    }
+
 
     public static void writeAlarmLogs(Context context, WriteAlarmReqBean reqBean, OnNetWorkReqInterf reqInterf) {
 
@@ -519,6 +527,10 @@ public class SimpleNetOpe extends BaseNetOpe {
     public static void writeWardInspectionInfo(Context context, String zyh, String region, String room, String bed, OnNetWorkReqInterf reqInterf) {
 
         WriteBedCheckReqBean reqBean = new WriteBedCheckReqBean();
+        reqBean.setZyh(zyh);
+        reqBean.setRegion(region);
+        reqBean.setRoom(room);
+        reqBean.setBed(bed);
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_WRITE_WARD_INSPECTION_INFO, reqBean, reqInterf);
     }
 

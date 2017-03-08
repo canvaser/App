@@ -43,6 +43,7 @@ public class DateFormatUtil {
         return format.format(date);
     }
 
+
     /**
      * 把日期转换成年月日格式
      *
@@ -552,13 +553,26 @@ public class DateFormatUtil {
         try {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Date date = format.parse(str);
-            format = new SimpleDateFormat("M-d HH:mm");
+            format = new SimpleDateFormat("MM-dd HH:mm");
             return format.format(date);
         } catch (ParseException e) {
             e.printStackTrace();
             return "";
         }
     }
+
+    public static String getYYYYMMdd(String str) {
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Date date = format.parse(str);
+            format = new SimpleDateFormat("yyyy-MM-dd");
+            return format.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+
 
 
     public static boolean isTodayMMDDHHMM(String str) {

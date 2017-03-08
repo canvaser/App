@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.siweisoft.lib.R;
+import com.siweisoft.lib.base.ui.common.CommonUIFrag;
 import com.siweisoft.lib.base.ui.common.CommonUIFrag2;
 import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
 import com.siweisoft.lib.constant.ValueConstant;
@@ -78,6 +79,12 @@ public class FragManager {
                         }
                     } else if (fragMaps.get(index).get(fragMaps.get(index).size() - 1) instanceof BaseNurseFrag) {
                         BaseNurseFrag fragment2 = (BaseNurseFrag) fragMaps.get(index).get(fragMaps.get(index).size() - 1);
+                        transaction.show(fragment2);
+                        if (fragment2.getArguments() != null && fragment2.getArguments().getInt(ValueConstant.FARG_REQ) != 0) {
+                            fragment2.onResult(fragment2.getArguments().getInt(ValueConstant.FARG_REQ), b);
+                        }
+                    } else if (fragMaps.get(index).get(fragMaps.get(index).size() - 1) instanceof CommonUIFrag) {
+                        CommonUIFrag fragment2 = (CommonUIFrag) fragMaps.get(index).get(fragMaps.get(index).size() - 1);
                         transaction.show(fragment2);
                         if (fragment2.getArguments() != null && fragment2.getArguments().getInt(ValueConstant.FARG_REQ) != 0) {
                             fragment2.onResult(fragment2.getArguments().getInt(ValueConstant.FARG_REQ), b);

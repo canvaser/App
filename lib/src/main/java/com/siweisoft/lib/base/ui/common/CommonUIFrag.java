@@ -43,6 +43,7 @@ public abstract class CommonUIFrag<A extends CommonUIOpe, B extends CommonDAOpe>
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        fragment = this;
     }
 
     @Override

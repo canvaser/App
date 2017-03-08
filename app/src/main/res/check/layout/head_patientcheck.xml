@@ -5,7 +5,6 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/ll_head"
         android:alpha="0.3"
         android:gravity="center_vertical"
         android:layout_marginRight="5dp"
@@ -51,12 +50,11 @@
 
 
                 <TextView
-
                     android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical|right"
+                    android:gravity="center_vertical"
                     android:id="@+id/tv_bedid"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textSize="13sp"
                     android:text="性别：女"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -64,10 +62,10 @@
 
                 <TextView
                     android:layout_marginLeft="10dp"
-                    android:gravity="center_vertical|right"
+                    android:gravity="center_vertical"
                     android:id="@+id/tv_zyh"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textSize="13sp"
                     android:text="年龄：44岁"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -83,7 +81,7 @@
                     android:gravity="center_vertical"
                     android:id="@+id/tv_sex"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textSize="13sp"
                     android:text="膳食信息：普食"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -94,7 +92,7 @@
                     android:gravity="center_vertical|right"
                     android:id="@+id/tv_age"
                     android:textColor="@color/black"
-                    android:textSize="15sp"
+                    android:textSize="13sp"
                     android:text="膳食信息：普食"
                     android:layout_width="0dp"
                     android:layout_weight="1"
@@ -107,7 +105,7 @@
                 android:textStyle="bold"
                 android:id="@+id/tv_guoming"
                 android:textColor="@color/black"
-                android:textSize="15sp"
+                android:textSize="13sp"
                 android:text="药物过敏 ： 无"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -133,7 +131,6 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/iv_codename"
                 android:layout_marginRight="5dp"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="10dp"
@@ -207,7 +204,6 @@
 
 
                 <TextView
-                    android:gravity="right|center_vertical"
                     android:id="@+id/tv_advid"
                     android:layout_marginRight="5dp"
                     android:textSize="15sp"
@@ -221,9 +217,4 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycle"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 </LinearLayout>

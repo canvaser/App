@@ -13,6 +13,7 @@ import com.siweisoft.app.R;
 import com.siweisoft.lib.base.ui.activity.BaseUIWithOutTitleActivity;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemLongClickListener;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemSelectListener;
+import com.siweisoft.lib.base.ui.listener.BaseOnPagerChangeListener;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
 import com.siweisoft.lib.util.GsonUtil;
@@ -52,6 +53,12 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
         homeUIOpe = new HomeUIOpe(activity, getRootVG());
         homeDataOpe = new HomeDataOpe(activity);
         homeNetOpe = new NurseNetOpe(activity);
+        homeUIOpe.getViewPager().addOnPageChangeListener(new BaseOnPagerChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                homeDataOpe.setIndex(position);
+            }
+        });
         homeUIOpe.getHomeBottomView().setOnAppItemSelectListener(this);
         homeUIOpe.getHomeBottomView().setOnAppItemLongClickListener(this);
         homeUIOpe.getHomeBottomView().setOnLongClick(this);

@@ -24,6 +24,7 @@ public class CheckBloodFrag2 extends CommonUIFrag2<CheckBloodUIOpe<CheckBloodFra
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         baseOpes.getDaOpe().setResult(getArguments().getString(ValueConstant.DATA_DATA));
+        baseOpes.getUiOpe().showFristInfo(baseOpes.getDaOpe().getResult());
     }
 
     @Override

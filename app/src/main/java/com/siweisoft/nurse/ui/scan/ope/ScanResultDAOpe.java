@@ -21,9 +21,11 @@ import com.siweisoft.nurse.ui.bed.patient.fragment.PatientFrag;
 import com.siweisoft.nurse.ui.check.checkblood.fragment.CheckBloodFrag2;
 import com.siweisoft.nurse.ui.check.patientcheck.fragment.PatientCheckFarg;
 import com.siweisoft.nurse.ui.home.activity.IndexActivity;
+import com.siweisoft.nurse.ui.info.bedcheck.bean.reqbean.WriteBedCheckReqBean;
 import com.siweisoft.nurse.ui.info.bedcheck.fragment.BedCheckFrag;
 import com.siweisoft.nurse.ui.scan.bean.DrugInfoResBean;
 import com.siweisoft.nurse.ui.scan.bean.PatientScanInfoAResBean;
+import com.siweisoft.nurse.ui.scan.bean.RoomInfoResBean;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -43,8 +45,8 @@ public class ScanResultDAOpe extends BaseDAOpe {
     //{"qrtype":"drug","pno":"住院号","zyh":"住院流水号","advno":"医嘱ID","time":"用药时间"} {"qrtype":"drug","pno":"929443","zyh":"929443","advno":"cq_2747691","time":"2016-12-08 10:10"}
     String rule0 = "\\d{12}";
     String rule1 = "\"(?=.*qrtype)(?=.*pat)(?=.*qrseat)(?=.*wd)(?=.*pno)(?=.*zyh)^.*$\"";
-    String rule2 = "\\{.*pat#zywd#\\d{6}#\\d{6}.*\\}";
-    String rule3 = "(?=.*qrtype)(?=.*region)(?=.*room)^.*$";
+    String rule2 = "\\{.*pat#zywd#\\d{6}#\\d{6}.*\\}"; // zywd=住院腕带，mzwd=门诊腕带
+    String rule3 = "(?=.*qrtype)(?=.*region)(?=.*room)^.*$";//查房
     String rule4 = "(?=.*qrtype)(?=.*pno)(?=.*zyh)(?=.*advno)(?=.*time)^.*$";
     String[] rule = new String[]{rule0, rule1, rule2, rule3, rule4};
 
@@ -65,6 +67,7 @@ public class ScanResultDAOpe extends BaseDAOpe {
     }
 
     public void sortResult(FragmentActivity activity, String result) {
+        LogUtil.E(result);
         if (NullUtil.isStrEmpty(result)) {
             return;
         }
@@ -79,17 +82,65 @@ public class ScanResultDAOpe extends BaseDAOpe {
 
         }
 
-        if (FragManager.getInstance().getCurrentClass(baseActivity.getHomeDataOpe().getIndex()).getClass().getName().equals(BedCheckFrag.class.getSimpleName())) {
+        if (FragManager.getInstance().getCurrentClass(baseActivity.getHomeDataOpe().getIndex()).getClass().getName().equals(PatientCheckFarg.class.getName())) {
+            PatientCheckFarg patientCheckFarg = (PatientCheckFarg) FragManager.getInstance().getCurrentClass(baseActivity.getHomeDataOpe().getIndex());
+            if (Pattern.compile(rule[1]).matcher(result).matches()) {
+                PatientScanInfoAResBean resBean = GsonUtil.getInstance().fromJson(result, PatientScanInfoAResBean.class);
+                patientCheckFarg.Checked(resBean.getPno());
+                return;
+            }
 
+            if (Pattern.compile(rule[2]).matcher(result).matches()) {
+                Matcher matcher = Pattern.compile(rule[2]).matcher(result);
+                patientCheckFarg.Checked(result.split("#")[3].replace("}", ""));
+                return;
+            }
+            return;
+        }
+
+        if (FragManager.getInstance().getCurrentClass(baseActivity.getHomeDataOpe().getIndex()).getClass().getName().equals(BedCheckFrag.class.getName())) {
+            BedCheckFrag bedCheckFrag = (BedCheckFrag) FragManager.getInstance().getCurrentClass(baseActivity.getHomeDataOpe().getIndex());
+            if (Pattern.compile(rule[1]).matcher(result).matches()) {
+                PatientScanInfoAResBean resBean = GsonUtil.getInstance().fromJson(result, PatientScanInfoAResBean.class);
+                WriteBedCheckReqBean writeBedCheckReqBean = new WriteBedCheckReqBean();
+                writeBedCheckReqBean.setZyh(resBean.getPno());
+                bedCheckFrag.writeData(writeBedCheckReqBean);
+                return;
+            }
+            if (Pattern.compile(rule[2]).matcher(result).matches()) {
+                Matcher matcher = Pattern.compile(rule[2]).matcher(result);
+                WriteBedCheckReqBean writeBedCheckReqBean = new WriteBedCheckReqBean();
+                writeBedCheckReqBean.setZyh(result.split("#")[3].replace("}", ""));
+                bedCheckFrag.writeData(writeBedCheckReqBean);
+                return;
+            }
+            if (Pattern.compile(rule[3]).matcher(result).matches()) {
+                RoomInfoResBean roomInfoResBean = GsonUtil.getInstance().fromJson(result, RoomInfoResBean.class);
+                WriteBedCheckReqBean writeBedCheckReqBean = new WriteBedCheckReqBean();
+                writeBedCheckReqBean.setRoom(roomInfoResBean.getRoom());
+                writeBedCheckReqBean.setRegion(roomInfoResBean.getRegion());
+                bedCheckFrag.writeData(writeBedCheckReqBean);
+                return;
+            }
             return;
         }
 
 
         //病人抽血核对
-        if (FragManager.getInstance().getCurrentClass(baseActivity.getHomeDataOpe().getIndex()).getClass().getName().equals(CheckBloodFrag2.class.getSimpleName())) {
+        if (FragManager.getInstance().getCurrentClass(baseActivity.getHomeDataOpe().getIndex()).getClass().getName().equals(CheckBloodFrag2.class.getName())) {
 
             return;
         }
+
+        if (Pattern.compile(rule[0]).matcher(result).matches()) {
+            IndexActivity indexActivity = (IndexActivity) activity;
+            indexActivity.getHomeUIOpe().getViewPager().setCurrentItem(2);
+            Bundle bundle = new Bundle();
+            bundle.putString(ValueConstant.DATA_DATA, result);
+            FragManager.getInstance().startFragment(indexActivity.getSupportFragmentManager(), 2, new CheckBloodFrag2(), bundle);
+            return;
+        }
+
 
 
         if (Pattern.compile(rule[1]).matcher(result).matches()) {
@@ -103,6 +154,7 @@ public class ScanResultDAOpe extends BaseDAOpe {
             goToPatient(activity, result.split("#")[3].replace("}", ""));
             return;
         }
+
 
         if (Pattern.compile(rule[4]).matcher(result).matches()) {
             DrugInfoResBean resBean = GsonUtil.getInstance().fromJson(result, DrugInfoResBean.class);
