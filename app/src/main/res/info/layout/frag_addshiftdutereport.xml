@@ -30,8 +30,8 @@
                 android:textColor="@color/black" />
 
             <TextView
+                android:gravity="center_vertical|right"
                 android:id="@+id/tv_banci"
-                android:gravity="center_vertical"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
@@ -66,8 +66,9 @@
                 android:textColor="@color/black" />
 
             <EditText
+                android:text="0"
                 android:id="@+id/tv_zs"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|right"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
@@ -102,8 +103,9 @@
                 android:textColor="@color/black" />
 
             <EditText
+                android:text="0"
                 android:id="@+id/tv_ry"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|right"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
@@ -138,8 +140,9 @@
                 android:textColor="@color/black" />
 
             <EditText
+                android:text="0"
                 android:id="@+id/tv_zc"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|right"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
@@ -174,8 +177,9 @@
                 android:textColor="@color/black" />
 
             <EditText
+                android:text="0"
                 android:id="@+id/tv_cy"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|right"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
@@ -210,8 +214,9 @@
                 android:textColor="@color/black" />
 
             <EditText
+                android:text="0"
                 android:id="@+id/tv_zr"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|right"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
@@ -246,8 +251,9 @@
                 android:textColor="@color/black" />
 
             <EditText
+                android:text="0"
                 android:id="@+id/tv_sw"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|right"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
@@ -282,8 +288,9 @@
                 android:textColor="@color/black" />
 
             <EditText
+                android:text="0"
                 android:id="@+id/tv_gy"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|right"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
@@ -318,8 +325,9 @@
                 android:textColor="@color/black" />
 
             <EditText
+                android:text="0"
                 android:id="@+id/tv_js"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|right"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
@@ -354,8 +362,9 @@
                 android:textColor="@color/black" />
 
             <EditText
+                android:text="0"
                 android:id="@+id/tv_bw"
-                android:gravity="center_vertical"
+                android:gravity="center_vertical|right"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"

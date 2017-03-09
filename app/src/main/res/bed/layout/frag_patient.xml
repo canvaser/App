@@ -142,7 +142,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:background="@drawable/drawable_care_border"
-                    android:id="@+id/recycle"
+                    android:id="@+id/rcv_rcv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>

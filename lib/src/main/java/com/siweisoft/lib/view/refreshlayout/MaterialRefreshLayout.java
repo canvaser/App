@@ -7,6 +7,7 @@ import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorCompat;
 import android.support.v4.view.ViewPropertyAnimatorUpdateListener;
+import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
@@ -16,9 +17,11 @@ import android.view.ViewGroup;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.AbsListView;
 import android.widget.FrameLayout;
+import android.widget.ScrollView;
 
 import com.siweisoft.lib.R;
 import com.siweisoft.lib.constant.ValueConstant;
+import com.siweisoft.lib.util.LogUtil;
 import com.siweisoft.lib.util.system.HandleUtil;
 
 
@@ -64,6 +67,7 @@ public class MaterialRefreshLayout extends FrameLayout {
     private boolean isLoadMoreing;
     private boolean isLoadMore;
     private boolean isSunStyle = false;
+    private RecyclerView recyclerView;
 
     public MaterialRefreshLayout(Context context) {
         this(context, null, 0);
@@ -141,7 +145,10 @@ public class MaterialRefreshLayout extends FrameLayout {
         if (mChildView == null) {
             return;
         }
-
+        if (mChildView instanceof ViewGroup) {
+            ViewGroup viewGroup = (ViewGroup) mChildView;
+            recyclerView = (RecyclerView) viewGroup.findViewById(R.id.recycle);
+        }
         setWaveHeight(Util.dip2px(context, waveHeight));
         setHeaderHeight(Util.dip2px(context, headHeight));
 
@@ -481,6 +488,18 @@ public class MaterialRefreshLayout extends FrameLayout {
         if (mChildView == null) {
             return false;
         }
+        if (mChildView instanceof ViewGroup) {
+            if (recyclerView != null) {
+                return recyclerView.getChildCount() > 0 && (recyclerView.getChildAt(0).getTop() < recyclerView.getPaddingTop());
+            }
+        }
+        if (mChildView instanceof ScrollView) {
+            ScrollView scrollView = (ScrollView) mChildView;
+            LogUtil.E("srrollview:" + scrollView.getScrollY());
+            return scrollView.getChildCount() > 0 && scrollView.getScrollY() > 0;
+
+        }
+
         if (Build.VERSION.SDK_INT < 14) {
             if (mChildView instanceof AbsListView) {
                 final AbsListView absListView = (AbsListView) mChildView;
@@ -499,6 +518,7 @@ public class MaterialRefreshLayout extends FrameLayout {
         if (mChildView == null) {
             return false;
         }
+
         if (Build.VERSION.SDK_INT < 14) {
             if (mChildView instanceof AbsListView) {
                 final AbsListView absListView = (AbsListView) mChildView;

@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/root">
 
     <LinearLayout
+        android:gravity="center_vertical"
+        android:id="@+id/ll_before"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_margin="5dp">
 
         <RelativeLayout
             android:orientation="horizontal"
@@ -29,25 +31,24 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="5dp"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
 
             <LinearLayout
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:gravity="left|center_vertical"
                     android:id="@+id/tv_title"
                     android:maxLines="2"
                     android:ellipsize="end"
-                    android:minLines="2"
                     android:textSize="15sp"
                     android:textColor="@color/black"
                     android:text="根据3p999999999999fhj9q39q38ijfgre[wafj4389iq[fj4e9iq[fjrugh"
@@ -56,6 +57,7 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
+                    android:gravity="right|center_vertical"
                     android:id="@+id/tv_type"
                     android:textSize="15sp"
                     android:textColor="@color/black"
@@ -66,12 +68,15 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:gravity="left|center_vertical"
+                    android:text="12"
                     android:id="@+id/tv_start"
                     android:textSize="15sp"
                     android:textColor="@color/black"
@@ -79,6 +84,7 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
+                    android:text="12"
                     android:id="@+id/tv_end"
                     android:layout_marginLeft="10dp"
                     android:textSize="15sp"
@@ -87,21 +93,30 @@
                     android:layout_height="wrap_content" />
 
 
-                <View
-                    android:layout_weight="1"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp" />
 
                 <TextView
+                    android:text="12"
+                    android:gravity="right|center_vertical"
                     android:id="@+id/tv_num"
-                    android:layout_marginRight="5dp"
                     android:textSize="15sp"
                     android:textColor="@color/black"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
 
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_after"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="18sp"
+        android:text="手术后医嘱"
+        android:textColor="@color/red"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

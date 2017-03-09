@@ -23,7 +23,7 @@
         android:layout_height="wrap_content">
 
 
-        <RecordView
+        <com.siweisoft.app.ui.bed.inputhandoverreport.view.RecordView
             android:id="@+id/iv_recording"
             android:background="@drawable/icon_record"
             android:layout_centerInParent="true"

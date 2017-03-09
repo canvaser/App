@@ -65,7 +65,7 @@
 
     <application
 
-        android:name="com.siweisoft.aplication.AppAplication"
+        android:name="AppAplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/appname"
@@ -111,7 +111,7 @@
 
         --------------------------------------------------------------------------------------------
 
-        <receiver android:name="com.siweisoft.receiver.AppReceiver" />
+        <receiver android:name="AppReceiver" />
         <service android:name="com.siweisoft.service.main.AppService" />
 
         --------------------------------------------------------------------------------------------

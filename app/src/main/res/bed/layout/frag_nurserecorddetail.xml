@@ -19,6 +19,11 @@
         app:wave_show="false"
         app:wave_height_type="normal"
         app:progress_show_circle_backgroud="false">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
     <LinearLayout
         android:background="@drawable/icon_bg_exp_head"
         android:paddingTop="10dp"
@@ -53,11 +58,10 @@
     </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
-            android:layout_marginTop="40dp"
             android:background="@color/white"
-            android:id="@+id/rcv_rcv"
+            android:id="@+id/recycle"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
+        </LinearLayout>
     </com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout>
 </LinearLayout>

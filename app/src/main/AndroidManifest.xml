@@ -53,7 +53,7 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     ---------------------------------------------------------------------------------------------------------
     <application
-        android:name="com.siweisoft.aplication.AppAplication"
+        android:name=".aplication.AppAplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/appname"
@@ -62,7 +62,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="LoginActivity"
+            android:name=".ui.user.login.activity.LoginActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan">
@@ -73,17 +73,17 @@
         </activity>
 
         <activity
-            android:name="IndexActivity"
+            android:name=".ui.home.activity.IndexActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name="DataChartActivity"
+            android:name=".ui.bed.datachart.activity.DataChartActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="stateHidden|adjustPan"
             android:screenOrientation="landscape" />
         --------------------------------------------------------------------------------------------
-        <receiver android:name="com.siweisoft.receiver.AppReceiver" />
+        <receiver android:name=".receiver.AppReceiver" />
         <service android:name="com.siweisoft.lib.service.main.AppService" />
         --------------------------------------------------------------------------------------------
         <activity android:name="com.siweisoft.lib.uuzuche.lib_zxing.activity.CaptureActivity" />

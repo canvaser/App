@@ -5,10 +5,11 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:background="@drawable/icon_bg_exp_head"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

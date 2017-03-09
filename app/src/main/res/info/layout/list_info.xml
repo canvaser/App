@@ -3,11 +3,12 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/color_base_graybg"
     android:id="@+id/root">
 
     <LinearLayout
         android:background="@drawable/drawable_press_black_while"
-        android:padding="10dp"
+        android:layout_margin="1dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -22,7 +23,8 @@
 
         <TextView
             android:id="@+id/tv_title"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:textSize="15sp"
             android:textColor="@color/color_base_txt_gray"
             android:text="工作明细"
