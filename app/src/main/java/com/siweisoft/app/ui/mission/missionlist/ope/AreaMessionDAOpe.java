@@ -33,7 +33,7 @@ public class AreaMessionDAOpe extends BaseDAOpe {
     public String rightSort = ALL;
 
 
-    public String areaType = AREA_TYPE_AREA;
+    public String areaType = AREA_TYPE_MY_PATIENT;
 
     public String timeArea = TIME_TODAY;
 

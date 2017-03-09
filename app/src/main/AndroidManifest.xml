@@ -55,7 +55,7 @@
     <application
         android:name=".aplication.AppAplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/icon_app"
         android:label="@string/appname"
         android:largeHeap="true"
         android:supportsRtl="true"
