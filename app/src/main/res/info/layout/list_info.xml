@@ -6,6 +6,7 @@
     android:id="@+id/root">
 
     <LinearLayout
+        android:background="@drawable/drawable_press_black_while"
         android:padding="10dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"

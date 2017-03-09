@@ -12,7 +12,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/twhite"
+            android:background="@drawable/drawable_press_black_while"
             android:elevation="1dp">
 
             <TextView
@@ -37,7 +37,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/twhite"
+            android:background="@drawable/drawable_press_black_while"
             android:elevation="1dp">
 
             <TextView
@@ -62,7 +62,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/twhite"
+            android:background="@drawable/drawable_press_black_while"
             android:elevation="1dp">
 
             <TextView
@@ -88,7 +88,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/twhite"
+            android:background="@drawable/drawable_press_black_while"
             android:elevation="1dp">
 
             <TextView
@@ -124,7 +124,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/twhite"
+            android:background="@drawable/drawable_press_black_while"
             android:elevation="1dp">
 
             <TextView
@@ -160,7 +160,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/twhite"
+            android:background="@drawable/drawable_press_black_while"
             android:elevation="1dp">
 
             <TextView
@@ -196,7 +196,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/twhite"
+            android:background="@drawable/drawable_press_black_while"
             android:elevation="1dp">
 
             <TextView
@@ -232,7 +232,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/twhite"
+            android:background="@drawable/drawable_press_black_while"
             android:elevation="1dp">
 
             <TextView
@@ -268,7 +268,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/twhite"
+            android:background="@drawable/drawable_press_black_while"
             android:elevation="1dp">
 
             <TextView
@@ -304,7 +304,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/twhite"
+            android:background="@drawable/drawable_press_black_while"
             android:elevation="1dp">
 
             <TextView
@@ -340,7 +340,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/twhite"
+            android:background="@drawable/drawable_press_black_while"
             android:elevation="1dp">
 
             <TextView
@@ -376,7 +376,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/twhite"
+            android:background="@drawable/drawable_press_black_while"
             android:elevation="1dp">
 
             <TextView

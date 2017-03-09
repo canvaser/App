@@ -13,8 +13,8 @@ import com.siweisoft.lib.util.AppUtil;
 import com.siweisoft.lib.util.LogUtil;
 import com.siweisoft.lib.util.ScreenUtil;
 import com.siweisoft.lib.uuzuche.lib_zxing.activity.ZXingLibrary;
-import com.siweisoft.nurse.nursevalue.DataValue;
-import com.siweisoft.nurse.ui.home.activity.IndexActivity;
+import com.siweisoft.nursevalue.DataValue;
+import com.siweisoft.ui.home.activity.IndexActivity;
 
 import org.xutils.x;
 

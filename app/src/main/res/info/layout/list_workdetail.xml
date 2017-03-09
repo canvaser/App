@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="35dp"
     android:gravity="center_vertical"
-    android:id="@+id/root">
+    android:id="@+id/root"
+    android:background="@drawable/drawable_press_black_while">
 
     <TextView
         android:gravity="center"

@@ -11,13 +11,14 @@
 
 
         <RelativeLayout
+            android:id="@+id/tv_bcTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/twhite"
             android:elevation="1dp">
 
             <TextView
-                android:id="@+id/tv_bcTitle"
+                android:text="班次"
                 android:gravity="center_vertical"
                 android:layout_toRightOf="@+id/iv_icon2"
                 android:layout_marginLeft="10dp"
@@ -28,7 +29,17 @@
                 android:textSize="15sp"
                 android:textColor="@color/black" />
 
-
+            <TextView
+                android:id="@+id/tv_banci"
+                android:gravity="center_vertical"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/black" />
         </RelativeLayout>
 
         <View
@@ -61,7 +72,7 @@
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:textColor="@color/black" />
@@ -97,7 +108,7 @@
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:textColor="@color/black" />
@@ -133,7 +144,7 @@
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:textColor="@color/black" />
@@ -169,7 +180,7 @@
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:textColor="@color/black" />
@@ -205,7 +216,7 @@
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:textColor="@color/black" />
@@ -241,7 +252,7 @@
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:textColor="@color/black" />
@@ -277,7 +288,7 @@
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:textColor="@color/black" />
@@ -313,7 +324,7 @@
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:textColor="@color/black" />
@@ -349,7 +360,7 @@
                 android:layout_marginRight="20dp"
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
                 android:textColor="@color/black" />

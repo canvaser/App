@@ -2,9 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/drawable_press_black_while">
 
     <TextView
+
         android:id="@+id/tv_time"
         android:gravity="center_vertical"
         android:paddingTop="12dp"
