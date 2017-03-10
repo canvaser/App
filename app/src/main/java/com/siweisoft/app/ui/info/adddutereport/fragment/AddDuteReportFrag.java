@@ -6,10 +6,14 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
+import com.siweisoft.app.ope.SimpleNetOpe;
 import com.siweisoft.lib.base.ui.fragment.BaseNurseFrag;
+import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
 import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.lib.util.SheetDialogUtil;
 import com.siweisoft.lib.util.StringUtil;
+import com.siweisoft.lib.util.ToastUtil;
+import com.siweisoft.lib.util.fragment.FragManager;
 import com.siweisoft.lib.view.bottomdialogmenuview.BottomDialogMenuView;
 import com.siweisoft.app.nursevalue.BaseID;
 import com.siweisoft.app.ui.info.adddutereport.ope.AddDuteReportUIOpe;
@@ -25,6 +29,7 @@ public class AddDuteReportFrag extends BaseNurseFrag {
 
     String[] strings = new String[]{"早早班", "早班", "两头班(早)", "大夜班", "小夜班", "两头班"};
 
+
     @Override
     public BaseNurseOpes getOpe() {
         return null;
@@ -35,6 +40,7 @@ public class AddDuteReportFrag extends BaseNurseFrag {
         super.onViewCreated(view, savedInstanceState);
         addDuteReportUIOpe = new AddDuteReportUIOpe(activity, getView());
         addDuteReportUIOpe.getBanCiTV().setText(StringUtil.getStr(strings[0]));
+        addDuteReportUIOpe.setInputType();
     }
 
 
@@ -42,7 +48,18 @@ public class AddDuteReportFrag extends BaseNurseFrag {
     public void onClickEvent(View v) {
         switch (v.getId()) {
             case BaseID.ID_RIGHT:
-
+                if (!addDuteReportUIOpe.check()) {
+                    ToastUtil.getInstance().show(activity, "数据填写不全");
+                    return;
+                }
+                SimpleNetOpe.writeReportData(activity, addDuteReportUIOpe.getData(), new UINetAdapter(activity) {
+                    @Override
+                    public void onNetWorkResult(boolean success, Object o) {
+                        if (success) {
+                            FragManager.getInstance().finish(getFragmentManager(), index);
+                        }
+                    }
+                });
                 break;
             case R.id.tv_bcTitle:
                 BottomDialogMenuView bottomDialogMenuView = new BottomDialogMenuView(activity, strings);

@@ -178,6 +178,9 @@ public class DataValue {
      */
     public static final String URL_GET_REPORT_DATA = "getReportData";
 
+    //录入病区病床交接数据
+    public static final String URL_WRITE_REPORT_DATA = "writeReportData";
+
     /**
      * 获取护理记录统计
      */

@@ -13,5 +13,9 @@
 
     <color name="color_dark_red">#f59f9f</color>
 
+    <color name="color_base_nurse">@color/light_blue</color>
 
+    <color name="color_divide_line">#aaaaaa</color>
+
+    <color name="color_block_back">#f4f4f4</color>
 </resources>

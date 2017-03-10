@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/dimens_base_title"
     android:gravity="center_vertical"
-    android:background="@drawable/icon_bg_status"
+    android:background="@color/color_base_nurse"
     android:elevation="1dp"
     android:id="@+id/ftitle_bar">
 
@@ -15,7 +15,6 @@
         android:gravity="center"
         android:layout_centerVertical="true"
         android:id="@+id/ftv_back"
-        android:background="@drawable/drawable_back"
         android:textSize="17sp"
         android:textColor="@color/color_title_select"
         android:layout_width="wrap_content"
@@ -48,7 +47,6 @@
         android:layout_alignParentRight="true"
         android:id="@+id/ftv_right"
         android:padding="4dp"
-        android:background="@drawable/drawable_right"
         android:textSize="17sp"
         android:textColor="@color/color_title_select"
         android:layout_width="wrap_content"

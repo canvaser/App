@@ -164,6 +164,12 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
         return true;
     }
 
+
+    @Override
+    public int getStatusColor() {
+        return R.color.color_base_nurse;
+    }
+
     class KeepLive extends BroadcastReceiver {
 
         KeepAliveDAOpe keepAliveDAOpe = new KeepAliveDAOpe(activity);

@@ -2,6 +2,10 @@ package com.siweisoft.lib.view.swipeview.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorCompat;
 import android.support.v4.view.ViewPropertyAnimatorListener;
@@ -48,10 +52,10 @@ public class SwipeView extends LinearLayout {
 
     private void init(Context context) {
         this.context = context;
-
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
@@ -78,38 +82,21 @@ public class SwipeView extends LinearLayout {
         return super.drawChild(canvas, child, drawingTime);
     }
 
-    //    @Override
-//    public boolean dispatchTouchEvent(MotionEvent event) {
-//        switch (event.getAction()){
-//            case MotionEvent.ACTION_DOWN:
-//                LogUtil.E("ACTION_DOWN");
-//                values[0].setX(event.getX());
-//                values[0].setY(event.getY());
-//               break;
-//            case MotionEvent.ACTION_MOVE:
-//                LogUtil.E("ACTION_MOVE");
-//                values[1].setX(event.getX());
-//                values[1].setY(event.getY());
-//                values[3].setX(values[1].getX()-values[0].getX());
-//                values[3].setY(values[1].getY()-values[0].getY());
-//                if(childView==null){
-//                    break;
-//                }
-//                ViewCompat.setTranslationX(childView,Math.max(-300,values[3].getX()));
-//                break;
-//            case MotionEvent.ACTION_CANCEL:
-//                LogUtil.E("ACTION_CANCEL");
-//            case MotionEvent.ACTION_UP:
-//                LogUtil.E("ACTION_UP");
-//                values[2].setX(event.getX());
-//                values[2].setY(event.getY());
-//
-//                createAnimatorTranslationX(childView,Math.min(-300,Math.max(-300,values[3].getX())),null);
-//
-//                break;
-//        }
-//        return true;
-//    }
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                childView.dispatchTouchEvent(event);
+                break;
+            case MotionEvent.ACTION_MOVE:
+                break;
+            case MotionEvent.ACTION_CANCEL:
+            case MotionEvent.ACTION_UP:
+                childView.dispatchTouchEvent(event);
+                break;
+        }
+        return super.dispatchTouchEvent(event);
+    }
 
 
     public void createAnimatorTranslationX(final View v, final float w, final View fl) {

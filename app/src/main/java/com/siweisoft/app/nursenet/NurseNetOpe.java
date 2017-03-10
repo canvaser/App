@@ -16,6 +16,7 @@ import com.siweisoft.app.ui.bed.patient.bean.reqbean.PatientAdditionReqBean;
 import com.siweisoft.app.ui.bed.persontask.bean.reqbean.GetPatientTaskReqBean;
 import com.siweisoft.app.ui.document.document.bean.netbean.DocumentListReqBean;
 import com.siweisoft.app.ui.info.addcheckbook.bean.reqbean.AddCheckBookListReqBean;
+import com.siweisoft.app.ui.info.adddutereport.bean.AddDuteReportReqBean;
 import com.siweisoft.app.ui.info.bedcheck.bean.reqbean.WriteBedCheckReqBean;
 import com.siweisoft.app.ui.info.checkbookdetail.bean.reqbean.CheckBookDetailReqBean;
 import com.siweisoft.app.ui.mission.missionlist.bean.req.MyWardTaskTodayReqBean;
@@ -435,6 +436,12 @@ public class NurseNetOpe extends BaseNetOpe {
     public void getReportData(BaseNurseReqBean reqBean, OnNetWorkReqInterf reqInterf) {
 
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_REPORT_DATA, reqBean, reqInterf);
+    }
+
+    public void writeReportData(String jsondata, OnNetWorkReqInterf reqInterf) {
+        AddDuteReportReqBean addDuteReportReqBean = new AddDuteReportReqBean();
+        addDuteReportReqBean.setJson_data(jsondata);
+        NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_WRITE_REPORT_DATA, addDuteReportReqBean, reqInterf);
     }
 
     public void getAlarmLogs(BaseNurseReqBean reqBean, OnNetWorkReqInterf reqInterf) {

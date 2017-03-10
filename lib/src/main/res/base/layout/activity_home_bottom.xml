@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:background="@drawable/icon_bg_bottom"
+    <View
+        android:background="@color/color_divide_line"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="1px" />
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="49dp">
 
         <LinearLayout
             android:id="@+id/ll_bed"
-            android:background="@drawable/drawable_tab"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
             android:gravity="center_horizontal"
@@ -35,7 +39,6 @@
 
         <LinearLayout
             android:id="@+id/ll_mission"
-            android:background="@drawable/drawable_tab"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
             android:gravity="center_horizontal"
@@ -61,7 +64,6 @@
 
         <LinearLayout
             android:id="@+id/ll_check"
-            android:background="@drawable/drawable_tab"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
             android:gravity="center_horizontal"
@@ -87,7 +89,6 @@
 
         <LinearLayout
             android:id="@+id/ll_info"
-            android:background="@drawable/drawable_tab"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
             android:gravity="center_horizontal"
@@ -112,7 +113,6 @@
 
         <LinearLayout
             android:id="@+id/ll_setting"
-            android:background="@drawable/drawable_tab"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
             android:gravity="center_horizontal"

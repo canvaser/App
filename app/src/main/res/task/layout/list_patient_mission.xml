@@ -3,7 +3,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:gravity="center_vertical"
-    android:background="@color/white"
+
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -12,7 +12,7 @@
         android:gravity="center_vertical"
         android:layout_margin="5dp"
         android:id="@+id/root"
-        android:background="@color/white"
+        android:background="@drawable/drawable_press_black_while"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

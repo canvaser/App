@@ -47,7 +47,7 @@ public abstract class BaseUIWithOutTitleActivity extends BaseActivity {
         }
 //        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.layout_baseui_withouttitle);
-        StatusBarUtil.getInstance().setStatusBarColorResId(activity, ColorConstant.COLOR_STATUS);
+        StatusBarUtil.getInstance().setStatusBarColorResId(activity, getStatusColor());
         containerVG = (ViewGroup) findViewById(R.id.rl_base_container);
         View rootV = getLayoutInflater().inflate(onCreateContainerView(), null);
         containerVG.addView(rootV, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -65,6 +65,10 @@ public abstract class BaseUIWithOutTitleActivity extends BaseActivity {
 
     public boolean isLandScape() {
         return false;
+    }
+
+    public int getStatusColor() {
+        return ColorConstant.COLOR_STATUS;
     }
 
     public boolean isFullScreen() {

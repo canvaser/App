@@ -10,6 +10,7 @@ import com.siweisoft.app.ui.bed.data.bean.resbean.DataTemplateDataResBean;
 import com.siweisoft.app.ui.bed.data.bean.resbean.DataTemplateResBean;
 import com.siweisoft.app.ui.bed.inputdata.bean.reqbean.InputDataReqBean;
 import com.siweisoft.app.ui.check.patientcheck.bean.PatAndTaskInfoByDocAdvIdReqBean;
+import com.siweisoft.app.ui.info.adddutereport.bean.AddDuteReportReqBean;
 import com.siweisoft.app.ui.info.bedcheck.bean.reqbean.WriteBedCheckReqBean;
 import com.siweisoft.lib.base.ui.bean.reqbean.BaseNurseReqBean;
 import com.siweisoft.lib.base.ui.ope.BaseNetOpe;
@@ -440,6 +441,13 @@ public class SimpleNetOpe extends BaseNetOpe {
     public static void getReportData(Context context, BaseNurseReqBean reqBean, OnNetWorkReqInterf reqInterf) {
 
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_REPORT_DATA, reqBean, reqInterf);
+    }
+
+
+    public static void writeReportData(Context context, String jsondata, OnNetWorkReqInterf reqInterf) {
+        AddDuteReportReqBean addDuteReportReqBean = new AddDuteReportReqBean();
+        addDuteReportReqBean.setJson_data(jsondata);
+        NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_WRITE_REPORT_DATA, addDuteReportReqBean, reqInterf);
     }
 
     public static void getAlarmLogs(Context context, BaseNurseReqBean reqBean, OnNetWorkReqInterf reqInterf) {

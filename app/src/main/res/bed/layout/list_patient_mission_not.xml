@@ -3,8 +3,7 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/root"
-    android:background="@color/color_base_graybg">
+    android:id="@+id/root">
 
 
     <LinearLayout
@@ -13,7 +12,7 @@
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:id="@+id/ll_xyz"
-        android:background="@color/white"
+        android:background="@drawable/drawable_press_black_while"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
