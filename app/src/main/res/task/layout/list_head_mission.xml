@@ -32,7 +32,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="2016-11-02"
                 android:textSize="16sp"
-                android:textColor="@color/black"
+                android:textColor="@color/color_base_txt_gray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 

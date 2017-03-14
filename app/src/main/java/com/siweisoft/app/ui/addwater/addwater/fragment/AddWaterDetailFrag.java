@@ -39,7 +39,7 @@ public class AddWaterDetailFrag extends BaseNurseFrag<AddWaterDetailUIOpe, Nurse
             }
         });
         getOpe().getDaOpe().setFilesBeans((List<AddWaterListResBean.DataBean.FilesBean>) getArguments().getSerializable(ValueConstant.DATA_DATA));
-        getOpe().getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        getOpe().getUiOpe().getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
     @Override

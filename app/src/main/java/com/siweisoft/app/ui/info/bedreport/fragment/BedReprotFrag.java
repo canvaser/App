@@ -55,7 +55,7 @@ public class BedReprotFrag extends BaseNurseFrag {
                 });
             }
         });
-        bedReportUIOpe.getRefreshLayout().autoRefresh();
+        bedReportUIOpe.getRefreshLayout().autoRefreshWithUI(0);
     }
 
     public void getData(final OnFinishListener onFinishListener) {

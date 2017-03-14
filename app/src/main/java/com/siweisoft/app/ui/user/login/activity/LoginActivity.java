@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.siweisoft.app.R;
 import com.siweisoft.app.ui.user.login.fragment.LoginFrag2;
 import com.siweisoft.lib.base.ui.activity.BaseUIWithOutTitleActivity;
+import com.siweisoft.lib.constant.color.ColorConstant;
 import com.siweisoft.lib.util.FragmentUtil;
 
 /**
@@ -42,5 +43,9 @@ public class LoginActivity extends BaseUIWithOutTitleActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    public int getStatusColor() {
+        return R.color.color_base_nurse;
     }
 }

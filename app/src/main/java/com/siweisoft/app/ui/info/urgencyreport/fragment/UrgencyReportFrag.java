@@ -57,7 +57,7 @@ public class UrgencyReportFrag extends BaseNurseFrag implements OnAppItemClickLi
                 });
             }
         });
-        urgencyReportUIOpe.getRefreshLayout().autoRefresh();
+        urgencyReportUIOpe.getRefreshLayout().autoRefreshWithUI(0);
     }
 
     public void getData(final OnFinishListener onFinishListener) {
@@ -120,7 +120,7 @@ public class UrgencyReportFrag extends BaseNurseFrag implements OnAppItemClickLi
                             @Override
                             public void onNetWorkResult(boolean success, Object o) {
                                 if (success) {
-                                    urgencyReportUIOpe.getRefreshLayout().autoRefresh();
+                                    urgencyReportUIOpe.getRefreshLayout().autoRefreshWithUI(0);
                                 }
                             }
                         });

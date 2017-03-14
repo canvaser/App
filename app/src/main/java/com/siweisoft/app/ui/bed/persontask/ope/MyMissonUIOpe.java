@@ -3,6 +3,7 @@ package com.siweisoft.app.ui.bed.persontask.ope;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import com.siweisoft.app.R;
 import com.siweisoft.app.ui.bed.patient.ope.PatientAdditionDAOpe;
@@ -37,6 +38,27 @@ public class MyMissonUIOpe extends BaseNurseUIOpe {
 
     MissionItenHeadUIBean missionItenHeadUIBean;
 
+    @BindView(R.id.tv_all)
+    TextView allTV;
+
+    @BindView(R.id.tv_lin)
+    TextView linTV;
+
+
+    @BindView(R.id.tv_long)
+    TextView longTV;
+
+    @BindView(R.id.ll_all)
+    View allV;
+
+    @BindView(R.id.ll_lin)
+    View linV;
+
+    @BindView(R.id.ll_long)
+    View longV;
+
+    TextView[] textViews = new TextView[]{allTV, linTV, longTV};
+
     public MyMissonUIOpe(Context context, View containerView) {
         super(context, containerView);
         init();
@@ -54,7 +76,8 @@ public class MyMissonUIOpe extends BaseNurseUIOpe {
         getRightTV().setText("全部");
         View view = LayoutInflater.from(context).inflate(R.layout.item_head_mission, null);
         missionItenHeadUIBean = new MissionItenHeadUIBean(context, view);
-        missionExpandView.addHeaderView(view, null, true);
+        //missionExpandView.addHeaderView(view, null, true);
+        select(0);
         view.findViewById(R.id.tv_all).setSelected(true);
     }
 
@@ -76,6 +99,15 @@ public class MyMissonUIOpe extends BaseNurseUIOpe {
 
     }
 
+    public void select(int index) {
+        for (int i = 0; i < textViews.length; i++) {
+            if (i == index) {
+                textViews[i].setSelected(true);
+            } else {
+                textViews[i].setSelected(false);
+            }
+        }
+    }
     public PinnedHeaderExpandableListView getMissionExpandView() {
         return missionExpandView;
     }

@@ -38,7 +38,7 @@ public class BedListFGM extends CommonUIFrag2<BedListFGMUIOpe<BedListFGM>, BedLi
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        baseOpes.getUiOpe().getRefreshLayout().autoRefresh(500);
+        baseOpes.getUiOpe().getRefreshLayout().autoRefreshWithUI(500);
     }
 
 
@@ -149,11 +149,11 @@ public class BedListFGM extends CommonUIFrag2<BedListFGMUIOpe<BedListFGM>, BedLi
                         switch (position) {
                             case 0:
                                 baseOpes.getDaOpe().setIndex(0);
-                                baseOpes.getUiOpe().getRefreshLayout().autoRefresh();
+                                baseOpes.getUiOpe().getRefreshLayout().autoRefreshWithUI(0);
                                 break;
                             case 1:
                                 baseOpes.getDaOpe().setIndex(1);
-                                baseOpes.getUiOpe().getRefreshLayout().autoRefresh();
+                                baseOpes.getUiOpe().getRefreshLayout().autoRefreshWithUI(0);
                                 break;
                         }
                     }
@@ -189,7 +189,7 @@ public class BedListFGM extends CommonUIFrag2<BedListFGMUIOpe<BedListFGM>, BedLi
 
     @Override
     public void onResult(int req, Bundle bundle) {
-        baseOpes.getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        baseOpes.getUiOpe().getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
     @Override

@@ -51,14 +51,14 @@ import butterknife.Optional;
  * Created by ${viwmox} on 2016-11-08.
  */
 public class MissionListFGM extends CommonUIFrag2<MissionListFGMUIOpe, AreaMessionDAOpe> implements
-        PinnedHeaderExpandableListView.OnHeaderUpdateListener, OnAppItemsClickListener, AdapterView.OnItemClickListener {
+        PinnedHeaderExpandableListView.OnHeaderUpdateListener, OnAppItemsClickListener {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         baseOpes.getUiOpe().getRefreshLayout().setMaterialRefreshListener(this);
         baseOpes.getUiOpe().getMissionExpandView().setOnHeaderUpdateListener(this);
-        baseOpes.getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        baseOpes.getUiOpe().getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
     public void getMyTask(boolean cache, final OnFinishListener onFinishListener) {
@@ -144,7 +144,7 @@ public class MissionListFGM extends CommonUIFrag2<MissionListFGMUIOpe, AreaMessi
 
 
     @Optional
-    @OnClick({BaseID.ID_MID, BaseID.ID_BACK, BaseID.ID_RIGHT})
+    @OnClick({BaseID.ID_MID, BaseID.ID_BACK, BaseID.ID_RIGHT, R.id.ll_all, R.id.ll_lin, R.id.ll_long})
     public void onClickEvent(View view) {
         switch (view.getId()) {
             case BaseID.ID_MID:
@@ -188,6 +188,21 @@ public class MissionListFGM extends CommonUIFrag2<MissionListFGMUIOpe, AreaMessi
                     }
                 });
                 break;
+            case R.id.ll_all:
+                baseOpes.getUiOpe().select(0);
+                baseOpes.getDaOpe().count = AreaMessionDAOpe.COUNT_ALL;
+                getMyTask(true, null);
+                break;
+            case R.id.ll_lin:
+                baseOpes.getDaOpe().count = AreaMessionDAOpe.COUNT_LIN;
+                baseOpes.getUiOpe().select(1);
+                getMyTask(true, null);
+                break;
+            case R.id.ll_long:
+                baseOpes.getDaOpe().count = AreaMessionDAOpe.COUNT_LONG;
+                baseOpes.getUiOpe().select(2);
+                getMyTask(true, null);
+                break;
         }
     }
 
@@ -222,7 +237,7 @@ public class MissionListFGM extends CommonUIFrag2<MissionListFGMUIOpe, AreaMessi
                     @Override
                     public void onNetWorkResult(boolean success, Object o) {
                         if (success) {
-                            baseOpes.getUiOpe().getRefreshLayout().autoRefresh();
+                            baseOpes.getUiOpe().getRefreshLayout().autoRefreshWithUI(0);
                         }
                     }
                 });
@@ -232,7 +247,7 @@ public class MissionListFGM extends CommonUIFrag2<MissionListFGMUIOpe, AreaMessi
 
     @Override
     public void onResult(int req, Bundle bundle) {
-        baseOpes.getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        baseOpes.getUiOpe().getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
 
@@ -241,31 +256,10 @@ public class MissionListFGM extends CommonUIFrag2<MissionListFGMUIOpe, AreaMessi
         getMyTask(false, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
-                baseOpes.getUiOpe().getMissionExpandView().setOnHeadViewClick(MissionListFGM.this);
+                // baseOpes.getUiOpe().getMissionExpandView().setOnHeadViewClick(MissionListFGM.this);
                 materialRefreshLayout.finishRefreshingDelay();
             }
         });
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        switch (position) {
-            case 1:
-                baseOpes.getUiOpe().getMissionItenHeadUIBean().select(0);
-                baseOpes.getDaOpe().count = AreaMessionDAOpe.COUNT_ALL;
-                getMyTask(true, null);
-                break;
-            case 2:
-                baseOpes.getDaOpe().count = AreaMessionDAOpe.COUNT_LIN;
-                baseOpes.getUiOpe().getMissionItenHeadUIBean().select(1);
-                getMyTask(true, null);
-                break;
-            case 3:
-                baseOpes.getDaOpe().count = AreaMessionDAOpe.COUNT_LONG;
-                baseOpes.getUiOpe().getMissionItenHeadUIBean().select(2);
-                getMyTask(true, null);
-                break;
-        }
     }
 
 

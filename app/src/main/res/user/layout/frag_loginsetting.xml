@@ -41,8 +41,13 @@
     <Button
         android:id="@+id/btn_submit"
         android:text="提交"
-        android:layout_marginLeft="20sp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="16sp"
+        android:layout_marginRight="16dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="17sp"
+        android:textColor="@color/color_title_select"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp" />
 </LinearLayout>

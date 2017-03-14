@@ -74,40 +74,20 @@ public class PersonTaskFrag extends BaseNurseFrag implements
         getMyMissionNetOpe = new NurseNetOpe(activity);
         myMissionDAOpe = new MyMissionDAOpe(activity);
         myMissonUIOpe.init(patientAdditionDAOpe);
-        myMissonUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
+        myMissonUIOpe.getRefreshLayout().setMaterialRefreshListener(this);
+        myMissonUIOpe.getMissionExpandView().setOnHeaderUpdateListener(this);
+        myMissonUIOpe.getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
+
+    }
+
+    @Override
+    public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
+        getPatientTask(new OnFinishListener() {
             @Override
-            public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
-                getPatientTask(new OnFinishListener() {
-                    @Override
-                    public void onFinish(Object o) {
-                        myMissonUIOpe.getMissionExpandView().setOnHeadViewClick(new AdapterView.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                switch (position) {
-                                    case 1:
-                                        myMissonUIOpe.getMissionItenHeadUIBean().select(0);
-                                        myMissionDAOpe.setTimeType(MyMissionDAOpe.TIME_TYPE[0]);
-                                        break;
-                                    case 2:
-                                        myMissonUIOpe.getMissionItenHeadUIBean().select(1);
-                                        myMissionDAOpe.setTimeType(MyMissionDAOpe.TIME_TYPE[1]);
-                                        break;
-                                    case 3:
-                                        myMissonUIOpe.getMissionItenHeadUIBean().select(2);
-                                        myMissionDAOpe.setTimeType(MyMissionDAOpe.TIME_TYPE[2]);
-                                        break;
-                                }
-                                //myMissonUIOpe.initList(myMissionDAOpe.sort());
-                            }
-                        });
-                        materialRefreshLayout.finishRefreshingDelay();
-                    }
-                });
+            public void onFinish(Object o) {
+                materialRefreshLayout.finishRefreshingDelay();
             }
         });
-        myMissonUIOpe.getMissionExpandView().setOnHeaderUpdateListener(this);
-        myMissonUIOpe.getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
-
     }
 
     public void getPatientTask(final OnFinishListener onFinishListener) {
@@ -179,7 +159,7 @@ public class PersonTaskFrag extends BaseNurseFrag implements
                     @Override
                     public void onNetWorkResult(boolean success, Object o) {
                         if (success) {
-                            myMissonUIOpe.getRefreshLayout().autoRefresh();
+                            myMissonUIOpe.getRefreshLayout().autoRefreshWithUI(0);
                         }
                     }
                 });
@@ -188,7 +168,7 @@ public class PersonTaskFrag extends BaseNurseFrag implements
     }
 
 
-    @OnClick({BaseID.ID_RIGHT, BaseID.ID_MID})
+    @OnClick({BaseID.ID_RIGHT, BaseID.ID_MID, R.id.ll_all, R.id.ll_lin, R.id.ll_long})
     public void onClickEvent(View v) {
         switch (v.getId()) {
             case BaseID.ID_RIGHT:
@@ -216,6 +196,21 @@ public class PersonTaskFrag extends BaseNurseFrag implements
                     }
                 });
                 break;
+            case R.id.ll_all:
+                myMissonUIOpe.select(0);
+                myMissionDAOpe.setTimeType(MyMissionDAOpe.TIME_TYPE[0]);
+                myMissonUIOpe.initList(myMissionDAOpe.sort());
+                break;
+            case R.id.ll_lin:
+                myMissionDAOpe.setTimeType(MyMissionDAOpe.TIME_TYPE[1]);
+                myMissonUIOpe.select(1);
+                myMissonUIOpe.initList(myMissionDAOpe.sort());
+                break;
+            case R.id.ll_long:
+                myMissionDAOpe.setTimeType(MyMissionDAOpe.TIME_TYPE[2]);
+                myMissonUIOpe.select(2);
+                myMissonUIOpe.initList(myMissionDAOpe.sort());
+                break;
         }
     }
 
@@ -223,6 +218,6 @@ public class PersonTaskFrag extends BaseNurseFrag implements
     @Override
     public void onResult(int req, Bundle bundle) {
         super.onResult(req, bundle);
-        myMissonUIOpe.getRefreshLayout().autoRefresh(1000);
+        myMissonUIOpe.getRefreshLayout().autoRefreshWithUI(1000);
     }
 }

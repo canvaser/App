@@ -50,7 +50,7 @@ public class AssayFrag extends BaseNurseFrag<AssayUIOpe, NurseNetOpe, BaseDBOpe,
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
         getOpe().getUiOpe().initTitle(patientAdditionDAOpe.getMidTitle());
         getOpe().getUiOpe().getRefreshLayout().setMaterialRefreshListener(this);
-        getOpe().getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        getOpe().getUiOpe().getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
     @Override
@@ -102,7 +102,7 @@ public class AssayFrag extends BaseNurseFrag<AssayUIOpe, NurseNetOpe, BaseDBOpe,
                     @Override
                     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
                         getOpe().getDaOpe().setBeginTime(DateFormatUtil.convent_YYYYMMDD(new Date(millseconds)));
-                        getOpe().getUiOpe().getRefreshLayout().autoRefresh();
+                        getOpe().getUiOpe().getRefreshLayout().autoRefreshWithUI(0);
                     }
                 });
                 break;
@@ -112,7 +112,7 @@ public class AssayFrag extends BaseNurseFrag<AssayUIOpe, NurseNetOpe, BaseDBOpe,
                     public void onAppItemClick(View view, int position) {
                         patientAdditionDAOpe.setPosition(position);
                         getOpe().getUiOpe().initTitle(patientAdditionDAOpe.getMidTitle());
-                        getOpe().getUiOpe().getRefreshLayout().autoRefresh();
+                        getOpe().getUiOpe().getRefreshLayout().autoRefreshWithUI(0);
                     }
                 });
                 break;

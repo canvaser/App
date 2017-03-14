@@ -15,6 +15,7 @@ import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.LogUtil;
 import com.siweisoft.lib.util.SPUtil;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
 import com.siweisoft.lib.view.recyclerview.GridRecyclerView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
@@ -75,7 +76,7 @@ public class BedListFGMUIOpe<A extends CommonUIFrag2> extends BaseNurseUIOpe<A> 
 
     public void initBedList(ArrayList<PatientBedResBean> list) {
         recyclerView.setLayoutManager(new GridLayoutManager(context, 4));
-        //recyclerView.addItemDecoration(new MyItemDecoration(context,3* ValueConstant.DIMEN_1));
+        recyclerView.addItemDecoration(new MyItemDecoration(context, 2));
         bedListAdapter = new BedListAdapter(context, list);
         recyclerView.setAdapter(bedListAdapter);
         recyclerView.setLayoutAnimationListener(new Animation.AnimationListener() {

@@ -64,7 +64,7 @@ public class BedCheckFrag extends BaseNurseFrag {
                 });
             }
         });
-        bedCheckUIOpe.getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        bedCheckUIOpe.getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
     public void getData(final OnFinishListener listener) {
@@ -87,7 +87,7 @@ public class BedCheckFrag extends BaseNurseFrag {
         SimpleNetOpe.writeWardInspectionInfo(activity, reqBean, new UINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
-                bedCheckUIOpe.getRefreshLayout().autoRefresh();
+                bedCheckUIOpe.getRefreshLayout().autoRefreshWithUI(0);
             }
         });
     }

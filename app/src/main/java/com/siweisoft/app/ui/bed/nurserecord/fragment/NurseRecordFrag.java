@@ -51,7 +51,7 @@ public class NurseRecordFrag extends BaseNurseFrag<NurseRecordUIOpe, NurseNetOpe
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
         getOpe().getUiOpe().initTile(patientAdditionDAOpe.getMidTitle());
         getOpe().getUiOpe().getRefreshLayout().setMaterialRefreshListener(this);
-        getOpe().getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        getOpe().getUiOpe().getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
     @Override
@@ -91,7 +91,7 @@ public class NurseRecordFrag extends BaseNurseFrag<NurseRecordUIOpe, NurseNetOpe
                     public void onAppItemClick(View view, int position) {
                         patientAdditionDAOpe.setPosition(position);
                         getOpe().getUiOpe().initTile(patientAdditionDAOpe.getMidTitle());
-                        getOpe().getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+                        getOpe().getUiOpe().getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
                     }
                 });
                 break;

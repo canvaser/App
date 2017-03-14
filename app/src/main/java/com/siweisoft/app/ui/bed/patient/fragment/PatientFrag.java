@@ -74,6 +74,7 @@ public class PatientFrag extends BaseNurseFrag {
         patientFragUIOpe = new PatientFragUIOpe(activity, getView());
         patientNetOpe = new NurseNetOpe(activity);
         patientFragUIOpe.initInfo(patientAdditionDAOpe.getPatientBedResBean());
+        patientFragUIOpe.initTitle(patientAdditionDAOpe.getMidTitle());
         patientFragUIOpe.initAddionList(new PatientAdditionOpe().getThispatientAdditionList(null));
         patientFragUIOpe.getRefreshLayout().setMaterialRefreshListener(new MaterialRefreshListenerAdpter() {
             @Override
@@ -87,7 +88,7 @@ public class PatientFrag extends BaseNurseFrag {
                 });
             }
         });
-        patientFragUIOpe.getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        patientFragUIOpe.getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
     private void getData(final OnFinishListener onFinishListener) {
@@ -99,7 +100,6 @@ public class PatientFrag extends BaseNurseFrag {
                     ArrayList<PatientAdditionResBean> list = new PatientAdditionOpe().getThispatientAdditionList(resBean);
                     patientFragUIOpe.initAddionList(list);
                     patientFragUIOpe.setGuoMing(list);
-                    patientFragUIOpe.initTitle(patientAdditionDAOpe.getMidTitle());
                 }
                 if (onFinishListener != null) {
                     onFinishListener.onFinish(o);

@@ -54,7 +54,7 @@ public class CheckBookFrag extends BaseNurseFrag implements OnAppItemClickListen
                 });
             }
         });
-        checkBookUIOpe.getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        checkBookUIOpe.getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
     public void getData(final OnFinishListener onFinishListener) {
@@ -98,6 +98,6 @@ public class CheckBookFrag extends BaseNurseFrag implements OnAppItemClickListen
 
     @Override
     public void onResult(int req, Bundle bundle) {
-        checkBookUIOpe.getRefreshLayout().autoRefresh(500);
+        checkBookUIOpe.getRefreshLayout().autoRefreshWithUI(500);
     }
 }

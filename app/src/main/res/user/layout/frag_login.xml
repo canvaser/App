@@ -3,8 +3,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/icon_bg_login">
+    android:layout_height="match_parent">
 
     <com.siweisoft.lib.view.other.AppScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
@@ -21,7 +20,7 @@
                 android:layout_marginTop="10dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:background="@drawable/icon_bg_updatepwd"
+                android:background="@drawable/drawable_border_input"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:gravity="center_vertical"
@@ -29,7 +28,7 @@
                 android:layout_height="40dp">
 
                 <TextView
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_base_txt_gray"
                     android:textSize="17sp"
                     android:text="   工号:"
                     android:layout_width="wrap_content"
@@ -38,10 +37,10 @@
                 <EditText
                     android:gravity="center_vertical|left"
                     android:text="1111"
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_base_txt_gray"
                     android:textSize="17sp"
                     android:id="@+id/et_account"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="20dp"
                     android:background="@null"
                     android:layout_width="match_parent"
                     android:layout_height="35dp" />
@@ -52,7 +51,7 @@
                 android:layout_marginTop="10dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:background="@drawable/icon_bg_updatepwd"
+                android:background="@drawable/drawable_border_input"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:gravity="center_vertical"
@@ -60,7 +59,7 @@
                 android:layout_height="40dp">
 
                 <TextView
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_base_txt_gray"
                     android:textSize="17sp"
                     android:text="   病区:"
                     android:layout_width="wrap_content"
@@ -68,10 +67,10 @@
 
                 <TextView
                     android:gravity="center_vertical|left"
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_base_txt_gray"
                     android:textSize="17sp"
                     android:id="@+id/tv_area"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="20dp"
                     android:background="@null"
                     android:layout_width="match_parent"
                     android:layout_height="35dp" />
@@ -82,7 +81,7 @@
                 android:layout_marginTop="10dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:background="@drawable/icon_bg_updatepwd"
+                android:background="@drawable/drawable_border_input"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:gravity="center_vertical"
@@ -90,7 +89,7 @@
                 android:layout_height="40dp">
 
                 <TextView
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_base_txt_gray"
                     android:textSize="17sp"
                     android:text="   密码:"
                     android:layout_width="wrap_content"
@@ -99,10 +98,10 @@
                 <EditText
                     android:inputType="textPassword"
                     android:gravity="center_vertical|left"
-                    android:textColor="@color/black"
+                    android:textColor="@color/color_base_txt_gray"
                     android:textSize="17sp"
                     android:id="@+id/et_pwd"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="20dp"
                     android:background="@null"
                     android:layout_width="match_parent"
                     android:layout_height="35dp" />
@@ -110,11 +109,15 @@
             </LinearLayout>
 
             <Button
+                android:layout_marginTop="10dp"
                 android:id="@+id/btn_login"
                 android:text="登录"
+                android:textSize="17sp"
                 android:textColor="@color/color_title_select"
-                android:layout_marginLeft="20sp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="16sp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>

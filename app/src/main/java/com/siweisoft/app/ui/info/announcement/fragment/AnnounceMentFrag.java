@@ -46,7 +46,7 @@ public class AnnounceMentFrag extends BaseNurseFrag {
                 });
             }
         });
-        announceUIOpe.getRefreshLayout().autoRefresh(500);
+        announceUIOpe.getRefreshLayout().autoRefreshWithUI(500);
     }
 
     private void getData(final OnFinishListener onFinishListener) {

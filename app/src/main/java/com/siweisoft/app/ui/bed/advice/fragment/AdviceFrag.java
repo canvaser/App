@@ -71,7 +71,7 @@ public class AdviceFrag extends BaseNurseFrag<AdviceUIOpe, NurseNetOpe, BaseDBOp
         getOpe().getUiOpe().getDoubleExpandView().setOnHeaderUpdateListener(this);
         getOpe().getUiOpe().getDoubleExpandView().setOnChildClickListener(this);
         getOpe().getUiOpe().getMaterialRefreshLayout().setMaterialRefreshListener(this);
-        getOpe().getUiOpe().getMaterialRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        getOpe().getUiOpe().getMaterialRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
 

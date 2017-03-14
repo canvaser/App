@@ -67,7 +67,7 @@ public class CheckListFGM extends BaseNurseFrag implements
             }
         });
         checkListFGMUIOpe.getMissionExpandView().setOnHeaderUpdateListener(this);
-        checkListFGMUIOpe.getRefreshLayout().autoRefresh();
+        checkListFGMUIOpe.getRefreshLayout().autoRefreshWithUI(0);
 
     }
 

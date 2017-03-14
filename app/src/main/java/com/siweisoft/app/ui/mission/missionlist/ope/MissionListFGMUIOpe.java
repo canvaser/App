@@ -3,6 +3,7 @@ package com.siweisoft.app.ui.mission.missionlist.ope;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 
 import com.siweisoft.app.R;
 import com.siweisoft.app.nursevalue.MethodValue;
@@ -34,6 +35,28 @@ public class MissionListFGMUIOpe extends BaseNurseUIOpe {
     @BindView(R.id.elv_elv)
     PinnedHeaderExpandableListView missionExpandView;
 
+
+    @BindView(R.id.tv_all)
+    TextView allTV;
+
+    @BindView(R.id.tv_lin)
+    TextView linTV;
+
+
+    @BindView(R.id.tv_long)
+    TextView longTV;
+
+    @BindView(R.id.ll_all)
+    View allV;
+
+    @BindView(R.id.ll_lin)
+    View linV;
+
+    @BindView(R.id.ll_long)
+    View longV;
+
+    TextView[] textViews = new TextView[]{allTV, linTV, longTV};
+
     MissionListAdapter missionListAdapter;
 
     public static String[] strings = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13"};
@@ -59,14 +82,14 @@ public class MissionListFGMUIOpe extends BaseNurseUIOpe {
         getBackTV().setBackgroundResource(R.drawable.drawable_right);
         getBackTV().setSelected(true);
         getBackTV().setText("全部");
-
+        getRightTV().setSelected(true);
         getMidTV().setSelected(true);
         getBackTV().setVisibility(View.VISIBLE);
         getMidTV().setVisibility(View.VISIBLE);
         getRightTV().setVisibility(View.VISIBLE);
         getRightTV().setSelected(true);
         getRightTV().setText("全部");
-
+        select(0);
     }
 
     public void initMid(String area, int count) {
@@ -88,8 +111,8 @@ public class MissionListFGMUIOpe extends BaseNurseUIOpe {
         if (missionListAdapter == null) {
             View view = LayoutInflater.from(context).inflate(R.layout.item_head_mission, null);
             missionItenHeadUIBean = new MissionItenHeadUIBean(context, view);
-            missionExpandView.addHeaderView(view, null, true);
-            view.findViewById(R.id.tv_all).setSelected(true);
+//            missionExpandView.addHeaderView(view, null, true);
+//            view.findViewById(R.id.tv_all).setSelected(true);
             missionListAdapter = new MissionListAdapter(context, adapterList);
             missionExpandView.setGroupIndicator(null);
             missionExpandView.setAdapter(missionListAdapter);
@@ -105,6 +128,15 @@ public class MissionListFGMUIOpe extends BaseNurseUIOpe {
         missionSortStr = loginResBean.getData().getNurseType().toArray(new String[loginResBean.getData().getNurseType().size()]);
     }
 
+    public void select(int index) {
+        for (int i = 0; i < textViews.length; i++) {
+            if (i == index) {
+                textViews[i].setSelected(true);
+            } else {
+                textViews[i].setSelected(false);
+            }
+        }
+    }
 
     public MissionListAdapter getMissionListAdapter() {
         return missionListAdapter;

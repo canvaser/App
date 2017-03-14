@@ -51,7 +51,7 @@ public class AddWaterListFrag2 extends CommonUIFrag2<AddWaterListUIOpe<AddWaterL
             return;
         }
         baseOpes.getDaOpe().setPatientAdditionDAOpe((PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA));
-        baseOpes.getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        baseOpes.getUiOpe().getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
 

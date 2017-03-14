@@ -363,6 +363,18 @@ public class MaterialRefreshLayout extends FrameLayout {
 
     }
 
+    public void autoRefreshWithUI(int delay) {
+        this.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (!isRefreshing) {
+                    updateListener();
+                }
+            }
+        }, delay);
+
+
+    }
 
     public void autoRefresh(int delay) {
         this.postDelayed(new Runnable() {

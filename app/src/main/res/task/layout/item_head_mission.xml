@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <LinearLayout
 
@@ -27,7 +27,7 @@
                 android:background="@drawable/drawable_bg_missionhead_txt"
                 android:text="全部"
                 android:textSize="15sp"
-                android:textColor="@color/color_base_txt_gray"
+                android:textColor="@color/color_gray_700_white"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
@@ -50,7 +50,7 @@
                 android:background="@drawable/drawable_bg_missionhead_txt"
                 android:text="临时"
                 android:textSize="15sp"
-                android:textColor="@color/color_base_txt_gray"
+                android:textColor="@color/color_gray_700_white"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
@@ -73,7 +73,7 @@
                 android:background="@drawable/drawable_bg_missionhead_txt"
                 android:text="长期"
                 android:textSize="15sp"
-                android:textColor="@color/color_base_txt_gray"
+                android:textColor="@color/color_gray_700_white"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"

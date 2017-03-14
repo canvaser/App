@@ -9,6 +9,6 @@
         android:id="@+id/av"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        app:indicatorColor="@color/red"
+        app:indicatorColor="@color/color_blue_A700"
         app:indicatorName="BallPulseIndicator" />
 </LinearLayout>

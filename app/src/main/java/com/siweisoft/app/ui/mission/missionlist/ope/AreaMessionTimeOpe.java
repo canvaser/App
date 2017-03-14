@@ -24,6 +24,7 @@ public class AreaMessionTimeOpe {
 
 
     public void sort(final AreaMessionListResBean resBean, final String type, final String sort, final String count, final OnNetFinishWithObjInter instener) {
+        final AreaMessionDAOpe areaMessionDAOpe = new AreaMessionDAOpe(null);
         new AsyncTask<String, String, ArrayList<AreaMissionListAdapterBean>>() {
             @Override
             protected ArrayList<AreaMissionListAdapterBean> doInBackground(String... params) {
@@ -38,7 +39,7 @@ public class AreaMessionTimeOpe {
                                 type.equals(resBean.getData().get(i).getTitles().get(0).getStatus()) && sort.equals(resBean.getData().get(i).getTitles().get(0).getNurse_type())
                                 ) {
                             String l;
-                            if ("st".equals(resBean.getData().get(i).getTitles().get(0).getKey().toLowerCase()) || resBean.getData().get(i).getCodename().equals("出院带药")) {
+                            if (areaMessionDAOpe.isLin(resBean.getData().get(i).getTitles().get(0).get医嘱ID(), resBean.getData().get(i).getTitles().get(0).getKey())) {
                                 l = "临时";
                             } else {
                                 l = "长期";

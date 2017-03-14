@@ -62,7 +62,7 @@ public class CheckBookDetailFrag extends BaseNurseFrag implements PinnedHeaderEx
             }
         });
         checkBookDetailUIOpe.getListView().setOnHeaderUpdateListener(this);
-        checkBookDetailUIOpe.getRefreshLayout().autoRefresh();
+        checkBookDetailUIOpe.getRefreshLayout().autoRefreshWithUI(0);
 
     }
 

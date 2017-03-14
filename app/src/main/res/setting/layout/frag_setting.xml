@@ -5,9 +5,14 @@
     android:layout_height="match_parent"
     android:background="@color/color_block_back">
 
+    <View
+        android:layout_marginTop="20dp"
+        android:background="@color/color_divide_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
 
     <RelativeLayout
-        android:layout_marginTop="20dp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/twhite">
@@ -50,6 +55,9 @@
         android:layout_width="match_parent"
         android:layout_height="1px" />
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
     <RelativeLayout
         android:id="@+id/rl_workers"
         android:layout_width="match_parent"
@@ -130,12 +138,18 @@
     </RelativeLayout>
 
     <View
+        android:background="@color/color_divide_line"
         android:layout_width="match_parent"
         android:layout_height="1px" />
 
+    <View
+        android:layout_marginTop="20dp"
+        android:background="@color/color_divide_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
 
     <RelativeLayout
-        android:layout_marginTop="20dp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/twhite">
@@ -173,15 +187,19 @@
             android:textSize="15sp"
             android:textColor="@color/black" />
     </RelativeLayout>
-
     <View
+        android:background="@color/color_divide_line"
         android:layout_width="match_parent"
         android:layout_height="1px" />
 
-
+    <View
+        android:layout_marginTop="20dp"
+        android:background="@color/color_divide_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
     <RelativeLayout
         android:id="@+id/rl_setting"
-        android:layout_marginTop="20dp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/twhite">
@@ -220,6 +238,7 @@
     </RelativeLayout>
 
     <View
+        android:background="@color/color_divide_line"
         android:layout_width="match_parent"
         android:layout_height="1px" />
 </LinearLayout>

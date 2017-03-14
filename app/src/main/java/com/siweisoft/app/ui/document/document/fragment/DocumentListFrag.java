@@ -62,7 +62,7 @@ public class DocumentListFrag extends BaseNurseFrag<DocumentListUIOpe, NurseNetO
                 });
             }
         });
-        getOpe().getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        getOpe().getUiOpe().getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
     public void getData(@NonNull final OnFinishListener onFinishListener) {

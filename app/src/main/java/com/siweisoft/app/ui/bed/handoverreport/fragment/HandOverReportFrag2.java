@@ -43,7 +43,7 @@ public class HandOverReportFrag2 extends CommonUIFrag2<HandOverReportUIOpe<HandO
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
         baseOpes.getUiOpe().initMid(patientAdditionDAOpe.getMidTitle());
         handOverNetOpe = new NurseNetOpe(activity);
-        baseOpes.getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        baseOpes.getUiOpe().getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
 
@@ -79,7 +79,7 @@ public class HandOverReportFrag2 extends CommonUIFrag2<HandOverReportUIOpe<HandO
                     public void onAppItemClick(View view, int position) {
                         patientAdditionDAOpe.setPosition(position);
                         baseOpes.getUiOpe().getMidTV().setText(patientAdditionDAOpe.getMidTitle());
-                        baseOpes.getUiOpe().getRefreshLayout().autoRefresh();
+                        baseOpes.getUiOpe().getRefreshLayout().autoRefreshWithUI(0);
                     }
                 });
                 break;
@@ -94,7 +94,7 @@ public class HandOverReportFrag2 extends CommonUIFrag2<HandOverReportUIOpe<HandO
 
     @Override
     public void onResult(int req, Bundle bundle) {
-        baseOpes.getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        baseOpes.getUiOpe().getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
     @Override

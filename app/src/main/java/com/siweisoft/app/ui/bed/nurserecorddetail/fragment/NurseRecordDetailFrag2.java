@@ -33,7 +33,7 @@ public class NurseRecordDetailFrag2 extends CommonUIFrag2<NurseRecordDetailUIOpe
         }
         getBaseOpes().getDaOpe().setNurseRecordResBean((NurseRecordResBean) getArguments().getSerializable(ValueConstant.DATA_DATA));
         getBaseOpes().getDaOpe().setPatientBedResBean((PatientBedResBean) getArguments().getSerializable(ValueConstant.DATA_DATA2));
-        getBaseOpes().getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        getBaseOpes().getUiOpe().getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
     @Override

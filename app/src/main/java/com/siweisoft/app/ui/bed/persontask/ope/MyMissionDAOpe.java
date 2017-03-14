@@ -3,6 +3,7 @@ package com.siweisoft.app.ui.bed.persontask.ope;
 import android.content.Context;
 
 import com.siweisoft.app.ui.mission.missionlist.bean.res.AreaMessionListResBean;
+import com.siweisoft.app.ui.mission.missionlist.ope.AreaMessionDAOpe;
 import com.siweisoft.lib.base.ui.ope.BaseOpe;
 import com.siweisoft.lib.util.data.DateFormatUtil;
 
@@ -74,6 +75,7 @@ public class MyMissionDAOpe extends BaseOpe {
     }
 
     public HashMap<String, ArrayList<AreaMessionListResBean.DataBean>> sort() {
+        AreaMessionDAOpe areaMessionDAOpe = new AreaMessionDAOpe(null);
         HashMap<String, ArrayList<AreaMessionListResBean.DataBean>> map = new HashMap<>();
         String[] strings = new String[list.keySet().size()];
         strings = list.keySet().toArray(strings);
@@ -86,7 +88,8 @@ public class MyMissionDAOpe extends BaseOpe {
                 if (ll.get(j).getTitles() != null && ll.get(j).getTitles().size() > 0) {
                     if (wayType.contains(ll.get(j).getTitles().get(0).getTaskname()) || wayType.equals(TIME_TYPE[0])) {
                         String s = "";
-                        if ("st".equals(ll.get(j).getTitles().get(0).getKey().toLowerCase()) || ll.get(j).getCodename().equals("出院带药")) {
+
+                        if (areaMessionDAOpe.isLin(ll.get(j).getTitles().get(0).get医嘱ID(), ll.get(j).getTitles().get(0).getKey())) {
                             s = "临时";
                         } else {
                             s = "长期";

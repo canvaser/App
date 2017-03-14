@@ -38,7 +38,7 @@ public class AddAddWaterFrag extends BaseNurseFrag<AddAddWaterUIOpe, NurseNetOpe
         super.onViewCreated(view, savedInstanceState);
         getOpe().getDaOpe().setAreaMessionResBean((AreaMessionListResBean.DataBean) getArguments().getSerializable(ValueConstant.DATA_DATA));
         getOpe().getUiOpe().getRefreshLayout().setMaterialRefreshListener(this);
-        getOpe().getUiOpe().getRefreshLayout().autoRefresh(getResources().getInteger(R.integer.integer_time_short));
+        getOpe().getUiOpe().getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
     public void getData(final OnFinishListener onFinishListener) {
