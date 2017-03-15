@@ -26,50 +26,27 @@ public class BedCheckListAdapter extends AppRecycleAdapter {
         this.data = data;
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        if (position == 0) {
-            return 0;
-        } else {
-            return 1;
-        }
-    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         BedCheckUIBean bedCheckUIBean = null;
-        switch (viewType) {
-            case 0:
-                View view0 = layoutInflater.inflate(R.layout.item_head_bedcheck, parent, false);
-                bedCheckUIBean = new BedCheckUIBean(context, view0);
-                break;
-            case 1:
-                View view = layoutInflater.inflate(R.layout.list_bedcheck, parent, false);
-                bedCheckUIBean = new BedCheckUIBean(context, view);
-                break;
-        }
+        View view = layoutInflater.inflate(R.layout.list_bedcheck, parent, false);
+        bedCheckUIBean = new BedCheckUIBean(context, view);
         return bedCheckUIBean;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        switch (getItemViewType(position)) {
-            case 0:
-                break;
-            case 1:
-                position = position - 1;
-                BedCheckUIBean bedCheckUIBean = (BedCheckUIBean) holder;
-                bedCheckUIBean.getDateTV().setText(StringUtil.getStr(DateFormatUtil.getMMDDHHMM(data.get(position).getTimestamp())));
-                bedCheckUIBean.getAreaTV().setText(StringUtil.getStr(data.get(position).getRegion()));
-                bedCheckUIBean.getRoomTV().setText(StringUtil.getStr(data.get(position).getRoom()));
-                bedCheckUIBean.getNameTV().setText(StringUtil.getStr(data.get(position).getDisplayname()));
-                break;
-        }
+        BedCheckUIBean bedCheckUIBean = (BedCheckUIBean) holder;
+        bedCheckUIBean.getDateTV().setText(StringUtil.getStr(DateFormatUtil.getMMDDHHMM(data.get(position).getTimestamp())));
+        bedCheckUIBean.getAreaTV().setText(StringUtil.getStr(data.get(position).getRegion()));
+        bedCheckUIBean.getRoomTV().setText(StringUtil.getStr(data.get(position).getRoom()));
+        bedCheckUIBean.getNameTV().setText(StringUtil.getStr(data.get(position).getDisplayname()));
     }
 
     @Override
     public int getItemCount() {
-        return data == null ? 1 : data.size() + 1;
+        return data == null ? 0 : data.size();
     }
 
     @Override

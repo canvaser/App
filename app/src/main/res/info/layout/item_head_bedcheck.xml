@@ -17,7 +17,7 @@
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/color_base_txt_gray" />
 
     <TextView
         android:maxLines="1"
@@ -28,7 +28,7 @@
         android:layout_weight="0.7"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/color_base_txt_gray" />
 
     <TextView
         android:maxLines="1"
@@ -39,7 +39,7 @@
         android:layout_weight="0.7"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/color_base_txt_gray" />
 
     <TextView
         android:maxLines="1"
@@ -50,7 +50,7 @@
         android:layout_weight="0.7"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/color_base_txt_gray" />
 
 
 </LinearLayout>

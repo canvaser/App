@@ -3,15 +3,19 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/root">
+    android:id="@+id/root"
+    android:background="@color/color_block_back">
 
-
+    <com.siweisoft.app.ui.mission.missionlist.view.MissionView
+        android:orientation="vertical"
+        android:id="@+id/ll_xyz"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <LinearLayout
         android:gravity="center_vertical"
-        android:layout_marginBottom="1dp"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:id="@+id/ll_xyz"
         android:background="@drawable/drawable_press_black_while"
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -42,7 +46,6 @@
                     android:layout_centerVertical="true"
                     android:id="@+id/lin"
                     android:textSize="17sp"
-                    android:textColor="@color/color_lin"
                     android:text="临"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -158,7 +161,15 @@
 
             </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
+
+        <View
+            android:background="@color/color_base_graybg"
+            android:layout_width="match_parent"
+            android:layout_height="1px" />
+
+    </com.siweisoft.app.ui.mission.missionlist.view.MissionView>
 
     <TextView
         android:paddingTop="3dp"
@@ -171,5 +182,4 @@
         android:text="完成"
         android:layout_width="60dp"
         android:layout_height="wrap_content" />
-
 </com.siweisoft.lib.view.swipeview.view.SwipeView>

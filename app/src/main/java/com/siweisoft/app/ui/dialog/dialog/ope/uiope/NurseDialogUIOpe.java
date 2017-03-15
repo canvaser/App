@@ -11,6 +11,7 @@ import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.base.ui.ope.BaseUIOpe;
 import com.siweisoft.lib.util.AnimUtil;
 import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration2;
 
 import butterknife.BindView;
 
@@ -37,7 +38,7 @@ public class NurseDialogUIOpe extends BaseUIOpe {
         recyclerView.setVisibility(View.VISIBLE);
         AnimUtil.getInstance().startAnim(context, recyclerView, R.anim.anim_scale_in);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerView.addItemDecoration(new MyItemDecoration(context, 1, com.siweisoft.lib.R.color.color_base_graybg));
+        recyclerView.addItemDecoration(new MyItemDecoration2(context, 1, com.siweisoft.lib.R.color.color_grey_300));
         DialogAdapter pupListAdapter = new DialogAdapter(context, strings);
         recyclerView.setAdapter(pupListAdapter);
         pupListAdapter.setOnAppItemClickListener(onAppItemClickListener);
@@ -47,7 +48,7 @@ public class NurseDialogUIOpe extends BaseUIOpe {
         leftRecycle.setVisibility(View.VISIBLE);
         AnimUtil.getInstance().startAnim(context, leftRecycle, R.anim.anim_scale_in);
         leftRecycle.setLayoutManager(new LinearLayoutManager(context));
-        leftRecycle.addItemDecoration(new MyItemDecoration(context, 1, com.siweisoft.lib.R.color.color_base_graybg));
+        leftRecycle.addItemDecoration(new MyItemDecoration2(context, 1, com.siweisoft.lib.R.color.color_grey_300));
         DialogAdapter pupListAdapter = new DialogAdapter(context, strings);
         leftRecycle.setAdapter(pupListAdapter);
         pupListAdapter.setOnAppItemClickListener(onAppItemClickListener);
@@ -57,7 +58,7 @@ public class NurseDialogUIOpe extends BaseUIOpe {
         rightRecycle.setVisibility(View.VISIBLE);
         AnimUtil.getInstance().startAnim(context, rightRecycle, R.anim.anim_scale_in);
         rightRecycle.setLayoutManager(new LinearLayoutManager(context));
-        rightRecycle.addItemDecoration(new MyItemDecoration(context, 1, com.siweisoft.lib.R.color.color_base_graybg));
+        rightRecycle.addItemDecoration(new MyItemDecoration2(context, 1, R.color.color_grey_300));
         DialogAdapter pupListAdapter = new DialogAdapter(context, strings);
         rightRecycle.setAdapter(pupListAdapter);
         pupListAdapter.setOnAppItemClickListener(onAppItemClickListener);

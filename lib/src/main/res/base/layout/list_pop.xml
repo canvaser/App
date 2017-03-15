@@ -8,14 +8,13 @@
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/color_base_graybg">
 
         <TextView
             android:background="@drawable/drawable_press_black_while"
             android:layout_gravity="center"
-            android:layout_marginBottom="1dp"
             android:gravity="center"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
@@ -24,11 +23,6 @@
             android:textColor="@color/color_base_txt_gray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
-        <View
-            android:background="@color/gray"
-            android:layout_width="wrap_content"
-            android:layout_height="1px" />
     </LinearLayout>
 
 

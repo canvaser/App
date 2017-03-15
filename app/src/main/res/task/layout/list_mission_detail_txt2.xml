@@ -6,6 +6,7 @@
     android:layout_height="wrap_content">
 
     <LinearLayout
+        android:padding="5dp"
         android:id="@+id/ll_content"
         android:layout_weight="1"
         android:orientation="vertical"
@@ -45,11 +46,12 @@
         <TextView
             android:id="@+id/tv_press"
             android:layout_centerInParent="true"
+            android:padding="5dp"
             android:gravity="center"
-            android:background="@drawable/icon_bg_blue"
-            android:text="取消"
+            android:background="@drawable/drawable_bg_light_blue"
+            android:text="    取消    "
             android:maxLines="1"
-            android:textColor="@color/black"
+            android:textColor="@color/color_grey_900"
             android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

@@ -116,11 +116,13 @@ public class MissionListAdapter extends BaseExpandableListAdapter {
 
 
         if (areaMessionDAOpe.isLin(data.get(groupPosition).getData().get(childPosition).getTitles().get(0).get医嘱ID(), data.get(groupPosition).getData().get(childPosition).getTitles().get(0).getKey())) {
-            missionUIBean.getLinTV().setText("临");
-            missionUIBean.getLinTV().setSelected(true);
+            Object[] o = areaMessionDAOpe.getLin(true);
+            missionUIBean.getLinTV().setText(o[0].toString());
+            missionUIBean.getLinTV().setTextColor((Integer) o[1]);
         } else {
-            missionUIBean.getLinTV().setText("长");
-            missionUIBean.getLinTV().setSelected(false);
+            Object[] o = areaMessionDAOpe.getLin(false);
+            missionUIBean.getLinTV().setText(o[0].toString());
+            missionUIBean.getLinTV().setTextColor((Integer) o[1]);
         }
 
         int[] i = areaMessionDAOpe.isInJecting(data.get(groupPosition).getData().get(childPosition).getCodename());

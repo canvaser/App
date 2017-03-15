@@ -135,11 +135,13 @@ public class MyMissionListAdapter extends BaseExpandableListAdapter implements V
                 myMissionUIBean.getTaskNameTV().setText(StringUtil.getStr(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getTaskname()));
 
                 if (areaMessionDAOpe.isLin(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).get医嘱ID(), list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getKey())) {
-                    myMissionUIBean.getLinTV().setText("临");
-                    myMissionUIBean.getLinTV().setSelected(true);
+                    Object[] o = areaMessionDAOpe.getLin(true);
+                    myMissionUIBean.getLinTV().setText(o[0].toString());
+                    myMissionUIBean.getLinTV().setTextColor((Integer) o[1]);
                 } else {
-                    myMissionUIBean.getLinTV().setText("长");
-                    myMissionUIBean.getLinTV().setSelected(false);
+                    Object[] o = areaMessionDAOpe.getLin(false);
+                    myMissionUIBean.getLinTV().setText(o[0].toString());
+                    myMissionUIBean.getLinTV().setTextColor((Integer) o[1]);
                 }
 
                 int[] i = areaMessionDAOpe.isInJecting(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getCodename());
@@ -166,11 +168,13 @@ public class MyMissionListAdapter extends BaseExpandableListAdapter implements V
                 missionUIBean.getTaskNameTV().setText(StringUtil.getStr(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getTaskname()));
 
                 if (areaMessionDAOpe.isLin(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).get医嘱ID(), list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getKey())) {
-                    missionUIBean.getLinTV().setText("临");
-                    missionUIBean.getLinTV().setSelected(true);
+                    Object[] o = areaMessionDAOpe.getLin(true);
+                    missionUIBean.getLinTV().setText(o[0].toString());
+                    missionUIBean.getLinTV().setTextColor((Integer) o[1]);
                 } else {
-                    missionUIBean.getLinTV().setText("长");
-                    missionUIBean.getLinTV().setSelected(false);
+                    Object[] o = areaMessionDAOpe.getLin(false);
+                    missionUIBean.getLinTV().setText(o[0].toString());
+                    missionUIBean.getLinTV().setTextColor((Integer) o[1]);
                 }
 
                 int[] j = areaMessionDAOpe.isInJecting(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getCodename());

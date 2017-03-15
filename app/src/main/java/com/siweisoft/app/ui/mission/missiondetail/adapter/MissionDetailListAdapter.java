@@ -80,7 +80,7 @@ public class MissionDetailListAdapter extends AppRecycleAdapter {
                 missionDetailListUIBean2.getPressView().setTag(R.id.position, position);
                 missionDetailListUIBean2.getPressView().setOnClickListener(this);
                 missionDetailListUIBean2.getCotainV().setTag(R.id.position, position);
-                missionDetailListUIBean2.getCotainV().setOnClickListener(this);
+                //missionDetailListUIBean2.getCotainV().setOnClickListener(this);
                 switch (resBeen.get(position).getStatus()) {
                     case DataValue.STATUS_YI_SENG_HE:
 

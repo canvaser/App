@@ -53,7 +53,8 @@ public class BedListFGMUIOpe<A extends CommonUIFrag2> extends BaseNurseUIOpe<A> 
         getRightTV().setSelected(true);
         getRightTV().setText("增加");
         getRefreshLayout().setMaterialRefreshListener(frag);
-
+        recyclerView.setLayoutManager(new GridLayoutManager(context, 4));
+        recyclerView.addItemDecoration(new MyItemDecoration(context, 2));
     }
 
     public void setTitle(int index, int num) {
@@ -75,10 +76,7 @@ public class BedListFGMUIOpe<A extends CommonUIFrag2> extends BaseNurseUIOpe<A> 
     }
 
     public void initBedList(ArrayList<PatientBedResBean> list) {
-        recyclerView.setLayoutManager(new GridLayoutManager(context, 4));
-        recyclerView.addItemDecoration(new MyItemDecoration(context, 2));
         bedListAdapter = new BedListAdapter(context, list);
-        recyclerView.setAdapter(bedListAdapter);
         recyclerView.setLayoutAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
@@ -97,6 +95,7 @@ public class BedListFGMUIOpe<A extends CommonUIFrag2> extends BaseNurseUIOpe<A> 
 
             }
         });
+        recyclerView.setAdapter(bedListAdapter);
         recyclerView.scheduleLayoutAnimation();
 
     }

@@ -14,6 +14,7 @@ import com.siweisoft.app.ui.mission.missionlist.ope.AreaMessionDAOpe;
 import com.siweisoft.lib.util.BitmapUtil;
 import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
+import com.siweisoft.lib.view.ItemDecoration.MyItemDecoration2;
 
 import butterknife.BindView;
 
@@ -58,6 +59,9 @@ public class MissionDetailUIOpe extends BaseNurseUIOpe {
         getBackTV().setSelected(true);
         getBackTV().setVisibility(View.VISIBLE);
         getMidTV().setVisibility(View.VISIBLE);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.addItemDecoration(new MyItemDecoration2(context, 2));
     }
 
 
@@ -66,20 +70,22 @@ public class MissionDetailUIOpe extends BaseNurseUIOpe {
         getMidTV().setText(resBean.getBedId() + " " + resBean.getName());
         AreaMessionDAOpe areaMessionDAOpe = new AreaMessionDAOpe(context);
         if (areaMessionDAOpe.isLin(resBean.getTitles().get(0).get医嘱ID(), resBean.getTitles().get(0).getKey())) {
-            getLinTv().setText("临");
-            getLinTv().setSelected(true);
+            Object[] o = areaMessionDAOpe.getLin(true);
+            getLinTv().setText(o[0].toString());
+            getLinTv().setTextColor((Integer) o[1]);
         } else {
-            getLinTv().setText("长");
-            getLinTv().setSelected(false);
+            Object[] o = areaMessionDAOpe.getLin(false);
+            getLinTv().setText(o[0].toString());
+            getLinTv().setTextColor((Integer) o[1]);
         }
         int[] i = areaMessionDAOpe.isInJecting(resBean.getCodename());
         getTypeTV().setTextColor(i[0]);
         BitmapUtil.getInstance().setBg(context, getCodenameIV(), i[1]);
-        getTypeTV().setText(resBean.getCodename());
+        getTypeTV().setText(resBean.getCodename().trim());
 
         getYzIdTV().setText("医嘱ID:  " + StringUtil.getStr(resBean.getTitles().get(0) == null ? "" : resBean.getTitles().get(0).get医嘱ID()));
         getDateTV().setText("任务时间:" + StringUtil.getStr(resBean.getStart()));
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+
         if (missionDetailListAdapter == null) {
             missionDetailListAdapter = new MissionDetailListAdapter(context, resBean.getTitles());
             recyclerView.setAdapter(missionDetailListAdapter);

@@ -5,7 +5,7 @@
     <color name="color_base_statusbar">#76BC55</color>
     <color name="color_base_bottommenu">#76BC55</color>
     <color name="color_base_graybg">#EEEEEE</color>
-    <color name="color_base_txt_gray">#404040</color>
+    <color name="color_base_txt_gray">@color/color_grey_600</color>
 
     <color name="color_bg_refresh">#333333</color>
 

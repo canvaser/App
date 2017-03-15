@@ -29,7 +29,6 @@
                 android:id="@+id/lin"
                 android:layout_marginLeft="5dp"
                 android:textSize="17sp"
-                android:textColor="@color/color_lin"
                 android:text="临"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

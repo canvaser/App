@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.siweisoft.app.R;
 import com.siweisoft.app.nursenet.NurseNetOpe;
+import com.siweisoft.app.ope.SimpleNetOpe;
 import com.siweisoft.app.ui.info.duteschedule.bean.resbean.DuteScheDuleListResBean;
 import com.siweisoft.app.ui.info.duteschedule.ope.DuteScheDuleUIOpe;
 import com.siweisoft.lib.util.GsonUtil;
@@ -43,7 +44,7 @@ public class DuteScheDuleFrag extends BaseNurseFrag {
     public void getData() {
         BaseNurseReqBean baseReqBean = new BaseNurseReqBean();
         baseReqBean.setBegin(DateFormatUtil.getnowTimeYYYYMMdd());
-        duteScheduleNetOpe.getWorkShifts(baseReqBean, new UINetAdapter(activity) {
+        SimpleNetOpe.getWorkShifts(activity, baseReqBean, new UINetAdapter(activity) {
             @Override
             public void onNetWorkResult(boolean success, Object o) {
                 if (success) {

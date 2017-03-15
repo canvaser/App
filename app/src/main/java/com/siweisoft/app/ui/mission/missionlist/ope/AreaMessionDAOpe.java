@@ -172,6 +172,13 @@ public class AreaMessionDAOpe extends BaseDAOpe {
         }
     }
 
+    public Object[] getLin(boolean lin) {
+        if (lin) {
+            return new Object[]{"临", context.getResources().getColor(R.color.color_blue_400)};
+        }
+        return new Object[]{"长", context.getResources().getColor(R.color.color_red_400)};
+    }
+
     public int[] isInJecting(String codeName) {
         switch (codeName) {
             case "出院带药":

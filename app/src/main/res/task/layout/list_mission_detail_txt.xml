@@ -18,7 +18,7 @@
         android:layout_height="wrap_content" />
 
     <LinearLayout
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
 
@@ -39,12 +39,13 @@
             <TextView
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:background="@drawable/icon_bg_blue"
+                android:background="@drawable/drawable_bg_blue"
                 android:text="完成"
                 android:maxLines="1"
                 android:textColor="@color/white"
                 android:textSize="15sp"
-                android:layout_width="wrap_content"
+                android:padding="5dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </RelativeLayout>
 
@@ -59,7 +60,8 @@
             <TextView
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:background="@drawable/icon_bg_red"
+                android:background="@drawable/drawable_bg_red"
+                android:padding="5dp"
                 android:text="病人不在"
                 android:maxLines="1"
                 android:textColor="@color/white"
@@ -79,7 +81,8 @@
             <TextView
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:background="@drawable/icon_bg_red"
+                android:background="@drawable/drawable_bg_red"
+                android:padding="5dp"
                 android:text="病人拒绝"
                 android:maxLines="1"
                 android:textColor="@color/white"
@@ -100,8 +103,9 @@
                 android:maxLines="1"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:background="@drawable/icon_bg_red"
-                android:text="删除"
+                android:background="@drawable/drawable_bg_red"
+                android:padding="5dp"
+                android:text="    删除    "
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:layout_width="wrap_content"
