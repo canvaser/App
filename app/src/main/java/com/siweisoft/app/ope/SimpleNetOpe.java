@@ -9,6 +9,7 @@ import com.siweisoft.app.ui.bed.addmypatient.bean.MyPaitentUpdateListReqBean;
 import com.siweisoft.app.ui.bed.data.bean.resbean.DataTemplateDataResBean;
 import com.siweisoft.app.ui.bed.data.bean.resbean.DataTemplateResBean;
 import com.siweisoft.app.ui.bed.inputdata.bean.reqbean.InputDataReqBean;
+import com.siweisoft.app.ui.check.checkblood.bean.CheckPatAndPipeReqBean;
 import com.siweisoft.app.ui.check.patientcheck.bean.PatAndTaskInfoByDocAdvIdReqBean;
 import com.siweisoft.app.ui.info.adddutereport.bean.AddDuteReportReqBean;
 import com.siweisoft.app.ui.info.bedcheck.bean.reqbean.WriteBedCheckReqBean;
@@ -552,6 +553,13 @@ public class SimpleNetOpe extends BaseNetOpe {
         UpdateCallingLogsReqBean reqBean = new UpdateCallingLogsReqBean();
         reqBean.setId(id);
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_UPDATE_CALLING_LOGS, reqBean, reqInterf);
+    }
+
+    public static void checkPatAndPipeCode(Context context, String num, String zyh, OnNetWorkReqInterf reqInterf) {
+        CheckPatAndPipeReqBean reqBean = new CheckPatAndPipeReqBean();
+        reqBean.setZyh(zyh);
+        reqBean.setCode(num);
+        NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_CHECK_AND_PIPE_CODE, reqBean, reqInterf);
     }
 
 

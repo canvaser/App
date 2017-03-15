@@ -311,6 +311,11 @@ public class DataValue {
     public static final String URL_UPDATE_CALLING_LOGS = "updateCallingLogs";
 
 
+    //匹配试管和病人
+    public static final String URL_CHECK_AND_PIPE_CODE = "checkPatAndPipeCode";
+
+
+
     //----------------------------------------------------------------------------------------------
 
 

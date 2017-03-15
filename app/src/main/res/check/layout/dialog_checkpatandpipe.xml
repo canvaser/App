@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:background="@drawable/drawable_dialog_border">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="扫描匹配"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="是否继续扫描匹配其他试管条形码?"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <View
+        android:background="@color/color_divide_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
+
+    <TextView
+        android:id="@+id/tv_done"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:gravity="center"
+        android:text="完成核对进行抽血?"
+        android:textSize="14sp"
+        android:textColor="@color/color_red_800"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:background="@color/color_divide_line"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
+
+    <TextView
+        android:id="@+id/tv_contine"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:gravity="center"
+        android:text="继续扫描其他试管?"
+        android:textSize="14sp"
+        android:textColor="@color/color_blue_600"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>
