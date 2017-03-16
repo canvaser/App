@@ -59,4 +59,10 @@ public class MethodValue {
         return file.getPath();
     }
 
+    public static String[] getMissionSortStrs() {
+        DoLoginResBean loginResBean = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(ValueConstant.LOGIN_INFO), DoLoginResBean.class);
+        loginResBean.getData().getNurseType().add(0, "全部");
+        return loginResBean.getData().getNurseType().toArray(new String[loginResBean.getData().getNurseType().size()]);
+    }
+
 }

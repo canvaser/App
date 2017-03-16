@@ -1,6 +1,7 @@
 package com.siweisoft.app.ui.mission.missionlist.ope;
 
 import android.content.Context;
+import android.view.View;
 
 import com.siweisoft.app.R;
 import com.siweisoft.app.ui.mission.missionlist.bean.res.AreaMessionListResBean;
@@ -165,10 +166,10 @@ public class AreaMessionDAOpe extends BaseDAOpe {
                 timetype = "长期";
             }
         }
-        if (timetype.equals("临时")) {
-            return true;
-        } else {
+        if (timetype.equals("长期")) {
             return false;
+        } else {
+            return true;
         }
     }
 
@@ -180,16 +181,36 @@ public class AreaMessionDAOpe extends BaseDAOpe {
     }
 
     public int[] isInJecting(String codeName) {
-        switch (codeName) {
+        switch (codeName.trim()) {
             case "出院带药":
             case "药品":
             case "输液":
                 return new int[]{R.color.light_blue, R.drawable.icon_injecting};
             case "检查":
+            case "检验":
             case "化验":
-                return new int[]{R.color.light_blue, R.drawable.icon_injecting};
+                return new int[]{R.color.light_blue, R.drawable.icon_codename_check};
+            case "补液卡":
+            case "补液卡（静滴）":
             default:
                 return new int[]{R.color.black, R.drawable.icon_medicine};
+        }
+    }
+
+    //任务状态，A:已审核，F:未执行，T:已完成，N:病人不在，R:病人拒绝，S:删除
+    public Integer[] getStatusIcon(String status) {
+        switch (status.trim().toUpperCase()) {
+            case "T":
+                return new Integer[]{R.drawable.icon_gou, View.VISIBLE};
+            case "N":
+                return new Integer[]{R.drawable.icon_absent, View.VISIBLE};
+            case "R":
+                return new Integer[]{R.drawable.icon_refuse, View.VISIBLE};
+            case "S":
+                return new Integer[]{R.drawable.icon_deleted, View.VISIBLE};
+            default:
+                return new Integer[]{R.color.transparent, View.GONE};
+
         }
     }
 }

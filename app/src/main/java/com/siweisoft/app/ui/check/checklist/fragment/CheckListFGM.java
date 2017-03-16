@@ -9,12 +9,17 @@ import android.widget.TextView;
 
 import com.siweisoft.app.R;
 import com.siweisoft.app.nursenet.NurseNetOpe;
+import com.siweisoft.app.nursevalue.BaseID;
+import com.siweisoft.app.nursevalue.MethodValue;
 import com.siweisoft.app.ui.check.checklist.bean.bean.TitleBean;
 import com.siweisoft.app.ui.check.checklist.ope.CheckListFGMUIOpe;
+import com.siweisoft.app.ui.dialog.dialog.fragment.NurseDialogFrag;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
+import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemsClickListener;
 import com.siweisoft.lib.network.netadapter.OnNetWorkReqAdapter;
 import com.siweisoft.lib.util.GsonUtil;
+import com.siweisoft.lib.util.menu.popup.PopupUtil;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListenerAdpter;
@@ -26,6 +31,8 @@ import com.siweisoft.app.ui.check.checklist.bean.CheckDABean;
 import com.siweisoft.app.ui.check.checklist.bean.reqbean.UpdateCheckListReqBean;
 import com.siweisoft.app.ui.check.checklist.bean.resbean.CheckListResBean;
 import com.siweisoft.app.ui.check.checklist.ope.CheckDAOpe;
+
+import butterknife.OnClick;
 
 /**
  * Created by ${viwmox} on 2016-11-08.
@@ -141,6 +148,22 @@ public class CheckListFGM extends BaseNurseFrag implements
                             checkListFGMUIOpe.getCheckListAdapter().getData().get(index).getData().get(position).setCheckStatus(reqBean.getStatus());
                             checkListFGMUIOpe.getCheckListAdapter().notifyDataSetChanged();
                         }
+                    }
+                });
+                break;
+        }
+    }
+
+    @OnClick({BaseID.ID_RIGHT})
+    public void onClickEvent(View v) {
+        switch (v.getId()) {
+            case BaseID.ID_RIGHT:
+                NurseDialogFrag.show(getFragmentManager(), BaseID.ID_ROOT, MethodValue.getMissionSortStrs(), NurseDialogFrag.RIGHT, new OnAppItemClickListener() {
+                    @Override
+                    public void onAppItemClick(View view, int position) {
+                        TextView textView = (TextView) view;
+                        getOpe().getUiOpe().getRightTV().setText(textView.getText().toString());
+                        PopupUtil.getInstance().dimess();
                     }
                 });
                 break;

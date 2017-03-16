@@ -381,6 +381,7 @@ public class DataValue {
 
     public static HashMap<String, String> STATUS_MAPMAP = new HashMap<>();
 
+
     public static final String STATUS_YI_SENG_HE = "A";
 
     public static final String STATUS_WEI_ZHI_XING = "F";
@@ -406,5 +407,12 @@ public class DataValue {
         STATUS_MAPMAP.put(STATUS_BING_REN_BU_ZAI, "病人不在");
         STATUS_MAPMAP.put(STATUS_BING_REN_JU_JUE, "病人拒绝");
         STATUS_MAPMAP.put(SSTATUS_SHAN_CHU, "删除");
+
+        STATUS_MAPMAP.put("已审核", STATUS_YI_SENG_HE);
+        STATUS_MAPMAP.put("未执行", STATUS_WEI_ZHI_XING);
+        STATUS_MAPMAP.put("已完成", STATUS_YI_WAN_CHENG);
+        STATUS_MAPMAP.put("病人不在", STATUS_BING_REN_BU_ZAI);
+        STATUS_MAPMAP.put("病人拒绝", STATUS_BING_REN_JU_JUE);
+        STATUS_MAPMAP.put("删除", SSTATUS_SHAN_CHU);
     }
 }

@@ -29,6 +29,7 @@
 
     <uses-permission-sdk-23 android:name="android.permission-group.MICROPHONE" />
     <uses-permission-sdk-23 android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission-sdk-23 android:name="android.permission.READ_PHONE_STATE" />
     -------------------------------------------------------------------------------------------------
     <uses-permission android:name="android.permission.USE_SIP" />
 

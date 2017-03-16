@@ -508,7 +508,7 @@ public class NurseNetOpe extends BaseNetOpe {
 
         GetallregionbyuserNetBean getallregionbyuserNetBean = new GetallregionbyuserNetBean();
         getallregionbyuserNetBean.setUid(account);
-        NetWork.getInstance(context).doHttpRequset(context, DataValue.URL_GETALLREGIONBYUSER, getallregionbyuserNetBean, reqInterf);
+        NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GETALLREGIONBYUSER, getallregionbyuserNetBean, reqInterf);
     }
 
     public void onLogin(String account, String pwd, OnNetWorkReqInterf reqInterf) {

@@ -112,8 +112,9 @@ public class MissionListAdapter extends BaseExpandableListAdapter {
         missionUIBean.getTimeTV().setText(StringUtil.getStr(DateFormatUtil.getMMDDHHMM(data.get(groupPosition).getData().get(childPosition).getStart())));
         missionUIBean.getTaskNameTV().setText(StringUtil.getStr(data.get(groupPosition).getData().get(childPosition).getTitles().get(0).getTaskname()));
         missionUIBean.getNumTV().setText(StringUtil.getStr(data.get(groupPosition).getData().get(childPosition).getTitles().size() == 1 ? "" : data.get(groupPosition).getData().get(childPosition).getTitles().size()));
-        missionUIBean.getKeyTV().setText(StringUtil.getStr(data.get(groupPosition).getData().get(childPosition).getTitles().get(0).getKey()));
-
+        //missionUIBean.getKeyTV().setText(StringUtil.getStr(data.get(groupPosition).getData().get(childPosition).getTitles().get(0).getKey()));
+        missionUIBean.getArrowIV().setVisibility(areaMessionDAOpe.getStatusIcon(data.get(groupPosition).getData().get(childPosition).getTitles().get(0).getStatus())[1]);
+        missionUIBean.getArrowIV().setImageResource(areaMessionDAOpe.getStatusIcon(data.get(groupPosition).getData().get(childPosition).getTitles().get(0).getStatus())[0]);
 
         if (areaMessionDAOpe.isLin(data.get(groupPosition).getData().get(childPosition).getTitles().get(0).get医嘱ID(), data.get(groupPosition).getData().get(childPosition).getTitles().get(0).getKey())) {
             Object[] o = areaMessionDAOpe.getLin(true);
@@ -138,6 +139,10 @@ public class MissionListAdapter extends BaseExpandableListAdapter {
             }
         });
         return convertView;
+    }
+
+    public void setData(ArrayList<AreaMissionListAdapterBean> data) {
+        this.data = data;
     }
 
     @Override

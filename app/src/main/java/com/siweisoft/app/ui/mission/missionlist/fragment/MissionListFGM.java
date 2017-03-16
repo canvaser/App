@@ -34,6 +34,7 @@ import com.siweisoft.lib.util.NullUtil;
 import com.siweisoft.lib.util.SPUtil;
 import com.siweisoft.lib.util.StringUtil;
 import com.siweisoft.lib.util.menu.popup.PopupUtil;
+import com.siweisoft.lib.util.system.HandleUtil;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
@@ -61,7 +62,7 @@ public class MissionListFGM extends CommonUIFrag2<MissionListFGMUIOpe, AreaMessi
         baseOpes.getUiOpe().getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
-    public void getMyTask(boolean cache, final OnFinishListener onFinishListener) {
+    public void getMyTask(boolean cache, final boolean extend, final OnFinishListener onFinishListener) {
         final String type1 = baseOpes.getDaOpe().leftType;
         baseOpes.getUiOpe().getBackTV().setText(type1);
         final String type = baseOpes.getDaOpe().getHashMap().get(type1);
@@ -83,7 +84,7 @@ public class MissionListFGM extends CommonUIFrag2<MissionListFGMUIOpe, AreaMessi
             new AreaMessionTimeOpe().sort(resBean, type, sort, count, new OnNetFinishWithObjInter() {
                 @Override
                 public void onNetFinish(Object o) {
-                    baseOpes.getUiOpe().initMissionList((ArrayList<AreaMissionListAdapterBean>) o);
+                    baseOpes.getUiOpe().initMissionList(extend, (ArrayList<AreaMissionListAdapterBean>) o);
                     baseOpes.getUiOpe().initMid(area, resBean == null ? 0 : resBean.getData() == null ? 0 : resBean.getData().size());
                     baseOpes.getUiOpe().getMissionListAdapter().setOnAppItemsClickListener(MissionListFGM.this);
                     if (onFinishListener != null) {
@@ -102,14 +103,14 @@ public class MissionListFGM extends CommonUIFrag2<MissionListFGMUIOpe, AreaMessi
                     new AreaMessionTimeOpe().sort(resBean, type, sort, count, new OnNetFinishWithObjInter() {
                         @Override
                         public void onNetFinish(Object o) {
-                            baseOpes.getUiOpe().initMissionList((ArrayList<AreaMissionListAdapterBean>) o);
+                            baseOpes.getUiOpe().initMissionList(extend, (ArrayList<AreaMissionListAdapterBean>) o);
                             baseOpes.getUiOpe().initMid(area, resBean == null ? 0 : resBean.getData() == null ? 0 : resBean.getData().size());
                             baseOpes.getUiOpe().getMissionListAdapter().setOnAppItemsClickListener(MissionListFGM.this);
                             baseOpes.getDaOpe().setCacheData(type, o.toString());
                         }
                     });
                 } else {
-                    baseOpes.getUiOpe().initMissionList(null);
+                    baseOpes.getUiOpe().initMissionList(false, null);
                 }
                 if (onFinishListener != null) {
                     onFinishListener.onFinish(o);
@@ -154,11 +155,11 @@ public class MissionListFGM extends CommonUIFrag2<MissionListFGMUIOpe, AreaMessi
                         switch (position) {
                             case 0:
                                 baseOpes.getDaOpe().areaType = AreaMessionDAOpe.AREA_TYPE_MY_PATIENT;
-                                getMyTask(true, null);
+                                getMyTask(true, false, null);
                                 break;
                             case 1:
                                 baseOpes.getDaOpe().areaType = AreaMessionDAOpe.AREA_TYPE_AREA;
-                                getMyTask(true, null);
+                                getMyTask(true, false, null);
                                 break;
                         }
                     }
@@ -172,18 +173,18 @@ public class MissionListFGM extends CommonUIFrag2<MissionListFGMUIOpe, AreaMessi
                         baseOpes.getDaOpe().leftType = textView.getText().toString();
                         baseOpes.getDaOpe().timeArea = AreaMessionDAOpe.TIME_TODAY;
 
-                        getMyTask(true, null);
+                        getMyTask(true, false, null);
                     }
                 });
                 break;
 
             case BaseID.ID_RIGHT:
-                NurseDialogFrag.show(getFragmentManager(), BaseID.ID_ROOT, baseOpes.getUiOpe().getMissionSortStr(), NurseDialogFrag.RIGHT, new OnAppItemClickListener() {
+                NurseDialogFrag.show(getFragmentManager(), BaseID.ID_ROOT, MethodValue.getMissionSortStrs(), NurseDialogFrag.RIGHT, new OnAppItemClickListener() {
                     @Override
                     public void onAppItemClick(View view, int position) {
                         TextView textView = (TextView) view;
                         baseOpes.getDaOpe().rightSort = textView.getText().toString();
-                        getMyTask(true, null);
+                        getMyTask(true, false, null);
                         PopupUtil.getInstance().dimess();
                     }
                 });
@@ -191,17 +192,17 @@ public class MissionListFGM extends CommonUIFrag2<MissionListFGMUIOpe, AreaMessi
             case R.id.ll_all:
                 baseOpes.getUiOpe().select(0);
                 baseOpes.getDaOpe().count = AreaMessionDAOpe.COUNT_ALL;
-                getMyTask(true, null);
+                getMyTask(true, false, null);
                 break;
             case R.id.ll_lin:
                 baseOpes.getDaOpe().count = AreaMessionDAOpe.COUNT_LIN;
                 baseOpes.getUiOpe().select(1);
-                getMyTask(true, null);
+                getMyTask(true, false, null);
                 break;
             case R.id.ll_long:
                 baseOpes.getDaOpe().count = AreaMessionDAOpe.COUNT_LONG;
                 baseOpes.getUiOpe().select(2);
-                getMyTask(true, null);
+                getMyTask(true, false, null);
                 break;
         }
     }
@@ -237,7 +238,11 @@ public class MissionListFGM extends CommonUIFrag2<MissionListFGMUIOpe, AreaMessi
                     @Override
                     public void onNetWorkResult(boolean success, Object o) {
                         if (success) {
-                            baseOpes.getUiOpe().getRefreshLayout().autoRefreshWithUI(0);
+                            getMyTask(false, true, new OnFinishListener() {
+                                @Override
+                                public void onFinish(Object o) {
+                                }
+                            });
                         }
                     }
                 });
@@ -247,13 +252,22 @@ public class MissionListFGM extends CommonUIFrag2<MissionListFGMUIOpe, AreaMessi
 
     @Override
     public void onResult(int req, Bundle bundle) {
-        baseOpes.getUiOpe().getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
+        HandleUtil.getInstance().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getMyTask(false, true, new OnFinishListener() {
+                    @Override
+                    public void onFinish(Object o) {
+                    }
+                });
+            }
+        }, getResources().getInteger(R.integer.integer_time_short));
     }
 
 
     @Override
     public void onRefresh(final MaterialRefreshLayout materialRefreshLayout) {
-        getMyTask(false, new OnFinishListener() {
+        getMyTask(false, false, new OnFinishListener() {
             @Override
             public void onFinish(Object o) {
                 // baseOpes.getUiOpe().getMissionExpandView().setOnHeadViewClick(MissionListFGM.this);

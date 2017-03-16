@@ -515,7 +515,7 @@ public class SimpleNetOpe extends BaseNetOpe {
 
         GetallregionbyuserNetBean getallregionbyuserNetBean = new GetallregionbyuserNetBean();
         getallregionbyuserNetBean.setUid(account);
-        NetWork.getInstance(context).doHttpRequset(context, DataValue.URL_GETALLREGIONBYUSER, getallregionbyuserNetBean, reqInterf);
+        NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GETALLREGIONBYUSER, getallregionbyuserNetBean, reqInterf);
     }
 
     public static void onLogin(Context context, String account, String pwd, OnNetWorkReqInterf reqInterf) {

@@ -22,11 +22,19 @@ public class ValueConstant {
 
     public static final String LOGIN_INFO = "login_info";
 
+    public static final String USER_INFO = "user_info";
+
     public static final String AREA_INFO = "area_info";
 
     public static final String ADDITION_INFO = "addition_info";
 
     public static final String PWD = "password";
+
+    public static final String USERNAME = "username";
+
+    public static final String REGION = "region";
+
+    public static final String REGION_CODE = "region_code";
 
     public static final String ISLOGINED = "islogined";
 

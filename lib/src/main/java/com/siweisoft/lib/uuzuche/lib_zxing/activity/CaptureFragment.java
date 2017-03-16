@@ -1,10 +1,13 @@
 package com.siweisoft.lib.uuzuche.lib_zxing.activity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
@@ -20,6 +23,7 @@ import android.view.ViewGroup;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 import com.siweisoft.lib.R;
+import com.siweisoft.lib.util.ToastUtil;
 import com.siweisoft.lib.uuzuche.lib_zxing.camera.CameraManager;
 import com.siweisoft.lib.uuzuche.lib_zxing.decoding.CaptureActivityHandler;
 import com.siweisoft.lib.uuzuche.lib_zxing.decoding.InactivityTimer;
@@ -51,7 +55,14 @@ public class CaptureFragment extends Fragment implements SurfaceHolder.Callback 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!(PackageManager.PERMISSION_GRANTED == getActivity().checkSelfPermission(Manifest.permission.CAMERA))) {
+                getActivity().requestPermissions(new String[]{Manifest.permission.CAMERA}, 1);
+                if (!(PackageManager.PERMISSION_GRANTED == getActivity().checkSelfPermission(Manifest.permission.CAMERA))) {
+                    ToastUtil.getInstance().show(getActivity(), "请打开手机安全中心开启护士工作站照相权限");
+                }
+            }
+        }
 
         CameraManager.init(getActivity().getApplication());
 

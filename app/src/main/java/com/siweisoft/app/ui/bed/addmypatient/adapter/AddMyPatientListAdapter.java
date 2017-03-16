@@ -39,7 +39,7 @@ public class AddMyPatientListAdapter extends AppRecycleAdapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         AddMyPatientUIBean bean = (AddMyPatientUIBean) holder;
-        bean.getNameTV().setText(StringUtil.getStr(resBeen.get(position).get姓名()));
+        bean.getNameTV().setText(StringUtil.getStr(resBeen.get(position).get病床号()) + " " + StringUtil.getStr(resBeen.get(position).get姓名()));
         bean.getRootV().setSelected(resBeen.get(position).isSelect());
         bean.getSelectIV().setSelected(resBeen.get(position).isSelect());
         bean.getRootV().setOnClickListener(this);

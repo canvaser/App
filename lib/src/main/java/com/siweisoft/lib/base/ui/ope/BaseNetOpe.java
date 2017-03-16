@@ -25,6 +25,6 @@ public class BaseNetOpe {
     }
 
     protected void onNetLoadData(Context context, String model, BaseReqBean baseReqBean, OnNetWorkReqInterf reqInterf) {
-        NetWork.getInstance(context).doHttpRequset(context, model, baseReqBean, reqInterf);
+        NetWork.getInstance(context).doHttpRequsetWithSession(context, model, baseReqBean, reqInterf);
     }
 }

@@ -60,15 +60,18 @@ public class InfoListFGM extends BaseNurseFrag implements OnAppItemClickListener
                 FragManager.getInstance().startFragment(getFragmentManager(), index, new UrgencyReportFrag());
                 break;
             case 5:
-                FragManager.getInstance().startFragment(getFragmentManager(), index, new ShiftDuteReportFrag());
+                //FragManager.getInstance().startFragment(getFragmentManager(), index, new UrgencyReportFrag());
                 break;
             case 6:
-                FragManager.getInstance().startFragment(getFragmentManager(), index, new CheckBookFrag());
+                FragManager.getInstance().startFragment(getFragmentManager(), index, new ShiftDuteReportFrag());
                 break;
             case 7:
-                FragManager.getInstance().startFragment(getFragmentManager(), index, new WorkDetailFrag());
+                FragManager.getInstance().startFragment(getFragmentManager(), index, new CheckBookFrag());
                 break;
             case 8:
+                FragManager.getInstance().startFragment(getFragmentManager(), index, new WorkDetailFrag());
+                break;
+            case 9:
                 FragManager.getInstance().startFragment(getFragmentManager(), index, new DuteScheDuleFrag());
                 break;
         }

@@ -106,7 +106,9 @@ public class InputHandOverReportFrag extends BaseNurseFrag implements RecordView
         reqBean.setContent(inputHandOverReportUIOpe.getInputET().getText().toString());
         reqBean.setZyh(patientAdditionDAOpe.getPatientBedResBean().get住院号());
         if (inputHORDAOpe.getFile() != null) {
-            reqBean.setContent("audio");
+            if (NullUtil.isStrEmpty(reqBean.getContent())) {
+                reqBean.setContent("audio");
+            }
             reqBean.setAudio(TestBase64.getJsonData(inputHORDAOpe.getFile()));
         }
         if (NullUtil.isStrEmpty(reqBean.getContent()) && inputHORDAOpe.getFile() == null) {
@@ -179,6 +181,10 @@ public class InputHandOverReportFrag extends BaseNurseFrag implements RecordView
         inputHandOverReportUIOpe.getTimeTV().setVisibility(View.VISIBLE);
         inputHandOverReportUIOpe.getTimeTV().setText(time / 1000 + "s");
         inputHandOverReportUIOpe.getCancleIV().setVisibility(View.VISIBLE);
+        if (time <= 1000) {
+            ToastUtil.getInstance().show(activity, "录入时间太短啦");
+            return;
+        }
         VoiceUtil.getInstance().stopRecording(inputHORDAOpe.getMediaRecorder(), inputHORDAOpe.getFile());
     }
 

@@ -2,6 +2,7 @@ package com.siweisoft.app.ui.mission.missiondetail.bean.uibean;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.siweisoft.app.R;
@@ -27,6 +28,9 @@ public class MissionDetailListUIBean2 extends BaseUIBean {
     @BindView(R.id.ll_content)
     View cotainV;
 
+    @BindView(R.id.iv_status)
+    ImageView statusIV;
+
 
     public MissionDetailListUIBean2(Context context, View convertView) {
         super(context, convertView);
@@ -46,5 +50,9 @@ public class MissionDetailListUIBean2 extends BaseUIBean {
 
     public View getCotainV() {
         return cotainV;
+    }
+
+    public ImageView getStatusIV() {
+        return statusIV;
     }
 }

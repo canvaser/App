@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -74,6 +75,7 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
         });
         keepLive = new KeepLive();
         registerReceiver(keepLive, new IntentFilter(getPackageName() + ValueConstant.ACITON_GLOB_CAST));
+
     }
 
     @Override
@@ -160,10 +162,28 @@ public class IndexActivity extends BaseUIWithOutTitleActivity implements OnAppIt
 
     @Override
     public boolean onLongClick(View v) {
-        startActivityForResult(new Intent(activity, CaptureActivity.class), ValueConstant.CODE_REQUSET);
+
         return true;
     }
 
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+            Intent intent = new Intent(activity, CaptureActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivityForResult(intent, ValueConstant.CODE_REQUSET);
+            return true;
+        }
+        return super.onKeyUp(keyCode, event);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     @Override
     public int getStatusColor() {

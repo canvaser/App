@@ -517,8 +517,8 @@ public class DateFormatUtil {
         String m = (month + 1) + "";
         String d = day + "";
 
-        if (month < 10) {
-            m = "0" + month;
+        if ((month + 1) < 10) {
+            m = "0" + m;
         }
         if (day < 10) {
             d = "0" + day;

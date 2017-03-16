@@ -6,13 +6,13 @@
 
     <TextView
         android:gravity="left|center_vertical"
-        android:layout_marginLeft="20sp"
-        android:layout_marginRight="20dp"
+        android:paddingLeft="20sp"
+        android:paddingRight="20dp"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="16sp"
         android:id="@+id/tv_before"
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:layout_height="@dimen/dimens_base_item" />
 
     <View
         android:layout_marginLeft="20sp"
@@ -22,14 +22,14 @@
 
     <EditText
         android:hint="新服务器地址"
-        android:layout_marginLeft="20sp"
-        android:layout_marginRight="20dp"
+        android:paddingLeft="20sp"
+        android:paddingRight="20dp"
         android:background="@null"
         android:textColor="@color/black"
-        android:textSize="15sp"
+        android:textSize="16sp"
         android:id="@+id/et_new"
         android:layout_width="match_parent"
-        android:layout_height="40dp" />
+        android:layout_height="@dimen/dimens_base_item" />
 
     <View
         android:layout_marginLeft="20sp"

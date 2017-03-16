@@ -15,10 +15,12 @@ public class SortByTime implements Comparator<AreaMessionListResBean.DataBean> {
         try {
             if (DateFormatUtil.convent_yyyyMMddHHmmss(o1.getStart()).getTime() > DateFormatUtil.convent_yyyyMMddHHmmss(o2.getStart()).getTime()) {
                 return 1;
+            } else if (DateFormatUtil.convent_yyyyMMddHHmmss(o1.getStart()).getTime() == DateFormatUtil.convent_yyyyMMddHHmmss(o2.getStart()).getTime()) {
+                return 0;
             }
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return 0;
+        return -1;
     }
 }

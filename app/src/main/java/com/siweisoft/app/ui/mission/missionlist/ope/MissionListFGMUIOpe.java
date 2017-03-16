@@ -11,9 +11,11 @@ import com.siweisoft.app.ui.mission.missionlist.adapter.MissionListAdapter;
 import com.siweisoft.app.ui.mission.missionlist.bean.adaapterbean.AreaMissionListAdapterBean;
 import com.siweisoft.app.ui.mission.missionlist.bean.uibean.MissionItenHeadUIBean;
 import com.siweisoft.app.ui.user.login.bean.DoLoginResBean;
+import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.GsonUtil;
 import com.siweisoft.lib.util.SPUtil;
+import com.siweisoft.lib.util.system.HandleUtil;
 import com.siweisoft.lib.view.pinnedheaderexpandablelistview.expandable.ui.PinnedHeaderExpandableListView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
@@ -103,12 +105,12 @@ public class MissionListFGMUIOpe extends BaseNurseUIOpe {
         }
     }
 
-    public void initMissionList(ArrayList<AreaMissionListAdapterBean> adapterBeen) {
+    public void initMissionList(final boolean extend, ArrayList<AreaMissionListAdapterBean> adapterBeen) {
         adapterList.clear();
         if (adapterBeen != null) {
             adapterList.addAll(new AreaMessionDAOpe(context).initData(adapterBeen));
         }
-        if (missionListAdapter == null) {
+        if (missionListAdapter == null || (missionListAdapter != null && !extend)) {
             View view = LayoutInflater.from(context).inflate(R.layout.item_head_mission, null);
             missionItenHeadUIBean = new MissionItenHeadUIBean(context, view);
 //            missionExpandView.addHeaderView(view, null, true);
@@ -122,10 +124,8 @@ public class MissionListFGMUIOpe extends BaseNurseUIOpe {
         } else {
             missionListAdapter.notifyDataSetChanged();
         }
-
-        DoLoginResBean loginResBean = GsonUtil.getInstance().fromJson(SPUtil.getInstance().getStr(ValueConstant.LOGIN_INFO), DoLoginResBean.class);
-        loginResBean.getData().getNurseType().add(0, "全部");
-        missionSortStr = loginResBean.getData().getNurseType().toArray(new String[loginResBean.getData().getNurseType().size()]);
+        missionExpandView.requestRefreshHeader();
+        missionSortStr = MethodValue.getMissionSortStrs();
     }
 
     public void select(int index) {

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/drawable_press_black_while">
+
+    <TextView
+        android:paddingLeft="10dp"
+        android:drawableLeft="@drawable/icon_date_select"
+        android:text="日期"
+        android:drawablePadding="10dp"
+        android:id="@+id/tv_time"
+        android:gravity="center_vertical"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/color_base_txt_gray" />
+
+    <TextView
+        android:text="原有人数"
+        android:id="@+id/tv_old"
+        android:gravity="center"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/color_base_txt_gray" />
+
+    <TextView
+        android:text="现有人数"
+        android:id="@+id/tv_now"
+        android:gravity="center"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/color_base_txt_gray" />
+
+    <TextView
+        android:text="床数"
+        android:id="@+id/tv_num"
+        android:gravity="center"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:textSize="15sp"
+        android:textColor="@color/color_base_txt_gray" />
+</LinearLayout>

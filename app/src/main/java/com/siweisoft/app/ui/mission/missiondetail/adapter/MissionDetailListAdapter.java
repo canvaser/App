@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import com.siweisoft.app.R;
 import com.siweisoft.app.ui.mission.missionlist.bean.res.AreaMessionListResBean;
+import com.siweisoft.app.ui.mission.missionlist.ope.AreaMessionDAOpe;
 import com.siweisoft.lib.base.ui.adapter.AppRecycleAdapter;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.util.StringUtil;
@@ -25,9 +26,12 @@ public class MissionDetailListAdapter extends AppRecycleAdapter {
 
     List<AreaMessionListResBean.DataBean.TitlesBean> resBeen;
 
+    AreaMessionDAOpe areaMessionDAOpe;
+
     public MissionDetailListAdapter(Context context, List<AreaMessionListResBean.DataBean.TitlesBean> resBeen) {
         super(context);
         this.resBeen = resBeen;
+        areaMessionDAOpe = new AreaMessionDAOpe(context);
     }
 
     @Override
@@ -80,6 +84,8 @@ public class MissionDetailListAdapter extends AppRecycleAdapter {
                 missionDetailListUIBean2.getPressView().setTag(R.id.position, position);
                 missionDetailListUIBean2.getPressView().setOnClickListener(this);
                 missionDetailListUIBean2.getCotainV().setTag(R.id.position, position);
+                missionDetailListUIBean2.getStatusIV().setImageResource(areaMessionDAOpe.getStatusIcon(resBeen.get(position).getStatus())[0]);
+                missionDetailListUIBean2.getStatusIV().setVisibility(areaMessionDAOpe.getStatusIcon(resBeen.get(position).getStatus())[1]);
                 //missionDetailListUIBean2.getCotainV().setOnClickListener(this);
                 switch (resBeen.get(position).getStatus()) {
                     case DataValue.STATUS_YI_SENG_HE:

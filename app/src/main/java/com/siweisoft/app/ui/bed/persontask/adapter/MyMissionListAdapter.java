@@ -131,7 +131,7 @@ public class MyMissionListAdapter extends BaseExpandableListAdapter implements V
                 }
                 myMissionUIBean = (MyMissionUIBean) convertView.getTag();
                 myMissionUIBean.getTitleView().setText(StringUtil.getStr(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getTitle()));
-                myMissionUIBean.getTimeTV().setText(DateFormatUtil.getMMDDHHMM(StringUtil.getStr(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getStart())));
+                myMissionUIBean.getTimeTV().setText(DateFormatUtil.getMMDDHHMM(StringUtil.getStr(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getStart())).trim());
                 myMissionUIBean.getTaskNameTV().setText(StringUtil.getStr(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getTaskname()));
 
                 if (areaMessionDAOpe.isLin(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).get医嘱ID(), list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getKey())) {
@@ -149,7 +149,8 @@ public class MyMissionListAdapter extends BaseExpandableListAdapter implements V
                 BitmapUtil.getInstance().setBg(context, myMissionUIBean.getCodenameIV(), i[1]);
 
                 myMissionUIBean.getTypeTV().setText(StringUtil.getStr(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getKey()));
-                myMissionUIBean.getArrowIV().setVisibility(View.VISIBLE);
+                myMissionUIBean.getArrowIV().setVisibility(areaMessionDAOpe.getStatusIcon(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getStatus())[1]);
+                myMissionUIBean.getArrowIV().setImageResource(areaMessionDAOpe.getStatusIcon(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getStatus())[0]);
                 myMissionUIBean.getRootV().setTag(R.id.position, childPosition);
                 myMissionUIBean.getRootV().setTag(R.id.groupposition, groupPosition);
                 myMissionUIBean.getRootV().setOnClickListener(this);
@@ -182,7 +183,8 @@ public class MyMissionListAdapter extends BaseExpandableListAdapter implements V
                 BitmapUtil.getInstance().setBg(context, missionUIBean.getCodenameIV(), j[1]);
 
                 missionUIBean.getKeyTV().setText(StringUtil.getStr(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getKey()));
-                missionUIBean.getArrowIV().setVisibility(View.GONE);
+                missionUIBean.getArrowIV().setVisibility(areaMessionDAOpe.getStatusIcon(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getStatus())[1]);
+                missionUIBean.getArrowIV().setImageResource(areaMessionDAOpe.getStatusIcon(list.get(MyMissionStatusOpe.STATUS_LIST.get(groupPosition)).get(childPosition).getTitles().get(0).getStatus())[0]);
                 missionUIBean.getSwipeView().setOnAppClickListener(new OnAppItemClickListener() {
                     @Override
                     public void onAppItemClick(View view, int position) {

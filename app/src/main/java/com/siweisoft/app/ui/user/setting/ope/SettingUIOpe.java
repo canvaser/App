@@ -37,7 +37,7 @@ public class SettingUIOpe extends BaseUIWithTitleOpe {
         getBackTV().setText("返回");
         getBackTV().setSelected(true);
         getMidTV().setText("服务器地址");
-        getBeforeTV().setText(DataValue.URL_NURSE);
+        getBeforeTV().setText("原服务器地址：" + DataValue.URL_NURSE);
         getBackTV().setVisibility(View.VISIBLE);
         getMidTV().setVisibility(View.VISIBLE);
     }

@@ -48,6 +48,7 @@ public class AddMyPatientUIOpe extends BaseNurseUIOpe {
         getRightTV().setSelected(true);
         getBackTV().setVisibility(View.VISIBLE);
         getRightTV().setVisibility(View.VISIBLE);
+        getMidTV().setVisibility(View.VISIBLE);
     }
 
     public void initList(ArrayList<AddMyPatientAdapterBean> resBeen) {

@@ -20,13 +20,14 @@ public class InfoListAdapter extends AppRecycleAdapter {
     OnAppItemClickListener onAppItemClickListener;
 
 
-    public static final String[] titles = new String[]{"病房巡视", "语音联系", "通知公告", "病床日报", "紧急报告", "交班本", "点物本", "工作明细", "排班表"};
+    public static final String[] titles = new String[]{"病房巡视", "语音联系", "通知公告", "病床日报", "紧急报告", "补液卡", "交班本", "点物本", "工作明细", "排班表"};
 
     public static final int[] icons = new int[]{R.drawable.icon_info_bedscan,
             R.drawable.icon_info_voice,
             R.drawable.icon_info_notice,
             R.drawable.icon_info_bedreport,
             R.drawable.icon_info_seri,
+            R.drawable.icon_info_jiao,
             R.drawable.icon_info_jiao,
             R.drawable.icon_info_dian,
             R.drawable.icon_info_detail,

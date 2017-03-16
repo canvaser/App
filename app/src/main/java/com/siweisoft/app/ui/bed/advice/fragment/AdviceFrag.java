@@ -156,7 +156,7 @@ public class AdviceFrag extends BaseNurseFrag<AdviceUIOpe, NurseNetOpe, BaseDBOp
                     @Override
                     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
                         getOpe().getDaOpe().setBegin(DateFormatUtil.convent_yyyyMMdd(new Date(millseconds)));
-                        getOpe().getUiOpe().getMaterialRefreshLayout().autoRefresh();
+                        getOpe().getUiOpe().getMaterialRefreshLayout().autoRefreshWithUI(0);
                     }
                 });
                 break;
