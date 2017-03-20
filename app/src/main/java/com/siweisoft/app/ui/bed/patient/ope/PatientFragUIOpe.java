@@ -3,6 +3,7 @@ package com.siweisoft.app.ui.bed.patient.ope;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -42,7 +43,7 @@ public class PatientFragUIOpe extends BaseNurseUIOpe {
     View infoDetailView;
 
     @BindView(R.id.rcv_rcv)
-    GridRecyclerView recyclerView;
+    RecyclerView recyclerView;
 
     CareListAdapter careListAdapter;
 
@@ -131,16 +132,16 @@ public class PatientFragUIOpe extends BaseNurseUIOpe {
 
 
         getNameTV().setText(StringUtil.getStr(resBean.get姓名()));
-        TextUtil.getInstance().setText(getAgeTV(), "年龄:  " + StringUtil.getStr(resBean.getPatAge()) + "岁", "年龄:  ".length(), Color.GRAY, Color.BLACK);
-        TextUtil.getInstance().setText(getSexTV(), "性别:  " + StringUtil.getStr(resBean.get性别()), "性别:  ".length(), Color.GRAY, Color.BLACK);
-        TextUtil.getInstance().setText(getTelTV(), "电话号码:  " + resBean.get联系电话(), "电话号码:  ".length(), Color.GRAY, Color.BLACK);
-        TextUtil.getInstance().setText(getEatTV(), "膳食信息:  " + StringUtil.getStr(resBean.getLS31()), "膳食信息:  ".length(), Color.GRAY, Color.BLACK);
-        TextUtil.getInstance().setText(getTelTV(), "电话号码:  " + resBean.get联系电话(), "电话号码:  ".length(), Color.GRAY, Color.BLACK);
-        TextUtil.getInstance().setText(getZyhTV(), "住院号  :  " + resBean.get住院号(), "住院号  :  ".length(), Color.GRAY, Color.BLACK);
-        TextUtil.getInstance().setText(getBrithTV(), "出生日期:  " + resBean.get出生日期(), "出生日期:  ".length(), Color.GRAY, Color.BLACK);
-        TextUtil.getInstance().setText(getTypeTV(), "就诊类型:  " + resBean.get就诊类型名称(), "就诊类型:  ".length(), Color.GRAY, Color.BLACK);
-        TextUtil.getInstance().setText(getStartTimeTV(), "入院时间:  " + resBean.get入院时间(), "入院时间:  ".length(), Color.GRAY, Color.BLACK);
-        TextUtil.getInstance().setText(getWhatTV(), "入院诊断:  " + StringUtil.getStr(resBean.get诊断名称()), "入院诊断:  ".length(), Color.GRAY, Color.BLACK);
+        TextUtil.getInstance().setText(getAgeTV(), "年龄:  " + StringUtil.getStr(resBean.getPatAge()) + "岁", "年龄:  ".length(), Color.GRAY, Color.GRAY);
+        TextUtil.getInstance().setText(getSexTV(), "性别:  " + StringUtil.getStr(resBean.get性别()), "性别:  ".length(), Color.GRAY, Color.GRAY);
+        TextUtil.getInstance().setText(getTelTV(), "电话号码:  " + resBean.get联系电话(), "电话号码:  ".length(), Color.GRAY, Color.GRAY);
+        TextUtil.getInstance().setText(getEatTV(), "膳食信息:  " + StringUtil.getStr(resBean.getLS31()), "膳食信息:  ".length(), Color.GRAY, Color.GRAY);
+        TextUtil.getInstance().setText(getTelTV(), "电话号码:  " + resBean.get联系电话(), "电话号码:  ".length(), Color.GRAY, Color.GRAY);
+        TextUtil.getInstance().setText(getZyhTV(), "住院号  :  " + resBean.get住院号(), "住院号  :  ".length(), Color.GRAY, Color.GRAY);
+        TextUtil.getInstance().setText(getBrithTV(), "出生日期:  " + resBean.get出生日期(), "出生日期:  ".length(), Color.GRAY, Color.GRAY);
+        TextUtil.getInstance().setText(getTypeTV(), "就诊类型:  " + resBean.get就诊类型名称(), "就诊类型:  ".length(), Color.GRAY, Color.GRAY);
+        TextUtil.getInstance().setText(getStartTimeTV(), "入院时间:  " + resBean.get入院时间(), "入院时间:  ".length(), Color.GRAY, Color.GRAY);
+        TextUtil.getInstance().setText(getWhatTV(), "入院诊断:  " + StringUtil.getStr(resBean.get诊断名称()), "入院诊断:  ".length(), Color.GRAY, Color.GRAY);
 
         String srt = "";
         for (int i = 0; i < resBean.getLA54().size(); i++) {
@@ -149,8 +150,8 @@ public class PatientFragUIOpe extends BaseNurseUIOpe {
         if (srt.endsWith("\n\t")) {
             srt = srt.substring(0, srt.length() - "\n\t".length());
         }
-        TextUtil.getInstance().setText(getSsTimeTV(), "手术记录:  " + (srt.equals("") ? "无" : srt), "手术记录:  ".length(), Color.GRAY, Color.BLACK);
-        TextUtil.getInstance().setText(getOutTimeTV(), "预出院日:  " + (NullUtil.isStrEmpty(resBean.get出院时间()) ? "暂无" : resBean.get出院时间()), "预出院日:  ".length(), Color.GRAY, Color.BLACK);
+        TextUtil.getInstance().setText(getSsTimeTV(), "手术记录:  " + (srt.equals("") ? "无" : srt), "手术记录:  ".length(), Color.GRAY, Color.GRAY);
+        TextUtil.getInstance().setText(getOutTimeTV(), "预出院日:  " + (NullUtil.isStrEmpty(resBean.get出院时间()) ? "暂无" : resBean.get出院时间()), "预出院日:  ".length(), Color.GRAY, Color.GRAY);
 
         BitmapUtil.getInstance().setBg(context, getHeadIV(), resBean.getResId());
 
@@ -171,7 +172,7 @@ public class PatientFragUIOpe extends BaseNurseUIOpe {
 
     public void initAddionList(ArrayList<PatientAdditionResBean> resBeen) {
         this.resBeen = resBeen;
-        recyclerView.setLayoutManager(new GridLayoutManager(context, 6));
+        recyclerView.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
         careListAdapter = new CareListAdapter(context, resBeen);
         recyclerView.setAdapter(careListAdapter);
     }

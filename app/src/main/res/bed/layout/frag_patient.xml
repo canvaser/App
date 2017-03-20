@@ -69,7 +69,7 @@
                                 android:gravity="center_vertical"
                                 android:textStyle="bold"
                                 android:id="@+id/tv_name"
-                                android:textColor="@color/black"
+                                android:textColor="@color/gray"
                                 android:textSize="15sp"
                                 android:text="王小二"
                                 android:layout_width="wrap_content"
@@ -80,7 +80,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:gravity="center_vertical"
                                 android:id="@+id/tv_sex"
-                                android:textColor="@color/black"
+                                android:textColor="@color/gray"
                                 android:textSize="13sp"
                                 android:text="性别：女"
                                 android:layout_width="wrap_content"
@@ -90,7 +90,7 @@
                                 android:layout_marginLeft="10dp"
                                 android:gravity="center_vertical"
                                 android:id="@+id/tv_age"
-                                android:textColor="@color/black"
+                                android:textColor="@color/gray"
                                 android:textSize="13sp"
                                 android:text="年龄：44岁"
                                 android:layout_width="wrap_content"
@@ -101,7 +101,7 @@
                             android:layout_marginTop="2dp"
                             android:gravity="center_vertical"
                             android:id="@+id/tv_eat"
-                            android:textColor="@color/black"
+                            android:textColor="@color/gray"
                             android:textSize="13sp"
                             android:text="膳食信息：普食"
                             android:layout_width="wrap_content"
@@ -112,7 +112,7 @@
                             android:gravity="center_vertical"
                             android:textStyle="bold"
                             android:id="@+id/tv_guoming"
-                            android:textColor="@color/black"
+                            android:textColor="@color/gray"
                             android:textSize="13sp"
                             android:text="药物过敏 ： 无"
                             android:layout_width="wrap_content"
@@ -134,8 +134,7 @@
                     </RelativeLayout>
                 </LinearLayout>
 
-                <com.siweisoft.lib.view.recyclerview.GridRecyclerView
-                    android:layoutAnimation="@anim/anim_layout_order2"
+                <android.support.v7.widget.RecyclerView
                     android:padding="5dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"

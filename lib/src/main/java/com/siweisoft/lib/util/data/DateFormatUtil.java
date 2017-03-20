@@ -200,6 +200,11 @@ public class DateFormatUtil {
         return format.format(new Date());
     }
 
+    public static String getnowTimeHHmm() {
+        SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+        return format.format(new Date());
+    }
+
     public static String getbefore7TimeYYYYMMdd() {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = Calendar.getInstance();

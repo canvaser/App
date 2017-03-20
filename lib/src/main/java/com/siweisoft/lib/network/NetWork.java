@@ -22,6 +22,7 @@ import com.siweisoft.lib.network.interf.OnNetWorkReqInterf;
 import com.siweisoft.lib.network.requst.MyObjectRequest;
 import com.siweisoft.lib.network.requst.MyStringRequest;
 import com.siweisoft.lib.util.LogUtil;
+import com.siweisoft.lib.util.SPUtil;
 
 import org.json.JSONObject;
 import org.xutils.common.Callback;
@@ -205,6 +206,7 @@ public class NetWork {
                 DbCookieStore dbCookieStore = DbCookieStore.INSTANCE;
                 for (HttpCookie cookie : dbCookieStore.getCookies()) {
                     ValueConstant.cookieFromResponse = cookie.toString();
+                    SPUtil.getInstance().saveStr(ValueConstant.cookieFromResponse, cookie.toString());
                     LogUtil.E(ValueConstant.cookieFromResponse);
                 }
                 if (response == null) {
@@ -254,8 +256,8 @@ public class NetWork {
         }
 
         RequestParams requestParams = new RequestParams(UrlConstant.URI + model);
-        requestParams.addHeader("Cookie", ValueConstant.cookieFromResponse);
-        requestParams.setUseCookie(false);
+        requestParams.setUseCookie(true);
+        requestParams.setHeader("Cookie", SPUtil.getInstance().getStr(ValueConstant.cookieFromResponse));
         LogUtil.E(UrlConstant.URI + model + "---" + ValueConstant.cookieFromResponse);
         Map<String, String> map = JSON.parseObject(jsonstr, new TypeReference<Map<String, String>>() {
         });

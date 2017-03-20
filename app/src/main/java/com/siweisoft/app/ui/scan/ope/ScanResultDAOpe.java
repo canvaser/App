@@ -186,7 +186,6 @@ public class ScanResultDAOpe extends BaseDAOpe {
                         break;
                 }
             }
-            return;
         }
 
     }

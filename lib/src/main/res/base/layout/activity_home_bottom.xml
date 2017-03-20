@@ -29,9 +29,10 @@
                 android:layout_height="30dp" />
 
             <TextView
+                android:layout_marginTop="1dp"
                 android:id="@+id/tv_bed"
                 android:textSize="11sp"
-                android:textColor="@color/black"
+                android:textColor="@color/color_bottom_select"
                 android:text="病床"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -53,9 +54,10 @@
                 android:layout_height="30dp" />
 
             <TextView
+                android:layout_marginTop="1dp"
                 android:id="@+id/tv_mission"
                 android:textSize="11sp"
-                android:textColor="@color/black"
+                android:textColor="@color/color_bottom_select"
                 android:text="任务"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -78,9 +80,10 @@
                 android:layout_height="30dp" />
 
             <TextView
+                android:layout_marginTop="1dp"
                 android:id="@+id/tv_check"
                 android:textSize="11sp"
-                android:textColor="@color/black"
+                android:textColor="@color/color_bottom_select"
                 android:text="核对"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -98,14 +101,16 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:padding="1dp"
                 android:src="@drawable/drawable_info"
                 android:layout_width="30dp"
                 android:layout_height="30dp" />
 
             <TextView
+                android:layout_marginTop="1dp"
                 android:id="@+id/tv_info"
                 android:textSize="11sp"
-                android:textColor="@color/black"
+                android:textColor="@color/color_bottom_select"
                 android:text="信息"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
@@ -122,14 +127,16 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:padding="1dp"
                 android:src="@drawable/drawable_setting"
                 android:layout_width="30dp"
                 android:layout_height="30dp" />
 
             <TextView
+                android:layout_marginTop="1dp"
                 android:id="@+id/tv_setting"
                 android:textSize="11sp"
-                android:textColor="@color/black"
+                android:textColor="@color/color_bottom_select"
                 android:text="设置"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

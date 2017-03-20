@@ -46,7 +46,7 @@
 
                 <include
                     android:id="@+id/ic_base_title"
-                    layout="@layout/item_title" />
+                    layout="@layout/item_title_4" />
             </RelativeLayout>
 
         </RelativeLayout>
