@@ -1,7 +1,9 @@
 package com.siweisoft.app.ui.bed.bedlist.fragment;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 
 import com.siweisoft.app.R;
@@ -167,8 +169,9 @@ public class BedListFGM extends CommonUIFrag2<BedListFGMUIOpe<BedListFGM>, BedLi
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
-    public void onAppItemClick(View view, final int position) {
+    public void onAppItemClick(final View view, final int position) {
         if (baseOpes.getDaOpe().getAllList() == null) {
             getData(3, new OnFinishListener() {
                 @Override
@@ -189,7 +192,7 @@ public class BedListFGM extends CommonUIFrag2<BedListFGMUIOpe<BedListFGM>, BedLi
 
     @Override
     public void onResult(int req, Bundle bundle) {
-        baseOpes.getUiOpe().getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
+        //baseOpes.getUiOpe().getRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
 
     @Override

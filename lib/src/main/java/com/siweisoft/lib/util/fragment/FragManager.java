@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
 
 import com.siweisoft.lib.R;
 import com.siweisoft.lib.base.ui.common.CommonUIFrag;
@@ -69,7 +70,6 @@ public class FragManager {
                 transaction.remove(fragment);
                 fragMaps.get(index).remove(fragMaps.get(index).size() - 1);
                 fragment = null;
-                System.gc();
                 if ((fragMaps.get(index).size() - 1) >= 0) {
                     if (fragMaps.get(index).get(fragMaps.get(index).size() - 1) instanceof CommonUIFrag2) {
                         CommonUIFrag2 fragment2 = (CommonUIFrag2) fragMaps.get(index).get(fragMaps.get(index).size() - 1);
@@ -105,7 +105,6 @@ public class FragManager {
                 transaction.remove(fragment);
                 fragMaps.get(index).remove(fragMaps.get(index).size() - 1);
                 fragment = null;
-                System.gc();
                 if ((fragMaps.get(index).size() - 1) >= 0) {
                     if (fragMaps.get(index).get(fragMaps.get(index).size() - 1) instanceof BaseNurseFrag) {
                         BaseNurseFrag fragment2 = (BaseNurseFrag) fragMaps.get(index).get(fragMaps.get(index).size() - 1);
@@ -129,7 +128,6 @@ public class FragManager {
 
     public void finish(Activity activity) {
         fragMaps.clear();
-        System.gc();
     }
 
     public void startFragment(FragmentManager manager, int index, Fragment fragment) {
@@ -154,7 +152,6 @@ public class FragManager {
             fragMaps.get(index).add(fragment);
         }
         transaction.commitAllowingStateLoss();
-        System.gc();
     }
 
 
@@ -182,8 +179,39 @@ public class FragManager {
             fragMaps.get(index).add(fragment);
         }
         transaction.commitAllowingStateLoss();
-        System.gc();
     }
+
+    public void startFragment(FragmentManager manager, int index, Fragment fragment, Bundle bundle, View view, int id) {
+        this.index = index;
+        if (fragMaps.get(index) == null) {
+            fragMaps.put(index, new ArrayList<Fragment>());
+        }
+        FragmentTransaction transaction = manager.beginTransaction();
+
+        if (fragment != null) {
+            if (fragMaps.get(index).size() - 1 >= 0) {
+                transaction.setCustomAnimations(R.anim.anim_push_right_in, R.anim.anim_push_left_out, R.anim.anim_push_right_in, R.anim.anim_push_left_out);
+                transaction.hide(fragMaps.get(index).get(fragMaps.get(index).size() - 1));
+            }
+            Bundle b = fragment.getArguments();
+            if (b == null) {
+                fragment.setArguments(new Bundle());
+            }
+            fragment.getArguments().putInt(ValueConstant.FRAG_POSITION, index);
+            if (bundle != null) {
+                int[] ints = new int[3];
+                ints[3] = id;
+                view.getLocationInWindow(ints);
+                bundle.putIntArray(ValueConstant.DATA_INTENT3, ints);
+                fragment.getArguments().putAll(bundle);
+            }
+            transaction.add(containsView.get(index), fragment, fragment.getClass().getSimpleName());
+            fragMaps.get(index).add(fragment);
+        }
+        transaction.commitAllowingStateLoss();
+    }
+
+
 
 
     public void startFragmentForResult(FragmentManager manager, int index, Fragment fragment, Bundle bundle, int req) {
@@ -214,7 +242,6 @@ public class FragManager {
             fragMaps.get(index).add(fragment);
         }
         transaction.commitAllowingStateLoss();
-        System.gc();
     }
 
 

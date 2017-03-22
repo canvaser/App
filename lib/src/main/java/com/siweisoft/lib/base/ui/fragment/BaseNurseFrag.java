@@ -14,6 +14,7 @@ import com.siweisoft.lib.base.ui.ope.BaseNurseOpes;
 import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.fragment.FragManager;
+import com.siweisoft.lib.view.base.BottomFinishView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
 
@@ -22,7 +23,7 @@ import butterknife.ButterKnife;
 /**
  * Created by ${viwmox} on 2016-11-10.
  */
-public abstract class BaseNurseFrag<A extends BaseNurseUIOpe, B extends BaseNetOpe, C extends BaseDBOpe, D extends BaseDAOpe> extends BaseUIFragment implements MaterialRefreshListener {
+public abstract class BaseNurseFrag<A extends BaseNurseUIOpe, B extends BaseNetOpe, C extends BaseDBOpe, D extends BaseDAOpe> extends BaseUIFragment implements MaterialRefreshListener, BottomFinishView.Finish {
 
     protected int index;
 
@@ -45,6 +46,9 @@ public abstract class BaseNurseFrag<A extends BaseNurseUIOpe, B extends BaseNetO
         backView = getView().findViewById(R.id.ftv_back);
         backView.setOnClickListener(this);
         unbinder = ButterKnife.bind(this, view);
+        if (getOpe() != null && getOpe().getUiOpe() != null && getOpe().getUiOpe().getBottomFinishView() != null) {
+            getOpe().getUiOpe().getBottomFinishView().setFinish(this);
+        }
     }
 
 
@@ -87,5 +91,12 @@ public abstract class BaseNurseFrag<A extends BaseNurseUIOpe, B extends BaseNetO
 
     public int getIndex() {
         return index;
+    }
+
+    @Override
+    public void finishUI() {
+        if (FragManager.getInstance().getFragMaps().get(index).size() > 1) {
+            FragManager.getInstance().finish(getFragmentManager(), index);
+        }
     }
 }

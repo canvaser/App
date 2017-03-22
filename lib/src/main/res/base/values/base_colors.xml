@@ -17,6 +17,6 @@
 
     <color name="color_divide_line">#aaaaaa</color>
 
-    <color name="color_block_back">#f4f4f4</color>
+    <color name="color_block_back">@color/color_grey_200</color>
 
 </resources>

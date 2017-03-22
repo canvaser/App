@@ -22,9 +22,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+
                 <RelativeLayout
                     android:background="@color/color_block_back"
                     android:id="@+id/frag_base_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <com.siweisoft.lib.view.base.BottomFinishView
+                    android:id="@+id/finishview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 

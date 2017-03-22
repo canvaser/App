@@ -45,6 +45,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
+                        android:transitionName="xxx"
                         android:id="@+id/iv_head"
                         android:scaleType="fitXY"
                         android:layout_marginLeft="5dp"

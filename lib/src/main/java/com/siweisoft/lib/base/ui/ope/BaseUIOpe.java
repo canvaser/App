@@ -3,6 +3,9 @@ package com.siweisoft.lib.base.ui.ope;
 import android.content.Context;
 import android.view.View;
 
+import com.siweisoft.lib.R;
+import com.siweisoft.lib.view.base.BottomFinishView;
+
 import butterknife.ButterKnife;
 
 /**
@@ -13,6 +16,8 @@ public class BaseUIOpe extends BaseOpe {
 
     protected View containerView;
 
+    BottomFinishView bottomFinishView;
+
     public BaseUIOpe(Context context, View containerView) {
         super(context);
         this.containerView = containerView;
@@ -20,6 +25,10 @@ public class BaseUIOpe extends BaseOpe {
             return;
         }
         ButterKnife.bind(this, containerView);
+        bottomFinishView = (BottomFinishView) containerView.findViewById(R.id.finishview);
     }
 
+    public BottomFinishView getBottomFinishView() {
+        return bottomFinishView;
+    }
 }

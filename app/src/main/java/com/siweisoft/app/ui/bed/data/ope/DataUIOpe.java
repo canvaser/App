@@ -108,7 +108,7 @@ public class DataUIOpe extends BaseNurseUIOpe {
                 if (j % 2 == 0) {
                     textView.setBackgroundColor(Color.WHITE);
                 } else {
-                    textView.setBackgroundColor(context.getResources().getColor(R.color.light_pink));
+                    textView.setBackgroundColor(context.getResources().getColor(R.color.color_pink_50));
                 }
                 textView.setText(list.get(i).getTitle().get(j));
             }

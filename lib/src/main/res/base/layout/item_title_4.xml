@@ -6,7 +6,7 @@
     android:layout_height="@dimen/dimens_base_title"
     android:gravity="center_vertical"
     android:background="@color/color_base_nurse"
-    android:elevation="1dp"
+    android:layout_marginTop="-1dp"
     android:id="@+id/ftitle_bar">
 
     <TextView
@@ -35,7 +35,7 @@
         android:paddingBottom="3dp"
         android:background="@drawable/drawable_title"
         android:textSize="17sp"
-        android:textColor="@color/white"
+        android:textColor="@color/color_title_select"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

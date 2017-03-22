@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.siweisoft.app.R;
 import com.siweisoft.app.ui.bed.bedlist.bean.resbean.PatientBedResBean;
 import com.siweisoft.app.ui.bed.patient.adapter.CareListAdapter;
+import com.siweisoft.lib.util.AnimUtil;
 import com.siweisoft.lib.util.BitmapUtil;
 import com.siweisoft.lib.util.NullUtil;
 import com.siweisoft.lib.util.StringUtil;
@@ -109,6 +110,11 @@ public class PatientFragUIOpe extends BaseNurseUIOpe {
     public PatientFragUIOpe(Context context, View containerView) {
         super(context, containerView);
         init();
+        anim();
+    }
+
+    public void anim() {
+        AnimUtil.getInstance().startAnim(context, getHeadIV(), R.anim.anim_scale_in_1000);
     }
 
     private void init() {

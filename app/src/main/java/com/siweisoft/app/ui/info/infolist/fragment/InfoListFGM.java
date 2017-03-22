@@ -1,5 +1,6 @@
 package com.siweisoft.app.ui.info.infolist.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.siweisoft.app.ui.info.duteschedule.fragment.DuteScheDuleFrag;
 import com.siweisoft.app.ui.info.shiftdutereport.fragment.ShiftDuteReportFrag;
 import com.siweisoft.app.ui.info.urgencyreport.fragment.UrgencyReportFrag;
 import com.siweisoft.app.ui.info.workdetail.fragment.WorkDetailFrag;
+import com.siweisoft.lib.sip.WalkieTalkieActivity;
 import com.siweisoft.lib.util.fragment.FragManager;
 
 /**
@@ -49,6 +51,9 @@ public class InfoListFGM extends BaseNurseFrag implements OnAppItemClickListener
         switch (position) {
             case 0:
                 FragManager.getInstance().startFragment(getFragmentManager(), index, new BedCheckFrag());
+                break;
+            case 1:
+                // activity.startActivity(new Intent(activity, WalkieTalkieActivity.class));
                 break;
             case 2:
                 FragManager.getInstance().startFragment(getFragmentManager(), index, new AnnounceMentFrag());

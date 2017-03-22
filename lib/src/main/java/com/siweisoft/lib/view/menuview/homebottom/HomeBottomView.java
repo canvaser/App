@@ -1,15 +1,17 @@
-package com.siweisoft.app.ui.home.view;
+package com.siweisoft.lib.view.menuview.homebottom;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.SoundEffectConstants;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.siweisoft.app.R;
+import com.siweisoft.lib.R;
+import com.siweisoft.lib.R2;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemLongClickListener;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemSelectListener;
 import com.siweisoft.lib.util.LogUtil;
@@ -77,7 +79,7 @@ public class HomeBottomView extends LinearLayout implements View.OnLongClickList
     int id = R.id.ll_bed;
 
     @Optional
-    @OnClick({R.id.ll_bed, R.id.ll_check, R.id.ll_mission, R.id.ll_info, R.id.ll_setting})
+    @OnClick({R2.id.ll_bed, R2.id.ll_check, R2.id.ll_mission, R2.id.ll_info, R2.id.ll_setting})
     public void onClick(View v) {
         long t = System.currentTimeMillis();
         long d = t - time;

@@ -1,5 +1,6 @@
 package com.siweisoft.lib.base.ui.fragment;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;

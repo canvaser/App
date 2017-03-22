@@ -44,6 +44,10 @@
                     app:wave_height_type="normal"
                     app:progress_show_circle_backgroud="false" />
 
+                <com.siweisoft.lib.view.base.BottomFinishView
+                    android:id="@+id/finishview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
                 <ImageView
                     android:visibility="gone"
                     android:layout_centerInParent="true"

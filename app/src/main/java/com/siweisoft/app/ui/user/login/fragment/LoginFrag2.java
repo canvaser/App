@@ -97,6 +97,9 @@ public class LoginFrag2 extends CommonUIFrag2<LoginUIOpe<LoginFrag2>, LoginDAOpe
     public void onClickEvent(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
+                if (NullUtil.isStrEmpty(SPUtil.getInstance().init(activity).getStr(ValueConstant.LOGIN_INFO))) {
+                    return;
+                }
                 //LoadUtil.getInstance().onStartLoading(this);
                 SimpleNetOpe.onLogin(activity, baseOpes.getUiOpe().getAccountEt().getText().toString() + baseOpes.getDaOpe().getSuffix(), baseOpes.getUiOpe().getPwdEt().getText().toString(), new UINetAdapter(activity) {
 

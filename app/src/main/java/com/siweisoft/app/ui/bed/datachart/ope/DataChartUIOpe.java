@@ -30,12 +30,22 @@ public class DataChartUIOpe extends BaseNurseUIOpe {
     @BindView(R.id.tv_right)
     TextView rightTV;
 
+    View[] views = new View[]{leftTV, midTV, rightTV};
+
     public DataChartUIOpe(Context context, View containerView) {
         super(context, containerView);
+        select(0);
     }
 
     public LineChartView getChart() {
         return chart;
+    }
+
+    public void select(int index) {
+        for (int i = 0; i < views.length; i++) {
+            views[i].setSelected(false);
+        }
+        views[index].setSelected(true);
     }
 
     public TextView getLeftTV() {

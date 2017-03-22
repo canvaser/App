@@ -38,6 +38,9 @@ import com.siweisoft.lib.lecho.lib.hellocharts.util.ChartUtils;
 import com.siweisoft.lib.lecho.lib.hellocharts.view.Chart;
 import com.siweisoft.lib.lecho.lib.hellocharts.view.LineChartView;
 
+import butterknife.BindView;
+import butterknife.OnClick;
+
 /**
  * Created by ${viwmox} on 2016-11-28.
  */
@@ -106,6 +109,22 @@ public class DataChartFrag extends BaseUIWithOutTitleFrag {
             }
         });
     }
+
+    @OnClick({R.id.tv_left, R.id.tv_mid, R.id.tv_right})
+    public void onClickEvent(View v) {
+        switch (v.getId()) {
+            case R.id.tv_left:
+                dataChartUIOpe.select(0);
+                break;
+            case R.id.tv_mid:
+                dataChartUIOpe.select(1);
+                break;
+            case R.id.tv_right:
+                dataChartUIOpe.select(2);
+                break;
+        }
+    }
+
 
 
     @Override

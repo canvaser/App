@@ -14,21 +14,15 @@
   limitations under the License.
  -->
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
+    android:orientation="vertical"
     android:layout_height="fill_parent">
-
-    <RelativeLayout
-        android:padding="12dp"
-        android:id="@+id/mainlayout"
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
 
         <TextView
             android:id="@+id/sipLabel"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -44,5 +38,55 @@
             android:textOn=""
             android:layout_marginTop="-20dp" />
 
-    </RelativeLayout>
-</FrameLayout>
+    <EditText
+        android:id="@+id/id"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_weight="1"
+            android:text="init"
+            android:id="@+id/init"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:background="@color/gray" />
+
+        <TextView
+            android:layout_weight="1"
+            android:text="call"
+            android:id="@+id/call"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:background="@color/gray" />
+
+        <TextView
+            android:layout_weight="1"
+            android:text="edit"
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:background="@color/gray" />
+
+        <TextView
+            android:layout_weight="1"
+            android:text="end"
+            android:id="@+id/end"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:background="@color/gray" />
+
+
+    </LinearLayout>
+</LinearLayout>

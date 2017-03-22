@@ -47,7 +47,9 @@ public abstract class BaseUIWithOutTitleActivity extends BaseActivity {
         }
 //        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.layout_baseui_withouttitle);
-        StatusBarUtil.getInstance().setStatusBarColorResId(activity, getStatusColor());
+        if (!isLandScape()) {
+            StatusBarUtil.getInstance().setStatusBarColorResId(activity, getStatusColor());
+        }
         containerVG = (ViewGroup) findViewById(R.id.rl_base_container);
         View rootV = getLayoutInflater().inflate(onCreateContainerView(), null);
         containerVG.addView(rootV, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -81,7 +83,11 @@ public abstract class BaseUIWithOutTitleActivity extends BaseActivity {
             requestWindowFeature(Window.FEATURE_NO_TITLE);
             // 隐藏状态栏
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                Window window = getWindow();
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+                window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            }
         }
     }
 

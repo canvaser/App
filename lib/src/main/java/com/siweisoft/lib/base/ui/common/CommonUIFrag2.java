@@ -15,6 +15,7 @@ import com.siweisoft.lib.base.ui.ope.BaseUIOpe;
 import com.siweisoft.lib.base.ui.ope.BaseOpes;
 import com.siweisoft.lib.constant.ValueConstant;
 import com.siweisoft.lib.util.fragment.FragManager;
+import com.siweisoft.lib.view.base.BottomFinishView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshListener;
 
@@ -25,7 +26,7 @@ import butterknife.Unbinder;
  * Created by ${viwmox} on 2017-02-27.
  */
 
-public abstract class CommonUIFrag2<A extends BaseNurseUIOpe, B extends BaseDAOpe> extends BaseFrg implements View.OnClickListener, MaterialRefreshListener, FragIntef {
+public abstract class CommonUIFrag2<A extends BaseNurseUIOpe, B extends BaseDAOpe> extends BaseFrg implements View.OnClickListener, MaterialRefreshListener, FragIntef, BottomFinishView.Finish {
 
     private Unbinder unbinder;
 
@@ -74,6 +75,9 @@ public abstract class CommonUIFrag2<A extends BaseNurseUIOpe, B extends BaseDAOp
         backView.setOnClickListener(this);
         unbinder = ButterKnife.bind(this, view);
         onCmd(getArguments());
+        if (baseOpes != null && baseOpes.getUiOpe() != null && baseOpes.getUiOpe().getBottomFinishView() != null) {
+            baseOpes.getUiOpe().getBottomFinishView().setFinish(this);
+        }
     }
 
     public void onResult(int req, Bundle bundle) {
@@ -116,5 +120,12 @@ public abstract class CommonUIFrag2<A extends BaseNurseUIOpe, B extends BaseDAOp
 
     public int getIndex() {
         return index;
+    }
+
+    @Override
+    public void finishUI() {
+        if (FragManager.getInstance().getFragMaps().get(index).size() > 1) {
+            FragManager.getInstance().finish(getFragmentManager(), index);
+        }
     }
 }

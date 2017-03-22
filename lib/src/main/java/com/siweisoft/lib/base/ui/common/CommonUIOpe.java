@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.siweisoft.lib.R;
+import com.siweisoft.lib.view.base.BottomFinishView;
 
 import butterknife.ButterKnife;
 
@@ -27,6 +28,7 @@ public class CommonUIOpe<A extends CommonUIFrag> extends CommonOpe {
 
     protected View containerView;
 
+    BottomFinishView bottomFinishView;
 
     public CommonUIOpe(A frag, View containerView) {
         this.containerView = containerView;
@@ -39,6 +41,7 @@ public class CommonUIOpe<A extends CommonUIFrag> extends CommonOpe {
         midTV = (TextView) containerView.findViewById(R.id.ftv_title);
         rightTV = (TextView) containerView.findViewById(R.id.ftv_right);
         infoIV = (ImageView) containerView.findViewById(R.id.iv_info);
+        bottomFinishView = (BottomFinishView) containerView.findViewById(R.id.finishview);
     }
 
 
@@ -66,4 +69,7 @@ public class CommonUIOpe<A extends CommonUIFrag> extends CommonOpe {
         return infoIV;
     }
 
+    public BottomFinishView getBottomFinishView() {
+        return bottomFinishView;
+    }
 }

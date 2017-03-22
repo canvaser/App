@@ -11,7 +11,7 @@ import android.view.View;
 
 import com.siweisoft.app.R;
 import com.siweisoft.app.ui.home.fragment.DrawerLayoutFrag;
-import com.siweisoft.app.ui.home.view.HomeBottomView;
+import com.siweisoft.lib.view.menuview.homebottom.HomeBottomView;
 import com.siweisoft.app.ui.info.infolist.fragment.InfoListFGM;
 import com.siweisoft.app.ui.setting.setting.fragment.SettingFGM;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
