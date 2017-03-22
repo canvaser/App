@@ -5,6 +5,18 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <TextView
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:id="@+id/tv_title"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:background="@drawable/icon_bg_exp_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout
 
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -29,14 +41,52 @@
             android:layout_height="wrap_content" />
     </com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout>
 
-    <TextView
-        android:id="@+id/tv_start"
+    <LinearLayout
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:text="请按此处开始"
-        android:layout_width="100dp"
-        android:layout_height="50dp" />
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_clear"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="清空"
+                android:textColor="@color/black"
+                android:background="@color/color_blue_300"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_start"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="测滴速"
+                android:textColor="@color/black"
+                android:background="@color/color_blue_300"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+
 </LinearLayout>
