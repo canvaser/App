@@ -63,7 +63,9 @@ public class AdviceUIOpe extends BaseNurseUIOpe {
         adviceListAdapter = new AdviceListAdapter(context, this.hashMap);
         doubleExpandView.setGroupIndicator(null);
         doubleExpandView.setAdapter(adviceListAdapter);
-        doubleExpandView.expandGroup(DataValue.STATUS_TYPE_TIME.size() - 1);
+        for (int i = 0; i < DataValue.STATUS_TYPE_TIME.size(); i++) {
+            doubleExpandView.expandGroup(i);
+        }
     }
 
 

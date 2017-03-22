@@ -35,10 +35,12 @@ public class CheckListFGMUIOpe extends BaseNurseUIOpe {
     }
 
     private void init() {
-
+        getRightTV().setVisibility(View.VISIBLE);
+        getRightTV().setText("全部");
         getMidTV().setVisibility(View.VISIBLE);
         getMidTV().setText("配药核对");
-
+        getRightTV().setBackgroundResource(R.drawable.drawable_right);
+        getRightTV().setSelected(true);
     }
 
     public void initList(ArrayList<CheckResBean> data) {

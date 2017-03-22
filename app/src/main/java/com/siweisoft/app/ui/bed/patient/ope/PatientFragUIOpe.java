@@ -15,12 +15,14 @@ import com.siweisoft.app.ui.bed.patient.adapter.CareListAdapter;
 import com.siweisoft.lib.util.BitmapUtil;
 import com.siweisoft.lib.util.NullUtil;
 import com.siweisoft.lib.util.StringUtil;
+import com.siweisoft.lib.util.data.DateFormatUtil;
 import com.siweisoft.lib.util.string.TextUtil;
 import com.siweisoft.lib.view.recyclerview.GridRecyclerView;
 import com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout;
 import com.siweisoft.lib.base.ui.ope.BaseNurseUIOpe;
 import com.siweisoft.app.ui.bed.patient.bean.resbean.PatientAdditionResBean;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -137,8 +139,12 @@ public class PatientFragUIOpe extends BaseNurseUIOpe {
         TextUtil.getInstance().setText(getTelTV(), "电话号码:  " + resBean.get联系电话(), "电话号码:  ".length(), Color.GRAY, Color.GRAY);
         TextUtil.getInstance().setText(getEatTV(), "膳食信息:  " + StringUtil.getStr(resBean.getLS31()), "膳食信息:  ".length(), Color.GRAY, Color.GRAY);
         TextUtil.getInstance().setText(getTelTV(), "电话号码:  " + resBean.get联系电话(), "电话号码:  ".length(), Color.GRAY, Color.GRAY);
-        TextUtil.getInstance().setText(getZyhTV(), "住院号  :  " + resBean.get住院号(), "住院号  :  ".length(), Color.GRAY, Color.GRAY);
-        TextUtil.getInstance().setText(getBrithTV(), "出生日期:  " + resBean.get出生日期(), "出生日期:  ".length(), Color.GRAY, Color.GRAY);
+        TextUtil.getInstance().setText(getZyhTV(), "住院号  :  " + resBean.getCPOEZYH(), "住院号  :  ".length(), Color.GRAY, Color.GRAY);
+        try {
+            TextUtil.getInstance().setText(getBrithTV(), "出生日期:  " + DateFormatUtil.convent_YYYYMMDD(DateFormatUtil.convent_yyyyMMddHHmmss(resBean.get出生日期())), "出生日期:  ".length(), Color.GRAY, Color.GRAY);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         TextUtil.getInstance().setText(getTypeTV(), "就诊类型:  " + resBean.get就诊类型名称(), "就诊类型:  ".length(), Color.GRAY, Color.GRAY);
         TextUtil.getInstance().setText(getStartTimeTV(), "入院时间:  " + resBean.get入院时间(), "入院时间:  ".length(), Color.GRAY, Color.GRAY);
         TextUtil.getInstance().setText(getWhatTV(), "入院诊断:  " + StringUtil.getStr(resBean.get诊断名称()), "入院诊断:  ".length(), Color.GRAY, Color.GRAY);

@@ -159,6 +159,12 @@ public class DataValue {
 
 
     /**
+     * 获取病人医嘱关联任务
+     */
+    public static final String URL_GET_PATIENT_ADVICE_TASK = "getTaskListByAdviceID";
+
+
+    /**
      * 获取化验报告数据
      */
     public static final String URL_GET_LIST_RESULT_PATIENT = "getListResultByPatient";

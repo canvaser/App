@@ -37,6 +37,9 @@ public class AreaMessionTimeOpe {
                                 type.equals("全部") && sort.equals(resBean.getData().get(i).getTitles().get(0).getNurse_type()) ||
                                 type.equals(resBean.getData().get(i).getTitles().get(0).getStatus()) && sort.equals("全部") ||
                                 type.equals(resBean.getData().get(i).getTitles().get(0).getStatus()) && sort.equals(resBean.getData().get(i).getTitles().get(0).getNurse_type())
+
+                                || (type.equals(resBean.getData().get(i).getTitles().get(0).getStatus()) && (resBean.getData().get(i).getTitles().get(0).getNurse_type().contains("静脉输液") && sort.contains("静滴")))
+                                || (type.equals(resBean.getData().get(i).getTitles().get(0).getStatus()) && (resBean.getData().get(i).getTitles().get(0).getNurse_type().contains("静脉推") && sort.contains("静推")))
                                 ) {
                             String l;
                             if (areaMessionDAOpe.isLin(resBean.getData().get(i).getTitles().get(0).get医嘱ID(), resBean.getData().get(i).getTitles().get(0).getKey())) {

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.siweisoft.app.R;
 import com.siweisoft.app.ui.mission.missiondetail.adapter.MissionDetailListAdapter;
+import com.siweisoft.app.ui.mission.missiondetail.adapter.MissionDetailUnClickableAdapter;
 import com.siweisoft.app.ui.mission.missionlist.bean.res.AreaMessionListResBean;
 import com.siweisoft.app.ui.mission.missionlist.ope.AreaMessionDAOpe;
 import com.siweisoft.lib.util.BitmapUtil;
@@ -86,12 +87,17 @@ public class MissionDetailUIOpe extends BaseNurseUIOpe {
         getYzIdTV().setText("医嘱ID:  " + StringUtil.getStr(resBean.getTitles().get(0) == null ? "" : resBean.getTitles().get(0).get医嘱ID()));
         getDateTV().setText("任务时间:" + StringUtil.getStr(resBean.getStart()));
 
-        if (missionDetailListAdapter == null) {
-            missionDetailListAdapter = new MissionDetailListAdapter(context, resBean.getTitles());
-            recyclerView.setAdapter(missionDetailListAdapter);
+        if (resBean.isClickable()) {
+            if (missionDetailListAdapter == null) {
+                missionDetailListAdapter = new MissionDetailListAdapter(context, resBean.getTitles());
+                recyclerView.setAdapter(missionDetailListAdapter);
+            } else {
+                missionDetailListAdapter.notifyDataSetChanged();
+            }
         } else {
-            missionDetailListAdapter.notifyDataSetChanged();
+            recyclerView.setAdapter(new MissionDetailUnClickableAdapter(context, resBean.getTitles()));
         }
+
 
     }
 

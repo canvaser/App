@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.siweisoft.app.ui.addwater.addaddwater.bean.netbean.AddAddWaterReqBean;
 import com.siweisoft.app.ui.addwater.addaddwater.bean.netbean.AddAddWaterResBean;
 import com.siweisoft.app.ui.bed.addmypatient.bean.MyPaitentUpdateListReqBean;
+import com.siweisoft.app.ui.bed.advice.bean.reqbean.AdviceTaskBean;
 import com.siweisoft.app.ui.bed.data.bean.resbean.DataTemplateDataResBean;
 import com.siweisoft.app.ui.bed.data.bean.resbean.DataTemplateResBean;
 import com.siweisoft.app.ui.bed.inputdata.bean.reqbean.InputDataReqBean;
@@ -562,5 +563,13 @@ public class SimpleNetOpe extends BaseNetOpe {
         NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_CHECK_AND_PIPE_CODE, reqBean, reqInterf);
     }
 
+
+    public static void getTaskListByAdviceID(Context context, String begin, String end, String adviceid, OnNetWorkReqInterf reqInterf) {
+        AdviceTaskBean reqBean = new AdviceTaskBean();
+        reqBean.setBegin(begin);
+        reqBean.setEnd(end);
+        reqBean.setAdviceid(adviceid);
+        NetWork.getInstance(context).doHttpRequsetWithSession(context, DataValue.URL_GET_PATIENT_ADVICE_TASK, reqBean, reqInterf);
+    }
 
 }

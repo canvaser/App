@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.siweisoft.app.R;
 import com.siweisoft.app.ui.addwater.addaddwater.fragment.AddAddWaterFrag;
+import com.siweisoft.app.ui.mission.missiondetail.ope.MissionDetailDAOpe;
 import com.siweisoft.app.ui.mission.missionlist.bean.res.AreaMessionListResBean;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
 import com.siweisoft.lib.constant.ValueConstant;
@@ -33,6 +34,7 @@ public class MissionDetailFrag extends BaseNurseFrag implements OnAppItemClickLi
 
     NurseNetOpe missionDetailNetOpe;
 
+
     @Override
     public BaseNurseOpes getOpe() {
         return null;
@@ -48,7 +50,9 @@ public class MissionDetailFrag extends BaseNurseFrag implements OnAppItemClickLi
         missionDetailUIOpe = new MissionDetailUIOpe(activity, getView());
         missionDetailNetOpe = new NurseNetOpe(activity);
         missionDetailUIOpe.initData(resBean);
-        missionDetailUIOpe.getMissionDetailListAdapter().setOnAppItemClickListener(this);
+        if (missionDetailUIOpe.getMissionDetailListAdapter() != null) {
+            missionDetailUIOpe.getMissionDetailListAdapter().setOnAppItemClickListener(this);
+        }
     }
 
     @Override
@@ -58,6 +62,9 @@ public class MissionDetailFrag extends BaseNurseFrag implements OnAppItemClickLi
 
     @Override
     public void onAppItemClick(View view, final int position) {
+        if (!resBean.isClickable()) {
+            return;
+        }
         String status = DataValue.STATUS_WEI_ZHI_XING;
         switch (view.getId()) {
             case R.id.tv_txt:

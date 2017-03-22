@@ -22,6 +22,10 @@ public class AdviceResBean extends BaseResBean {
 
     private String 结束时间s;
 
+    private String 开始时间;
+
+    private String 结束时间;
+
     private String key;
 
     public String getAdvType() {
@@ -86,5 +90,21 @@ public class AdviceResBean extends BaseResBean {
 
     public void set结束时间s(String 结束时间s) {
         this.结束时间s = 结束时间s;
+    }
+
+    public String get开始时间() {
+        return 开始时间;
+    }
+
+    public void set开始时间(String 开始时间) {
+        this.开始时间 = 开始时间;
+    }
+
+    public String get结束时间() {
+        return 结束时间;
+    }
+
+    public void set结束时间(String 结束时间) {
+        this.结束时间 = 结束时间;
     }
 }

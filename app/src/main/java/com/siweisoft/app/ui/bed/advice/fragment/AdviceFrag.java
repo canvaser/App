@@ -10,14 +10,21 @@ import android.widget.ExpandableListView;
 import com.siweisoft.app.R;
 import com.siweisoft.app.nursenet.NurseNetOpe;
 import com.siweisoft.app.nursevalue.BaseID;
+import com.siweisoft.app.ope.SimpleNetOpe;
+import com.siweisoft.app.ui.bed.advice.bean.resbean.AdviceTaskResBean;
 import com.siweisoft.app.ui.bed.advice.ope.AdviceUIOpe;
 import com.siweisoft.app.ui.bed.persontask.bean.uibean.MyMissionHeadUIBean;
+import com.siweisoft.app.ui.mission.missiondetail.fragment.MissionDetailFrag;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
 import com.siweisoft.lib.base.ui.interf.view.OnAppItemClickListener;
+import com.siweisoft.lib.base.ui.netadapter.UINetAdapter;
 import com.siweisoft.lib.base.ui.ope.BaseDAOpe;
 import com.siweisoft.lib.base.ui.ope.BaseDBOpe;
+import com.siweisoft.lib.util.LogUtil;
+import com.siweisoft.lib.util.ToastUtil;
 import com.siweisoft.lib.util.data.DateFormatUtil;
 import com.siweisoft.lib.util.dialog.DialogUtil;
+import com.siweisoft.lib.util.fragment.FragManager;
 import com.siweisoft.lib.view.pickerview.TimePickerDialog;
 import com.siweisoft.lib.view.pickerview.data.Type;
 import com.siweisoft.lib.view.pickerview.listener.OnDateSetListener;
@@ -37,6 +44,7 @@ import com.siweisoft.app.ui.bed.advice.ope.TimeSortOpe;
 import com.siweisoft.app.ui.bed.patient.ope.PatientAdditionDAOpe;
 import com.siweisoft.app.ui.dialog.dialog.fragment.NurseDialogFrag;
 
+import java.text.ParseException;
 import java.util.Date;
 
 import butterknife.OnClick;
@@ -45,7 +53,6 @@ import butterknife.OnClick;
  * Created by ${viwmox} on 2016-11-11.
  */
 public class AdviceFrag extends BaseNurseFrag<AdviceUIOpe, NurseNetOpe, BaseDBOpe, AdviceDAOpe> implements
-        ExpandableListView.OnChildClickListener,
         PinnedHeaderExpandableListView.OnHeaderUpdateListener,
         OnAppItemsClickListener {
 
@@ -69,7 +76,6 @@ public class AdviceFrag extends BaseNurseFrag<AdviceUIOpe, NurseNetOpe, BaseDBOp
         patientAdditionDAOpe = (PatientAdditionDAOpe) getArguments().getSerializable(ValueConstant.DATA_DATA);
         getOpe().getUiOpe().initTitle(patientAdditionDAOpe.getMidTitle());
         getOpe().getUiOpe().getDoubleExpandView().setOnHeaderUpdateListener(this);
-        getOpe().getUiOpe().getDoubleExpandView().setOnChildClickListener(this);
         getOpe().getUiOpe().getMaterialRefreshLayout().setMaterialRefreshListener(this);
         getOpe().getUiOpe().getMaterialRefreshLayout().autoRefreshWithUI(getResources().getInteger(R.integer.integer_time_short));
     }
@@ -93,10 +99,28 @@ public class AdviceFrag extends BaseNurseFrag<AdviceUIOpe, NurseNetOpe, BaseDBOp
                 if (success) {
                     AdviceListResBean adviceListResBean = GsonUtil.getInstance().fromJson(o.toString(), AdviceListResBean.class);
                     getOpe().getDaOpe().cutTime(adviceListResBean.getData());
-                    getOpe().getUiOpe().initAdviceList(new TimeSortOpe().sortTime(adviceListResBean.getData()));
+                    getOpe().getDaOpe().setHashMap(new TimeSortOpe().sortTime(adviceListResBean.getData()));
+                    getOpe().getUiOpe().initAdviceList(getOpe().getDaOpe().getHashMap());
+                    getOpe().getUiOpe().getAdviceListAdapter().setOnAppItemsClickListener(AdviceFrag.this);
                 }
                 if (onFinishListener != null) {
                     onFinishListener.onFinish(o);
+                }
+            }
+        });
+    }
+
+    public void getAdviceTask(String begin, String end, final String adviceid) {
+        SimpleNetOpe.getTaskListByAdviceID(activity, begin, end, adviceid, new UINetAdapter(activity) {
+            @Override
+            public void onNetWorkResult(boolean success, Object o) {
+                AdviceTaskResBean adviceTaskResBean = GsonUtil.getInstance().fromJson(o.toString(), AdviceTaskResBean.class);
+                if (success && adviceTaskResBean.getData() != null && adviceTaskResBean.getData().size() > 0) {
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(ValueConstant.DATA_DATA, getOpe().getDaOpe().getData(adviceTaskResBean, patientAdditionDAOpe.getPatientBedResBean().get姓名()));
+                    FragManager.getInstance().startFragment(getFragmentManager(), index, new MissionDetailFrag(), bundle);
+                } else {
+                    ToastUtil.getInstance().showShort(activity, "无关联任务");
                 }
             }
         });
@@ -108,10 +132,6 @@ public class AdviceFrag extends BaseNurseFrag<AdviceUIOpe, NurseNetOpe, BaseDBOp
         return R.layout.frag_advice;
     }
 
-    @Override
-    public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-        return false;
-    }
 
     @Override
     public View getPinnedHeader() {
@@ -134,7 +154,15 @@ public class AdviceFrag extends BaseNurseFrag<AdviceUIOpe, NurseNetOpe, BaseDBOp
 
     @Override
     public void onAppItemClick(int index, View view, int position) {
-
+        String begin = "";
+        String end = "";
+        try {
+            begin = DateFormatUtil.convent_yyyyMMdd(DateFormatUtil.convent_yyyyMMddHHmmss(getOpe().getDaOpe().getHashMap().get(DataValue.STATUS_TYPE_TIME.get(index)).get(position).get开始时间s())).trim();
+            end = DateFormatUtil.convent_yyyyMMdd(DateFormatUtil.convent_yyyyMMddHHmmss(getOpe().getDaOpe().getHashMap().get(DataValue.STATUS_TYPE_TIME.get(index)).get(position).get结束时间s())).trim();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        getAdviceTask(begin, end, getOpe().getDaOpe().getHashMap().get(DataValue.STATUS_TYPE_TIME.get(index)).get(position).get医嘱IDs());
     }
 
     @OnClick({BaseID.ID_RIGHT, BaseID.ID_MID})

@@ -1,6 +1,7 @@
 package com.siweisoft.app.ui.bed.advice.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,12 +108,17 @@ public class AdviceListAdapter extends BaseExpandableListAdapter implements View
         BitmapUtil.getInstance().setBg(context, adviceUIBean.getCodeNameIV(), i[1]);
         adviceUIBean.getTvTitle().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get医嘱详情s()));
         adviceUIBean.getTypeTV().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).getKey()));
-        adviceUIBean.getStartTV().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get开始时间s()));
-        adviceUIBean.getEndTV().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get结束时间s()));
+        adviceUIBean.getStartTV().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get开始时间()));
+        adviceUIBean.getEndTV().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get结束时间()));
         adviceUIBean.getNumTV().setText(StringUtil.getStr(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get医嘱IDs()));
         if (resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get医嘱详情s().contains("手术后医嘱")) {
             adviceUIBean.getBeforeView().setVisibility(View.GONE);
             adviceUIBean.getAfterView().setVisibility(View.VISIBLE);
+        }
+        if (DateFormatUtil.isTodayMMDDHHMM(resBean.get(DataValue.STATUS_TYPE_TIME.get(groupPosition)).get(childPosition).get开始时间s())) {
+            adviceUIBean.getBeforeView().setBackgroundColor(Color.parseColor("#FFC1C1"));
+        } else {
+            adviceUIBean.getBeforeView().setBackgroundResource(R.drawable.drawable_press_black_while);
         }
         adviceUIBean.getRootV().setTag(R.id.position, childPosition);
         adviceUIBean.getRootV().setTag(R.id.groupposition, groupPosition);

@@ -24,6 +24,7 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:padding="1dp"
                 android:src="@drawable/drawable_bed"
                 android:layout_width="30dp"
                 android:layout_height="30dp" />
@@ -49,9 +50,11 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:padding="1dp"
                 android:src="@drawable/drawable_mission"
                 android:layout_width="30dp"
-                android:layout_height="30dp" />
+                android:layout_height="30dp"
+                android:id="@+id/imageView" />
 
             <TextView
                 android:layout_marginTop="1dp"
@@ -75,6 +78,7 @@
             android:layout_height="match_parent">
 
             <ImageView
+                android:padding="1dp"
                 android:src="@drawable/drawable_check"
                 android:layout_width="30dp"
                 android:layout_height="30dp" />

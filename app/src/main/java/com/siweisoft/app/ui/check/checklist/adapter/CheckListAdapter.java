@@ -106,7 +106,7 @@ public class CheckListAdapter extends BaseExpandableListAdapter {
         checkUIBean.getNameTV().setText(StringUtil.getStr(data.get(groupPosition).getData().get(childPosition).getName()));
         checkUIBean.getTimeTV().setText(StringUtil.getStr(DateFormatUtil.getMMDDHHMM(data.get(groupPosition).getData().get(childPosition).getChecktime())));
         checkUIBean.getBadIdTV().setText(StringUtil.getStr(data.get(groupPosition).getData().get(childPosition).getBedId()));
-        checkUIBean.getGou().setSelected(true);
+        checkUIBean.getGou().setSelected(false);
         checkUIBean.getSwipeView().clear();
 
         if (areaMessionDAOpe.isLin(data.get(groupPosition).getData().get(childPosition).get医嘱ID(), data.get(groupPosition).getData().get(childPosition).getKey())) {

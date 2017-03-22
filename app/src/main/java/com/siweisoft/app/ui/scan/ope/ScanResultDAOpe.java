@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentActivity;
 
 import com.siweisoft.app.db.ope.ScanDBOpe;
 import com.siweisoft.app.ui.bed.patient.fragment.PatientFrag;
+import com.siweisoft.app.ui.check.checklist.fragment.CheckListFGM;
 import com.siweisoft.app.ui.check.patientcheck.fragment.PatientCheckFarg;
 import com.siweisoft.app.ui.home.activity.IndexActivity;
 import com.siweisoft.app.ui.info.bedcheck.bean.reqbean.WriteBedCheckReqBean;
@@ -153,7 +154,18 @@ public class ScanResultDAOpe extends BaseDAOpe {
             }
             return;
         }
-
+        if (FragManager.getInstance().getCurrentClass(baseActivity.getHomeDataOpe().getIndex()).getClass().getName().equals(CheckListFGM.class.getName())) {
+            CheckListFGM frag2 = (CheckListFGM) FragManager.getInstance().getCurrentClass(baseActivity.getHomeDataOpe().getIndex());
+            if (Pattern.compile(rule[4]).matcher(result).matches()) {
+                DrugInfoResBean resBean1 = GsonUtil.getInstance().fromJson(result, DrugInfoResBean.class);
+                IndexActivity indexActivity1 = (IndexActivity) activity;
+                indexActivity1.getHomeUIOpe().getViewPager().setCurrentItem(2);
+                Bundle bundle1 = new Bundle();
+                bundle1.putSerializable(ValueConstant.DATA_DATA, resBean1);
+                FragManager.getInstance().startFragment(indexActivity1.getSupportFragmentManager(), 2, new PatientCheckFarg(), bundle1);
+                return;
+            }
+        }
 
         //非特殊界面
         for (int i = 0; i < rule.length; i++) {

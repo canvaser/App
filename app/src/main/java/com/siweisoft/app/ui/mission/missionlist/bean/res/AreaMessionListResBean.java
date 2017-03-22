@@ -44,6 +44,16 @@ public class AreaMessionListResBean extends ResultResBean {
         private String name;
         private String codename;
         private List<TitlesBean> titles;
+        private boolean clickable = true;
+
+
+        public boolean isClickable() {
+            return clickable;
+        }
+
+        public void setClickable(boolean clickable) {
+            this.clickable = clickable;
+        }
 
         public String getZyh() {
             return zyh;

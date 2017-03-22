@@ -12,6 +12,7 @@ import com.siweisoft.app.nursenet.NurseNetOpe;
 import com.siweisoft.app.nursevalue.BaseID;
 import com.siweisoft.app.nursevalue.MethodValue;
 import com.siweisoft.app.ui.check.checklist.bean.bean.TitleBean;
+import com.siweisoft.app.ui.check.checklist.bean.resbean.CheckResBean;
 import com.siweisoft.app.ui.check.checklist.ope.CheckListFGMUIOpe;
 import com.siweisoft.app.ui.dialog.dialog.fragment.NurseDialogFrag;
 import com.siweisoft.lib.base.ui.interf.OnFinishListener;
@@ -31,6 +32,8 @@ import com.siweisoft.app.ui.check.checklist.bean.CheckDABean;
 import com.siweisoft.app.ui.check.checklist.bean.reqbean.UpdateCheckListReqBean;
 import com.siweisoft.app.ui.check.checklist.bean.resbean.CheckListResBean;
 import com.siweisoft.app.ui.check.checklist.ope.CheckDAOpe;
+
+import java.util.ArrayList;
 
 import butterknife.OnClick;
 
@@ -86,15 +89,29 @@ public class CheckListFGM extends BaseNurseFrag implements
             @Override
             public void onNetWorkResult(boolean success, Object o) {
                 if (success) {
-                    CheckListResBean checkListResBean = GsonUtil.getInstance().fromJson(o.toString(), CheckListResBean.class);
-                    checkListFGMUIOpe.initList(new CheckDAOpe().initData(checkListResBean.getData()));
-                    for (int i = 0; i < checkListResBean.getData().size(); i++) {
-                        checkDAOpe.getTitles().add(new TitleBean(checkListResBean.getData().get(i).getData().size(), checkListResBean.getData().get(i).getItemName()));
+                    final CheckListResBean checkListResBean = GsonUtil.getInstance().fromJson(o.toString(), CheckListResBean.class);
+                    checkDAOpe.setRes(checkListResBean.getData());
+                    checkDAOpe.initData(checkListResBean.getData());
+                    checkDAOpe.initData2(new OnFinishListener() {
+                        @Override
+                        public void onFinish(Object o) {
+                            ArrayList<CheckResBean> s = (ArrayList<CheckResBean>) o;
+                            checkListFGMUIOpe.initList(s);
+                            checkDAOpe.getTitles().clear();
+                            for (int i = 0; i < checkListResBean.getData().size(); i++) {
+                                checkDAOpe.getTitles().add(new TitleBean(checkListResBean.getData().get(i).getData().size(), checkListResBean.getData().get(i).getItemName()));
+                            }
+                            checkListFGMUIOpe.getCheckListAdapter().setOnAppItemsClickListener(CheckListFGM.this);
+                            checkListFGMUIOpe.getMissionExpandView().requestRefreshHeader();
+                            if (onFinishListener != null) {
+                                onFinishListener.onFinish(o);
+                            }
+                        }
+                    });
+                } else {
+                    if (onFinishListener != null) {
+                        onFinishListener.onFinish(o);
                     }
-                    checkListFGMUIOpe.getCheckListAdapter().setOnAppItemsClickListener(CheckListFGM.this);
-                }
-                if (onFinishListener != null) {
-                    onFinishListener.onFinish(o);
                 }
             }
         });
@@ -162,8 +179,21 @@ public class CheckListFGM extends BaseNurseFrag implements
                     @Override
                     public void onAppItemClick(View view, int position) {
                         TextView textView = (TextView) view;
-                        getOpe().getUiOpe().getRightTV().setText(textView.getText().toString());
-                        PopupUtil.getInstance().dimess();
+                        checkListFGMUIOpe.getRightTV().setText(textView.getText().toString());
+                        checkDAOpe.setSort(textView.getText().toString());
+                        checkDAOpe.initData2(new OnFinishListener() {
+                            @Override
+                            public void onFinish(Object o) {
+                                ArrayList<CheckResBean> s = (ArrayList<CheckResBean>) o;
+                                checkListFGMUIOpe.initList(s);
+                                checkDAOpe.getTitles().clear();
+                                for (int i = 0; i < s.size(); i++) {
+                                    checkDAOpe.getTitles().add(new TitleBean(s.get(i).getData().size(), s.get(i).getItemName()));
+                                }
+                                checkListFGMUIOpe.getMissionExpandView().requestRefreshHeader();
+                            }
+                        });
+
                     }
                 });
                 break;

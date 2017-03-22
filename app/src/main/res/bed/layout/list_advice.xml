@@ -3,16 +3,17 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/drawable_press_black_while"
+
     android:id="@+id/root">
 
     <LinearLayout
+        android:padding="5dp"
+        android:background="@drawable/drawable_press_black_while"
         android:gravity="center_vertical"
         android:id="@+id/ll_before"
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp">
+        android:layout_height="wrap_content">
 
         <RelativeLayout
             android:orientation="horizontal"
