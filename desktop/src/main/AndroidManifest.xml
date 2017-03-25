@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.siweisoft.app">
+    package="com.summer.app">
 
 
     -------------------------------------------------------------------------------------------------
@@ -65,7 +65,7 @@
 
     <application
 
-        android:name="AppAplication"
+        android:name="com.summer.aplication.AppAplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/appname"
@@ -75,7 +75,7 @@
 
 
         <activity
-            android:name="com.siweisoft.base.ui.activity.TestActivity"
+            android:name="com.summer.base.ui.activity.TestActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="stateHidden|adjustPan"
             android:screenOrientation="portrait">
@@ -88,7 +88,7 @@
 
 
         <activity
-            android:name="com.siweisoft.nurse.ui.index.activity.IndexActivity"
+            android:name="com.summer.nurse.ui.index.activity.IndexActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="stateHidden|adjustPan">
 
@@ -96,7 +96,7 @@
 
 
         <activity
-            android:name="com.siweisoft.nurse.ui.setting.welcome.activity.WelcomeActivity"
+            android:name="com.summer.nurse.ui.setting.welcome.activity.WelcomeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:windowSoftInputMode="stateHidden|adjustPan">
             <intent-filter>
@@ -111,54 +111,54 @@
 
         --------------------------------------------------------------------------------------------
 
-        <receiver android:name="AppReceiver" />
-        <service android:name="com.siweisoft.service.main.AppService" />
+        <receiver android:name="com.summer.receiver.AppReceiver" />
+        <service android:name="com.summer.service.main.AppService" />
 
         --------------------------------------------------------------------------------------------
 
         <activity
-            android:name="com.siweisoft.util.hellocharts.samples.LineChartActivity"
+            android:name="com.summer.util.hellocharts.samples.LineChartActivity"
             android:label="@string/title_activity_line_chart"></activity>
         <activity
-            android:name="com.siweisoft.util.hellocharts.samples.ColumnChartActivity"
+            android:name="com.summer.util.hellocharts.samples.ColumnChartActivity"
             android:label="@string/title_activity_column_chart"></activity>
         <activity
-            android:name="com.siweisoft.util.hellocharts.samples.PieChartActivity"
+            android:name="com.summer.util.hellocharts.samples.PieChartActivity"
             android:label="@string/title_activity_pie_chart"></activity>
         <activity
-            android:name="com.siweisoft.util.hellocharts.samples.BubbleChartActivity"
+            android:name="com.summer.util.hellocharts.samples.BubbleChartActivity"
             android:label="@string/title_activity_bubble_chart"></activity>
         <activity
-            android:name="com.siweisoft.util.hellocharts.samples.PreviewLineChartActivity"
+            android:name="com.summer.util.hellocharts.samples.PreviewLineChartActivity"
             android:label="@string/title_activity_preview_line_chart"></activity>
         <activity
-            android:name="com.siweisoft.util.hellocharts.samples.PreviewColumnChartActivity"
+            android:name="com.summer.util.hellocharts.samples.PreviewColumnChartActivity"
             android:label="@string/title_activity_preview_column_chart"></activity>
         <activity
-            android:name="com.siweisoft.util.hellocharts.samples.ComboLineColumnChartActivity"
+            android:name="com.summer.util.hellocharts.samples.ComboLineColumnChartActivity"
             android:label="@string/title_activity_combo_line_column_chart"></activity>
         <activity
-            android:name="com.siweisoft.util.hellocharts.samples.LineColumnDependencyActivity"
+            android:name="com.summer.util.hellocharts.samples.LineColumnDependencyActivity"
             android:label="@string/title_activity_line_column_dependency"></activity>
         <activity
-            android:name="com.siweisoft.util.hellocharts.samples.GoodBadChartActivity"
+            android:name="com.summer.util.hellocharts.samples.GoodBadChartActivity"
             android:label="@string/title_activity_good_bad"></activity>
         <activity
-            android:name="com.siweisoft.util.hellocharts.samples.TempoChartActivity"
+            android:name="com.summer.util.hellocharts.samples.TempoChartActivity"
             android:label="@string/title_activity_tempo_chart"></activity>
         <activity
-            android:name="com.siweisoft.util.hellocharts.samples.SpeedChartActivity"
+            android:name="com.summer.util.hellocharts.samples.SpeedChartActivity"
             android:label="@string/title_activity_speed_chart"></activity>
         <activity
-            android:name="com.siweisoft.util.hellocharts.samples.ViewPagerChartsActivity"
+            android:name="com.summer.util.hellocharts.samples.ViewPagerChartsActivity"
             android:label="@string/title_activity_view_pager_charts"></activity>
         <activity
-            android:name="com.siweisoft.util.hellocharts.samples.AboutActivity"
+            android:name="com.summer.util.hellocharts.samples.AboutActivity"
             android:label="@string/title_activity_about"></activity>
 
         --------------------------------------------------------------------------------------------
 
-        <activity android:name="com.siweisoft.util.uuzuche.lib_zxing.activity.CaptureActivity" />
+        <activity android:name="com.summer.util.uuzuche.lib_zxing.activity.CaptureActivity" />
 
         --------------------------------------------------------------------------------------------
 

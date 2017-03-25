@@ -26,15 +26,14 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.*;
 import android.net.sip.*;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.siweisoft.app.R;
-import com.siweisoft.util.LogUtil;
+import com.summer.app.R;
+import com.summer.util.LogUtil;
 
 import java.text.ParseException;
 

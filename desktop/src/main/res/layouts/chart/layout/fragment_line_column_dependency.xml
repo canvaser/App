@@ -7,13 +7,13 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.siweisoft.util.hellocharts.samples.PreviewLineChartActivity$PlaceholderFragment">
+    tools:context="com.summer.util.hellocharts.samples.PreviewLineChartActivity$PlaceholderFragment">
 
-    <com.siweisoft.util.hellocharts.view.LineChartView
+    <com.summer.util.hellocharts.view.LineChartView
         android:id="@+id/chart_top"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"></com.siweisoft.util.hellocharts.view.LineChartView>
+        android:layout_weight="1"></com.summer.util.hellocharts.view.LineChartView>
 
     <View
         android:layout_width="match_parent"
@@ -22,10 +22,10 @@
         android:layout_marginTop="8dp"
         android:background="@android:color/darker_gray" />
 
-    <com.siweisoft.util.hellocharts.view.ColumnChartView
+    <com.summer.util.hellocharts.view.ColumnChartView
         android:id="@+id/chart_bottom"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"></com.siweisoft.util.hellocharts.view.ColumnChartView>
+        android:layout_weight="1"></com.summer.util.hellocharts.view.ColumnChartView>
 
 </LinearLayout>

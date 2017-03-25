@@ -1,6 +1,5 @@
 package com.joybar.librarycalendar.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,12 +8,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
-import com.siweisoft.app.R;
+import com.summer.app.R;
 import com.joybar.librarycalendar.adapter.CalendarGridViewAdapter;
 import com.joybar.librarycalendar.controller.CalendarDateController;
 import com.joybar.librarycalendar.data.CalendarDate;
 import com.joybar.librarycalendar.utils.DateUtils;
-import com.siweisoft.util.LogUtil;
 
 import java.util.List;
 

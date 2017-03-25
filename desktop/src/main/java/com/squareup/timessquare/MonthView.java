@@ -15,7 +15,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import com.siweisoft.app.R;
+import com.summer.app.R;
 
 public class MonthView extends LinearLayout {
     TextView title;

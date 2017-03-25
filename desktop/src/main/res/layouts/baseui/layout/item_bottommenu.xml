@@ -11,7 +11,7 @@
         android:layout_width="25dp"
         android:layout_height="25dp" />
 
-    <com.siweisoft.base.ui.view.bottommenu.SelectTextView
+    <com.summer.base.ui.view.bottommenu.SelectTextView
         android:id="@+id/tv_name"
         android:textColor="@color/white"
         android:textSize="11sp"

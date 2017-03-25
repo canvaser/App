@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 
 import com.joybar.librarycalendar.data.CalendarDate;
-import com.siweisoft.app.R;
+import com.summer.app.R;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -19,7 +19,7 @@ package com.example.android.sip;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 
-import com.siweisoft.app.R;
+import com.summer.app.R;
 
 /**
  * Handles SIP authentication settings for the Walkie Talkie app.

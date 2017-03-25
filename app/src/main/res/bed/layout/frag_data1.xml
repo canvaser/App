@@ -4,12 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.siweisoft.lib.view.pinnedheaderexpandablelistview.doubleexpandable.DoubleExpandableListView
+    <com.summer.lib.view.pinnedheaderexpandablelistview.doubleexpandable.DoubleExpandableListView
         android:id="@+id/elv_elv"
         android:layout_width="100dp"
         android:layout_height="match_parent" />
 
-    <com.siweisoft.lib.view.pinnedheaderexpandablelistview.doubleexpandable.DoubleExpandableListView
+    <com.summer.lib.view.pinnedheaderexpandablelistview.doubleexpandable.DoubleExpandableListView
         android:id="@+id/elv_data"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

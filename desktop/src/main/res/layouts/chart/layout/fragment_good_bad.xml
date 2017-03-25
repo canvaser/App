@@ -8,9 +8,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="lecho.lib.hellocharts.samples.GoodBadActivity$PlaceholderFragment">
 
-    <com.siweisoft.util.hellocharts.view.LineChartView
+    <com.summer.util.hellocharts.view.LineChartView
         android:id="@+id/chart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.siweisoft.util.hellocharts.view.LineChartView>
+        android:layout_height="match_parent"></com.summer.util.hellocharts.view.LineChartView>
 
 </RelativeLayout>

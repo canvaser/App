@@ -4,11 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.joybar.librarycalendar.data.CalendarDate;
 import com.joybar.librarycalendar.fragment.CalendarViewFragment;
 import com.joybar.librarycalendar.utils.DateUtils;
-import com.siweisoft.base.ui.fragment.NullUIFragment;
-import com.siweisoft.util.LogUtil;
 
 
 /**

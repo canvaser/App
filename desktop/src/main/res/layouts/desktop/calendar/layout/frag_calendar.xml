@@ -12,7 +12,7 @@
         app:mcv_showOtherDates="all"
         app:mcv_selectionColor="#00F" />
 
-    <com.siweisoft.view.refreshlayout.MaterialRefreshLayout
+    <com.summer.view.refreshlayout.MaterialRefreshLayout
 
         android:id="@+id/refresh"
         android:layout_width="match_parent"
@@ -29,5 +29,5 @@
             android:id="@+id/recycle"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </com.siweisoft.view.refreshlayout.MaterialRefreshLayout>
+    </com.summer.view.refreshlayout.MaterialRefreshLayout>
 </LinearLayout>

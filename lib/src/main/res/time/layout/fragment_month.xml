@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:id="@+id/ll_root">
 
-    <com.siweisoft.lib.view.calendar.CalendarMonthView
+    <com.summer.lib.view.calendar.CalendarMonthView
         android:id="@+id/calendar"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
 
-    <com.siweisoft.view.loading.avi.AVLoadingIndicatorView
+    <com.summer.view.loading.avi.AVLoadingIndicatorView
         android:id="@+id/av"
         android:layout_width="60dp"
         android:layout_height="60dp"

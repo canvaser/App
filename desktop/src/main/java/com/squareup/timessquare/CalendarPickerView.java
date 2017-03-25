@@ -38,7 +38,7 @@ import static java.util.Calendar.MONTH;
 import static java.util.Calendar.SECOND;
 import static java.util.Calendar.YEAR;
 
-import com.siweisoft.app.R;
+import com.summer.app.R;
 
 /**
  * Android component to allow picking a date from a calendar view (a list of months).  Must be

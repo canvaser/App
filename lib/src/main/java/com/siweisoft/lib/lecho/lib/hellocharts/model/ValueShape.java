@@ -1,5 +1,0 @@
-package com.siweisoft.lib.lecho.lib.hellocharts.model;
-
-public enum ValueShape {
-    CIRCLE, SQUARE, DIAMOND
-}

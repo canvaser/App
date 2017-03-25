@@ -14,7 +14,7 @@ import static android.view.View.MeasureSpec.AT_MOST;
 import static android.view.View.MeasureSpec.EXACTLY;
 import static android.view.View.MeasureSpec.makeMeasureSpec;
 
-import com.siweisoft.app.R;
+import com.summer.app.R;
 
 /**
  * ViewGroup that draws a grid of calendar cells.  All children must be {@link CalendarRowView}s.

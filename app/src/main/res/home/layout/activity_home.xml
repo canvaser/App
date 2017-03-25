@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp">
 
-            <com.siweisoft.lib.view.viewpager.ScrollbleViewPager
+            <com.summer.lib.view.viewpager.ScrollbleViewPager
                 android:id="@+id/vp_vp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
@@ -26,7 +26,7 @@
 
         </RelativeLayout>
 
-        <com.siweisoft.lib.view.menuview.homebottom.HomeBottomView
+        <com.summer.lib.view.menuview.homebottom.HomeBottomView
             android:id="@+id/hbv_hbv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />

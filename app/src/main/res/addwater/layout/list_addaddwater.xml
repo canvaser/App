@@ -12,7 +12,7 @@
         android:layout_width="100dp"
         android:layout_height="match_parent" />
 
-    <com.siweisoft.lib.view.textview.AppEditText
+    <com.summer.lib.view.textview.AppEditText
         android:singleLine="true"
         android:maxLines="1"
         android:focusableInTouchMode="true"

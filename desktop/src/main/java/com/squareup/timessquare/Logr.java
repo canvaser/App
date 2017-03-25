@@ -2,7 +2,7 @@ package com.squareup.timessquare;
 
 import android.util.Log;
 
-import com.siweisoft.app.BuildConfig;
+import com.summer.app.BuildConfig;
 
 /**
  * Log utility class to handle the log tag and DEBUG-only logging.

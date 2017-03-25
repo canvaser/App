@@ -6,11 +6,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.siweisoft.util.hellocharts.samples.ColumnChartActivity$PlaceholderFragment">
+    tools:context="com.summer.util.hellocharts.samples.ColumnChartActivity$PlaceholderFragment">
 
-    <com.siweisoft.util.hellocharts.view.ColumnChartView
+    <com.summer.util.hellocharts.view.ColumnChartView
         android:id="@+id/chart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.siweisoft.util.hellocharts.view.ColumnChartView>
+        android:layout_height="match_parent"></com.summer.util.hellocharts.view.ColumnChartView>
 
 </RelativeLayout>

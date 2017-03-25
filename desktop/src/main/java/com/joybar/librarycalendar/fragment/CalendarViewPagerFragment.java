@@ -1,6 +1,5 @@
 package com.joybar.librarycalendar.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.siweisoft.app.R;
+import com.summer.app.R;
 import com.joybar.librarycalendar.adapter.CalendarViewPagerAdapter;
-import com.siweisoft.base.ui.interf.OnFinishListener;
+import com.summer.base.ui.interf.OnFinishListener;
 
 
 /**

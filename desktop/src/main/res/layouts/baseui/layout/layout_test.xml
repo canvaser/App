@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.siweisoft.view.timeline.view.TimeLineView
+    <com.summer.view.timeline.view.TimeLineView
         android:id="@+id/time"
         android:scaleType="centerCrop"
         android:src="@drawable/bg_detail_top"

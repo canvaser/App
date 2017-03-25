@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.siweisoft.lib.view.pagerview.PagerView
+    <com.summer.lib.view.pagerview.PagerView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -27,5 +27,5 @@
             android:layout_height="wrap_content" />
 
 
-    </com.siweisoft.lib.view.pagerview.PagerView>
+    </com.summer.lib.view.pagerview.PagerView>
 </LinearLayout>

@@ -32,9 +32,8 @@ import com.prolificinteractive.materialcalendarview.format.DayFormatter;
 import com.prolificinteractive.materialcalendarview.format.MonthArrayTitleFormatter;
 import com.prolificinteractive.materialcalendarview.format.TitleFormatter;
 import com.prolificinteractive.materialcalendarview.format.WeekDayFormatter;
-import com.siweisoft.app.R;
-import com.siweisoft.constant.ValueConstant;
-import com.siweisoft.util.LogUtil;
+import com.summer.app.R;
+import com.summer.constant.ValueConstant;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

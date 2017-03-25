@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.siweisoft.view.other.AppMaterialRefreshLayout
+    <com.summer.view.other.AppMaterialRefreshLayout
         android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -13,5 +13,5 @@
             android:id="@+id/recycle"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </com.siweisoft.view.other.AppMaterialRefreshLayout>
+    </com.summer.view.other.AppMaterialRefreshLayout>
 </LinearLayout>

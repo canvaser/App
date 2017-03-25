@@ -3,7 +3,7 @@ package com.squareup.timessquare;
 import android.view.ContextThemeWrapper;
 import android.widget.TextView;
 
-import com.siweisoft.app.R;
+import com.summer.app.R;
 
 public class DefaultDayViewAdapter implements DayViewAdapter {
     @Override

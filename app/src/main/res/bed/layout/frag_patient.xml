@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.summer.lib.view.refreshlayout.MaterialRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/refresh"
     android:layout_width="match_parent"
@@ -549,4 +549,4 @@
 
         </LinearLayout>
     </ScrollView>
-</com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout>
+</com.summer.lib.view.refreshlayout.MaterialRefreshLayout>

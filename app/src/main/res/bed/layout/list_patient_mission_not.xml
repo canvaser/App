@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.siweisoft.lib.view.swipeview.view.SwipeView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.summer.lib.view.swipeview.view.SwipeView xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/root"
     android:background="@color/color_block_back">
 
-    <com.siweisoft.app.ui.mission.missionlist.view.MissionView
+    <com.summer.app.ui.mission.missionlist.view.MissionView
         android:orientation="vertical"
         android:id="@+id/ll_xyz"
         android:background="@color/white"
@@ -167,7 +167,7 @@
             android:layout_width="match_parent"
             android:layout_height="1px" />
 
-    </com.siweisoft.app.ui.mission.missionlist.view.MissionView>
+    </com.summer.app.ui.mission.missionlist.view.MissionView>
 
     <TextView
         android:paddingTop="3dp"
@@ -180,4 +180,4 @@
         android:text="完成"
         android:layout_width="60dp"
         android:layout_height="wrap_content" />
-</com.siweisoft.lib.view.swipeview.view.SwipeView>
+</com.summer.lib.view.swipeview.view.SwipeView>

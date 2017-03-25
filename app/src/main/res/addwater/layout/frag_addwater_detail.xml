@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout
+        <com.summer.lib.view.refreshlayout.MaterialRefreshLayout
 
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -26,13 +26,13 @@
             app:wave_height_type="normal"
             app:progress_show_circle_backgroud="false">
 
-            <com.siweisoft.lib.view.recyclerview.AnimRecyclerView
+            <com.summer.lib.view.recyclerview.AnimRecyclerView
                 android:background="@color/white"
                 android:overScrollMode="never"
                 android:id="@+id/recycle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
-        </com.siweisoft.lib.view.refreshlayout.MaterialRefreshLayout>
+        </com.summer.lib.view.refreshlayout.MaterialRefreshLayout>
 
     </LinearLayout>
 </LinearLayout>

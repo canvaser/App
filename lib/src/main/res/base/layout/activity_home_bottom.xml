@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimens_base_bottom">
 
-        <com.siweisoft.lib.view.menuview.homebottom.HomeBottomItem
+        <com.summer.lib.view.menuview.homebottom.HomeBottomItem
             android:id="@+id/ll_bed"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
@@ -37,9 +37,9 @@
                 android:text="病床"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </com.siweisoft.lib.view.menuview.homebottom.HomeBottomItem>
+        </com.summer.lib.view.menuview.homebottom.HomeBottomItem>
 
-        <com.siweisoft.lib.view.menuview.homebottom.HomeBottomItem
+        <com.summer.lib.view.menuview.homebottom.HomeBottomItem
             android:id="@+id/ll_mission"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
@@ -64,10 +64,10 @@
                 android:text="任务"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </com.siweisoft.lib.view.menuview.homebottom.HomeBottomItem>
+        </com.summer.lib.view.menuview.homebottom.HomeBottomItem>
 
 
-        <com.siweisoft.lib.view.menuview.homebottom.HomeBottomItem
+        <com.summer.lib.view.menuview.homebottom.HomeBottomItem
             android:id="@+id/ll_check"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
@@ -91,10 +91,10 @@
                 android:text="核对"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </com.siweisoft.lib.view.menuview.homebottom.HomeBottomItem>
+        </com.summer.lib.view.menuview.homebottom.HomeBottomItem>
 
 
-        <com.siweisoft.lib.view.menuview.homebottom.HomeBottomItem
+        <com.summer.lib.view.menuview.homebottom.HomeBottomItem
             android:id="@+id/ll_info"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
@@ -118,9 +118,9 @@
                 android:text="信息"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </com.siweisoft.lib.view.menuview.homebottom.HomeBottomItem>
+        </com.summer.lib.view.menuview.homebottom.HomeBottomItem>
 
-        <com.siweisoft.lib.view.menuview.homebottom.HomeBottomItem
+        <com.summer.lib.view.menuview.homebottom.HomeBottomItem
             android:id="@+id/ll_setting"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
@@ -144,6 +144,6 @@
                 android:text="设置"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </com.siweisoft.lib.view.menuview.homebottom.HomeBottomItem>
+        </com.summer.lib.view.menuview.homebottom.HomeBottomItem>
     </LinearLayout>
 </LinearLayout>
