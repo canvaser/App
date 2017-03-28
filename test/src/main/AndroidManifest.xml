@@ -4,6 +4,7 @@
     package="com.siweisoft.test">
 
     <application
+        android:name="com.summer.lib.app.LibAplication"
         tools:replace="android:icon,android:theme,android:label"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
