@@ -1,6 +1,6 @@
 package com.siweisoft.test;
 
-//by summer on 2017-03-25.
+//by summer on 2017-03-30.
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,14 +11,12 @@ import com.summer.lib.ope.BaseUIOpe;
 import com.summer.lib.ui.interf.IRecycle;
 import com.summer.lib.ui.interf.ITitle;
 
+public class HomeUIOpe<A extends BaseUIBean> extends BaseUIOpe<A> implements IRecycle, ITitle {
 
-public class MainUIOpe<A extends BaseUIBean> extends BaseUIOpe<A> implements IRecycle, ITitle {
 
-
-    public MainUIOpe(Context context, A uiBean) {
+    public HomeUIOpe(Context context, A uiBean) {
         super(context, uiBean);
     }
-
 
     @Override
     public void init(RecyclerView recyclerView) {
@@ -37,6 +35,6 @@ public class MainUIOpe<A extends BaseUIBean> extends BaseUIOpe<A> implements IRe
 
     @Override
     public void setTxt(TextView txt) {
-        txt.setText("mainuiope");
+        txt.setText("homeuiope");
     }
 }

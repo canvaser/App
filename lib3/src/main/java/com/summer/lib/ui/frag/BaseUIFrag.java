@@ -37,7 +37,7 @@ public abstract class BaseUIFrag<A extends BaseUIOpe, B extends BaseDAOpe> exten
         }
         View group = inflater.inflate(R.layout.layout_base_ui, null);
         ViewGroup parent = (ViewGroup) group.findViewById(R.id.base_ui_root);
-        parent.addView(getOpes().getUiope().getUiBean().getView(), new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, getOpes().getUiope().getUiBean().getView().getHeight()));
+        parent.addView(getOpes().getUiope().getUiBean().getView());
         unbinder = ButterKnife.bind(this, group);
         return group;
     }

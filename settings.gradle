@@ -1,1 +1,1 @@
-include ':app', ':lib', ':desktop', ':test', ':lib3'
+include ':app', ':lib', ':desktop', ':test', ':lib3', ':Launcher6.0.1r22', ':launcher'

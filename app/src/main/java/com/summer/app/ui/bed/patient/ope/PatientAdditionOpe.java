@@ -19,6 +19,9 @@ public class PatientAdditionOpe {
     ArrayList<String> strings = new ArrayList<>();
 
     public ArrayList<PatientAdditionResBean> getThispatientAdditionList(PatientAdditionListResBean res) {
+        if (res == null) {
+            return null;
+        }
         strings.add("病重");
         strings.add("病危");
         strings.add("气管筒");

@@ -8,8 +8,10 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Launcher6.0.1r22" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/desktop" />
+            <option value="$PROJECT_DIR$/launcher" />
             <option value="$PROJECT_DIR$/lib" />
             <option value="$PROJECT_DIR$/lib3" />
             <option value="$PROJECT_DIR$/test" />
